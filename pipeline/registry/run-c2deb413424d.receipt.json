@@ -1,0 +1,1101 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 5,
+  "runId": "run-c2deb413424d",
+  "createdAt": "2026-10-08T15:17:11.010Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/chapter4.md",
+    "hash": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+    "totalLines": 449
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": true,
+    "note": "本次**未调用模型**：直接复用已落盘的对象（卡 04 的「产出落盘固化」）。要重新产出请显式传 --rerun。",
+    "reusedFrom": {
+      "runId": "run-470138ece6a3",
+      "receiptPath": "pipeline/registry/run-470138ece6a3.receipt.json",
+      "modelId": "deepseek-v4-pro",
+      "provider": "api.deepseek.com",
+      "createdAt": "2026-10-08T13:34:50.081Z",
+      "calls": 20,
+      "tokens": {
+        "input": 44414,
+        "output": 121219
+      }
+    },
+    "promptFingerprint": "prompt-22384598f992",
+    "perAnchor": []
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 20,
+    "tokens": {
+      "input": 44414,
+      "output": 121219
+    },
+    "tokensDetail": {
+      "reasoning": 113985,
+      "cachedInput": 25984
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": "本次为**判据升级后的重判**：未发出任何模型调用；calls/tokens 沿用它产出时的实测值，不是本次的开销。",
+    "billing": "none（本次复用冻结产物，未发出任何真实模型调用）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com"
+    },
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": false,
+    "reason": "本次为复用/重判路径，第 2 层未发出任何调用；该路径默认不产生模型调用（要连判定者一起重扫请传 --judge，要连第 2 层一起重跑请传 --rerun）",
+    "note": "本次**未应用判定者判据**：本次的 passed 只代表过了确定性判据，不代表过了第 3 层的全部判据——规格 D6 要求两组判据同权。"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/chapter4.anchors.json",
+      "sha256": "sha256:2ac22f23b054a58b166057032eeb430f7cd4687487dc4d61f2bee44772edd791",
+      "bytes": 7047,
+      "anchorCount": 20
+    },
+    "objects": {
+      "path": "pipeline/knowledge/chapter4.objects.json",
+      "sha256": "sha256:b3e2fc2ed2e319ded68c24f38472f7d1be51547f5f4a95835e8e00a4b08860c6",
+      "bytes": 53107,
+      "objectCount": 34
+    },
+    "layer2Raw": null
+  },
+  "counts": {
+    "anchors": 20,
+    "objects": 34,
+    "passed": 33,
+    "rejected": 1
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {
+      "QUOTE_MISMATCH": 1
+    }
+  },
+  "verificationGate": "gate-1-deterministic-only（判定者未启用——结论不完整）",
+  "reuseObservation": {
+    "detected": false,
+    "producerPromptFingerprint": "prompt-22384598f992",
+    "currentPromptFingerprint": "prompt-22384598f992",
+    "note": "本次复用的对象由当前提示词产出。"
+  },
+  "objectVerdicts": [
+    {
+      "objectId": "CHAPTER4-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h1-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-1",
+        "lineStart": 7,
+        "lineEnd": 33
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-1",
+        "lineStart": 7,
+        "lineEnd": 33
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-2",
+        "lineStart": 34,
+        "lineEnd": 37
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-2",
+        "lineStart": 34,
+        "lineEnd": 37
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-1",
+        "lineStart": 38,
+        "lineEnd": 69
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-1",
+        "lineStart": 38,
+        "lineEnd": 69
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-2",
+        "lineStart": 70,
+        "lineEnd": 87
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-2",
+        "lineStart": 70,
+        "lineEnd": 87
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-3-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-3",
+        "lineStart": 88,
+        "lineEnd": 99
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-3",
+        "lineStart": 100,
+        "lineEnd": 132
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-3",
+        "lineStart": 100,
+        "lineEnd": 132
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-4",
+        "lineStart": 133,
+        "lineEnd": 138
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-4",
+        "lineStart": 139,
+        "lineEnd": 158
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-4",
+        "lineStart": 139,
+        "lineEnd": 158
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-5",
+        "lineStart": 159,
+        "lineEnd": 201
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-5",
+        "lineStart": 159,
+        "lineEnd": 201
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-6",
+        "lineStart": 202,
+        "lineEnd": 217
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-6",
+        "lineStart": 202,
+        "lineEnd": 217
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 19,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-5",
+        "lineStart": 218,
+        "lineEnd": 243
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 20,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-5",
+        "lineStart": 218,
+        "lineEnd": 243
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-7-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 21,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-7",
+        "lineStart": 244,
+        "lineEnd": 247
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 22,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-1",
+        "lineStart": 248,
+        "lineEnd": 251
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 23,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-1",
+        "lineStart": 248,
+        "lineEnd": 251
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 24,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-2",
+        "lineStart": 252,
+        "lineEnd": 257
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 25,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-2",
+        "lineStart": 252,
+        "lineEnd": 257
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 26,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-3",
+        "lineStart": 258,
+        "lineEnd": 269
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 27,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-3",
+        "lineStart": 258,
+        "lineEnd": 269
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 28,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "lineStart": 270,
+        "lineEnd": 381
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 29,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "lineStart": 270,
+        "lineEnd": 381
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 30,
+      "status": "reject",
+      "reasonCode": "QUOTE_MISMATCH",
+      "failures": [
+        {
+          "code": "QUOTE_MISMATCH",
+          "detail": "引文未在所引锚点区间（2283 字符）内命中：\"子 Agent 可能接收来自多个来源的信息。提示词中应该明确区分各个来源：“[FROM_MAIN_AGENT] 是主协调\"（已按 markdown-emphasis+whitespace 归一化后仍不命中——即不止是排版差异）"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-7",
+        "lineStart": 382,
+        "lineEnd": 428
+      },
+      "deterministic": {
+        "ok": false,
+        "reasonCode": "QUOTE_MISMATCH"
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": false,
+        "acceptedBy": null,
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "已被确定性判据拒绝，未送判定者（ADR-010 决策 3：默认短路）"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 31,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-7",
+        "lineStart": 382,
+        "lineEnd": 428
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 32,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-8",
+        "lineStart": 429,
+        "lineEnd": 442
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 33,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-8",
+        "lineStart": 429,
+        "lineEnd": 442
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    }
+  ],
+  "contentProblems": 1,
+  "engineeringFailure": null
+}

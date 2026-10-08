@@ -1,0 +1,989 @@
+[
+  {
+    "id": "CHAPTER4-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h1-1",
+        "title": "工具",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:593bee792b7358434b198352839dbe4c30e5c63ce555e648e071bcdb8b4aa647"
+      }
+    ],
+    "evidenceQuote": "在科幻电影《Her》中，AI 助手 Samantha 能主动整理邮件、识别出情感复杂的信件并提议润色回复，能代表主角处理出版事宜，还能在不同的沟通渠道间无缝切换。她的智能之所以动人，是因为她拥有强大的**工具**——连接语言“大脑”与真实数字世界的“手脚和感官”。",
+    "canonicalTerm": "工具",
+    "aliases": [],
+    "definition": "连接语言“大脑”与真实数字世界的“手脚和感官”",
+    "examples": [
+      "AI 助手 Samantha 能主动整理邮件、识别出情感复杂的信件并提议润色回复，能代表主角处理出版事宜，还能在不同的沟通渠道间无缝切换"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-1",
+        "title": "工具的分类",
+        "lineStart": 7,
+        "lineEnd": 33,
+        "contentHash": "sha256:0681b82ab09adf2d98a32dcd374b470b65fd86c0e911d174da8c7f71c3e6b354"
+      }
+    ],
+    "evidenceQuote": "**事件触发工具**是外部世界驱动 Agent 行动的方式。例如，设置定时器（set_timer）、监控后台命令行任务（monitor_shell）、连接外部事件源（connect_channel）。这类工具涉及两个时刻：**注册**时由 Agent 主动调用工具，声明自己关心什么事件；**触发**时由外部事件异步回调，唤醒 Agent 开始处理——这正是表4-1 中“Agent 注册、外部触发”的含义。",
+    "canonicalTerm": "事件触发工具",
+    "aliases": [],
+    "definition": "外部世界驱动 Agent 行动的方式；注册时 Agent 主动调用工具声明自己关心什么事件，触发时由外部事件异步回调唤醒 Agent 开始处理。",
+    "examples": [
+      "设置定时器（set_timer）",
+      "监控后台命令行任务（monitor_shell）",
+      "连接外部事件源（connect_channel）"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-1",
+        "title": "工具的分类",
+        "lineStart": 7,
+        "lineEnd": 33,
+        "contentHash": "sha256:0681b82ab09adf2d98a32dcd374b470b65fd86c0e911d174da8c7f71c3e6b354"
+      }
+    ],
+    "evidenceQuote": "与感知工具不同，执行工具的错误代价可能极高，安全约束是其设计的核心。",
+    "statement": "执行工具的设计应将安全约束作为核心。",
+    "rationale": "执行工具的错误代价可能极高。",
+    "appliesWhen": "设计执行工具时。",
+    "violation": "未将安全约束作为执行工具设计的核心。",
+    "chapterRef": "chapter4-h2-1"
+  },
+  {
+    "id": "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-2",
+        "title": "工具设计的通用原则",
+        "lineStart": 34,
+        "lineEnd": 37,
+        "contentHash": "sha256:93751cc707fba209781c48322dc291d0269a8041952fd74c6f6af58f234bdad9"
+      }
+    ],
+    "evidenceQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具，粒度过细，Agent 往往要协调好几个工具才能完成一个目标。今天更成熟的思路被称为 **ACI**（Agent-Computer Interface）：工具应该对应 Agent 的**目标**，而不是底层的 API 操作。",
+    "statement": "工具应该对应 Agent 的目标，而不是底层的 API 操作。",
+    "rationale": "把每个 API 端点包成一个工具会导致工具粒度过细，Agent 往往要协调好几个工具才能完成一个目标。",
+    "appliesWhen": "设计 Agent 工具时，选择工具对应 Agent 目标还是底层 API 操作。",
+    "violation": "把每个 API 端点包成一个工具，导致工具粒度过细。",
+    "chapterRef": "chapter4-h2-2"
+  },
+  {
+    "id": "CHAPTER4-H2-2-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-2",
+        "title": "工具设计的通用原则",
+        "lineStart": 34,
+        "lineEnd": 37,
+        "contentHash": "sha256:93751cc707fba209781c48322dc291d0269a8041952fd74c6f6af58f234bdad9"
+      }
+    ],
+    "evidenceQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具，粒度过细，Agent 往往要协调好几个工具才能完成一个目标。今天更成熟的思路被称为 **ACI**（Agent-Computer Interface）：工具应该对应 Agent 的**目标**，而不是底层的 API 操作。",
+    "pattern": "直接的 API 封装——把每个 API 端点包成一个工具。",
+    "harm": "工具粒度过细，Agent 往往要协调好几个工具才能完成一个目标。",
+    "corrective": "工具应该对应 Agent 的目标，而不是底层的 API 操作。",
+    "evidence": [
+      "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具，粒度过细，Agent 往往要协调好几个工具才能完成一个目标。"
+    ],
+    "chapterRef": "chapter4-h2-2"
+  },
+  {
+    "id": "CHAPTER4-H3-1-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-1",
+        "title": "能力的表达形式：专用工具、通用执行器与 Skill",
+        "lineStart": 38,
+        "lineEnd": 69,
+        "contentHash": "sha256:c238dbf6b695b6a48762669d0582001ef1226aa0d9a31ddc80d5451c3636dadd"
+      }
+    ],
+    "evidenceQuote": "**默认取向：通用工具优于专用工具，除非存在明确的安全、权限或性能理由。**",
+    "trigger": "在考虑通用工具与专用工具的默认取向时",
+    "recommendation": "优先用通用工具表达 Agent 能力，而不是为同一能力创建专用工具；当存在明确的安全、权限或性能理由时，可以偏离此默认取向。",
+    "confidence": 0.8,
+    "exceptions": [
+      "存在明确的安全、权限或性能理由"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-1",
+        "title": "能力的表达形式：专用工具、通用执行器与 Skill",
+        "lineStart": 38,
+        "lineEnd": 69,
+        "contentHash": "sha256:c238dbf6b695b6a48762669d0582001ef1226aa0d9a31ddc80d5451c3636dadd"
+      }
+    ],
+    "evidenceQuote": "**什么时候该退回专用工具。** 通用性有其边界，以下四种情况值得保留独立的专用工具。其一是**安全、权限与审计**：涉及生产数据库写操作这类场景，专用工具能提供更精细的权限控制和审计粒度，而一个开放的 `code_interpreter` 做不到。",
+    "statement": "涉及生产数据库写操作等安全、权限与审计场景时，应保留独立专用工具，而不是使用开放的 code_interpreter。",
+    "rationale": "专用工具能提供更精细的权限控制和审计粒度，而开放的 code_interpreter 做不到。",
+    "appliesWhen": "能力涉及生产数据库写操作这类安全、权限与审计场景时",
+    "violation": "在这些场景使用开放的 code_interpreter 将无法获得同等精细的权限控制与审计粒度。",
+    "chapterRef": "chapter4-h3-1"
+  },
+  {
+    "id": "CHAPTER4-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-2",
+        "title": "工具描述的艺术",
+        "lineStart": 70,
+        "lineEnd": 87,
+        "contentHash": "sha256:d45d6f662dff7e8ad2ade0c8a49709d5e32fa3761860f54980a28d19520c66e6"
+      }
+    ],
+    "evidenceQuote": "工具描述的核心是让 LLM 知道“什么时候用”，而不只是“能做什么”。以网络搜索为例，说“搜索相关内容”远不如说“当需要获取实时信息或查找未知事实时使用”——前者只是描述功能，后者则帮助 LLM 做出调用决策。",
+    "statement": "工具描述的核心是让 LLM 知道“什么时候用”，而不只是描述工具“能做什么”。",
+    "rationale": "说明“什么时候用”能帮助 LLM 做出调用决策，而只描述功能则缺少这一决策依据。",
+    "appliesWhen": "为 LLM 编写工具描述时。",
+    "violation": "工具描述只说明工具能做什么，而不说明应在什么时候使用。",
+    "chapterRef": "chapter4-h3-2"
+  },
+  {
+    "id": "CHAPTER4-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-2",
+        "title": "工具描述的艺术",
+        "lineStart": 70,
+        "lineEnd": 87,
+        "contentHash": "sha256:d45d6f662dff7e8ad2ade0c8a49709d5e32fa3761860f54980a28d19520c66e6"
+      }
+    ],
+    "evidenceQuote": "边界同样重要。文件搜索工具应该明确说明它只能基于文件名进行匹配，不能搜索文件内容——如果缺少这样的反例说明，LLM 就会自行猜测。**清晰列出工具的边界条件——做不到什么、不接受什么输入——往往比描述能力本身更重要**，因为大多数工具调用失败的根因不是模型不知道工具能做什么，而是不知道工具不能做什么。",
+    "statement": "工具描述应明确列出边界条件，包括做不到什么和不接受什么输入，这往往比描述能力本身更重要。",
+    "rationale": "大多数工具调用失败的根因不是模型不知道工具能做什么，而是不知道工具不能做什么；缺少边界说明会让 LLM 自行猜测。",
+    "appliesWhen": "为 LLM 编写工具描述时。",
+    "violation": "工具描述只说明能力，不列出做不到什么和不接受什么输入。",
+    "chapterRef": "chapter4-h3-2"
+  },
+  {
+    "id": "CHAPTER4-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-3",
+        "title": "参数传递的保真性",
+        "lineStart": 88,
+        "lineEnd": 99,
+        "contentHash": "sha256:b478e6a34de688d8cdd856c20370c9ce8744f6bb4e8cdc65f94f63138eef67e5"
+      }
+    ],
+    "evidenceQuote": "这些问题揭示了一条更为基础的工具设计原则：**模型感知到的世界与工具操作的世界之间，不能存在系统性的偏差**。工具的参数传递必须保持透明，不得在模型不知情的情况下修改输入或输出。如果确实需要对输入进行规范化处理（如统一编码格式），必须在工具描述中加以说明，并在工具返回中明确告知模型。否则，工具的“智能修正”非但没有帮到模型，反而制造了一个模型无法自行诊断的系统性故障。",
+    "statement": "工具的参数传递必须保持透明，不得在模型不知情的情况下修改输入或输出；如果确实需要对输入进行规范化处理（如统一编码格式），必须在工具描述中加以说明，并在工具返回中明确告知模型。",
+    "rationale": "如果违反该规则，工具的“智能修正”非但没有帮到模型，反而制造了一个模型无法自行诊断的系统性故障。",
+    "appliesWhen": "当工具涉及参数传递，尤其是确实需要对输入进行规范化处理（如统一编码格式）时。",
+    "violation": "制造模型无法自行诊断的系统性故障。",
+    "chapterRef": "chapter4-h3-3"
+  },
+  {
+    "id": "CHAPTER4-H2-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-3",
+        "title": "工具生态：MCP 与 Skill Hub",
+        "lineStart": 100,
+        "lineEnd": 132,
+        "contentHash": "sha256:1c3dad83afae70f99c93a2cbeaa692a28ccbeddf9e6c460e1ebc01734e1d377a"
+      }
+    ],
+    "evidenceQuote": "**资源与工具的分离**。除了可执行的工具，MCP 还定义了只读的资源（如文件内容、数据库记录），客户端可以浏览和读取资源而无需调用工具。这种分离使 Agent 能够区分“获取信息”和“执行操作”这两类不同性质的动作。此外还有第三类原语——提示模板（prompts）：由服务器提供的可复用提示词模板，供客户端和用户按需选用。工具、资源、提示三类原语分别对应“模型可执行的操作”“应用可读取的数据”和“用户可选用的模板”。",
+    "canonicalTerm": "MCP 三类原语",
+    "aliases": [
+      "工具、资源、提示"
+    ],
+    "definition": "MCP 定义的三种原语，分别对应模型可执行的操作、应用可读取的数据和用户可选用的模板。",
+    "examples": [
+      "工具",
+      "只读资源（如文件内容、数据库记录）",
+      "提示模板（prompts）"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H2-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-3",
+        "title": "工具生态：MCP 与 Skill Hub",
+        "lineStart": 100,
+        "lineEnd": 132,
+        "contentHash": "sha256:1c3dad83afae70f99c93a2cbeaa692a28ccbeddf9e6c460e1ebc01734e1d377a"
+      }
+    ],
+    "evidenceQuote": "**能力分发的另一种方式：Skill Hub**。MCP 统一的是**专用工具**这种工具分发机制的接入方式。Skill 那一侧不需要协议，一个 skill 就是一个装着 `SKILL.md` 的文件夹，因此 skill 的分发机制是**注册表**（registry）而不是协议。Vercel 于 2026 年 1 月上线的 skills.sh 是其中影响较大的一个：一条 `npx skills add <owner>/<repo>` 命令即可安装[^ch4-skills-sh]。OpenClaw 生态则有自己的 ClawHub[^ch4-clawhub]。",
+    "canonicalTerm": "Skill Hub",
+    "aliases": [],
+    "definition": "Skill 的分发机制，通过注册表而不是协议；一个 skill 是一个装着 SKILL.md 的文件夹。",
+    "examples": [
+      "skills.sh",
+      "ClawHub"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H2-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-4",
+        "title": "工具太多怎么办：层次化组织与主动工具发现",
+        "lineStart": 133,
+        "lineEnd": 138,
+        "contentHash": "sha256:48e886acd9b24c8312ecb6b8546efe58da31e1c4ec8223624b15d40257bae115"
+      }
+    ],
+    "evidenceQuote": "规模本身就会伤害正确性：工具数量超过一百个时，即使最先进的大语言模型也容易在工具选择上出错；全部平铺进上下文还要占去大量 token，并让每一次工具集的变动都击穿 KV Cache。",
+    "statement": "当可用工具数量超过一百个时，不应将全部工具平铺进上下文。",
+    "rationale": "因为即使最先进的大语言模型也容易在工具选择上出错，且全部平铺会占用大量 token，工具集的每次变动还会击穿 KV Cache。",
+    "appliesWhen": "可用工具数量超过一百个时。",
+    "violation": "在工具数量超过一百个时仍将全部工具平铺进上下文，导致工具选择错误、token 占用过高、工具集变动击穿 KV Cache。",
+    "chapterRef": "chapter4-h2-4"
+  },
+  {
+    "id": "CHAPTER4-H3-4-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-4",
+        "title": "层次化组织与按需加载",
+        "lineStart": 139,
+        "lineEnd": 158,
+        "contentHash": "sha256:895e41951cabf570c86c12a9d32a17bbbca27490ba9066eed3304f96dde0ea55"
+      }
+    ],
+    "evidenceQuote": "MCP 生态的快速扩张带来了一个工程问题：仅仅 5 个 MCP 服务器就可能引入数万 token 的工具定义开销，在 200K 的上下文窗口里还没开始对话就用掉了近三成。Cursor 在实践中验证了一种缓解方案：将工具描述同步到文件夹中，Agent 默认只看到工具名称的索引，需要时再查询具体的定义。A/B 测试显示，这种方式使 MCP 工具相关任务的总 token 消耗减少了 46.9%。\n\nPi Coding Agent 把这一思路落实为更激进的架构取舍：核心模块刻意不内置 MCP，优先建议把能力封装成带 README 的 CLI 工具，再由 Skills 按需加载；确实需要 MCP 生态时，则通过扩展接入[^ch4-pi-no-mcp]。社区扩展 `pi-mcp-adapter` 展示了一种折中实现：模型默认只看到一个约 200 token 的代理工具，通过“搜索→查看定义→调用”按需发现后端工具，MCP 服务器也延迟到首次使用时才启动[^ch4-pi-mcp-adapter]。这个案例说明，**是否采用 MCP 作为互操作协议**与**是否在会话开始时暴露所有 MCP 工具定义**是两个独立决策：后端可以保留 MCP 的生态兼容性，前端仍应以 CLI + Skills 或代理工具实现渐进式披露，避免服务器越接越多时上下文和 token 开销同步膨胀。",
+    "pattern": "会话开始时暴露所有 MCP 工具定义，而不是按需加载",
+    "harm": "仅 5 个 MCP 服务器就可能引入数万 token 的工具定义开销，在 200K 的上下文窗口里还没开始对话就用掉了近三成；服务器增多时上下文和 token 开销同步膨胀。",
+    "corrective": "默认只暴露工具名称索引或约 200 token 的代理工具，需要时再查询定义/调用；前端以 CLI + Skills 或代理工具实现渐进式披露，MCP 服务器延迟到首次使用时才启动。",
+    "evidence": [
+      "仅仅 5 个 MCP 服务器就可能引入数万 token 的工具定义开销，在 200K 的上下文窗口里还没开始对话就用掉了近三成。"
+    ],
+    "chapterRef": "chapter4-h3-4"
+  },
+  {
+    "id": "CHAPTER4-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-4",
+        "title": "层次化组织与按需加载",
+        "lineStart": 139,
+        "lineEnd": 158,
+        "contentHash": "sha256:895e41951cabf570c86c12a9d32a17bbbca27490ba9066eed3304f96dde0ea55"
+      }
+    ],
+    "evidenceQuote": "更进一步的方案是不把全部工具定义一次性注入上下文，而是按语义相似度先筛出一批候选工具再注入。当可用工具达到上百个时，平铺到上下文中既浪费 token 又干扰决策。Anthropic 的实验显示，这种按需检索的方式使 Opus 4 在工具使用基准上的准确率从 49% 提升到 74%。",
+    "statement": "当可用工具达到上百个时，不把全部工具定义一次性注入上下文，而应按语义相似度先筛出一批候选工具再注入。",
+    "rationale": "平铺全部工具定义既浪费 token 又干扰决策；按语义相似度预筛选可使工具使用准确率从 49% 提升到 74%。",
+    "appliesWhen": "可用工具数量达到上百个时",
+    "violation": "将全部工具定义一次性平铺注入上下文",
+    "chapterRef": "chapter4-h3-4"
+  },
+  {
+    "id": "CHAPTER4-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-5",
+        "title": "模型原生的主动工具发现",
+        "lineStart": 159,
+        "lineEnd": 201,
+        "contentHash": "sha256:9ce92146e26e161bd0dfbf95c727c9cc5e6db2db414bfe7fb0dd0ff2967392f8"
+      }
+    ],
+    "evidenceQuote": "**从被动选择到主动发现。** 更进一步的思路，是让 Agent 从被动接受者变为主动发现者：在执行过程中意识到能力缺口时，主动用自然语言声明 “我需要什么能力”，系统再动态匹配并注入。MCP-Zero[^mcp-zero-2025] 是代表性工作：系统提示词中不预置任何工具 schema，Agent 在思考中生成结构化请求块（如 “GitHub 服务器：搜索仓库并返回元数据”），系统通过服务器级→工具级的两层语义路由从数千候选中匹配注入，论文报告在约 2800 个工具上比全量注入节省约 98% 的 token。",
+    "canonicalTerm": "主动发现",
+    "aliases": [],
+    "definition": "让 Agent 从被动接受者变为主动发现者：在执行过程中意识到能力缺口时，主动用自然语言声明需求，系统再动态匹配并注入。",
+    "examples": [
+      "MCP-Zero 在系统提示词中不预置任何工具 schema，由 Agent 生成结构化请求块，系统通过服务器级→工具级的两层语义路由匹配注入。"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H3-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-5",
+        "title": "模型原生的主动工具发现",
+        "lineStart": 159,
+        "lineEnd": 201,
+        "contentHash": "sha256:9ce92146e26e161bd0dfbf95c727c9cc5e6db2db414bfe7fb0dd0ff2967392f8"
+      }
+    ],
+    "evidenceQuote": "主动发现有一个微妙的工程代价：动态加载工具会**破坏 KV Cache**——若把全部工具定义放进静态前缀，每加载一个新工具就使整段缓存失效。破解思路和各大 API 的原生支持（OpenAI 的 `tool_search` 与 `defer_loading`、Anthropic 的 `tool_reference`、Codex CLI 默认开启的 `tool_search`）已在第二章“工具定义的设计”一节介绍：把新工具的完整 schema 追加到上下文末尾，静态前缀保持稳定，schema 此后固定在轨迹的原位置，作为普通历史消息继续命中缓存；状态栏则只维护一份简短的工具名列表。",
+    "statement": "动态加载工具时，应把新工具的完整 schema 追加到上下文末尾，保持静态前缀稳定，而不是把全部工具定义放进静态前缀。",
+    "rationale": "若把全部工具定义放进静态前缀，每加载一个新工具就使整段缓存失效；追加到末尾能让静态前缀保持稳定，schema 作为普通历史消息继续命中缓存。",
+    "appliesWhen": "使用动态工具加载机制，需要避免 KV Cache 失效时。",
+    "violation": "把全部工具定义放进静态前缀，导致每加载一个新工具就使整段缓存失效。",
+    "chapterRef": "chapter4-h3-5"
+  },
+  {
+    "id": "CHAPTER4-H3-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-6",
+        "title": "Skills：把工具发现变成“按需查阅”",
+        "lineStart": 202,
+        "lineEnd": 217,
+        "contentHash": "sha256:0d48df921ed6f785e4b652b67efecc6d3d70ec5a3ae067401ed3b10d2d37158c"
+      }
+    ],
+    "evidenceQuote": "Skills 则把渐进式披露作为默认的组织方式：Agent 启动时只看到一份薄薄的目录——每个 skill 的 `name` 与 `description`（合计数百 token）。当**当前上下文**真的需要某种能力时，模型才去读取对应的 sub-skill，并顺着其中的引用再往下一层，读取具体的脚本或子文档。",
+    "canonicalTerm": "Skills 渐进式披露",
+    "aliases": [],
+    "definition": "Skills 机制将渐进式披露作为默认组织方式：Agent 启动时只看到薄的 skill 目录（name 与 description），需要时再读取对应 sub-skill 及下一层脚本或子文档。",
+    "examples": [
+      "Agent 启动时只看到一份薄薄的目录——每个 skill 的 name 与 description（合计数百 token）",
+      "当当前上下文真的需要某种能力时，模型才去读取对应的 sub-skill"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H3-6-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-6",
+        "title": "Skills：把工具发现变成“按需查阅”",
+        "lineStart": 202,
+        "lineEnd": 217,
+        "contentHash": "sha256:0d48df921ed6f785e4b652b67efecc6d3d70ec5a3ae067401ed3b10d2d37158c"
+      }
+    ],
+    "evidenceQuote": "没有人会把一本工具书或整个维基百科从第一页读到最后一页，而是顺着索引和目录，根据当下需要逐个查阅词条。工具的详细定义不必全部常驻上下文，用到哪条查哪条。",
+    "trigger": "当面对大量工具或参考文档、需要决定把哪些定义常驻上下文时",
+    "recommendation": "工具的详细定义不必全部常驻上下文，用到哪条查哪条。",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-5",
+        "title": "感知工具",
+        "lineStart": 218,
+        "lineEnd": 243,
+        "contentHash": "sha256:b639b214a92ef7523c73f13e2922b0a5fceed215125d47d17f318c7230aa9bc8"
+      }
+    ],
+    "evidenceQuote": "搜索工具的返回值应该是结构化的候选列表（标题、位置、摘要片段），而不是拼接后的全文——让 Agent 先浏览候选，再决定深入读取哪一条。当结果数量较多时，应提供分页或游标（cursor）参数：默认只返回前若干条，并在返回值中注明结果总数和获取下一页的方式，由 Agent 自主决定是否继续翻页，而不是一次性倾倒全部结果。",
+    "statement": "搜索工具应返回结构化候选列表（标题、位置、摘要片段），而不是拼接后的全文；结果数量较多时应提供分页或游标参数，默认只返回前若干条，并在返回值中注明结果总数和获取下一页的方式。",
+    "rationale": "让 Agent 先浏览候选，再决定深入读取哪一条，并由 Agent 自主决定是否继续翻页，而不是一次性倾倒全部结果。",
+    "appliesWhen": "搜索工具返回结果时，尤其是结果数量较多、需要分页浏览的场景。",
+    "violation": "返回拼接后的全文，或结果较多时不提供分页/游标而一次性倾倒全部结果。",
+    "chapterRef": "chapter4-h2-5"
+  },
+  {
+    "id": "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-5",
+        "title": "感知工具",
+        "lineStart": 218,
+        "lineEnd": 243,
+        "contentHash": "sha256:b639b214a92ef7523c73f13e2922b0a5fceed215125d47d17f318c7230aa9bc8"
+      }
+    ],
+    "evidenceQuote": "read 类工具应支持 offset/limit 参数，按需读取大文件的指定片段。当内容超过阈值必须截断时，应明确标示截断情况：注明省略了多少内容、如何读取剩余部分（如“已显示第 1-200 行，共 5000 行，可用 offset 参数继续读取”）。静默截断是危险的——Agent 会误以为自己看到了全部内容，基于不完整的信息做出错误判断。",
+    "statement": "read 类工具应支持 offset/limit 参数按需读取大文件的指定片段；当内容超过阈值必须截断时，应明确标示截断情况，注明省略了多少内容以及如何读取剩余部分。",
+    "rationale": "静默截断是危险的：Agent 会误以为自己看到了全部内容，从而基于不完整的信息做出错误判断。",
+    "appliesWhen": "读取大文件或当内容超过阈值必须截断时。",
+    "violation": "静默截断，或截断后未注明省略了多少内容及如何读取剩余部分。",
+    "chapterRef": "chapter4-h2-5"
+  },
+  {
+    "id": "CHAPTER4-H3-7-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-7",
+        "title": "多模态感知",
+        "lineStart": 244,
+        "lineEnd": 247,
+        "contentHash": "sha256:060ad525c3d7b8b4c1eb28fb49d568f27638b74f73d46cf709d51e4695fcafaa"
+      }
+    ],
+    "evidenceQuote": "Agent 要能够理解图片、视频、音频、PDF 等多模态数据，就必须具备多模态感知能力。有三条路径可以实现多模态感知：模型原生的多模态处理、将多模态内容自动提取为文本再处理、把多模态模型封装为工具处理。",
+    "canonicalTerm": "多模态感知",
+    "aliases": [],
+    "definition": "Agent 理解图片、视频、音频、PDF 等多模态数据所需具备的能力",
+    "examples": [
+      "模型原生的多模态处理",
+      "将多模态内容自动提取为文本再处理",
+      "把多模态模型封装为工具处理"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-1",
+        "title": "原生多模态处理",
+        "lineStart": 248,
+        "lineEnd": 251,
+        "contentHash": "sha256:7a68c1559570ff3afe539c378731f369242fc8e419704f7ce1c46efc87317484"
+      }
+    ],
+    "evidenceQuote": "**原生多模态处理**是能力上限最高的技术路线。其核心技术突破在于，通过专门的编码器将不同类型的数据全部映射到统一的高维语义空间。以图像为例，架构公开的多模态模型（如 Qwen-VL、LLaVA）通常集成了基于 **Vision Transformer**（ViT）的视觉编码器。",
+    "canonicalTerm": "原生多模态处理",
+    "aliases": [],
+    "definition": "能力上限最高的技术路线，其核心技术突破在于通过专门的编码器将不同类型的数据全部映射到统一的高维语义空间。",
+    "examples": [
+      "以图像为例，架构公开的多模态模型（如 Qwen-VL、LLaVA）通常集成了基于 Vision Transformer（ViT）的视觉编码器。"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H4-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-1",
+        "title": "原生多模态处理",
+        "lineStart": 248,
+        "lineEnd": 251,
+        "contentHash": "sha256:7a68c1559570ff3afe539c378731f369242fc8e419704f7ce1c46efc87317484"
+      }
+    ],
+    "evidenceQuote": "架构公开的多模态模型（如 Qwen-VL、LLaVA）通常集成了基于 **Vision Transformer**（ViT）的视觉编码器。具体来说，ViT 将图像分割为固定大小的图像块（Patches），像处理句子中的单词一样将每个块序列化为向量，与文本词向量共存于共享的多模态嵌入空间。",
+    "canonicalTerm": "Vision Transformer",
+    "aliases": [
+      "ViT"
+    ],
+    "definition": "将图像分割为固定大小的图像块（Patches），像处理句子中的单词一样将每个块序列化为向量，与文本词向量共存于共享的多模态嵌入空间。",
+    "examples": [
+      "架构公开的多模态模型（如 Qwen-VL、LLaVA）通常集成了基于 ViT 的视觉编码器。"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-2",
+        "title": "提取为文本",
+        "lineStart": 252,
+        "lineEnd": 257,
+        "contentHash": "sha256:569f5355880bb9060ffed461d205dfb3f807414b4ec9635bc1b681ae2c3508fd"
+      }
+    ],
+    "evidenceQuote": "目前很多能力较强的模型，例如 GLM 5.2、DeepSeek V4 Flash，不支持原生多模态处理。此时一种变通方法是将多模态内容**提取为文本（Extract to Text）**。这是一个两阶段过程：先通过专门工具（如 OCR 服务、音频转录服务）将非文本内容转为纯文本，再输入语言模型。",
+    "canonicalTerm": "提取为文本",
+    "aliases": [
+      "Extract to Text"
+    ],
+    "definition": "一种将非文本内容先通过专门工具（如 OCR 服务、音频转录服务）转为纯文本，再输入语言模型的两阶段变通方法。",
+    "examples": [
+      "通过 OCR 服务将非文本内容转为纯文本，再输入语言模型",
+      "通过音频转录服务将非文本内容转为纯文本，再输入语言模型"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H4-2-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-2",
+        "title": "提取为文本",
+        "lineStart": 252,
+        "lineEnd": 257,
+        "contentHash": "sha256:569f5355880bb9060ffed461d205dfb3f807414b4ec9635bc1b681ae2c3508fd"
+      }
+    ],
+    "evidenceQuote": "对于文本内容占主体的 PDF 文档等，提取为文本的方法比转换为图片的原生多模态处理方法往往更节约 token。例如，一页 PDF 的截图往往需要上千个 token，而一页 PDF 上的文字一般只有几百个 token。但提取为文本的代价是信息损失：所有版式、图表、图像信息都在提取过程中被丢弃。",
+    "trigger": "当需要处理文本内容占主体的 PDF 文档等，并在提取为文本与转换为图片的原生多模态处理之间选择时",
+    "recommendation": "选择提取为文本的方法，而不是转换为图片的原生多模态处理方法，因为往往更节约 token。",
+    "confidence": 0.7,
+    "exceptions": [
+      "当需要保留版式、图表、图像信息时，提取为文本会造成信息损失"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-3",
+        "title": "工具化多模态分析",
+        "lineStart": 258,
+        "lineEnd": 269,
+        "contentHash": "sha256:44280e64210bb66fed79e151098d04f41640c58555cfb8e648f8c275b81942e3"
+      }
+    ],
+    "evidenceQuote": "当 Agent 的主模型不支持多模态时，**将多模态分析作为工具**是一种比提取为文本更好的方法。它赋予 Agent 可对原始文件深入分析的工具（如 `analyze_image`、`analyze_pdf`、`analyze_audio`），工具接受一个多模态文件和一个自然语言问题作为参数，返回自然语言描述的分析结果。工具内部可以使用多模态模型实现，这个多模态模型不一定需要很强的 Agent 能力，从而有更多技术选型空间。",
+    "canonicalTerm": "工具化多模态分析",
+    "aliases": [],
+    "definition": "一种将多模态分析封装为工具的方法：工具接受一个多模态文件和一个自然语言问题作为参数，返回自然语言描述的分析结果；工具内部可使用不一定需要很强 Agent 能力的多模态模型实现。",
+    "examples": [
+      "analyze_image",
+      "analyze_pdf",
+      "analyze_audio"
+    ]
+  },
+  {
+    "id": "CHAPTER4-H4-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-3",
+        "title": "工具化多模态分析",
+        "lineStart": 258,
+        "lineEnd": 269,
+        "contentHash": "sha256:44280e64210bb66fed79e151098d04f41640c58555cfb8e648f8c275b81942e3"
+      }
+    ],
+    "evidenceQuote": "当 Agent 的主模型不支持多模态时，**将多模态分析作为工具**是一种比提取为文本更好的方法。它赋予 Agent 可对原始文件深入分析的工具（如 `analyze_image`、`analyze_pdf`、`analyze_audio`），工具接受一个多模态文件和一个自然语言问题作为参数，返回自然语言描述的分析结果。工具内部可以使用多模态模型实现，这个多模态模型不一定需要很强的 Agent 能力，从而有更多技术选型空间。",
+    "statement": "当 Agent 的主模型不支持多模态时，应采用工具化多模态分析，而不是提取为文本。",
+    "rationale": "工具化方式赋予 Agent 对原始文件深入分析的工具；工具接受多模态文件和自然语言问题作为参数并返回自然语言描述；其内部可使用多模态模型，且该模型不一定需要很强的 Agent 能力，从而有更多技术选型空间。",
+    "appliesWhen": "Agent 的主模型不支持多模态。",
+    "violation": "在 Agent 主模型不支持多模态时，仍采用提取为文本的方式处理多模态文件，而不是将其作为工具。",
+    "chapterRef": "chapter4-h4-3"
+  },
+  {
+    "id": "CHAPTER4-H2-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "title": "执行工具",
+        "lineStart": 270,
+        "lineEnd": 381,
+        "contentHash": "sha256:b9edaa37be0ca714cf9537e470ed0e6285a337c035c92f86f136d6a0bafea215"
+      }
+    ],
+    "evidenceQuote": "执行工具的另一个重要设计原则是：**如果操作结果可以被验证，就应该自动验证**。以代码编写为例，当 Agent 调用 `write_file` 创建或修改代码文件时，工具不应只写入内容然后返回 “成功”，而应在写入后立即执行语法检查：根据文件类型调用相应的 linter（代码静态检查工具），将输出解析为结构化的错误列表，作为工具返回值的一部分返回给 Agent。",
+    "statement": "执行工具的操作结果若可以被验证，就应该自动验证。",
+    "rationale": "工具不应只写入内容然后返回“成功”，而应在写入后立即执行语法检查，并将结构化错误列表作为工具返回值的一部分返回给 Agent。",
+    "appliesWhen": "当执行工具的操作结果可以被验证时，例如 Agent 调用 `write_file` 创建或修改代码文件后。",
+    "violation": "操作结果可验证却不自动验证，只写入内容并返回“成功”，不执行后续语法检查。",
+    "chapterRef": "chapter4-h2-6"
+  },
+  {
+    "id": "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "title": "执行工具",
+        "lineStart": 270,
+        "lineEnd": 381,
+        "contentHash": "sha256:b9edaa37be0ca714cf9537e470ed0e6285a337c035c92f86f136d6a0bafea215"
+      }
+    ],
+    "evidenceQuote": "第一层是输入验证——在执行任何操作之前，检查所有参数的合法性：文件路径是否存在路径遍历攻击（如 `../../etc/passwd`——攻击者通过在路径中加入 `../` 使工具跳出指定目录，访问本不应触及的系统文件），命令参数是否有注入风险（如用分号或管道符拼接额外的命令），API 参数的数据类型和格式是否正确。关键是快速失败——发现异常输入时立即拒绝，不尝试“智能”修正。",
+    "statement": "执行工具在执行任何操作之前应进行输入验证；发现异常输入时立即拒绝，不尝试“智能”修正。",
+    "rationale": "执行前需要检查文件路径是否路径遍历攻击、命令参数是否注入风险、API 参数类型与格式是否正确，并通过快速失败避免不安全操作。",
+    "appliesWhen": "执行工具在执行任何操作之前的输入验证阶段。",
+    "violation": "执行操作前未检查参数合法性，或在发现异常输入时不立即拒绝而尝试“智能”修正。",
+    "chapterRef": "chapter4-h2-6"
+  },
+  {
+    "id": "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-7",
+        "title": "协作工具",
+        "lineStart": 382,
+        "lineEnd": 428,
+        "contentHash": "sha256:7bc3df64163b0e7a9a88983351b59323ad3679d387cf6b4d352275d15a5482f3"
+      }
+    ],
+    "evidenceQuote": "子 Agent 可能接收来自多个来源的信息。提示词中应该明确区分各个来源：“[FROM_MAIN_AGENT] 是主协调 Agent 给你的任务指令；[FROM_USER] 是用户直接补充的信息；[TOOL_RESULT] 是你调用工具后的返回结果”。这种标注可以防止子 Agent 混淆信息来源，避免**提示注入**（前文 Sidecar 一节已介绍）攻击。",
+    "statement": "子 Agent 提示词中应明确区分各信息来源，用 [FROM_MAIN_AGENT] 标注主协调 Agent 指令、[FROM_USER] 标注用户补充信息、[TOOL_RESULT] 标注工具返回结果。",
+    "rationale": "这种标注可以防止子 Agent 混淆信息来源，避免提示注入攻击。",
+    "appliesWhen": "子 Agent 可能接收来自多个来源的信息时。",
+    "violation": "子 Agent 提示词未明确区分各来源，无法防止其混淆信息来源和提示注入攻击。",
+    "chapterRef": "chapter4-h2-7"
+  },
+  {
+    "id": "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-7",
+        "title": "协作工具",
+        "lineStart": 382,
+        "lineEnd": 428,
+        "contentHash": "sha256:7bc3df64163b0e7a9a88983351b59323ad3679d387cf6b4d352275d15a5482f3"
+      }
+    ],
+    "evidenceQuote": "HITL（Human-In-The-Loop，人在回路，即在 Agent 的决策流程中加入人类审核环节）请求可能不会立即得到响应。因此需要设置超时阈值和默认行为：“如果 5 分钟内没有响应，采用保守策略”。还需要引入优先级队列：“紧急请求通过多渠道通知，普通请求只发邮件”。",
+    "statement": "HITL 请求需要设置超时阈值和默认行为：如果 5 分钟内没有响应，采用保守策略；并引入优先级队列，紧急请求通过多渠道通知，普通请求只发邮件。",
+    "rationale": "因为 HITL 请求可能不会立即得到响应。",
+    "appliesWhen": "在 Agent 决策流程中加入人类审核环节，且 HITL 请求可能不会立即得到响应时。",
+    "violation": "未为 HITL 请求设置超时阈值和默认行为，或未引入优先级队列区分紧急与普通请求。",
+    "chapterRef": "chapter4-h2-7"
+  },
+  {
+    "id": "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-8",
+        "title": "本章小结",
+        "lineStart": 429,
+        "lineEnd": 442,
+        "contentHash": "sha256:1cd98adbdb726a1c718ea5a6eb328bb5e7e982cbd239a6bea938be26be5b6f90"
+      }
+    ],
+    "evidenceQuote": "能力靠两条渠道分发：MCP 协议统一专用工具的接入，Skill Hub 用包管理器分发 `SKILL.md`；两条渠道都把引入一条能力的成本压到了一条命令，也都扩大了信任边界，因此必须审查描述与版本、隔离凭证，并保证模型看到的参数与工具真正执行的参数一致。",
+    "statement": "引入能力时必须审查描述与版本、隔离凭证，并保证模型看到的参数与工具真正执行的参数一致。",
+    "rationale": "两条渠道都把引入一条能力的成本压到了一条命令，也都扩大了信任边界。",
+    "appliesWhen": "通过 MCP 协议或 Skill Hub 分发渠道引入能力时。",
+    "violation": "未审查描述与版本、未隔离凭证，或模型看到的参数与工具实际执行的参数不一致。",
+    "chapterRef": "chapter4-h2-8"
+  },
+  {
+    "id": "CHAPTER4-H2-8-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T13:34:50.081Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T13:34:50.081Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-8",
+        "title": "本章小结",
+        "lineStart": 429,
+        "lineEnd": 442,
+        "contentHash": "sha256:1cd98adbdb726a1c718ea5a6eb328bb5e7e982cbd239a6bea938be26be5b6f90"
+      }
+    ],
+    "evidenceQuote": "能力靠两条渠道分发：MCP 协议统一专用工具的接入，Skill Hub 用包管理器分发 `SKILL.md`；两条渠道都把引入一条能力的成本压到了一条命令，也都扩大了信任边界，因此必须审查描述与版本、隔离凭证，并保证模型看到的参数与工具真正执行的参数一致。",
+    "canonicalTerm": "能力分发渠道",
+    "aliases": [],
+    "definition": "能力通过 MCP 协议和 Skill Hub 两条渠道分发：MCP 协议统一专用工具的接入，Skill Hub 用包管理器分发 SKILL.md；两条渠道把引入一条能力的成本压到一条命令，并扩大信任边界。",
+    "examples": [
+      "MCP 协议",
+      "Skill Hub"
+    ]
+  }
+]

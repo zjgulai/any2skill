@@ -1,0 +1,89 @@
+{
+  "note": "ticket 03 的注入夹具：每一项都**故意只带一个缺陷**，其余字段均为合法，因此「被归入哪个理由码」是可判定的。夹具经 --objects-fixture 交给第 2 层替身；替身只补全 sourceRefs 的定位数据（file / title / lineStart / lineEnd），并保留 id / sourceRefs / evidenceQuote 原样——缺陷因此能穿过第 2 层抵达第 3 层。",
+  "sourceFile": "sources/ai-agent-book-zh/book/chapter4.md",
+  "validQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具",
+  "objects": [
+    {
+      "comment": "引文不是原文子串（把原文改写成了意译）→ 期望 QUOTE_MISMATCH",
+      "id": "H2-2-QUOTEMISMATCH-CONCEPT-01",
+      "objectType": "Concept",
+      "canonicalTerm": "ACI",
+      "aliases": [],
+      "definition": "工具应对应 Agent 的目标，而不是底层的 API 操作。",
+      "examples": ["把部署应用做成一个目标级工具。"],
+      "sourceRefs": [{ "anchor": "chapter4#h2-2" }],
+      "evidenceQuote": "工具应当围绕 Agent 的目标来设计，而不是围着底层 API 转。"
+    },
+    {
+      "comment": "缺 sourceRefs（无豁免）→ 期望 REFERENCE_MISSING",
+      "id": "H2-2-REFMISSING-CONCEPT-01",
+      "objectType": "Concept",
+      "canonicalTerm": "ACI",
+      "aliases": [],
+      "definition": "工具应对应 Agent 的目标，而不是底层的 API 操作。",
+      "examples": ["把部署应用做成一个目标级工具。"],
+      "evidenceQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具"
+    },
+    {
+      "comment": "锚点标识不存在于第 1 层索引 → 期望 REFERENCE_UNRESOLVED",
+      "id": "H9-9-UNRESOLVED-CONCEPT-01",
+      "objectType": "Concept",
+      "canonicalTerm": "ACI",
+      "aliases": [],
+      "definition": "工具应对应 Agent 的目标，而不是底层的 API 操作。",
+      "examples": ["把部署应用做成一个目标级工具。"],
+      "sourceRefs": [{ "file": "sources/ai-agent-book-zh/book/chapter4.md", "anchor": "chapter4#h9-9" }],
+      "evidenceQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具"
+    },
+    {
+      "comment": "contentHash 与索引不一致（对象基于旧版源产出）→ 期望 SOURCE_VERSION_DRIFT",
+      "id": "H2-2-DRIFT-CONCEPT-01",
+      "objectType": "Concept",
+      "canonicalTerm": "ACI",
+      "aliases": [],
+      "definition": "工具应对应 Agent 的目标，而不是底层的 API 操作。",
+      "examples": ["把部署应用做成一个目标级工具。"],
+      "sourceRefs": [
+        {
+          "anchor": "chapter4#h2-2",
+          "contentHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "evidenceQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具"
+    },
+    {
+      "comment": "完全未携带 evidenceQuote → 期望 QUOTE_MISSING（字段缺失与内容不命中分开归类）",
+      "id": "H2-2-QUOTEMISSING-CONCEPT-01",
+      "objectType": "Concept",
+      "canonicalTerm": "ACI",
+      "aliases": [],
+      "definition": "工具应对应 Agent 的目标，而不是底层的 API 操作。",
+      "examples": ["把部署应用做成一个目标级工具。"],
+      "sourceRefs": [{ "anchor": "chapter4#h2-2" }]
+    },
+    {
+      "comment": "id 不合 identifier 正则（小写 + 单段）→ 期望 IDENTIFIER_INVALID",
+      "id": "bad-id",
+      "objectType": "Concept",
+      "canonicalTerm": "ACI",
+      "aliases": [],
+      "definition": "工具应对应 Agent 的目标，而不是底层的 API 操作。",
+      "examples": ["把部署应用做成一个目标级工具。"],
+      "sourceRefs": [{ "anchor": "chapter4#h2-2" }],
+      "evidenceQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具"
+    },
+    {
+      "comment": "类型不在封闭集合内 → 期望 SCHEMA_INVALID（对象类型集合封闭）",
+      "id": "H2-2-BADTYPE-CONCEPT-01",
+      "objectType": "SkillCandidate",
+      "sourceRefs": [{ "anchor": "chapter4#h2-2" }],
+      "evidenceQuote": "工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具"
+    },
+    {
+      "comment": "同时缺 sourceRefs 且引文不命中 → 断言主理由码取优先级更高的 REFERENCE_MISSING，两条命中项都留在 failures 里",
+      "id": "H2-2-BOTH-CONCEPT-01",
+      "objectType": "SkillCandidate",
+      "evidenceQuote": "这是一句被改写过的引文，原文里并不存在。"
+    }
+  ]
+}

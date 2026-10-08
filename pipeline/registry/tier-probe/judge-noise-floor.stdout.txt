@@ -1,0 +1,32 @@
+探针集：37 个对象（pipeline/knowledge/history/chapter4.a257afe6.objects.json）
+判定者：deepseek-v4-pro｜提示词指纹 judge-90b1e1b49076
+
+臂          支撑  不充分  不支撑   检出  调用  input/output token（其中推理）
+high           24     13      0    13    37  47157/26507（24889）
+high#2         27     10      0    10    37  47157/25233（23616）
+low            27     10      0    10    37  44234/11505（9928）
+
+「high」vs「high#2」：32/37 一致，5 不一致
+  CHAPTER4-H2-3-ANTIPATTERN-02       high=insufficient | high#2=supported   high-only
+  CHAPTER4-H2-4-CONCEPT-01           high=insufficient | high#2=supported   high-only
+  CHAPTER4-H3-5-ANTIPATTERN-02       high=supported | high#2=insufficient   high#2-only
+  CHAPTER4-H3-5-CONCEPT-01           high=insufficient | high#2=supported   high-only
+  CHAPTER4-H3-6-ENGINEERINGRULE-02   high=insufficient | high#2=supported   high-only
+
+「high」vs「low」：32/37 一致，5 不一致
+  CHAPTER4-H2-3-ANTIPATTERN-02       high=insufficient | low=supported   high-only
+  CHAPTER4-H2-4-CONCEPT-01           high=insufficient | low=supported   high-only
+  CHAPTER4-H3-5-ANTIPATTERN-02       high=supported | low=insufficient   low-only
+  CHAPTER4-H3-5-CONCEPT-01           high=insufficient | low=supported   high-only
+  CHAPTER4-H4-3-HEURISTIC-02         high=insufficient | low=supported   high-only
+
+「high#2」vs「low」：35/37 一致，2 不一致
+  CHAPTER4-H3-6-ENGINEERINGRULE-02   high#2=supported | low=insufficient   low-only
+  CHAPTER4-H4-3-HEURISTIC-02         high#2=insufficient | low=supported   high#2-only
+
+基准核对（run-7afb98d262b5）：可比性 ✓ 指纹相同｜重叠 37 个，一致 32/37
+  CHAPTER4-H3-4-HEURISTIC-01         基准=supported 本次=insufficient
+  CHAPTER4-H3-4-HEURISTIC-02         基准=supported 本次=insufficient
+  CHAPTER4-H3-5-ANTIPATTERN-02       基准=insufficient 本次=supported
+  CHAPTER4-H3-6-ENGINEERINGRULE-02   基准=supported 本次=insufficient
+  CHAPTER4-H4-2-HEURISTIC-02         基准=insufficient 本次=supported

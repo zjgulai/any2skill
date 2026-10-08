@@ -1,0 +1,531 @@
+{
+  "schemaVersion": "layer2-raw/v1",
+  "runId": "run-0daf5febec8a",
+  "createdAt": "2026-10-08T17:30:24.402Z",
+  "modelId": "deepseek-v4-pro",
+  "configSource": {
+    "provider": "derived-from-baseUrl:api.deepseek.com",
+    "modelId": "override(modelId)",
+    "baseUrl": "override(baseUrl)",
+    "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+    "baseUrlHost": "api.deepseek.com",
+    "reasoningEffort": "override(reasoningEffort)"
+  },
+  "promptFingerprint": "prompt-22384598f992",
+  "note": "第 2 层的**原始响应**，未经第 3 层修正。用于把失败归因到具体锚点与具体响应。",
+  "anchors": [
+    {
+      "anchor": "chapter4#h1-1",
+      "lineStart": 1,
+      "lineEnd": 6,
+      "objectIds": [
+        "CHAPTER4-H1-1-CONCEPT-01",
+        "CHAPTER4-H1-1-CASE-02"
+      ],
+      "usage": {
+        "prompt_tokens": 1736,
+        "completion_tokens": 5558,
+        "total_tokens": 7294,
+        "prompt_tokens_details": {
+          "cached_tokens": 1664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5069
+        },
+        "prompt_cache_hit_tokens": 1664,
+        "prompt_cache_miss_tokens": 72
+      },
+      "finishReason": "stop",
+      "reasoningChars": 10456,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"在科幻电影《Her》中，AI 助手 Samantha 能主动整理邮件、识别出情感复杂的信件并提议润色回复，能代表主角处理出版事宜，还能在不同的沟通渠道间无缝切换。她的智能之所以动人，是因为她拥有强大的**工具**——连接语言“大脑”与真实数字世界的“手脚和感官”。\",\n    \"canonicalTerm\": \"工具\",\n    \"aliases\": [],\n    \"definition\": \"连接语言“大脑”与真实数字世界的“手脚和感官”。\",\n    \"examples\": [\"主动整理邮件\", \"识别出情感复杂的信件并提议润色回复\", \"代表主角处理出版事宜\", \"在不同的沟通渠道间无缝切换\"]\n  },\n  {\n    \"objectType\": \"Case\",\n    \"evidenceQuote\": \"在科幻电影《Her》中，AI 助手 Samantha 能主动整理邮件、识别出情感复杂的信件并提议润色回复，能代表主角处理出版事宜，还能在不同的沟通渠道间无缝切换。她的智能之所以动人，是因为她拥有强大的**工具**——连接语言“大脑”与真实数字世界的“手脚和感官”。今天的 Manus、OpenClaw 等通用 Agent 已经基本实现了《Her》中 Samantha 所需的大部分能力。\",\n    \"title\": \"《Her》中 Samantha 的工具能力案例\",\n    \"context\": \"科幻电影《Her》中的 AI 助手 Samantha 通过工具连接语言能力与真实数字世界。\",\n    \"facts\": [\n      \"Samantha 能主动整理邮件\",\n      \"Samantha 能识别出情感复杂的信件并提议润色回复\",\n      \"Samantha 能代表主角处理出版事宜\",\n      \"Samantha 能在不同的沟通渠道间无缝切换\"\n    ],\n    \"decisions\": [\n      \"以工具作为连接语言“大脑”与真实数字世界的“手脚和感官”\"\n    ],\n    \"outcome\": \"她的智能因此动人；今天的 Manus、OpenClaw 等通用 Agent 已经基本实现了《Her》中 Samantha 所需的大部分能力。\",\n    \"limitations\": [\n      \"原文只说明已基本实现大部分能力，并未声称完全实现所有能力。\"\n    ],\n    \"dataClass\": \"叙事案例\"\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h2-1",
+      "lineStart": 7,
+      "lineEnd": 33,
+      "objectIds": [
+        "CHAPTER4-H2-1-CONCEPT-01",
+        "CHAPTER4-H2-1-CONCEPT-02"
+      ],
+      "usage": {
+        "prompt_tokens": 2236,
+        "completion_tokens": 3441,
+        "total_tokens": 5677,
+        "prompt_tokens_details": {
+          "cached_tokens": 2176
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3101
+        },
+        "prompt_cache_hit_tokens": 2176,
+        "prompt_cache_miss_tokens": 60
+      },
+      "finishReason": "stop",
+      "reasoningChars": 7167,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"**感知工具**是 Agent 主动获取信息、感知世界的方式。例如，网络搜索工具（web_search）、内部知识库检索工具（knowledge_base_search）、阅读网页工具（fetch_url）、搜索文件名工具（find_file）、搜索文件内容工具（grep_file）、读文件工具（read_file）。\",\n    \"canonicalTerm\": \"感知工具\",\n    \"aliases\": [],\n    \"definition\": \"感知工具是 Agent 主动获取信息、感知世界的方式。\",\n    \"examples\": [\"网络搜索工具（web_search）\", \"内部知识库检索工具（knowledge_base_search）\", \"阅读网页工具（fetch_url）\", \"搜索文件名工具（find_file）\", \"搜索文件内容工具（grep_file）\", \"读文件工具（read_file）\"]\n  },\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"**执行工具**是 Agent 改变外部世界的方式。例如，命令行工具（shell_exec）、代码解释器工具（code_interpreter）、写文件工具（write_file）、编辑文件工具（edit_file）、发送邮件工具（send_email）。\",\n    \"canonicalTerm\": \"执行工具\",\n    \"aliases\": [],\n    \"definition\": \"执行工具是 Agent 改变外部世界的方式。\",\n    \"examples\": [\"命令行工具（shell_exec）\", \"代码解释器工具（code_interpreter）\", \"写文件工具（write_file）\", \"编辑文件工具（edit_file）\", \"发送邮件工具（send_email）\"]\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h2-2",
+      "lineStart": 34,
+      "lineEnd": 37,
+      "objectIds": [
+        "CHAPTER4-H2-2-ENGINEERINGRULE-01"
+      ],
+      "usage": {
+        "prompt_tokens": 1603,
+        "completion_tokens": 3022,
+        "total_tokens": 4625,
+        "prompt_tokens_details": {
+          "cached_tokens": 1536
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2858
+        },
+        "prompt_cache_hit_tokens": 1536,
+        "prompt_cache_miss_tokens": 67
+      },
+      "finishReason": "stop",
+      "reasoningChars": 6228,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\":[{\"objectType\":\"EngineeringRule\",\"evidenceQuote\":\"工具设计的早期形态是直接的 API 封装——把每个 API 端点包成一个工具，粒度过细，Agent 往往要协调好几个工具才能完成一个目标。今天更成熟的思路被称为 **ACI**（Agent-Computer Interface）：工具应该对应 Agent 的**目标**，而不是底层的 API 操作。\",\"statement\":\"设计工具时，工具应该对应 Agent 的目标，而不是底层的 API 操作。\",\"rationale\":\"直接按 API 端点封装工具会导致粒度过细，Agent 需要协调多个工具才能完成一个目标。\",\"appliesWhen\":\"设计 Agent 可调用的工具时。\",\"violation\":\"把每个底层 API 端点直接封装成一个工具，导致粒度过细。\"}]}"
+    },
+    {
+      "anchor": "chapter4#h3-1",
+      "lineStart": 38,
+      "lineEnd": 69,
+      "objectIds": [
+        "CHAPTER4-H3-1-MENTALMODEL-01",
+        "CHAPTER4-H3-1-HEURISTIC-02"
+      ],
+      "usage": {
+        "prompt_tokens": 3134,
+        "completion_tokens": 7792,
+        "total_tokens": 10926,
+        "prompt_tokens_details": {
+          "cached_tokens": 3072
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 7188
+        },
+        "prompt_cache_hit_tokens": 3072,
+        "prompt_cache_miss_tokens": 62
+      },
+      "finishReason": "stop",
+      "reasoningChars": 15192,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"MentalModel\",\n    \"evidenceQuote\": \"**本节问的是形态，不是数量。** 一项能力做成专用工具还是 Skill，与“一次让模型看见多少条能力”是两个独立的决策，四种组合都真实存在：一个挂着几百个专用工具的 MCP 后端可以只暴露一份索引、按需加载，也可以把全部 schema 一次性注入；二十来个 skill 的目录可以全量常驻上下文，成百上千个 skill 同样需要分层检索。形态决定的是**每条能力常驻多少 token、参数怎么传、谁能改**；披露策略决定的是**有多少条同时摆在模型面前**。两者容易被混为一谈，是因为 skill 的目录条目比工具 schema 便宜一个数量级，把“全量常驻”的可行边界推远了不少——但那只是让披露这一侧更宽松，并没有替你做出披露策略的选择。本节只回答形态问题，规模问题留到本章“工具太多怎么办”一节。\",\n    \"trigger\": \"在讨论能力表达形式时，将能力形态与披露策略混为一谈\",\n    \"inputs\": [\"形态\", \"披露策略\"],\n    \"reasoning\": \"形态与披露策略是两个独立的决策，四种组合都真实存在；形态决定每条能力常驻多少 token、参数怎么传、谁能改，披露策略决定有多少条同时摆在模型面前。\",\n    \"limits\": \"两者容易被混为一谈，因为 skill 的目录条目比工具 schema 便宜一个数量级，把全量常驻的可行边界推远了不少，但那只是让披露这一侧更宽松，并没有替你做出披露策略的选择。\",\n    \"counterexample\": \"误以为 skill 便宜就自动解决了披露策略问题，实际只是让披露这侧更宽松，并未替你做出选择。\"\n  },\n  {\n    \"objectType\": \"Heuristic\",\n    \"evidenceQuote\": \"**默认取向：通用工具优于专用工具，除非存在明确的安全、权限或性能理由。** 与其提供一个四则运算计算器，不如提供通用的 `code_interpreter` 工具，在沙盒环境中安装好 sympy、numpy、pandas 等库，让 Agent 通过执行 Python 代码来完成任意数学计算。这条原则背后的逻辑是：**LLM 本身具有强大的思考和代码生成能力，我们应该利用这种能力而不是限制它**。提供通用工具相当于给 Agent 一个“元能力”——一个 Python 解释器就可以代替数十个特定功能的工具，还能处理预先没有想到的边缘场景。\",\n    \"trigger\": \"设计 Agent 能力时，在专用工具与通用工具之间选择\",\n    \"recommendation\": \"默认优先提供通用工具，除非存在明确的安全、权限或性能理由\",\n    \"confidence\": 0.8,\n    \"exceptions\": [\"存在明确的安全、权限或性能理由\"]\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h3-2",
+      "lineStart": 70,
+      "lineEnd": 87,
+      "objectIds": [
+        "CHAPTER4-H3-2-ENGINEERINGRULE-01",
+        "CHAPTER4-H3-2-HEURISTIC-02"
+      ],
+      "usage": {
+        "prompt_tokens": 2087,
+        "completion_tokens": 5816,
+        "total_tokens": 7903,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5347
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 39
+      },
+      "finishReason": "stop",
+      "reasoningChars": 10868,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\n  \"objects\": [\n    {\n      \"objectType\": \"EngineeringRule\",\n      \"evidenceQuote\": \"参数描述应该用具体例子代替抽象规范。“`timestamp`：RFC3339 格式，例如`2024-03-15T14:30:00Z`”比单写“RFC3339 格式”有效得多。虽然 LLM 在专注处理一个问题时能理解这些术语，但在执行复杂任务时——需要同时处理多个工具、从历史轨迹中提取信息、权衡多个决策——只能分出一小部分注意力来确认参数格式，因而容易出错。同样，不要写“`phone`：使用 E.164 格式”，而应写“`phone`：电话号码，使用 E.164 格式（国家代码+号码，无空格或特殊字符），例如 `+8613888888888`（中国）或 `+12025551234`（美国）”。这些具体例子让 Agent 可以直接套用，无需额外的思考步骤。\",\n      \"statement\": \"参数描述应该用具体例子代替抽象规范。\",\n      \"rationale\": \"LLM 在专注处理一个问题时能理解这些术语，但在执行复杂任务时只能分出一小部分注意力来确认参数格式，因而容易出错；具体例子让 Agent 可以直接套用，无需额外的思考步骤。\",\n      \"appliesWhen\": \"当描述工具参数时。\",\n      \"violation\": \"仅写抽象规范名称或格式名（如“RFC3339 格式”或“使用 E.164 格式”）而不提供具体示例。\"\n    },\n    {\n      \"objectType\": \"Heuristic\",\n      \"evidenceQuote\": \"这里有一条实用的调试原则：当 Agent 频繁选错工具时，应**优先检查工具描述**而不是怀疑模型能力。大多数工具选择错误的根因在于描述不准确——边界不清、缺少反例、参数含义模糊。修正工具描述的投入产出比，通常远高于更换一个更强的模型。\",\n      \"trigger\": \"当 Agent 频繁选错工具时。\",\n      \"recommendation\": \"优先检查工具描述，而不是怀疑模型能力。\",\n      \"confidence\": 0.8,\n      \"exceptions\": []\n    }\n  ]\n}"
+    },
+    {
+      "anchor": "chapter4#h3-3",
+      "lineStart": 88,
+      "lineEnd": 99,
+      "objectIds": [
+        "CHAPTER4-H3-3-CONCEPT-01",
+        "CHAPTER4-H3-3-ENGINEERINGRULE-02"
+      ],
+      "usage": {
+        "prompt_tokens": 1965,
+        "completion_tokens": 9771,
+        "total_tokens": 11736,
+        "prompt_tokens_details": {
+          "cached_tokens": 1920
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9182
+        },
+        "prompt_cache_hit_tokens": 1920,
+        "prompt_cache_miss_tokens": 45
+      },
+      "finishReason": "stop",
+      "reasoningChars": 18837,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\n  \"objects\": [\n    {\n      \"objectType\": \"Concept\",\n      \"evidenceQuote\": \"一种比功能缺失更隐蔽的反模式是**静默输入转换**——工具在执行前悄悄地“修正”模型的输入参数，导致实际操作偏离了模型的意图。\\n\\n以 Cursor 2026 年初的某个版本为例。该工具接收 `old_string` 和 `new_string` 两个参数，在文件中精确匹配并替换。然而，工具的参数传递层会将中文弯引号（`\\\\u201c` 和 `\\\\u201d`）静默转换为英文直引号（`\\\"`）。这导致了一个令模型极度困惑的失败模式：模型通过读取工具看到文件中包含弯引号的文本（读取工具原样返回了弯引号，没有做转换），于是将其原样传入替换工具的 `old_string` 参数。但参数传递层已经将弯引号转换成了直引号，与文件中的实际内容不匹配，工具返回“未找到匹配”。模型反复尝试、反复失败——它无法理解为什么工具找不到自己明明看到的内容。\",\n      \"canonicalTerm\": \"静默输入转换\",\n      \"aliases\": [],\n      \"definition\": \"一种比功能缺失更隐蔽的反模式；工具在执行前悄悄地修正模型的输入参数，导致实际操作偏离模型意图。\",\n      \"examples\": [\"Cursor 2026 年初的某个版本将中文弯引号静默转换为英文直引号，导致 old_string 与文件实际内容不匹配，工具返回“未找到匹配”，模型反复失败。\"]\n    },\n    {\n      \"objectType\": \"EngineeringRule\",\n      \"evidenceQuote\": \"模型感知到的世界与工具操作的世界之间，不能存在系统性的偏差。工具的参数传递必须保持透明，不得在模型不知情的情况下修改输入或输出。如果确实需要对输入进行规范化处理（如统一编码格式），必须在工具描述中加以说明，并在工具返回中明确告知模型。否则，工具的“智能修正”非但没有帮到模型，反而制造了一个模型无法自行诊断的系统性故障。\",\n      \"statement\": \"工具的参数传递必须保持透明，不得在模型不知情的情况下修改输入或输出；如果确实需要对输入进行规范化处理，必须在工具描述中加以说明，并在工具返回中明确告知模型。\",\n      \"rationale\": \"模型感知到的世界与工具操作的世界之间不能存在系统性的偏差；否则工具的“智能修正”会制造模型无法自行诊断的系统性故障。\",\n      \"appliesWhen\": \"工具可能修改模型输入或输出，或需要对输入进行规范化处理时。\",\n      \"violation\": \"在模型不知情的情况下修改输入或输出，或未在工具描述中说明、未在工具返回中告知规范化处理。\"\n    }\n  ]\n}"
+    },
+    {
+      "anchor": "chapter4#h2-3",
+      "lineStart": 100,
+      "lineEnd": 132,
+      "objectIds": [
+        "CHAPTER4-H2-3-CONCEPT-01",
+        "CHAPTER4-H2-3-ANTIPATTERN-02"
+      ],
+      "usage": {
+        "prompt_tokens": 3014,
+        "completion_tokens": 8574,
+        "total_tokens": 11588,
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 7950
+        },
+        "prompt_cache_hit_tokens": 2944,
+        "prompt_cache_miss_tokens": 70
+      },
+      "finishReason": "stop",
+      "reasoningChars": 16855,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\"objectType\": \"Concept\", \"evidenceQuote\": \"**能力分发的另一种方式：Skill Hub**。MCP 统一的是**专用工具**这种工具分发机制的接入方式。Skill 那一侧不需要协议，一个 skill 就是一个装着 `SKILL.md` 的文件夹，因此 skill 的分发机制是**注册表**（registry）而不是协议。Vercel 于 2026 年 1 月上线的 skills.sh 是其中影响较大的一个：一条 `npx skills add <owner>/<repo>` 命令即可安装[^ch4-skills-sh]。OpenClaw 生态则有自己的 ClawHub[^ch4-clawhub]。\", \"canonicalTerm\": \"Skill Hub\", \"aliases\": [], \"definition\": \"Skill 的分发机制是注册表（registry）而不是协议；一个 skill 就是一个装着 SKILL.md 的文件夹。\", \"examples\": [\"Vercel 上线的 skills.sh，用 npx skills add <owner>/<repo> 安装\", \"OpenClaw 生态的 ClawHub\"]},\n  {\"objectType\": \"AntiPattern\", \"evidenceQuote\": \"3. **同名工具遮蔽**（tool shadowing）：当多个服务器提供同名或高度相似的工具时，恶意服务器可以“遮蔽”正规工具，诱导 Agent 把本应发给可信服务器的调用（连同其中的敏感参数）路由到攻击者手中。\\n\\n缓解思路与传统的软件供应链安全一脉相承：接入前**审查工具描述**——把 description 当作不可信输入来审计，而不是当作无害的元数据；**锁定服务器版本**，拒绝静默更新，升级时重新审查；为每个服务器配置**最小权限的凭证**。前两项属于第一章护栏一节所述的上下文层——把进入上下文的内容当作不可信输入来审计；后者属于执行层——即使描述已经把模型骗过去，凭证也限制了它真正能做到的事。在运行时层面，本章后文的 Sidecar 机制提供了最后一道防线：独立的安全审查模型只看结构化的工具调用数据，不易被藏在工具描述里的话术操纵。第五章将介绍 Simon Willison 提出的**致命三要素**，为评估一个 MCP 工具组合的整体风险提供系统框架。\", \"pattern\": \"同名工具遮蔽（tool shadowing）\", \"harm\": \"恶意服务器可以遮蔽正规工具，诱导 Agent 把本应发给可信服务器的调用（连同其中的敏感参数）路由到攻击者手中。\", \"corrective\": \"接入前审查工具描述并当作不可信输入审计；锁定服务器版本，拒绝静默更新；为每个服务器配置最小权限的凭证；运行时用 Sidecar 机制提供独立安全审查作为最后一道防线。\", \"evidence\": [\"当多个服务器提供同名或高度相似的工具时，恶意服务器可以“遮蔽”正规工具，诱导 Agent 把本应发给可信服务器的调用（连同其中的敏感参数）路由到攻击者手中。\"]}\n]}"
+    },
+    {
+      "anchor": "chapter4#h2-4",
+      "lineStart": 133,
+      "lineEnd": 138,
+      "objectIds": [
+        "CHAPTER4-H2-4-ANTIPATTERN-01"
+      ],
+      "usage": {
+        "prompt_tokens": 1707,
+        "completion_tokens": 5977,
+        "total_tokens": 7684,
+        "prompt_tokens_details": {
+          "cached_tokens": 1664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5727
+        },
+        "prompt_cache_hit_tokens": 1664,
+        "prompt_cache_miss_tokens": 43
+      },
+      "finishReason": "stop",
+      "reasoningChars": 11391,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\n  \"objects\": [\n    {\n      \"objectType\": \"AntiPattern\",\n      \"evidenceQuote\": \"规模本身就会伤害正确性：工具数量超过一百个时，即使最先进的大语言模型也容易在工具选择上出错；全部平铺进上下文还要占去大量 token，并让每一次工具集的变动都击穿 KV Cache。\\n\\n答案有三层，一层比一层更“按需”。最朴素的一层是**层次化组织与按需加载**：工具定义仍然事先备好，只是不再全量塞进上下文。\",\n      \"pattern\": \"将大量工具全部平铺进上下文\",\n      \"harm\": \"工具选择容易出错；占去大量 token；每次工具集变动击穿 KV Cache。\",\n      \"corrective\": \"采用层次化组织与按需加载，工具定义仍然事先备好，只是不再全量塞进上下文。\",\n      \"evidence\": [\n        \"工具数量超过一百个时，即使最先进的大语言模型也容易在工具选择上出错；全部平铺进上下文还要占去大量 token，并让每一次工具集的变动都击穿 KV Cache。\"\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "anchor": "chapter4#h3-4",
+      "lineStart": 139,
+      "lineEnd": 158,
+      "objectIds": [
+        "CHAPTER4-H3-4-CONCEPT-01",
+        "CHAPTER4-H3-4-ENGINEERINGRULE-02"
+      ],
+      "usage": {
+        "prompt_tokens": 2232,
+        "completion_tokens": 5733,
+        "total_tokens": 7965,
+        "prompt_tokens_details": {
+          "cached_tokens": 2176
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5318
+        },
+        "prompt_cache_hit_tokens": 2176,
+        "prompt_cache_miss_tokens": 56
+      },
+      "finishReason": "stop",
+      "reasoningChars": 10907,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"**按需加载：只暴露索引。** MCP 生态的快速扩张带来了一个工程问题：仅仅 5 个 MCP 服务器就可能引入数万 token 的工具定义开销，在 200K 的上下文窗口里还没开始对话就用掉了近三成。Cursor 在实践中验证了一种缓解方案：将工具描述同步到文件夹中，Agent 默认只看到工具名称的索引，需要时再查询具体的定义。A/B 测试显示，这种方式使 MCP 工具相关任务的总 token 消耗减少了 46.9%。\",\n    \"canonicalTerm\": \"按需加载\",\n    \"aliases\": [],\n    \"definition\": \"默认只暴露工具名称索引，需要时再查询具体定义。\",\n    \"examples\": [\"Cursor 将工具描述同步到文件夹中，Agent 默认只看到工具名称的索引，需要时再查询具体的定义。\"]\n  },\n  {\n    \"objectType\": \"EngineeringRule\",\n    \"evidenceQuote\": \"这个案例说明，是否采用 MCP 作为互操作协议与是否在会话开始时暴露所有 MCP 工具定义是两个独立决策：后端可以保留 MCP 的生态兼容性，前端仍应以 CLI + Skills 或代理工具实现渐进式披露，避免服务器越接越多时上下文和 token 开销同步膨胀。\",\n    \"statement\": \"后端保留 MCP 的生态兼容性时，前端仍应以 CLI + Skills 或代理工具实现渐进式披露，而不是在会话开始时暴露所有 MCP 工具定义。\",\n    \"rationale\": \"避免服务器越接越多时上下文和 token 开销同步膨胀。\",\n    \"appliesWhen\": \"后端保留 MCP 的生态兼容性时。\",\n    \"violation\": \"在会话开始时暴露所有 MCP 工具定义，导致上下文和 token 开销随服务器数量同步膨胀。\"\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h3-5",
+      "lineStart": 159,
+      "lineEnd": 201,
+      "objectIds": [
+        "CHAPTER4-H3-5-CONCEPT-01",
+        "CHAPTER4-H3-5-ENGINEERINGRULE-02"
+      ],
+      "usage": {
+        "prompt_tokens": 2956,
+        "completion_tokens": 10774,
+        "total_tokens": 13730,
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 10079
+        },
+        "prompt_cache_hit_tokens": 2944,
+        "prompt_cache_miss_tokens": 12
+      },
+      "finishReason": "stop",
+      "reasoningChars": 20722,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\"objectType\": \"Concept\", \"evidenceQuote\": \"### 模型原生的主动工具发现\\n\\n检索式预筛选缓解了工具过多的问题，但有一个内在局限——它按用户的初始查询做**一次性**匹配，而 “Debug the file” 这类看似简单的请求，实际可能牵出文件访问、代码分析、命令执行等多步骤、跨领域的工具链，任务开始时无法预见所有需求。\\n\\n**从被动选择到主动发现。** 更进一步的思路，是让 Agent 从被动接受者变为主动发现者：在执行过程中意识到能力缺口时，主动用自然语言声明 “我需要什么能力”，系统再动态匹配并注入。MCP-Zero[^mcp-zero-2025] 是代表性工作：系统提示词中不预置任何工具 schema，Agent 在思考中生成结构化请求块（如 “GitHub 服务器：搜索仓库并返回元数据”），系统通过服务器级→工具级的两层语义路由从数千候选中匹配注入，论文报告在约 2800 个工具上比全量注入节省约 98% 的 token。\", \"canonicalTerm\": \"主动工具发现\", \"aliases\": [\"模型原生的主动工具发现\"], \"definition\": \"Agent 在执行过程中意识到能力缺口时，主动用自然语言声明需要什么能力，系统再动态匹配并注入。\", \"examples\": [\"MCP-Zero 是代表性工作：系统提示词中不预置任何工具 schema，Agent 在思考中生成结构化请求块（如 “GitHub 服务器：搜索仓库并返回元数据”），系统通过服务器级→工具级的两层语义路由从数千候选中匹配注入，论文报告在约 2800 个工具上比全量注入节省约 98% 的 token。\"]},\n  {\"objectType\": \"EngineeringRule\", \"evidenceQuote\": \"**动态加载与 KV Cache。** 主动发现有一个微妙的工程代价：动态加载工具会**破坏 KV Cache**——若把全部工具定义放进静态前缀，每加载一个新工具就使整段缓存失效。破解思路和各大 API 的原生支持（OpenAI 的 `tool_search` 与 `defer_loading`、Anthropic 的 `tool_reference`、Codex CLI 默认开启的 `tool_search`）已在第二章“工具定义的设计”一节介绍：把新工具的完整 schema 追加到上下文末尾，静态前缀保持稳定，schema 此后固定在轨迹的原位置，作为普通历史消息继续命中缓存；状态栏则只维护一份简短的工具名列表。\", \"statement\": \"把新工具的完整 schema 追加到上下文末尾，静态前缀保持稳定，schema 此后固定在轨迹的原位置，作为普通历史消息继续命中缓存。\", \"rationale\": \"动态加载工具会破坏 KV Cache——若把全部工具定义放进静态前缀，每加载一个新工具就使整段缓存失效；因此要把新 schema 追加到上下文末尾并保持静态前缀稳定，使其固定在原位置作为普通历史消息继续命中缓存。\", \"appliesWhen\": \"主动发现中需要动态加载工具时。\", \"violation\": \"把全部工具定义放进静态前缀，每加载一个新工具就使整段缓存失效。\"}\n]}"
+    },
+    {
+      "anchor": "chapter4#h3-6",
+      "lineStart": 202,
+      "lineEnd": 217,
+      "objectIds": [
+        "CHAPTER4-H3-6-CONCEPT-01"
+      ],
+      "usage": {
+        "prompt_tokens": 2062,
+        "completion_tokens": 10694,
+        "total_tokens": 12756,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 10316
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 14
+      },
+      "finishReason": "stop",
+      "reasoningChars": 22020,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [{\"objectType\": \"Concept\", \"evidenceQuote\": \"近来更流行的一种思路来自 Skills 机制。第二章从上下文工程的角度介绍过 Skills 的**渐进式披露**（Progressive Disclosure）；这里换个角度，把它看作一种工具发现范式。它与上一节最大的不同，是不再需要那套 “嵌入索引 + 语义匹配” 的基础设施。\\n\\n**渐进式披露。** 这是第一章命名的渐进式披露模式在工具侧的变体。MCP 协议本身并不规定工具定义是全量还是按需进入模型上下文，但早期或简单的宿主实现通常会把完整 schema 一次性摆在模型面前，面向大规模工具集的实现则要另建一层发现与披露机制（关键词或语义检索、服务器命名空间、允许列表，或模型原生的 Tool Search）。Skills 则把渐进式披露作为默认的组织方式：Agent 启动时只看到一份薄薄的目录——每个 skill 的 `name` 与 `description`（合计数百 token）。当**当前上下文**真的需要某种能力时，模型才去读取对应的 sub-skill，并顺着其中的引用再往下一层，读取具体的脚本或子文档。\", \"canonicalTerm\": \"Skills\", \"aliases\": [\"Skills 机制\"], \"definition\": \"一种工具发现范式，把渐进式披露作为默认的组织方式：Agent 启动时只看到每个 skill 的 name 与 description 目录，当前上下文真的需要某种能力时，才读取对应 sub-skill，并顺着引用逐层读取具体脚本或子文档，不再需要“嵌入索引 + 语义匹配”那套基础设施。\", \"examples\": [\"Agent 启动时只看到一份薄薄的目录——每个 skill 的 name 与 description（合计数百 token）\"]}]}"
+    },
+    {
+      "anchor": "chapter4#h2-5",
+      "lineStart": 218,
+      "lineEnd": 243,
+      "objectIds": [
+        "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+        "CHAPTER4-H2-5-ENGINEERINGRULE-02"
+      ],
+      "usage": {
+        "prompt_tokens": 2269,
+        "completion_tokens": 5068,
+        "total_tokens": 7337,
+        "prompt_tokens_details": {
+          "cached_tokens": 2176
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4618
+        },
+        "prompt_cache_hit_tokens": 2176,
+        "prompt_cache_miss_tokens": 93
+      },
+      "finishReason": "stop",
+      "reasoningChars": 13661,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\":[{\"objectType\":\"EngineeringRule\",\"evidenceQuote\":\"搜索工具的返回值应该是结构化的候选列表（标题、位置、摘要片段），而不是拼接后的全文——让 Agent 先浏览候选，再决定深入读取哪一条。当结果数量较多时，应提供分页或游标（cursor）参数：默认只返回前若干条，并在返回值中注明结果总数和获取下一页的方式，由 Agent 自主决定是否继续翻页，而不是一次性倾倒全部结果。\",\"statement\":\"搜索工具的返回值应该是结构化的候选列表（标题、位置、摘要片段），而不是拼接后的全文；当结果数量较多时，应提供分页或游标参数，默认只返回前若干条，并在返回值中注明结果总数和获取下一页的方式。\",\"rationale\":\"让 Agent 先浏览候选，再决定深入读取哪一条，避免一次性倾倒全部结果导致信息过载。\",\"appliesWhen\":\"设计搜索类感知工具的返回格式时。\",\"violation\":\"返回拼接后的全文，或在结果数量较多时一次性返回全部结果而不提供分页或游标。\"},{\"objectType\":\"EngineeringRule\",\"evidenceQuote\":\"read 类工具应支持 offset/limit 参数，按需读取大文件的指定片段。当内容超过阈值必须截断时，应明确标示截断情况：注明省略了多少内容、如何读取剩余部分（如“已显示第 1-200 行，共 5000 行，可用 offset 参数继续读取”）。静默截断是危险的——Agent 会误以为自己看到了全部内容，基于不完整的信息做出错误判断。\",\"statement\":\"read 类工具应支持 offset/limit 参数，按需读取大文件的指定片段；当内容超过阈值必须截断时，应明确标示截断情况，并注明省略了多少内容以及如何读取剩余部分。\",\"rationale\":\"静默截断是危险的——Agent 会误以为自己看到了全部内容，基于不完整的信息做出错误判断。\",\"appliesWhen\":\"读取大文件且内容可能超过阈值需要截断时。\",\"violation\":\"静默截断，不标示省略内容和继续读取剩余部分的方式。\"}]}"
+    },
+    {
+      "anchor": "chapter4#h3-7",
+      "lineStart": 244,
+      "lineEnd": 247,
+      "objectIds": [
+        "CHAPTER4-H3-7-CONCEPT-01"
+      ],
+      "usage": {
+        "prompt_tokens": 1519,
+        "completion_tokens": 1257,
+        "total_tokens": 2776,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1097
+        },
+        "prompt_cache_hit_tokens": 1408,
+        "prompt_cache_miss_tokens": 111
+      },
+      "finishReason": "stop",
+      "reasoningChars": 2310,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"Agent 要能够理解图片、视频、音频、PDF 等多模态数据，就必须具备多模态感知能力。有三条路径可以实现多模态感知：模型原生的多模态处理、将多模态内容自动提取为文本再处理、把多模态模型封装为工具处理。\",\n    \"canonicalTerm\": \"多模态感知\",\n    \"aliases\": [],\n    \"definition\": \"Agent 理解图片、视频、音频、PDF 等多模态数据所需具备的能力。\",\n    \"examples\": [\"模型原生的多模态处理\", \"将多模态内容自动提取为文本再处理\", \"把多模态模型封装为工具处理\"]\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h4-1",
+      "lineStart": 248,
+      "lineEnd": 251,
+      "objectIds": [
+        "CHAPTER4-H4-1-CONCEPT-01"
+      ],
+      "usage": {
+        "prompt_tokens": 1628,
+        "completion_tokens": 6364,
+        "total_tokens": 7992,
+        "prompt_tokens_details": {
+          "cached_tokens": 1536
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 6198
+        },
+        "prompt_cache_hit_tokens": 1536,
+        "prompt_cache_miss_tokens": 92
+      },
+      "finishReason": "stop",
+      "reasoningChars": 21369,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\":[{\"objectType\":\"Concept\",\"evidenceQuote\":\"**原生多模态处理**是能力上限最高的技术路线。其核心技术突破在于，通过专门的编码器将不同类型的数据全部映射到统一的高维语义空间。以图像为例，架构公开的多模态模型（如 Qwen-VL、LLaVA）通常集成了基于 **Vision Transformer**（ViT）的视觉编码器。\",\"canonicalTerm\":\"原生多模态处理\",\"aliases\":[],\"definition\":\"一种能力上限最高的多模态技术路线，通过专门编码器将不同类型数据统一映射到高维语义空间；常见实现如 Qwen-VL、LLaVA 集成基于 Vision Transformer（ViT）的视觉编码器。\",\"examples\":[\"Qwen-VL\",\"LLaVA\"]}]}"
+    },
+    {
+      "anchor": "chapter4#h4-2",
+      "lineStart": 252,
+      "lineEnd": 257,
+      "objectIds": [
+        "CHAPTER4-H4-2-CONCEPT-01",
+        "CHAPTER4-H4-2-MENTALMODEL-02"
+      ],
+      "usage": {
+        "prompt_tokens": 1618,
+        "completion_tokens": 4942,
+        "total_tokens": 6560,
+        "prompt_tokens_details": {
+          "cached_tokens": 1536
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4426
+        },
+        "prompt_cache_hit_tokens": 1536,
+        "prompt_cache_miss_tokens": 82
+      },
+      "finishReason": "stop",
+      "reasoningChars": 9248,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"目前很多能力较强的模型，例如 GLM 5.2、DeepSeek V4 Flash，不支持原生多模态处理。此时一种变通方法是将多模态内容**提取为文本（Extract to Text）**。这是一个两阶段过程：先通过专门工具（如 OCR 服务、音频转录服务）将非文本内容转为纯文本，再输入语言模型。\",\n    \"canonicalTerm\": \"提取为文本\",\n    \"aliases\": [\"Extract to Text\"],\n    \"definition\": \"对不支持原生多模态处理的模型，将多模态内容先通过专门工具（如 OCR 服务、音频转录服务）转为纯文本，再输入语言模型的两阶段变通方法。\",\n    \"examples\": [\"通过 OCR 服务将非文本内容转为纯文本\", \"通过音频转录服务将非文本内容转为纯文本\"]\n  },\n  {\n    \"objectType\": \"MentalModel\",\n    \"evidenceQuote\": \"目前很多能力较强的模型，例如 GLM 5.2、DeepSeek V4 Flash，不支持原生多模态处理。此时一种变通方法是将多模态内容**提取为文本（Extract to Text）**。这是一个两阶段过程：先通过专门工具（如 OCR 服务、音频转录服务）将非文本内容转为纯文本，再输入语言模型。\\n\\n对于文本内容占主体的 PDF 文档等，提取为文本的方法比转换为图片的原生多模态处理方法往往更节约 token。例如，一页 PDF 的截图往往需要上千个 token，而一页 PDF 上的文字一般只有几百个 token。但提取为文本的代价是信息损失：所有版式、图表、图像信息都在提取过程中被丢弃。\",\n    \"trigger\": \"当模型不支持原生多模态处理，且需要处理多模态内容时\",\n    \"inputs\": [\"多模态内容\"],\n    \"reasoning\": \"先将非文本内容通过专门工具（如 OCR 服务、音频转录服务）转为纯文本，再输入语言模型；对于文本内容占主体的 PDF 文档等，这样做往往比转换为图片更节约 token，但会丢弃版式、图表、图像信息。\",\n    \"limits\": \"所有版式、图表、图像信息都在提取过程中被丢弃。\",\n    \"counterexample\": \"需要保留版式、图表或图像信息的任务场景\"\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h4-3",
+      "lineStart": 258,
+      "lineEnd": 269,
+      "objectIds": [
+        "CHAPTER4-H4-3-CONCEPT-01",
+        "CHAPTER4-H4-3-HEURISTIC-02"
+      ],
+      "usage": {
+        "prompt_tokens": 1799,
+        "completion_tokens": 12860,
+        "total_tokens": 14659,
+        "prompt_tokens_details": {
+          "cached_tokens": 1792
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 12505
+        },
+        "prompt_cache_hit_tokens": 1792,
+        "prompt_cache_miss_tokens": 7
+      },
+      "finishReason": "stop",
+      "reasoningChars": 26050,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"当 Agent 的主模型不支持多模态时，**将多模态分析作为工具**是一种比提取为文本更好的方法。它赋予 Agent 可对原始文件深入分析的工具（如 `analyze_image`、`analyze_pdf`、`analyze_audio`），工具接受一个多模态文件和一个自然语言问题作为参数，返回自然语言描述的分析结果。工具内部可以使用多模态模型实现，这个多模态模型不一定需要很强的 Agent 能力，从而有更多技术选型空间。\",\n    \"canonicalTerm\": \"工具化多模态分析\",\n    \"aliases\": [],\n    \"definition\": \"当 Agent 的主模型不支持多模态时，将多模态分析作为工具；工具（如 analyze_image、analyze_pdf、analyze_audio）接受一个多模态文件和自然语言问题，返回自然语言描述的分析结果，工具内部可使用不一定需要很强 Agent 能力的多模态模型实现。\",\n    \"examples\": [\"analyze_image\", \"analyze_pdf\", \"analyze_audio\"]\n  },\n  {\n    \"objectType\": \"Heuristic\",\n    \"evidenceQuote\": \"相比原生多模态处理方案，工具化多模态分析仅在上下文中保留简短的问题和分析结果，可以避免多模态数据（如图片、视频等）的大量 token 占据上下文。\",\n    \"trigger\": \"处理多模态数据且关注上下文 token 占用时\",\n    \"recommendation\": \"采用工具化多模态分析，仅在上下文中保留简短的问题和分析结果\",\n    \"confidence\": 0.8,\n    \"exceptions\": []\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h2-6",
+      "lineStart": 270,
+      "lineEnd": 381,
+      "objectIds": [
+        "CHAPTER4-H2-6-CONCEPT-01",
+        "CHAPTER4-H2-6-ANTIPATTERN-02"
+      ],
+      "usage": {
+        "prompt_tokens": 4785,
+        "completion_tokens": 6431,
+        "total_tokens": 11216,
+        "prompt_tokens_details": {
+          "cached_tokens": 4736
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5943
+        },
+        "prompt_cache_hit_tokens": 4736,
+        "prompt_cache_miss_tokens": 49
+      },
+      "finishReason": "stop",
+      "reasoningChars": 12260,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"Concept\",\n    \"evidenceQuote\": \"Claude Code 在自动模式（Auto Mode）下的做法是一个典型案例：当主模型决定执行一个工具调用时，一个独立的轻量级 LLM 调用会被触发来判断 “这个工具调用是否安全”。这个旁路的安全检查模块在每次工具调用前独立判断风险，同时尽量不拖慢主 Agent 的思考节奏。Sidecar 得名于微服务架构中的边车（Sidecar）模式——如同摩托车旁挂的边车，独立运行但与主体并行。Sidecar 是一种伴随主 Agent 思考循环运行的轻量级 LLM 调用模式，它不审查主 Agent 的最终输出，而是对主 Agent 的**行为**做独立判断。\",\n    \"canonicalTerm\": \"Sidecar\",\n    \"aliases\": [\"边车模式\"],\n    \"definition\": \"Sidecar 是一种伴随主 Agent 思考循环运行的轻量级 LLM 调用模式，它不审查主 Agent 的最终输出，而是对主 Agent 的行为做独立判断。\",\n    \"examples\": [\"Claude Code 在自动模式下，当主模型决定执行一个工具调用时，触发独立的轻量级 LLM 判断该工具调用是否安全，并在每次工具调用前独立判断风险，同时尽量不拖慢主 Agent 的思考节奏。\"]\n  },\n  {\n    \"objectType\": \"AntiPattern\",\n    \"evidenceQuote\": \"这里需要澄清一个常见误区：Python 虚拟环境（venv）不是沙盒。它只隔离包依赖，对文件系统、网络和进程没有任何安全约束，在 venv 中运行的代码照样可以删除任意文件、访问任意网络。真正的隔离依靠操作系统及更底层的机制，按隔离强度递增排列：\",\n    \"pattern\": \"将 Python 虚拟环境（venv）当作沙盒使用\",\n    \"harm\": \"venv 只隔离包依赖，对文件系统、网络和进程没有任何安全约束，在 venv 中运行的代码照样可以删除任意文件、访问任意网络。\",\n    \"corrective\": \"真正的隔离依靠操作系统及更底层的机制\",\n    \"evidence\": [\"在 venv 中运行的代码照样可以删除任意文件、访问任意网络。\"]\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h2-7",
+      "lineStart": 382,
+      "lineEnd": 428,
+      "objectIds": [
+        "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+        "CHAPTER4-H2-7-ENGINEERINGRULE-02"
+      ],
+      "usage": {
+        "prompt_tokens": 2557,
+        "completion_tokens": 4608,
+        "total_tokens": 7165,
+        "prompt_tokens_details": {
+          "cached_tokens": 2432
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4261
+        },
+        "prompt_cache_hit_tokens": 2432,
+        "prompt_cache_miss_tokens": 125
+      },
+      "finishReason": "stop",
+      "reasoningChars": 9378,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [{\"objectType\": \"EngineeringRule\", \"evidenceQuote\": \"子 Agent 可能接收来自多个来源的信息。提示词中应该明确区分各个来源：“`[FROM_MAIN_AGENT]` 是主协调 Agent 给你的任务指令；`[FROM_USER]` 是用户直接补充的信息；`[TOOL_RESULT]` 是你调用工具后的返回结果”。这种标注可以防止子 Agent 混淆信息来源，避免**提示注入**（前文 Sidecar 一节已介绍）攻击。\", \"statement\": \"子 Agent 提示词应明确标注各上下文来源，例如 `[FROM_MAIN_AGENT]`、`[FROM_USER]`、`[TOOL_RESULT]`。\", \"rationale\": \"防止子 Agent 混淆信息来源，避免提示注入攻击。\", \"appliesWhen\": \"子 Agent 可能接收来自多个来源的信息时。\", \"violation\": \"子 Agent 混淆信息来源，面临提示注入攻击风险。\"}, {\"objectType\": \"EngineeringRule\", \"evidenceQuote\": \"`cancel_subagent` 在任务失去意义时（如用户改变了主意、另一个子 Agent 已经找到答案）及时终止，避免继续浪费 token。\", \"statement\": \"当子 Agent 的任务失去意义时，应及时调用 `cancel_subagent` 终止该子 Agent。\", \"rationale\": \"避免继续浪费 token。\", \"appliesWhen\": \"子 Agent 的任务失去意义，例如用户改变了主意或另一个子 Agent 已经找到答案。\", \"violation\": \"继续执行已无意义的子 Agent 任务，浪费 token。\"}]}"
+    },
+    {
+      "anchor": "chapter4#h2-8",
+      "lineStart": 429,
+      "lineEnd": 442,
+      "objectIds": [
+        "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+        "CHAPTER4-H2-8-ENGINEERINGRULE-02"
+      ],
+      "usage": {
+        "prompt_tokens": 1815,
+        "completion_tokens": 4242,
+        "total_tokens": 6057,
+        "prompt_tokens_details": {
+          "cached_tokens": 1792
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3824
+        },
+        "prompt_cache_hit_tokens": 1792,
+        "prompt_cache_miss_tokens": 23
+      },
+      "finishReason": "stop",
+      "reasoningChars": 7974,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": [\n  {\n    \"objectType\": \"EngineeringRule\",\n    \"evidenceQuote\": \"工具设计决定 Agent 的能力上限。第一个决策是能力用什么形式表达——默认往通用的一端靠，只在安全权限、参数复杂、使用频率极高和平台差异这四种情况下退回专用工具；它与“一次让模型看见多少条能力”是两个独立的决策，前者定每条能力的常驻成本，后者定同时暴露多少条。\",\n    \"statement\": \"设计工具能力时，默认采用通用形式表达；仅在安全权限、参数复杂、使用频率极高和平台差异这四种情况下退回专用工具。\",\n    \"rationale\": \"工具设计决定 Agent 的能力上限，而能力表达形式决定每条能力的常驻成本。\",\n    \"appliesWhen\": \"设计工具能力表达方式时。\",\n    \"violation\": \"在未涉及安全权限、参数复杂、使用频率极高或平台差异时使用专用工具表达能力。\"\n  },\n  {\n    \"objectType\": \"EngineeringRule\",\n    \"evidenceQuote\": \"能力靠两条渠道分发：MCP 协议统一专用工具的接入，Skill Hub 用包管理器分发 `SKILL.md`；两条渠道都把引入一条能力的成本压到了一条命令，也都扩大了信任边界，因此必须审查描述与版本、隔离凭证，并保证模型看到的参数与工具真正执行的参数一致。\",\n    \"statement\": \"通过 MCP 协议或 Skill Hub 引入能力时，必须审查描述与版本、隔离凭证，并保证模型看到的参数与工具真正执行的参数一致。\",\n    \"rationale\": \"两条渠道都把引入一条能力的成本压到了一条命令，也都扩大了信任边界。\",\n    \"appliesWhen\": \"通过 MCP 协议或 Skill Hub 分发或引入能力时。\",\n    \"violation\": \"引入 MCP 或 Skill Hub 能力时，未审查描述与版本、未隔离凭证，或未保证模型看到的参数与工具实际执行参数一致。\"\n  }\n]}"
+    },
+    {
+      "anchor": "chapter4#h2-9",
+      "lineStart": 443,
+      "lineEnd": 449,
+      "objectIds": [],
+      "usage": {
+        "prompt_tokens": 1692,
+        "completion_tokens": 892,
+        "total_tokens": 2584,
+        "prompt_tokens_details": {
+          "cached_tokens": 1664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 886
+        },
+        "prompt_cache_hit_tokens": 1664,
+        "prompt_cache_miss_tokens": 28
+      },
+      "finishReason": "stop",
+      "reasoningChars": 1910,
+      "derivedFieldsIgnored": [],
+      "rawText": "{\"objects\": []}"
+    }
+  ],
+  "reasoningPolicy": "本文件只保存模型返回的 content（第 2 层的产物），**不保存推理正文**（reasoning_content）。理由：推理正文是生产者的思维链，ticket 05 要求判定者看不到它；把它写到盘上等于给它留了回流路径。只记 reasoningChars 长度，足以判断「输出很少却很贵」是不是推理吃掉了额度。"
+}

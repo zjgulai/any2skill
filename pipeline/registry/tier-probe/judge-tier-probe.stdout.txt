@@ -1,0 +1,16 @@
+探针集：37 个对象（pipeline/knowledge/history/chapter4.a257afe6.objects.json）
+判定者：deepseek-v4-pro｜提示词指纹 judge-90b1e1b49076
+
+档位        支撑  不充分  不支撑   检出  调用  input/output token（其中推理）
+high         26     11      0    11    37  47157/24357（22784）
+low          25     12      0    12    37  44234/10434（8910）
+
+两档一致性：36/37 一致，1 不一致
+  CHAPTER4-H3-6-ENGINEERINGRULE-02   high=supported | low=insufficient   low-only
+
+基准核对（run-7afb98d262b5）：可比性 ✓ 指纹相同｜重叠 37 个，一致 32/37
+  CHAPTER4-H2-4-CONCEPT-01           基准=insufficient 本次=supported
+  CHAPTER4-H3-4-HEURISTIC-01         基准=supported 本次=insufficient
+  CHAPTER4-H3-4-HEURISTIC-02         基准=supported 本次=insufficient
+  CHAPTER4-H3-5-CONCEPT-01           基准=insufficient 本次=supported
+  CHAPTER4-H4-2-HEURISTIC-02         基准=insufficient 本次=supported

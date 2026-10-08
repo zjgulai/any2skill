@@ -1,0 +1,677 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 2,
+  "runId": "run-3c60c2ce53b6",
+  "createdAt": "2026-10-08T09:17:11.076Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/chapter4.md",
+    "hash": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+    "totalLines": 449
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": true,
+    "note": "本次**未调用模型**：直接复用已落盘的对象（卡 04 的「产出落盘固化」）。要重新产出请显式传 --rerun。",
+    "reusedFrom": {
+      "runId": "run-3c60c2ce53b6",
+      "receiptPath": "pipeline/registry/run-3c60c2ce53b6.receipt.json",
+      "modelId": "deepseek-v4-pro",
+      "provider": "unrecorded",
+      "createdAt": "2026-10-08T08:58:06.041Z",
+      "calls": 20,
+      "tokens": {
+        "input": 32294,
+        "output": 92742
+      }
+    },
+    "promptFingerprint": null,
+    "perAnchor": []
+  },
+  "model": {
+    "provider": "unrecorded",
+    "modelId": "deepseek-v4-pro",
+    "calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "tokensDetail": {
+      "reasoning": 0,
+      "cachedInput": 0
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "none（本次复用冻结产物，未发出任何真实模型调用）",
+    "configSource": null,
+    "fixture": null
+  },
+  "judge": {
+    "instanceId": null,
+    "implemented": false,
+    "note": "ticket 03 只交付第 3 层确定性判据；判定者独立性与判定者判据属 ticket 05。"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/chapter4.anchors.json",
+      "sha256": "sha256:2ac22f23b054a58b166057032eeb430f7cd4687487dc4d61f2bee44772edd791",
+      "bytes": 7047,
+      "anchorCount": 20
+    },
+    "objects": {
+      "path": "pipeline/knowledge/chapter4.objects.json",
+      "sha256": "sha256:78fa33fa5d18d43a0bd0cce161bfa93c7371c45bfb0c141abdc501c7d0da5f52",
+      "bytes": 49566,
+      "objectCount": 38
+    },
+    "layer2Raw": null
+  },
+  "counts": {
+    "anchors": 20,
+    "objects": 38,
+    "passed": 29,
+    "rejected": 9
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED"
+    ],
+    "byCode": {
+      "SCHEMA_INVALID": 6,
+      "QUOTE_MISMATCH": 3
+    }
+  },
+  "objectVerdicts": [
+    {
+      "objectId": "CHAPTER4-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h1-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-1",
+        "lineStart": 7,
+        "lineEnd": 33
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-1",
+        "lineStart": 7,
+        "lineEnd": 33
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-2",
+        "lineStart": 34,
+        "lineEnd": 37
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 4,
+      "status": "reject",
+      "reasonCode": "SCHEMA_INVALID",
+      "failures": [
+        {
+          "code": "SCHEMA_INVALID",
+          "detail": "/evidence type: 期望类型 array，实际为 string"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-2",
+        "lineStart": 34,
+        "lineEnd": 37
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-1",
+        "lineStart": 38,
+        "lineEnd": 69
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 6,
+      "status": "reject",
+      "reasonCode": "SCHEMA_INVALID",
+      "failures": [
+        {
+          "code": "SCHEMA_INVALID",
+          "detail": "/evidence type: 期望类型 array，实际为 string"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-1",
+        "lineStart": 38,
+        "lineEnd": 69
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-2",
+        "lineStart": 70,
+        "lineEnd": 87
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-2",
+        "lineStart": 70,
+        "lineEnd": 87
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-3-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 9,
+      "status": "reject",
+      "reasonCode": "SCHEMA_INVALID",
+      "failures": [
+        {
+          "code": "SCHEMA_INVALID",
+          "detail": "/evidence type: 期望类型 array，实际为 string"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-3",
+        "lineStart": 88,
+        "lineEnd": 99
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-3",
+        "lineStart": 88,
+        "lineEnd": 99
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-3",
+        "lineStart": 100,
+        "lineEnd": 132
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-3",
+        "lineStart": 100,
+        "lineEnd": 132
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-4",
+        "lineStart": 133,
+        "lineEnd": 138
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-4-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-4",
+        "lineStart": 133,
+        "lineEnd": 138
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 15,
+      "status": "reject",
+      "reasonCode": "QUOTE_MISMATCH",
+      "failures": [
+        {
+          "code": "QUOTE_MISMATCH",
+          "detail": "引文未在所引锚点区间（1561 字符）内逐字命中：\"是否采用 MCP 作为互操作协议与是否在会话开始时暴露所有 MCP 工具定义是两个独立决策：后端可以保留 MCP 的生态\""
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-4",
+        "lineStart": 139,
+        "lineEnd": 158
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-4",
+        "lineStart": 139,
+        "lineEnd": 158
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-5",
+        "lineStart": 159,
+        "lineEnd": 201
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-5",
+        "lineStart": 159,
+        "lineEnd": 201
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 19,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-6",
+        "lineStart": 202,
+        "lineEnd": 217
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 20,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-6",
+        "lineStart": 202,
+        "lineEnd": 217
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 21,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-5",
+        "lineStart": 218,
+        "lineEnd": 243
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 22,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-5",
+        "lineStart": 218,
+        "lineEnd": 243
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-7-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 23,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-7",
+        "lineStart": 244,
+        "lineEnd": 247
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 24,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-1",
+        "lineStart": 248,
+        "lineEnd": 251
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 25,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-1",
+        "lineStart": 248,
+        "lineEnd": 251
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 26,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-2",
+        "lineStart": 252,
+        "lineEnd": 257
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 27,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-2",
+        "lineStart": 252,
+        "lineEnd": 257
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 28,
+      "status": "reject",
+      "reasonCode": "SCHEMA_INVALID",
+      "failures": [
+        {
+          "code": "SCHEMA_INVALID",
+          "detail": "/appliesWhen type: 期望类型 string，实际为 array | /violation type: 期望类型 string，实际为 array"
+        },
+        {
+          "code": "QUOTE_MISMATCH",
+          "detail": "引文未在所引锚点区间（649 字符）内逐字命中：\"当 Agent 的主模型不支持多模态时，将多模态分析作为工具是一种比提取为文本更好的方法。\""
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-3",
+        "lineStart": 258,
+        "lineEnd": 269
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 29,
+      "status": "reject",
+      "reasonCode": "QUOTE_MISMATCH",
+      "failures": [
+        {
+          "code": "QUOTE_MISMATCH",
+          "detail": "引文未在所引锚点区间（649 字符）内逐字命中：\"工具化模式在交互式场景中展现灵活性，能以较低成本处理大多数初步查询并在需要时通过调用工具进行高成本深度分析，但在需要一次\""
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h4-3",
+        "lineStart": 258,
+        "lineEnd": 269
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 30,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "lineStart": 270,
+        "lineEnd": 381
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 31,
+      "status": "reject",
+      "reasonCode": "QUOTE_MISMATCH",
+      "failures": [
+        {
+          "code": "QUOTE_MISMATCH",
+          "detail": "引文未在所引锚点区间（6422 字符）内逐字命中：\"执行工具的另一个重要设计原则是：如果操作结果可以被验证，就应该自动验证。\""
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "lineStart": 270,
+        "lineEnd": 381
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 32,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-7",
+        "lineStart": 382,
+        "lineEnd": 428
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 33,
+      "status": "reject",
+      "reasonCode": "SCHEMA_INVALID",
+      "failures": [
+        {
+          "code": "SCHEMA_INVALID",
+          "detail": "/appliesWhen type: 期望类型 string，实际为 array | /violation type: 期望类型 string，实际为 array"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-7",
+        "lineStart": 382,
+        "lineEnd": 428
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 34,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-8",
+        "lineStart": 429,
+        "lineEnd": 442
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 35,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-8",
+        "lineStart": 429,
+        "lineEnd": 442
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-9-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 36,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-9",
+        "lineStart": 443,
+        "lineEnd": 449
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-9-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 37,
+      "status": "reject",
+      "reasonCode": "SCHEMA_INVALID",
+      "failures": [
+        {
+          "code": "SCHEMA_INVALID",
+          "detail": "/examples minItems: 至少 1 项，实际 0"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-9",
+        "lineStart": 443,
+        "lineEnd": 449
+      }
+    }
+  ],
+  "contentProblems": 9,
+  "engineeringFailure": null
+}

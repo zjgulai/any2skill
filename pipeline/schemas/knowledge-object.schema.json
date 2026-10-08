@@ -1,0 +1,471 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "any2skills:knowledge-object",
+  "title": "any2skills 知识对象",
+  "description": "九种知识对象类型。7 种既有类型（Concept/Metric/MentalModel/DecisionModel/Heuristic/Case/Playbook）字段来源：docs/adr/ADR-003-ir-knowledge-object-model.md 的实测字段表；2 种新增类型（EngineeringRule/AntiPattern）来源：同 ADR 的扩展决策。SkillCandidate 属环 3，不在此文件内。",
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "description": "章节引用令牌，如 chapter4 或 chapter4-h2-1。取自锚点标识，允许小写与连字符。"
+    },
+    "quote": {
+      "type": "string",
+      "minLength": 1,
+      "description": "逐字引文，且是**支撑该对象主张的连续原文片段**。两个用途必须同时成立：(1) 确定性判据——第 3 层将其与对应锚点区间做逐字比对，是本项目的主力确定性判据；(2) 语义判据——独立的判定者核对「该引文是否支撑该对象的主张」。因此主张不得断言引文之外的内容。长度上限 400 字（提示词侧约束；本 schema 不设 maxLength，因为上限会随判据口径调整，而 schema 是契约、不宜随调参漂移）。"
+    },
+    "bodyText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Concept": {
+      "type": "object",
+      "required": [
+        "canonicalTerm",
+        "aliases",
+        "definition",
+        "examples"
+      ],
+      "properties": {
+        "canonicalTerm": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "examples": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Metric": {
+      "type": "object",
+      "required": [
+        "name",
+        "formula",
+        "inputs",
+        "unit",
+        "window",
+        "failureModes"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "formula": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "window": {
+          "type": "string",
+          "minLength": 1
+        },
+        "failureModes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MentalModel": {
+      "type": "object",
+      "required": [
+        "trigger",
+        "inputs",
+        "reasoning",
+        "limits",
+        "counterexample"
+      ],
+      "properties": {
+        "trigger": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reasoning": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "limits": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "counterexample": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DecisionModel": {
+      "type": "object",
+      "required": [
+        "inputs",
+        "branches",
+        "outputs",
+        "unknownPolicy",
+        "stopConditions",
+        "reviewState"
+      ],
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "branches": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "condition",
+              "action"
+            ],
+            "properties": {
+              "condition": {
+                "$ref": "#/$defs/bodyText"
+              },
+              "action": {
+                "$ref": "#/$defs/bodyText"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "unknownPolicy": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "stopConditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "reviewState": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "candidate",
+            "approved",
+            "superseded",
+            "blocked"
+          ]
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Heuristic": {
+      "type": "object",
+      "required": [
+        "trigger",
+        "recommendation",
+        "confidence",
+        "exceptions"
+      ],
+      "properties": {
+        "trigger": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "recommendation": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "概率性经验。硬规则不得使用本类型——见 EngineeringRule 的判据说明。"
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Case": {
+      "type": "object",
+      "required": [
+        "title",
+        "context",
+        "facts",
+        "decisions",
+        "outcome",
+        "evidenceRefs",
+        "limitations",
+        "dataClass"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "facts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "outcome": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "dataClass": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Playbook": {
+      "type": "object",
+      "required": [
+        "title",
+        "prerequisites",
+        "steps",
+        "checks",
+        "rollback",
+        "approval"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "order",
+              "action"
+            ],
+            "properties": {
+              "order": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "action": {
+                "$ref": "#/$defs/bodyText"
+              },
+              "note": {
+                "$ref": "#/$defs/bodyText"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "rollback": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "approval": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EngineeringRule": {
+      "type": "object",
+      "description": "可证伪且无概率的硬规则。与 Heuristic 的边界：有置信度或例外者属 Heuristic。因此本类型显式禁止 confidence 字段。",
+      "required": [
+        "statement",
+        "rationale",
+        "appliesWhen",
+        "violation",
+        "chapterRef"
+      ],
+      "properties": {
+        "statement": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "rationale": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "appliesWhen": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "violation": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "chapterRef": {
+          "$ref": "#/$defs/slug"
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AntiPattern": {
+      "type": "object",
+      "description": "书中警告的失败做法。实测其为跨章综合物而非抽取物（全书「常见陷阱」字面 0 命中，显式失败小节仅 13 处），故允许并鼓励 sourceRefs 指向多个章节。",
+      "required": [
+        "pattern",
+        "harm",
+        "corrective",
+        "evidence",
+        "chapterRef"
+      ],
+      "properties": {
+        "pattern": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "harm": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "corrective": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/bodyText"
+          }
+        },
+        "chapterRef": {
+          "$ref": "#/$defs/slug"
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Concept"
+    },
+    {
+      "$ref": "#/$defs/Metric"
+    },
+    {
+      "$ref": "#/$defs/MentalModel"
+    },
+    {
+      "$ref": "#/$defs/DecisionModel"
+    },
+    {
+      "$ref": "#/$defs/Heuristic"
+    },
+    {
+      "$ref": "#/$defs/Case"
+    },
+    {
+      "$ref": "#/$defs/Playbook"
+    },
+    {
+      "$ref": "#/$defs/EngineeringRule"
+    },
+    {
+      "$ref": "#/$defs/AntiPattern"
+    }
+  ],
+  "type": "object"
+}

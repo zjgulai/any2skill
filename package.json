@@ -1,0 +1,14 @@
+{
+  "name": "any2skills",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Any content -> executable Agent Skills. MVP pipeline (wrapper 2: source -> traceable knowledge objects).",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"pipeline/tools/test/*.test.mjs\"",
+    "anchors": "node pipeline/tools/anchor-index.mjs"
+  }
+}

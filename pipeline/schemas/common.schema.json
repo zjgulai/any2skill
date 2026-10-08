@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "any2skills:common",
+  "title": "any2skills 公共契约",
+  "description": "所有知识对象共用的标识、哈希、证据分级、生命周期与溯源定义。约束来源：docs/adr/ADR-003-ir-knowledge-object-model.md 与 docs/specs/01-pipeline-spec.md 的 D5。",
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+      "description": "对象标识。仅约束对象的 identifier；sourceRefs 的 anchor 是项目内部引用约定，可含中文字符，两者不得混为一谈。"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "sha256 前缀的十六进制摘要。"
+    },
+    "isoDateTime": {
+      "type": "string",
+      "minLength": 20,
+      "description": "ISO 8601 时间戳。本校验器不支持 format 关键字，故以长度下限作最低限度的形状约束，实际格式由单元测试钉住。"
+    },
+    "evidenceGrade": {
+      "type": "string",
+      "enum": [
+        "LO-S-synthetic",
+        "LO-P-public",
+        "LO-I-internal",
+        "E1-observed",
+        "E2-derived",
+        "E3-restricted"
+      ],
+      "description": "证据分级，采纳既有 6 值枚举。"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "candidate", "approved", "superseded", "blocked"],
+      "description": "生命周期状态。"
+    },
+    "freshness": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "asOf": { "$ref": "#/$defs/isoDateTime" },
+        "reviewedAt": { "$ref": "#/$defs/isoDateTime" },
+        "expiresAt": { "$ref": "#/$defs/isoDateTime" },
+        "state": { "type": "string", "enum": ["fresh", "stale", "unknown"] }
+      },
+      "additionalProperties": true,
+      "description": "新鲜度。嵌套对象暂不封闭 additionalProperties，以便结构演进；封闭性施加在知识对象顶层。"
+    },
+    "sourceRef": {
+      "type": "object",
+      "required": ["file", "anchor", "lineStart", "lineEnd"],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "相对于仓库根的内容源路径。"
+        },
+        "anchor": {
+          "type": "string",
+          "minLength": 3,
+          "description": "第 1 层产出的锚点标识，形如 chapter4#h2-1。允许中文字符——它不受 identifier 正则约束。"
+        },
+        "title": { "type": "string", "description": "锚点标题原文，便于回溯时无需打开正文即可核对。" },
+        "lineStart": { "type": "integer", "minimum": 1 },
+        "lineEnd": { "type": "integer", "minimum": 1 },
+        "contentHash": { "$ref": "#/$defs/hash" }
+      },
+      "additionalProperties": true
+    },
+    "baseObjectProperties": {
+      "type": "object",
+      "description": "每个知识对象都必须携带的 6 项公共字段。",
+      "required": ["id", "objectType", "revision", "status", "createdAt", "sourceRefs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "objectType": {
+          "type": "string",
+          "enum": [
+            "Concept",
+            "Metric",
+            "MentalModel",
+            "DecisionModel",
+            "Heuristic",
+            "Case",
+            "Playbook",
+            "EngineeringRule",
+            "AntiPattern"
+          ],
+          "description": "对象类型集合封闭。本规格实际提取 9 种；SkillCandidate 属环 3，不在其中。"
+        },
+        "revision": { "type": "integer", "minimum": 1 },
+        "status": { "$ref": "#/$defs/status" },
+        "createdAt": { "$ref": "#/$defs/isoDateTime" },
+        "sourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/sourceRef" },
+          "description": "无 sourceRefs 的对象不得进入下一环节，且不得为 0 项——这正是 minItems 1 所钉住的约束。"
+        },
+        "evidenceGrade": { "$ref": "#/$defs/evidenceGrade" },
+        "freshness": { "$ref": "#/$defs/freshness" },
+        "supersedes": { "$ref": "#/$defs/identifier" }
+      }
+    },
+    "object": {
+      "description": "所有知识对象的统一入口：以 baseObject 为公共要求，再由调用方叠加具体类型的必填字段。",
+      "allOf": [{ "$ref": "#/$defs/baseObjectProperties" }]
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "objectType",
+    "revision",
+    "status",
+    "createdAt",
+    "sourceRefs"
+  ],
+  "properties": {
+    "id": { "$ref": "#/$defs/identifier" },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "Concept",
+        "Metric",
+        "MentalModel",
+        "DecisionModel",
+        "Heuristic",
+        "Case",
+        "Playbook",
+        "EngineeringRule",
+        "AntiPattern"
+      ]
+    },
+    "revision": { "type": "integer", "minimum": 1 },
+    "status": { "$ref": "#/$defs/status" },
+    "createdAt": { "$ref": "#/$defs/isoDateTime" },
+    "sourceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceRef" }
+    },
+    "evidenceGrade": { "$ref": "#/$defs/evidenceGrade" },
+    "freshness": { "$ref": "#/$defs/freshness" },
+    "supersedes": { "$ref": "#/$defs/identifier" }
+  },
+  "additionalProperties": true,
+  "description": "本分支只负责公共字段，故 additionalProperties 保持 true，不在此封闭字段集合。原因：allOf 中的附加属性校验只看到本分支自己的 properties（不含具体类型的字段），若在此封闭，会把本契约自己允许的 canonicalTerm 等类型字段判为违规。字段集合的封闭性由 pipeline/schemas/knowledge-object.schema.json 的各类型分支承担（那里 additionalProperties 为 false）。"
+}

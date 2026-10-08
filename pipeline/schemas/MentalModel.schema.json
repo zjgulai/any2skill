@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "any2skills:object:MentalModel",
+  "title": "MentalModel 知识对象（自包含）",
+  "description": "由 pipeline/tools/compose-schemas.mjs 从 common.schema.json 与 knowledge-object.schema.json 组装；请勿手工编辑本文件。公共契约与类型契约已合并为单一封闭对象，避免 allOf 与 additionalProperties 的相互拒绝。",
+  "allOf": [
+    {
+      "$ref": "#/$defs/baseObjectProperties"
+    },
+    {
+      "type": "object",
+      "required": [
+        "id",
+        "objectType",
+        "revision",
+        "status",
+        "createdAt",
+        "sourceRefs",
+        "trigger",
+        "inputs",
+        "reasoning",
+        "limits",
+        "counterexample"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "objectType": {
+          "type": "string",
+          "enum": [
+            "Concept",
+            "Metric",
+            "MentalModel",
+            "DecisionModel",
+            "Heuristic",
+            "Case",
+            "Playbook",
+            "EngineeringRule",
+            "AntiPattern"
+          ],
+          "description": "对象类型集合封闭。本规格实际提取 9 种；SkillCandidate 属环 3，不在其中。"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "createdAt": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "description": "无 sourceRefs 的对象不得进入下一环节，且不得为 0 项——这正是 minItems 1 所钉住的约束。"
+        },
+        "evidenceGrade": {
+          "$ref": "#/$defs/evidenceGrade"
+        },
+        "freshness": {
+          "$ref": "#/$defs/freshness"
+        },
+        "supersedes": {
+          "$ref": "#/$defs/identifier"
+        },
+        "trigger": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reasoning": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "limits": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "counterexample": {
+          "$ref": "#/$defs/bodyText"
+        },
+        "evidenceQuote": {
+          "$ref": "#/$defs/quote"
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "$defs": {
+    "baseObjectProperties": {
+      "type": "object",
+      "description": "每个知识对象都必须携带的 6 项公共字段。",
+      "required": [
+        "id",
+        "objectType",
+        "revision",
+        "status",
+        "createdAt",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "objectType": {
+          "type": "string",
+          "enum": [
+            "Concept",
+            "Metric",
+            "MentalModel",
+            "DecisionModel",
+            "Heuristic",
+            "Case",
+            "Playbook",
+            "EngineeringRule",
+            "AntiPattern"
+          ],
+          "description": "对象类型集合封闭。本规格实际提取 9 种；SkillCandidate 属环 3，不在其中。"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "createdAt": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "description": "无 sourceRefs 的对象不得进入下一环节，且不得为 0 项——这正是 minItems 1 所钉住的约束。"
+        },
+        "evidenceGrade": {
+          "$ref": "#/$defs/evidenceGrade"
+        },
+        "freshness": {
+          "$ref": "#/$defs/freshness"
+        },
+        "supersedes": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+      "description": "对象标识。仅约束对象的 identifier；sourceRefs 的 anchor 是项目内部引用约定，可含中文字符，两者不得混为一谈。"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "candidate",
+        "approved",
+        "superseded",
+        "blocked"
+      ],
+      "description": "生命周期状态。"
+    },
+    "isoDateTime": {
+      "type": "string",
+      "minLength": 20,
+      "description": "ISO 8601 时间戳。本校验器不支持 format 关键字，故以长度下限作最低限度的形状约束，实际格式由单元测试钉住。"
+    },
+    "sourceRef": {
+      "type": "object",
+      "required": [
+        "file",
+        "anchor",
+        "lineStart",
+        "lineEnd"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "相对于仓库根的内容源路径。"
+        },
+        "anchor": {
+          "type": "string",
+          "minLength": 3,
+          "description": "第 1 层产出的锚点标识，形如 chapter4#h2-1。允许中文字符——它不受 identifier 正则约束。"
+        },
+        "title": {
+          "type": "string",
+          "description": "锚点标题原文，便于回溯时无需打开正文即可核对。"
+        },
+        "lineStart": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lineEnd": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contentHash": {
+          "$ref": "#/$defs/hash"
+        }
+      },
+      "additionalProperties": true
+    },
+    "evidenceGrade": {
+      "type": "string",
+      "enum": [
+        "LO-S-synthetic",
+        "LO-P-public",
+        "LO-I-internal",
+        "E1-observed",
+        "E2-derived",
+        "E3-restricted"
+      ],
+      "description": "证据分级，采纳既有 6 值枚举。"
+    },
+    "freshness": {
+      "type": "object",
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "asOf": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "reviewedAt": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "fresh",
+            "stale",
+            "unknown"
+          ]
+        }
+      },
+      "additionalProperties": true,
+      "description": "新鲜度。嵌套对象暂不封闭 additionalProperties，以便结构演进；封闭性施加在知识对象顶层。"
+    },
+    "bodyText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "quote": {
+      "type": "string",
+      "minLength": 1,
+      "description": "逐字引文，且是**支撑该对象主张的连续原文片段**。两个用途必须同时成立：(1) 确定性判据——第 3 层将其与对应锚点区间做逐字比对，是本项目的主力确定性判据；(2) 语义判据——独立的判定者核对「该引文是否支撑该对象的主张」。因此主张不得断言引文之外的内容。长度上限 400 字（提示词侧约束；本 schema 不设 maxLength，因为上限会随判据口径调整，而 schema 是契约、不宜随调参漂移）。"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "sha256 前缀的十六进制摘要。"
+    }
+  }
+}

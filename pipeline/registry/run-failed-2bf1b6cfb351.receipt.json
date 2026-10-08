@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 2,
+  "runId": "run-failed-2bf1b6cfb351",
+  "createdAt": "2026-10-08T09:19:13.378Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/chapter4.md",
+    "hash": null,
+    "totalLines": null
+  },
+  "layer2": {
+    "kind": null,
+    "reused": false,
+    "note": null,
+    "reusedFrom": null,
+    "perAnchor": []
+  },
+  "model": {
+    "provider": null,
+    "modelId": null,
+    "calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "tokensDetail": {
+      "reasoning": 0,
+      "cachedInput": 0
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "none",
+    "configSource": null,
+    "fixture": null
+  },
+  "judge": {
+    "instanceId": null,
+    "implemented": false
+  },
+  "artifacts": {},
+  "counts": {
+    "anchors": 0,
+    "objects": 0,
+    "passed": 0,
+    "rejected": 0
+  },
+  "reasonCodes": {
+    "vocabulary": [],
+    "byCode": {}
+  },
+  "objectVerdicts": [],
+  "contentProblems": 0,
+  "engineeringFailure": {
+    "kind": "llm-config",
+    "message": "无法认定已落盘对象的产出者：审计平面里没有与之对应的回执。拒绝猜一个模型名——回执里的 model.modelId 会参与 runId 复算，猜错会让整份回执不可复核。\n若这批对象来自外部，请传 --rerun 重新产出。"
+  }
+}

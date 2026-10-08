@@ -1,0 +1,626 @@
+{
+  "probeVersion": "judge-tier-probe/v1",
+  "createdAt": "2026-10-08T16:38:59.705Z",
+  "repoRoot": "/Users/lute/Project/any2skills",
+  "judgePromptFingerprint": "judge-90b1e1b49076",
+  "judge": {
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "https://api.deepseek.com",
+    "sameModelAsProducer": true
+  },
+  "probeSet": {
+    "objectsPath": "pipeline/knowledge/history/chapter4.a257afe6.objects.json",
+    "objectsFileCount": 37,
+    "skipped": []
+  },
+  "arms": [
+    {
+      "tier": "high",
+      "label": "high",
+      "verdicts": {
+        "supported": 24,
+        "insufficient": 13,
+        "unsupported": 0
+      },
+      "detected": 13,
+      "calls": 37,
+      "tokens": {
+        "input": 47157,
+        "output": 26507
+      },
+      "tokensDetail": {
+        "reasoning": 24889,
+        "cachedInput": 44416
+      },
+      "failedCalls": 0,
+      "retries": 0
+    },
+    {
+      "tier": "high",
+      "label": "high#2",
+      "verdicts": {
+        "supported": 27,
+        "insufficient": 10,
+        "unsupported": 0
+      },
+      "detected": 10,
+      "calls": 37,
+      "tokens": {
+        "input": 47157,
+        "output": 25233
+      },
+      "tokensDetail": {
+        "reasoning": 23616,
+        "cachedInput": 44416
+      },
+      "failedCalls": 0,
+      "retries": 0
+    },
+    {
+      "tier": "low",
+      "label": "low",
+      "verdicts": {
+        "supported": 27,
+        "insufficient": 10,
+        "unsupported": 0
+      },
+      "detected": 10,
+      "calls": 37,
+      "tokens": {
+        "input": 44234,
+        "output": 11505
+      },
+      "tokensDetail": {
+        "reasoning": 9928,
+        "cachedInput": 41728
+      },
+      "failedCalls": 0,
+      "retries": 0
+    }
+  ],
+  "pairs": [
+    {
+      "comparedArms": [
+        "high",
+        "high#2"
+      ],
+      "counts": {
+        "total": 37,
+        "agree": 32,
+        "disagree": 5
+      },
+      "rows": [
+        {
+          "objectId": "CHAPTER4-H2-3-ANTIPATTERN-02",
+          "objectType": "AntiPattern",
+          "high": "insufficient",
+          "high#2": "supported",
+          "direction": "high-only"
+        },
+        {
+          "objectId": "CHAPTER4-H2-4-CONCEPT-01",
+          "objectType": "Concept",
+          "high": "insufficient",
+          "high#2": "supported",
+          "direction": "high-only"
+        },
+        {
+          "objectId": "CHAPTER4-H3-5-ANTIPATTERN-02",
+          "objectType": "AntiPattern",
+          "high": "supported",
+          "high#2": "insufficient",
+          "direction": "high#2-only"
+        },
+        {
+          "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+          "objectType": "Concept",
+          "high": "insufficient",
+          "high#2": "supported",
+          "direction": "high-only"
+        },
+        {
+          "objectId": "CHAPTER4-H3-6-ENGINEERINGRULE-02",
+          "objectType": "EngineeringRule",
+          "high": "insufficient",
+          "high#2": "supported",
+          "direction": "high-only"
+        }
+      ]
+    },
+    {
+      "comparedArms": [
+        "high",
+        "low"
+      ],
+      "counts": {
+        "total": 37,
+        "agree": 32,
+        "disagree": 5
+      },
+      "rows": [
+        {
+          "objectId": "CHAPTER4-H2-3-ANTIPATTERN-02",
+          "objectType": "AntiPattern",
+          "high": "insufficient",
+          "low": "supported",
+          "direction": "high-only"
+        },
+        {
+          "objectId": "CHAPTER4-H2-4-CONCEPT-01",
+          "objectType": "Concept",
+          "high": "insufficient",
+          "low": "supported",
+          "direction": "high-only"
+        },
+        {
+          "objectId": "CHAPTER4-H3-5-ANTIPATTERN-02",
+          "objectType": "AntiPattern",
+          "high": "supported",
+          "low": "insufficient",
+          "direction": "low-only"
+        },
+        {
+          "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+          "objectType": "Concept",
+          "high": "insufficient",
+          "low": "supported",
+          "direction": "high-only"
+        },
+        {
+          "objectId": "CHAPTER4-H4-3-HEURISTIC-02",
+          "objectType": "Heuristic",
+          "high": "insufficient",
+          "low": "supported",
+          "direction": "high-only"
+        }
+      ]
+    },
+    {
+      "comparedArms": [
+        "high#2",
+        "low"
+      ],
+      "counts": {
+        "total": 37,
+        "agree": 35,
+        "disagree": 2
+      },
+      "rows": [
+        {
+          "objectId": "CHAPTER4-H3-6-ENGINEERINGRULE-02",
+          "objectType": "EngineeringRule",
+          "high#2": "supported",
+          "low": "insufficient",
+          "direction": "low-only"
+        },
+        {
+          "objectId": "CHAPTER4-H4-3-HEURISTIC-02",
+          "objectType": "Heuristic",
+          "high#2": "insufficient",
+          "low": "supported",
+          "direction": "high#2-only"
+        }
+      ]
+    }
+  ],
+  "disagreement": {
+    "comparedArms": [
+      "high",
+      "high#2"
+    ],
+    "counts": {
+      "total": 37,
+      "agree": 32,
+      "disagree": 5
+    },
+    "rows": [
+      {
+        "objectId": "CHAPTER4-H2-3-ANTIPATTERN-02",
+        "objectType": "AntiPattern",
+        "high": "insufficient",
+        "high#2": "supported",
+        "direction": "high-only"
+      },
+      {
+        "objectId": "CHAPTER4-H2-4-CONCEPT-01",
+        "objectType": "Concept",
+        "high": "insufficient",
+        "high#2": "supported",
+        "direction": "high-only"
+      },
+      {
+        "objectId": "CHAPTER4-H3-5-ANTIPATTERN-02",
+        "objectType": "AntiPattern",
+        "high": "supported",
+        "high#2": "insufficient",
+        "direction": "high#2-only"
+      },
+      {
+        "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+        "objectType": "Concept",
+        "high": "insufficient",
+        "high#2": "supported",
+        "direction": "high-only"
+      },
+      {
+        "objectId": "CHAPTER4-H3-6-ENGINEERINGRULE-02",
+        "objectType": "EngineeringRule",
+        "high": "insufficient",
+        "high#2": "supported",
+        "direction": "high-only"
+      }
+    ]
+  },
+  "matrix": [
+    {
+      "objectId": "CHAPTER4-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H1-1-CONCEPT-02",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-CONCEPT-02",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-4-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-MENTALMODEL-01",
+      "objectType": "MentalModel",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-3-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "byArm": {
+        "high": "supported",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "supported",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-7-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-02",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "byArm": {
+        "high": "supported",
+        "high#2": "supported",
+        "low": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-CONCEPT-01",
+      "objectType": "Concept",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "insufficient"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "byArm": {
+        "high": "insufficient",
+        "high#2": "insufficient",
+        "low": "supported"
+      }
+    }
+  ],
+  "baselineCheck": {
+    "receipt": "pipeline/registry/run-7afb98d262b5.receipt.json",
+    "baselineRunId": "run-7afb98d262b5",
+    "baselineJudgeFingerprint": "judge-90b1e1b49076",
+    "comparable": true,
+    "overlappingObjects": 37,
+    "agree": 32,
+    "agreeRate": "32/37",
+    "differences": [
+      {
+        "objectId": "CHAPTER4-H3-4-HEURISTIC-01",
+        "baseline": "supported",
+        "probe": "insufficient"
+      },
+      {
+        "objectId": "CHAPTER4-H3-4-HEURISTIC-02",
+        "baseline": "supported",
+        "probe": "insufficient"
+      },
+      {
+        "objectId": "CHAPTER4-H3-5-ANTIPATTERN-02",
+        "baseline": "insufficient",
+        "probe": "supported"
+      },
+      {
+        "objectId": "CHAPTER4-H3-6-ENGINEERINGRULE-02",
+        "baseline": "supported",
+        "probe": "insufficient"
+      },
+      {
+        "objectId": "CHAPTER4-H4-2-HEURISTIC-02",
+        "baseline": "insufficient",
+        "probe": "supported"
+      }
+    ],
+    "note": "这是**工具稳定性**的核对，不是档位结论。基准与本次第一臂若差异显著，说明判定者本身在这些对象上不稳定，本次任何档位结论都不成立。"
+  }
+}

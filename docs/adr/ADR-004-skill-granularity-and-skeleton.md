@@ -1,0 +1,93 @@
+# ADR-004 · Skill 粒度与内容组织：锁定原书 6 段骨架 + 单文件默认 + 契约侧车
+
+- 状态：已接受
+- 日期：2026-10-08
+- 决策者：用户（拍板「A」）
+- 关联：ADR-002、ADR-003
+
+## 背景
+
+需要决定「一个 skill 长什么形状、凭什么粒度切分」。这是「环节 3（梳理要构建哪些 skill）」与「环节 5（创建标准范式）」的落点。
+
+**四方实测证据：**
+
+| 来源 | 单文件？ | 体积 | 结构 |
+|---|---|---|---|
+| 原书 22 个 skill | **22/22 全部单文件**，`references/` 使用数为 **0** | 7,318–16,568 字节；80–129 行 | **严格 6 段固定顺序，22/22 命中**；22/22 回链 `book/chapterN.md` |
+| book2skills 38 个 | 混用 **8 种形态** | 54–485 行，0 个超 500 行 | 形态各异，无统一模板 |
+| nuwa 15 个 example | 6 文件 research 型 / 扁平中文型 / 主题型 | 343–541 行 | 无上限约束 |
+| Claude 官方 | — | 正文建议 **<5k tokens**；L1/L2/L3 渐进披露；`description` ≤1024 字符硬限 | 官方规范 |
+
+**原书 22 个 skill 体积实测（字节，`wc -c`）**：最小 `mcp-skill-hub` 7,318；最大 `agent-evaluation` 16,568；中位约 10,900；22 个文件合计 244,653。
+
+**原书 6 段骨架（实测 22/22 命中，逐字）：**
+
+```text
+# <主题标题>
+## 何时使用          ← 列表，5–8 条用户场景/触发条件
+## 核心原则          ← 加粗小标题 + 解释；列书的判断规则
+## 实践模式          ← 主体；可再分 ### 1..N 编号子节，含表格
+## 常见陷阱          ← 列表，6–8 条反模式
+## 配套代码          ← 仓库相对路径 + 每个目录一句话说明
+## 深度阅读          ← `book/chapterN.md` + 书中小节名
+```
+
+**关键洞察**：原书 22 个 skill **零个使用 `references/`**，而作者是本书作者、本校教授——他用单文件 + 6 段固定骨架 + 每章 1–2 个 skill 完成了全书蒸馏。这是一份「正确性已被验证」的强证据。但它是**人工写作**；流水线自动生成时膨胀风险更高，需要溢出阀。
+
+## 决策
+
+**1. 骨架锁定为原书实测的 6 段固定顺序。**
+理由：22/22 命中率证明它足以承载「判断规则 + 反模式 + 溯源」三要素，且是唯一有实证背书的骨架。
+
+**2. 单文件为目标；`references/` 仅作溢出阀。**
+体积阈值定为 **≤12 KB（字节）**——原书中位数（约 10.9 KB）偏上。超出时把「实践模式」中的深层细节移入 `references/`，SKILL.md 保留 6 段骨架与指针。
+理由：对「规则型」skill，把规则拆进多文件会让 agent 多读文件、丢失「一屏内看全」的优势；但不设溢出阀，自动生成容易撞穿官方 <5k tokens 建议。
+
+**3. 机器契约与证据回执放 `pipeline/registry/`，不进 SKILL.md。**
+分离的字段：`inputContract` / `outputContract` / `tools` / `steps` / `stopConditions` / `rollback` / `tests` / `promotionDecisionRef` / `sourceRefs` / `evidenceGrade` / `freshness`。
+理由：
+- 官方 `description` **硬限 1024 字符**，SKILL.md 是**给 agent 读的**；把 JSON 契约塞进去会同时污染可读性并挤爆预算。
+- 「这 skill 能不能被信任」（契约）与「这 skill 怎么用」（正文）是两个问题，混在一起会同时毁掉两者。
+
+**4. 切分粒度 = 内容单元聚类，对照基准 2.2 skill/章。**
+三层：知识对象（L2 原子）→ 内容单元（同章 + 同问题空间的 5–15 个对象）→ skill（3–8 个内容单元）。
+对照基准：原书 22 个 skill / 10 章 ≈ **2.2 个 skill/章**。
+理由：粒度过碎导致触发条件互相冲突（多个 skill 抢同一问题）；过粗导致 `description` 无法同时覆盖所有触发场景，命中率下降。
+
+## 被否决的方案
+
+| 方案 | 否决理由 |
+|---|---|
+| 多文件模块化（SKILL.md + `references/` 结构化成体系） | 违背原书已验证惯例；book2skills 的 8 种形态恰说明**没有统一模板反而增加维护成本** |
+| 双文件强制分离：SKILL.md（agent）+ `manifest.json`（机器） | 破坏 skill 自包含性（nuwa 明确要求「复制整个 skill 目录就能独立使用」）；本机实测 `manifest.json` 仅 24/178（14%），非主流 |
+| 完全对齐 book2skills 的 subskills 模块型 | 实测仅 3/38 用该形态；其设计目标是「多模块联合输出」（财报分析类），与本书「工程规则」性质不匹配；会引入显式跨文件 Read 指令，链路更脆 |
+
+## 后果
+
+**正面**
+- 复用唯一有 22/22 命中率背书的骨架，省掉骨架设计这一整块风险。
+- 单文件 + 溢出阀兼顾 agent 可读性与自动生成的膨胀风险。
+- 契约侧车使「可信任性」可机器判定，同时保持 SKILL.md 干净。
+
+**负面 / 代价**
+- 需定义并维护体积阈值与溢出判定规则。
+- 若切分粒度定错，会同时在「太碎（触发冲突）」与「太粗（触发模糊）」两侧返工。
+
+**必须遵守的约束**
+- `SKILL.md` frontmatter 仅 `name` + `description`，遵守官方硬限（`name` ≤64 字符、仅小写字母/数字/连字符、禁含 `anthropic`/`claude`；`description` ≤1024 字符）。
+- 6 段的**顺序与名称不得改动**——它是 22/22 的实证契约。
+- 「深度阅读」段必须回链 `sources/ai-agent-book-zh/book/chapterN.md`，保证可溯源。
+- `pipeline/schemas/skill.json`（机器契约）与 `skills/<name>/SKILL.md`（agent 正文）**不是重复定义**，是同一 skill 的两个平面，关系记录于本 ADR 与 ADR-002。
+
+## 核实方式
+
+```bash
+# 原书 6 段骨架 22/22 命中
+cd /tmp/bookskills && for f in *.md; do echo "$f: $(grep -cE '^## (何时使用|核心原则|实践模式|常见陷阱|配套代码|深度阅读)' $f)/6"; done
+# 体积实测
+wc -c /tmp/bookskills/*.md | sort -n
+# references 使用数（原书 skill 目录内无 references）
+curl -s https://api.github.com/repos/bojieli/ai-agent-book/git/trees/main?recursive=1 | jq -r '.tree[]|select(.path|test("^skills/.*/references"))|.path' | wc -l
+# 本机 manifest.json 出现率
+cd ~/.agents/skills && for d in */; do ls "$d" 2>/dev/null; done | grep -c '^manifest\.json$'
+```

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 2,
+  "runId": "run-failed-60807e5dc0a9",
+  "createdAt": "2026-10-08T08:45:03.758Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/chapter4.md",
+    "hash": null,
+    "totalLines": null
+  },
+  "layer2": {
+    "kind": null,
+    "reused": false,
+    "note": null,
+    "reusedFrom": null,
+    "perAnchor": []
+  },
+  "model": {
+    "provider": null,
+    "modelId": null,
+    "calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "tokensDetail": {
+      "reasoning": 0,
+      "cachedInput": 0
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "none",
+    "configSource": null,
+    "fixture": null
+  },
+  "judge": {
+    "instanceId": null,
+    "implemented": false
+  },
+  "artifacts": {},
+  "counts": {
+    "anchors": 0,
+    "objects": 0,
+    "passed": 0,
+    "rejected": 0
+  },
+  "reasonCodes": {
+    "vocabulary": [],
+    "byCode": {}
+  },
+  "objectVerdicts": [],
+  "contentProblems": 0,
+  "engineeringFailure": {
+    "kind": "layer2-truncated",
+    "message": "模型响应没有可用内容（finish_reason=length，completion_tokens=8000，其中推理占用 8000，推理文本 27124 字）。响应被 max_tokens 截断——提高 maxTokens 后重试。"
+  }
+}
