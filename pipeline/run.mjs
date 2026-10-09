@@ -46,13 +46,18 @@ import {
   stubGenerateObjects,
 } from './tools/model-stub.mjs'
 import {
+  BYTES_PER_INPUT_TOKEN_MEASURED,
+  DEFAULT_MAX_ANCHOR_BYTES,
+  INPUT_TOKEN_OVERHEAD_MEASURED,
   Layer2Error,
   extractByAnchor,
   promptFingerprint,
+  splitAnchorIntoSlices,
+  usageTokensOf,
 } from './tools/layer2-extractor.mjs'
 import { LlmCallError, LlmConfigError, createUsageLedger, resolveJudgeLlmConfig, resolveLlmConfig, urlHost } from './tools/llm-client.mjs'
 import { describeJudgeRoute, judgeObject } from './tools/judge.mjs'
-import { verifyObjects, REASON_CODES } from './tools/verifier.mjs'
+import { verifyObjects, REASON_CODES, OBJECT_TYPES } from './tools/verifier.mjs'
 
 /** 退出码。导出以便测试引用同一常量，避免测试里出现魔法数字。 */
 export const EXIT = Object.freeze({
@@ -73,8 +78,15 @@ export const EXIT = Object.freeze({
  *     这同样是判定口径的变更：同一批对象，判定者看到的「主张」内容变了，判定结果就可能变。
  *     版本号进指纹的意义正在于此——它让「对着同一批对象、只换尺子重判」成为一次显式操作
  *     （`--judge`），不必连第 2 层一起重跑。
+ * v6：回执新增三个**固定字段**，并新增超预算锚点的按结构边界切分（ticket 07）：
+ *     ① `coverage`——索引锚点数 / 已处理锚点数 / 覆盖锚点数 / **零产出锚点清单**；
+ *     ② `counts.objectTypes`——本章产出的类型分布（九类**全给**，含 0）；
+ *     ③ `layer2.usage`——第 2 层按章的调用与 token，含逐锚点明细。
+ *     为什么必须递增：旧回执里**没有**这三个字段，而「字段缺席」与「该值为 0」在
+ *     语义上完全不同（「零产出锚点 0 个」与「这份回执答不了这个问题」）。
+ *     版本号进指纹，使旧回执只能被当成旧口径的记录，不会被当成新口径的结论。
  */
-export const PIPELINE_VERSION = 5
+export const PIPELINE_VERSION = 6
 
 /**
  * 质量门禁的完成度。**必须进回执**：判定者未启用时，`passed` 只代表「过了确定性判据」，
@@ -215,36 +227,67 @@ async function runLayer2Stub({ index, sourceAbsPath, repoRoot, fixturePath }) {
  * 副作用是它对「早期版本写下的半成品」（没有 sourceHash 字段）同样适用，因此升级不会
  * 白白丢掉已经付过费的产出。
  *
- * @returns {{ok:boolean, reason:string|null, done:number}}
+ * @param {{lines?:string[], maxAnchorBytes?:number}} [opts] 校验「片中断点」所需：片数是
+ *        「源文 + 预算」的函数，两者任一变了，旧半成品记的切片位置就可能已经不存在。
+ *        不传 lines 时跳过片校验（只按锚点粒度续，退化成 v5 的行为）。
+ * @returns {{ok:boolean, reason:string|null, done:number, inFlight:object|null}}
  */
-export function checkPartialUsable(partial, objects, index) {
-  if (!partial || typeof partial !== 'object') return { ok: false, reason: 'no-partial', done: 0 }
-  if (!Array.isArray(objects)) return { ok: false, reason: 'objects-not-array', done: 0 }
+export function checkPartialUsable(partial, objects, index, opts = {}) {
+  if (!partial || typeof partial !== 'object') return { ok: false, inFlight: null, reason: 'no-partial', done: 0 }
+  if (!Array.isArray(objects)) return { ok: false, inFlight: null, reason: 'objects-not-array', done: 0 }
   if (partial.sourceHash !== undefined && partial.sourceHash !== index.sourceHash) {
-    return { ok: false, reason: 'source-version-changed', done: 0 }
+    return { ok: false, inFlight: null, reason: 'source-version-changed', done: 0 }
   }
   const done = partial.completedAnchors
-  if (!Number.isInteger(done) || done <= 0 || done >= index.anchorCount) {
-    return { ok: false, reason: 'completion-out-of-range', done: 0 }
+  // `done` 允许为 0：半成品可以停在**第一个锚点的第一片之后**（ticket 07 的片级落盘），
+  // 此时一个锚点都还没收尾，但片产出已经付过费、可以续。
+  if (!Number.isInteger(done) || done < 0 || done >= index.anchorCount) {
+    return { ok: false, inFlight: null, reason: 'completion-out-of-range', done: 0 }
   }
   if (!Array.isArray(partial.anchors) || partial.anchors.length !== done) {
-    return { ok: false, reason: 'anchors-missing', done: 0 }
+    return { ok: false, inFlight: null, reason: 'anchors-missing', done: 0 }
   }
   for (let i = 0; i < done; i += 1) {
     const a = partial.anchors[i]
     const e = index.anchors[i]
     if (a?.anchor !== e.anchor || a.lineStart !== e.lineStart || a.lineEnd !== e.lineEnd) {
-      return { ok: false, reason: `anchor-${i + 1}-mismatch`, done: 0 }
+      return { ok: false, inFlight: null, reason: `anchor-${i + 1}-mismatch`, done: 0 }
+    }
+  }
+  // 片中断点：必须是**下一个**锚点，且其已完成片数落在该锚点实际的片数区间内。
+  // 逐项核对而不是信一个字段：片数是源文与预算的函数，源文没变而预算变了时，
+  // 旧半成品记的切片位置可能已经不存在了——那种半成品必须丢弃，不能拿来续。
+  const inFlight = partial.inFlight ?? null
+  let inFlightCheck = null
+  if (inFlight !== null) {
+    if (typeof inFlight !== 'object') return { ok: false, inFlight: null, reason: 'in-flight-malformed', done: 0 }
+    const next = index.anchors[done]
+    if (next === undefined || inFlight.anchor !== next.anchor) {
+      return { ok: false, inFlight: null, reason: 'in-flight-anchor-mismatch', done: 0 }
+    }
+    if (opts.lines !== undefined && opts.lines !== null) {
+      const slices = splitAnchorIntoSlices(next, opts.lines, {
+        maxAnchorBytes: opts.maxAnchorBytes ?? DEFAULT_MAX_ANCHOR_BYTES,
+      })
+      const total = slices.length
+      if (
+        !Number.isInteger(inFlight.slicesDone) ||
+        inFlight.slicesDone < 1 ||
+        inFlight.slicesDone > total
+      ) {
+        return { ok: false, inFlight: null, reason: 'in-flight-slices-out-of-range', done: 0 }
+      }
+      inFlightCheck = { anchor: next.anchor, slicesDone: inFlight.slicesDone, sliceCount: total }
     }
   }
   for (const o of objects) {
     const ref = Array.isArray(o?.sourceRefs) ? o.sourceRefs[0] : null
     const e = index.anchors.find((x) => x.anchor === ref?.anchor)
     if (!e || ref.contentHash !== e.contentHash) {
-      return { ok: false, reason: 'object-content-hash-mismatch', done: 0 }
+      return { ok: false, inFlight: null, reason: 'object-content-hash-mismatch', done: 0 }
     }
   }
-  return { ok: true, reason: null, done }
+  return { ok: true, reason: null, done, inFlight: inFlightCheck }
 }
 
 /**
@@ -312,7 +355,170 @@ export function checkFrozenFreshness(objects, index) {
 }
 
 /**
- * 把命令行 flags 转成 `runPipeline` 的入参。
+ * 锚点覆盖数与**零产出锚点**（ticket 07 的核心补充）。
+ *
+ * ## 为什么它必须从「对象 × 索引」反推，而不是读 `perAnchor`
+ *
+ * 这张卡的真实失效模式是**调用了、但没有产出**——它从原验收项的缝隙里穿过去。
+ * 盘上的证据只有 `perAnchor[].objectCount: 0` 这一条，而它**只在真正跑了第 2 层的路径上存在**：
+ * 复用路径与重判路径的 `perAnchor` 是空数组（实测），于是该信号在这两条路径上**整体消失**。
+ * 更糟的是那两条路径正是「你回头看这批对象时最可能走的路径」。
+ *
+ * 因此判据落在**对象本身**：一个锚点若没有任何对象把 `sourceRefs` 指向它，它就是零产出锚点。
+ * 这个推导只依赖「对象」与「索引」，而这两样在每条路径上都在盘上、都可复算，
+ * 于是同一个数字在任何路径上都算得出来，且**同一个源 + 同一批对象必然算出同一个数字**。
+ *
+ * 它的方向是**保守的**：未处理的锚点会落进「零产出」而不是消失。宁可多报一个
+ * 「被处理但没产出」，不可漏报一个「整节被静默跳过」。
+ *
+ * @returns {{indexAnchors:number, processedAnchors:number|null, coveredAnchors:number,
+ *   withoutObjects:{count:number, anchors:string[]}, unresolvedReferenceAnchors:string[],
+ *   reading:string, perLevel:object}}
+ */
+export function computeAnchorCoverage(objects, index, { processedAnchors = null } = {}) {
+  const indexAnchors = index.anchors.map((a) => a.anchor)
+  const known = new Set(indexAnchors)
+  const covered = new Set()
+  const unresolved = new Set()
+
+  for (const o of Array.isArray(objects) ? objects : []) {
+    const refs = Array.isArray(o?.sourceRefs) ? o.sourceRefs : []
+    for (const ref of refs) {
+      const anchor = ref?.anchor
+      if (typeof anchor !== 'string') continue
+      if (known.has(anchor)) covered.add(anchor)
+      else unresolved.add(anchor)
+    }
+  }
+
+  const without = indexAnchors.filter((a) => !covered.has(a))
+
+  // 按层级分列：失效模式对层级有偏好（实测漏的都是 `h2-8` 本章小结与 `h2-9` 思考题这类
+  // 「不像知识」的末节）。只给一个总数，就看不出漏的是哪一类锚点。
+  const perLevel = {}
+  for (const a of index.anchors) {
+    const key = `h${a.level}`
+    const slot = (perLevel[key] ??= { index: 0, covered: 0, without: 0 })
+    slot.index += 1
+    if (covered.has(a.anchor)) slot.covered += 1
+    else slot.without += 1
+  }
+
+  return {
+    indexAnchors: indexAnchors.length,
+    // 「被处理」在本回执里**不是猜的**：它等于逐锚点明细的条数（本次真的为哪些锚点发过调用）。
+    // 取不到（替身/夹具路径）时是 null——此时「零产出」的清单仍然有效，但它答的是
+    // 「哪些锚点没有任何对象指向」，答不了「哪些锚点被处理过却没产出」。两者必须能分开读。
+    processedAnchors,
+    processedKnown: processedAnchors !== null,
+    coveredAnchors: indexAnchors.length - without.length,
+    withoutObjects: { count: without.length, anchors: without },
+    unresolvedReferenceAnchors: [...unresolved].sort(),
+    reading:
+      processedAnchors === null
+        ? '本次第 2 层**未按锚点发起调用**（替身/夹具路径），因此无法区分「被处理但产出 0」与「未处理」。' +
+          'withoutObjects 列的是**没有任何对象指向**的锚点，是一个保守的上界。'
+        : '本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（' +
+          'processedAnchors=' +
+          processedAnchors +
+          '，索引锚点数=' +
+          indexAnchors.length +
+          '）。',
+    perLevel,
+  }
+}
+
+/**
+ * 本章产出的类型分布。九种类型**全部给出**，包括计数为 0 的那几类。
+ *
+ * 为什么 0 也要给：读了 `{"Concept": 3}` 的人无法区分「本章没有 Playbook」与
+ * 「这一版回执还没统计 Playbook」。缺失的键与值为 0 的键是两条不同的信息，
+ * 而前者的代价是让人对着一个空位猜。
+ */
+export function computeTypeDistribution(objects) {
+  const dist = {}
+  for (const t of OBJECT_TYPES) dist[t] = 0
+  for (const o of Array.isArray(objects) ? objects : []) {
+    const t = typeof o?.objectType === 'string' ? o.objectType : '(未知类型)'
+    dist[t] = (dist[t] ?? 0) + 1
+  }
+  return dist
+}
+
+/**
+ * 第 2 层按章的调用与 token：总量 + **逐锚点明细**（ticket 07）。
+ *
+ * 为什么要逐锚点：`model.calls` 只能回答「这一章花了多少」，答不了「这一章里哪一段最贵」。
+ * 而「某个锚点特别贵」与「某个锚点零产出」往往是同一件事的两面——模型在一段上烧掉
+ * 一万 token 却什么也没产出，这是提示词或切分该被调整的地方，只在总量上看不出来。
+ *
+ * ## 两个数字的口径必须说清，否则它们对不上就是一笔糊账
+ *
+ * `model.calls` 是**客户端账本的 HTTP 尝试次数**（`llm-client` 的重试循环里逐次自增），
+ * 而本块的 `calls` 是**每次成功响应**的计数（一个锚点切片一次）。两者在发生过重试时
+ * **本来就不相等**，因此这里不把它们当成同一个数，而是显式做一次对账：
+ *   成功响应数 应当等于 `model.calls - model.failedCalls`（重试成功的那次也算 failedCalls）。
+ * 对不上就是缺陷信号，`matches` 会如实为 false 而不是被解释掉。
+ * 取不到用量（服务端没回 usage）时 `matches` 是 **null**，不是 true——「不知道」不是「对得上」。
+ */
+export function summarizeLayer2Usage(perAnchor, { ledgerCalls = 0, ledgerFailedCalls = 0 } = {}) {
+  const byAnchor = []
+  const anchorsWithoutUsage = []
+  let calls = 0
+  let input = 0
+  let output = 0
+
+  for (const a of Array.isArray(perAnchor) ? perAnchor : []) {
+    const totals = a?.usageTotals ?? null
+    const sliceCount = Number.isInteger(a?.sliceCount) ? a.sliceCount : 1
+    const anchorCalls = Number.isInteger(totals?.calls) ? totals.calls : sliceCount
+    const tokens = totals?.tokens ?? usageTokensOf(a?.usage)
+    calls += anchorCalls
+    if (tokens === null) {
+      anchorsWithoutUsage.push(a?.anchor ?? null)
+      byAnchor.push({ anchor: a?.anchor ?? null, calls: anchorCalls, tokens: null })
+      continue
+    }
+    input += tokens.input
+    output += tokens.output
+    byAnchor.push({ anchor: a?.anchor ?? null, calls: anchorCalls, tokens })
+  }
+
+  const ledgerSuccessful = ledgerCalls - ledgerFailedCalls
+  const matches =
+    anchorsWithoutUsage.length > 0 ? null : calls === ledgerSuccessful
+
+  return {
+    calls,
+    tokens: { input, output },
+    byAnchor,
+    anchorsWithoutUsage,
+    // 逐锚点明细为空 = 本次第 2 层**没有按锚点发起调用**（替身路径、夹具注入路径）。
+    // 这个区别必须说出来：`calls: 0` 与「这一版没统计」读起来一样，
+    // 而下一个人会用这个 0 去推断成本。
+    byAnchorNote:
+      byAnchor.length === 0
+        ? '本次第 2 层未按锚点发起任何真实调用（替身/夹具路径），因此没有逐锚点用量。此处 calls=0 表示「没有调用」，不表示「统计缺失」。'
+        : null,
+    reconciliation: {
+      perAnchorCalls: calls,
+      modelCallsAreHttpAttempts: true,
+      ledgerCalls,
+      ledgerFailedCalls,
+      ledgerSuccessfulCalls: ledgerSuccessful,
+      matches,
+      note:
+        '本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数' +
+        '（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。' +
+        (anchorsWithoutUsage.length > 0
+          ? `取不到用量的锚点有 ${anchorsWithoutUsage.length} 个，因此本次**无法对账**（matches=null，不是 true）。`
+          : ''),
+    },
+  }
+}
+
+/**
+ * 把「命令行 flags」转成 `runPipeline` 的入参。
  *
  * **这个函数存在的唯一理由是修一个真实缺陷。** 此前 `main()` 逐个枚举要传的字段
  * （`layer2:` / `rerun:` / `llmModel:` …），而 ticket 05 新增判定者的六个开关时只加了
@@ -416,6 +622,7 @@ export function parseArgs(argv) {
     judgeReasoningEffort: null,
     maxObjectsPerAnchor: null,
     maxTokens: null,
+    maxAnchorBytes: null,
     resume: true,
   }
   const positional = []
@@ -445,6 +652,7 @@ export function parseArgs(argv) {
     else if (a === '--judge-reasoning-effort') flags.judgeReasoningEffort = need(i, a), (i += 1)
     else if (a === '--max-objects-per-anchor') flags.maxObjectsPerAnchor = Number(need(i, a)), (i += 1)
     else if (a === '--max-tokens') flags.maxTokens = Number(need(i, a)), (i += 1)
+    else if (a === '--max-anchor-bytes') flags.maxAnchorBytes = Number(need(i, a)), (i += 1)
     else if (a.startsWith('--')) throw new SourcePathError(`未知参数：${a}`)
     else positional.push(a)
   }
@@ -536,6 +744,10 @@ export async function runPipeline(input) {
         overrides: buildProducerOverrides(input),
       })
       const lines = normalizeLines(await readFile(sourceAbs, 'utf8'))
+      const maxAnchorBytes =
+        Number.isFinite(input.maxAnchorBytes) && input.maxAnchorBytes > 0
+          ? input.maxAnchorBytes
+          : DEFAULT_MAX_ANCHOR_BYTES
       const partialObjectsAbs = path.join(repoRoot, partialObjectsPathFor(index))
       const partialRawAbs = path.join(repoRoot, partialRawPathFor(index))
 
@@ -551,16 +763,29 @@ export async function runPipeline(input) {
           rawPartial === null ? null : { ...rawPartial, totalAnchors: rawPartial.totalAnchors ?? index.anchorCount },
           objectsPartial,
           index,
+          { lines, maxAnchorBytes },
         )
         if (verdict.ok) {
+          // 「在跑锚点」的对象：半成品按定义把它们写在数组**尾部**（收尾那次落盘最后写入）。
+          // 这里按锚点筛出来交给第 2 层续，它自己会核对「确实是尾部」这条不变量。
+          const inFlight = verdict.inFlight
+          const carried =
+            inFlight === null
+              ? []
+              : objectsPartial.filter((o) => o?.sourceRefs?.[0]?.anchor === inFlight.anchor)
           seed = {
             objects: objectsPartial,
             perAnchor: rawPartial.anchors ?? [],
             usage: rawPartial.usageSoFar ?? null,
             done: rawPartial.completedAnchors,
+            resumeInFlight: inFlight === null ? null : { ...inFlight, objects: carried },
           }
           process.stderr.write(
-            `[断点续跑] 已有 ${seed.done}/${index.anchorCount} 个锚点的付费产出，从第 ${seed.done + 1} 个继续。\n`,
+            `[断点续跑] 已有 ${seed.done}/${index.anchorCount} 个锚点的付费产出` +
+              (inFlight === null
+                ? ''
+                : `，另有 ${inFlight.anchor} 的第 ${inFlight.slicesDone}/${inFlight.sliceCount} 片`) +
+              `，从第 ${seed.done + 1} 个锚点继续。\n`,
           )
         } else if (rawPartial !== null) {
           await rm(partialObjectsAbs, { force: true })
@@ -593,12 +818,16 @@ export async function runPipeline(input) {
         anchors: seed !== null ? index.anchors.slice(seed.done) : index.anchors,
         initialObjects: seed?.objects ?? [],
         initialPerAnchor: seed?.perAnchor ?? [],
+        resumeInFlight: seed?.resumeInFlight ?? null,
+        maxAnchorBytes,
         ...(input.maxObjectsPerAnchor ? { maxObjectsPerAnchor: input.maxObjectsPerAnchor } : {}),
         ...(input.maxTokens ? { maxTokens: input.maxTokens } : {}),
         maxAttempts: input.maxAttempts,
         retryDelayMs: input.retryDelayMs,
         // 增量落盘：整章要跑十几分钟，中途失败若什么都不留，已付费的产出就全丢了。
-        onAnchorDone: async ({ objects, perAnchor: soFar, ledger: snapshot }) => {
+        // 回调**每片**都会触发（不只是每个锚点）：一次超预算锚点的切分是 3–4 次调用，
+        // 只在锚点收尾时落盘会让「跑到第 3 片被杀」白丢前两片的钱。
+        onAnchorDone: async ({ objects, perAnchor: soFar, ledger: snapshot, inFlight }) => {
           await writeJson(partialObjectsAbs, objects)
           await writeJson(partialRawAbs, {
             schemaVersion: 'layer2-raw/v1',
@@ -606,6 +835,9 @@ export async function runPipeline(input) {
             note: '半成品：第 2 层尚未跑完全部锚点。不要当成冻结产物使用；下一次运行会自动从此处续跑。',
             createdAt,
             sourceHash: index.sourceHash,
+            // 片数是「源文 + 预算」的函数，续跑时要按同一个预算复算切片位置，
+            // 因此预算本身必须写进半成品——它变了，旧半成品的切片位置就不再有效。
+            maxAnchorBytes,
             modelId: `${config.provider ? `${config.provider}/` : ''}${config.modelId}`,
             // 半成品也带上提示词指纹：续跑时若提示词已变，产物就是「两版提示词混在一起」的，
             // 这个字段是唯一能让人事后发现这点的线索。
@@ -614,6 +846,9 @@ export async function runPipeline(input) {
             ),
             completedAnchors: soFar.length,
             totalAnchors: index.anchorCount,
+            // 已收尾锚点的**下一个**锚点若已跑了一部分片，记在这里。它使续跑能停在片中间，
+            // 而不是把整节重跑一遍；`checkPartialUsable` 会核对它确实是下一个锚点。
+            inFlight: inFlight ?? null,
             usageSoFar: {
               calls: snapshot.calls,
               failedCalls: snapshot.failedCalls,
@@ -629,6 +864,9 @@ export async function runPipeline(input) {
               finishReason: a.finishReason,
               reasoningChars: a.reasoningChars,
               derivedFieldsIgnored: a.derivedFieldsIgnored,
+              sliceCount: a.sliceCount,
+              oversizedSlices: a.oversizedSlices,
+              usageTotals: a.usageTotals,
               rawText: a.rawText,
             })),
           })
@@ -637,6 +875,17 @@ export async function runPipeline(input) {
       // 跑完了才撤掉半成品——它已完成使命，留着只会让人分不清哪个是冻结产物。
       await rm(partialObjectsAbs, { force: true })
       await rm(partialRawAbs, { force: true })
+
+      // ---- 「已处理锚点数 = 索引锚点数」的机械断言（ticket 07） ----
+      // 这一条挡的是**整节被静默跳过**：第 2 层声称跑完了，但某个锚点从未被处理。
+      // 它必须在写任何产物**之前**炸掉，否则一份少了整节的对象文件会被当成完整产出落盘，
+      // 而下游（第 3 层、回执、未来的聚类）没有任何判据会为缺席者报警。
+      if (extracted.perAnchor.length !== index.anchorCount) {
+        throw new Layer2Error(
+          `第 2 层声称跑完，但只处理了 ${extracted.perAnchor.length}/${index.anchorCount} 个锚点——` +
+            '拒绝把这份产出当成整章结果落盘（静默漏节不会被任何计数发现）。',
+        )
+      }
       const routeLabel = config.provider ?? urlHost(config.baseUrl) ?? 'unrecorded'
       layer2 = {
         objects: extracted.objects,
@@ -655,6 +904,7 @@ export async function runPipeline(input) {
             ? null
             : {
                 completedAnchorsBefore: seed.done,
+                inFlightBefore: seed.resumeInFlight ?? null,
                 note: '本次为断点续跑：calls/tokens 含前次已完成锚点的消耗（前次那次被截断的调用不在其中，因为它没有产出可记录的用量）。',
               },
         configSource: {
@@ -821,6 +1071,11 @@ export async function runPipeline(input) {
       promptFingerprint: producerReceipt.layer2?.promptFingerprint ?? null,
       configSource: producerReceipt.model?.configSource ?? null,
       routeLabel: producerReceipt.model?.provider ?? null,
+      // **逐锚点明细与按章用量同样是生产事实，必须一并沿用。**
+      // 此前只沿用了 ledger，`perAnchor` 留在空数组上——于是「哪个锚点被处理过、哪个锚点
+      // 一个对象都没产出」这条信号在重判路径上**整体消失**（实测）。而重判路径恰恰是
+      // 「同一批对象、只看换尺子之后结论怎么变」时最常走的路径：正是最需要按锚点看的时候。
+      perAnchor: Array.isArray(producerReceipt.layer2?.perAnchor) ? producerReceipt.layer2.perAnchor : [],
     }
   }
 
@@ -904,7 +1159,40 @@ export async function runPipeline(input) {
   const receiptRel = receiptPathFor(runId)
   const anchorsRel = path.relative(repoRoot, anchorsAbs)
 
-  // 第 2 层原始响应：只在真有原文时落盘（替身没有原文，因此替身路径不产生该文件）。
+  // ---- 切分的可审计面（ticket 07）----
+  // 只列**真的被切过**的锚点。缺省预算下全书没有锚点会被切分（实测最大锚点 16,718 字节
+  // < 24,000），因此这一栏通常为空数组——「为空」本身就是一条可核对的结论：
+  // 它说明这次运行的每个对象都来自一次看完整节的调用，而不是来自碎片。
+  const splits = layer2.perAnchor
+    .filter((a) => (a.sliceCount ?? 1) > 1)
+    .map((a) => ({
+      anchor: a.anchor,
+      sliceCount: a.sliceCount,
+      oversizedSlices: a.oversizedSlices ?? [],
+      slices: (a.slices ?? []).map((s) => ({
+        index: s.index,
+        lineStart: s.lineStart,
+        lineEnd: s.lineEnd,
+        bytes: s.bytes,
+        oversized: s.oversized,
+        objectCount: s.objectCount,
+      })),
+    }))
+
+  // ---- 覆盖数与零产出锚点（ticket 07）----
+  // 从「对象 × 索引」反推，而不是读 `perAnchor`——理由见 computeAnchorCoverage 的注释：
+  // `perAnchor` 在复用/重判路径上是空的，读它会让这个信号在那两条路径上整体消失。
+  const coverage = computeAnchorCoverage(layer2.objects, index, {
+    processedAnchors: layer2.perAnchor.length > 0 ? layer2.perAnchor.length : null,
+  })
+
+  // ---- 第 2 层按章用量（ticket 07）----
+  const layer2Usage = summarizeLayer2Usage(layer2.perAnchor, {
+    ledgerCalls: layer2.ledger.calls,
+    ledgerFailedCalls: layer2.ledger.failedCalls,
+  })
+
+  // ---- 第 2 层原始响应：只在真有原文时落盘（替身没有原文，因此替身路径不产生该文件） ----
   let rawRel = null
   if (layer2.rawByAnchor !== null) {
     rawRel = layer2RawPathFor(runId)
@@ -915,6 +1203,7 @@ export async function runPipeline(input) {
       modelId: layer2.modelId,
       configSource: layer2.configSource,
       promptFingerprint: layer2.promptFingerprint ?? null,
+      maxAnchorBytes: Number.isFinite(input.maxAnchorBytes) ? input.maxAnchorBytes : DEFAULT_MAX_ANCHOR_BYTES,
       note: '第 2 层的**原始响应**，未经第 3 层修正。用于把失败归因到具体锚点与具体响应。',
       anchors: layer2.rawByAnchor.map((a) => ({
         anchor: a.anchor,
@@ -925,7 +1214,25 @@ export async function runPipeline(input) {
         finishReason: a.finishReason,
         reasoningChars: a.reasoningChars,
         derivedFieldsIgnored: a.derivedFieldsIgnored,
+        sliceCount: a.sliceCount ?? 1,
+        oversizedSlices: a.oversizedSlices ?? [],
+        usageTotals: a.usageTotals ?? null,
+        // 多片时 `rawText` 为 null（一次调用回的原文不能被拼成一个字符串），
+        // 每一片的原文各在 `slices[].rawText` 里——按片归因，不伪造一次调用的假象。
         rawText: a.rawText,
+        slices: (a.slices ?? []).map((s) => ({
+          index: s.index,
+          lineStart: s.lineStart,
+          lineEnd: s.lineEnd,
+          bytes: s.bytes,
+          oversized: s.oversized,
+          objectIds: s.objectIds,
+          objectCount: s.objectCount,
+          usage: s.usage,
+          finishReason: s.finishReason,
+          reasoningChars: s.reasoningChars,
+          rawText: s.rawText,
+        })),
       })),
       reasoningPolicy:
         '本文件只保存模型返回的 content（第 2 层的产物），**不保存推理正文**（reasoning_content）。' +
@@ -962,7 +1269,14 @@ export async function runPipeline(input) {
         lineEnd: a.lineEnd,
         objectCount: a.objectIds.length,
         objectIds: a.objectIds,
+        // 逐锚点用量与切分信息一并带上：`layer2.usage.byAnchor` 与 `layer2.splits` 都从
+        // 这一份明细派生，而**顶层的 `coverage` 不从它派生**（理由见 computeAnchorCoverage）。
+        // 两处并存是刻意的：一处答「跑了什么」，一处答「留下了什么」，两者对不上就是线索。
+        sliceCount: a.sliceCount ?? 1,
+        usageTotals: a.usageTotals ?? null,
       })),
+      splits,
+      usage: layer2Usage,
     },
     model: {
       provider:
@@ -1036,7 +1350,20 @@ export async function runPipeline(input) {
       objects: verification.summary.total,
       passed: verification.summary.passed,
       rejected: verification.summary.rejected,
+      // 类型分布（ticket 07）。九类**全给**，含 0——缺一个键与「这一章没有这一类产出」
+      // 是两条不同的信息，而前者会让人对着一个空位猜。
+      objectTypes: computeTypeDistribution(layer2.objects),
     },
+    // 覆盖数与**零产出锚点**（ticket 07 的固定字段）。
+    // 它替代了「去 `perAnchor` 里翻 `objectCount: 0`」那种靠人眼找的做法：
+    // `coverage.withoutObjects.count` 是一个可以直接进断言、进告警、进趋势图的数字，
+    // 而它算在**每条路径**上（对象 × 索引，不依赖 `perAnchor`）。
+    //
+    // 读法：`coveredAnchors < indexAnchors` 就说明有整节没有产出任何对象。
+    // **它不是错误，是一份需要人看的清单**——`h2-8`（本章小结）与 `h2-9`（思考题）
+    // 这类末节确实可能不承载任何知识对象，那正是「正确的零产出」；而一个正文节
+    // 出现在这份清单里，则几乎一定是漏抽。区别只能靠人看清单，不能靠阈值。
+    coverage,
     reasonCodes: {
       // 从 verifier 的真源取，不在回执里手抄一份——手抄的词表会在新增理由码时静默过期，
       // 而验收项恰恰是「回执里的理由码落在封闭词表内」，两者不同步就等于该验收项永远为真。
@@ -1071,7 +1398,15 @@ function failureReceipt({ runId, kind, message, sourcePath }) {
     runId,
     createdAt: new Date().toISOString(),
     source: { path: sourcePath ?? null, hash: null, totalLines: null },
-    layer2: { kind: null, reused: false, note: null, reusedFrom: null, perAnchor: [] },
+    layer2: {
+      kind: null,
+      reused: false,
+      note: null,
+      reusedFrom: null,
+      perAnchor: [],
+      splits: [],
+      usage: null,
+    },
     model: {
       provider: null,
       modelId: null,
@@ -1087,7 +1422,10 @@ function failureReceipt({ runId, kind, message, sourcePath }) {
     },
     judge: { enabled: false, reason: '运行在验证阶段之前就失败了，判定者未运行' },
     artifacts: {},
-    counts: { anchors: 0, objects: 0, passed: 0, rejected: 0 },
+    counts: { anchors: 0, objects: 0, passed: 0, rejected: 0, objectTypes: null },
+    // 运行在验证阶段之前就失败了 → 这两块**没有观测值**。给 `null` 而不是空对象/零，
+    // 是为了让「答不了这个问题」与「答案是 0 个」在回执上仍然可区分。
+    coverage: null,
     reasonCodes: { vocabulary: [], byCode: {} },
     objectVerdicts: [],
     contentProblems: 0,
@@ -1130,10 +1468,15 @@ async function main(argv) {
       `参数错误：${err.message}\n` +
         '用法：node pipeline/run.mjs <内容源.md> [--json] [--repo-root <dir>] [--objects-fixture <file>]\n' +
         '      [--layer2 stub|deepseek] [--rerun] [--no-resume] [--max-tokens <n>] [--max-objects-per-anchor <n>]\n' +
-        '      [--llm-model <id>] [--llm-base-url <url>] [--llm-provider <name>]\n' +
+        '      [--max-anchor-bytes <n>] [--llm-model <id>] [--llm-base-url <url>] [--llm-provider <name>]\n' +
         '      [--judge] [--no-judge] [--judge-all] [--judge-model <id>] [--judge-base-url <url>] [--judge-provider <name>]\n' +
         '  判定者（第 3 层的第二组判据）缺省与第 2 层同路由；--judge-all 对所有对象都判（含已被\n' +
-        '  确定性判据拒绝的），产出两组判据的交叉表；--no-judge 显式关掉（回执会写明门禁不完整）。\n',
+        '  确定性判据拒绝的），产出两组判据的交叉表；--no-judge 显式关掉（回执会写明门禁不完整）。\n' +
+        `  --max-anchor-bytes 是单个锚点的正文预算（字节，缺省 ${DEFAULT_MAX_ANCHOR_BYTES}）：超过它才按**段落边界**\n` +
+        '  切分（绝不按字节硬切、绝不在代码围栏内切）。全书最大锚点 16,718 字节，故缺省下不会触发。\n' +
+        `  换算（实测 ${BYTES_PER_INPUT_TOKEN_MEASURED} 字节/输入 token + ${INPUT_TOKEN_OVERHEAD_MEASURED} token 固定开销）：\n` +
+        `  缺省预算 ≈ ${Math.round(INPUT_TOKEN_OVERHEAD_MEASURED + DEFAULT_MAX_ANCHOR_BYTES / BYTES_PER_INPUT_TOKEN_MEASURED)} 输入 token；` +
+        `全书最大锚点 ≈ ${Math.round(INPUT_TOKEN_OVERHEAD_MEASURED + 16718 / BYTES_PER_INPUT_TOKEN_MEASURED)} 输入 token。\n`,
     )
     return EXIT.RUN_FAILED
   }
@@ -1177,6 +1520,28 @@ async function main(argv) {
               `未判 ${receipt.judge.summary.notCalled}］\n`
             : `\n⚠ 本次未应用判定者判据（${receipt.judge.reason}）：` +
               `「通过」只代表过了确定性判据。门禁完成度：${receipt.verificationGate}\n`) +
+          // 覆盖数**每行都打**，不是只在出问题时打：「本次覆盖了 20/20」是一条可核对的结论，
+          // 而只在有零产出时才出声，会让人分不清「没有零产出」与「这一版根本没统计」。
+          (receipt.coverage === null || receipt.coverage === undefined
+            ? ''
+            : `覆盖：${receipt.coverage.coveredAnchors}/${receipt.coverage.indexAnchors} 个锚点有产出` +
+              (receipt.coverage.withoutObjects.count > 0
+                ? `；⚠ ${receipt.coverage.withoutObjects.count} 个锚点**` +
+                  (receipt.coverage.processedKnown
+                    ? '被处理但产出 0 个对象'
+                    : '没有任何对象指向它') +
+                  `**：${receipt.coverage.withoutObjects.anchors.join('、')}\n` +
+                  '  （这不必然是错误——本章小结/思考题这类末节本就可能不承载知识对象；' +
+                  '要人看这份清单，不能靠阈值。）\n'
+                : `（无零产出锚点）\n`) +
+              (receipt.coverage.processedKnown || receipt.coverage.withoutObjects.count === 0
+                ? ''
+                : `  已处理锚点数未知：本次第 2 层未按锚点发起调用（${receipt.layer2.kind} 路径），` +
+                  '因此上面这份清单是「没有被指向」的锚点，不等于「被处理过却没产出」的锚点。\n') +
+              (receipt.layer2.splits?.length > 0
+                ? `切分：${receipt.layer2.splits.length} 个锚点超预算被按段落边界切开：` +
+                  `${receipt.layer2.splits.map((s) => `${s.anchor}→${s.sliceCount} 片`).join('、')}\n`
+                : '')) +
           `对象：${receipt.artifacts.objects.path}\n回执：${receiptPathFor(receipt.runId)}\n`,
       )
     return exitCode

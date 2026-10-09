@@ -1067,7 +1067,12 @@ describe('04 · 真实第 2 层的端到端：记账、固化、显式重跑', (
       id: 'X-Y-CONCEPT-01',
       sourceRefs: [{ anchor: a.anchor, contentHash: a.contentHash }],
     }))
-    assert.deepEqual(checkPartialUsable(partial, objects, IDX), { ok: true, reason: null, done: 2 })
+    assert.deepEqual(checkPartialUsable(partial, objects, IDX), {
+      ok: true,
+      reason: null,
+      done: 2,
+      inFlight: null,
+    })
 
     // 少一个锚点记录 → 不可用
     const short = { ...partial, anchors: partial.anchors.slice(0, 1) }

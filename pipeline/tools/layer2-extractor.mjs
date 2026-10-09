@@ -20,6 +20,7 @@
 
 import { createHash } from 'node:crypto'
 
+import { computeFencedFlags } from './anchor-index.mjs'
 import {
   OBJECT_TYPES,
   PIPELINE_REQUIRED_FIELDS,
@@ -47,16 +48,24 @@ export class Layer2Error extends Error {
  * 因此它进回执，也进审计平面的原始响应文件。
  */
 export function promptFingerprint({ maxObjectsPerAnchor = DEFAULT_MAX_OBJECTS_PER_ANCHOR } = {}) {
-  const system = buildSystemPrompt({ maxObjectsPerAnchor })
-  const userTemplate = buildUserPrompt({
+  const base = {
     anchor: '<锚点>',
     title: '<标题>',
     lineStart: 0,
     lineEnd: 0,
     anchorText: '<正文>',
     sourceFile: '<源文件>',
-  })
-  return `prompt-${createHash('sha256').update(`${system}\n\u0000\n${userTemplate}`).update('\n').digest('hex').slice(0, 12)}`
+  }
+  const system = buildSystemPrompt({ maxObjectsPerAnchor })
+  // **两种形态都要进指纹**（ticket 07）：本层现在有两套用户提示词——「整节」与「切片」。
+  // 只哈希其中一套，就会让「另一套被改过」在指纹上不可见——而那正是提示词指纹存在的理由。
+  const userWhole = buildUserPrompt({ ...base, slice: { index: 0, sliceCount: 1, lineStart: 0, lineEnd: 0 } })
+  const userSlice = buildUserPrompt({ ...base, slice: { index: 1, sliceCount: 3, lineStart: 0, lineEnd: 0 } })
+  return `prompt-${createHash('sha256')
+    .update([system, userWhole, userSlice].join('\n\u0000\n'))
+    .update('\n')
+    .digest('hex')
+    .slice(0, 12)}`
 }
 
 /** 由本模块确定性填入、不接受模型提供的字段。 */
@@ -79,6 +88,128 @@ export const DERIVED_FIELDS = Object.freeze([
 export const DEFAULT_MAX_TOKENS = 16000
 export const DEFAULT_TEMPERATURE = 0
 export const DEFAULT_MAX_OBJECTS_PER_ANCHOR = 2
+
+// ---------------------------------------------------------------------------
+// 切分：超出单次输入预算的锚点按结构边界切开（ticket 07）
+// ---------------------------------------------------------------------------
+
+/**
+ * 字节 → 输入 token 的换算基准。**是实测值，不是估计。**
+ *
+ * 实测口径（2026-10-09）：取 `run-7afb98d262b5.layer2-raw.json` 里 `chapter4.md` 全部 20 个锚点，
+ * 每个锚点的 `usage.prompt_tokens` 与索引里的 `contentBytes` 做最小二乘拟合，得
+ * `prompt_tokens = 1213.2 + 0.21175 × bytes`，残差 max|.| = **125.5** token。
+ *
+ * 复算命令见 docs/adr/ADR-017-anchor-slicing-and-input-budget.md 的「复算口径」一节。
+ *
+ * 因此：**1 输入 token ≈ 4.72 字节正文**，另加约 1213 token 的固定开销
+ * （系统提示词 + 用户提示词模板 + 服务端 chat 模板）。
+ *
+ * 这两个数只用来把「字节预算」翻译成人看得懂的 token 量级，**不参与任何判据**——
+ * 判据是字节数本身，因此不会随模型的换算出错而漂移。
+ */
+export const BYTES_PER_INPUT_TOKEN_MEASURED = 4.72
+export const INPUT_TOKEN_OVERHEAD_MEASURED = 1213
+
+/**
+ * 单个锚点的正文预算（字节）。超过它才触发切分。
+ *
+ * **缺省值是选定的策略，不是测量结果**——说清楚这一点比数字本身重要：
+ *   - 全书 336 个锚点里最大的是 `chapter10#h3-6` **16,718 字节**（实测，见 ADR-017）。
+ *     按上式换算 = 1,213 + 3,542 ≈ **4,755 输入 token**。
+ *   - 24,000 字节换算 ≈ 6,298 输入 token，**高于全书最大锚点**。
+ *   - 因此：**缺省预算下全书没有任何锚点会被切分**。切分是为「换一本更大的书、
+ *     或模型输入窗口更小」准备的容量护栏，不是当前会走到的路径。
+ *     它的行为由构造出来的超预算锚点钉住（`single-chapter-batch.test.mjs`），
+ *     不靠真实语料偶然触发。
+ *
+ * 为什么不设更小（例如 8,000）：切分会把一个锚点的语义切开，而「一节内跨段落的综合」
+ * 正是最有价值的对象形态（第 2 层提示词里专门为此写过一条要求）。无必要不切。
+ */
+export const DEFAULT_MAX_ANCHOR_BYTES = 24000
+
+/**
+ * 把一个锚点按**结构边界**切成若干片。
+ *
+ * 切点只有一种：**空行且不在代码围栏内**——即 markdown 的段落边界。
+ * 刻意**不做**的事：
+ *   - 不按字节数硬切（会在句子中间断开，模型看到半句话）；
+ *   - 不在代码围栏内切（会把一个代码块劈成两半，两半都失去意义，而代码块往往正是
+ *     一段工程规则的唯一证据）。
+ *
+ * 单个段落自身就超出预算时，**整段交出并标 `oversized: true`**——宁可让这一次调用超预算，
+ * 也不把它切断。这是本函数唯一允许超预算的出口，且它是**可见的**（进回执的 `layer2.splits`）。
+ *
+ * 溯源不受影响：切片只是**喂给模型的窗口**，`sourceRefs` 仍由 `materializeObject`
+ * 按**锚点**（不是切片）填入，因此每个对象依旧解析到第 1 层的同一个锚点、同一个
+ * `lineStart`/`lineEnd`/`contentHash`。切分因此不能、也不该被下游看见。
+ *
+ * @returns {{index:number, sliceCount:number, lineStart:number, lineEnd:number, bytes:number, oversized:boolean}[]}
+ *          行号是**全文绝对行号**（与索引同口径），不是片内偏移。
+ */
+export function splitAnchorIntoSlices(anchorEntry, lines, { maxAnchorBytes = DEFAULT_MAX_ANCHOR_BYTES } = {}) {
+  const start0 = anchorEntry.lineStart - 1
+  const end0 = anchorEntry.lineEnd
+  const bytesOf = (a, b) => Buffer.byteLength(lines.slice(a, b).join('\n'), 'utf8')
+
+  const wholeBytes = bytesOf(start0, end0)
+  if (wholeBytes <= maxAnchorBytes) {
+    return [
+      {
+        index: 0,
+        sliceCount: 1,
+        lineStart: anchorEntry.lineStart,
+        lineEnd: anchorEntry.lineEnd,
+        bytes: wholeBytes,
+        oversized: false,
+      },
+    ]
+  }
+
+  // 围栏标记按**整份正文**计算：锚点首行一定是标题行（围栏内的行不会被第 1 层当成标题），
+  // 因此锚点起点处围栏必然是关闭的；但为了让「切点是否在围栏内」与第 1 层同口径，
+  // 这里仍按全文计算，而不是只看锚点内部。
+  const fenced = computeFencedFlags(lines)
+  const cuts = []
+  // 末尾那一行不作切点：切在它上面会产出一个空片。
+  for (let i = start0; i < end0 - 1; i += 1) {
+    if (lines[i].trim() === '' && !fenced[i]) cuts.push(i)
+  }
+
+  const spans = []
+  let from = start0
+  let pendingEnd = null
+  for (const cut of cuts) {
+    // 加上这一段就超预算 → 在上一个可用切点收尾。
+    if (pendingEnd !== null && bytesOf(from, cut + 1) > maxAnchorBytes) {
+      spans.push([from, pendingEnd + 1])
+      from = pendingEnd + 1
+      pendingEnd = null
+    }
+    // 从当前起点到本切点若仍超预算，说明中间有单个超大段落：本切点不能当片尾
+    // （再往后只会更大），留着让收尾逻辑把它整段交出并标记 oversized。
+    pendingEnd = bytesOf(from, cut + 1) <= maxAnchorBytes ? cut : null
+  }
+  // 收尾。**必须先看待收的那一片**：若「从本片起点到锚点末尾」仍超预算，就在待收切点断开。
+  // 少了这一步，最后一片会把剩下的全部内容一口吞下——实测踩到：预算 265 字节、六段正文、
+  // 六处可用切点，结果产出 138 / 255 / **382** 三片，最后一片比预算大 44%，
+  // 而它明明还能在 `pendingEnd` 处再切一刀。**切片尺寸不对不会报错，只会让这次调用更贵、
+  // 且切分机制在它本该生效的地方悄悄失效**——因此由测试逐条钉住「非超大单段不得超预算」。
+  if (pendingEnd !== null && bytesOf(from, end0) > maxAnchorBytes) {
+    spans.push([from, pendingEnd + 1])
+    from = pendingEnd + 1
+  }
+  spans.push([from, end0])
+
+  return spans.map(([a, b], i) => ({
+    index: i,
+    sliceCount: spans.length,
+    lineStart: a + 1,
+    lineEnd: b,
+    bytes: bytesOf(a, b),
+    oversized: bytesOf(a, b) > maxAnchorBytes,
+  }))
+}
 
 /**
  * 组装系统提示词。
@@ -140,11 +271,28 @@ export function buildSystemPrompt({ maxObjectsPerAnchor = DEFAULT_MAX_OBJECTS_PE
  *
  * 正文**整段给出**（含标题行），使「引文在锚点区间内逐字命中」这条判据的比对范围
  * 与模型看到的范围一致——两者不一致时，模型会引用它看得见而第 3 层看不见的内容。
+ *
+ * `slice` 是**必须显式给出**的一行（缺省按「1/1」渲染），而不是「切分时才加」：
+ * 两套提示词各只在一种情况下出现，会让「模型是否知道自己在看整节」这件事
+ * 无法从指纹上分辨。提示词指纹同时哈希两种形态（见 promptFingerprint）。
+ *
+ * 注意锚点行里的行号是**锚点**的区间，不是切片的区间——切片自己的区间单列一行。
+ * 这样模型既知道自己在整节里的位置，也不会把片子当成整节。
  */
-export function buildUserPrompt({ anchor, title, lineStart, lineEnd, anchorText, sourceFile }) {
+export function buildUserPrompt({ anchor, title, lineStart, lineEnd, anchorText, sourceFile, slice = null }) {
+  const s = slice ?? { index: 0, sliceCount: 1, lineStart, lineEnd }
+  const sliceLine =
+    s.sliceCount === 1
+      ? '切片：第 1 片，共 1 片（本节完整，未被切分）'
+      : `切片：第 ${s.index + 1} 片，共 ${s.sliceCount} 片（本片为第 ${s.lineStart}–${s.lineEnd} 行；` +
+        '本节因超出单次输入预算被**按段落边界**切分）。' +
+        '本片只是这一节的一部分：**只提取本片正文承载得住的对象**，' +
+        '不要因为「这一节大概还讲了别的」而补写本片里没有的内容，' +
+        '也不要产出跨片综合的结论（那样的主张在本片里找不到承载它的引文）。'
   return [
     `内容源：${sourceFile}`,
     `锚点：${anchor}（第 ${lineStart}–${lineEnd} 行，标题：${title}）`,
+    sliceLine,
     '',
     '正文如下（--- 之间，含标题行）：',
     '---',
@@ -242,10 +390,34 @@ export function materializeObject(rec, ctx) {
   return { obj, ignored }
 }
 
+/** 从服务商的 usage 对象里取输入/输出 token；取不到就是 null（**不估算**）。 */
+export function usageTokensOf(usage) {
+  if (!usage || typeof usage !== 'object') return null
+  const input = typeof usage.prompt_tokens === 'number' ? usage.prompt_tokens : null
+  const output = typeof usage.completion_tokens === 'number' ? usage.completion_tokens : null
+  if (input === null && output === null) return null
+  return { input: input ?? 0, output: output ?? 0 }
+}
+
 /**
- * 对**一个锚点**跑一次提取。
+ * 对**一个锚点**跑一次提取。锚点超出单次输入预算时，内部按结构边界切成若干片分别调用。
  *
- * @returns {Promise<{anchor:string, objects:object[], rawText:string, usage:object|null}>}
+ * 三件与切分相关的性质，都在这里落实：
+ *   1. **序号连续**：`seq` 是「该锚点内第几条」的**跨片累计**值（从 `carriedObjects.length + 1`
+ *      起算）。因此对象 id 只取决于「锚点 + 该锚点内的次序」，与切法无关——同一锚点两次运行
+ *      产出同一 id，这才让「重跑不产生新 id」在切分条件下依然成立。
+ *   2. **出处指向锚点**：`sourceRefs` 由 `materializeObject` 按 `anchorEntry` 填，
+ *      切片窗口不进出处。切分因此对第 3 层完全不可见。
+ *   3. **可续**：`startSlice` / `carriedObjects` 让「上一片已付费跑完、下一片没跑」的
+ *      中断点可以从片中间续上，而不是把整节重跑一遍。
+ *
+ * @param {number} [opts.startSlice] 从第几片开始跑（断点续跑；缺省 0）
+ * @param {object[]} [opts.carriedObjects] `startSlice` 之前那些片已经产出的对象
+ * @param {Function} [opts.onSliceDone] 每跑完**一片**回调一次，收到
+ *        `{objects, slices, slice, index, sliceCount}` 的**快照**。
+ * @returns {Promise<{anchor:string, objects:object[], slices:object[], sliceCount:number,
+ *   rawText:string|null, usage:object|null, finishReason:string|null, reasoningChars:number,
+ *   derivedFieldsIgnored:object[], oversizedSlices:number[], usageTotals:object}>}
  */
 export async function extractAnchor({
   config,
@@ -261,48 +433,120 @@ export async function extractAnchor({
   temperature = DEFAULT_TEMPERATURE,
   maxAttempts,
   retryDelayMs,
+  maxAnchorBytes = DEFAULT_MAX_ANCHOR_BYTES,
+  startSlice = 0,
+  carriedObjects = [],
+  onSliceDone,
 }) {
   const chatFn = chat ?? chatCompletion
-  const anchorText = lines.slice(anchorEntry.lineStart - 1, anchorEntry.lineEnd).join('\n')
-  const system = buildSystemPrompt({ maxObjectsPerAnchor })
-  const user = buildUserPrompt({
-    anchor: anchorEntry.anchor,
-    title: anchorEntry.title,
-    lineStart: anchorEntry.lineStart,
-    lineEnd: anchorEntry.lineEnd,
-    anchorText,
-    sourceFile,
-  })
-
-  const res = await chatFn(config, { system, user, maxTokens, temperature, fetchImpl, ledger, maxAttempts, retryDelayMs })
-  const payload = parseModelPayload(res.text)
-  const records = extractObjectList(payload)
-
+  const slices = splitAnchorIntoSlices(anchorEntry, lines, { maxAnchorBytes })
   const chapterRef = anchorEntry.anchor.replace('#', '-')
-  const objects = []
+
+  const objects = [...carriedObjects]
+  const sliceRecords = []
   const derivedFieldsIgnored = []
-  for (let i = 0; i < records.length; i += 1) {
-    const { obj, ignored } = materializeObject(records[i], {
-      anchorEntry,
+  let usageTotals = { calls: 0, tokens: { input: 0, output: 0 } }
+
+  for (let s = startSlice; s < slices.length; s += 1) {
+    const slice = slices[s]
+    const anchorText = lines.slice(slice.lineStart - 1, slice.lineEnd).join('\n')
+    const system = buildSystemPrompt({ maxObjectsPerAnchor })
+    const user = buildUserPrompt({
+      anchor: anchorEntry.anchor,
+      title: anchorEntry.title,
+      lineStart: anchorEntry.lineStart,
+      lineEnd: anchorEntry.lineEnd,
+      anchorText,
       sourceFile,
-      seq: i + 1,
-      createdAt,
-      chapterRef,
+      slice,
     })
-    objects.push(obj)
-    if (ignored.length > 0) derivedFieldsIgnored.push({ index: i, fields: ignored })
+
+    const res = await chatFn(config, {
+      system,
+      user,
+      maxTokens,
+      temperature,
+      fetchImpl,
+      ledger,
+      maxAttempts,
+      retryDelayMs,
+    })
+    const payload = parseModelPayload(res.text)
+    const records = extractObjectList(payload)
+
+    const before = objects.length
+    for (let i = 0; i < records.length; i += 1) {
+      const { obj, ignored } = materializeObject(records[i], {
+        anchorEntry,
+        sourceFile,
+        // 跨片累计：切法变了也不会让已有对象的 id 漂移（除非对象的**次序**本身变了）。
+        seq: objects.length + 1,
+        createdAt,
+        chapterRef,
+      })
+      objects.push(obj)
+      if (ignored.length > 0) {
+        derivedFieldsIgnored.push({ index: objects.length - 1, slice: slice.index, fields: ignored })
+      }
+    }
+    const produced = objects.slice(before)
+
+    const tokens = usageTokensOf(res.usage)
+    if (tokens !== null) {
+      usageTotals = {
+        calls: usageTotals.calls + 1,
+        tokens: {
+          input: usageTotals.tokens.input + tokens.input,
+          output: usageTotals.tokens.output + tokens.output,
+        },
+      }
+    } else {
+      usageTotals = { ...usageTotals, calls: usageTotals.calls + 1 }
+    }
+
+    const record = {
+      index: slice.index,
+      lineStart: slice.lineStart,
+      lineEnd: slice.lineEnd,
+      bytes: slice.bytes,
+      oversized: slice.oversized,
+      objectIds: produced.map((o) => o.id),
+      objectCount: produced.length,
+      rawText: res.text,
+      usage: res.usage ?? null,
+      finishReason: res.finishReason ?? null,
+      // 只记长度，**不落盘推理正文**：它是生产者的思维链，ticket 05 的判定者隔离
+      // 明确要求判定者看不到生产者推理；把它写到盘上就等于给它留了一条回流路径。
+      reasoningChars: res.reasoningChars ?? 0,
+    }
+    sliceRecords.push(record)
+
+    if (typeof onSliceDone === 'function') {
+      await onSliceDone({
+        objects: [...objects],
+        slices: slices.map((x) => ({ ...x })),
+        slice,
+        index: slice.index,
+        sliceCount: slices.length,
+      })
+    }
   }
 
   return {
     anchor: anchorEntry.anchor,
     objects,
-    rawText: res.text,
-    usage: res.usage,
-    finishReason: res.finishReason ?? null,
-    // 只记长度，**不落盘推理正文**：它是生产者的思维链，ticket 05 的判定者隔离
-    // 明确要求判定者看不到生产者推理；把它写到盘上就等于给它留了一条回流路径。
-    reasoningChars: res.reasoningChars ?? 0,
+    slices: slices.map((x) => ({ ...x })),
+    sliceCount: slices.length,
+    // 单片时 rawText 与切片记录里那份逐字相同（字段类型不变，老消费者不受影响）。
+    // 多片时**不拼接**：把三份响应拼成一个字符串会伪造出「一次调用回了这些」的假记录。
+    rawText: slices.length === 1 ? (sliceRecords[0]?.rawText ?? null) : null,
+    usage: slices.length === 1 ? (sliceRecords[0]?.usage ?? null) : null,
+    finishReason: slices.length === 1 ? (sliceRecords[0]?.finishReason ?? null) : null,
+    reasoningChars: sliceRecords.reduce((n, r) => n + (r.reasoningChars ?? 0), 0),
     derivedFieldsIgnored,
+    oversizedSlices: slices.filter((x) => x.oversized).map((x) => x.index),
+    usageTotals,
+    sliceRecords,
   }
 }
 
@@ -337,15 +581,40 @@ export async function extractByAnchor({
   temperature = DEFAULT_TEMPERATURE,
   maxAttempts,
   retryDelayMs,
+  maxAnchorBytes = DEFAULT_MAX_ANCHOR_BYTES,
   onAnchorDone,
   initialObjects = [],
   initialPerAnchor = [],
+  resumeInFlight = null,
 }) {
   const chat = chatImpl ?? chatCompletion
   const objects = [...initialObjects]
   const perAnchor = [...initialPerAnchor]
 
   for (const anchorEntry of anchors) {
+    // 断点续跑可以停在**片中间**：上一片已付费产出、下一片没跑。此时该锚点还不能算完成
+    // （它的 perAnchor 条目尚未写入），因此续跑点只能是「最后一个已完成锚点之后的那一个」。
+    const inFlight =
+      resumeInFlight !== null && resumeInFlight.anchor === anchorEntry.anchor ? resumeInFlight : null
+
+    if (inFlight !== null) {
+      // 半成品里「在跑锚点」的那些对象是已产出对象的**尾部**（它们在收尾那次落盘时最后写入）。
+      // 这里显式核对这条不变量，而不是默认它成立：续错位置会**静默重复产出或丢对象**，
+      // 而两者都不会在计数上露出破绽（总数看起来一样）。
+      const tail = objects.slice(objects.length - inFlight.objects.length)
+      const same =
+        tail.length === inFlight.objects.length &&
+        tail.every((o, i) => o?.id === inFlight.objects[i]?.id)
+      if (!same) {
+        throw new Layer2Error(
+          `断点续跑：半成品里「正在跑」的锚点 ${anchorEntry.anchor} 的 ${inFlight.objects.length} 个对象` +
+            '不是已产出对象的尾部——拒绝续跑（续错位置会重复产出或丢对象，而两者都不会在计数上露出破绽）。' +
+            '请传 --no-resume 从头跑，或删掉半成品文件。',
+        )
+      }
+      objects.length = objects.length - inFlight.objects.length
+    }
+
     const outcome = await extractAnchor({
       config,
       anchorEntry,
@@ -360,7 +629,23 @@ export async function extractByAnchor({
       temperature,
       maxAttempts,
       retryDelayMs,
+      maxAnchorBytes,
+      startSlice: inFlight === null ? 0 : inFlight.slicesDone,
+      carriedObjects: inFlight === null ? [] : inFlight.objects,
+      onSliceDone: async ({ objects: snapshot, index: sliceIndex, sliceCount }) => {
+        if (typeof onAnchorDone !== 'function') return
+        // 每片都落一次盘：整章要跑十几分钟，而一次超预算锚点的切分可能是 3–4 次调用；
+        // 只在锚点收尾时落盘，会让「跑到第 3 片时进程被杀」白丢前两片的钱。
+        await onAnchorDone({
+          objects: snapshot,
+          perAnchor: [...perAnchor],
+          inFlight: { anchor: anchorEntry.anchor, slicesDone: sliceIndex + 1, sliceCount },
+          ledger: { ...ledger, tokens: { ...ledger.tokens }, tokensDetail: { ...ledger.tokensDetail } },
+          lastAnchor: anchorEntry.anchor,
+        })
+      },
     })
+
     objects.push(...outcome.objects)
     perAnchor.push({
       anchor: outcome.anchor,
@@ -372,12 +657,18 @@ export async function extractByAnchor({
       finishReason: outcome.finishReason,
       reasoningChars: outcome.reasoningChars,
       derivedFieldsIgnored: outcome.derivedFieldsIgnored,
+      sliceCount: outcome.sliceCount,
+      slices: outcome.sliceRecords,
+      oversizedSlices: outcome.oversizedSlices,
+      usageTotals: outcome.usageTotals,
     })
-    // 增量落盘：每完成一个锚点就把「到目前为止」的快照交出去，使中途失败不吞掉已付费的产出。
+    // 锚点收尾后再落一次：这一次把 inFlight 清空，使半成品文件里的
+    // 「已完成锚点数」能往前推进一格。
     if (typeof onAnchorDone === 'function') {
       await onAnchorDone({
         objects: [...objects],
         perAnchor: [...perAnchor],
+        inFlight: null,
         ledger: { ...ledger, tokens: { ...ledger.tokens }, tokensDetail: { ...ledger.tokensDetail } },
         lastAnchor: outcome.anchor,
       })

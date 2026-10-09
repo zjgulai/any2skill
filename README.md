@@ -29,7 +29,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 299 项，零网络、零凭据
+npm test                                    # 321 项，零网络、零凭据
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -57,6 +57,7 @@ node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md \
 | `--judge-model <id>` | 判定者路由独立于第 2 层，可单点覆盖 |
 | `--llm-reasoning-effort <档>` | 生产者层推理档位：`low` / `high` / `max`。**缺省不发该字段**（跟随服务端默认），与「显式选了某档」在回执里可区分 |
 | `--judge-reasoning-effort <档>` | 判定者层推理档位，独立于生产者；缺省继承生产者的档位 |
+| `--max-anchor-bytes <n>` | 单个锚点的正文预算（缺省 24000 字节）：超过它才按**段落边界**切分。全书最大锚点 16,718 字节，故缺省下**无锚点被切分** |
 
 推理档位也可用 `ANY2SKILLS_LLM_REASONING_EFFORT` / `ANY2SKILLS_JUDGE_REASONING_EFFORT` 设置。
 非法取值**抛错而非静默回落**——静默忽略一个拼错的档位，会让一次「以为降档了」的对照跑出「其实没降」的结果。
@@ -157,6 +158,39 @@ node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md \
 > 边界：纯回放路径**不写盘**（盘上的回执是产出者的记录，不该随「谁读了一遍」而变），
 > 因此漂移观察只在 stderr 与 `--json` 输出里，审计平面上看不到。
 
+## 覆盖数：哪些锚点没产出对象（卡 07）
+
+回执的 `coverage` 是一个**固定字段**，不用去明细里翻 `objectCount: 0`：
+
+```json
+"coverage": {
+  "indexAnchors": 20, "processedAnchors": 20, "processedKnown": true, "coveredAnchors": 19,
+  "withoutObjects": { "count": 1, "anchors": ["chapter4#h2-8"] },
+  "unresolvedReferenceAnchors": [],
+  "perLevel": { "h2": { "index": 9, "covered": 8, "without": 1 } }
+}
+```
+
+**它由「对象 × 索引」反推，不读 `perAnchor`。** 理由是一条实测缺陷：冻结产物复用分支与
+**重判路径**上的 `perAnchor` 是空数组，于是「哪个锚点没产出」在那条路径上整体消失——而重判
+正是「同一批对象、只看换尺子之后结论怎么变」时最常走的路。判据落在对象与索引上，每条路径都算得出来。
+
+**「被处理」不是猜的**：`processedAnchors` 取自逐锚点明细的条数（本次真的为哪些锚点发过调用）。
+替身/夹具路径不按锚点调用，此时它是 `null`、`processedKnown` 为 `false`，`coverage.reading`
+会写明这份清单答的是「没有任何对象指向它」而不是「被处理但产出 0」——**字段名不撒谎**。
+
+**读法是「要人看清单」，不是「看阈值」。** 实测 8 次真实运行，**每一次**都恰好有 1–2 个锚点零产出，
+且**从来没重复过同一个**：`h2-9`（思考题）6 次、`h2-8`（本章小结）2 次、`h3-7`（多模态感知，305 字节）1 次。
+末节不承载知识对象是**正确的零产出**，而一个正文节出现在清单里则几乎一定是漏抽——两者的区别
+只能靠人看。定阈值要等卡 09 的全书分布。
+
+同段的 `layer2.usage` 给出按章的调用与 token **及逐锚点明细**，并做一次对账：
+`layer2.usage.calls ?= model.calls − model.failedCalls`（后者是 HTTP 尝试次数，含重试；
+取不到用量时 `matches` 是 `null` 而不是 `true`——「不知道」不是「对得上」）。
+
+切分与容量的完整推导、字节→token 的实测换算、以及第 9 条验收措辞的更正，见
+[`docs/adr/ADR-017-anchor-slicing-and-input-budget.md`](docs/adr/ADR-017-anchor-slicing-and-input-budget.md)。
+
 ## 判定者判据的测量精度（实测，2026-10-08）
 
 判定者不是一把刻度精确的尺。**同档两臂对照**（同一批对象、同一提示词指纹、只重复跑一次）
@@ -243,9 +277,13 @@ node pipeline/synthesize-antipatterns.mjs --themes T02,T12 \
   **两层都不拨**——唯一可分辨的效应是降档省 **42.2%** 推理 token（同档噪声带 12.8%）；
   质量面测不出差异，但**也证明不了无差异**，而 ADR-009 的门槛是「证明不掉质」。
 - **推理开销**：第 2 层的输出 token 里约 92.6% 是思维链（实测 chapter4）。
-- **零产出锚点不可见**：一个锚点可能被调用、但产出 0 个对象，而**回执对此零信号**——
-  它不计数、不告警、无理由码。实测**默认档同样发生**，且每次漏的是不同锚点。
-  详见 [`ADR-015`](docs/adr/ADR-015-reasoning-tier-decision.md) 的「发现一」。
+- **零产出锚点**（卡 07 已修可见性，**分布本身仍是未决问题**）：一个锚点可能被调用、但产出 0 个对象。
+  此前**回执对此零信号**（不计数、不告警、无理由码）；现在它是固定字段 `coverage.withoutObjects`
+  （计数 + 清单 + 按层级分布），在复用路径与重判路径上同样存在。
+  **但「零产出多少算多」仍然没有阈值**——实测 8 次真实运行每次都有 1–2 个，且每次不是同一个
+  （`h2-9` 6 次 / `h2-8` 2 次 / `h3-7` 1 次），末节的零产出与正文节的漏抽在数字上无法区分。
+  原始发现见 [`ADR-015`](docs/adr/ADR-015-reasoning-tier-decision.md) 的「发现一」，
+  处置与复算口径见 [`ADR-017`](docs/adr/ADR-017-anchor-slicing-and-input-budget.md)。
 - **同档噪声带**：任何「A 比 B 差 N 条」的结论，都必须先给出同档重复跑的对照，
   否则 N 可能是噪声。实测：判定者同档两臂 13.5% 判决翻转；生产者同档三臂推理 token 波动 12.8%
   （`h2-8` 这个锚点的产出在 0 与 2 之间摆动，全程同档）。
