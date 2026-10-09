@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "any2skills:skill",
+  "title": "Skill 契约侧车",
+  "description": "ADR-004 决策 3 的机器契约。与 skills/<name>/SKILL.md（给 agent 读的正文）是同一 skill 的两个平面，不是重复定义。存放于 pipeline/registry/build/<slug>/ 或 pipeline/registry/，不进 SKILL.md——官方 description 硬限 1024 字符，把 JSON 契约塞进正文会同时污染可读性并挤爆预算。约束来源：docs/adr/ADR-004-skill-granularity-and-skeleton.md。",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "skillId",
+    "name",
+    "description",
+    "promotionState",
+    "sourceObjects",
+    "sourceRefs",
+    "evidenceGrade",
+    "freshness"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "skill-contract/v1"
+    },
+    "skillId": {
+      "$ref": "#/$defs/identifier"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9-]+$",
+      "description": "与 SKILL.md frontmatter 的 name 逐字相同。硬限取自 Claude 官方规范：≤64 字符、仅小写字母/数字/连字符，且不得含 anthropic / claude（后两条由门禁的 NAME_INVALID 检查承担，schema 的 pattern 只挡字符集）。"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "与 SKILL.md frontmatter 的 description 逐字相同。1024 是官方硬限。"
+    },
+    "promotionState": {
+      "type": "string",
+      "enum": ["assembled", "gate-passed", "approved", "rejected", "superseded"],
+      "description": "生命周期。`assembled` = 已装配但未过门禁；`gate-passed` = 过门禁一；`approved` 需门禁二与门禁三，二者尚未构建，故当前不得出现。取值集合与知识对象的 status 刻意不同：后者的 approved 只依赖确定性判据，而 skill 的 approved 依赖效用实测。"
+    },
+    "gateReceipt": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["passed", "reasonCodes", "bytes", "markdownHash", "checkedAt"],
+          "properties": {
+            "passed": { "type": "boolean" },
+            "reasonCodes": { "type": "array", "items": { "type": "string" } },
+            "bytes": { "type": "integer", "minimum": 0 },
+            "markdownHash": { "$ref": "#/$defs/hash" },
+            "checkedAt": { "$ref": "#/$defs/isoDateTime" }
+          },
+          "additionalProperties": true
+        }
+      ],
+      "description": "最近一次门禁一的结果。`passed: false` 时本条契约描述的是一个**被拒的**产物，不得被读成可发布。"
+    },
+    "inputContract": {
+      "oneOf": [{ "type": "null" }, { "type": "object" }],
+      "description": "环 5 的字段。当前恒为 null——构建者不预测消费者需要什么契约。"
+    },
+    "outputContract": {
+      "oneOf": [{ "type": "null" }, { "type": "object" }],
+      "description": "环 5 的字段。当前恒为 null。"
+    },
+    "tools": {
+      "type": "array",
+      "description": "skill 声明的工具清单。环 5 的字段，当前恒为空数组。"
+    },
+    "steps": {
+      "type": "array",
+      "description": "可执行步骤。环 5 的字段，当前恒为空数组——步骤属于「实践模式」段的语义，而该段当前由 Concept 定义填充（见 gaps 的 SECTION_FIELD_SEMANTICS_MISMATCH）。"
+    },
+    "stopConditions": {
+      "type": "array",
+      "description": "停止条件。环 5 的字段，当前恒为空数组。"
+    },
+    "rollback": {
+      "oneOf": [{ "type": "null" }, { "type": "object" }],
+      "description": "回滚方式。环 5 的字段，当前恒为 null。"
+    },
+    "tests": {
+      "type": "array",
+      "description": "ADR-004 要求 ≥2。**当前恒为 0，故本字段存在但未被满足。** schema 在此刻意**不设** minItems：设了会让每一份产出的契约都不合法，从而把「这个 skill 还没法测」与「这份契约写坏了」两件事混成同一个错误——前者是内容缺口，后者是格式缺陷，处理方式完全不同。缺口由 gaps 数组的 CONTRACT_FIELD_UNSUPPORTED 显式记录，并由门禁一回执汇报，不在 schema 层假装它是格式问题。"
+    },
+    "sourceObjects": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/identifier" },
+      "description": "装配 input 的知识对象 id。无来源对象不得成为 skill。"
+    },
+    "crossChapterObjects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/identifier" },
+      "description": "来自跨章反模式池的对象 id（ADR-016）。与 sourceObjects 分开记，因为它们的出处可能落在别的章。"
+    },
+    "sourceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceRef" },
+      "description": "装配 input 的**全部**出处锚点，去重。门禁一逐条验证可解析。"
+    },
+    "evidenceGrade": {
+      "$ref": "#/$defs/evidenceGrade"
+    },
+    "freshness": {
+      "$ref": "#/$defs/freshness"
+    },
+    "gapCodes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "缺口理由码，取自 skill-builder.mjs 的 GAP_CODES。它是「这个 skill 装不完整」的机器可读记录。"
+    },
+    "gaps": {
+      "type": "array",
+      "items": { "type": "object" },
+      "description": "逐条缺口。含 SECTION_NO_SOURCE / SECTION_EMPTY / SECTION_ITEM_COUNT_BELOW_SKELETON / SECTION_FIELD_SEMANTICS_MISMATCH / SECTION_ITEM_SUSPECT_NOT_TRIGGER。后两者靠计数查不出来，故必须逐条留文。"
+    },
+    "sectionCounts": {
+      "type": "object",
+      "description": "六段各自的条目数。键为骨架段的 key。门禁一会拿它与正文实际条目数比对，不一致即拒——防「契约说 6 条、正文写 1 条」。"
+    },
+    "provenance": {
+      "type": "object",
+      "description": "装配输入的可复核记录：源文件、锚点索引哈希、对象文件及其哈希、门禁回执文件与 runId、被门禁排除的对象 id。没有这一段，「这份契约是按哪批对象装的」就答不上来。"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+      "description": "与知识对象同一套标识约定（common.schema.json），可与对象 id 对照。"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "isoDateTime": {
+      "type": "string",
+      "minLength": 20
+    },
+    "evidenceGrade": {
+      "type": "string",
+      "enum": ["LO-S-synthetic", "LO-P-public", "LO-I-internal", "E1-observed", "E2-derived", "E3-restricted"]
+    },
+    "freshness": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "asOf": { "$ref": "#/$defs/isoDateTime" },
+        "reviewedAt": { "$ref": "#/$defs/isoDateTime" },
+        "expiresAt": { "$ref": "#/$defs/isoDateTime" },
+        "state": { "type": "string", "enum": ["fresh", "stale", "unknown"] }
+      },
+      "additionalProperties": true
+    },
+    "sourceRef": {
+      "type": "object",
+      "required": ["file", "anchor", "lineStart", "lineEnd"],
+      "properties": {
+        "file": { "type": "string", "minLength": 1 },
+        "anchor": { "type": "string", "minLength": 3 },
+        "title": { "type": "string" },
+        "lineStart": { "type": "integer", "minimum": 1 },
+        "lineEnd": { "type": "integer", "minimum": 1 },
+        "contentHash": { "$ref": "#/$defs/hash" }
+      },
+      "additionalProperties": true
+    }
+  }
+}

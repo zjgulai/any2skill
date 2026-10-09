@@ -3,7 +3,23 @@
 Any content → executable Agent Skills. MVP pipeline.
 
 **当前状态**：环 1–2 已跑通（源文件 → 锚点索引 → 知识对象 → 机器验证，含独立判定者）。
-环 3（语义聚类）、环 4（构建）、环 5（门禁二/三）尚未构建。
+**环 4 已实现（确定性装配 + 门禁一 skill 侧），但产物被门禁拦下**——见下。
+环 3（语义聚类）、环 5（门禁二/三）尚未构建。
+
+> ### 盘上仍然有 0 个已发布的 skill
+>
+> `find . -path ./node_modules -prune -o -name "SKILL.md" -print | wc -l` → 0（暂存区除外）。
+> 环 4 端到端已打通（对象 → 装配 → 门禁 → 回执，四跳都有落盘产物），但产物停在
+> `pipeline/registry/build/`，**没有进 `skills/` 发布区**，因为门禁一不通过。
+>
+> 两条拒因：`## 配套代码` 段为空（**该段在本项目信息源里没有任何来源**——
+> `sources/ai-agent-book-zh/` 下只有 `book/` 与 `skills/`，没有配套代码目录），
+> 以及 `## 常见陷阱` 只有 1 条（骨架要求 6–8，而**整章 39 个对象最多也只能凑 5 条**）。
+>
+> 换成宽松口径（条目数不入判据）**仍然不通过**——配套代码那一条与条目数无关。
+> 因此当前**没有任何簇能装出可发布的 skill**，这是信息源层面的缺口，不是聚类选择的结果。
+>
+> 全部实测与未决项见 [`docs/adr/ADR-019-ring4-deterministic-skill-assembly.md`](docs/adr/ADR-019-ring4-deterministic-skill-assembly.md)。
 
 ## 三段式链路
 
@@ -29,7 +45,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 321 项，零网络、零凭据
+npm test                                    # 369 项，零网络、零凭据
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -37,6 +53,10 @@ node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
 # 真实路径：需要模型凭据；产出真实对象，并调用判定者
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md \
   --layer2 deepseek --llm-model deepseek-v4-pro --llm-base-url https://api.deepseek.com
+
+# 环 4：把一批对象确定性装配成一个 SKILL.md，并跑门禁一（零模型调用）
+node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 \
+  --slug chapter4-tool-design-principles --title "工具设计的通用原则" --dry-run
 ```
 
 > **⚠ 漏掉 `--layer2 deepseek` 会静默覆盖真实产物。** `--layer2` 缺省是 `stub`，而**替身路径不检查已有产出**——
