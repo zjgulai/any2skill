@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "quote-gate-measurement/v1",
+  "note": "零模型调用。判据逐条对齐 verifier.mjs:362–396；成因由 2^5 补丁子集穷举取最小子集得到。",
+  "caveats": [
+    "独立单位是运行而非对象：同一对象 id 在多份对象集里重复出现。",
+    "盘上有产出的只有 chapter4 与 antipatterns（跨 7 章）；其余章只有索引、没有对象。",
+    "只测主引文 evidenceQuote 对 sourceRefs[0]；AntiPattern 的次级引文不在内。",
+    "whitespace 补丁比「只把换行视为可删/可留」宽，故其计数是上界；savedByNarrowLineJoinAlone 给出下界侧的证据。"
+  ],
+  "corpus": {
+    "sets": 12,
+    "duplicates": 5
+  },
+  "totalObjectsMeasured": 398,
+  "strict": 360,
+  "currentOk": 23,
+  "rejectedByGate": 15,
+  "rejectionRate": "3.8%",
+  "noQuote": 0,
+  "unresolved": 0,
+  "byCause": {
+    "whitespace": 9,
+    "inlineCode": 2,
+    "backslashEscape": 1,
+    "blockquoteMarker + whitespace": 1,
+    "quoteStyle + whitespace": 2
+  },
+  "byChapter": {
+    "chapter4": 15
+  },
+  "unexplained": [],
+  "failing": [
+    {
+      "file": "pipeline/knowledge/chapter4.objects.json",
+      "fileLabel": "pipeline/knowledge/chapter4.objects.json",
+      "objectId": "CHAPTER4-H2-4-ANTIPATTERN-02",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h2-4",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/chapter4.objects.json",
+      "fileLabel": "pipeline/knowledge/chapter4.objects.json",
+      "objectId": "CHAPTER4-H3-5-ENGINEERINGRULE-02",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "inlineCode"
+      ],
+      "savedByNarrowLineJoinAlone": false,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.4477f37a.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.4477f37a.objects.json",
+      "objectId": "CHAPTER4-H2-6-ANTIPATTERN-02",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h2-6",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.8694ef87.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.8694ef87.objects.json",
+      "objectId": "CHAPTER4-H3-3-CONCEPT-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-3",
+      "kind": "EXPLAINED",
+      "cause": [
+        "backslashEscape"
+      ],
+      "savedByNarrowLineJoinAlone": false,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.8694ef87.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.8694ef87.objects.json",
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.8ac13625.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.8ac13625.objects.json",
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.99717073.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.99717073.objects.json",
+      "objectId": "CHAPTER4-H3-1-CONCEPT-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-1",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.99717073.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.99717073.objects.json",
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "objectId": "CHAPTER4-H2-4-ANTIPATTERN-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h2-4",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "objectId": "CHAPTER4-H3-5-ANTIPATTERN-02",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "blockquoteMarker",
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": false,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "objectId": "CHAPTER4-H2-6-ANTIPATTERN-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h2-6",
+      "kind": "EXPLAINED",
+      "cause": [
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": true,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.b3e2fc2e.objects.json",
+      "fileLabel": "pipeline/knowledge/history/chapter4.b3e2fc2e.objects.json",
+      "objectId": "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h2-7",
+      "kind": "EXPLAINED",
+      "cause": [
+        "inlineCode"
+      ],
+      "savedByNarrowLineJoinAlone": false,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/registry/tier-probe/producer-low-3.objects.json",
+      "fileLabel": "pipeline/registry/tier-probe/producer-low-3.objects.json",
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "quoteStyle",
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": false,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    },
+    {
+      "file": "pipeline/registry/tier-probe/producer-low-3.objects.json",
+      "fileLabel": "pipeline/registry/tier-probe/producer-low-3.objects.json",
+      "objectId": "CHAPTER4-H3-5-HEURISTIC-02",
+      "chapter": "chapter4",
+      "anchor": "chapter4#h3-5",
+      "kind": "EXPLAINED",
+      "cause": [
+        "quoteStyle",
+        "whitespace"
+      ],
+      "savedByNarrowLineJoinAlone": false,
+      "savedByNarrowLineJoinPlusOwnCause": true
+    }
+  ],
+  "perFile": [
+    {
+      "file": "pipeline/knowledge/antipatterns.objects.json",
+      "label": "antipatterns（跨章）",
+      "objects": 16,
+      "chapters": [
+        "chapter1",
+        "chapter2",
+        "chapter4",
+        "chapter6",
+        "chapter7",
+        "chapter9"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/chapter4.objects.json",
+      "label": null,
+      "objects": 39,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.4477f37a.objects.json",
+      "label": null,
+      "objects": 33,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.78fa33fa.objects.json",
+      "label": null,
+      "objects": 38,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.8694ef87.objects.json",
+      "label": null,
+      "objects": 34,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.8ac13625.objects.json",
+      "label": null,
+      "objects": 37,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.99717073.objects.json",
+      "label": null,
+      "objects": 29,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.a257afe6.objects.json",
+      "label": null,
+      "objects": 37,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.ac88bcd9.objects.json",
+      "label": null,
+      "objects": 38,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
+      "label": null,
+      "objects": 30,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/knowledge/history/chapter4.b3e2fc2e.objects.json",
+      "label": null,
+      "objects": 34,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/registry/tier-probe/INVALID-producer-low.objects.json",
+      "duplicateOf": "pipeline/knowledge/history/chapter4.8ac13625.objects.json"
+    },
+    {
+      "file": "pipeline/registry/tier-probe/producer-default-3.objects.json",
+      "duplicateOf": "pipeline/knowledge/history/chapter4.4477f37a.objects.json"
+    },
+    {
+      "file": "pipeline/registry/tier-probe/producer-default.objects.json",
+      "duplicateOf": "pipeline/knowledge/history/chapter4.8694ef87.objects.json"
+    },
+    {
+      "file": "pipeline/registry/tier-probe/producer-low-2.objects.json",
+      "duplicateOf": "pipeline/knowledge/history/chapter4.99717073.objects.json"
+    },
+    {
+      "file": "pipeline/registry/tier-probe/producer-low-3.objects.json",
+      "label": null,
+      "objects": 33,
+      "chapters": [
+        "chapter4"
+      ]
+    },
+    {
+      "file": "pipeline/registry/tier-probe/producer-low-v2.objects.json",
+      "duplicateOf": "pipeline/knowledge/history/chapter4.b01d756d.objects.json"
+    }
+  ]
+}
