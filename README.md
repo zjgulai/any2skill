@@ -10,16 +10,21 @@ Any content → executable Agent Skills. MVP pipeline.
 >
 > `find . -path ./node_modules -prune -o -name "SKILL.md" -print | wc -l` → 0（暂存区除外）。
 > 环 4 端到端已打通（对象 → 装配 → 门禁 → 回执，四跳都有落盘产物），但产物停在
-> `pipeline/registry/build/`，**没有进 `skills/` 发布区**，因为门禁一不通过。
+> `pipeline/registry/build/`，**没有进 `skills/` 发布区**，因为门禁一在**严格口径**下不通过。
 >
-> 两条拒因：`## 配套代码` 段为空（**该段在本项目信息源里没有任何来源**——
-> `sources/ai-agent-book-zh/` 下只有 `book/` 与 `skills/`，没有配套代码目录），
-> 以及 `## 常见陷阱` 只有 1 条（骨架要求 6–8，而**整章 39 个对象最多也只能凑 5 条**）。
+> 进程：起初两条拒因——`## 配套代码` 段为空、`## 常见陷阱` 只有 1 条（骨架要求 6–8）。
+> 第一条**已解**：用户拍板扩充信息源，上游 `chapter4/` 配套代码已镜像进
+> `sources/ai-agent-book-zh/code/`（851 文件，逐文件哈希校验 851/851 一致，见
+> [`MIRROR-MANIFEST.md`](sources/ai-agent-book-zh/code/chapter4/MIRROR-MANIFEST.md)），
+> 该段现可填 6 条，`SECTION_EMPTY` 消失。第二条仍在：实测每个二级锚点簇最多 2 条反模式，
+> **整章 39 个对象也只有 5 条**。
 >
-> 换成宽松口径（条目数不入判据）**仍然不通过**——配套代码那一条与条目数无关。
-> 因此当前**没有任何簇能装出可发布的 skill**，这是信息源层面的缺口，不是聚类选择的结果。
+> 于是同一份产物出现**两种口径不同结论**：严格口径（条目数入判据）拒，
+> 宽松口径（只查 6 段存在/非空/顺序/体积/溯源）**通过**。装配器把两个结论都打出来，
+> 并明确标注「本次拒绝取决于条目数口径」——不替用户决定。
 >
-> 全部实测与未决项见 [`docs/adr/ADR-019-ring4-deterministic-skill-assembly.md`](docs/adr/ADR-019-ring4-deterministic-skill-assembly.md)。
+> 全部实测与未决项见 [`ADR-019`](docs/adr/ADR-019-ring4-deterministic-skill-assembly.md)
+> 与 [`ADR-020`](docs/adr/ADR-020-source-expansion-chapter4-code.md)。
 
 ## 三段式链路
 
@@ -45,7 +50,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 369 项，零网络、零凭据
+npm test                                    # 375 项，零网络、零凭据
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md

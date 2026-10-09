@@ -29,15 +29,18 @@ import {
 import {
   assembleSkill,
   collectClusterObjects,
+  collectCodePointers,
   deriveCluster,
   unwrapObjectsFile,
 } from '../../tools/skill-builder.mjs'
 
 const REPO = DEFAULT_REPO_ROOT
 const SOURCE_REL = 'sources/ai-agent-book-zh/book/chapter4.md'
+const CODE_ROOT_REL = 'sources/ai-agent-book-zh/code/chapter4'
 
 let IDX
 let ASSEMBLED
+let ASSEMBLED_NO_CODE
 
 before(async () => {
   IDX = await buildAnchorIndex(path.join(REPO, SOURCE_REL), { repoRoot: REPO })
@@ -47,13 +50,15 @@ before(async () => {
   const cluster = deriveCluster(IDX.anchors, 'chapter4#h2-2')
   const inCluster = collectClusterObjects(objects, cluster.anchors)
   // 只用「门禁一判过通过」的对象。当前盘上该簇 8 个全部通过（见 run-f8dc2538217f 回执）。
+  const base = { cluster, objects: inCluster, antipatterns: [], slug: 'chapter4-tool-design-principles', skillTitle: '工具设计的通用原则' }
+
+  // 含配套代码（镜像已就位）——这是 CLI 现在的真实输入。
   ASSEMBLED = assembleSkill({
-    cluster,
-    objects: inCluster,
-    antipatterns: [],
-    slug: 'chapter4-tool-design-principles',
-    skillTitle: '工具设计的通用原则',
+    ...base,
+    codePointers: collectCodePointers(path.join(REPO, CODE_ROOT_REL), { relPrefix: CODE_ROOT_REL }),
   })
+  // 不含配套代码——镜像尚不存在时的形状。两条都由本文件钉住，因为「有/没有」决定门禁结论。
+  ASSEMBLED_NO_CODE = assembleSkill({ ...base, codePointers: [] })
 })
 
 /** 便捷构造：拿一份合法的产物，按需改一处。 */
@@ -198,21 +203,6 @@ describe('溯源', () => {
 })
 
 describe('条目数口径是一处解释歧义，不是内容缺陷', () => {
-  it('同一份产物：严格口径拒，宽松口径仍拒——本次拒绝不取决于口径', async () => {
-    const strict = await verifySkill(doc(ASSEMBLED.markdown))
-    const lenient = await verifySkill({
-      ...doc(ASSEMBLED.markdown),
-      sectionCountPolicy: SECTION_COUNT_POLICIES.PRESENCE_ONLY,
-    })
-    assert.equal(strict.passed, false)
-    assert.equal(lenient.passed, false, '宽松口径下必须仍然不通过——否则说明真正拦下它的是口径而非内容')
-    assert.ok(strict.reasonCodes.includes('SECTION_COUNT_OUT_OF_RANGE'))
-    assert.ok(!lenient.reasonCodes.includes('SECTION_COUNT_OUT_OF_RANGE'))
-    // 两种口径下都在的理由码，就是**不依赖解释**的那部分
-    const common = strict.reasonCodes.filter((c) => lenient.reasonCodes.includes(c))
-    assert.deepEqual(common, ['SECTION_EMPTY'])
-  })
-
   it('契约记录的条目数与正文不一致时，两种口径都拒', async () => {
     for (const policy of [SECTION_COUNT_POLICIES.STRICT, SECTION_COUNT_POLICIES.PRESENCE_ONLY]) {
       const v = await verifySkill({
@@ -226,21 +216,56 @@ describe('条目数口径是一处解释歧义，不是内容缺陷', () => {
 })
 
 describe('tracer bullet 的结论（改动它必须显式说明理由）', () => {
-  it('chapter4#h2-2 簇的产物被门禁拒绝，拒因是「配套代码段为空」——本信息源下不可满足', async () => {
-    const v = await verifySkill(doc(ASSEMBLED.markdown))
-    assert.equal(v.passed, false)
-    const empty = v.failures.find((f) => f.code === 'SECTION_EMPTY')
+  // 本节的结论在 2026-10-09 被**显式修订过一次**，原因是信息源真的变了：
+  // 上游 chapter4/ 的配套代码目录被镜像进 sources/（ADR-020），
+  // 「配套代码」段第一次有了来源，SECTION_EMPTY 消失。改的是原因，不是判据。
+
+  it('含配套代码时：严格口径拒，宽松口径过——拒绝**取决于**条目数口径', async () => {
+    const strict = await verifySkill(doc(ASSEMBLED.markdown))
+    const lenient = await verifySkill({
+      ...doc(ASSEMBLED.markdown),
+      sectionCountPolicy: SECTION_COUNT_POLICIES.PRESENCE_ONLY,
+    })
+    assert.equal(strict.passed, false)
+    assert.deepEqual(strict.reasonCodes, ['SECTION_COUNT_OUT_OF_RANGE'])
+    assert.equal(lenient.passed, true, '配套代码段已被信息源扩充填上，宽松口径下应通过')
+    // 剩下的唯一障碍就是「常见陷阱 6–8 条算不算硬约束」这处解释歧义。
+  })
+
+  it('不含配套代码时：两种口径都拒——配套代码段为空与条目数无关', async () => {
+    const strict = await verifySkill(doc(ASSEMBLED_NO_CODE.markdown))
+    const lenient = await verifySkill({
+      ...doc(ASSEMBLED_NO_CODE.markdown),
+      sectionCountPolicy: SECTION_COUNT_POLICIES.PRESENCE_ONLY,
+    })
+    assert.equal(strict.passed, false)
+    assert.equal(lenient.passed, false)
+    const empty = lenient.failures.find((f) => f.code === 'SECTION_EMPTY')
     assert.ok(empty, '必须有 SECTION_EMPTY')
     assert.match(empty.detail, /配套代码/)
   })
 
-  it('该簇的对象供给：8 个对象、6 段中仅 4 段有来源、常见陷阱只有 1 条（骨架要求 6–8）', () => {
+  it('对象供给：8 个对象、6 段全部有来源、常见陷阱只有 1 条（骨架要求 6–8）', () => {
     assert.equal(ASSEMBLED.sectionCounts.whenToUse, 5)
     assert.equal(ASSEMBLED.sectionCounts.principles, 3)
     assert.equal(ASSEMBLED.sectionCounts.patterns, 2)
     assert.equal(ASSEMBLED.sectionCounts.pitfalls, 1)
-    assert.equal(ASSEMBLED.sectionCounts.code, 0)
+    assert.equal(ASSEMBLED.sectionCounts.code, 6)
     assert.equal(ASSEMBLED.sectionCounts.reading, 4)
+  })
+
+  it('配套代码段的一句话说明是 README 原话，不是生成的', async () => {
+    const seg = ASSEMBLED.markdown.split('## 配套代码')[1].split('## 深度阅读')[0]
+    const readme = await readFile(
+      path.join(REPO, CODE_ROOT_REL, 'perception-tools', 'README.md'),
+      'utf8',
+    )
+    const firstLine = readme
+      .split('\n')
+      .map((l) => l.trim())
+      .filter((l) => l && !l.startsWith('#'))[0]
+    assert.ok(firstLine, 'README 应有一个正文段落')
+    assert.ok(seg.includes(firstLine.slice(0, 30)), `SKILL.md 的配套代码段应含 README 首段原文\n${seg.slice(0, 400)}`)
   })
 })
 

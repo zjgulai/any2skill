@@ -31,6 +31,7 @@
  * | 深度阅读 | `sourceRefs[].file` + `.title` + 行号 | 完整 |
  */
 
+import { readFileSync, readdirSync } from 'node:fs'
 import path from 'node:path'
 
 import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
@@ -104,7 +105,83 @@ export const GAP_CODES = Object.freeze({
   SEMANTICS: 'SECTION_FIELD_SEMANTICS_MISMATCH',
   SUSPECT_TRIGGER: 'SECTION_ITEM_SUSPECT_NOT_TRIGGER',
   CONTRACT_UNSUPPORTED: 'CONTRACT_FIELD_UNSUPPORTED',
+  GRANULARITY: 'SECTION_SOURCE_GRANULARITY_COARSE',
 })
+
+/**
+ * 从镜像下来的配套代码目录里取「路径 + 一句话说明」。
+ *
+ * 这一段的来源**不是知识对象**，而是代码树本身——对象模型里没有任何字段承载它。
+ * 这正是一次真实的信息源扩充：2026-10-09 把上游 `chapter4/` 镜像进
+ * `sources/ai-agent-book-zh/code/`（口径见该目录下的 MIRROR-MANIFEST.md），
+ * 这段才第一次有东西可填。
+ *
+ * 「一句话说明」取各目录 `README.md` 的**首个正文段落原文**，不做改写、不做摘要。
+ * 之所以能这么做：实测这 6 个 README 的首段本来就是一句话的定位描述。
+ * 若某个目录没有 README，该目录不进入本段，并记一条缺口——不编。
+ */
+export function collectCodePointers(codeRoot, opts = {}) {
+  const pointers = []
+  if (!codeRoot) return pointers
+  // 骨架要求的是**仓库相对路径**，故必须显式给出相对前缀；
+  // 缺省回落到传入的绝对路径，但那会让 SKILL.md 里出现本机路径——调用方应始终传。
+  const relPrefix = opts.relPrefix || codeRoot
+  let entries
+  try {
+    entries = readdirSync(codeRoot, { withFileTypes: true })
+  } catch {
+    return pointers
+  }
+  for (const e of entries.filter((x) => x.isDirectory()).sort((a, b) => a.name.localeCompare(b.name))) {
+    const dir = path.join(codeRoot, e.name)
+    let files = []
+    try {
+      files = readdirSync(dir).filter((f) => f.toLowerCase().endsWith('.md')).sort()
+    } catch {
+      continue
+    }
+    if (!files.length) continue
+    const readme = files.find((f) => f.toLowerCase() === 'readme.md') || files[0]
+    let summary = ''
+    try {
+      summary = firstParagraph(readFileSync(path.join(dir, readme), 'utf8'))
+    } catch {
+      summary = ''
+    }
+    pointers.push({
+      dir: e.name,
+      path: path.posix.join(relPrefix.split(path.sep).join('/'), e.name),
+      readme: path.join(codeRoot, e.name, readme),
+      summary,
+    })
+  }
+  return pointers
+}
+
+/**
+ * 取 markdown 的首个正文段落（跳过标题与空行），并剥掉行内标记。
+ * 只做「取原文 + 去标记」，不做改写、不做摘要——这一段的可信度全靠「是原话」。
+ */
+export function firstParagraph(markdown) {
+  const lines = String(markdown || '').split('\n')
+  const buf = []
+  let started = false
+  for (const raw of lines) {
+    const line = raw.trim()
+    if (!started) {
+      if (!line || line.startsWith('#')) continue
+      started = true
+    }
+    if (!line) break
+    buf.push(line)
+  }
+  return buf
+    .join(' ')
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[*_`>]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
 
 /**
  * ADR-004 决策 3 的契约侧车里，**当前对象模型没有任何字段能供给**的那些。
@@ -315,10 +392,11 @@ export function assembleSkill(input) {
     }))
 
   // ── 配套代码 ────────────────────────────────────────────────────────────
-  // 刻意留空。信息源里没有配套代码目录（实测：sources/ai-agent-book-zh/ 下只有 book/ 与
-  // skills/），没有任何对象字段可以填这一段。下面这条缺口不是「暂时没做」，
-  // 是「按当前信息源不可满足」。
-  const codeItems = []
+  // 来源是镜像下来的代码树，不是知识对象。空的时候**留空**——曾经的缺口码
+  // SECTION_NO_SOURCE 仍然按「一个条目都没有」触发，故这里不额外编内容。
+  const codeItems = (Array.isArray(input.codePointers) ? input.codePointers : [])
+    .filter((c) => c && c.path)
+    .map((c) => ({ path: c.path, summary: c.summary || null, dir: c.dir }))
 
   // ── 深度阅读 ────────────────────────────────────────────────────────────
   const readingSeen = new Set()
@@ -345,7 +423,7 @@ export function assembleSkill(input) {
     const items = built[spec.key]
     sectionCounts[spec.key] = items.length
 
-    if (spec.sources.length === 0) {
+    if (spec.sources.length === 0 && items.length === 0) {
       gaps.push({
         code: GAP_CODES.NO_SOURCE,
         section: spec.key,
@@ -433,6 +511,23 @@ export function assembleSkill(input) {
     })
   }
 
+  // 「配套代码」段填上了，但**粒度是章级而非簇级**：对象模型里没有任何字段表达
+  // 「这个锚点对应哪个代码目录」，所以只能把本章的代码目录全列上。
+  // 这不是缺陷披露，是把「它凭什么列这些」讲清楚——否则读者会以为做过映射。
+  if (codeItems.length > 0) {
+    gaps.push({
+      code: GAP_CODES.GRANULARITY,
+      section: 'code',
+      heading: '## 配套代码',
+      detail:
+        `本段列的是**本章全部** ${codeItems.length} 个代码目录，不是本簇专属。` +
+        '理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。',
+      required: null,
+      actual: codeItems.length,
+      coarse: true,
+    })
+  }
+
   // ── 正文装配 ────────────────────────────────────────────────────────────
   const L = []
   const description = buildDescription({ cluster, whenToUse, principles })
@@ -484,6 +579,9 @@ export function assembleSkill(input) {
 
   L.push(SKELETON_SECTIONS[4].heading)
   L.push('')
+  for (const c of codeItems) {
+    L.push(c.summary ? `- \`${c.path}/\` —— ${c.summary}` : `- \`${c.path}/\``)
+  }
   L.push('')
 
   L.push(SKELETON_SECTIONS[5].heading)

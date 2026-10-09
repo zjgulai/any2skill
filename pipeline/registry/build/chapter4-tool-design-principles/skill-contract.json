@@ -7,12 +7,11 @@
   "gateReceipt": {
     "passed": false,
     "reasonCodes": [
-      "SECTION_COUNT_OUT_OF_RANGE",
-      "SECTION_EMPTY"
+      "SECTION_COUNT_OUT_OF_RANGE"
     ],
-    "bytes": 3155,
-    "markdownHash": "sha256:60a909fcee8a2be680491d6936452daa4c03cfc7e71cf899991999b401b8b519",
-    "checkedAt": "2026-10-09T11:06:36.126Z"
+    "bytes": 4794,
+    "markdownHash": "sha256:0ef29c013c987c4e58297455d54175086d74ab3a8a451c79df7e439afb0f59fc",
+    "checkedAt": "2026-10-09T11:55:36.533Z"
   },
   "inputContract": null,
   "outputContract": null,
@@ -65,7 +64,7 @@
   "evidenceGrade": "E2-derived",
   "freshness": {
     "state": "fresh",
-    "asOf": "2026-10-09T11:06:36.126Z"
+    "asOf": "2026-10-09T11:55:36.533Z"
   },
   "gaps": [
     {
@@ -75,14 +74,6 @@
       "detail": "条目数低于骨架形状（列表，6–8 条反模式）。",
       "required": 6,
       "actual": 1
-    },
-    {
-      "code": "SECTION_NO_SOURCE",
-      "section": "code",
-      "heading": "## 配套代码",
-      "detail": "本段在信息源中没有对应字段。骨架要求「仓库相对路径 + 每个目录一句话说明」，而对象模型没有任何字段承载它。",
-      "required": 1,
-      "actual": 0
     },
     {
       "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
@@ -161,6 +152,15 @@
       "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
       "required": null,
       "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 6 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 6,
+      "coarse": true
     }
   ],
   "sectionCounts": {
@@ -168,12 +168,11 @@
     "principles": 3,
     "patterns": 2,
     "pitfalls": 1,
-    "code": 0,
+    "code": 6,
     "reading": 4
   },
   "gapCodes": [
     "SECTION_ITEM_COUNT_BELOW_SKELETON",
-    "SECTION_NO_SOURCE",
     "SECTION_FIELD_SEMANTICS_MISMATCH",
     "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
     "CONTRACT_FIELD_UNSUPPORTED",
@@ -182,7 +181,8 @@
     "CONTRACT_FIELD_UNSUPPORTED",
     "CONTRACT_FIELD_UNSUPPORTED",
     "CONTRACT_FIELD_UNSUPPORTED",
-    "CONTRACT_FIELD_UNSUPPORTED"
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "SECTION_SOURCE_GRANULARITY_COARSE"
   ],
   "provenance": {
     "sourceFile": "sources/ai-agent-book-zh/book/chapter4.md",

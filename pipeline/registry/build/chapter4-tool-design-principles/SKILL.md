@@ -49,6 +49,12 @@ Skill 是用自然语言编写的操作流程文档，Agent 通过终端或代�
 
 ## 配套代码
 
+- `sources/ai-agent-book-zh/code/chapter4/active-tool-discovery/` —— 把全部工具说明一次塞进上下文，既占空间，也增加选择难度。本实验比较全量提供、检索预筛选和主动发现，学习如何让 Agent 在需要时找到合适的能力。
+- `sources/ai-agent-book-zh/code/chapter4/active-tool-selection/` —— 随着工具数量增加，模型不仅要理解任务，还要从许多相似说明中选出合适工具。本项目让你在同一目录上比较不同选择策略，理解节省上下文可能付出的代价。
+- `sources/ai-agent-book-zh/code/chapter4/collaboration-tools/` —— 有些任务需要另一个 Agent，有些需要用户作出决定，还有些只是等待外部事件。本实验把这些协作方式作为工具，学习主 Agent 怎样交出任务并接收结果。
+- `sources/ai-agent-book-zh/code/chapter4/execution-tools/` —— Agent 生成一条命令，并不代表命令已经成功执行。本实验围绕执行工具学习完整动作链：接收参数、检查条件、执行操作，再把结果交回模型。
+- `sources/ai-agent-book-zh/code/chapter4/multimodal-agent/` —— 回答图表问题时，模型可以直接读取图像，也可以先通过工具提取文字和数据。本实验比较几种输入路径，学习选择方式时需要考虑哪些信息可能丢失。
+- `sources/ai-agent-book-zh/code/chapter4/perception-tools/` —— 模型要读取文件或查询资料，需要把现实中的数据变成结构化工具结果。本实验从 MCP 感知工具出发，学习客户端怎样发现工具、调用工具并理解返回值。
 
 ## 深度阅读
 

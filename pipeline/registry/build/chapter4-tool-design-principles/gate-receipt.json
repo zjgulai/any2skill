@@ -22,7 +22,7 @@
     "principles": 3,
     "patterns": 2,
     "pitfalls": 1,
-    "code": 0,
+    "code": 6,
     "reading": 4
   },
   "gaps": [
@@ -33,14 +33,6 @@
       "detail": "条目数低于骨架形状（列表，6–8 条反模式）。",
       "required": 6,
       "actual": 1
-    },
-    {
-      "code": "SECTION_NO_SOURCE",
-      "section": "code",
-      "heading": "## 配套代码",
-      "detail": "本段在信息源中没有对应字段。骨架要求「仓库相对路径 + 每个目录一句话说明」，而对象模型没有任何字段承载它。",
-      "required": 1,
-      "actual": 0
     },
     {
       "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
@@ -119,43 +111,38 @@
       "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
       "required": null,
       "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 6 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 6,
+      "coarse": true
     }
   ],
   "gate": {
     "passed": false,
     "reasonCodes": [
-      "SECTION_COUNT_OUT_OF_RANGE",
-      "SECTION_EMPTY"
+      "SECTION_COUNT_OUT_OF_RANGE"
     ],
     "failures": [
       {
         "code": "SECTION_COUNT_OUT_OF_RANGE",
         "detail": "段条目数 1 < 6（## 常见陷阱：列表，6–8 条反模式）",
         "at": "## 常见陷阱"
-      },
-      {
-        "code": "SECTION_EMPTY",
-        "detail": "段为空：## 配套代码（骨架要求 仓库相对路径 + 每个目录一句话说明）",
-        "at": "## 配套代码"
       }
     ],
-    "bytes": 3155,
+    "bytes": 4794,
     "sizeLimitBytes": 12288
   },
   "gateUnderLenientReading": {
-    "passed": false,
-    "reasonCodes": [
-      "SECTION_EMPTY"
-    ],
-    "failures": [
-      {
-        "code": "SECTION_EMPTY",
-        "detail": "段为空：## 配套代码（骨架要求 仓库相对路径 + 每个目录一句话说明）",
-        "at": "## 配套代码"
-      }
-    ]
+    "passed": true,
+    "reasonCodes": [],
+    "failures": []
   },
-  "rejectionDependsOnSectionCountInterpretation": false,
+  "rejectionDependsOnSectionCountInterpretation": true,
   "artifacts": {
     "staged": "pipeline/registry/build/chapter4-tool-design-principles/SKILL.md",
     "contract": "pipeline/registry/build/chapter4-tool-design-principles/skill-contract.json",
@@ -169,30 +156,24 @@
         "code": "SECTION_COUNT_OUT_OF_RANGE",
         "detail": "段条目数 1 < 6（## 常见陷阱：列表，6–8 条反模式）",
         "at": "## 常见陷阱"
-      },
-      {
-        "code": "SECTION_EMPTY",
-        "detail": "段为空：## 配套代码（骨架要求 仓库相对路径 + 每个目录一句话说明）",
-        "at": "## 配套代码"
       }
     ],
     "reasonCodes": [
-      "SECTION_COUNT_OUT_OF_RANGE",
-      "SECTION_EMPTY"
+      "SECTION_COUNT_OUT_OF_RANGE"
     ],
     "checks": {
-      "bytes": 3155,
+      "bytes": 4794,
       "sizeLimitBytes": 12288,
       "sectionItemCounts": {
         "## 何时使用": 5,
         "## 核心原则": 3,
         "## 实践模式": 2,
         "## 常见陷阱": 1,
-        "## 配套代码": 0,
+        "## 配套代码": 6,
         "## 深度阅读": 4
       },
       "sourceRefCount": 4
     },
-    "markdownHash": "sha256:60a909fcee8a2be680491d6936452daa4c03cfc7e71cf899991999b401b8b519"
+    "markdownHash": "sha256:0ef29c013c987c4e58297455d54175086d74ab3a8a451c79df7e439afb0f59fc"
   }
 }

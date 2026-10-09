@@ -23,8 +23,10 @@ import {
   SkillBuildError,
   assembleSkill,
   collectClusterObjects,
+  collectCodePointers,
   collectCrossChapterAntipatterns,
   deriveCluster,
+  firstParagraph,
   buildDescription,
   unwrapObjectsFile,
 } from '../../tools/skill-builder.mjs'
@@ -204,5 +206,56 @@ describe('buildDescription', () => {
       whenToUse: [],
     })
     assert.ok(text.length <= 1024, `实际 ${text.length}`)
+  })
+})
+
+describe('配套代码目录（信息源扩充后新增的来源）', () => {
+  const CODE_ROOT_REL = 'sources/ai-agent-book-zh/code/chapter4'
+
+  it('实测取到 6 个目录，且路径是仓库相对路径而非本机绝对路径', () => {
+    const ptrs = collectCodePointers(path.join(REPO, CODE_ROOT_REL), { relPrefix: CODE_ROOT_REL })
+    assert.equal(ptrs.length, 6)
+    for (const p of ptrs) {
+      assert.ok(p.path.startsWith('sources/'), `路径应是仓库相对：${p.path}`)
+      assert.ok(!p.path.startsWith('/'), `不得是本机绝对路径：${p.path}`)
+    }
+    assert.deepEqual(
+      ptrs.map((p) => p.dir),
+      ['active-tool-discovery', 'active-tool-selection', 'collaboration-tools', 'execution-tools', 'multimodal-agent', 'perception-tools'],
+    )
+  })
+
+  it('每个目录都有一句话说明——取 README 首段，不是生成的', () => {
+    const ptrs = collectCodePointers(path.join(REPO, CODE_ROOT_REL), { relPrefix: CODE_ROOT_REL })
+    for (const p of ptrs) {
+      assert.ok(p.summary && p.summary.length > 10, `${p.dir} 缺少一句话说明`)
+    }
+  })
+
+  it('目录不存在时返回空数组，由装配器记缺口——不编内容', () => {
+    assert.deepEqual(collectCodePointers('/nonexistent/path'), [])
+  })
+
+  it('firstParagraph 跳过标题、剥掉行内标记、不做改写', () => {
+    const md = '# 标题\n\n**加粗**的[链接](http://x)与`代码`。\n\n第二段不该被取到。\n'
+    assert.equal(firstParagraph(md), '加粗的链接与代码。')
+  })
+
+  it('装配含配套代码时，该段条目数等于目录数，且不再有 SECTION_NO_SOURCE 缺口', () => {
+    const cluster = deriveCluster(IDX.anchors, 'chapter4#h2-2')
+    const r = assembleSkill({
+      cluster,
+      objects: collectClusterObjects(OBJECTS, cluster.anchors),
+      antipatterns: [],
+      codePointers: collectCodePointers(path.join(REPO, CODE_ROOT_REL), { relPrefix: CODE_ROOT_REL }),
+      slug: 'x',
+      skillTitle: 'T',
+    })
+    assert.equal(r.sectionCounts.code, 6)
+    assert.ok(!r.gaps.some((g) => g.section === 'code' && g.code === GAP_CODES.NO_SOURCE))
+    // 但粒度是章级而非簇级，这件事必须留痕——否则读者会以为做过锚点级映射。
+    const gran = r.gaps.find((g) => g.code === GAP_CODES.GRANULARITY)
+    assert.ok(gran, '应记录「章级列举」的粒度缺口')
+    assert.equal(gran.coarse, true)
   })
 })

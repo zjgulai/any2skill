@@ -36,6 +36,7 @@ import {
   buildPublishedPath,
   buildStagingPath,
   collectClusterObjects,
+  collectCodePointers,
   collectCrossChapterAntipatterns,
   deriveCluster,
   unwrapObjectsFile,
@@ -234,10 +235,18 @@ async function main(argv) {
       reasonCode: apVerdictById.get(o.id)?.reasonCode || (apVerdicts ? 'NOT_IN_VERDICTS' : 'NO_VERDICTS_FILE'),
     }))
 
+    // 配套代码目录的来源。实测口径：镜像到 sources/ai-agent-book-zh/code/<chapter>/，
+    // 见该目录下的 MIRROR-MANIFEST.md。不存在时返回空数组，由装配器记 NO_SOURCE 缺口。
+    const codeRootRel = path.join('sources', 'ai-agent-book-zh', 'code', chapterKey)
+    const codePointers = collectCodePointers(path.join(repoRoot, codeRootRel), {
+      relPrefix: codeRootRel,
+    })
+
     const assembled = assembleSkill({
       cluster,
       objects: kept,
       antipatterns: crossKept,
+      codePointers,
       slug: flags.slug,
       skillTitle: flags.title,
     })
@@ -362,6 +371,7 @@ async function main(argv) {
       if (!apVerdicts) {
         o.write('⚠ 未找到跨章反模式的判定表（run-*.antipattern-verdicts.json）——本簇的常见陷阱段只由簇内对象填充。\n')
       }
+      o.write(`配套代码目录：${codePointers.length} 个（来源 ${codeRootRel}）\n`)
       const names = {
         whenToUse: '何时使用',
         principles: '核心原则',
