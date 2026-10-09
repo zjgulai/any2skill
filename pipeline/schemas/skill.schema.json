@@ -120,6 +120,20 @@
       "items": { "type": "object" },
       "description": "逐条缺口。含 SECTION_NO_SOURCE / SECTION_EMPTY / SECTION_ITEM_COUNT_BELOW_SKELETON / SECTION_FIELD_SEMANTICS_MISMATCH / SECTION_ITEM_SUSPECT_NOT_TRIGGER。后两者靠计数查不出来，故必须逐条留文。"
     },
+    "riskFlags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["flag", "detail", "routing"],
+        "properties": {
+          "flag": { "type": "string", "description": "取自 skill-builder.mjs 的 RISK_FLAGS。" },
+          "detail": { "type": "string" },
+          "routing": { "type": "string", "description": "该风险标记的去处。" }
+        },
+        "additionalProperties": true
+      },
+      "description": "风险标记。**不参与门禁判定**——它的去处是 ADR-006 门禁三的抽样重点（「高风险定义为门禁二出现误触发、或 AntiPattern 覆盖率低的 skill」）。低覆盖此前被门禁一硬拒，于是 ADR-006 那条高风险定义永远收不到东西；本字段就是把两处接上。"
+    },
     "sectionCounts": {
       "type": "object",
       "description": "六段各自的条目数。键为骨架段的 key。门禁一会拿它与正文实际条目数比对，不一致即拒——防「契约说 6 条、正文写 1 条」。"

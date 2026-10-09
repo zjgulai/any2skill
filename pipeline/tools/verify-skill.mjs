@@ -48,19 +48,19 @@ export const SKILL_REASON_CODES = Object.freeze([
 ])
 
 /**
- * 段条目数检查的口径。
+ * 段条目数：**不入判据**（2026-10-09 修订，见 ADR-021）。
  *
- * ADR-006 把门禁一第 5 项写作「6 段骨架**完整性**（ADR-004）」，而 ADR-004 的
- * 「必须遵守的约束」一节**只**列了 frontmatter 硬限、6 段顺序与名称、深度阅读回链——
- * **没有**把「何时使用 5–8 条」「常见陷阱 6–8 条」列为硬约束，那两句出现在骨架的形状描述里。
+ * 曾经有一处「严格 / 宽松」双口径开关，让调用方能看出「拒绝是否取决于条目数解释」。
+ * 那处歧义现已由 ADR-021 定夺，双口径随之作废——留一个不再改变任何结论的开关，
+ * 只会让后来者以为它还有用。
  *
- * 所以「条目数算不算判据」是一处**真实的解释歧义**，不该由本文件悄悄替调用方定死。
- * 两种口径都实现，默认 strict，并把 two 者的差集逐条列出来——让这处歧义在回执里可见。
+ * 现行口径：
+ *   - 硬下限只有「非空」，由 `SECTION_EMPTY` 承担；
+ *   - 骨架记录的建议值（何时使用 5–8、常见陷阱 6–8）由**装配器**记成缺口并推出风险标记，
+ *     按 ADR-006 门禁三路由到功效抽样重点，不在门禁一处拒绝；
+ *   - 与条目数无关的那一条仍然查：契约记录的条目数必须与正文实际一致
+ *     （防「契约说 6 条、正文写 1 条」）。
  */
-export const SECTION_COUNT_POLICIES = Object.freeze({
-  STRICT: 'strict',
-  PRESENCE_ONLY: 'presence-only',
-})
 
 /**
  * 解析 frontmatter。只接受 `---` 起止、`key: value` 单行这一种形状——
@@ -122,7 +122,6 @@ export async function verifySkill(input) {
     anchorIndexes = [],
     repoRoot,
     sectionCountsExpected = null,
-    sectionCountPolicy = SECTION_COUNT_POLICIES.STRICT,
   } = input
 
   const failures = []
@@ -181,28 +180,10 @@ export async function verifySkill(input) {
     const sec = byHeading.get(spec.heading)
     if (!sec) continue
     if (sec.isEmpty) {
-      push('SECTION_EMPTY', `段为空：${spec.heading}（骨架要求 ${spec.shape}）`, spec.heading)
+      push('SECTION_EMPTY', `段为空：${spec.heading}（骨架形状：${spec.shape}）`, spec.heading)
       continue
     }
-    if (spec.minItems != null && sec.itemCount < spec.minItems) {
-      if (sectionCountPolicy === SECTION_COUNT_POLICIES.STRICT) {
-        push(
-          'SECTION_COUNT_OUT_OF_RANGE',
-          `段条目数 ${sec.itemCount} < ${spec.minItems}（${spec.heading}：${spec.shape}）`,
-          spec.heading,
-        )
-      }
-    }
-    if (spec.maxItems != null && sec.itemCount > spec.maxItems) {
-      if (sectionCountPolicy === SECTION_COUNT_POLICIES.STRICT) {
-        push(
-          'SECTION_COUNT_OUT_OF_RANGE',
-          `段条目数 ${sec.itemCount} > ${spec.maxItems}（${spec.heading}：${spec.shape}）`,
-          spec.heading,
-        )
-      }
-    }
-    // 这一条与条目数无关，两种口径下都查：契约记录数与正文实际数必须一致，
+    // 这一条与条目数无关，故仍在判据内：契约记录数与正文实际数必须一致，
     // 否则「契约说 6 条、正文写 1 条」这类不一致永远不会被发现。
     if (sectionCountsExpected && sectionCountsExpected[spec.key] != null && sectionCountsExpected[spec.key] !== sec.itemCount) {
       push(

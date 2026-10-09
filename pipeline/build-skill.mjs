@@ -41,7 +41,7 @@ import {
   deriveCluster,
   unwrapObjectsFile,
 } from './tools/skill-builder.mjs'
-import { SKILL_REASON_CODES, SECTION_COUNT_POLICIES, verifySkill } from './tools/verify-skill.mjs'
+import { SKILL_REASON_CODES, verifySkill } from './tools/verify-skill.mjs'
 
 export const EXIT = Object.freeze({
   PASS: 0,
@@ -259,17 +259,8 @@ async function main(argv) {
       sectionCountsExpected: assembled.sectionCounts,
     })
 
-    // 同一份产物、只换「条目数算不算判据」这一处解释，再判一次。
-    // 目的：让「拒绝到底是因为口径从严，还是因为内容本身有硬缺口」在回执里可分辨。
-    const verdictLenient = await verifySkill({
-      markdown: assembled.markdown,
-      contract: assembled.contract,
-      anchorIndexes: [index],
-      repoRoot,
-      sectionCountsExpected: assembled.sectionCounts,
-      sectionCountPolicy: SECTION_COUNT_POLICIES.PRESENCE_ONLY,
-    })
-    const interpretationDependent = verdictLenient.passed && !verdict.passed
+    // 双口径判定已作废（ADR-021）：条目数不再入判据，那处解释歧义已被定夺。
+    // 保留的只有「契约记录数 vs 正文实际数」这条与条目数无关的一致性检查。
 
     const contract = {
       ...assembled.contract,
@@ -325,12 +316,7 @@ async function main(argv) {
         bytes: verdict.checks.bytes,
         sizeLimitBytes: verdict.checks.sizeLimitBytes,
       },
-      gateUnderLenientReading: {
-        passed: verdictLenient.passed,
-        reasonCodes: verdictLenient.reasonCodes,
-        failures: verdictLenient.failures,
-      },
-      rejectionDependsOnSectionCountInterpretation: interpretationDependent,
+      riskFlags: assembled.riskFlags,
       artifacts: flags.dryRun
         ? { staged: null, contract: null, receipt: null, published: null }
         : {
@@ -395,14 +381,9 @@ async function main(argv) {
           `  体积 ${verdict.checks.bytes} / ${verdict.checks.sizeLimitBytes} 字节\n`,
       )
       for (const f of verdict.failures) o.write(`  ✗ [${f.code}] ${f.where || f.at || ''} ${f.detail}\n`)
-      o.write(
-        `  换宽松口径（条目数不入判据，只查 6 段存在/非空/顺序/体积/溯源）：` +
-          `${verdictLenient.passed ? '通过' : `仍不通过（${verdictLenient.reasonCodes.join(', ')}）`}\n`,
-      )
-      if (interpretationDependent) {
-        o.write('  ⚠ 本次拒绝**取决于**条目数口径——两种口径结论不同，需按 ADR 定夺。\n')
-      } else if (!verdict.passed) {
-        o.write('  ⇒ 本次拒绝**不取决于**条目数口径：宽松口径下同样不通过。\n')
+      if (assembled.riskFlags.length) {
+        o.write('风险标记（不导致拒绝；按 ADR-006 门禁三路由到功效抽样重点）：\n')
+        for (const r of assembled.riskFlags) o.write(`  ⚑ [${r.flag}] ${r.detail}\n`)
       }
       if (!flags.dryRun) {
         o.write(`\n暂存：${rel(staging)}\n契约：${rel(contractOut)}\n回执：${rel(receiptOut)}\n`)

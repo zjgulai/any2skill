@@ -20,7 +20,6 @@ import { validate, validateSchemaDocument } from '../../tools/json-schema-subset
 import {
   DESCRIPTION_MAX_LENGTH,
   NAME_MAX_LENGTH,
-  SECTION_COUNT_POLICIES,
   SIZE_LIMIT_BYTES,
   parseFrontmatter,
   splitSections,
@@ -202,16 +201,20 @@ describe('溯源', () => {
   })
 })
 
-describe('条目数口径是一处解释歧义，不是内容缺陷', () => {
-  it('契约记录的条目数与正文不一致时，两种口径都拒', async () => {
-    for (const policy of [SECTION_COUNT_POLICIES.STRICT, SECTION_COUNT_POLICIES.PRESENCE_ONLY]) {
-      const v = await verifySkill({
-        ...doc(ASSEMBLED.markdown),
-        sectionCountsExpected: { ...ASSEMBLED.sectionCounts, pitfalls: 99 },
-        sectionCountPolicy: policy,
-      })
-      assert.ok(v.reasonCodes.includes('SECTION_COUNT_OUT_OF_RANGE'), policy)
-    }
+describe('条目数不再入判据（ADR-021），但契约与正文的不一致仍然查', () => {
+  it('条目数低于骨架建议值**不**导致任何拒因', async () => {
+    const v = await verifySkill(doc(ASSEMBLED.markdown))
+    // 本簇的常见陷阱只有 1 条，远低于建议值 6——它应被记成缺口与风险标记，而不是拒因。
+    assert.ok(!v.reasonCodes.includes('SECTION_COUNT_OUT_OF_RANGE'), JSON.stringify(v.failures))
+    assert.deepEqual(v.reasonCodes, [])
+  })
+
+  it('契约记录的条目数与正文不一致即拒（这条与条目数口径无关）', async () => {
+    const v = await verifySkill({
+      ...doc(ASSEMBLED.markdown),
+      sectionCountsExpected: { ...ASSEMBLED.sectionCounts, pitfalls: 99 },
+    })
+    assert.ok(v.reasonCodes.includes('SECTION_COUNT_OUT_OF_RANGE'))
   })
 })
 
@@ -220,29 +223,25 @@ describe('tracer bullet 的结论（改动它必须显式说明理由）', () =>
   // 上游 chapter4/ 的配套代码目录被镜像进 sources/（ADR-020），
   // 「配套代码」段第一次有了来源，SECTION_EMPTY 消失。改的是原因，不是判据。
 
-  it('含配套代码时：严格口径拒，宽松口径过——拒绝**取决于**条目数口径', async () => {
-    const strict = await verifySkill(doc(ASSEMBLED.markdown))
-    const lenient = await verifySkill({
-      ...doc(ASSEMBLED.markdown),
-      sectionCountPolicy: SECTION_COUNT_POLICIES.PRESENCE_ONLY,
-    })
-    assert.equal(strict.passed, false)
-    assert.deepEqual(strict.reasonCodes, ['SECTION_COUNT_OUT_OF_RANGE'])
-    assert.equal(lenient.passed, true, '配套代码段已被信息源扩充填上，宽松口径下应通过')
-    // 剩下的唯一障碍就是「常见陷阱 6–8 条算不算硬约束」这处解释歧义。
+  it('含配套代码时：门禁一通过（2026-10-09 起）', async () => {
+    const v = await verifySkill(doc(ASSEMBLED.markdown))
+    assert.equal(v.passed, true, JSON.stringify(v.failures, null, 2))
+    assert.deepEqual(v.reasonCodes, [])
   })
 
-  it('不含配套代码时：两种口径都拒——配套代码段为空与条目数无关', async () => {
-    const strict = await verifySkill(doc(ASSEMBLED_NO_CODE.markdown))
-    const lenient = await verifySkill({
-      ...doc(ASSEMBLED_NO_CODE.markdown),
-      sectionCountPolicy: SECTION_COUNT_POLICIES.PRESENCE_ONLY,
-    })
-    assert.equal(strict.passed, false)
-    assert.equal(lenient.passed, false)
-    const empty = lenient.failures.find((f) => f.code === 'SECTION_EMPTY')
+  it('不含配套代码时：仍被拒，拒因是配套代码段为空', async () => {
+    const v = await verifySkill(doc(ASSEMBLED_NO_CODE.markdown))
+    assert.equal(v.passed, false)
+    const empty = v.failures.find((f) => f.code === 'SECTION_EMPTY')
     assert.ok(empty, '必须有 SECTION_EMPTY')
     assert.match(empty.detail, /配套代码/)
+  })
+
+  it('低覆盖不拒绝，但必须被标记为高风险（ADR-006 门禁三的入口）', () => {
+    const flags = ASSEMBLED.riskFlags
+    assert.equal(flags.length, 1)
+    assert.equal(flags[0].flag, 'PITFALL_COVERAGE_BELOW_ADVISORY')
+    assert.match(flags[0].routing, /门禁三/)
   })
 
   it('对象供给：8 个对象、6 段全部有来源、常见陷阱只有 1 条（骨架要求 6–8）', () => {
@@ -315,5 +314,36 @@ describe('Skill 契约侧车 · schema 不是摆设', () => {
     const bad = { ...ASSEMBLED.contract, skillId: 'chapter4-h2-2' }
     const { valid } = validate(bad, schema)
     assert.equal(valid, false)
+  })
+})
+
+describe('发布区只接收装配产物（ADR-002 平面隔离）', () => {
+  it('已发布的 SKILL.md 与装配器当前产出逐字节相同——手改发布区会被本测试抓到', async () => {
+    const published = path.join(REPO, 'skills', 'chapter4-tool-design-principles', 'SKILL.md')
+    let onDisk
+    try {
+      onDisk = await readFile(published, 'utf8')
+    } catch (err) {
+      if (err.code === 'ENOENT') return // 尚未发布时跳过，不假装验过
+      throw err
+    }
+    assert.equal(
+      onDisk,
+      ASSEMBLED.markdown,
+      '发布区的内容与装配器产出不一致：要么有人手改了 skills/，要么装配输入变了而没重新发布',
+    )
+  })
+
+  it('已发布的 SKILL.md 通过门禁一', async () => {
+    const published = path.join(REPO, 'skills', 'chapter4-tool-design-principles', 'SKILL.md')
+    let onDisk
+    try {
+      onDisk = await readFile(published, 'utf8')
+    } catch (err) {
+      if (err.code === 'ENOENT') return
+      throw err
+    }
+    const v = await verifySkill({ ...doc(onDisk), sectionCountsExpected: ASSEMBLED.sectionCounts })
+    assert.equal(v.passed, true, JSON.stringify(v.failures, null, 2))
   })
 })

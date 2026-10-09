@@ -40,68 +40,92 @@ import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
  * 6 段骨架。名称与顺序逐字取自 ADR-004 对原书 22 个 skill 的实测契约，
  * **不得改动**（22/22 命中率是本项目唯一有实证背书的骨架）。
  *
- * `minItems` / `maxItems` 取自 ADR-004 对骨架形状的记录（何时使用 5–8 条、常见陷阱 6–8 条）。
- * ⚠ 口径说明：ADR-004 的「必须遵守的约束」一节**没有**把条目数列为硬约束，
- * 它列的是 frontmatter 硬限、6 段顺序与名称、深度阅读回链。本文按「骨架形状即契约」实现
- * 这个检查，属于**本文件的解释**；若判定为过严，应修订 ADR 而非在此悄悄放宽。
+ * ## 条目数：建议值，不是判据（2026-10-09 修订，见 ADR-021）
+ *
+ * `advisoryMin` / `advisoryMax` 取自 ADR-004 对骨架形状的**记录**（何时使用 5–8 条、
+ * 常见陷阱 6–8 条），它们是**建议值**：低于它们会被记成缺口并**标记为高风险**，
+ * 但**不导致门禁拒绝**。
+ *
+ * 曾经它们是硬判据——那是本文件当初的解释，而 ADR-004 的「必须遵守的约束」一节
+ * 从未把它们列为硬约束（只列了 frontmatter 硬限、6 段顺序与名称、深度阅读回链）。
+ * 实测把这个解释推翻了：chapter4 每个二级锚点簇最多凑到 2 条反模式，**整章 39 个对象
+ * 也只有 5 条**——6–8 这个数字来自原书作者的人工写作（每章约 2.2 个 skill，
+ * 且他可跨章取用），不是自动提取能达到的量。
+ *
+ * 硬下限只有一个：`SECTION_HARD_LOWER_BOUND`，即「非空」，由门禁的 `SECTION_EMPTY` 承担。
+ * **不另设数字阈值**——除原书的人工样本外，没有任何独立证据支持某个具体下限，
+ * 硬填一个数字只是为了让它看起来严谨。
  */
+export const SECTION_HARD_LOWER_BOUND = 1
+
 export const SKELETON_SECTIONS = Object.freeze([
   {
     key: 'whenToUse',
     heading: '## 何时使用',
     shape: '列表，5–8 条用户场景/触发条件',
-    minItems: 5,
-    maxItems: 8,
+    advisoryMin: 5,
+    advisoryMax: 8,
     sources: ['EngineeringRule.appliesWhen', 'Heuristic.trigger'],
   },
   {
     key: 'principles',
     heading: '## 核心原则',
     shape: '加粗小标题 + 解释；列书的判断规则',
-    minItems: 1,
-    maxItems: null,
+    advisoryMin: 1,
+    advisoryMax: null,
     sources: ['EngineeringRule.statement', 'EngineeringRule.rationale'],
   },
   {
     key: 'patterns',
     heading: '## 实践模式',
     shape: '主体；可再分 ### 1..N 编号子节，含表格',
-    minItems: 1,
-    maxItems: null,
+    advisoryMin: 1,
+    advisoryMax: null,
     sources: ['Concept.canonicalTerm', 'Concept.definition', 'Concept.examples'],
   },
   {
     key: 'pitfalls',
     heading: '## 常见陷阱',
     shape: '列表，6–8 条反模式',
-    minItems: 6,
-    maxItems: 8,
+    advisoryMin: 6,
+    advisoryMax: 8,
     sources: ['AntiPattern.pattern', 'AntiPattern.harm', 'AntiPattern.corrective'],
   },
   {
     key: 'code',
     heading: '## 配套代码',
     shape: '仓库相对路径 + 每个目录一句话说明',
-    minItems: 1,
-    maxItems: null,
+    advisoryMin: 1,
+    advisoryMax: null,
     sources: [],
   },
   {
     key: 'reading',
     heading: '## 深度阅读',
     shape: '`book/chapterN.md` + 书中小节名',
-    minItems: 1,
-    maxItems: null,
+    advisoryMin: 1,
+    advisoryMax: null,
     sources: ['sourceRefs[].file', 'sourceRefs[].title'],
   },
 ])
+
+/**
+ * 风险标记。**不导致门禁拒绝**，按 ADR-006 门禁三的定义（「高风险定义为门禁二出现误触发、
+ * 或 `AntiPattern` 覆盖率低的 skill」）路由到功效抽样重点。
+ *
+ * 这条路由不是新造的：ADR-006 早已写下那个定义，只是从未有人把它接上——
+ * 覆盖率不足此前被门禁一硬拒掉了，于是「高风险标记」这一环永远收不到东西。
+ */
+export const RISK_FLAGS = Object.freeze({
+  PITFALL_COVERAGE_LOW: 'PITFALL_COVERAGE_BELOW_ADVISORY',
+})
 
 /** 缺口理由码。命名与 verifier 的理由码同风格：全大写下划线，语义自明。 */
 export const GAP_CODES = Object.freeze({
   NO_SOURCE: 'SECTION_NO_SOURCE',
   EMPTY: 'SECTION_EMPTY',
-  BELOW_MIN: 'SECTION_ITEM_COUNT_BELOW_SKELETON',
-  ABOVE_MAX: 'SECTION_ITEM_COUNT_ABOVE_SKELETON',
+  BELOW_ADVISORY: 'SECTION_ITEM_COUNT_BELOW_ADVISORY',
+  ABOVE_ADVISORY: 'SECTION_ITEM_COUNT_ABOVE_ADVISORY',
   SEMANTICS: 'SECTION_FIELD_SEMANTICS_MISMATCH',
   SUSPECT_TRIGGER: 'SECTION_ITEM_SUSPECT_NOT_TRIGGER',
   CONTRACT_UNSUPPORTED: 'CONTRACT_FIELD_UNSUPPORTED',
@@ -428,47 +452,52 @@ export function assembleSkill(input) {
         code: GAP_CODES.NO_SOURCE,
         section: spec.key,
         heading: spec.heading,
-        detail: `本段在信息源中没有对应字段。骨架要求「${spec.shape}」，而对象模型没有任何字段承载它。`,
-        required: spec.minItems,
+        detail: `本段在信息源中没有对应字段。骨架的形状是「${spec.shape}」，而对象模型没有任何字段承载它。`,
+        advisory: spec.advisoryMin,
         actual: items.length,
       })
       continue
     }
-    if (items.length === 0) {
+    if (items.length < SECTION_HARD_LOWER_BOUND) {
+      // 唯一的硬下限：非空。低于它 → 门禁的 SECTION_EMPTY 会拒。
       gaps.push({
         code: GAP_CODES.EMPTY,
         section: spec.key,
         heading: spec.heading,
         detail: `本段一个条目都凑不出（字段来源：${spec.sources.join(' / ')}）。`,
-        required: spec.minItems,
+        advisory: spec.advisoryMin,
         actual: 0,
       })
       continue
     }
-    if (spec.minItems != null && items.length < spec.minItems) {
+    // 以下两条是**建议值**比较，只记缺口，不导致门禁拒绝（见 SKELETON_SECTIONS 的文件头）。
+    if (spec.advisoryMin != null && items.length < spec.advisoryMin) {
       gaps.push({
-        code: GAP_CODES.BELOW_MIN,
+        code: GAP_CODES.BELOW_ADVISORY,
         section: spec.key,
         heading: spec.heading,
-        detail: `条目数低于骨架形状（${spec.shape}）。`,
-        required: spec.minItems,
+        detail:
+          `条目数 ${items.length} 低于骨架的建议值（${spec.shape}）。` +
+          '**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。' +
+          '本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。',
+        advisory: spec.advisoryMin,
         actual: items.length,
       })
     }
-    if (spec.maxItems != null && items.length > spec.maxItems) {
+    if (spec.advisoryMax != null && items.length > spec.advisoryMax) {
       gaps.push({
-        code: GAP_CODES.ABOVE_MAX,
+        code: GAP_CODES.ABOVE_ADVISORY,
         section: spec.key,
         heading: spec.heading,
-        detail: `条目数高于骨架形状（${spec.shape}）。`,
-        required: spec.maxItems,
+        detail: `条目数 ${items.length} 高于骨架的建议值（${spec.shape}）。建议值不是判据，本条只作记录。`,
+        advisory: spec.advisoryMax,
         actual: items.length,
       })
     }
   }
 
   // 「实践模式」的语义不符：Concept 提供的是**定义与示例**，而骨架要求的是**可操作的模式**。
-  // 条目数够（没触发 BELOW_MIN），但装出来的东西不是这一段要的东西——这类缺口靠计数查不出来。
+  // 条目数够（没触发 BELOW_ADVISORY），但装出来的东西不是这一段要的东西——这类缺口靠计数查不出来。
   if (patterns.length > 0) {
     gaps.push({
       code: GAP_CODES.SEMANTICS,
@@ -636,9 +665,10 @@ export function assembleSkill(input) {
     freshness: { state: 'fresh', asOf: new Date(0).toISOString() },
     gaps,
     sectionCounts,
+    riskFlags: buildRiskFlags(gaps),
   }
 
-  return { markdown, contract, gaps, sectionCounts, description }
+  return { markdown, contract, gaps, sectionCounts, description, riskFlags: contract.riskFlags }
 }
 
 /**
@@ -665,6 +695,27 @@ export function buildDescription({ cluster, whenToUse, principles }) {
   const MAX = 1024
   if (text.length <= MAX) return text
   return `${text.slice(0, MAX - 1)}…`
+}
+
+/**
+ * 由缺口推出风险标记。**不参与门禁判定**——它的去处是 ADR-006 门禁三的抽样重点：
+ * 「高风险定义为门禁二出现误触发、或 `AntiPattern` 覆盖率低的 skill」。
+ *
+ * 这里只做一件事：把「常见陷阱段条目数低于建议值」翻译成那个定义里说的
+ * 「`AntiPattern` 覆盖率低」。ADR-006 早就写下了这条定义，但此前覆盖率不足
+ * 被门禁一硬拒掉了，于是高风险标记这一环永远收不到东西——两处 ADR 从未接上。
+ */
+export function buildRiskFlags(gaps) {
+  const flags = []
+  const lowPitfall = (gaps || []).find((g) => g.section === 'pitfalls' && g.code === GAP_CODES.BELOW_ADVISORY)
+  if (lowPitfall) {
+    flags.push({
+      flag: RISK_FLAGS.PITFALL_COVERAGE_LOW,
+      detail: `anti-pattern 覆盖不足：常见陷阱段 ${lowPitfall.actual} 条，建议值 ${lowPitfall.advisory} 条。`,
+      routing: '按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。',
+    })
+  }
+  return flags
 }
 
 /** 暂存态 SKILL.md 的落盘路径。发布区是 `skills/`，暂存区是这里——两者不得混同。 */

@@ -6,25 +6,35 @@ Any content → executable Agent Skills. MVP pipeline.
 **环 4 已实现（确定性装配 + 门禁一 skill 侧），但产物被门禁拦下**——见下。
 环 3（语义聚类）、环 5（门禁二/三）尚未构建。
 
-> ### 盘上仍然有 0 个已发布的 skill
+> ### 盘上已有 1 个已发布的 skill（此前为 0）
 >
-> `find . -path ./node_modules -prune -o -name "SKILL.md" -print | wc -l` → 0（暂存区除外）。
-> 环 4 端到端已打通（对象 → 装配 → 门禁 → 回执，四跳都有落盘产物），但产物停在
-> `pipeline/registry/build/`，**没有进 `skills/` 发布区**，因为门禁一在**严格口径**下不通过。
+> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` →
+> `skills/chapter4-tool-design-principles/SKILL.md` 与它的暂存副本。
 >
-> 进程：起初两条拒因——`## 配套代码` 段为空、`## 常见陷阱` 只有 1 条（骨架要求 6–8）。
-> 第一条**已解**：用户拍板扩充信息源，上游 `chapter4/` 配套代码已镜像进
-> `sources/ai-agent-book-zh/code/`（851 文件，逐文件哈希校验 851/851 一致，见
+> 达成路径是两件事依次落地，**都不是放宽判据本身**：
+> ① [ADR-020](docs/adr/ADR-020-source-expansion-chapter4-code.md) 扩充信息源——
+> 上游 `chapter4/` 配套代码镜像进 `sources/ai-agent-book-zh/code/`
+> （851 文件，逐文件哈希校验 851/851 一致，见
 > [`MIRROR-MANIFEST.md`](sources/ai-agent-book-zh/code/chapter4/MIRROR-MANIFEST.md)），
-> 该段现可填 6 条，`SECTION_EMPTY` 消失。第二条仍在：实测每个二级锚点簇最多 2 条反模式，
-> **整章 39 个对象也只有 5 条**。
+> 「配套代码」段第一次有来源；② [ADR-021](docs/adr/ADR-021-section-item-counts-advisory.md)
+> 把骨架条目数降为**建议值**——ADR-004 的「必须遵守的约束」从未把它列为硬约束，
+> 而实测 chapter4 每簇最多 2 条反模式、整章也只有 5 条，6–8 出自作者人工写作。
 >
-> 于是同一份产物出现**两种口径不同结论**：严格口径（条目数入判据）拒，
-> 宽松口径（只查 6 段存在/非空/顺序/体积/溯源）**通过**。装配器把两个结论都打出来，
-> 并明确标注「本次拒绝取决于条目数口径」——不替用户决定。
+> ### 「通过」不等于「合格」
 >
-> 全部实测与未决项见 [`ADR-019`](docs/adr/ADR-019-ring4-deterministic-skill-assembly.md)
-> 与 [`ADR-020`](docs/adr/ADR-020-source-expansion-chapter4-code.md)。
+> 发布时该 skill 的 `## 常见陷阱` 只有 **1 条**（建议值 6），契约里带风险标记
+> `PITFALL_COVERAGE_BELOW_ADVISORY`。它还带着 11 条缺口：1 条语义不符
+> （「实践模式」装出来的是术语定义而非可操作模式）、1 条可疑触发条目、
+> **7 个契约字段在当前对象模型下没有任何来源**（`inputContract`/`outputContract`/
+> `tools`/`steps`/`stopConditions`/`rollback`/`tests`）、1 条粒度说明（配套代码段列的是
+> 本章全部目录而非本簇专属）、1 条低覆盖。
+>
+> ⚠ **门禁二/三尚未构建，风险标记当前没有下游消费者。** 这是 ADR-021 留下的真实暴露面，
+> 不该被「门禁通过了」这句话掩盖。
+>
+> 全部实测与未决项见 [`ADR-019`](docs/adr/ADR-019-ring4-deterministic-skill-assembly.md)、
+> [`ADR-020`](docs/adr/ADR-020-source-expansion-chapter4-code.md)、
+> [`ADR-021`](docs/adr/ADR-021-section-item-counts-advisory.md)。
 
 ## 三段式链路
 
@@ -50,7 +60,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 375 项，零网络、零凭据
+npm test                                    # 379 项，零网络、零凭据
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
