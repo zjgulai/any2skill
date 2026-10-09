@@ -56,7 +56,7 @@ import {
   usageTokensOf,
 } from './tools/layer2-extractor.mjs'
 import { LlmCallError, LlmConfigError, createUsageLedger, resolveJudgeLlmConfig, resolveLlmConfig, urlHost } from './tools/llm-client.mjs'
-import { describeJudgeRoute, judgeObject } from './tools/judge.mjs'
+import { JudgeError, describeJudgeRoute, judgeObject } from './tools/judge.mjs'
 import { verifyObjects, REASON_CODES, OBJECT_TYPES } from './tools/verifier.mjs'
 
 /** 退出码。导出以便测试引用同一常量，避免测试里出现魔法数字。 */
@@ -164,6 +164,11 @@ export const PARTIAL_RAW_SUFFIX = '.layer2-raw.partial.json'
 
 export function partialObjectsPathFor(index) {
   return path.join(OBJECTS_DIR, `${index.fileKey}${PARTIAL_OBJECTS_SUFFIX}`)
+}
+
+/** 判定者响应解析失败时的原文本落盘路径。与第 2 层同构，理由也同构。 */
+export function judgeRawPathFor(runId) {
+  return path.join(REGISTRY_DIR, `${runId}.judge-raw.json`)
 }
 
 export function partialRawPathFor(index) {
@@ -1398,8 +1403,19 @@ export async function runPipeline(input) {
   }
 }
 
-/** 运行失败的统一回执（也落盘，使「工程问题」留下可查的证据而非只在终端一闪而过）。 */
+/**
+ * 运行失败的统一回执（也落盘，使「工程问题」留下可查的证据而非只在终端一闪而过）。
+ *
+ * `judge` 与 `model` 两块**不能写成常量**：本函数原先无条件写 `judge.enabled: false` 与
+ * `calls: 0`，而失败是可能发生在**判定者已经跑了若干次之后**的（实测：v7 补全门禁时，
+ * 判定者回了不可解析的 JSON，运行中止）。那时回执写的是「判定者未运行」、
+ * 而实际已经花掉的判定者调用**记在哪个数上都不是 0**——这正是「本地账本把真实消耗显示成 0」
+ * 的形态。判断能给出的只有「这次失败发生在哪一阶段」，因此就只写到这个精度：
+ * `judge.failedInJudgePhase` 说明「判定者也跑过」，`calls` 保持 0 并**显式标注它只是未知**，
+ * 而不是让 0 冒充事实。
+ */
 function failureReceipt({ runId, kind, message, sourcePath }) {
+  const failedInJudgePhase = kind === 'judge-response'
   return {
     schemaVersion: RECEIPT_SCHEMA_VERSION,
     pipelineVersion: PIPELINE_VERSION,
@@ -1423,12 +1439,16 @@ function failureReceipt({ runId, kind, message, sourcePath }) {
       tokensDetail: { reasoning: 0, cachedInput: 0 },
       failedCalls: 0,
       retries: 0,
-      usageNote: null,
-      billing: 'none',
+      usageNote:
+        '运行在写下用量之前就失败了，因此这里的 0 **不是「没有消耗」**，而是「没有记账」——' +
+        '真实的调用次数与 token 只能去服务商侧对账。',
+      billing: 'unknown（失败路径没有记账，不得读成 none）',
       configSource: null,
       fixture: null,
     },
-    judge: { enabled: false, reason: '运行在验证阶段之前就失败了，判定者未运行' },
+    judge: failedInJudgePhase
+      ? { enabled: true, failedInJudgePhase: true, reason: '判定者已运行并在其阶段失败；本次的判定者判据没有完整结果' }
+      : { enabled: false, failedInJudgePhase: false, reason: '运行在验证阶段之前就失败了，判定者未运行' },
     artifacts: {},
     counts: { anchors: 0, objects: 0, passed: 0, rejected: 0, objectTypes: null },
     // 运行在验证阶段之前就失败了 → 这两块**没有观测值**。给 `null` 而不是空对象/零，
@@ -1450,6 +1470,9 @@ function classifyFailure(err, { fixturePath }) {
   if (err instanceof LlmCallError && err.truncated === true) return 'layer2-truncated'
   if (err instanceof LlmCallError) return 'layer2-llm-call'
   if (err instanceof Layer2Error) return 'layer2-response'
+  // 判定者的响应问题与第 2 层同源（模型回了不合契约的文本），但**修法不同**：
+  // 一个要改提取提示词，一个要改判定提示词。混成一类会让「该改哪一边」回到读日志去猜。
+  if (err instanceof JudgeError) return 'judge-response'
   if (fixturePath !== null && String(err?.message).includes(fixturePath)) return 'objects-fixture-missing'
   if (err?.code === 'ENOENT') return 'source-missing'
   return 'internal'
@@ -1462,6 +1485,7 @@ export const FAILURE_KINDS = Object.freeze([
   'layer2-truncated',
   'layer2-llm-call',
   'layer2-response',
+  'judge-response',
   'objects-fixture-missing',
   'source-missing',
   'internal',
@@ -1564,13 +1588,25 @@ async function main(argv) {
     })
     try {
       await writeJson(path.join(repoRoot, receiptPathFor(runId)), receipt)
-      // 第 2 层响应不可解析时，把原文一并落盘——否则「模型到底回了什么」永久丢失。
+      // 响应不可解析时，把原文一并落盘——否则「模型到底回了什么」永久丢失。
+      // 判定者走同一条：JudgeError 同样带 rawText，但此前**只有** Layer2Error 被落盘，
+      // 于是实测中判定者那次失败的原文本被丢掉，只能从一行错误消息去猜，无法归因。
       if (err instanceof Layer2Error && typeof err.rawText === 'string') {
         await writeJson(path.join(repoRoot, layer2RawPathFor(runId)), {
           schemaVersion: 'layer2-raw/v1',
           runId,
           createdAt: new Date().toISOString(),
           note: '第 2 层响应解析失败时的**原文**，用于事后归因。',
+          error: err.message,
+          rawText: err.rawText,
+        })
+      }
+      if (err instanceof JudgeError && typeof err.rawText === 'string') {
+        await writeJson(path.join(repoRoot, judgeRawPathFor(runId)), {
+          schemaVersion: 'judge-raw/v1',
+          runId,
+          createdAt: new Date().toISOString(),
+          note: '判定者响应解析失败时的**原文**，用于事后归因。',
           error: err.message,
           rawText: err.rawText,
         })

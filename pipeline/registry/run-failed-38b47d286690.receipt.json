@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 7,
+  "runId": "run-failed-38b47d286690",
+  "createdAt": "2026-10-09T09:40:19.825Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/chapter4.md",
+    "hash": null,
+    "totalLines": null
+  },
+  "layer2": {
+    "kind": null,
+    "reused": false,
+    "note": null,
+    "reusedFrom": null,
+    "perAnchor": [],
+    "splits": [],
+    "usage": null
+  },
+  "model": {
+    "provider": null,
+    "modelId": null,
+    "calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "tokensDetail": {
+      "reasoning": 0,
+      "cachedInput": 0
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "none",
+    "configSource": null,
+    "fixture": null
+  },
+  "judge": {
+    "enabled": false,
+    "reason": "运行在验证阶段之前就失败了，判定者未运行"
+  },
+  "artifacts": {},
+  "counts": {
+    "anchors": 0,
+    "objects": 0,
+    "passed": 0,
+    "rejected": 0,
+    "objectTypes": null
+  },
+  "coverage": null,
+  "reasonCodes": {
+    "vocabulary": [],
+    "byCode": {}
+  },
+  "objectVerdicts": [],
+  "contentProblems": 0,
+  "engineeringFailure": {
+    "kind": "internal",
+    "message": "判定者响应不是可解析的 JSON 对象：Unterminated string in JSON at position 80 (line 1 column 81)"
+  }
+}
