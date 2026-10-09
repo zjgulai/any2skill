@@ -110,17 +110,26 @@ node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md \
 > 于是判定者接入后 37 个对象里 12 个被判「不充分」，全是同一个模式：主张断言得比引文更多。
 > 详见 [`docs/adr/ADR-011-evidence-quote-dual-purpose.md`](docs/adr/ADR-011-evidence-quote-dual-purpose.md)。
 
-### 引文比对为什么忽略 markdown 强调标记与空白
+### 引文比对为什么忽略 markdown 标记与空白
 
-实测（两轮 `chapter4.md` 的全部 9 条 `QUOTE_MISMATCH`）：逐字符比对后差异**只有 `**`**
-（相似度 0.90–0.98），去掉标记后 9 条全部命中，**没有一条是改写或编造**。模型复述的是
-渲染后的文本，而判据比的是 markdown 源。维持字节相等会让被判死的对象里有 16% 死于排版标记
-而非知识问题（规格 D7 所说需要被检测出来的 R6）。
+模型复述的是**渲染后的文本**，而判据比的是 markdown 源。最初实测（两轮 `chapter4.md` 的
+全部 9 条 `QUOTE_MISMATCH`）：逐字符比对后差异**只有 `**`**（相似度 0.90–0.98），
+去掉标记后 9 条全部命中，**没有一条是改写或编造**。维持字节相等会让被判死的对象里有 16%
+死于排版标记而非知识问题（规格 D7 所说需要被检测出来的 R6）。
 
-放宽幅度是**有界**的，边界由测试逐条钉住：`pipeline/tools/test/verifier-quote.test.mjs`
-证明内部删掉任何一个非空白字、同义改写、凭空编造一律仍被拒。回执逐对象记录 `quoteComparison`
-（`strict` / `acceptedBy` / `normalization` / `scope`），因此「是靠归一化放过的」在审计时看得见，
-不必翻代码。
+后续不再用「一章的样本」支撑第二次放宽，而是取**盘上已有的全部对象产出**做全量归因：
+12 份对象集 / 398 个对象（含跨章的 `antipatterns`），把每一条拒绝**穷举补丁子集**取最小成因。
+结论是 15 条拒绝**全部**只是这类渲染差异，**0 条**是改写或编造——因此归一化扩到
+**渲染后不可见的四类标记 + 空白整体忽略**（强调 / 引用块 `>` / 行内代码 `` ` `` / 反斜杠转义）。
+复算脚本与逐条明细：`analysis/quote-gate-measure.mjs`；决策全文见
+[`docs/adr/ADR-018-quote-normalization-widening.md`](docs/adr/ADR-018-quote-normalization-widening.md)。
+
+**有意不放宽的一类**是中文弯引号 ↔ ASCII 直引号：那是字符替换而非零宽差异，
+同批测量里的那 2 条至今仍被拒。放宽幅度是**有界**的，边界由测试逐条钉住：
+`pipeline/tools/test/verifier-quote.test.mjs` 证明下划线不碰、内部删掉任何一个非空白字、
+同义改写、凭空编造、以及只有空白的引文，一律仍被拒。回执逐对象记录 `quoteComparison`
+（`strict` / `acceptedBy` / `normalization` / `scope`），因此「是靠归一化放过的」在审计时
+看得见，不必翻代码。
 
 ## 判定者（第 3 层的第二组判据）
 

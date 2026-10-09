@@ -32,6 +32,10 @@ import path from 'node:path'
 import { createHash } from 'node:crypto'
 
 import { normalizeText, normalizeForQuoteComparison } from '../pipeline/tools/verifier.mjs'
+import {
+  QUOTE_NORMALIZATION,
+  quoteHitsRegion,
+} from '../pipeline/tools/verifier.mjs'
 
 const REPO = path.resolve(import.meta.dirname, '..')
 const INDEX_DIR = 'pipeline/knowledge'
@@ -78,6 +82,25 @@ const PATCH_LABEL = {
   whitespace: '空白 / 段落边界（上界）',
 }
 
+/**
+ * **冻结**的旧归一化（v6 及以前）。
+ *
+ * 为什么要在这里留一份副本而不是直接 import：本文件的用途是「这条判据当初误杀了多少、
+ * 误杀在哪一类」——那个问题问的是**改动前**的判据。直接 import 会让它随着判据一起变，
+ * 于是同一份语料每次复算都得到不同数字，证据就不可复核了。
+ * 现行判据是什么，由下面 `currentGate` 一节单独回答。
+ */
+export const LEGACY_N0 = (text) =>
+  String(text ?? '')
+    .replace(/\*\*(.+?)\*\*/gs, '$1')
+    .replace(/__(.+?)__/gs, '$1')
+    .replace(/\*([^*\n]+?)\*/gs, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+/** 冻结的旧严格比对（verifier 当年也是先 normalizeText 再 includes）。 */
+const legacyStrict = (haystack, quote) => haystack.includes(normalizeText(quote))
+
 const sha256Hex = (text) => createHash('sha256').update(text).digest('hex')
 
 function* combinations(list, size, start = 0, acc = []) {
@@ -94,8 +117,8 @@ function* combinations(list, size, start = 0, acc = []) {
 
 /** 穷举补丁子集，找能命中的最小子集。返回补丁名数组，或 null（无一子集可救）。 */
 export function minimalCause({ quote, anchorText }) {
-  const hay0 = normalizeForQuoteComparison(anchorText)
-  const q0 = normalizeForQuoteComparison(quote)
+  const hay0 = LEGACY_N0(anchorText)
+  const q0 = LEGACY_N0(quote)
   if (hay0.includes(q0)) return []
 
   const apply = (text, names) => {
@@ -112,26 +135,53 @@ export function minimalCause({ quote, anchorText }) {
 }
 
 /**
- * 「更窄的修法」能否救回：只把**源里的换行**视为「可删或可留一个空格」，
- * 不加任何其它补丁。用来把 whitespace 那一类的上界压成实数。
+ * 「只忽略空白、不加任何标记类补丁」能否救回。这是 whitespace 那一类里**最窄**的一档。
+ *
+ * 名字改过一次：它原先叫 pureLineJoinOnly，但实现是 `whitespace` 补丁——那是
+ * **去掉全部空白**，不是「只把换行视为可删」。名字会撒谎，实测结果就跟着撒谎
+ * （我据此向上汇报过一次错误的 9 条，见 ADR-018 的更正记录）。
  */
-export function pureLineJoinOnly({ quote, anchorText, extra = [] }) {
+export function blankOnlySaves({ quote, anchorText, extra = [] }) {
   const apply = (t) => {
     const set = new Set(['whitespace', ...extra])
     return PATCH_ORDER.filter((n) => set.has(n)).reduce((acc, n) => PATCHES[n](acc), t)
   }
-  const h = apply(normalizeForQuoteComparison(anchorText))
-  const q = apply(normalizeForQuoteComparison(quote))
-  return h.includes(q)
+  const h = apply(LEGACY_N0(anchorText))
+  const q = apply(LEGACY_N0(quote))
+  return q !== '' && h.includes(q)
+}
+
+/**
+ * 「只把**源里的换行**视为可删/可留」能否救回：行内空白仍须一致。
+ *
+ * 与已在 prototype 阶段验证过的写法逐行对齐（见 ADR-018 的复算记录）：
+ *   载体 = 逐行做 LEGACY_N0（并剥行首引用块标记）、丢掉空行、用 '' 拼接 —— 换行消失，行内空格保留
+ *   引文 = LEGACY_N0
+ *   匹配 = 把引文里的每个空格写成可选（` ?`），再对整个载体做正则
+ */
+export function lineBreakOnlySaves({ quote, anchorText }) {
+  // 刻意**不**剥行首的 `>`：引用块标记是另一个类，混进来会把它的功劳算到换行头上
+  // （本函数的第一版就混了，于是「只看换行能救几条」被报成 9 而不是 8）。
+  const perLine = (l) => LEGACY_N0(String(l))
+  const hay = String(anchorText)
+    .split(/\r\n|\n|\r/)
+    .map(perLine)
+    .filter((l) => l !== '')
+    .join('')
+  const q = LEGACY_N0(quote)
+  if (q === '') return false
+  const pat = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, ' ?')
+  return new RegExp(pat, 's').test(hay)
 }
 
 /** 逐条对齐 verifier.mjs:362–396 的判定。 */
 export function classifyQuote({ quote, anchorText }) {
   const quoteIsString = typeof quote === 'string' && quote !== ''
   if (!quoteIsString) return { kind: 'NO_QUOTE' }
-  if (anchorText.includes(normalizeText(quote))) return { kind: 'STRICT' }
-  if (normalizeForQuoteComparison(anchorText).includes(normalizeForQuoteComparison(quote))) {
-    return { kind: 'CURRENT_OK' }
+  if (legacyStrict(anchorText, quote)) return { kind: 'STRICT' }
+  // 注意这一行问的是**冻结的旧归一化**，不是现行判据——见 LEGACY_N0 的注释。
+  if (LEGACY_N0(anchorText).includes(LEGACY_N0(quote))) {
+    return { kind: 'LEGACY_NORMALIZED' }
   }
   const cause = minimalCause({ quote, anchorText })
   return cause === null ? { kind: 'UNEXPLAINED' } : { kind: 'EXPLAINED', cause }
@@ -201,7 +251,7 @@ async function buildResult() {
   const perFile = []
   const failing = []
   let strict = 0
-  let currentOk = 0
+  let legacyNormalized = 0
   let noQuote = 0
   let unresolved = 0
   let total = 0
@@ -225,11 +275,12 @@ async function buildResult() {
       const anchorText = src.lines.slice(entry.lineStart - 1, entry.lineEnd).join('\n')
       const r = classifyQuote({ quote: obj.evidenceQuote, anchorText })
       if (r.kind === 'STRICT') strict += 1
-      else if (r.kind === 'CURRENT_OK') currentOk += 1
+      else if (r.kind === 'LEGACY_NORMALIZED') legacyNormalized += 1
       else if (r.kind === 'NO_QUOTE') noQuote += 1
       else {
-        const narrow = r.kind === 'EXPLAINED' ? pureLineJoinOnly({ quote: obj.evidenceQuote, anchorText }) : false
-        const narrowPlus = r.kind === 'EXPLAINED' ? pureLineJoinOnly({ quote: obj.evidenceQuote, anchorText, extra: r.cause }) : false
+        const blankOnly = r.kind === 'EXPLAINED' ? blankOnlySaves({ quote: obj.evidenceQuote, anchorText }) : false
+        const lineBreakOnly =
+          r.kind === 'EXPLAINED' ? lineBreakOnlySaves({ quote: obj.evidenceQuote, anchorText }) : false
         failing.push({
           file: set.rel,
           fileLabel: set.label ?? set.rel,
@@ -238,8 +289,8 @@ async function buildResult() {
           anchor: ref.anchor,
           kind: r.kind,
           cause: r.cause ?? null,
-          savedByNarrowLineJoinAlone: narrow,
-          savedByNarrowLineJoinPlusOwnCause: narrowPlus,
+          savedByBlankOnly: blankOnly,
+          savedByLineBreakOnly: lineBreakOnly,
         })
       }
     }
@@ -256,6 +307,32 @@ async function buildResult() {
   const byChapter = {}
   for (const f of failing) byChapter[f.chapter] = (byChapter[f.chapter] ?? 0) + 1
 
+  // ---- 现行判据（v7 起）在同一语料上的结论 ----
+  // 这一段回答的是「改动之后还剩几条被拒」，与上面的历史归因无关。
+  // 头部是**现行**的 normalizeForQuoteComparison（import 进来的那个，会随判据演化）。
+  const currentGate = { rejects: [], normalization: QUOTE_NORMALIZATION }
+  for (const set of corpus) {
+    if (set.duplicateOf) continue
+    for (const obj of set.objects) {
+      const ref = Array.isArray(obj?.sourceRefs) ? obj.sourceRefs[0] : null
+      const src = ref ? await loadSource(ref.file) : null
+      const entry = src && ref ? src.byAnchor.get(ref.anchor) : undefined
+      if (!src || !Entry_ok(entry)) continue
+      const anchorText = src.lines.slice(entry.lineStart - 1, entry.lineEnd).join('\n')
+      const quote = obj.evidenceQuote
+      if (typeof quote !== 'string' || quote === '') continue
+      if (anchorText.includes(normalizeText(quote))) continue
+      if (quoteHitsRegion(normalizeForQuoteComparison(anchorText), normalizeForQuoteComparison(quote))) continue
+      currentGate.rejects.push({
+        file: set.rel,
+        objectId: obj.id,
+        chapter: path.basename(ref.file).replace(/\.md$/, ''),
+        anchor: ref.anchor,
+      })
+    }
+  }
+  currentGate.rejectCount = currentGate.rejects.length
+
   return {
     schemaVersion: 'quote-gate-measurement/v1',
     note: '零模型调用。判据逐条对齐 verifier.mjs:362–396；成因由 2^5 补丁子集穷举取最小子集得到。',
@@ -268,13 +345,14 @@ async function buildResult() {
     corpus: { sets: perFile.filter((f) => !f.duplicateOf).length, duplicates: perFile.filter((f) => f.duplicateOf).length },
     totalObjectsMeasured: total,
     strict,
-    currentOk,
+    legacyNormalized,
     rejectedByGate: failing.length,
     rejectionRate: total === 0 ? null : `${((failing.length / total) * 100).toFixed(1)}%`,
     noQuote,
     unresolved,
     byCause,
     byChapter,
+    currentGate,
     unexplained: failing.filter((f) => f.kind === 'UNEXPLAINED'),
     failing,
     perFile,
@@ -294,7 +372,7 @@ async function main() {
   console.log(`语料：${r.corpus.sets} 份对象集（另有 ${r.corpus.duplicates} 份重复，已去重）`)
   console.log(`对象总数：${r.totalObjectsMeasured}（独立单位是对象集，不是对象）\n`)
   console.log(`  原样命中（strict）          ${String(r.strict).padStart(4)}`)
-  console.log(`  现行归一化放过               ${String(r.currentOk).padStart(4)}`)
+  console.log(`  旧归一化放过（改动前）        ${String(r.legacyNormalized).padStart(4)}`)
   console.log(`  被门禁拒绝                   ${String(r.rejectedByGate).padStart(4)}  ${r.rejectionRate}`)
   console.log(`  其中没有引文字段              ${String(r.noQuote).padStart(4)}`)
   console.log(`  锚点解析不出来                ${String(r.unresolved).padStart(4)}`)
@@ -307,9 +385,12 @@ async function main() {
   const un = r.failing.filter((f) => f.kind === 'UNEXPLAINED').length
   console.log(`  ${String(un).padStart(4)}  任何补丁子集都救不回`)
   console.log('')
-  const narrow = r.failing.filter((f) => f.savedByNarrowLineJoinAlone).length
-  console.log(`其中「只把源里的换行视为可删/可留」这一条窄修法就能救回：${narrow} 条`)
+  console.log(`其中「只忽略空白」就能救回：${r.failing.filter((f) => f.savedByBlankOnly).length} 条`)
+  console.log(`再窄一档「只把源里的换行视为可删/可留」能救回：${r.failing.filter((f) => f.savedByLineBreakOnly).length} 条`)
   console.log(`按章分布：${JSON.stringify(r.byChapter)}`)
+  console.log('')
+  console.log(`现行判据（${r.currentGate.normalization}）在同一语料上仍拒：${r.currentGate.rejectCount} 条`)
+  for (const x of r.currentGate.rejects) console.log(`  ${x.objectId}  [${x.file.replace(/^pipeline\//, '')}]`)
 }
 
 if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) await main()

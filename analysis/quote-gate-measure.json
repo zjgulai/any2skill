@@ -13,7 +13,7 @@
   },
   "totalObjectsMeasured": 398,
   "strict": 360,
-  "currentOk": 23,
+  "legacyNormalized": 23,
   "rejectedByGate": 15,
   "rejectionRate": "3.8%",
   "noQuote": 0,
@@ -28,6 +28,24 @@
   "byChapter": {
     "chapter4": 15
   },
+  "currentGate": {
+    "rejects": [
+      {
+        "file": "pipeline/registry/tier-probe/producer-low-3.objects.json",
+        "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+        "chapter": "chapter4",
+        "anchor": "chapter4#h3-5"
+      },
+      {
+        "file": "pipeline/registry/tier-probe/producer-low-3.objects.json",
+        "objectId": "CHAPTER4-H3-5-HEURISTIC-02",
+        "chapter": "chapter4",
+        "anchor": "chapter4#h3-5"
+      }
+    ],
+    "normalization": "markdown-rendering+whitespace",
+    "rejectCount": 2
+  },
   "unexplained": [],
   "failing": [
     {
@@ -40,8 +58,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/chapter4.objects.json",
@@ -53,8 +71,8 @@
       "cause": [
         "inlineCode"
       ],
-      "savedByNarrowLineJoinAlone": false,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": false,
+      "savedByLineBreakOnly": false
     },
     {
       "file": "pipeline/knowledge/history/chapter4.4477f37a.objects.json",
@@ -66,8 +84,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/history/chapter4.8694ef87.objects.json",
@@ -79,8 +97,8 @@
       "cause": [
         "backslashEscape"
       ],
-      "savedByNarrowLineJoinAlone": false,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": false,
+      "savedByLineBreakOnly": false
     },
     {
       "file": "pipeline/knowledge/history/chapter4.8694ef87.objects.json",
@@ -92,8 +110,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/history/chapter4.8ac13625.objects.json",
@@ -105,8 +123,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/history/chapter4.99717073.objects.json",
@@ -118,8 +136,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/history/chapter4.99717073.objects.json",
@@ -131,8 +149,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
@@ -144,8 +162,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
@@ -157,8 +175,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": false
     },
     {
       "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
@@ -171,8 +189,8 @@
         "blockquoteMarker",
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": false,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": false,
+      "savedByLineBreakOnly": false
     },
     {
       "file": "pipeline/knowledge/history/chapter4.b01d756d.objects.json",
@@ -184,8 +202,8 @@
       "cause": [
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": true,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": true,
+      "savedByLineBreakOnly": true
     },
     {
       "file": "pipeline/knowledge/history/chapter4.b3e2fc2e.objects.json",
@@ -197,8 +215,8 @@
       "cause": [
         "inlineCode"
       ],
-      "savedByNarrowLineJoinAlone": false,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": false,
+      "savedByLineBreakOnly": false
     },
     {
       "file": "pipeline/registry/tier-probe/producer-low-3.objects.json",
@@ -211,8 +229,8 @@
         "quoteStyle",
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": false,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": false,
+      "savedByLineBreakOnly": false
     },
     {
       "file": "pipeline/registry/tier-probe/producer-low-3.objects.json",
@@ -225,8 +243,8 @@
         "quoteStyle",
         "whitespace"
       ],
-      "savedByNarrowLineJoinAlone": false,
-      "savedByNarrowLineJoinPlusOwnCause": true
+      "savedByBlankOnly": false,
+      "savedByLineBreakOnly": false
     }
   ],
   "perFile": [

@@ -20,6 +20,7 @@ import { DEFAULT_REPO_ROOT, buildAnchorIndex } from '../../tools/anchor-index.mj
 import {
   QUOTE_NORMALIZATION,
   normalizeForQuoteComparison,
+  quoteHitsRegion,
   verifyObjects,
 } from '../../tools/verifier.mjs'
 
@@ -132,8 +133,50 @@ describe('04 · 引文判据：排版差异不算问题，改写仍是问题', (
       normalizeForQuoteComparison('调用 web_search 工具'),
       normalizeForQuoteComparison('调用 websearch 工具'),
     )
-    assert.equal(normalizeForQuoteComparison('**粗体** 与 普通'), '粗体 与 普通')
-    assert.equal(normalizeForQuoteComparison('a\n\n  b'), 'a b')
+  })
+
+  it('归一化抹掉渲染后不可见的四类标记：强调 / 引用块 / 行内代码 / 反斜杠转义', () => {
+    assert.equal(normalizeForQuoteComparison('**粗体** 与 普通'), '粗体与普通')
+    assert.equal(normalizeForQuoteComparison('> **实验组**：实现'), '实验组：实现')
+    assert.equal(normalizeForQuoteComparison('  > 缩进的引用'), '缩进的引用')
+    assert.equal(normalizeForQuoteComparison('OpenAI 的 `tool_search` 与 `defer_loading`'), 'OpenAI的tool_search与defer_loading')
+    assert.equal(normalizeForQuoteComparison('弯引号（\\u201c和\\u201d）'), '弯引号（\\u201c和\\u201d）')
+    assert.equal(normalizeForQuoteComparison('弯引号（\\\\u201c和\\\\u201d）'), '弯引号（\\u201c和\\u201d）')
+  })
+
+  it('空白整体忽略：换行、空行、行内空格两个方向都不算差异', () => {
+    assert.equal(normalizeForQuoteComparison('a\n\n  b'), 'ab')
+    assert.equal(normalizeForQuoteComparison('a b'), 'ab')
+    // 方向一：源里是换行、空行，引文里没有
+    assert.equal(normalizeForQuoteComparison('击穿 KV Cache。\n\n答案有三层'), normalizeForQuoteComparison('击穿 KV Cache。答案有三层'))
+    // 方向二：源里是行内空格（此处紧跟在 `**` 之后），引文里没有
+    assert.equal(
+      normalizeForQuoteComparison('**从被动选择到主动发现。** 更进一步的思路'),
+      normalizeForQuoteComparison('从被动选择到主动发现。更进一步的思路'),
+    )
+  })
+
+  it('归一化仍不碰中文弯引号：那是字符替换，不是零宽差异（用户拍板不放宽）', () => {
+    assert.notEqual(
+      normalizeForQuoteComparison('声明“我需要什么能力”'),
+      normalizeForQuoteComparison('声明"我需要什么能力"'),
+    )
+  })
+
+  it('只有空白的引文不得被判成命中（归一化会把空串变成 includes 的恒真匹配）', () => {
+    // 这是往**放松**方向跑偏的静默失效：`anything.includes('')` 恒为真。
+    assert.equal(quoteHitsRegion(normalizeForQuoteComparison('任何正文'), normalizeForQuoteComparison('   ')), false)
+    assert.equal(quoteHitsRegion(normalizeForQuoteComparison('任何正文'), normalizeForQuoteComparison('')), false)
+    assert.equal(quoteHitsRegion(normalizeForQuoteComparison('任何正文'), normalizeForQuoteComparison('正文')), true)
+  })
+
+  it('弯引号被替换的引文仍被拒：沿用实测样本（history/chapter4.b01d756d 的同类）', async () => {
+    const strictQuote = QUOTE
+    const swapped = strictQuote.replace(/“/g, '"').replace(/”/g, '"')
+    if (swapped === strictQuote) return // 该样本没有弯引号，跳过（不得据此断言更多）
+    const v = await judgeOne(swapped)
+    assert.equal(v.status, 'reject')
+    assert.equal(v.reasonCode, 'QUOTE_MISMATCH')
   })
 
   it('判据的放宽幅度有界：内部删掉任何一个非空白字都必被拒', async () => {

@@ -147,29 +147,65 @@ export function normalizeText(text) {
 }
 
 /** 本判据在比较引文时忽略的东西——写进回执，使「放宽了什么」不必翻代码才知道。 */
-export const QUOTE_NORMALIZATION = 'markdown-emphasis+whitespace'
+export const QUOTE_NORMALIZATION = 'markdown-rendering+whitespace'
 
 /**
- * 引文比对用的归一化：去掉 markdown 强调标记、折叠空白。
+ * 引文比对用的归一化：一律抹掉**渲染后看不见的东西**，再比。
  *
- * 为什么必须做这一步（实测，不是推测）：第 2 层复制引文时会**去掉 `**` 强调标记**
- * ——它复述的是渲染后的文本，而不是 markdown 源。实测两轮 chapter4 的全部 9 条
- * `QUOTE_MISMATCH`，逐字符比对后差异**只有 `**`**（相似度 0.90–0.98），
- * 去掉标记后 9 条全部命中，**没有一条是改写或编造**。
- * 若维持字节相等，被判死的对象里 16% 是死于排版标记而非知识问题——这正是规格 D7
- * 说的 R6「验证过严、误杀有效对象」。放宽这一层不损失判据的本意：
- * 它要挡的是「出处对不上」，不是「引号两边的星号在不在」。
+ * 为什么必须做这一步（实测，不是推测）：第 2 层复制引文时复述的是**渲染后的文本**，
+ * 而判据比的是 markdown 源。票据 04 先只处理了 `**`；票据 07 之后对盘上全部 12 份对象集
+ * （398 个对象、含跨章的 antipatterns）做离线复算，把**每一条拒绝**逐条归因，结论是：
+ * 被拒 15 条，**全部 15 条**都只是这类差异，**0 条是改写或编造**
+ * （复算口径与逐条成因见 `analysis/quote-gate-measure.mjs` 与 ADR-018）。
  *
- * 刻意**不动下划线**：正文里的 `web_search`、`read_file` 是真标识符，剥掉下划线会把
- * 不同的东西变成相同的东西——那是把判据放松到危险的方向。
+ * 因此本函数抹掉的五类，每一类都有实测样本支撑：
+ *
+ *   | 类 | 源 | 模型复述 | 实测条数 |
+ *   |---|---|---|---|
+ *   | 强调标记 | `**破坏 KV Cache**` | `破坏 KV Cache` | 9（票据 04） |
+ *   | 引用块标记 | `> **实验组**：` | `实验组：` | 1 |
+ *   | 行内代码标记 | `` `tool_search` `` | `tool_search` | 2 |
+ *   | 反斜杠转义 | `\u201c` | `\\u201c` | 1 |
+ *   | 空白 | 空行分段 / 强调标记后的空格 | 直接接上 | 9 |
+ *
+ * **空白是整体忽略的**（不是只忽略换行）：源里任何一处空白都可以与引文不同。
+ * 用户拍板时明确选了这一口径，理由是「换行处的空白可省、行内空白不可省」这条界线
+ * 在中文正文里无法辩护。放宽幅度有界——被忽略的只有空白，**任何非空白字符的增删改
+ * 仍然必被拒**，由测试逐条钉住。
+ *
+ * 刻意**不动两样东西**：
+ *   - 下划线：`web_search` 与 `websearch` 是真标识符，剥掉会把不同的东西变成相同的东西。
+ *   - 中文弯引号 ↔ ASCII 直引号：那是一次**字符替换**，不是零宽差异。同一批测量里
+ *     有 2 条属于此类，用户拍板**不放宽**，它们至今仍被拒——这是有意保留的判据强度，
+ *     不是漏网。
  */
 export function normalizeForQuoteComparison(text) {
   return String(text ?? '')
+    // 反斜杠转义：模型常把 \u201c 复述成 \\u201c
+    .replace(/\\\\/g, '\\')
+    // 引用块标记必须在**去空白之前**剥掉：它只在行首有效，而下一步会把换行也抹掉。
+    .split(/\r\n|\n|\r/)
+    .map((line) => line.replace(/^[ \t]*>+[ \t]?/, ''))
+    .join('\n')
+    // 行内代码标记：源 `tool_search`，复述成 tool_search
+    .replace(/`/g, '')
+    // markdown 强调标记
     .replace(/\*\*(.+?)\*\*/gs, '$1')
     .replace(/__(.+?)__/gs, '$1')
     .replace(/\*([^*\n]+?)\*/gs, '$1')
-    .replace(/\s+/g, ' ')
-    .trim()
+    // 空白：全部忽略（含换行）
+    .replace(/\s+/g, '')
+}
+
+/**
+ * 归一化后的引文是否命中归一化后的区间。
+ *
+ * **单独抽出来是因为空串陷阱**：归一化会把「只有空白的引文」变成 `''`，
+ * 而 `haystack.includes('')` 恒为真——那会把一条空引文判成命中，是往**放松**方向跑偏
+ * 的静默失效。因此这里显式要求归一化后的引文非空。
+ */
+export function quoteHitsRegion(normalizedRegion, normalizedQuote) {
+  return normalizedQuote !== '' && normalizedRegion.includes(normalizedQuote)
 }
 
 /** 源文件路径 → 正文行数组（供逐字比对；第 3 层只读源正文，不读第 2 层的任何中间状态）。 */
@@ -310,7 +346,7 @@ export function checkDeterministic(obj, ctx) {
         const refStrict = refText.includes(normalizeText(ref.quote))
         const refNormalized =
           refStrict ||
-          normalizeForQuoteComparison(refText).includes(normalizeForQuoteComparison(ref.quote))
+          quoteHitsRegion(normalizeForQuoteComparison(refText), normalizeForQuoteComparison(ref.quote))
         refQuoteComparisons.push({
           at,
           anchor: entry.anchor,
@@ -374,7 +410,9 @@ export function checkDeterministic(obj, ctx) {
 
     const quoteIsString = typeof quote === 'string' && quote !== ''
     const strict = quoteIsString && haystack.includes(normalizeText(quote))
-    const normalized = quoteIsString && normalizeForQuoteComparison(haystack).includes(normalizeForQuoteComparison(quote))
+    const normalized =
+      quoteIsString &&
+      quoteHitsRegion(normalizeForQuoteComparison(haystack), normalizeForQuoteComparison(quote))
     quoteComparison = {
       strict,
       normalized,
