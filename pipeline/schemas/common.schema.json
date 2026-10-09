@@ -65,7 +65,12 @@
         "title": { "type": "string", "description": "锚点标题原文，便于回溯时无需打开正文即可核对。" },
         "lineStart": { "type": "integer", "minimum": 1 },
         "lineEnd": { "type": "integer", "minimum": 1 },
-        "contentHash": { "$ref": "#/$defs/hash" }
+        "contentHash": { "$ref": "#/$defs/hash" },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "description": "该条出处**自己的**逐字引文（可选）。一条 sourceRef 带上它，就等于声明「这一章确实有支撑该对象主张的原文」——第 3 层会拿它与**本条 sourceRef 的锚点区间**逐字比对，而不是只比第一条。它存在的原因是跨章对象（ticket 06）：一条反模式可以同时引用第 5 章与第 7 章，若只验第一条，则「第二、三条引文是不是真的」这件事永远无人过问，而对象看起来照样通过了验证。"
+        }
       },
       "additionalProperties": true
     },

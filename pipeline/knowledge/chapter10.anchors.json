@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/ai-agent-book-zh/book/chapter10.md",
+  "fileKey": "chapter10",
+  "totalLines": 737,
+  "sourceHash": "sha256:a6a901583fe68f2d00933b0a16f0b7ea3e4d4ad5465f881317ae189a5251b670",
+  "anchorCount": 34,
+  "levelCounts": {
+    "h1": 1,
+    "h2": 8,
+    "h3": 20,
+    "h4": 5
+  },
+  "anchors": [
+    {
+      "anchor": "chapter10#h1-1",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 1,
+      "title": "多 Agent 协作",
+      "lineStart": 1,
+      "lineEnd": 10,
+      "contentHash": "sha256:321a8c5aae2936bc6d9caf4c630d8a8018ebada81c13a7525788ad65cb1bfc7f",
+      "contentBytes": 2197
+    },
+    {
+      "anchor": "chapter10#h2-1",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "多 Agent 协作的分类框架",
+      "lineStart": 11,
+      "lineEnd": 14,
+      "contentHash": "sha256:4fa9561c0369db6a1d49cdb9d5ef466fb43ac69a7c66c2d0cabd7f16e8b16505",
+      "contentBytes": 170
+    },
+    {
+      "anchor": "chapter10#h3-1",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "维度一：上下文是否共享",
+      "lineStart": 15,
+      "lineEnd": 33,
+      "contentHash": "sha256:71eb63c07b1a794c35a90432bb0422155256ea73c5fea77801fe9539e1c7537d",
+      "contentBytes": 2797
+    },
+    {
+      "anchor": "chapter10#h3-2",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "维度二：协作拓扑",
+      "lineStart": 34,
+      "lineEnd": 45,
+      "contentHash": "sha256:e53b3d1b45cabcb0006bec44a9313bbac0becd6f3a5b9dda013e2c9d45ebcb3c",
+      "contentBytes": 1425
+    },
+    {
+      "anchor": "chapter10#h2-2",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "多 Agent 何时真正优于单 Agent",
+      "lineStart": 46,
+      "lineEnd": 78,
+      "contentHash": "sha256:1bf85e3a2ffeac0add697c6bce99abbc4ba0068d3de3a5d49fbb22bb92f16495",
+      "contentBytes": 5284
+    },
+    {
+      "anchor": "chapter10#h2-3",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "共享上下文的多 Agent 协作",
+      "lineStart": 79,
+      "lineEnd": 101,
+      "contentHash": "sha256:3a69362ecbc4de7a19e81928018e4fa64babb745fce9e0034b7ecf0f79fc0053",
+      "contentBytes": 3615
+    },
+    {
+      "anchor": "chapter10#h2-4",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "不共享上下文的多 Agent 协作",
+      "lineStart": 102,
+      "lineEnd": 132,
+      "contentHash": "sha256:2be1dfd0a2dba930a18adb7d41bdfab6c1b37888147f39ab71b53cb2ca9ce1dd",
+      "contentBytes": 2569
+    },
+    {
+      "anchor": "chapter10#h3-3",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "Agent 眼中的文件系统",
+      "lineStart": 133,
+      "lineEnd": 165,
+      "contentHash": "sha256:8084dfccd1fe8a358424b51a44f3174ce214641f34d9ac031058608a2f3b57d6",
+      "contentBytes": 5013
+    },
+    {
+      "anchor": "chapter10#h3-4",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "Agent 间的通信与控制",
+      "lineStart": 166,
+      "lineEnd": 193,
+      "contentHash": "sha256:a914190a52c2aa3e6fb7c95a5d95bf8054c9f4becb11ddc6f21e1137ee8c1e50",
+      "contentBytes": 6996
+    },
+    {
+      "anchor": "chapter10#h3-5",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "对等协作模式：相互制衡与迭代改进",
+      "lineStart": 194,
+      "lineEnd": 199,
+      "contentHash": "sha256:d2191278ff94d9de22b4486bbdffd158591580ffa3a48c31ec2eb2a699e1af0b",
+      "contentBytes": 759
+    },
+    {
+      "anchor": "chapter10#h4-1",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 4,
+      "title": "Loop 工程",
+      "lineStart": 200,
+      "lineEnd": 227,
+      "contentHash": "sha256:586974e7add02b43c701a0de36a1267dee2a2a5d86f89dba2db654c51de3e209",
+      "contentBytes": 6882
+    },
+    {
+      "anchor": "chapter10#h4-2",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 4,
+      "title": "提议者-审核者范式",
+      "lineStart": 228,
+      "lineEnd": 267,
+      "contentHash": "sha256:ad67e6c668618890cdec43d87dae6eccc2139637beaa62684c6497cfaf37cbbe",
+      "contentBytes": 3835
+    },
+    {
+      "anchor": "chapter10#h4-3",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 4,
+      "title": "辩论模式",
+      "lineStart": 268,
+      "lineEnd": 275,
+      "contentHash": "sha256:24a2583ac53605ab3091c48b105170813c5bbc52c506aa4983dbf68d2e5e17c9",
+      "contentBytes": 1647
+    },
+    {
+      "anchor": "chapter10#h4-4",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 4,
+      "title": "头脑风暴模式",
+      "lineStart": 276,
+      "lineEnd": 279,
+      "contentHash": "sha256:52edae30d1e74810dcbb02eabdf8d7428f689c4d64acdad41a9c94e7d8eba13c",
+      "contentBytes": 551
+    },
+    {
+      "anchor": "chapter10#h4-5",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 4,
+      "title": "专家小组模式",
+      "lineStart": 280,
+      "lineEnd": 283,
+      "contentHash": "sha256:37c33371b0abe86e0b15dff2e05695320e621c482925ed1ad0ba0fd672a71f12",
+      "contentBytes": 448
+    },
+    {
+      "anchor": "chapter10#h3-6",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "管理者模式：中心化协调",
+      "lineStart": 284,
+      "lineEnd": 442,
+      "contentHash": "sha256:b371d4dfeac876161ce3742fb42e853bac0d76dcc57e9b425d2ef60c3c147b43",
+      "contentBytes": 16718
+    },
+    {
+      "anchor": "chapter10#h3-7",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "去中心化模式",
+      "lineStart": 443,
+      "lineEnd": 512,
+      "contentHash": "sha256:5c5ba21fb405eaf874440fd483d75e9437a408347e0ab960e8045fbf12de661e",
+      "contentBytes": 8375
+    },
+    {
+      "anchor": "chapter10#h3-8",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "跨组织协作：A2A 协议",
+      "lineStart": 513,
+      "lineEnd": 522,
+      "contentHash": "sha256:3d65ef9560aaffa95ae27df96ba3d6584d5cd321cbcf67ac395c4c7b461d10cd",
+      "contentBytes": 1707
+    },
+    {
+      "anchor": "chapter10#h2-5",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "多 Agent 协作的失败模式",
+      "lineStart": 523,
+      "lineEnd": 536,
+      "contentHash": "sha256:3a7d55596349b944d800d86ad515a7f108e4e6eaaf28c8be87b932a179d35ef3",
+      "contentBytes": 1867
+    },
+    {
+      "anchor": "chapter10#h3-9",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "失败模式一：共享文件系统的并发冲突",
+      "lineStart": 537,
+      "lineEnd": 548,
+      "contentHash": "sha256:224da9541e7566ae5f9922f311223854a805a01c1f6e665bcd607fa769d5078b",
+      "contentBytes": 1860
+    },
+    {
+      "anchor": "chapter10#h3-10",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "失败模式二：错误的级联放大",
+      "lineStart": 549,
+      "lineEnd": 554,
+      "contentHash": "sha256:59f61106e2364c884250b7235cfce08012f41322a2a47d028dabfb32f7efadf1",
+      "contentBytes": 646
+    },
+    {
+      "anchor": "chapter10#h3-11",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "失败模式三：同质趋同",
+      "lineStart": 555,
+      "lineEnd": 560,
+      "contentHash": "sha256:e123026b2c4218f7910534ef581c3a3337ba53f91891a2964041ad5f9b37f1ff",
+      "contentBytes": 872
+    },
+    {
+      "anchor": "chapter10#h3-12",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "失败模式四：互相扯皮",
+      "lineStart": 561,
+      "lineEnd": 566,
+      "contentHash": "sha256:d4183e492917268357a38d4f1d65638ac6e0e8ac3bf90fcd86dd83856defa67d",
+      "contentBytes": 1059
+    },
+    {
+      "anchor": "chapter10#h3-13",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "失败模式五：循环失控",
+      "lineStart": 567,
+      "lineEnd": 570,
+      "contentHash": "sha256:fa31e8cf45978e6d8de04e82b320c62adc2f9dc36cb9027766365a8e3c364e85",
+      "contentBytes": 364
+    },
+    {
+      "anchor": "chapter10#h3-14",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "失败模式六：理解债与认知投降",
+      "lineStart": 571,
+      "lineEnd": 580,
+      "contentHash": "sha256:fd61a2fb234a7e423ea5a468fb50980fbc037fadbc7c403d30df13d12622808b",
+      "contentBytes": 1179
+    },
+    {
+      "anchor": "chapter10#h2-6",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "Agent 社会",
+      "lineStart": 581,
+      "lineEnd": 590,
+      "contentHash": "sha256:dda20135ef2cc00700a5774008bb38dc22e5f6a7bf6bfc7f7f8d046620b66d19",
+      "contentBytes": 1146
+    },
+    {
+      "anchor": "chapter10#h3-15",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "斯坦福 AI 小镇：生成式 Agent 的社会模拟",
+      "lineStart": 591,
+      "lineEnd": 634,
+      "contentHash": "sha256:31825fb80268dd4635d3159d45e1c52889391d11ccdbdfafca9cf60eca9f5e71",
+      "contentBytes": 5620
+    },
+    {
+      "anchor": "chapter10#h3-16",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "Agentopia：十年尺度的长期生活模拟",
+      "lineStart": 635,
+      "lineEnd": 649,
+      "contentHash": "sha256:6d1b740cb0ded3b944ee93b57be3f0ec4fa08d8e73fedb748aac987d91b2c9cc",
+      "contentBytes": 3181
+    },
+    {
+      "anchor": "chapter10#h3-17",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "Moltbook：当 Agent 拥有自己的社交网络",
+      "lineStart": 650,
+      "lineEnd": 655,
+      "contentHash": "sha256:85f0b58c56d4b90fe19aa9983153a0a155b12da9ff31b21a201cc06f4144a192",
+      "contentBytes": 757
+    },
+    {
+      "anchor": "chapter10#h3-18",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "从虚拟社会到经济竞争：Vending-Bench Arena",
+      "lineStart": 656,
+      "lineEnd": 669,
+      "contentHash": "sha256:843a863fb0a3e57e57a78391a572e25c24b8dbff3a73283774fba818f956f7c2",
+      "contentBytes": 2125
+    },
+    {
+      "anchor": "chapter10#h3-19",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "Agent 经济：Pinchwork 与 RentAHuman",
+      "lineStart": 670,
+      "lineEnd": 677,
+      "contentHash": "sha256:cba59e78e4b225381043226984e4bd4f5f774c0e8e33570aa932cf68cd764068",
+      "contentBytes": 951
+    },
+    {
+      "anchor": "chapter10#h3-20",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 3,
+      "title": "信息不对称下的策略博弈：狼人杀",
+      "lineStart": 678,
+      "lineEnd": 713,
+      "contentHash": "sha256:4c3f980b50123f16bf2f46e6aa4f706fb2e43e0c91d50906e9ed4035a25a2e3f",
+      "contentBytes": 3521
+    },
+    {
+      "anchor": "chapter10#h2-7",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "本章小结",
+      "lineStart": 714,
+      "lineEnd": 723,
+      "contentHash": "sha256:01747f5b160497432862b1acf32da3120dfa86ab7ef130e8fb887e371d95fa9a",
+      "contentBytes": 1869
+    },
+    {
+      "anchor": "chapter10#h2-8",
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "level": 2,
+      "title": "思考题",
+      "lineStart": 724,
+      "lineEnd": 737,
+      "contentHash": "sha256:918cc75c354d7466fe5415736c67a50dbb8665495beb52a03d822da31049bfb1",
+      "contentBytes": 3644
+    }
+  ]
+}

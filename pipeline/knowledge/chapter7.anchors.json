@@ -1,0 +1,496 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/ai-agent-book-zh/book/chapter7.md",
+  "fileKey": "chapter7",
+  "totalLines": 877,
+  "sourceHash": "sha256:30bbc29c9826d0223bd9d10393378f3f01970d9af88b9f9d2115dfaca54218e8",
+  "anchorCount": 48,
+  "levelCounts": {
+    "h1": 1,
+    "h2": 13,
+    "h3": 31,
+    "h4": 3
+  },
+  "anchors": [
+    {
+      "anchor": "chapter7#h1-1",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 1,
+      "title": "Agent 的评估",
+      "lineStart": 1,
+      "lineEnd": 26,
+      "contentHash": "sha256:7badabb605add6fad2c31811863fa61b76a8b93ff69a16d0ba42cdf1abef42b3",
+      "contentBytes": 3544
+    },
+    {
+      "anchor": "chapter7#h2-1",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "一条评估任务的解剖：τ²-bench 的 telecom 领域",
+      "lineStart": 27,
+      "lineEnd": 30,
+      "contentHash": "sha256:8fc65fc09d557c1611bc48cfc33aba1db81dd4b2a64bba0d536162021dfe496c",
+      "contentBytes": 320
+    },
+    {
+      "anchor": "chapter7#h3-1",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "任务定义的四个组成部分",
+      "lineStart": 31,
+      "lineEnd": 94,
+      "contentHash": "sha256:062d1cd321e8b4bdbe6ed5f3f64bec9f516fd19ed4062636cd756a2ea5edf20d",
+      "contentBytes": 4264
+    },
+    {
+      "anchor": "chapter7#h3-2",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "一次真实运行的轨迹",
+      "lineStart": 95,
+      "lineEnd": 128,
+      "contentHash": "sha256:16d97993db358deb488f0139abfe9a96cb0df3b6fc0a793098af421e7af9fca0",
+      "contentBytes": 3939
+    },
+    {
+      "anchor": "chapter7#h2-2",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "评估指标：成功的定义",
+      "lineStart": 129,
+      "lineEnd": 132,
+      "contentHash": "sha256:73fa48cc952cd378888ab1a7288949546c080b7f4906ac6cd24519c9ffb651e9",
+      "contentBytes": 419
+    },
+    {
+      "anchor": "chapter7#h3-3",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "技术奇观：用 Pass@k 看能力上限",
+      "lineStart": 133,
+      "lineEnd": 146,
+      "contentHash": "sha256:50a1102fc7fbe3ad557548d26f4dcb86305afed5b2901cf5bba41b05400eb462",
+      "contentBytes": 2145
+    },
+    {
+      "anchor": "chapter7#h3-4",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "业务可靠性：关注 Pass^k",
+      "lineStart": 147,
+      "lineEnd": 161,
+      "contentHash": "sha256:613fda02d73d04501bc4a4849a61b0b621226bbdb59fafbb46c330701bebcba5",
+      "contentBytes": 1254
+    },
+    {
+      "anchor": "chapter7#h2-3",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "评估环境",
+      "lineStart": 162,
+      "lineEnd": 165,
+      "contentHash": "sha256:7729950b0f2a0828b949fa116201892c3fa0dd4f38541fb50eff073fdd02bd52",
+      "contentBytes": 208
+    },
+    {
+      "anchor": "chapter7#h3-5",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "五个组成要素",
+      "lineStart": 166,
+      "lineEnd": 181,
+      "contentHash": "sha256:4309c2384859843274c12234cb251ac0142be1ac03ad07465ebb972a6c079675",
+      "contentBytes": 1643
+    },
+    {
+      "anchor": "chapter7#h3-6",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "人机交互型与工具调用型评估环境",
+      "lineStart": 182,
+      "lineEnd": 202,
+      "contentHash": "sha256:b9cc666b85bce6d2f76c0d0c62a889678e5f73433f10ebaecce2ba412a70a369",
+      "contentBytes": 2107
+    },
+    {
+      "anchor": "chapter7#h2-4",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "评估数据集的设计",
+      "lineStart": 203,
+      "lineEnd": 206,
+      "contentHash": "sha256:c157acc51163e7b297b3eafe655c2df06eed79a296aaff03f65d3dd856c51d29",
+      "contentBytes": 366
+    },
+    {
+      "anchor": "chapter7#h3-7",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "基准设计的横向对照",
+      "lineStart": 207,
+      "lineEnd": 221,
+      "contentHash": "sha256:c031af6a4db4d614c67d60fddcebfc7a9263ac7eb338c12d23263d81605b71b2",
+      "contentBytes": 1610
+    },
+    {
+      "anchor": "chapter7#h3-8",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "验证器",
+      "lineStart": 222,
+      "lineEnd": 231,
+      "contentHash": "sha256:487971ec890330d69556f717d960357aa54963ea25795d771602d42d699cd086",
+      "contentBytes": 1598
+    },
+    {
+      "anchor": "chapter7#h3-9",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "任务的难度划分",
+      "lineStart": 232,
+      "lineEnd": 241,
+      "contentHash": "sha256:916d4978209e5329bb570d62a4bf8072d5777aa3707f36bb227dbfa3e27380a6",
+      "contentBytes": 981
+    },
+    {
+      "anchor": "chapter7#h3-10",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "数据泄漏防范",
+      "lineStart": 242,
+      "lineEnd": 249,
+      "contentHash": "sha256:4d3803f454be06e57d6195795b890087f19b35c8f7e7d3e59871bf2f2f59636c",
+      "contentBytes": 1340
+    },
+    {
+      "anchor": "chapter7#h3-11",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "质量控制与长期维护",
+      "lineStart": 250,
+      "lineEnd": 273,
+      "contentHash": "sha256:215e7e98335f00935e793eb0c4022a166c7eb0ffa43d5e78761a8be6ecd79d3f",
+      "contentBytes": 3830
+    },
+    {
+      "anchor": "chapter7#h3-12",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "评估集的三个来源",
+      "lineStart": 274,
+      "lineEnd": 287,
+      "contentHash": "sha256:0c01233fa2592258dbe0f542cbf84380a4a72c68caa281af61334bb3aa60ee7e",
+      "contentBytes": 1458
+    },
+    {
+      "anchor": "chapter7#h2-5",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "自动化评估方法",
+      "lineStart": 288,
+      "lineEnd": 303,
+      "contentHash": "sha256:416f0c3a208f3f3ae4a4f5b87354d71db4f273d2df2c94d92ab2a1dc99344598",
+      "contentBytes": 2112
+    },
+    {
+      "anchor": "chapter7#h3-13",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "LLM-as-a-Judge：自动化评估的核心",
+      "lineStart": 304,
+      "lineEnd": 433,
+      "contentHash": "sha256:bd3e07ff313691c8d8eeca0804f71fdcad1d489122d0124bd1eedfcaf870ac9a",
+      "contentBytes": 13456
+    },
+    {
+      "anchor": "chapter7#h3-14",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "失败归因：从整条轨迹定位首个错误",
+      "lineStart": 434,
+      "lineEnd": 463,
+      "contentHash": "sha256:80eb1b35be0c52408b636c9de3eefb11afbe2738254ed9bcc40d49160ff1a1d3",
+      "contentBytes": 5752
+    },
+    {
+      "anchor": "chapter7#h4-1",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 4,
+      "title": "“做对了但说错了” 问题",
+      "lineStart": 464,
+      "lineEnd": 483,
+      "contentHash": "sha256:d6e71c33722d180927d156696e2877f942f8d796ea5b7a6fca578f758d679442",
+      "contentBytes": 3494
+    },
+    {
+      "anchor": "chapter7#h4-2",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 4,
+      "title": "作用域敏感的文档格式错误",
+      "lineStart": 484,
+      "lineEnd": 501,
+      "contentHash": "sha256:3601c3819eb0891c4e23aaf01b1b30aa6b8a89c089d1c0c788e17876bf30170a",
+      "contentBytes": 1244
+    },
+    {
+      "anchor": "chapter7#h4-3",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 4,
+      "title": "精确复制错误：从 `old_string` mismatch 到逐层定位",
+      "lineStart": 502,
+      "lineEnd": 512,
+      "contentHash": "sha256:079d1cc26d1b2f57668a2e88d2e35a2dfb092740daf7e248c9ca74de393417ae",
+      "contentBytes": 993
+    },
+    {
+      "anchor": "chapter7#h3-15",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "端到端回归任务与轨迹前缀回归任务",
+      "lineStart": 513,
+      "lineEnd": 538,
+      "contentHash": "sha256:9b0628e020a5f819154613fe5a8742a7aab26dce1ce47e47ebad914329965940",
+      "contentBytes": 4740
+    },
+    {
+      "anchor": "chapter7#h3-16",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "配对比较与模型排名",
+      "lineStart": 539,
+      "lineEnd": 557,
+      "contentHash": "sha256:5ece24431cd91312dd0eb9230c61fedc9f7b4bf5207aae51877601cf07e83932",
+      "contentBytes": 3377
+    },
+    {
+      "anchor": "chapter7#h2-6",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "评估驱动的模型选型",
+      "lineStart": 558,
+      "lineEnd": 561,
+      "contentHash": "sha256:c116580655ed8050e479ecfc1d111c85f50b3a374e6dcf758b66aa7cb8a99d25",
+      "contentBytes": 165
+    },
+    {
+      "anchor": "chapter7#h3-17",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "选型的关键维度",
+      "lineStart": 562,
+      "lineEnd": 582,
+      "contentHash": "sha256:1540584a5c99c4319820ea67844af2f4fe68a2ca912f385ac2a80efb846ba31b",
+      "contentBytes": 3505
+    },
+    {
+      "anchor": "chapter7#h3-18",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "模型的行为策略",
+      "lineStart": 583,
+      "lineEnd": 598,
+      "contentHash": "sha256:097ba2c46f100bf9fed95f4b4c573d974695f0526c5e59349034d85074a0a565",
+      "contentBytes": 2587
+    },
+    {
+      "anchor": "chapter7#h3-19",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "Agent 系统的成本分析",
+      "lineStart": 599,
+      "lineEnd": 645,
+      "contentHash": "sha256:113f21fc386e5cf3f6f0b5dc20e26daefe5af6237856c65fbd0d34e7c626f516",
+      "contentBytes": 4890
+    },
+    {
+      "anchor": "chapter7#h3-20",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "评估驱动的持续迭代",
+      "lineStart": 646,
+      "lineEnd": 671,
+      "contentHash": "sha256:301ffaa9dde13f6cd3cd352b54dcab93577d5b75794903f480b52cf1a3660270",
+      "contentBytes": 3731
+    },
+    {
+      "anchor": "chapter7#h2-7",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "评估结果的统计显著性",
+      "lineStart": 672,
+      "lineEnd": 697,
+      "contentHash": "sha256:c3998e2d4ff530b003098a14490b5952616003f6e7efc4e39a5d0f8e15725ff8",
+      "contentBytes": 1543
+    },
+    {
+      "anchor": "chapter7#h2-8",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "Agent 的可观测性",
+      "lineStart": 698,
+      "lineEnd": 717,
+      "contentHash": "sha256:1977b9425c64a5f0268ec7bc7a61b0c32259b9040ea8dcf4e946e7b1cc0d4733",
+      "contentBytes": 3755
+    },
+    {
+      "anchor": "chapter7#h2-9",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "从 Benchmark 报告到系统改进",
+      "lineStart": 718,
+      "lineEnd": 727,
+      "contentHash": "sha256:fad9963cddb5ff6e42d23eeac45d7a17fc3627ca6b45318e7e50f18a0cad96f8",
+      "contentBytes": 1409
+    },
+    {
+      "anchor": "chapter7#h3-21",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "读懂 Benchmark 报告：发现问题的艺术",
+      "lineStart": 728,
+      "lineEnd": 733,
+      "contentHash": "sha256:541efd3f89530655ea92ff48660cd7b7ec97d90ddf59390b582dcbb4c5fbc7df",
+      "contentBytes": 865
+    },
+    {
+      "anchor": "chapter7#h3-22",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "从数据到假设：构建改进路线图",
+      "lineStart": 734,
+      "lineEnd": 741,
+      "contentHash": "sha256:c72ad59588d35284c3dbae897cd80d767ce5fd67727f8eb94e575b675255a99c",
+      "contentBytes": 1027
+    },
+    {
+      "anchor": "chapter7#h3-23",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "从结果到决策：数据驱动的权衡",
+      "lineStart": 742,
+      "lineEnd": 755,
+      "contentHash": "sha256:cc5a3119490bff616644631a3f4e355511755dab58f0cb5d50cbd09c490e6d57",
+      "contentBytes": 1330
+    },
+    {
+      "anchor": "chapter7#h3-24",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "持续迭代：从第一次改进到系统演化",
+      "lineStart": 756,
+      "lineEnd": 776,
+      "contentHash": "sha256:a93f5b2f5192dcf852ee567b21a6579958892e14de6101d36f23966152fdedd1",
+      "contentBytes": 2165
+    },
+    {
+      "anchor": "chapter7#h2-10",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "从外部评估到内部评估：生产级 Agent 的评估基础设施",
+      "lineStart": 777,
+      "lineEnd": 780,
+      "contentHash": "sha256:300c1267ba5e2c4738fcc57121b31c7dd8011ab4710294bec747efba40ca17d3",
+      "contentBytes": 580
+    },
+    {
+      "anchor": "chapter7#h3-25",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "消融基础设施：理解每个特性的真实贡献",
+      "lineStart": 781,
+      "lineEnd": 786,
+      "contentHash": "sha256:ecd08780af7ef5d05742f32793d0dedfa45b0ed1b587d440ff9c7fff8ba55ab2",
+      "contentBytes": 1232
+    },
+    {
+      "anchor": "chapter7#h3-26",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "AB 测试方法论：区分机制与目标",
+      "lineStart": 787,
+      "lineEnd": 798,
+      "contentHash": "sha256:4d576aa6201ab851786866c8433a7b9e5da8939bb8d57984e21c111d4217bb02",
+      "contentBytes": 1703
+    },
+    {
+      "anchor": "chapter7#h3-27",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "双层特性开关系统",
+      "lineStart": 799,
+      "lineEnd": 808,
+      "contentHash": "sha256:bf32ab89b3f21bc72215cf865988c713d9d81814c39e5e0779551d78f6de1053",
+      "contentBytes": 1191
+    },
+    {
+      "anchor": "chapter7#h3-28",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "提示词敏感性评估",
+      "lineStart": 809,
+      "lineEnd": 814,
+      "contentHash": "sha256:60a465cca0c177bec06c70b762d150e06f7df35e237563929b3f5baeed413725",
+      "contentBytes": 747
+    },
+    {
+      "anchor": "chapter7#h3-29",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "以隐私感知分析为评估基础",
+      "lineStart": 815,
+      "lineEnd": 820,
+      "contentHash": "sha256:429d42a6eacd8febe0f1e038cc816c1fabab407d4826656159b37d1dd2f5ce8f",
+      "contentBytes": 757
+    },
+    {
+      "anchor": "chapter7#h3-30",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "从外部到内部：评估思维的转变",
+      "lineStart": 821,
+      "lineEnd": 824,
+      "contentHash": "sha256:f49ed6b56f12c1868e0af2efa01436065f295dbac0a80fabc6d0a00a7290c824",
+      "contentBytes": 700
+    },
+    {
+      "anchor": "chapter7#h2-11",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "仿真环境：从评估到后训练的桥梁",
+      "lineStart": 825,
+      "lineEnd": 845,
+      "contentHash": "sha256:515b7d2b12c0274bed6eeb10115971f54c83c79528d8e6cce886e33950777bf6",
+      "contentBytes": 3831
+    },
+    {
+      "anchor": "chapter7#h3-31",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 3,
+      "title": "保真度权衡与领域随机化",
+      "lineStart": 846,
+      "lineEnd": 851,
+      "contentHash": "sha256:13172e2210c0db20dd8e3b1751e412fd51af2bb15d807d9852c46bfecf563e05",
+      "contentBytes": 871
+    },
+    {
+      "anchor": "chapter7#h2-12",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "本章小结",
+      "lineStart": 852,
+      "lineEnd": 865,
+      "contentHash": "sha256:b842ed91bf88d25dc95a81a1df4f0ec679f3ab23ab270c9ef3c15e4c8cf45a27",
+      "contentBytes": 2109
+    },
+    {
+      "anchor": "chapter7#h2-13",
+      "file": "sources/ai-agent-book-zh/book/chapter7.md",
+      "level": 2,
+      "title": "思考题",
+      "lineStart": 866,
+      "lineEnd": 877,
+      "contentHash": "sha256:d0936c43892dc75406b71548cebbca6a3e37a2ff0598384a196204fd9d1e4dc6",
+      "contentBytes": 2490
+    }
+  ]
+}

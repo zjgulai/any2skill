@@ -1,0 +1,435 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/ai-agent-book-zh/book/chapter2.md",
+  "fileKey": "chapter2",
+  "totalLines": 1114,
+  "sourceHash": "sha256:06872e831c6e42fa9c222342cb459dc7a6db392cc12c8ac948df2b14e966d0d5",
+  "anchorCount": 42,
+  "levelCounts": {
+    "h1": 1,
+    "h2": 9,
+    "h3": 32
+  },
+  "anchors": [
+    {
+      "anchor": "chapter2#h1-1",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 1,
+      "title": "上下文工程",
+      "lineStart": 1,
+      "lineEnd": 6,
+      "contentHash": "sha256:ac2a8d1ad5d74391261389ad8691e5591b80b40328da235ee29b1628dddb901a",
+      "contentBytes": 927
+    },
+    {
+      "anchor": "chapter2#h2-1",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "上下文：决定 Agent 能力上限的关键",
+      "lineStart": 7,
+      "lineEnd": 40,
+      "contentHash": "sha256:99bc8f2177471727ebf2e4298cddc9f3240b0e45418f27cad239c02edcc4088b",
+      "contentBytes": 5851
+    },
+    {
+      "anchor": "chapter2#h2-2",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "Agent 如何调用大模型：理解 API 的上下文结构",
+      "lineStart": 41,
+      "lineEnd": 44,
+      "contentHash": "sha256:a457842fa7c76b71b971dbadf4406a9a640d6a434ebccb6997c316aeed832561",
+      "contentBytes": 318
+    },
+    {
+      "anchor": "chapter2#h3-1",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "消息的四种角色",
+      "lineStart": 45,
+      "lineEnd": 57,
+      "contentHash": "sha256:04f506683d4354be6fd251c4964b86de8003a7178435899c36394d7b6f2eff4a",
+      "contentBytes": 1568
+    },
+    {
+      "anchor": "chapter2#h3-2",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "单轮对话：最简单的 API 调用",
+      "lineStart": 58,
+      "lineEnd": 94,
+      "contentHash": "sha256:06ed1b64a5de6d44c3e2b8051bfaca7395d2621442f6c6f986846a41a9b92a59",
+      "contentBytes": 1370
+    },
+    {
+      "anchor": "chapter2#h3-3",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "带工具调用的多轮交互：Agent 的核心循环",
+      "lineStart": 95,
+      "lineEnd": 250,
+      "contentHash": "sha256:dbecab457092aaa55077354d1db3bec4ffaf12c91de4916af3c781db127f76ee",
+      "contentBytes": 8044
+    },
+    {
+      "anchor": "chapter2#h3-4",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "用代码实现 Agent 的核心循环",
+      "lineStart": 251,
+      "lineEnd": 369,
+      "contentHash": "sha256:6dd86a4a356d9ea37141c0ede54b9969ea4f1059f8dae0931c7c7716d906915c",
+      "contentBytes": 5013
+    },
+    {
+      "anchor": "chapter2#h3-5",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "从 API 视角看上下文的构成",
+      "lineStart": 370,
+      "lineEnd": 434,
+      "contentHash": "sha256:f4ffca097b958712eb6a5c15ab70f1af58d810b14e924d84973bba8647fe6ea7",
+      "contentBytes": 6204
+    },
+    {
+      "anchor": "chapter2#h2-3",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "KV Cache 友好的上下文设计",
+      "lineStart": 435,
+      "lineEnd": 501,
+      "contentHash": "sha256:846e4779bc4eceea5e6dda47725d8fdd008f074b11c6b0f8c00034a8bd7d4dea",
+      "contentBytes": 9334
+    },
+    {
+      "anchor": "chapter2#h3-6",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "从 API 消息到模型 Token：Chat Template",
+      "lineStart": 502,
+      "lineEnd": 525,
+      "contentHash": "sha256:931a382ce09949c8b0d81605570f0acd3593f3d6331c18406d46abe04f31a7ba",
+      "contentBytes": 4829
+    },
+    {
+      "anchor": "chapter2#h3-7",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "KV Cache 的原理与约束",
+      "lineStart": 526,
+      "lineEnd": 555,
+      "contentHash": "sha256:0627edf722ef58c1c03551e7f87dc0b41b454fa4e18c6765e086551a39ee84a2",
+      "contentBytes": 6540
+    },
+    {
+      "anchor": "chapter2#h3-8",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "KV Cache 与 Prompt Cache：两个层级的缓存",
+      "lineStart": 556,
+      "lineEnd": 559,
+      "contentHash": "sha256:30cc6f147f2f2a0045ae6730c3aa442e54d4c2da5f3beb602c1e3a238d03b6bd",
+      "contentBytes": 1006
+    },
+    {
+      "anchor": "chapter2#h3-9",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "缓存作为架构约束",
+      "lineStart": 560,
+      "lineEnd": 579,
+      "contentHash": "sha256:bb7edeab944969c8af8f8ea9ade9ca5e85b62e4c4ca6526c03fe95fa4e7556e1",
+      "contentBytes": 4268
+    },
+    {
+      "anchor": "chapter2#h3-10",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "KV Cache 未必是一次性的：可编辑、可组合的“笔记”",
+      "lineStart": 580,
+      "lineEnd": 593,
+      "contentHash": "sha256:68df8120251ccd155fc15753bc3ae04ac15a6b19a0b696ad876d1563fcd23bdf",
+      "contentBytes": 3381
+    },
+    {
+      "anchor": "chapter2#h3-11",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "承上启下：从缓存机制到上下文内容的设计",
+      "lineStart": 594,
+      "lineEnd": 601,
+      "contentHash": "sha256:9dcda6b76edc7bc8db63ec540f61d163483bf3fa594cc0d1890479d3cbfe95e1",
+      "contentBytes": 1666
+    },
+    {
+      "anchor": "chapter2#h2-4",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "提示工程：优化系统提示词",
+      "lineStart": 602,
+      "lineEnd": 609,
+      "contentHash": "sha256:df3d6922e16eb4a5d1641ff3bc268486014ffb0ea1c0ebf74ae0457b06afd21d",
+      "contentBytes": 637
+    },
+    {
+      "anchor": "chapter2#h3-12",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "语气与风格：系统提示词的“人格”",
+      "lineStart": 610,
+      "lineEnd": 613,
+      "contentHash": "sha256:f160b538ac89e0497b753b5d14902ae983feb1e5e8d5bcb79093d537a67592f6",
+      "contentBytes": 696
+    },
+    {
+      "anchor": "chapter2#h3-13",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "结构化提示：系统提示词的“格式”",
+      "lineStart": 614,
+      "lineEnd": 642,
+      "contentHash": "sha256:91e17d11a67c970e657f1ff479f6452ab6c3388f0d17cc3bf12e8ea6a2eaac34",
+      "contentBytes": 1450
+    },
+    {
+      "anchor": "chapter2#h3-14",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "流程驱动 vs 规则堆砌：系统提示词的“组织方式”",
+      "lineStart": 643,
+      "lineEnd": 671,
+      "contentHash": "sha256:13696bbd033dc9e745f78f887fc1cf321a10a954e39efd431aa909780c2a9f82",
+      "contentBytes": 1391
+    },
+    {
+      "anchor": "chapter2#h3-15",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "业务规则细化：系统提示词的“内容”",
+      "lineStart": 672,
+      "lineEnd": 691,
+      "contentHash": "sha256:2664bcaacc389b728c902dacb4083227cddcc0bf8cf90f94da73e4eb4cb67387",
+      "contentBytes": 3190
+    },
+    {
+      "anchor": "chapter2#h3-16",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "Few-shot 示例：何时给模型看例子",
+      "lineStart": 692,
+      "lineEnd": 699,
+      "contentHash": "sha256:1f35d3da81a43e5ae6839c75046b8fe79a094cf07b1df70a0c77bb2369928974",
+      "contentBytes": 1557
+    },
+    {
+      "anchor": "chapter2#h3-17",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "工具定义的设计",
+      "lineStart": 700,
+      "lineEnd": 729,
+      "contentHash": "sha256:9df228168fcbf3a490d7ddeb07d2c6f464367531a7b2291011c4d1fd009b3c25",
+      "contentBytes": 5727
+    },
+    {
+      "anchor": "chapter2#h3-18",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "提示注入：上下文安全的核心威胁",
+      "lineStart": 730,
+      "lineEnd": 764,
+      "contentHash": "sha256:ac1de0273c5b15157fb7f0989250aa15ad003b20fb8fd6344043bf64cf939772",
+      "contentBytes": 5476
+    },
+    {
+      "anchor": "chapter2#h2-5",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "动态提示词与 Agent Skills",
+      "lineStart": 765,
+      "lineEnd": 775,
+      "contentHash": "sha256:84c664502261d75f93f464277f953f6741147d54f083f2dc1f6088cd119a6720",
+      "contentBytes": 793
+    },
+    {
+      "anchor": "chapter2#h3-19",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "Skills：领域能力的可组合单元",
+      "lineStart": 776,
+      "lineEnd": 793,
+      "contentHash": "sha256:fd4e13c4181a487a1c38094adad7d6ee3f79d753bcd80483dde90aeaf3ee0ab0",
+      "contentBytes": 4487
+    },
+    {
+      "anchor": "chapter2#h3-20",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "如何编写一份可用的 Skill",
+      "lineStart": 794,
+      "lineEnd": 813,
+      "contentHash": "sha256:5dd095692e0c0fbef260d7228199e1d08a22f5ebad9c7339a721c645e8766de6",
+      "contentBytes": 3007
+    },
+    {
+      "anchor": "chapter2#h3-21",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "Skills 在上下文中的位置",
+      "lineStart": 814,
+      "lineEnd": 829,
+      "contentHash": "sha256:4ee7a0e05ac8d650a8cc8343a43dd5a1b08c37a8a3ef15ab3b85bfe0e5b3b152",
+      "contentBytes": 2513
+    },
+    {
+      "anchor": "chapter2#h3-22",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "Skills 与工具的关系",
+      "lineStart": 830,
+      "lineEnd": 856,
+      "contentHash": "sha256:5894ad068cdcc0281dc6ab5e989b7305f40e5c9c7e4e69ad3a96fc0fae73ed92",
+      "contentBytes": 2845
+    },
+    {
+      "anchor": "chapter2#h2-6",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "Agent 状态栏：通过元信息增强 Agent 轨迹管理",
+      "lineStart": 857,
+      "lineEnd": 866,
+      "contentHash": "sha256:d2c26dc4121595af3b9ae1d498f6247f2eb2dc2a4a3f1d3c38ae699419301e33",
+      "contentBytes": 1662
+    },
+    {
+      "anchor": "chapter2#h3-23",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "Agent 状态栏的理论基础",
+      "lineStart": 867,
+      "lineEnd": 907,
+      "contentHash": "sha256:c9a0c9c288939658dd7e41d7884ea51d68a336090167537b2b810d879fe7eca4",
+      "contentBytes": 4849
+    },
+    {
+      "anchor": "chapter2#h3-24",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "Agent 状态栏的构成",
+      "lineStart": 908,
+      "lineEnd": 919,
+      "contentHash": "sha256:c9579fcb95b5a8e223f7d74214e663f7279ea7c169e832422e734949c99475a0",
+      "contentBytes": 1497
+    },
+    {
+      "anchor": "chapter2#h3-25",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "Agent 状态栏在上下文中的具体位置",
+      "lineStart": 920,
+      "lineEnd": 950,
+      "contentHash": "sha256:d24c5896d9189fdde36c4cf54ab1a6d35019ab62fb7f1544c1ef72af69fa98d6",
+      "contentBytes": 2504
+    },
+    {
+      "anchor": "chapter2#h3-26",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "状态更新的两种实现与缓存代价",
+      "lineStart": 951,
+      "lineEnd": 990,
+      "contentHash": "sha256:88bfc8469b6224072479f2a9fc1e4e06b5561275f07a4699947d094764c76a7b",
+      "contentBytes": 6822
+    },
+    {
+      "anchor": "chapter2#h2-7",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "上下文压缩策略",
+      "lineStart": 991,
+      "lineEnd": 994,
+      "contentHash": "sha256:56a277a746184a47bb40d99863efaabbc50dd42d02287d05cfaba04c81c380db",
+      "contentBytes": 410
+    },
+    {
+      "anchor": "chapter2#h3-27",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "为什么需要压缩：不只是长度问题",
+      "lineStart": 995,
+      "lineEnd": 1006,
+      "contentHash": "sha256:2b49741ee8a821e8ddc8df31aee0fe57674b4edf566bf71358c5bad30b2d8f9e",
+      "contentBytes": 1547
+    },
+    {
+      "anchor": "chapter2#h3-28",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "上下文学习的内部机制：检索而非推理",
+      "lineStart": 1007,
+      "lineEnd": 1027,
+      "contentHash": "sha256:54cb0ff99c7469d7d4520337dead4959313d6daff4cf5cbc8b28065055adcb4d",
+      "contentBytes": 3670
+    },
+    {
+      "anchor": "chapter2#h3-29",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "压缩与 KV Cache：看似矛盾，实则互补",
+      "lineStart": 1028,
+      "lineEnd": 1065,
+      "contentHash": "sha256:867d3c9628b8f257af9605b84dd475436a4ec2455ecd507f935bef3e6624c19f",
+      "contentBytes": 5117
+    },
+    {
+      "anchor": "chapter2#h3-30",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "生产级的分层压缩机制",
+      "lineStart": 1066,
+      "lineEnd": 1075,
+      "contentHash": "sha256:88db8f8ccc64a6e419a4c8e33e27e77f2274cb27599893ce97c0a921649f55af",
+      "contentBytes": 1837
+    },
+    {
+      "anchor": "chapter2#h3-31",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "压缩策略的设计原则",
+      "lineStart": 1076,
+      "lineEnd": 1088,
+      "contentHash": "sha256:eab9555023e1c1e37b0d243e8721f65b0658d068f35af908812a7c40daa99fe2",
+      "contentBytes": 2113
+    },
+    {
+      "anchor": "chapter2#h3-32",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 3,
+      "title": "隔离优于压缩：子 Agent 上下文隔离",
+      "lineStart": 1089,
+      "lineEnd": 1096,
+      "contentHash": "sha256:8998f65da23fe20d2e66c9aec3a4d9e5f1e906908321282f369695925218cd0c",
+      "contentBytes": 1771
+    },
+    {
+      "anchor": "chapter2#h2-8",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "本章小结",
+      "lineStart": 1097,
+      "lineEnd": 1102,
+      "contentHash": "sha256:e61b7cb46c7fcf2e93c2b0b9b05df29fcbdecaaa4510720e436eeefb3235918e",
+      "contentBytes": 456
+    },
+    {
+      "anchor": "chapter2#h2-9",
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "level": 2,
+      "title": "思考题",
+      "lineStart": 1103,
+      "lineEnd": 1114,
+      "contentHash": "sha256:aafc43f979eecd9e29450903a2d3d5b33e68d51e85efeb2480be75d29cfda647",
+      "contentBytes": 2410
+    }
+  ]
+}

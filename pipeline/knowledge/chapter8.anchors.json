@@ -1,0 +1,436 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/ai-agent-book-zh/book/chapter8.md",
+  "fileKey": "chapter8",
+  "totalLines": 879,
+  "sourceHash": "sha256:000ee0097f74a53fdb4d6a2950b21cc5848a16e7d7501dce1ee7ad19bc366af7",
+  "anchorCount": 42,
+  "levelCounts": {
+    "h1": 1,
+    "h2": 17,
+    "h3": 23,
+    "h4": 1
+  },
+  "anchors": [
+    {
+      "anchor": "chapter8#h1-1",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 1,
+      "title": "模型后训练",
+      "lineStart": 1,
+      "lineEnd": 25,
+      "contentHash": "sha256:86843006075630330d23beb7d69c9088e4c093d3377a0233690a23ba1fbba041",
+      "contentBytes": 5604
+    },
+    {
+      "anchor": "chapter8#h2-1",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "从预训练到 RL：四阶段全景",
+      "lineStart": 26,
+      "lineEnd": 38,
+      "contentHash": "sha256:c6d98249e0fd1ee9a09edd44c660e0993fa6f32db0244170239d297a02e2cbbe",
+      "contentBytes": 1293
+    },
+    {
+      "anchor": "chapter8#h3-1",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "预训练在做什么：预测下一个词",
+      "lineStart": 39,
+      "lineEnd": 48,
+      "contentHash": "sha256:4c0ca429d490379bb5e3714111ef1634f28219f9eedbb24394fa27e0a2be9aee",
+      "contentBytes": 1510
+    },
+    {
+      "anchor": "chapter8#h3-2",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "Mid-training 的本质：在目标分布上继续学习",
+      "lineStart": 49,
+      "lineEnd": 54,
+      "contentHash": "sha256:196b4da61fcbed47597bbbc50fd6c524111205e76476eabd4a3805fa2d820c93",
+      "contentBytes": 1320
+    },
+    {
+      "anchor": "chapter8#h3-3",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "SFT 的本质：换了数据的“预测下一个词”",
+      "lineStart": 55,
+      "lineEnd": 67,
+      "contentHash": "sha256:9cfd1d6c813fc21cb196ce7e1c833d529c4e58592e61daa07dbd26378e4ce8ec",
+      "contentBytes": 2950
+    },
+    {
+      "anchor": "chapter8#h3-4",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "什么时候需要先补底座，再做 SFT/RL",
+      "lineStart": 68,
+      "lineEnd": 85,
+      "contentHash": "sha256:49927f36fc56b463b5357bd95615ebfc59bddcedd95e9cbeaaab3f626a5deb03",
+      "contentBytes": 2529
+    },
+    {
+      "anchor": "chapter8#h3-5",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "SFT 与 RL 的本质区别",
+      "lineStart": 86,
+      "lineEnd": 121,
+      "contentHash": "sha256:ee9308a18a406b198cf4ddfd3a988559af316dd63b75ab596882db929c9f0719",
+      "contentBytes": 6672
+    },
+    {
+      "anchor": "chapter8#h2-2",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "从经典 RL Agent 到现代 Agent `[可选阅读]`",
+      "lineStart": 122,
+      "lineEnd": 123,
+      "contentHash": "sha256:a5e1971200fe595b7479d4bfc91f5cda769b86446cc873dff212fc9833870e56",
+      "contentBytes": 55
+    },
+    {
+      "anchor": "chapter8#h3-6",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "Agent 与环境的交互",
+      "lineStart": 124,
+      "lineEnd": 157,
+      "contentHash": "sha256:50daca1113d0012729a0215e0a22416ceb6a5b978bc693515f97372b36986995",
+      "contentBytes": 4511
+    },
+    {
+      "anchor": "chapter8#h3-7",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "两种动作表示：经典 RL 设置与 LLM 的变长策略",
+      "lineStart": 158,
+      "lineEnd": 249,
+      "contentHash": "sha256:1ada7e5a632c2a10cf3eda352bcb0ed92d300f920dc20513d02167a8652e6b10",
+      "contentBytes": 13704
+    },
+    {
+      "anchor": "chapter8#h2-3",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "模型预训练基础 `[可选阅读]`",
+      "lineStart": 250,
+      "lineEnd": 275,
+      "contentHash": "sha256:807a27d00f41d36132fbac3e28183e9ece6f739bd5d75d6894a48fb3fd3f3eea",
+      "contentBytes": 4324
+    },
+    {
+      "anchor": "chapter8#h2-4",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "Mid-training：补知识与基础能力",
+      "lineStart": 276,
+      "lineEnd": 286,
+      "contentHash": "sha256:ceb3ecd14a3f7cfaf07133302b20128d45c4ebdc914718836dac3559b80f78b4",
+      "contentBytes": 1809
+    },
+    {
+      "anchor": "chapter8#h3-8",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "Mid-training 数据如何构造",
+      "lineStart": 287,
+      "lineEnd": 313,
+      "contentHash": "sha256:58e5762a427e96661b297802e175dbc83197e0e8f0e4ba82c7760c7878b2fd43",
+      "contentBytes": 4396
+    },
+    {
+      "anchor": "chapter8#h2-5",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "SFT（监督微调）",
+      "lineStart": 314,
+      "lineEnd": 369,
+      "contentHash": "sha256:a704e5eab77d7aba8fb6a2414d40e2bc6337f72cc43318b8e10a2e564080f5bc",
+      "contentBytes": 9754
+    },
+    {
+      "anchor": "chapter8#h2-6",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "SFT 数据合成：从示范到可训练轨迹",
+      "lineStart": 370,
+      "lineEnd": 385,
+      "contentHash": "sha256:27db022744d01213c190384d93815487e50240c1c77e21d6a3eff6cb8dedc3f6",
+      "contentBytes": 3432
+    },
+    {
+      "anchor": "chapter8#h2-7",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "何时选择 Mid-training、SFT 与 RL",
+      "lineStart": 386,
+      "lineEnd": 409,
+      "contentHash": "sha256:0a97015cb6faed9aa5cf5fa0dd13ddb42e27645570dd8069ccd028a4aa174e27",
+      "contentBytes": 3051
+    },
+    {
+      "anchor": "chapter8#h2-8",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "单轮强化学习：记忆与泛化的对照",
+      "lineStart": 410,
+      "lineEnd": 481,
+      "contentHash": "sha256:0086cdf67933f55a59671ab473b150485437ec503895ee6c22effae914d21bd3",
+      "contentBytes": 9060
+    },
+    {
+      "anchor": "chapter8#h2-9",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "RL 算法：从 16 次 rollout 到一次参数更新",
+      "lineStart": 482,
+      "lineEnd": 503,
+      "contentHash": "sha256:5a9b2941c5fb6c27cb9d8b2c3747ee1cc1bca5da06975ff4f82db43e6a60204c",
+      "contentBytes": 4550
+    },
+    {
+      "anchor": "chapter8#h3-9",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "为什么 LLM RL 通常优先 On-Policy",
+      "lineStart": 504,
+      "lineEnd": 516,
+      "contentHash": "sha256:9df3c27737a32fc2c07eab33ff98450934068724ce233f7da21aa5db07383949",
+      "contentBytes": 2115
+    },
+    {
+      "anchor": "chapter8#h4-1",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 4,
+      "title": "看似 On-Policy，为什么仍会被数值误差拖垮",
+      "lineStart": 517,
+      "lineEnd": 529,
+      "contentHash": "sha256:381037cac8f10ba9fbd18db506bfbd9ea5e2256145ae8f6cced35989269b213a",
+      "contentBytes": 2620
+    },
+    {
+      "anchor": "chapter8#h2-10",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "RL 环境：从评估到仿真",
+      "lineStart": 530,
+      "lineEnd": 533,
+      "contentHash": "sha256:0bc207c68f21db974e0a6c8860c53521a7c3014cb442272eb8db98e6db550c1e",
+      "contentBytes": 487
+    },
+    {
+      "anchor": "chapter8#h3-10",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "环境：模型练习的场地",
+      "lineStart": 534,
+      "lineEnd": 543,
+      "contentHash": "sha256:c8a2e19af72001f175feaf4b6223def9723eebfce4d91e39b45d923be736e790",
+      "contentBytes": 1543
+    },
+    {
+      "anchor": "chapter8#h3-11",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "造不出环境怎么办：让模型扮演环境",
+      "lineStart": 544,
+      "lineEnd": 553,
+      "contentHash": "sha256:815e5f613cb73c07d36ec97b5e58076652fc80e3d1cd7a041bce07c55c2e586c",
+      "contentBytes": 2496
+    },
+    {
+      "anchor": "chapter8#h3-12",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "环境、任务分布与评估隔离",
+      "lineStart": 554,
+      "lineEnd": 563,
+      "contentHash": "sha256:c21fcaa48a1c6823985d626d9b606afffb9dee133598d85c965c1458374648fd",
+      "contentBytes": 1415
+    },
+    {
+      "anchor": "chapter8#h2-11",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "从单轮到多轮：任务场景与信用分配",
+      "lineStart": 564,
+      "lineEnd": 565,
+      "contentHash": "sha256:339e04362b8807c137784a867044a043fbff8f4105189f1785220a50151e9c45",
+      "contentBytes": 52
+    },
+    {
+      "anchor": "chapter8#h3-13",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "多轮任务的核心挑战",
+      "lineStart": 566,
+      "lineEnd": 583,
+      "contentHash": "sha256:1ae48ebbac03985b0c807cb078046d1c8961abe88a322cf8f4dd9b351f6d83d2",
+      "contentBytes": 1868
+    },
+    {
+      "anchor": "chapter8#h3-14",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "工具调用：把环境带进 Agent",
+      "lineStart": 584,
+      "lineEnd": 609,
+      "contentHash": "sha256:04f86e572749b14089c4176cb8ce3a3e79d5562c644f7c875d07a319e74c3dd5",
+      "contentBytes": 2409
+    },
+    {
+      "anchor": "chapter8#h2-12",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "奖励设计：如何把任务目标变成学习信号",
+      "lineStart": 610,
+      "lineEnd": 613,
+      "contentHash": "sha256:25e6c79ec1f877b06238d8f0731608189a0b76fc915fde5aa0684d51af7158f8",
+      "contentBytes": 408
+    },
+    {
+      "anchor": "chapter8#h3-15",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "奖励来自哪里：规则、人类偏好与模型评判",
+      "lineStart": 614,
+      "lineEnd": 623,
+      "contentHash": "sha256:7cfe19de2da010d178304e3fca7ec4f93763a054acce4db7b4468cb96f85a53a",
+      "contentBytes": 1926
+    },
+    {
+      "anchor": "chapter8#h3-16",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "奖励在什么时候给：结果还是过程",
+      "lineStart": 624,
+      "lineEnd": 633,
+      "contentHash": "sha256:af6fa10be1d8a0cd42d5c5bf0674e3c69e59c2d036c96210e638626f3acab499",
+      "contentBytes": 2122
+    },
+    {
+      "anchor": "chapter8#h3-17",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "奖励需要表达多少信息：标量、向量与生成式诊断",
+      "lineStart": 634,
+      "lineEnd": 643,
+      "contentHash": "sha256:a28dc2acb388f73bb676e2dd7f60ac2c98193352af057f6830164257b992c96d",
+      "contentBytes": 867
+    },
+    {
+      "anchor": "chapter8#h3-18",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "结果正确还不够：路径约束与 RLVP",
+      "lineStart": 644,
+      "lineEnd": 669,
+      "contentHash": "sha256:da60bb7a472a40c775d23c5f80515159076b7f65dbad8b282217ee148838c684",
+      "contentBytes": 3357
+    },
+    {
+      "anchor": "chapter8#h2-13",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "蒸馏：提升样本效率",
+      "lineStart": 670,
+      "lineEnd": 677,
+      "contentHash": "sha256:0b73f243d65e776c243c47fd44bbb4739b8d971d2cf8c6d11fca10cf32deb0ba",
+      "contentBytes": 1055
+    },
+    {
+      "anchor": "chapter8#h3-19",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "在轨蒸馏：让一次 rollout 产生密集监督",
+      "lineStart": 678,
+      "lineEnd": 710,
+      "contentHash": "sha256:f2ef5614fea367ce9db4c235a77aa078f600daec87e9df9c662745020dd17b78",
+      "contentBytes": 3922
+    },
+    {
+      "anchor": "chapter8#h3-20",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "没有更强的教师怎么办：On-Policy 自蒸馏",
+      "lineStart": 711,
+      "lineEnd": 732,
+      "contentHash": "sha256:084dd6b10af0877a86fd9a39abb1847121e78744a06c4670a751fa192c524109",
+      "contentBytes": 2016
+    },
+    {
+      "anchor": "chapter8#h2-14",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "从问题案例到后训练",
+      "lineStart": 733,
+      "lineEnd": 745,
+      "contentHash": "sha256:7c2047aa65df85b9ffe77a51fe0eaff8facb6e0c7bda667ec3dbbe24ce4ac730",
+      "contentBytes": 1215
+    },
+    {
+      "anchor": "chapter8#h3-21",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "案例 1：Coding Agent 过早结束",
+      "lineStart": 746,
+      "lineEnd": 763,
+      "contentHash": "sha256:85de75c62ad7a5a0602d97311a25424eb13dad21f80be89339e300ce5d486cab",
+      "contentBytes": 3694
+    },
+    {
+      "anchor": "chapter8#h3-22",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "案例 2：中文引号",
+      "lineStart": 764,
+      "lineEnd": 777,
+      "contentHash": "sha256:cc7ca9b02b2fe10a344ca33b814da5eec2aed27bcc26a0c78ef20965809b3f54",
+      "contentBytes": 2019
+    },
+    {
+      "anchor": "chapter8#h3-23",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 3,
+      "title": "案例 3：编辑文件经常失败",
+      "lineStart": 778,
+      "lineEnd": 795,
+      "contentHash": "sha256:9660894d9965c988eb9759dc88f240358ce609c6d0acb699bf6f82c7a30a26c0",
+      "contentBytes": 2188
+    },
+    {
+      "anchor": "chapter8#h2-15",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "后训练实践要点",
+      "lineStart": 796,
+      "lineEnd": 819,
+      "contentHash": "sha256:32a8555802b0a4bc99ee9fdc81caaaf5e5199aa73514729f3339b9c9e89670fa",
+      "contentBytes": 4993
+    },
+    {
+      "anchor": "chapter8#h2-16",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "本章小结",
+      "lineStart": 820,
+      "lineEnd": 863,
+      "contentHash": "sha256:d6c9dfe9004502a5dd7a403311805287bba5f454718a9af7a6efb8378c542487",
+      "contentBytes": 6913
+    },
+    {
+      "anchor": "chapter8#h2-17",
+      "file": "sources/ai-agent-book-zh/book/chapter8.md",
+      "level": 2,
+      "title": "思考题",
+      "lineStart": 864,
+      "lineEnd": 879,
+      "contentHash": "sha256:afd4ef3328a95ef73324e2b9b55128dce8e7e50a0a3f4aa57942a5a99700d664",
+      "contentBytes": 4452
+    }
+  ]
+}

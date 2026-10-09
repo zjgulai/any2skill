@@ -29,7 +29,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 286 项，零网络、零凭据
+npm test                                    # 299 项，零网络、零凭据
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -184,6 +184,56 @@ node pipeline/tools/tier-probe.mjs \
 都无法判断 N 是档位效应还是噪声。本工具默认不做这件事，因为它不知道你想比什么；
 但读到任何差异前，请先跑一次 `--tiers high,high`。
 
+## 反模式的跨章综合（卡 06）
+
+反模式是本书最高价值的产物，而它**在原文里不成节存在**（全书「常见陷阱」字面 **0 命中**，
+显式失败小节仅 **13 处**且高度集中在 chapter10，而目标量级是 22 个 skill × 6–8 条 ≈ 130–176 条）。
+因此它不是抽出来的，是**综合出来的**，且输入必须**按主题组织、而非按章节顺序**。
+
+三步，每步的产物都落盘、都可用哈希核对：
+
+```bash
+# ① 第 1 层：全书锚点索引（确定性、零模型成本）→ pipeline/knowledge/*.anchors.json
+for f in sources/ai-agent-book-zh/book/*.md; do node pipeline/tools/anchor-index.mjs "$f"; done
+
+# ② 主题提案：一次**目录级**调用（只给标题与首行摘录，不给正文）→ pipeline/knowledge/themes.json
+node pipeline/propose-themes.mjs --dry-run                     # 只建目录、报告输入规模，不调模型
+node pipeline/propose-themes.mjs --model <id> --base-url <url>
+
+# ③ 跨章综合：一个主题一次调用 → 多锚点 sourceRefs + 每条出处自带引文
+node pipeline/synthesize-antipatterns.mjs --list               # 只列主题，不调模型
+node pipeline/synthesize-antipatterns.mjs --themes T02,T12 \
+  --model <id> --base-url <url>
+```
+
+综合 CLI 的常用开关：`--no-judge`（关掉判定者，**不建议**——本轮最想量的量就是它）、
+`--max-tokens`、`--max-patterns`、`--no-resume`。
+**边跑边落盘**：每完成一个主题当场写一次原始响应；重跑时同 `runId` 的主题**免费重放**
+（物化、合并、标记都是确定性的，只有调模型那一步花钱）。`runId` 含主题集合、提示词指纹、
+目录哈希、模型与是否判定——任一变化都不复用。
+
+**跨章是可验证的事实，不是自述。** 一条反模式可以同时引用第 5 章与第 7 章，
+而**每条 `sourceRef` 自带一段逐字引文**，第 3 层拿它与**那一条出处自己的锚点区间**比对
+（见 `verdicts[].refQuoteComparisons`）。只验第一条是不够的：多写一条出处不花成本，
+不逐条验就等于没验。理由码**不新增**——它与顶层引文未命中同族（修复方都是「归纳时改写了原文」），
+靠 `at = sourceRefs/i` 区分，避免把一个缺陷记成两笔。
+
+**三个标记**（`marks`，与拒绝码表**分开**：它们描述的是「对象通过了，但支撑到什么程度」，
+混进拒绝码表会让「被拒」与「通过了但只靠一章」在统计里长得一样）：
+
+| 标记 | 含义 |
+|---|---|
+| `CROSS_CHAPTER_SUPPORTED` | `sourceRefs` 覆盖 ≥2 个章节 |
+| `SINGLE_CHAPTER_ONLY` | `sourceRefs` 只覆盖 1 个章节 |
+| `CROSS_CHAPTER_CLAIM_UNSUPPORTED` | 引用 ≥2 个锚点、去重后却只落在 1 章，且主题输入跨 ≥2 章——**「抄取冒充综合」的检出点** |
+
+**合并规则**：同一主题内 `corrective` **精确相等**才合并（卡 06 明令不预设相似度阈值，
+故近似不构成合并理由）。跨主题的精确重复**只报告不合并**——强行合并会抹掉主题归属，
+而主题归属正是这一卡的组织方式本身。
+
+**不设阈值**：本卡不以任何跨章占比门槛作为验收条件。分布（总数、≥2 章条数、跨章占比、
+被引用章节分布）只报数，交由人看过真实产出后决定阈值。
+
 ## 已知约束
 
 - **推理档位**：两层各自可拨（`--llm-reasoning-effort` / `--judge-reasoning-effort`），
@@ -203,3 +253,20 @@ node pipeline/tools/tier-probe.mjs \
   只记长度（`reasoningChars`）。
 - **短路使判定者无法推翻确定性判据的拒绝。** 逻辑上与「两组均须通过」等价（合取满足短路求值），
   代价是「确定性判据是否过严」（R6）仍需人工看 `quoteComparison` 才能检出。
+- **多锚点对象的引文逐条验，但判定者目前仍只看主锚点。** 判定者的输入契约（卡 05 的
+  `JUDGE_INPUT_KEYS`）是「主张 + 一条引文 + **那一个**锚点的原文」。因此一条把两章结论**合并**成
+  更大断言的反模式，主引文一个人扛不住，判定者会（正确地）判不充分——ADR-011 记录的
+  AntiPattern 100% 不充分就是这条路的终点。综合提示词据此要求**主张收窄到主引文能承载的粒度**，
+  其余章节作佐证。**是否该让判定者看到全部证据，是一个待实测决定的口径问题**（见 ADR-016）。
+- **shell 视角的 `stat` 大小可能是错的（环境层，不是仓库缺陷）。** 实测有 7 个文件被
+  `ls`/`stat` 报出比真实内容**多 4096 字节**的大小，`read` 工具因此按报出的大小分配缓冲、
+  尾部被补零、判成 binary 而拒读。**内容从未损坏**：`git hash-object` 与工作区逐字节一致，
+  Node 侧 `stat.size == readFileSync().length` 对全部 141 个受控文件成立。
+  用「同内容重写」可修复，修完必须核对 blob 哈希不变：
+  `node -e "const b=require('fs').readFileSync(p); require('fs').writeFileSync(p,b)"`。
+- **别用 `cmd | tee log` 读退出码。** 管道只保留最后一环的退出码，一次崩溃会被报成 `exit 0`
+  ——实测踩到过，而且当时正是一次真崩溃。要么 `set -o pipefail`，要么不要接管道。
+- **输出被截断会被报成「JSON 解析失败」，除非显式区分。** 思考模式下推理与正文**共用**同一份
+  输出额度，额度卡在推理上时的表象是 JSON 未闭合。综合模块现在检测 `finish_reason=length`
+  并把它报成**预算问题**（附原始响应，可从 partial 文件取回、无需重新付费）。
+  实测：T12（6 章 / 39 KB 输入）在 16000 额度下被截断。

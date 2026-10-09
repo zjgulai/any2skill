@@ -1,0 +1,837 @@
+{
+  "schemaVersion": "antipattern-verdicts/v1",
+  "runId": "run-5d72a0637d50",
+  "verdicts": [
+    {
+      "objectId": "AP-SYNTH-T02-01",
+      "objectType": "AntiPattern",
+      "ordinal": 0,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：引文仅通过类比说明零散规则、缺乏流程图和优先级会造成困惑，未断言系统提示词实际以规则堆砌而非SOP，也未提及任务成功率下降或违反业务规则等后果。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-14",
+        "lineStart": 643,
+        "lineEnd": 671
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter2#h3-14",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "chapter2#h3-17",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "引文仅通过类比说明零散规则、缺乏流程图和优先级会造成困惑，未断言系统提示词实际以规则堆砌而非SOP，也未提及任务成功率下降或违反业务规则等后果。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-02",
+      "objectType": "AntiPattern",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-15",
+        "lineStart": 672,
+        "lineEnd": 691
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter2#h3-15",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确包含模糊规则示例并说明其导致同类任务分类不一致、业务不可预测和Agent行为不稳定，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-03",
+      "objectType": "AntiPattern",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-2",
+        "lineStart": 70,
+        "lineEnd": 87
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter4#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "chapter2#h3-17",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确说明工具描述核心是“什么时候用”而非仅“能做什么”，并强调清晰列出边界条件、缺少反例会导致LLM自行猜测，且多数工具调用失败根因是不知道工具不能做什么，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-04",
+      "objectType": "AntiPattern",
+      "ordinal": 3,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：引文仅说明静默输入转换会偏离模型意图，未提及模型反复尝试仍失败且无法自行诊断、陷入困惑等后果，不足以支持主张的完整断言。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h3-3",
+        "lineStart": 88,
+        "lineEnd": 99
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter4#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "引文仅说明静默输入转换会偏离模型意图，未提及模型反复尝试仍失败且无法自行诊断、陷入困惑等后果，不足以支持主张的完整断言。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-05",
+      "objectType": "AntiPattern",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-16",
+        "lineStart": 692,
+        "lineEnd": 699
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter2#h3-16",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确说明十个大同小异的示例既占用上下文，又会稀释模型对规则本身的注意力，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-06",
+      "objectType": "AntiPattern",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-16",
+        "lineStart": 692,
+        "lineEnd": 699
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter2#h3-16",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确说明逐请求动态检索最相关示例会导致缓存持续失效，并因此采用固定示例集，直接支持该主张。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-07",
+      "objectType": "AntiPattern",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-28",
+        "lineStart": 809,
+        "lineEnd": 814
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter7#h3-28",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确指出系统提示缺少与代码同等的版本控制和回归测试，能够支撑无法追踪提交影响及提示词变更带来回归风险的主张。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-08",
+      "objectType": "AntiPattern",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-12",
+        "lineStart": 610,
+        "lineEnd": 613
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter2#h3-12",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确指出过度使用大写字母会导致效果被稀释，并应保留给真正关键的约束，直接支撑主张中的危害描述。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-01",
+      "objectType": "AntiPattern",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-10",
+        "lineStart": 466,
+        "lineEnd": 473
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter1#h3-10",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确说明单个护栏不够、需多个专门护栏组合才有韧性，直接支撑主张中单一护栏不足、系统缺乏韧性的断言。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-02",
+      "objectType": "AntiPattern",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-7",
+        "lineStart": 474,
+        "lineEnd": 489
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter1#h4-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "chapter2#h3-18",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确指出上下文层有结构性上限，只能降低攻击成功率、给不出保证，并强调必须有下面两层，直接支撑主张所指的只依赖上下文层不向下补执行层和数据层的缺陷。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-03",
+      "objectType": "AntiPattern",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "lineStart": 270,
+        "lineEnd": 381
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter4#h2-6",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "chapter5#h3-9",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确说明黑名单不应作为唯一手段，且攻击者可通过变形命令绕过简单字符串匹配，足以支撑主张的核心断言。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-04",
+      "objectType": "AntiPattern",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-5",
+        "lineStart": 101,
+        "lineEnd": 112
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter6#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确说明直接管理会因 Agent 出错或被攻破而暴露用户全部数字身份，并建议改用独立虚拟身份，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-05",
+      "objectType": "AntiPattern",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter9.md",
+        "anchor": "chapter9#h3-7",
+        "lineStart": 342,
+        "lineEnd": 351
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter9#h3-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "chapter2#h3-18",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "chapter5#h3-9",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确将原始网页、工具输出及其LLM摘要列为不可信证据，禁止当作指令执行或纳入长期能力，并指出LLM总结不是净化过程，直接支撑主张所描述的风险模式及其对隔离边界的绕过。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-06",
+      "objectType": "AntiPattern",
+      "ordinal": 13,
+      "status": "reject",
+      "reasonCode": "JUDGE_NOT_SUPPORTED",
+      "failures": [
+        {
+          "code": "JUDGE_NOT_SUPPORTED",
+          "detail": "判定者判为 unsupported：引文明确禁止业务 Agent 修改这些安全机制，而主张的 pattern 却说允许修改，二者方向相反。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter9.md",
+        "anchor": "chapter9#h3-7",
+        "lineStart": 342,
+        "lineEnd": 351
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter9#h3-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "unsupported",
+        "reasonCode": "JUDGE_NOT_SUPPORTED",
+        "reason": "引文明确禁止业务 Agent 修改这些安全机制，而主张的 pattern 却说允许修改，二者方向相反。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-07",
+      "objectType": "AntiPattern",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "anchor": "chapter4#h2-6",
+        "lineStart": 270,
+        "lineEnd": 381
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter4#h2-6",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确说明若 Sidecar 同时读取主模型上下文或思考过程，攻击者夹带话术会使其误判为合理理由，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-08",
+      "objectType": "AntiPattern",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter9.md",
+        "anchor": "chapter9#h3-7",
+        "lineStart": 342,
+        "lineEnd": 351
+      },
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-emphasis+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "chapter9#h3-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "引文明确要求新知识、Prompt、Skill、程序和参数先进入待验证区，代码和外部依赖须经安全检查后才能服务真实流量，足以支撑该主张所描述的不安全模式。",
+        "instanceId": "deepseek-v4-pro/judge-90b1e1b49076#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchorText"
+        ]
+      }
+    }
+  ]
+}

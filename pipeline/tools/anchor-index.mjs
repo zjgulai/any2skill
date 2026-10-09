@@ -137,6 +137,17 @@ const HEADING_RE = /^(#{1,6})[ \t]+(.+?)[ \t]*$/
 /** 行尾属性标记（如 `{.unnumbered}`）——属正文结构标记，不计入标题文本。 */
 const TRAILING_ATTR_RE = /\s*\{[^}]*\}\s*$/
 
+/**
+ * 正文归一化：LF 化 + 去行尾空白。
+ *
+ * **单一定义**。它同时决定「行号」与「内容哈希」两个口径，因此凡是按行号取正文的模块
+ * （第 1 层索引、ticket 06 的锚点目录）都必须走这一个函数。各写一份的后果是：
+ * 目录里的「首行摘录」与索引里的 `lineStart` 指向不同的行，而两边看起来都对。
+ */
+export function normalizeSourceLines(raw) {
+  return raw.split(/\r\n|\n|\r/).map((l) => l.replace(/[ \t]+$/, ''))
+}
+
 /** 计算锚点区间内容的规范化字节，用于哈希。 */
 export function anchorContent(lines, lineStart, lineEnd) {
   return lines.slice(lineStart - 1, lineEnd).join('\n')
@@ -158,7 +169,7 @@ export function buildAnchorIndex(filePath, opts = {}) {
   return readFile(filePath, 'utf8').then((raw) => {
     // 归一化为 LF 并去掉行尾空白，使哈希不受 CRLF 与行尾空格影响。
     // 行尾空白不承载语义，纳入哈希只会让「无意义的排版差异」被误报为源版本变更。
-    const lines = raw.split(/\r\n|\n|\r/).map((l) => l.replace(/[ \t]+$/, ''))
+    const lines = normalizeSourceLines(raw)
 
     const fenced = computeFencedFlags(lines)
 

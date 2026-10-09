@@ -1,0 +1,3365 @@
+{
+  "schemaVersion": "themes/v1",
+  "createdAt": "2026-10-09T02:20:46.309Z",
+  "catalogHash": "sha256:8359f907b131a2f23738207f9d3c6bc79a4290c969046a731e2f04d8871d78d5",
+  "catalog": {
+    "fileCount": 13,
+    "anchorCount": 336,
+    "files": [
+      {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "fileKey": "afterword",
+        "anchorCount": 3
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "fileKey": "chapter1",
+        "anchorCount": 25
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "fileKey": "chapter10",
+        "anchorCount": 34
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "fileKey": "chapter2",
+        "anchorCount": 42
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter3.md",
+        "fileKey": "chapter3",
+        "anchorCount": 29
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter4.md",
+        "fileKey": "chapter4",
+        "anchorCount": 20
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter5.md",
+        "fileKey": "chapter5",
+        "anchorCount": 20
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "fileKey": "chapter6",
+        "anchorCount": 40
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "fileKey": "chapter7",
+        "anchorCount": 48
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "fileKey": "chapter8",
+        "anchorCount": 42
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter9.md",
+        "fileKey": "chapter9",
+        "anchorCount": 17
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "fileKey": "introduction",
+        "anchorCount": 5
+      },
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "fileKey": "reference-answers",
+        "anchorCount": 11
+      }
+    ]
+  },
+  "promptFingerprint": "prompt-c3b2ff6830c9",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "themes": [
+    {
+      "id": "T01",
+      "name": "上下文工程与缓存管理",
+      "statement": "管理送入模型的消息序列，利用缓存、状态栏和压缩策略在有限上下文中高效组织信息。",
+      "rationale": "这些锚点聚焦于如何在单个会话中管理令牌级上下文，从 API 消息结构、KV Cache 原理到状态栏、压缩和子 Agent 隔离，共同解决上下文膨胀与缓存友好问题。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-4",
+          "level": 3,
+          "title": "上下文：Agent 的眼睛",
+          "lineStart": 137,
+          "lineEnd": 160,
+          "contentBytes": 5508
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h2-1",
+          "level": 2,
+          "title": "上下文：决定 Agent 能力上限的关键",
+          "lineStart": 7,
+          "lineEnd": 40,
+          "contentBytes": 5851
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h2-2",
+          "level": 2,
+          "title": "Agent 如何调用大模型：理解 API 的上下文结构",
+          "lineStart": 41,
+          "lineEnd": 44,
+          "contentBytes": 318
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-1",
+          "level": 3,
+          "title": "消息的四种角色",
+          "lineStart": 45,
+          "lineEnd": 57,
+          "contentBytes": 1568
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-2",
+          "level": 3,
+          "title": "单轮对话：最简单的 API 调用",
+          "lineStart": 58,
+          "lineEnd": 94,
+          "contentBytes": 1370
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-3",
+          "level": 3,
+          "title": "带工具调用的多轮交互：Agent 的核心循环",
+          "lineStart": 95,
+          "lineEnd": 250,
+          "contentBytes": 8044
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-4",
+          "level": 3,
+          "title": "用代码实现 Agent 的核心循环",
+          "lineStart": 251,
+          "lineEnd": 369,
+          "contentBytes": 5013
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-5",
+          "level": 3,
+          "title": "从 API 视角看上下文的构成",
+          "lineStart": 370,
+          "lineEnd": 434,
+          "contentBytes": 6204
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h2-3",
+          "level": 2,
+          "title": "KV Cache 友好的上下文设计",
+          "lineStart": 435,
+          "lineEnd": 501,
+          "contentBytes": 9334
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-6",
+          "level": 3,
+          "title": "从 API 消息到模型 Token：Chat Template",
+          "lineStart": 502,
+          "lineEnd": 525,
+          "contentBytes": 4829
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-7",
+          "level": 3,
+          "title": "KV Cache 的原理与约束",
+          "lineStart": 526,
+          "lineEnd": 555,
+          "contentBytes": 6540
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-8",
+          "level": 3,
+          "title": "KV Cache 与 Prompt Cache：两个层级的缓存",
+          "lineStart": 556,
+          "lineEnd": 559,
+          "contentBytes": 1006
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-9",
+          "level": 3,
+          "title": "缓存作为架构约束",
+          "lineStart": 560,
+          "lineEnd": 579,
+          "contentBytes": 4268
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-10",
+          "level": 3,
+          "title": "KV Cache 未必是一次性的：可编辑、可组合的“笔记”",
+          "lineStart": 580,
+          "lineEnd": 593,
+          "contentBytes": 3381
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-11",
+          "level": 3,
+          "title": "承上启下：从缓存机制到上下文内容的设计",
+          "lineStart": 594,
+          "lineEnd": 601,
+          "contentBytes": 1666
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h2-6",
+          "level": 2,
+          "title": "Agent 状态栏：通过元信息增强 Agent 轨迹管理",
+          "lineStart": 857,
+          "lineEnd": 866,
+          "contentBytes": 1662
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-23",
+          "level": 3,
+          "title": "Agent 状态栏的理论基础",
+          "lineStart": 867,
+          "lineEnd": 907,
+          "contentBytes": 4849
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-24",
+          "level": 3,
+          "title": "Agent 状态栏的构成",
+          "lineStart": 908,
+          "lineEnd": 919,
+          "contentBytes": 1497
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-25",
+          "level": 3,
+          "title": "Agent 状态栏在上下文中的具体位置",
+          "lineStart": 920,
+          "lineEnd": 950,
+          "contentBytes": 2504
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-26",
+          "level": 3,
+          "title": "状态更新的两种实现与缓存代价",
+          "lineStart": 951,
+          "lineEnd": 990,
+          "contentBytes": 6822
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h2-7",
+          "level": 2,
+          "title": "上下文压缩策略",
+          "lineStart": 991,
+          "lineEnd": 994,
+          "contentBytes": 410
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-27",
+          "level": 3,
+          "title": "为什么需要压缩：不只是长度问题",
+          "lineStart": 995,
+          "lineEnd": 1006,
+          "contentBytes": 1547
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-28",
+          "level": 3,
+          "title": "上下文学习的内部机制：检索而非推理",
+          "lineStart": 1007,
+          "lineEnd": 1027,
+          "contentBytes": 3670
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-29",
+          "level": 3,
+          "title": "压缩与 KV Cache：看似矛盾，实则互补",
+          "lineStart": 1028,
+          "lineEnd": 1065,
+          "contentBytes": 5117
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-30",
+          "level": 3,
+          "title": "生产级的分层压缩机制",
+          "lineStart": 1066,
+          "lineEnd": 1075,
+          "contentBytes": 1837
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-31",
+          "level": 3,
+          "title": "压缩策略的设计原则",
+          "lineStart": 1076,
+          "lineEnd": 1088,
+          "contentBytes": 2113
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-32",
+          "level": 3,
+          "title": "隔离优于压缩：子 Agent 上下文隔离",
+          "lineStart": 1089,
+          "lineEnd": 1096,
+          "contentBytes": 1771
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter2"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 27
+    },
+    {
+      "id": "T02",
+      "name": "提示工程与系统提示词设计",
+      "statement": "通过结构化系统提示词、工具定义和 few-shot 示例精确表达业务规则与格式要求。",
+      "rationale": "这些锚点讨论如何设计清晰的指令（系统提示词、工具描述、参数约定），避免歧义和静默转换，并评估提示词的敏感性，是让模型可靠执行任务的基础。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h2-4",
+          "level": 2,
+          "title": "提示工程：优化系统提示词",
+          "lineStart": 602,
+          "lineEnd": 609,
+          "contentBytes": 637
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-12",
+          "level": 3,
+          "title": "语气与风格：系统提示词的“人格”",
+          "lineStart": 610,
+          "lineEnd": 613,
+          "contentBytes": 696
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-13",
+          "level": 3,
+          "title": "结构化提示：系统提示词的“格式”",
+          "lineStart": 614,
+          "lineEnd": 642,
+          "contentBytes": 1450
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-14",
+          "level": 3,
+          "title": "流程驱动 vs 规则堆砌：系统提示词的“组织方式”",
+          "lineStart": 643,
+          "lineEnd": 671,
+          "contentBytes": 1391
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-15",
+          "level": 3,
+          "title": "业务规则细化：系统提示词的“内容”",
+          "lineStart": 672,
+          "lineEnd": 691,
+          "contentBytes": 3190
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-16",
+          "level": 3,
+          "title": "Few-shot 示例：何时给模型看例子",
+          "lineStart": 692,
+          "lineEnd": 699,
+          "contentBytes": 1557
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-17",
+          "level": 3,
+          "title": "工具定义的设计",
+          "lineStart": 700,
+          "lineEnd": 729,
+          "contentBytes": 5727
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h3-2",
+          "level": 3,
+          "title": "工具描述的艺术",
+          "lineStart": 70,
+          "lineEnd": 87,
+          "contentBytes": 3046
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h3-3",
+          "level": 3,
+          "title": "参数传递的保真性",
+          "lineStart": 88,
+          "lineEnd": 99,
+          "contentBytes": 2462
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-28",
+          "level": 3,
+          "title": "提示词敏感性评估",
+          "lineStart": 809,
+          "lineEnd": 814,
+          "contentBytes": 747
+        }
+      ],
+      "chapterKeys": [
+        "chapter2",
+        "chapter4",
+        "chapter7"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 10
+    },
+    {
+      "id": "T03",
+      "name": "工具设计与生态",
+      "statement": "从能力表达、描述、参数保真到层次化组织与发现，构建可维护、可扩展的工具集。",
+      "rationale": "这些锚点覆盖了工具的全生命周期：分类、设计原则、能力表达形式、描述与参数保真、MCP 生态、工具发现与按需加载，以及具体工具类型（感知、执行、协作等）。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-2",
+          "level": 3,
+          "title": "工具：Agent 的手脚",
+          "lineStart": 61,
+          "lineEnd": 108,
+          "contentBytes": 5258
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-6",
+          "level": 4,
+          "title": "主流 Agent 框架简要对比",
+          "lineStart": 442,
+          "lineEnd": 465,
+          "contentBytes": 3425
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h1-1",
+          "level": 1,
+          "title": "工具",
+          "lineStart": 1,
+          "lineEnd": 6,
+          "contentBytes": 1418
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-1",
+          "level": 2,
+          "title": "工具的分类",
+          "lineStart": 7,
+          "lineEnd": 33,
+          "contentBytes": 3818
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-2",
+          "level": 2,
+          "title": "工具设计的通用原则",
+          "lineStart": 34,
+          "lineEnd": 37,
+          "contentBytes": 712
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h3-1",
+          "level": 3,
+          "title": "能力的表达形式：专用工具、通用执行器与 Skill",
+          "lineStart": 38,
+          "lineEnd": 69,
+          "contentBytes": 8080
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-3",
+          "level": 2,
+          "title": "工具生态：MCP 与 Skill Hub",
+          "lineStart": 100,
+          "lineEnd": 132,
+          "contentBytes": 7228
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-4",
+          "level": 2,
+          "title": "工具太多怎么办：层次化组织与主动工具发现",
+          "lineStart": 133,
+          "lineEnd": 138,
+          "contentBytes": 1172
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h3-4",
+          "level": 3,
+          "title": "层次化组织与按需加载",
+          "lineStart": 139,
+          "lineEnd": 158,
+          "contentBytes": 3043
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h3-5",
+          "level": 3,
+          "title": "模型原生的主动工具发现",
+          "lineStart": 159,
+          "lineEnd": 201,
+          "contentBytes": 6712
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-5",
+          "level": 2,
+          "title": "感知工具",
+          "lineStart": 218,
+          "lineEnd": 243,
+          "contentBytes": 3892
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h3-7",
+          "level": 3,
+          "title": "多模态感知",
+          "lineStart": 244,
+          "lineEnd": 247,
+          "contentBytes": 305
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h4-1",
+          "level": 4,
+          "title": "原生多模态处理",
+          "lineStart": 248,
+          "lineEnd": 251,
+          "contentBytes": 828
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h4-2",
+          "level": 4,
+          "title": "提取为文本",
+          "lineStart": 252,
+          "lineEnd": 257,
+          "contentBytes": 743
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h4-3",
+          "level": 4,
+          "title": "工具化多模态分析",
+          "lineStart": 258,
+          "lineEnd": 269,
+          "contentBytes": 1635
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-6",
+          "level": 2,
+          "title": "执行工具",
+          "lineStart": 270,
+          "lineEnd": 381,
+          "contentBytes": 15838
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-7",
+          "level": 2,
+          "title": "协作工具",
+          "lineStart": 382,
+          "lineEnd": 428,
+          "contentBytes": 4977
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-7",
+          "level": 3,
+          "title": "Coding Agent 中的搜索工具",
+          "lineStart": 270,
+          "lineEnd": 292,
+          "contentBytes": 3724
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-8",
+          "level": 3,
+          "title": "Coding Agent 中的文件编辑工具",
+          "lineStart": 293,
+          "lineEnd": 308,
+          "contentBytes": 3847
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-3",
+          "level": 3,
+          "title": "事件触发工具",
+          "lineStart": 73,
+          "lineEnd": 84,
+          "contentBytes": 2482
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-4",
+          "level": 3,
+          "title": "用户沟通工具",
+          "lineStart": 85,
+          "lineEnd": 100,
+          "contentBytes": 2307
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-4",
+          "level": 3,
+          "title": "Agent 间的通信与控制",
+          "lineStart": 166,
+          "lineEnd": 193,
+          "contentBytes": 6996
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter4",
+        "chapter5",
+        "chapter6",
+        "chapter10"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 22
+    },
+    {
+      "id": "T04",
+      "name": "技能（Skills）机制",
+      "statement": "将领域能力封装为可组合、渐进式披露的知识包，按需加载以平衡上下文成本与能力覆盖。",
+      "rationale": "Skills 在上下文工程、工具发现和持续进化中反复出现，核心是渐进式披露与元数据/指令分离，是跨章复用的关键机制。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h2-5",
+          "level": 2,
+          "title": "动态提示词与 Agent Skills",
+          "lineStart": 765,
+          "lineEnd": 775,
+          "contentBytes": 793
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-19",
+          "level": 3,
+          "title": "Skills：领域能力的可组合单元",
+          "lineStart": 776,
+          "lineEnd": 793,
+          "contentBytes": 4487
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-20",
+          "level": 3,
+          "title": "如何编写一份可用的 Skill",
+          "lineStart": 794,
+          "lineEnd": 813,
+          "contentBytes": 3007
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-21",
+          "level": 3,
+          "title": "Skills 在上下文中的位置",
+          "lineStart": 814,
+          "lineEnd": 829,
+          "contentBytes": 2513
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-22",
+          "level": 3,
+          "title": "Skills 与工具的关系",
+          "lineStart": 830,
+          "lineEnd": 856,
+          "contentBytes": 2845
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h3-6",
+          "level": 3,
+          "title": "Skills：把工具发现变成“按需查阅”",
+          "lineStart": 202,
+          "lineEnd": 217,
+          "contentBytes": 2803
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h4-2",
+          "level": 4,
+          "title": "例子二：需求澄清 Skill——从“直接开工”到“先确认再执行”",
+          "lineStart": 135,
+          "lineEnd": 166,
+          "contentBytes": 4733
+        }
+      ],
+      "chapterKeys": [
+        "chapter2",
+        "chapter4",
+        "chapter9"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 7
+    },
+    {
+      "id": "T05",
+      "name": "记忆与检索增强生成",
+      "statement": "构建持久的用户记忆与共享知识库，通过检索增强、结构化索引和更新机制让 Agent 跨会话利用知识。",
+      "rationale": "这些锚点覆盖用户记忆和知识库的评估、存储、压缩、隐私、RAG 管道、索引与更新，以及经验沉淀为知识，构成 Agent 持久化知识体系。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h1-1",
+          "level": 1,
+          "title": "用户记忆和知识库",
+          "lineStart": 1,
+          "lineEnd": 14,
+          "contentBytes": 1300
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h2-1",
+          "level": 2,
+          "title": "用户记忆系统",
+          "lineStart": 15,
+          "lineEnd": 42,
+          "contentBytes": 1451
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-1",
+          "level": 3,
+          "title": "记忆能力的评估：三层次框架",
+          "lineStart": 43,
+          "lineEnd": 71,
+          "contentBytes": 4522
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-2",
+          "level": 3,
+          "title": "记忆的层次结构",
+          "lineStart": 72,
+          "lineEnd": 87,
+          "contentBytes": 2383
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-3",
+          "level": 3,
+          "title": "用户记忆的四种存储格式",
+          "lineStart": 88,
+          "lineEnd": 112,
+          "contentBytes": 4344
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-4",
+          "level": 3,
+          "title": "进阶知识表示形态：可执行代码",
+          "lineStart": 113,
+          "lineEnd": 169,
+          "contentBytes": 2139
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-5",
+          "level": 3,
+          "title": "用户记忆的认知科学基础",
+          "lineStart": 170,
+          "lineEnd": 191,
+          "contentBytes": 2859
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-6",
+          "level": 3,
+          "title": "记忆框架案例",
+          "lineStart": 192,
+          "lineEnd": 220,
+          "contentBytes": 4826
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-7",
+          "level": 3,
+          "title": "记忆压缩与整理机制",
+          "lineStart": 221,
+          "lineEnd": 230,
+          "contentBytes": 1390
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-8",
+          "level": 3,
+          "title": "隐私保护：日志脱敏",
+          "lineStart": 231,
+          "lineEnd": 242,
+          "contentBytes": 1505
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h2-2",
+          "level": 2,
+          "title": "RAG 基础：构建 Agent 的知识获取管道",
+          "lineStart": 243,
+          "lineEnd": 269,
+          "contentBytes": 1572
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-9",
+          "level": 3,
+          "title": "文档分块（Chunking）",
+          "lineStart": 270,
+          "lineEnd": 285,
+          "contentBytes": 2384
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-10",
+          "level": 3,
+          "title": "稠密嵌入：从词汇关联到语义理解",
+          "lineStart": 286,
+          "lineEnd": 303,
+          "contentBytes": 3063
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h4-1",
+          "level": 4,
+          "title": "从 Word2Vec 到上下文感知",
+          "lineStart": 304,
+          "lineEnd": 331,
+          "contentBytes": 2849
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-11",
+          "level": 3,
+          "title": "稀疏嵌入：精确匹配的关键词检索",
+          "lineStart": 332,
+          "lineEnd": 335,
+          "contentBytes": 685
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h4-2",
+          "level": 4,
+          "title": "从 TF-IDF 到 BM25",
+          "lineStart": 336,
+          "lineEnd": 384,
+          "contentBytes": 5250
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-12",
+          "level": 3,
+          "title": "混合检索：两全其美的艺术",
+          "lineStart": 385,
+          "lineEnd": 423,
+          "contentBytes": 6118
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h2-3",
+          "level": 2,
+          "title": "超越扁平文本：知识的组织与检索",
+          "lineStart": 424,
+          "lineEnd": 444,
+          "contentBytes": 4470
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-13",
+          "level": 3,
+          "title": "结构化索引：从信息检索到知识建模",
+          "lineStart": 445,
+          "lineEnd": 481,
+          "contentBytes": 6926
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-14",
+          "level": 3,
+          "title": "文件系统范式：用目录结构组织知识",
+          "lineStart": 482,
+          "lineEnd": 504,
+          "contentBytes": 4240
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-15",
+          "level": 3,
+          "title": "知识应该如何更新",
+          "lineStart": 505,
+          "lineEnd": 508,
+          "contentBytes": 420
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h4-3",
+          "level": 4,
+          "title": "用户记忆和知识库的增量更新",
+          "lineStart": 509,
+          "lineEnd": 525,
+          "contentBytes": 4071
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h4-4",
+          "level": 4,
+          "title": "用户记忆和知识库的定期整理",
+          "lineStart": 526,
+          "lineEnd": 541,
+          "contentBytes": 4035
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-16",
+          "level": 3,
+          "title": "智能体化 RAG：将知识检索工具化的范式转变",
+          "lineStart": 542,
+          "lineEnd": 593,
+          "contentBytes": 8846
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-17",
+          "level": 3,
+          "title": "RAG 技巧：上下文感知检索",
+          "lineStart": 594,
+          "lineEnd": 636,
+          "contentBytes": 7269
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-18",
+          "level": 3,
+          "title": "从数据集中提取深度知识：从信息检索到知识发现",
+          "lineStart": 637,
+          "lineEnd": 664,
+          "contentBytes": 4540
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter3.md",
+          "fileKey": "chapter3",
+          "anchor": "chapter3#h3-19",
+          "level": 3,
+          "title": "前沿探索：多模态记忆",
+          "lineStart": 665,
+          "lineEnd": 676,
+          "contentBytes": 3019
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-1",
+          "level": 3,
+          "title": "将经验沉淀为知识",
+          "lineStart": 75,
+          "lineEnd": 96,
+          "contentBytes": 3888
+        }
+      ],
+      "chapterKeys": [
+        "chapter3",
+        "chapter9"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 28
+    },
+    {
+      "id": "T06",
+      "name": "评估与测试",
+      "statement": "通过指标、环境、数据集和自动化方法量化 Agent 表现，驱动模型选型、系统改进与内部质量保障。",
+      "rationale": "这些锚点覆盖从评估指标、环境、数据集、自动化评估到模型选型、内部评估基础设施和仿真环境，是贯穿全书的质量保障主线。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-8",
+          "level": 3,
+          "title": "如何选择模型",
+          "lineStart": 355,
+          "lineEnd": 371,
+          "contentBytes": 2902
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h1-1",
+          "level": 1,
+          "title": "Agent 的评估",
+          "lineStart": 1,
+          "lineEnd": 26,
+          "contentBytes": 3544
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-1",
+          "level": 2,
+          "title": "一条评估任务的解剖：τ²-bench 的 telecom 领域",
+          "lineStart": 27,
+          "lineEnd": 30,
+          "contentBytes": 320
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-1",
+          "level": 3,
+          "title": "任务定义的四个组成部分",
+          "lineStart": 31,
+          "lineEnd": 94,
+          "contentBytes": 4264
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-2",
+          "level": 3,
+          "title": "一次真实运行的轨迹",
+          "lineStart": 95,
+          "lineEnd": 128,
+          "contentBytes": 3939
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-2",
+          "level": 2,
+          "title": "评估指标：成功的定义",
+          "lineStart": 129,
+          "lineEnd": 132,
+          "contentBytes": 419
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-3",
+          "level": 3,
+          "title": "技术奇观：用 Pass@k 看能力上限",
+          "lineStart": 133,
+          "lineEnd": 146,
+          "contentBytes": 2145
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-4",
+          "level": 3,
+          "title": "业务可靠性：关注 Pass^k",
+          "lineStart": 147,
+          "lineEnd": 161,
+          "contentBytes": 1254
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-3",
+          "level": 2,
+          "title": "评估环境",
+          "lineStart": 162,
+          "lineEnd": 165,
+          "contentBytes": 208
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-5",
+          "level": 3,
+          "title": "五个组成要素",
+          "lineStart": 166,
+          "lineEnd": 181,
+          "contentBytes": 1643
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-6",
+          "level": 3,
+          "title": "人机交互型与工具调用型评估环境",
+          "lineStart": 182,
+          "lineEnd": 202,
+          "contentBytes": 2107
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-4",
+          "level": 2,
+          "title": "评估数据集的设计",
+          "lineStart": 203,
+          "lineEnd": 206,
+          "contentBytes": 366
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-7",
+          "level": 3,
+          "title": "基准设计的横向对照",
+          "lineStart": 207,
+          "lineEnd": 221,
+          "contentBytes": 1610
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-8",
+          "level": 3,
+          "title": "验证器",
+          "lineStart": 222,
+          "lineEnd": 231,
+          "contentBytes": 1598
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-9",
+          "level": 3,
+          "title": "任务的难度划分",
+          "lineStart": 232,
+          "lineEnd": 241,
+          "contentBytes": 981
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-10",
+          "level": 3,
+          "title": "数据泄漏防范",
+          "lineStart": 242,
+          "lineEnd": 249,
+          "contentBytes": 1340
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-11",
+          "level": 3,
+          "title": "质量控制与长期维护",
+          "lineStart": 250,
+          "lineEnd": 273,
+          "contentBytes": 3830
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-12",
+          "level": 3,
+          "title": "评估集的三个来源",
+          "lineStart": 274,
+          "lineEnd": 287,
+          "contentBytes": 1458
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-5",
+          "level": 2,
+          "title": "自动化评估方法",
+          "lineStart": 288,
+          "lineEnd": 303,
+          "contentBytes": 2112
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-13",
+          "level": 3,
+          "title": "LLM-as-a-Judge：自动化评估的核心",
+          "lineStart": 304,
+          "lineEnd": 433,
+          "contentBytes": 13456
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-14",
+          "level": 3,
+          "title": "失败归因：从整条轨迹定位首个错误",
+          "lineStart": 434,
+          "lineEnd": 463,
+          "contentBytes": 5752
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h4-1",
+          "level": 4,
+          "title": "“做对了但说错了” 问题",
+          "lineStart": 464,
+          "lineEnd": 483,
+          "contentBytes": 3494
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h4-2",
+          "level": 4,
+          "title": "作用域敏感的文档格式错误",
+          "lineStart": 484,
+          "lineEnd": 501,
+          "contentBytes": 1244
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h4-3",
+          "level": 4,
+          "title": "精确复制错误：从 `old_string` mismatch 到逐层定位",
+          "lineStart": 502,
+          "lineEnd": 512,
+          "contentBytes": 993
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-15",
+          "level": 3,
+          "title": "端到端回归任务与轨迹前缀回归任务",
+          "lineStart": 513,
+          "lineEnd": 538,
+          "contentBytes": 4740
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-16",
+          "level": 3,
+          "title": "配对比较与模型排名",
+          "lineStart": 539,
+          "lineEnd": 557,
+          "contentBytes": 3377
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-6",
+          "level": 2,
+          "title": "评估驱动的模型选型",
+          "lineStart": 558,
+          "lineEnd": 561,
+          "contentBytes": 165
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-17",
+          "level": 3,
+          "title": "选型的关键维度",
+          "lineStart": 562,
+          "lineEnd": 582,
+          "contentBytes": 3505
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-18",
+          "level": 3,
+          "title": "模型的行为策略",
+          "lineStart": 583,
+          "lineEnd": 598,
+          "contentBytes": 2587
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-19",
+          "level": 3,
+          "title": "Agent 系统的成本分析",
+          "lineStart": 599,
+          "lineEnd": 645,
+          "contentBytes": 4890
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-20",
+          "level": 3,
+          "title": "评估驱动的持续迭代",
+          "lineStart": 646,
+          "lineEnd": 671,
+          "contentBytes": 3731
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-7",
+          "level": 2,
+          "title": "评估结果的统计显著性",
+          "lineStart": 672,
+          "lineEnd": 697,
+          "contentBytes": 1543
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-8",
+          "level": 2,
+          "title": "Agent 的可观测性",
+          "lineStart": 698,
+          "lineEnd": 717,
+          "contentBytes": 3755
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-9",
+          "level": 2,
+          "title": "从 Benchmark 报告到系统改进",
+          "lineStart": 718,
+          "lineEnd": 727,
+          "contentBytes": 1409
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-21",
+          "level": 3,
+          "title": "读懂 Benchmark 报告：发现问题的艺术",
+          "lineStart": 728,
+          "lineEnd": 733,
+          "contentBytes": 865
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-22",
+          "level": 3,
+          "title": "从数据到假设：构建改进路线图",
+          "lineStart": 734,
+          "lineEnd": 741,
+          "contentBytes": 1027
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-23",
+          "level": 3,
+          "title": "从结果到决策：数据驱动的权衡",
+          "lineStart": 742,
+          "lineEnd": 755,
+          "contentBytes": 1330
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-24",
+          "level": 3,
+          "title": "持续迭代：从第一次改进到系统演化",
+          "lineStart": 756,
+          "lineEnd": 776,
+          "contentBytes": 2165
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-10",
+          "level": 2,
+          "title": "从外部评估到内部评估：生产级 Agent 的评估基础设施",
+          "lineStart": 777,
+          "lineEnd": 780,
+          "contentBytes": 580
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-25",
+          "level": 3,
+          "title": "消融基础设施：理解每个特性的真实贡献",
+          "lineStart": 781,
+          "lineEnd": 786,
+          "contentBytes": 1232
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-26",
+          "level": 3,
+          "title": "AB 测试方法论：区分机制与目标",
+          "lineStart": 787,
+          "lineEnd": 798,
+          "contentBytes": 1703
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-27",
+          "level": 3,
+          "title": "双层特性开关系统",
+          "lineStart": 799,
+          "lineEnd": 808,
+          "contentBytes": 1191
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-29",
+          "level": 3,
+          "title": "以隐私感知分析为评估基础",
+          "lineStart": 815,
+          "lineEnd": 820,
+          "contentBytes": 757
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-30",
+          "level": 3,
+          "title": "从外部到内部：评估思维的转变",
+          "lineStart": 821,
+          "lineEnd": 824,
+          "contentBytes": 700
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h2-11",
+          "level": 2,
+          "title": "仿真环境：从评估到后训练的桥梁",
+          "lineStart": 825,
+          "lineEnd": 845,
+          "contentBytes": 3831
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter7.md",
+          "fileKey": "chapter7",
+          "anchor": "chapter7#h3-31",
+          "level": 3,
+          "title": "保真度权衡与领域随机化",
+          "lineStart": 846,
+          "lineEnd": 851,
+          "contentBytes": 871
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-10",
+          "level": 2,
+          "title": "RL 环境：从评估到仿真",
+          "lineStart": 530,
+          "lineEnd": 533,
+          "contentBytes": 487
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-10",
+          "level": 3,
+          "title": "环境：模型练习的场地",
+          "lineStart": 534,
+          "lineEnd": 543,
+          "contentBytes": 1543
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-11",
+          "level": 3,
+          "title": "造不出环境怎么办：让模型扮演环境",
+          "lineStart": 544,
+          "lineEnd": 553,
+          "contentBytes": 2496
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-12",
+          "level": 3,
+          "title": "环境、任务分布与评估隔离",
+          "lineStart": 554,
+          "lineEnd": 563,
+          "contentBytes": 1415
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h2-1",
+          "level": 2,
+          "title": "从运行轨迹中获得学习信号",
+          "lineStart": 19,
+          "lineEnd": 55,
+          "contentBytes": 4545
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter7",
+        "chapter8",
+        "chapter9"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 51
+    },
+    {
+      "id": "T07",
+      "name": "模型后训练",
+      "statement": "通过 Mid-training、SFT、RL 和蒸馏等方法优化模型底座、协议与策略，让 Agent 具备目标领域能力。",
+      "rationale": "这些锚点集中于第八章的训练技术，加上第一章提到的“模型即 Agent”范式，覆盖从预训练到 RL、奖励设计、蒸馏和数据合成的完整后训练流程。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-1",
+          "level": 4,
+          "title": "模型即 Agent：当模型本身成为产品",
+          "lineStart": 115,
+          "lineEnd": 124,
+          "contentBytes": 2515
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h1-1",
+          "level": 1,
+          "title": "模型后训练",
+          "lineStart": 1,
+          "lineEnd": 25,
+          "contentBytes": 5604
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-1",
+          "level": 2,
+          "title": "从预训练到 RL：四阶段全景",
+          "lineStart": 26,
+          "lineEnd": 38,
+          "contentBytes": 1293
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-1",
+          "level": 3,
+          "title": "预训练在做什么：预测下一个词",
+          "lineStart": 39,
+          "lineEnd": 48,
+          "contentBytes": 1510
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-2",
+          "level": 3,
+          "title": "Mid-training 的本质：在目标分布上继续学习",
+          "lineStart": 49,
+          "lineEnd": 54,
+          "contentBytes": 1320
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-3",
+          "level": 3,
+          "title": "SFT 的本质：换了数据的“预测下一个词”",
+          "lineStart": 55,
+          "lineEnd": 67,
+          "contentBytes": 2950
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-4",
+          "level": 3,
+          "title": "什么时候需要先补底座，再做 SFT/RL",
+          "lineStart": 68,
+          "lineEnd": 85,
+          "contentBytes": 2529
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-5",
+          "level": 3,
+          "title": "SFT 与 RL 的本质区别",
+          "lineStart": 86,
+          "lineEnd": 121,
+          "contentBytes": 6672
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-3",
+          "level": 2,
+          "title": "模型预训练基础 `[可选阅读]`",
+          "lineStart": 250,
+          "lineEnd": 275,
+          "contentBytes": 4324
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-4",
+          "level": 2,
+          "title": "Mid-training：补知识与基础能力",
+          "lineStart": 276,
+          "lineEnd": 286,
+          "contentBytes": 1809
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-8",
+          "level": 3,
+          "title": "Mid-training 数据如何构造",
+          "lineStart": 287,
+          "lineEnd": 313,
+          "contentBytes": 4396
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-5",
+          "level": 2,
+          "title": "SFT（监督微调）",
+          "lineStart": 314,
+          "lineEnd": 369,
+          "contentBytes": 9754
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-6",
+          "level": 2,
+          "title": "SFT 数据合成：从示范到可训练轨迹",
+          "lineStart": 370,
+          "lineEnd": 385,
+          "contentBytes": 3432
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-7",
+          "level": 2,
+          "title": "何时选择 Mid-training、SFT 与 RL",
+          "lineStart": 386,
+          "lineEnd": 409,
+          "contentBytes": 3051
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-8",
+          "level": 2,
+          "title": "单轮强化学习：记忆与泛化的对照",
+          "lineStart": 410,
+          "lineEnd": 481,
+          "contentBytes": 9060
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-9",
+          "level": 2,
+          "title": "RL 算法：从 16 次 rollout 到一次参数更新",
+          "lineStart": 482,
+          "lineEnd": 503,
+          "contentBytes": 4550
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-9",
+          "level": 3,
+          "title": "为什么 LLM RL 通常优先 On-Policy",
+          "lineStart": 504,
+          "lineEnd": 516,
+          "contentBytes": 2115
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h4-1",
+          "level": 4,
+          "title": "看似 On-Policy，为什么仍会被数值误差拖垮",
+          "lineStart": 517,
+          "lineEnd": 529,
+          "contentBytes": 2620
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-11",
+          "level": 2,
+          "title": "从单轮到多轮：任务场景与信用分配",
+          "lineStart": 564,
+          "lineEnd": 565,
+          "contentBytes": 52
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-13",
+          "level": 3,
+          "title": "多轮任务的核心挑战",
+          "lineStart": 566,
+          "lineEnd": 583,
+          "contentBytes": 1868
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-14",
+          "level": 3,
+          "title": "工具调用：把环境带进 Agent",
+          "lineStart": 584,
+          "lineEnd": 609,
+          "contentBytes": 2409
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-12",
+          "level": 2,
+          "title": "奖励设计：如何把任务目标变成学习信号",
+          "lineStart": 610,
+          "lineEnd": 613,
+          "contentBytes": 408
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-15",
+          "level": 3,
+          "title": "奖励来自哪里：规则、人类偏好与模型评判",
+          "lineStart": 614,
+          "lineEnd": 623,
+          "contentBytes": 1926
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-16",
+          "level": 3,
+          "title": "奖励在什么时候给：结果还是过程",
+          "lineStart": 624,
+          "lineEnd": 633,
+          "contentBytes": 2122
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-17",
+          "level": 3,
+          "title": "奖励需要表达多少信息：标量、向量与生成式诊断",
+          "lineStart": 634,
+          "lineEnd": 643,
+          "contentBytes": 867
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-18",
+          "level": 3,
+          "title": "结果正确还不够：路径约束与 RLVP",
+          "lineStart": 644,
+          "lineEnd": 669,
+          "contentBytes": 3357
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-13",
+          "level": 2,
+          "title": "蒸馏：提升样本效率",
+          "lineStart": 670,
+          "lineEnd": 677,
+          "contentBytes": 1055
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-19",
+          "level": 3,
+          "title": "在轨蒸馏：让一次 rollout 产生密集监督",
+          "lineStart": 678,
+          "lineEnd": 710,
+          "contentBytes": 3922
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-20",
+          "level": 3,
+          "title": "没有更强的教师怎么办：On-Policy 自蒸馏",
+          "lineStart": 711,
+          "lineEnd": 732,
+          "contentBytes": 2016
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-14",
+          "level": 2,
+          "title": "从问题案例到后训练",
+          "lineStart": 733,
+          "lineEnd": 745,
+          "contentBytes": 1215
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-21",
+          "level": 3,
+          "title": "案例 1：Coding Agent 过早结束",
+          "lineStart": 746,
+          "lineEnd": 763,
+          "contentBytes": 3694
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-22",
+          "level": 3,
+          "title": "案例 2：中文引号",
+          "lineStart": 764,
+          "lineEnd": 777,
+          "contentBytes": 2019
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h3-23",
+          "level": 3,
+          "title": "案例 3：编辑文件经常失败",
+          "lineStart": 778,
+          "lineEnd": 795,
+          "contentBytes": 2188
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter8.md",
+          "fileKey": "chapter8",
+          "anchor": "chapter8#h2-15",
+          "level": 2,
+          "title": "后训练实践要点",
+          "lineStart": 796,
+          "lineEnd": 819,
+          "contentBytes": 4993
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter8"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 34
+    },
+    {
+      "id": "T08",
+      "name": "持续进化与自适应",
+      "statement": "从运行轨迹中提取学习信号，通过更新知识、指令、程序或参数让 Agent 在部署后不断改进。",
+      "rationale": "这些锚点围绕 Agent 的长期改进：从学习信号到四种更新方法、闭环结构、安全边界和睡眠学习，并结合后记对模型与 Agent 共同演进的展望。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-2",
+          "level": 4,
+          "title": "Agent 的学习机制：从上下文适应到持久更新",
+          "lineStart": 125,
+          "lineEnd": 136,
+          "contentBytes": 1751
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h1-1",
+          "level": 1,
+          "title": "Agent 的持续进化",
+          "lineStart": 1,
+          "lineEnd": 18,
+          "contentBytes": 3827
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h2-2",
+          "level": 2,
+          "title": "Agent 持续进化的四种方法",
+          "lineStart": 56,
+          "lineEnd": 74,
+          "contentBytes": 1753
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-2",
+          "level": 3,
+          "title": "将经验写成指令",
+          "lineStart": 97,
+          "lineEnd": 104,
+          "contentBytes": 1492
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h4-1",
+          "level": 4,
+          "title": "例子一：转接边界的规则化",
+          "lineStart": 105,
+          "lineEnd": 134,
+          "contentBytes": 4223
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-3",
+          "level": 3,
+          "title": "将经验写成程序",
+          "lineStart": 167,
+          "lineEnd": 227,
+          "contentBytes": 8862
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h4-3",
+          "level": 4,
+          "title": "案例：DeepSeek Harness 以“一切皆插件”实现自我进化",
+          "lineStart": 228,
+          "lineEnd": 247,
+          "contentBytes": 3871
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-4",
+          "level": 3,
+          "title": "将经验写入参数",
+          "lineStart": 248,
+          "lineEnd": 255,
+          "contentBytes": 1118
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-5",
+          "level": 3,
+          "title": "从更新产物到更新“更新方法”",
+          "lineStart": 256,
+          "lineEnd": 285,
+          "contentBytes": 6232
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h2-3",
+          "level": 2,
+          "title": "构建可长期运行的持续进化闭环",
+          "lineStart": 286,
+          "lineEnd": 328,
+          "contentBytes": 5467
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-6",
+          "level": 3,
+          "title": "可验证闭环的边界：当“完成”不等于“进步”",
+          "lineStart": 329,
+          "lineEnd": 341,
+          "contentBytes": 2333
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-7",
+          "level": 3,
+          "title": "持续进化的安全边界",
+          "lineStart": 342,
+          "lineEnd": 351,
+          "contentBytes": 2035
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-8",
+          "level": 3,
+          "title": "睡眠学习：整合、遗忘与能力保鲜",
+          "lineStart": 352,
+          "lineEnd": 404,
+          "contentBytes": 5426
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "fileKey": "afterword",
+          "anchor": "afterword#h1-1",
+          "level": 1,
+          "title": "后记：回到 Agent = LLM + 上下文 + 工具",
+          "lineStart": 1,
+          "lineEnd": 12,
+          "contentBytes": 1454
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "fileKey": "afterword",
+          "anchor": "afterword#h2-1",
+          "level": 2,
+          "title": "两朵乌云",
+          "lineStart": 13,
+          "lineEnd": 26,
+          "contentBytes": 3979
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "fileKey": "afterword",
+          "anchor": "afterword#h2-2",
+          "level": 2,
+          "title": "模型与 Agent 的共同演进",
+          "lineStart": 27,
+          "lineEnd": 44,
+          "contentBytes": 5060
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter9",
+        "afterword"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 16
+    },
+    {
+      "id": "T09",
+      "name": "多 Agent 协作",
+      "statement": "多个 Agent 通过共享或不共享上下文、多种拓扑结构协作，引入信息增益的同时也带来新型失败模式。",
+      "rationale": "第十章专门讨论多 Agent 协作，第四章的协作工具也属于此范畴，覆盖分类框架、协作模式、失败模式和 Agent 社会。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h1-1",
+          "level": 1,
+          "title": "多 Agent 协作",
+          "lineStart": 1,
+          "lineEnd": 10,
+          "contentBytes": 2197
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h2-1",
+          "level": 2,
+          "title": "多 Agent 协作的分类框架",
+          "lineStart": 11,
+          "lineEnd": 14,
+          "contentBytes": 170
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-1",
+          "level": 3,
+          "title": "维度一：上下文是否共享",
+          "lineStart": 15,
+          "lineEnd": 33,
+          "contentBytes": 2797
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-2",
+          "level": 3,
+          "title": "维度二：协作拓扑",
+          "lineStart": 34,
+          "lineEnd": 45,
+          "contentBytes": 1425
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h2-2",
+          "level": 2,
+          "title": "多 Agent 何时真正优于单 Agent",
+          "lineStart": 46,
+          "lineEnd": 78,
+          "contentBytes": 5284
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h2-3",
+          "level": 2,
+          "title": "共享上下文的多 Agent 协作",
+          "lineStart": 79,
+          "lineEnd": 101,
+          "contentBytes": 3615
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h2-4",
+          "level": 2,
+          "title": "不共享上下文的多 Agent 协作",
+          "lineStart": 102,
+          "lineEnd": 132,
+          "contentBytes": 2569
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-3",
+          "level": 3,
+          "title": "Agent 眼中的文件系统",
+          "lineStart": 133,
+          "lineEnd": 165,
+          "contentBytes": 5013
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-4",
+          "level": 3,
+          "title": "Agent 间的通信与控制",
+          "lineStart": 166,
+          "lineEnd": 193,
+          "contentBytes": 6996
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-5",
+          "level": 3,
+          "title": "对等协作模式：相互制衡与迭代改进",
+          "lineStart": 194,
+          "lineEnd": 199,
+          "contentBytes": 759
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h4-1",
+          "level": 4,
+          "title": "Loop 工程",
+          "lineStart": 200,
+          "lineEnd": 227,
+          "contentBytes": 6882
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h4-2",
+          "level": 4,
+          "title": "提议者-审核者范式",
+          "lineStart": 228,
+          "lineEnd": 267,
+          "contentBytes": 3835
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h4-3",
+          "level": 4,
+          "title": "辩论模式",
+          "lineStart": 268,
+          "lineEnd": 275,
+          "contentBytes": 1647
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h4-4",
+          "level": 4,
+          "title": "头脑风暴模式",
+          "lineStart": 276,
+          "lineEnd": 279,
+          "contentBytes": 551
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h4-5",
+          "level": 4,
+          "title": "专家小组模式",
+          "lineStart": 280,
+          "lineEnd": 283,
+          "contentBytes": 448
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-6",
+          "level": 3,
+          "title": "管理者模式：中心化协调",
+          "lineStart": 284,
+          "lineEnd": 442,
+          "contentBytes": 16718
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-7",
+          "level": 3,
+          "title": "去中心化模式",
+          "lineStart": 443,
+          "lineEnd": 512,
+          "contentBytes": 8375
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-8",
+          "level": 3,
+          "title": "跨组织协作：A2A 协议",
+          "lineStart": 513,
+          "lineEnd": 522,
+          "contentBytes": 1707
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h2-5",
+          "level": 2,
+          "title": "多 Agent 协作的失败模式",
+          "lineStart": 523,
+          "lineEnd": 536,
+          "contentBytes": 1867
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-9",
+          "level": 3,
+          "title": "失败模式一：共享文件系统的并发冲突",
+          "lineStart": 537,
+          "lineEnd": 548,
+          "contentBytes": 1860
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-10",
+          "level": 3,
+          "title": "失败模式二：错误的级联放大",
+          "lineStart": 549,
+          "lineEnd": 554,
+          "contentBytes": 646
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-11",
+          "level": 3,
+          "title": "失败模式三：同质趋同",
+          "lineStart": 555,
+          "lineEnd": 560,
+          "contentBytes": 872
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-12",
+          "level": 3,
+          "title": "失败模式四：互相扯皮",
+          "lineStart": 561,
+          "lineEnd": 566,
+          "contentBytes": 1059
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-13",
+          "level": 3,
+          "title": "失败模式五：循环失控",
+          "lineStart": 567,
+          "lineEnd": 570,
+          "contentBytes": 364
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-14",
+          "level": 3,
+          "title": "失败模式六：理解债与认知投降",
+          "lineStart": 571,
+          "lineEnd": 580,
+          "contentBytes": 1179
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h2-6",
+          "level": 2,
+          "title": "Agent 社会",
+          "lineStart": 581,
+          "lineEnd": 590,
+          "contentBytes": 1146
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-15",
+          "level": 3,
+          "title": "斯坦福 AI 小镇：生成式 Agent 的社会模拟",
+          "lineStart": 591,
+          "lineEnd": 634,
+          "contentBytes": 5620
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-16",
+          "level": 3,
+          "title": "Agentopia：十年尺度的长期生活模拟",
+          "lineStart": 635,
+          "lineEnd": 649,
+          "contentBytes": 3181
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-17",
+          "level": 3,
+          "title": "Moltbook：当 Agent 拥有自己的社交网络",
+          "lineStart": 650,
+          "lineEnd": 655,
+          "contentBytes": 757
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-18",
+          "level": 3,
+          "title": "从虚拟社会到经济竞争：Vending-Bench Arena",
+          "lineStart": 656,
+          "lineEnd": 669,
+          "contentBytes": 2125
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-19",
+          "level": 3,
+          "title": "Agent 经济：Pinchwork 与 RentAHuman",
+          "lineStart": 670,
+          "lineEnd": 677,
+          "contentBytes": 951
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-20",
+          "level": 3,
+          "title": "信息不对称下的策略博弈：狼人杀",
+          "lineStart": 678,
+          "lineEnd": 713,
+          "contentBytes": 3521
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-7",
+          "level": 2,
+          "title": "协作工具",
+          "lineStart": 382,
+          "lineEnd": 428,
+          "contentBytes": 4977
+        }
+      ],
+      "chapterKeys": [
+        "chapter10",
+        "chapter4"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 33
+    },
+    {
+      "id": "T10",
+      "name": "自主执行循环与编排",
+      "statement": "通过 ReAct 循环、工作流与自主混合编排，以及 Loop 工程管理 Agent 的决策路径与循环鲁棒性。",
+      "rationale": "这些锚点聚焦于 Agent 如何组织单次或多次 LLM 调用：从 Harness 工程、编排模式到循环实现与故障恢复，以及多 Agent 语境下的 Loop 工程。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h1-1",
+          "level": 1,
+          "title": "AI Agent 入门",
+          "lineStart": 1,
+          "lineEnd": 10,
+          "contentBytes": 1342
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h2-1",
+          "level": 2,
+          "title": "现代 Agent = LLM + 上下文 + 工具",
+          "lineStart": 11,
+          "lineEnd": 36,
+          "contentBytes": 3911
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-3",
+          "level": 3,
+          "title": "LLM：Agent 的大脑",
+          "lineStart": 109,
+          "lineEnd": 114,
+          "contentBytes": 1229
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-5",
+          "level": 3,
+          "title": "ReAct 循环",
+          "lineStart": 161,
+          "lineEnd": 262,
+          "contentBytes": 11414
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h2-2",
+          "level": 2,
+          "title": "Harness 工程：模型之外的竞争力",
+          "lineStart": 263,
+          "lineEnd": 320,
+          "contentBytes": 6571
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-6",
+          "level": 3,
+          "title": "从提示工程到 Loop 工程：工程范式的演进",
+          "lineStart": 321,
+          "lineEnd": 340,
+          "contentBytes": 3194
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-7",
+          "level": 3,
+          "title": "构建有效 Agent 的核心原则",
+          "lineStart": 341,
+          "lineEnd": 354,
+          "contentBytes": 1849
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-9",
+          "level": 3,
+          "title": "编排模式：工作流与自主",
+          "lineStart": 372,
+          "lineEnd": 383,
+          "contentBytes": 2687
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-3",
+          "level": 4,
+          "title": "工作流模式：确定性的编排",
+          "lineStart": 384,
+          "lineEnd": 417,
+          "contentBytes": 4475
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-4",
+          "level": 4,
+          "title": "自主 Agent：动态自主决策",
+          "lineStart": 418,
+          "lineEnd": 433,
+          "contentBytes": 2085
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-5",
+          "level": 4,
+          "title": "两种模式的选择与混合",
+          "lineStart": 434,
+          "lineEnd": 441,
+          "contentBytes": 939
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-11",
+          "level": 3,
+          "title": "Harness 五要素与「构建」部分的对应",
+          "lineStart": 506,
+          "lineEnd": 524,
+          "contentBytes": 2854
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h2-3",
+          "level": 2,
+          "title": "贯穿全书的设计模式",
+          "lineStart": 525,
+          "lineEnd": 538,
+          "contentBytes": 2578
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-4",
+          "level": 3,
+          "title": "用代码实现 Agent 的核心循环",
+          "lineStart": 251,
+          "lineEnd": 369,
+          "contentBytes": 5013
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-4",
+          "level": 3,
+          "title": "Harness 工程在 Coding Agent 中的实践",
+          "lineStart": 127,
+          "lineEnd": 171,
+          "contentBytes": 6832
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-5",
+          "level": 3,
+          "title": "故障与错误恢复",
+          "lineStart": 172,
+          "lineEnd": 226,
+          "contentBytes": 11905
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-6",
+          "level": 3,
+          "title": "Coding Agent 的实现技巧",
+          "lineStart": 227,
+          "lineEnd": 269,
+          "contentBytes": 5689
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h4-1",
+          "level": 4,
+          "title": "Loop 工程",
+          "lineStart": 200,
+          "lineEnd": 227,
+          "contentBytes": 6882
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter10.md",
+          "fileKey": "chapter10",
+          "anchor": "chapter10#h3-13",
+          "level": 3,
+          "title": "失败模式五：循环失控",
+          "lineStart": 567,
+          "lineEnd": 570,
+          "contentBytes": 364
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter2",
+        "chapter5",
+        "chapter10"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 19
+    },
+    {
+      "id": "T11",
+      "name": "交互：观察与动作空间扩展",
+      "statement": "扩展 Agent 感知与行动的模态和时机，包括异步事件驱动、语音、Computer Use 和机器人操作。",
+      "rationale": "第六章全面覆盖观察与动作空间的扩展，从异步事件、语音到 GUI 自动化和机器人控制，加上第一章的接口定义，构成交互能力的主线。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-1",
+          "level": 3,
+          "title": "观察空间与动作空间：模型与世界的接口",
+          "lineStart": 37,
+          "lineEnd": 60,
+          "contentBytes": 5395
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h1-1",
+          "level": 1,
+          "title": "交互：观察与动作空间的扩展",
+          "lineStart": 1,
+          "lineEnd": 4,
+          "contentBytes": 555
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h2-1",
+          "level": 2,
+          "title": "模态与触发时机的扩展",
+          "lineStart": 5,
+          "lineEnd": 28,
+          "contentBytes": 2410
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h2-2",
+          "level": 2,
+          "title": "异步与事件驱动：当世界主动找上门",
+          "lineStart": 29,
+          "lineEnd": 34,
+          "contentBytes": 537
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-1",
+          "level": 3,
+          "title": "为什么需要异步",
+          "lineStart": 35,
+          "lineEnd": 48,
+          "contentBytes": 2281
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-2",
+          "level": 3,
+          "title": "OpenClaw 的事件驱动机制实现",
+          "lineStart": 49,
+          "lineEnd": 72,
+          "contentBytes": 3336
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-5",
+          "level": 3,
+          "title": "虚拟身份与隔离执行环境",
+          "lineStart": 101,
+          "lineEnd": 112,
+          "contentBytes": 2860
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-6",
+          "level": 3,
+          "title": "事件处理机制",
+          "lineStart": 113,
+          "lineEnd": 197,
+          "contentBytes": 9809
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-7",
+          "level": 3,
+          "title": "不支持原生异步时的兼容方案",
+          "lineStart": 198,
+          "lineEnd": 274,
+          "contentBytes": 7616
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-8",
+          "level": 3,
+          "title": "模型原生异步：GPT-6 Astra",
+          "lineStart": 275,
+          "lineEnd": 288,
+          "contentBytes": 2133
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-9",
+          "level": 3,
+          "title": "从“能接收异步消息”到“可靠处理异步任务”",
+          "lineStart": 289,
+          "lineEnd": 306,
+          "contentBytes": 1809
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h2-3",
+          "level": 2,
+          "title": "语音：最自然的人机接口",
+          "lineStart": 307,
+          "lineEnd": 312,
+          "contentBytes": 742
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-10",
+          "level": 3,
+          "title": "交互时序：从级联到全双工",
+          "lineStart": 313,
+          "lineEnd": 326,
+          "contentBytes": 1439
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-11",
+          "level": 3,
+          "title": "范式一 · 级联流水线（Cascading）",
+          "lineStart": 327,
+          "lineEnd": 357,
+          "contentBytes": 1364
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h4-1",
+          "level": 4,
+          "title": "从串行到流式感知",
+          "lineStart": 358,
+          "lineEnd": 388,
+          "contentBytes": 2470
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-12",
+          "level": 3,
+          "title": "范式二 · 端到端全模态模型（Omni）",
+          "lineStart": 389,
+          "lineEnd": 403,
+          "contentBytes": 1174
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-13",
+          "level": 3,
+          "title": "范式三 · 全双工交互模型",
+          "lineStart": 404,
+          "lineEnd": 415,
+          "contentBytes": 1335
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-14",
+          "level": 3,
+          "title": "认知时序：实时交互与深度思考",
+          "lineStart": 416,
+          "lineEnd": 419,
+          "contentBytes": 370
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h4-2",
+          "level": 4,
+          "title": "方案一：快思考回应，慢思考回答",
+          "lineStart": 420,
+          "lineEnd": 427,
+          "contentBytes": 506
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h4-3",
+          "level": 4,
+          "title": "方案二：快思考交互，慢思考提醒",
+          "lineStart": 428,
+          "lineEnd": 431,
+          "contentBytes": 449
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h4-4",
+          "level": 4,
+          "title": "方案三：端到端思考与表达统一",
+          "lineStart": 432,
+          "lineEnd": 437,
+          "contentBytes": 815
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h4-5",
+          "level": 4,
+          "title": "快慢思考分离与端到端思考的取舍",
+          "lineStart": 438,
+          "lineEnd": 449,
+          "contentBytes": 2270
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-15",
+          "level": 3,
+          "title": "更像人的语音合成",
+          "lineStart": 450,
+          "lineEnd": 459,
+          "contentBytes": 770
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h2-4",
+          "level": 2,
+          "title": "Computer Use：GUI 自动化 Agent",
+          "lineStart": 460,
+          "lineEnd": 478,
+          "contentBytes": 1728
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-16",
+          "level": 3,
+          "title": "动作空间设计",
+          "lineStart": 479,
+          "lineEnd": 497,
+          "contentBytes": 2108
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-17",
+          "level": 3,
+          "title": "视觉定位（Grounding）",
+          "lineStart": 498,
+          "lineEnd": 547,
+          "contentBytes": 5950
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-18",
+          "level": 3,
+          "title": "能看动画、能听声音的 Computer Use Agent",
+          "lineStart": 548,
+          "lineEnd": 555,
+          "contentBytes": 1430
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-19",
+          "level": 3,
+          "title": "Computer Use 的世界模型",
+          "lineStart": 556,
+          "lineEnd": 574,
+          "contentBytes": 3306
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-20",
+          "level": 3,
+          "title": "移动端：生态壁垒比技术更难",
+          "lineStart": 575,
+          "lineEnd": 584,
+          "contentBytes": 1764
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h2-5",
+          "level": 2,
+          "title": "机器人操作：以 XLeRobot 整理桌面为例",
+          "lineStart": 585,
+          "lineEnd": 601,
+          "contentBytes": 2459
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-21",
+          "level": 3,
+          "title": "硬件与算法的分工",
+          "lineStart": 602,
+          "lineEnd": 623,
+          "contentBytes": 3453
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-22",
+          "level": 3,
+          "title": "机器人控制的基本结构",
+          "lineStart": 624,
+          "lineEnd": 637,
+          "contentBytes": 1353
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-23",
+          "level": 3,
+          "title": "长程规划与任务分解",
+          "lineStart": 638,
+          "lineEnd": 663,
+          "contentBytes": 2609
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-24",
+          "level": 3,
+          "title": "VLA 控制",
+          "lineStart": 664,
+          "lineEnd": 677,
+          "contentBytes": 1717
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-25",
+          "level": 3,
+          "title": "VLA 的局限",
+          "lineStart": 678,
+          "lineEnd": 688,
+          "contentBytes": 1072
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-26",
+          "level": 3,
+          "title": "世界模型",
+          "lineStart": 689,
+          "lineEnd": 725,
+          "contentBytes": 3552
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-27",
+          "level": 3,
+          "title": "从仿真环境到真实机器人",
+          "lineStart": 726,
+          "lineEnd": 735,
+          "contentBytes": 1641
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter6"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 37
+    },
+    {
+      "id": "T12",
+      "name": "安全与信任",
+      "statement": "通过提示注入防护、护栏、人工干预、执行隔离与身份管理降低 Agent 行为风险。",
+      "rationale": "这些锚点专门讨论安全风险与防护策略，覆盖提示注入、三层护栏、人工介入、执行工具安全、Coding 安全、虚拟身份隔离和持续进化安全，属于跨章关切。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h3-10",
+          "level": 3,
+          "title": "护栏与安全性",
+          "lineStart": 466,
+          "lineEnd": 473,
+          "contentBytes": 1156
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-7",
+          "level": 4,
+          "title": "护栏类型",
+          "lineStart": 474,
+          "lineEnd": 489,
+          "contentBytes": 4117
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter1.md",
+          "fileKey": "chapter1",
+          "anchor": "chapter1#h4-8",
+          "level": 4,
+          "title": "人工干预",
+          "lineStart": 490,
+          "lineEnd": 505,
+          "contentBytes": 1051
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "fileKey": "chapter2",
+          "anchor": "chapter2#h3-18",
+          "level": 3,
+          "title": "提示注入：上下文安全的核心威胁",
+          "lineStart": 730,
+          "lineEnd": 764,
+          "contentBytes": 5476
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter4.md",
+          "fileKey": "chapter4",
+          "anchor": "chapter4#h2-6",
+          "level": 2,
+          "title": "执行工具",
+          "lineStart": 270,
+          "lineEnd": 381,
+          "contentBytes": 15838
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-9",
+          "level": 3,
+          "title": "Coding Agent 的安全",
+          "lineStart": 309,
+          "lineEnd": 350,
+          "contentBytes": 7700
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "fileKey": "chapter6",
+          "anchor": "chapter6#h3-5",
+          "level": 3,
+          "title": "虚拟身份与隔离执行环境",
+          "lineStart": 101,
+          "lineEnd": 112,
+          "contentBytes": 2860
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter9.md",
+          "fileKey": "chapter9",
+          "anchor": "chapter9#h3-7",
+          "level": 3,
+          "title": "持续进化的安全边界",
+          "lineStart": 342,
+          "lineEnd": 351,
+          "contentBytes": 2035
+        }
+      ],
+      "chapterKeys": [
+        "chapter1",
+        "chapter2",
+        "chapter4",
+        "chapter5",
+        "chapter6",
+        "chapter9"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 8
+    },
+    {
+      "id": "T13",
+      "name": "代码生成与元能力",
+      "statement": "代码生成不仅是 Coding Agent 的基础，还作为思考工具、规则约束、多媒体生成和系统适配器，支撑 Agent 自举。",
+      "rationale": "第五章完整阐述了 Coding Agent 的构建与代码作为元能力的多种角色，这些锚点共同展示代码生成在 Agent 系统中的核心地位。",
+      "anchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h1-1",
+          "level": 1,
+          "title": "Coding Agent 与通用 Agent",
+          "lineStart": 1,
+          "lineEnd": 12,
+          "contentBytes": 1459
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h2-1",
+          "level": 2,
+          "title": "Coding Agent",
+          "lineStart": 13,
+          "lineEnd": 14,
+          "contentBytes": 16
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-1",
+          "level": 3,
+          "title": "Coding 是 Agent 的基础能力",
+          "lineStart": 15,
+          "lineEnd": 57,
+          "contentBytes": 4294
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-2",
+          "level": 3,
+          "title": "案例：从 Manus 到 OpenClaw——通用 Agent 的 Coding 内核",
+          "lineStart": 58,
+          "lineEnd": 83,
+          "contentBytes": 3888
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-3",
+          "level": 3,
+          "title": "Coding Agent 的整体流程",
+          "lineStart": 84,
+          "lineEnd": 126,
+          "contentBytes": 7080
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-4",
+          "level": 3,
+          "title": "Harness 工程在 Coding Agent 中的实践",
+          "lineStart": 127,
+          "lineEnd": 171,
+          "contentBytes": 6832
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-5",
+          "level": 3,
+          "title": "故障与错误恢复",
+          "lineStart": 172,
+          "lineEnd": 226,
+          "contentBytes": 11905
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-6",
+          "level": 3,
+          "title": "Coding Agent 的实现技巧",
+          "lineStart": 227,
+          "lineEnd": 269,
+          "contentBytes": 5689
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h2-2",
+          "level": 2,
+          "title": "代码：通用 Agent 的元能力",
+          "lineStart": 351,
+          "lineEnd": 365,
+          "contentBytes": 1592
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-10",
+          "level": 3,
+          "title": "代码作为思考工具",
+          "lineStart": 366,
+          "lineEnd": 405,
+          "contentBytes": 4637
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-11",
+          "level": 3,
+          "title": "代码作为业务规则的约束",
+          "lineStart": 406,
+          "lineEnd": 501,
+          "contentBytes": 8363
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-12",
+          "level": 3,
+          "title": "代码驱动的多媒体生成",
+          "lineStart": 502,
+          "lineEnd": 588,
+          "contentBytes": 11686
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-13",
+          "level": 3,
+          "title": "代码作为系统适配器",
+          "lineStart": 589,
+          "lineEnd": 630,
+          "contentBytes": 5260
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-14",
+          "level": 3,
+          "title": "代码作为生成式 UI",
+          "lineStart": 631,
+          "lineEnd": 727,
+          "contentBytes": 16153
+        },
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter5.md",
+          "fileKey": "chapter5",
+          "anchor": "chapter5#h3-15",
+          "level": 3,
+          "title": "代码创造代码：Agent 自举",
+          "lineStart": 728,
+          "lineEnd": 774,
+          "contentBytes": 4698
+        }
+      ],
+      "chapterKeys": [
+        "chapter5"
+      ],
+      "unresolvedAnchors": [],
+      "citedAnchorCount": 15
+    }
+  ],
+  "unresolvedAnchors": [],
+  "emptyThemes": [],
+  "duplicateThemes": [],
+  "usage": {
+    "prompt_tokens": 19988,
+    "completion_tokens": 21260,
+    "total_tokens": 41248,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 16788
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 19988
+  },
+  "finishReason": "stop",
+  "reasoningChars": 29992
+}

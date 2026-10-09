@@ -53,6 +53,11 @@ export const IDENTIFIER_PATTERN = /^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/
  *   QUOTE_MISMATCH          引文未命中锚点区间。判定时已忽略 markdown 强调标记与空白差异
  *                           （见 QUOTE_NORMALIZATION）；被拒意味着**不止是排版差异**。
  *                           修复方：第 2 层（最可能是归纳时改写了原文）。
+ *                           两种情形共用本码，靠 `at` 区分：顶层的 `evidenceQuote` 未命中
+ *                           （`at` 缺省），或某条 `sourceRefs[i].quote` 未命中**它自己那一条**
+ *                           出处的区间（`at = sourceRefs/i`，ticket 06 加的逐条引文判据）。
+ *                           不拆成两个码的理由：两者的修复方与修复动作完全相同，
+ *                           拆开会把一个缺陷记成两笔（ticket 08 要求「同一拒绝只归一类」）。
  *   JUDGE_NOT_SUPPORTED     判定者判为**不支撑**（引文与主张无关或相矛盾）。
  *   JUDGE_INSUFFICIENT      判定者判为**不充分**（引文相关但不足以支持主张）。
  *                           后两条均由 ticket 05 产出。ADR-010 决策 2：只有「支撑」算通过，
@@ -173,10 +178,36 @@ export async function loadSourceLines(fileAbsPath) {
   return normalizeText(raw).split('\n')
 }
 
-/** 锚点索引 → 查找表。键为 `file::anchor`。 */
-export function anchorLookup(index) {
+/**
+ * 锚点索引 → 查找表（ticket 06 起支持多份）。
+ *
+ * 键为 `file::anchor`，所以不同文件的同名锚点不会互相覆盖——这一条在多文件之前
+ * 就已经成立（键里一直带着 `file`），改多份只是去掉了「一次只能传一份」这个隐含前提。
+ *
+ * 重复键**报错而不是覆盖**：覆盖会让「解析到的是哪一份」取决于索引的传入顺序，
+ * 而调用方看到的只是「都解析到了」。两份索引对同一锚点给出不同条目，本身就是要修的接线缺陷。
+ */
+export function anchorLookup(indexOrIndices) {
+  const indices = Array.isArray(indexOrIndices) ? indexOrIndices : [indexOrIndices]
   const map = new Map()
-  for (const a of index.anchors) map.set(`${a.file}::${a.anchor}`, a)
+  for (const index of indices) {
+    for (const a of index.anchors) {
+      const key = `${a.file}::${a.anchor}`
+      const prior = map.get(key)
+      if (prior !== undefined) {
+        // 分两种情形给不同的消息，因为它们的修法不同：把同一份索引传了两遍，
+        // 与两份索引对同一个锚点各说各话。只判「键在不在」会把后者也说成前者——
+        // 实测踩到：测试里一个「内容相同的子集索引」被报成「给了不同条目」。
+        const identical = JSON.stringify(prior) === JSON.stringify(a)
+        throw new Error(
+          `${identical ? '同一个锚点被两份索引重复给了两次' : '两份索引对同一个锚点给了不同条目'}：${key}——` +
+            '多份索引必须各自对应不同的源文件。同一份文件给了两遍时，' +
+            '「解析到的是哪一份」取决于索引的传入顺序，而调用方只会看到「都解析到了」。',
+        )
+      }
+      map.set(key, a)
+    }
+  }
   return map
 }
 
@@ -184,11 +215,17 @@ export function anchorLookup(index) {
  * 确定性判据（无 LLM）。逐对象执行，返回主理由码与全部命中项。
  *
  * @param {object} obj 待验证对象
- * @param {{lookup: Map, lines: string[], sourceText: string, schema: object|null,
+ * @param {{lookup: Map, linesByFile: Map<string,string[]>, sourceTextAll: string,
+ *          sourceTextAllScope: 'whole-source'|'all-sources', schema: object|null,
  *          objectTypeValid: boolean, anchorResolved: boolean, anchorText: string}} ctx
+ *        `linesByFile` 是 ticket 06 加的：跨章对象的一条 sourceRef 指向一个文件、下一条指向另一个，
+ *        因此「按行号取正文」必须**按文件**取。原先的单一 `lines` 隐含「对象只属于一个文件」，
+ *        那个前提在本卡之后不再成立。
  */
 export function checkDeterministic(obj, ctx) {
   const failures = []
+  /** 逐条 sourceRef 自带引文的比对结果（ticket 06）。空数组 = 该对象没有任何逐条引文。 */
+  const refQuoteComparisons = []
 
   // ① sourceRefs 非空：无豁免。单独先判，因为缺它时对象连「可溯源」都不成立，
   //    后续以引用为前提的判据无从谈起。
@@ -244,6 +281,55 @@ export function checkDeterministic(obj, ctx) {
           at,
         })
       }
+
+      // 逐条出处的**自带引文**（ticket 06）。
+      //
+      // 为什么必须逐条验、而不是只验第一条：一条跨章反模式引用「第 5 章 + 第 7 章」时，
+      // 只用 `sourceRefs[0]` 比对等于**对第二、三条引文完全不设防**——对象看起来照样通过，
+      // 而它声称的第二处支撑没有任何人核对过。这正是卡 06 说的「抄取冒充综合」在数据层的形态：
+      // 多写几条出处不花成本，所以「引用了几章」若不逐条验证，就只是一个自述。
+      //
+      // 它顺带把跨章对象的判定者输入也钉住了：每条 sourceRef 的引文都必须**在该条出处自己的
+      // 区间内**找得到，因此第 3 层给判定者的锚点原文与对象声称的出处必然一致。
+      //
+      // 理由码不新增：它与顶层引文未命中是**同一族**问题（修复方都是第 2 层「归纳时改写了原文」），
+      // 差别只在「哪一条出处」。用 `at` 区分，避免为同一类缺陷再造一个码——
+      // 理由是 ticket 08 要求「同一拒绝只归一类」，码表越细，统计越容易被拆散。
+      if (typeof ref.quote === 'string' && ref.quote !== '') {
+        const refLines = ctx.linesByFile.get(ref.file)
+        if (refLines === undefined) {
+          // 索引里有这条锚点、却拿不到它所在的源文件正文：这是**调用方的问题**
+          // （没把该文件的行传进来），不是「引文对不上」。判成后者会让一个接线缺陷
+          // 表现为一条内容拒绝，而两者的修复方完全不同。
+          throw new Error(
+            `第 3 层缺少 ${ref.file} 的正文，无法逐字比对 ${at} 的逐条引文——` +
+              '调用方必须为索引里出现的每个源文件都提供行。',
+          )
+        }
+        const refText = refLines.slice(entry.lineStart - 1, entry.lineEnd).join('\n')
+        const refStrict = refText.includes(normalizeText(ref.quote))
+        const refNormalized =
+          refStrict ||
+          normalizeForQuoteComparison(refText).includes(normalizeForQuoteComparison(ref.quote))
+        refQuoteComparisons.push({
+          at,
+          anchor: entry.anchor,
+          strict: refStrict,
+          normalized: refNormalized,
+          acceptedBy: refStrict ? 'strict' : refNormalized ? 'normalization' : null,
+          scope: 'own-anchor-region',
+        })
+        if (!refStrict && !refNormalized) {
+          failures.push({
+            code: 'QUOTE_MISMATCH',
+            at,
+            detail:
+              `${at}（${entry.anchor}）自带的引文未在该条出处自己的锚点区间内命中：` +
+              `${JSON.stringify(String(ref.quote).slice(0, 60))}` +
+              `（已按 ${QUOTE_NORMALIZATION} 归一化后仍不命中——即不止是排版差异）`,
+          })
+        }
+      }
     })
   }
 
@@ -284,7 +370,7 @@ export function checkDeterministic(obj, ctx) {
     //     「引文在源文里根本不存在」。若此时仍按空区间比对，会把「出处错」重复计成
     //     「引文错」，一个缺陷记成两笔。
     const scoped = ctx.anchorResolved === true
-    const haystack = (scoped ? ctx.anchorText : ctx.sourceText) ?? ''
+    const haystack = (scoped ? ctx.anchorText : ctx.sourceTextAll) ?? ''
 
     const quoteIsString = typeof quote === 'string' && quote !== ''
     const strict = quoteIsString && haystack.includes(normalizeText(quote))
@@ -294,13 +380,13 @@ export function checkDeterministic(obj, ctx) {
       normalized,
       acceptedBy: strict ? 'strict' : normalized ? 'normalization' : null,
       normalization: QUOTE_NORMALIZATION,
-      scope: scoped ? 'anchor-region' : 'whole-source',
+      scope: scoped ? 'anchor-region' : ctx.sourceTextAllScope,
     }
 
     if (!strict && !normalized) {
       const scopeNote = scoped
         ? `所引锚点区间（${[...haystack].length} 字符）`
-        : '整份源文（该对象未给出可解析的锚点，故按全量比对）'
+        : `全部已载入的源文（${ctx.sourceTextAllScope}，该对象未给出可解析的锚点，故按全量比对）`
       failures.push({
         code: 'QUOTE_MISMATCH',
         detail:
@@ -311,7 +397,7 @@ export function checkDeterministic(obj, ctx) {
   }
 
   const primary = REASON_PRECEDENCE.find((code) => failures.some((f) => f.code === code)) ?? null
-  return { ok: failures.length === 0, primaryCode: primary, failures, quoteComparison }
+  return { ok: failures.length === 0, primaryCode: primary, failures, quoteComparison, refQuoteComparisons }
 }
 
 /**
@@ -382,18 +468,40 @@ export function assertJudgeInputShape(input) {
  * 而是一个文件级的性质。
  *
  * @param {object[]} objects 第 2 层产出
- * @param {object} index 第 1 层产出
+ * @param {object|object[]} indexOrIndices 第 1 层产出。**单个索引或多份索引**都接受
+ *        （ticket 06：跨章对象的 sourceRefs 横跨多个源文件，只传一份会让另一半出处
+ *        解析不到而被拒——那不是内容问题，是我们没给它比对范围）。
+ *        多份时所有索引共用一个查找表，且每个文件的行都必须载入。
  * @param {{repoRoot?:string, judgeFn?:Function, judgeConfig?:object, judgeLedger?:object,
  *          judgeAll?:boolean}} [opts]
  *        `judgeAll`（ADR-010 决策 3）：默认只对**已通过确定性判据**的对象调判定者；
  *        置 true 则所有对象都送判定，产出两组判据的交叉表。
  */
-export async function verifyObjects(objects, index, opts = {}) {
+export async function verifyObjects(objects, indexOrIndices, opts = {}) {
   const repoRoot = opts.repoRoot ?? DEFAULT_REPO_ROOT
-  const lookup = anchorLookup(index)
-  const lines = await loadSourceLines(path.join(repoRoot, index.sourceFile))
+  // 单索引与多索引共用一条代码路径（ticket 06 改成多文件）。**不写两遍**：
+  // 两条路径的判据一旦分叉，「同一对象在单章运行与全书运行下结论不同」就会成为可能，
+  // 而那种差异最难归因——它看起来像是内容变了。
+  const indices = Array.isArray(indexOrIndices) ? indexOrIndices : [indexOrIndices]
+  if (indices.length === 0) throw new Error('verifyObjects 至少要拿到一份锚点索引')
+
+  const lookup = anchorLookup(indices)
+  const linesByFile = new Map()
+  for (const index of indices) {
+    // 与 `anchorLookup` 的重复键守卫**覆盖不同的输入**，因此两条都要留：
+    // 查找表只能看见「锚点键重叠」的重复，而两份索引若指向同一文件却带着**不同锚点**
+    // （典型：一份是改过标题、锚点编号已变的过期索引），键不重叠，查找表不会响。
+    // 少了这一条，那种过期索引会被当成「另一份文件」而静默混入比对范围。
+    if (linesByFile.has(index.sourceFile)) {
+      throw new Error(`锚点索引重复给到了同一个源文件：${index.sourceFile}`)
+    }
+    linesByFile.set(index.sourceFile, await loadSourceLines(path.join(repoRoot, index.sourceFile)))
+  }
   // 全量源文：当对象未给出可解析锚点时，逐字比对的兜底范围（见 checkDeterministic ⑤）。
-  const sourceText = lines.join('\n')
+  // 单索引时它就是那一份文件，与改动前的行为逐字相同；多索引时它是全部已载入源文，
+  // 口径记在 `sourceTextAllScope` 里，写进回执，使「按什么范围比的」不必翻代码。
+  const sourceTextAllScope = indices.length === 1 ? 'whole-source' : 'all-sources'
+  const sourceTextAll = [...linesByFile.values()].map((l) => l.join('\n')).join('\n')
 
   const judgeFn = typeof opts.judgeFn === 'function' ? opts.judgeFn : null
   const judgeConfig = opts.judgeConfig ?? null
@@ -418,7 +526,8 @@ export async function verifyObjects(objects, index, opts = {}) {
     if (Array.isArray(obj?.sourceRefs) && obj.sourceRefs.length > 0) {
       const ref = obj.sourceRefs[0]
       const entry = ref ? lookup.get(`${ref.file}::${ref.anchor}`) : undefined
-      if (entry) {
+      const lines = entry ? linesByFile.get(entry.file) : undefined
+      if (entry && lines !== undefined) {
         anchorText = lines.slice(entry.lineStart - 1, entry.lineEnd).join('\n')
         checkedAgainst = { file: entry.file, anchor: entry.anchor, lineStart: entry.lineStart, lineEnd: entry.lineEnd }
       }
@@ -426,8 +535,9 @@ export async function verifyObjects(objects, index, opts = {}) {
 
     const det = checkDeterministic(obj, {
       lookup,
-      lines,
-      sourceText,
+      linesByFile,
+      sourceTextAll,
+      sourceTextAllScope,
       schema,
       objectTypeValid,
       anchorResolved: checkedAgainst !== null,
@@ -507,6 +617,10 @@ export async function verifyObjects(objects, index, opts = {}) {
       // 留在回执里，审计者才能把「内容逐字一致、只是标记不同」与「真的只差一个字符也没放过」
       // 区分开——放宽了判据就必须让人看得见放宽在哪。
       quoteComparison: det.quoteComparison,
+      // 逐条出处的自带引文各自的结果（ticket 06）。空数组有两个不同的含义，
+      // 因此**不合并**进上面那一项：该对象没有逐条引文（单锚点对象）是正常的；
+      // 有逐条引文却一条都没记下来才是异常——后者由 detail 里的 `at` 体现。
+      refQuoteComparisons: det.refQuoteComparisons,
       judge: judgeRecord,
     })
   }
