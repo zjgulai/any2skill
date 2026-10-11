@@ -186,6 +186,69 @@ describe('assembleSkill · 确定性与「不编内容」', () => {
     const seg = r.markdown.split('## 深度阅读')[1]
     assert.match(seg, /`sources\/ai-agent-book-zh\/book\/chapter4\.md`/)
   })
+
+  it('跨章反模式的出处必须回链，否则门禁一定报 SOURCEREF_UNRESOLVED', async () => {
+    // 这条钉的是「跨章反模式第一次真的进 skill」时会撞上的那面墙：校验器要求契约里
+    // 每个 `sourceRefs[].file` 都在深度阅读段回链，而跨章反模式的出处按定义落在别的章节。
+    // 此前 `crossChapterKept` 恒为 0 把这面墙盖住了。
+    //
+    // `buildAnchorIndex` 是 async：漏掉 await 会得到一个 Promise，查找表悄悄变空，
+    // 本用例就会退化成「什么都没验」——实测踩过一次（漏 await 时失败信息指向的是断言，
+    // 而不是那句真正的原因）。
+    const idx2 = await buildAnchorIndex(
+      path.join(REPO, 'sources', 'ai-agent-book-zh', 'book', 'chapter2.md'),
+      { repoRoot: REPO },
+    )
+    assert.ok(idx2?.anchors?.some((a) => a.anchor === 'chapter2#h3-17'), 'chapter2 索引应含 h3-17')
+    const cross = collectCrossChapterAntipatterns(ANTIPATTERNS, cluster().anchors)
+    assert.ok(cross.length > 0, '夹具应至少有一条跨章反模式，否则本用例什么都没验')
+
+    const r = assembleSkill({
+      cluster: cluster(),
+      objects: inCluster(),
+      antipatterns: cross,
+      slug: 'x',
+      skillTitle: 'T',
+      anchorIndexes: [IDX, idx2],
+    })
+    const seg = r.markdown.split('## 深度阅读')[1]
+    assert.match(seg, /`sources\/ai-agent-book-zh\/book\/chapter2\.md`/, '跨章出处所在的文件必须在阅读段回链')
+    const entry = seg.split('\n').find((l) => l.includes('chapter2.md'))
+    assert.match(entry, /（第 \d+–\d+ 行）/, '回链条目应带**索引里的**行号区间')
+  })
+
+  it('索引里查不到的跨章出处不臆造行号（宁缺勿编，由门禁去抓）', async () => {
+    const cross = collectCrossChapterAntipatterns(ANTIPATTERNS, cluster().anchors)
+    const r = assembleSkill({
+      cluster: cluster(),
+      objects: inCluster(),
+      antipatterns: cross,
+      slug: 'x',
+      skillTitle: 'T',
+      anchorIndexes: [IDX], // 故意不给 chapter2 的索引
+    })
+    const seg = r.markdown.split('## 深度阅读')[1]
+    assert.ok(!seg.includes('chapter2.md'), '无索引可查时不得凭对象自述补出回链')
+    // 反向对照：给了索引就必须出现（否则上一条断言可能因为「路径写错」而假通过）。
+    const withIdx = assembleSkill({
+      cluster: cluster(),
+      objects: inCluster(),
+      antipatterns: cross,
+      slug: 'x',
+      skillTitle: 'T',
+      anchorIndexes: [
+        IDX,
+        await buildAnchorIndex(path.join(REPO, 'sources', 'ai-agent-book-zh', 'book', 'chapter2.md'), {
+          repoRoot: REPO,
+        }),
+      ],
+    })
+    assert.match(
+      withIdx.markdown.split('## 深度阅读')[1],
+      /chapter2\.md/,
+      '同一输入下补上索引就应该出现——否则本用例无法区分「不臆造」与「路径写错」',
+    )
+  })
 })
 
 describe('buildDescription', () => {

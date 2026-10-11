@@ -1,0 +1,1002 @@
+{
+  "schemaVersion": "antipattern-receipt/v1",
+  "runId": "run-5d72a0637d50",
+  "createdAt": "2026-10-09T03:36:19.846Z",
+  "themes": {
+    "manifestPath": "pipeline/knowledge/themes.json",
+    "catalogHash": "sha256:8359f907b131a2f23738207f9d3c6bc79a4290c969046a731e2f04d8871d78d5",
+    "selected": [
+      "T02",
+      "T12"
+    ],
+    "total": 13
+  },
+  "promptFingerprint": "prompt-76496276ce50",
+  "model": {
+    "provider": null,
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "thisRun": {
+      "calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "tokensDetail": {
+        "reasoning": 0,
+        "cachedInput": 0
+      },
+      "failedCalls": 0,
+      "retries": 0
+    },
+    "cumulative": {
+      "calls": 0,
+      "input": 0,
+      "output": 0,
+      "reasoning": 0,
+      "cachedInput": 0,
+      "usageUnknownThemes": [
+        "T02",
+        "T12"
+      ]
+    },
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null
+  },
+  "judge": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 16,
+    "tokens": {
+      "input": 20322,
+      "output": 11619
+    },
+    "tokensDetail": {
+      "reasoning": 10842,
+      "cachedInput": 19328
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v1",
+    "promptFingerprint": "judge-90b1e1b49076",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-90b1e1b49076",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    }
+  },
+  "perTheme": [
+    {
+      "themeId": "T02",
+      "name": "提示工程与系统提示词设计",
+      "outcome": "ok",
+      "reusedRaw": true,
+      "chapterCount": 3,
+      "chapters": [
+        "chapter2",
+        "chapter4",
+        "chapter7"
+      ],
+      "inputBytes": 0,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T02-01",
+        "AP-SYNTH-T02-02",
+        "AP-SYNTH-T02-03",
+        "AP-SYNTH-T02-04",
+        "AP-SYNTH-T02-05",
+        "AP-SYNTH-T02-06",
+        "AP-SYNTH-T02-07",
+        "AP-SYNTH-T02-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": null,
+      "finishReason": null,
+      "reasoningChars": 0,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T02-01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "chapter2"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter4",
+            "chapter2"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter4"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter7"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T12",
+      "name": "安全与信任",
+      "outcome": "ok",
+      "reusedRaw": true,
+      "chapterCount": 6,
+      "chapters": [
+        "chapter1",
+        "chapter2",
+        "chapter4",
+        "chapter5",
+        "chapter6",
+        "chapter9"
+      ],
+      "inputBytes": 0,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T12-01",
+        "AP-SYNTH-T12-02",
+        "AP-SYNTH-T12-03",
+        "AP-SYNTH-T12-04",
+        "AP-SYNTH-T12-05",
+        "AP-SYNTH-T12-06",
+        "AP-SYNTH-T12-07",
+        "AP-SYNTH-T12-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": null,
+      "finishReason": null,
+      "reasoningChars": 0,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T12-01",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter1"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter1",
+            "chapter2"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter4",
+            "chapter5"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter6"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-05",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter9",
+            "chapter2",
+            "chapter5"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter9"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter4"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter9"
+          ]
+        }
+      ]
+    }
+  ],
+  "themeFailures": [],
+  "merges": [],
+  "unresolvedAnchors": [],
+  "marks": {
+    "codeMeaning": {
+      "CROSS_CHAPTER_SUPPORTED": "sourceRefs 覆盖 ≥2 个章节——跨章支撑成立",
+      "SINGLE_CHAPTER_ONLY": "sourceRefs 只覆盖 1 个章节——单章反模式（可能是合法的，但不得声称跨章）",
+      "CROSS_CHAPTER_CLAIM_UNSUPPORTED": "引用 ≥2 个锚点、去重后却只落在 1 个章节，且主题输入跨 ≥2 章——「抄取冒充综合」的检出点"
+    },
+    "distribution": {
+      "total": 11,
+      "multiChapter": 3,
+      "crossChapterRatio": {
+        "numerator": 3,
+        "denominator": 11,
+        "decimal": 0.2727
+      },
+      "chaptersCited": {
+        "chapter2": 5,
+        "chapter7": 1,
+        "chapter1": 2,
+        "chapter4": 2,
+        "chapter5": 2,
+        "chapter6": 1,
+        "chapter9": 2
+      },
+      "byMark": {
+        "CROSS_CHAPTER_SUPPORTED": 3,
+        "SINGLE_CHAPTER_ONLY": 8
+      },
+      "perObject": [
+        {
+          "id": "AP-SYNTH-T02-05",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-06",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-07",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter7"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-08",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-01",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter1"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-02",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter1",
+            "chapter2"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-03",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter4",
+            "chapter5"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-04",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter6"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-05",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter9",
+            "chapter2",
+            "chapter5"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-07",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter4"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-08",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter9"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        }
+      ]
+    },
+    "distributionAll": {
+      "total": 16,
+      "multiChapter": 4,
+      "crossChapterRatio": {
+        "numerator": 4,
+        "denominator": 16,
+        "decimal": 0.25
+      },
+      "chaptersCited": {
+        "chapter2": 8,
+        "chapter4": 4,
+        "chapter7": 1,
+        "chapter1": 2,
+        "chapter5": 2,
+        "chapter6": 1,
+        "chapter9": 3
+      },
+      "byMark": {
+        "CROSS_CHAPTER_SUPPORTED": 4,
+        "SINGLE_CHAPTER_ONLY": 11,
+        "CROSS_CHAPTER_CLAIM_UNSUPPORTED": 1
+      },
+      "perObject": [
+        {
+          "id": "AP-SYNTH-T02-01",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-02",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-03",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter4",
+            "chapter2"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-04",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter4"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-05",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-06",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-07",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter7"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-08",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-01",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter1"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-02",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter1",
+            "chapter2"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-03",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter4",
+            "chapter5"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-04",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter6"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-05",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter9",
+            "chapter2",
+            "chapter5"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-06",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter9"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-07",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter4"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-08",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter9"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        }
+      ]
+    },
+    "perObject": [
+      {
+        "id": "AP-SYNTH-T02-01",
+        "themeId": "T02",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "chapter2"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T02-02",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter2"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T02-03",
+        "themeId": "T02",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "chapter4",
+          "chapter2"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T02-04",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter4"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T02-05",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter2"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-06",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter2"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-07",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter7"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-08",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter2"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter2",
+          "chapter4",
+          "chapter7"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-01",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter1"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-02",
+        "themeId": "T12",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "chapter1",
+          "chapter2"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-03",
+        "themeId": "T12",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "chapter4",
+          "chapter5"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-04",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter6"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-05",
+        "themeId": "T12",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "chapter9",
+          "chapter2",
+          "chapter5"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-06",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter9"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      },
+      {
+        "id": "AP-SYNTH-T12-07",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter4"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-08",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "chapter9"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "chapter1",
+          "chapter2",
+          "chapter4",
+          "chapter5",
+          "chapter6",
+          "chapter9"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      }
+    ]
+  },
+  "verification": {
+    "summary": {
+      "total": 16,
+      "passed": 11,
+      "rejected": 5,
+      "byReasonCode": {
+        "JUDGE_NOT_SUPPORTED": 1,
+        "JUDGE_INSUFFICIENT": 4
+      },
+      "judge": {
+        "enabled": true,
+        "all": false,
+        "calls": 16,
+        "verdicts": {
+          "insufficient": 4,
+          "supported": 11,
+          "unsupported": 1
+        },
+        "notCalled": 0
+      },
+      "crossTab": {
+        "deterministic-pass × insufficient": 4,
+        "deterministic-pass × supported": 11,
+        "deterministic-pass × unsupported": 1
+      }
+    },
+    "reasonCodeOwners": {
+      "REFERENCE_MISSING": "第 2 层输出契约（对象必须携带 sourceRefs，无豁免）",
+      "IDENTIFIER_INVALID": "第 2 层输出契约（对象 id 生成规则）",
+      "SOURCE_VERSION_DRIFT": "重跑第 1 层或第 2 层（依赖的源版本已变更）",
+      "SCHEMA_INVALID": "第 2 层提示词 / 输出契约",
+      "REFERENCE_UNRESOLVED": "第 1 层锚点索引（或第 2 层引用了不存在的锚点）",
+      "QUOTE_MISSING": "第 2 层输出契约（对象必须携带逐字引文）",
+      "QUOTE_MISMATCH": "第 2 层（最可能是归纳时改写了原文；已排除纯排版差异）",
+      "JUDGE_NOT_SUPPORTED": "第 2 层输入组织方式（引文与主张无关或相矛盾——引文选错了）",
+      "JUDGE_INSUFFICIENT": "锚点切分（证据不足，锚点太小装不下主张）或第 2 层（主张写得比证据宽）"
+    },
+    "refQuoteCheck": {
+      "objectsWithRefQuotes": 16,
+      "totalRefQuotes": 22,
+      "acceptedByStrict": 22,
+      "acceptedByNormalization": 0,
+      "missed": 0
+    }
+  },
+  "counts": {
+    "themesRequested": 2,
+    "themesRun": 2,
+    "themesFailed": 0,
+    "objectsProduced": 16,
+    "passed": 11,
+    "rejected": 5
+  }
+}

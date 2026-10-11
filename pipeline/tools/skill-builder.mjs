@@ -423,6 +423,20 @@ export function assembleSkill(input) {
     .map((c) => ({ path: c.path, summary: c.summary || null, dir: c.dir }))
 
   // ── 深度阅读 ────────────────────────────────────────────────────────────
+  //
+  // 两个来源：**簇内锚点**（本 skill 的组织骨架）+ **跨章反模式声明的出处**。
+  //
+  // 后者是必须的而不是装饰：`verify-skill.mjs` 要求契约里每一个 `sourceRefs[].file` 都在本段
+  // 回链，而跨章反模式的出处按定义落在别的章节（ADR-016 把跨章池定为独立一等输入）。
+  // 第一版只列簇内锚点，于是「跨章反模式第一次真的进 skill」这一刻，门禁必然报
+  // `SOURCEREF_UNRESOLVED`——这条缺口不是本次新来的，是此前 `crossChapterKept` 恒为 0 把它盖住了。
+  //
+  // 行号一律取**锚点索引**，不取对象自带的行号（与全仓同口径：对象改了行号不能顺带改这里）。
+  // 索引里查不到的出处**跳过**、不臆造行号——那种出处由门禁的 `SOURCEREF_UNRESOLVED` 抓，
+  // 在这里静默编一个区间只会把「出处错」变成「看起来对」。
+  //
+  // 只补**跨章反模式**的出处、不补簇内对象的次要出处：后者与本簇同章，其文件已被簇内锚点回链覆盖，
+  // 补进来只会让阅读清单无谓膨胀。
   const readingSeen = new Set()
   const reading = []
   for (const a of cluster.anchors) {
@@ -430,6 +444,26 @@ export function assembleSkill(input) {
     if (readingSeen.has(key)) continue
     readingSeen.add(key)
     reading.push({ file: a.file, anchor: a.anchor, title: a.title, lineStart: a.lineStart, lineEnd: a.lineEnd })
+  }
+  const readingLookup = new Map()
+  for (const idx of Array.isArray(input.anchorIndexes) ? input.anchorIndexes : []) {
+    for (const a of idx?.anchors ?? []) readingLookup.set(`${a.file}#${a.anchor}`, a)
+  }
+  for (const ap of antipatterns) {
+    for (const r of ap.sourceRefs || []) {
+      const key = `${r.file}#${r.anchor}`
+      if (readingSeen.has(key)) continue
+      const hit = readingLookup.get(key)
+      if (!hit) continue
+      readingSeen.add(key)
+      reading.push({
+        file: hit.file,
+        anchor: hit.anchor,
+        title: hit.title,
+        lineStart: hit.lineStart,
+        lineEnd: hit.lineEnd,
+      })
+    }
   }
 
   const built = {

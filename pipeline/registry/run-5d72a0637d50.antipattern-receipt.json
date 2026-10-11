@@ -1,7 +1,7 @@
 {
   "schemaVersion": "antipattern-receipt/v1",
   "runId": "run-5d72a0637d50",
-  "createdAt": "2026-10-09T03:36:19.846Z",
+  "createdAt": "2026-10-09T20:58:44.478Z",
   "themes": {
     "manifestPath": "pipeline/knowledge/themes.json",
     "catalogHash": "sha256:8359f907b131a2f23738207f9d3c6bc79a4290c969046a731e2f04d8871d78d5",
@@ -55,24 +55,24 @@
     "baseUrlHost": "api.deepseek.com",
     "calls": 16,
     "tokens": {
-      "input": 20322,
-      "output": 11619
+      "input": 30406,
+      "output": 8608
     },
     "tokensDetail": {
-      "reasoning": 10842,
-      "cachedInput": 19328
+      "reasoning": 7819,
+      "cachedInput": 29440
     },
     "failedCalls": 0,
     "retries": 0,
     "usageNote": null,
-    "promptVersion": "judge-prompt/v1",
-    "promptFingerprint": "judge-90b1e1b49076",
-    "instanceIdPrefix": "deepseek-v4-pro/judge-90b1e1b49076",
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
     "sameModelAsProducer": true,
     "producerModelId": "deepseek-v4-pro",
     "reasoningEffort": null,
     "configSource": {
-      "modelId": "override(modelId)",
+      "modelId": "override(judgeModelId)",
       "baseUrl": "override(baseUrl)",
       "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
       "reasoningEffort": null
@@ -272,27 +272,73 @@
       "CROSS_CHAPTER_CLAIM_UNSUPPORTED": "引用 ≥2 个锚点、去重后却只落在 1 个章节，且主题输入跨 ≥2 章——「抄取冒充综合」的检出点"
     },
     "distribution": {
-      "total": 11,
-      "multiChapter": 3,
+      "total": 15,
+      "multiChapter": 4,
       "crossChapterRatio": {
-        "numerator": 3,
-        "denominator": 11,
-        "decimal": 0.2727
+        "numerator": 4,
+        "denominator": 15,
+        "decimal": 0.2667
       },
       "chaptersCited": {
-        "chapter2": 5,
+        "chapter2": 8,
+        "chapter4": 4,
         "chapter7": 1,
         "chapter1": 2,
-        "chapter4": 2,
         "chapter5": 2,
         "chapter6": 1,
         "chapter9": 2
       },
       "byMark": {
-        "CROSS_CHAPTER_SUPPORTED": 3,
-        "SINGLE_CHAPTER_ONLY": 8
+        "CROSS_CHAPTER_SUPPORTED": 4,
+        "SINGLE_CHAPTER_ONLY": 10,
+        "CROSS_CHAPTER_CLAIM_UNSUPPORTED": 1
       },
       "perObject": [
+        {
+          "id": "AP-SYNTH-T02-01",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-02",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter2"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-03",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "chapter4",
+            "chapter2"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-04",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "chapter4"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
         {
           "id": "AP-SYNTH-T02-05",
           "themeId": "T02",
@@ -642,8 +688,8 @@
           "chapter4",
           "chapter7"
         ],
-        "verdict": "reject",
-        "reasonCode": "JUDGE_INSUFFICIENT"
+        "verdict": "pass",
+        "reasonCode": null
       },
       {
         "id": "AP-SYNTH-T02-02",
@@ -660,8 +706,8 @@
           "chapter4",
           "chapter7"
         ],
-        "verdict": "reject",
-        "reasonCode": "JUDGE_INSUFFICIENT"
+        "verdict": "pass",
+        "reasonCode": null
       },
       {
         "id": "AP-SYNTH-T02-03",
@@ -679,8 +725,8 @@
           "chapter4",
           "chapter7"
         ],
-        "verdict": "reject",
-        "reasonCode": "JUDGE_INSUFFICIENT"
+        "verdict": "pass",
+        "reasonCode": null
       },
       {
         "id": "AP-SYNTH-T02-04",
@@ -697,8 +743,8 @@
           "chapter4",
           "chapter7"
         ],
-        "verdict": "reject",
-        "reasonCode": "JUDGE_INSUFFICIENT"
+        "verdict": "pass",
+        "reasonCode": null
       },
       {
         "id": "AP-SYNTH-T02-05",
@@ -949,26 +995,23 @@
   "verification": {
     "summary": {
       "total": 16,
-      "passed": 11,
-      "rejected": 5,
+      "passed": 15,
+      "rejected": 1,
       "byReasonCode": {
-        "JUDGE_NOT_SUPPORTED": 1,
-        "JUDGE_INSUFFICIENT": 4
+        "JUDGE_NOT_SUPPORTED": 1
       },
       "judge": {
         "enabled": true,
         "all": false,
         "calls": 16,
         "verdicts": {
-          "insufficient": 4,
-          "supported": 11,
+          "supported": 15,
           "unsupported": 1
         },
         "notCalled": 0
       },
       "crossTab": {
-        "deterministic-pass × insufficient": 4,
-        "deterministic-pass × supported": 11,
+        "deterministic-pass × supported": 15,
         "deterministic-pass × unsupported": 1
       }
     },
@@ -996,7 +1039,7 @@
     "themesRun": 2,
     "themesFailed": 0,
     "objectsProduced": 16,
-    "passed": 11,
-    "rejected": 5
+    "passed": 15,
+    "rejected": 1
   }
 }

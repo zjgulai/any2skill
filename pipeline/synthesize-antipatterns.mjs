@@ -9,10 +9,15 @@
  *
  * ## 副作用清单
  *
- *   总是写：`pipeline/registry/<runId>.antipattern-raw.json`（第 2 层原始响应，逐主题）
+ *   总是写：`pipeline/registry/<producerRunId>.antipattern-raw.json`（第 2 层原始响应，逐主题）
  *           `pipeline/registry/<runId>.antipattern-receipt.json`（回执，**不含对象正文**）
+ *           `pipeline/registry/<runId>.antipattern-verdicts.json`（逐对象判定明细）
  *           `pipeline/knowledge/antipatterns.objects.json`（全量对象，供一次查询）
  *   `--list` 只读，不写任何东西、不调用模型。
+ *
+ *   **两个身份不是同一个**（见 `synthRawRunId` / `synthRunId`）：raw 只由生产者侧输入决定，
+ *   回执与判定表再叠加判据身份与流水线版本。这样换判据不会覆盖上一次的判定表，
+ *   同时已付费的原始响应仍可被 `replayThemeFromRaw` 免调用重放。
  *
  * ## 为什么判定者默认开
  *
@@ -41,7 +46,7 @@ import {
 import { THEMES_REL_PATH } from './tools/theme-proposer.mjs'
 import { CATALOG_REL_PATH } from './tools/theme-catalog.mjs'
 import { verifyObjects, REASON_CODES, REASON_OWNER } from './tools/verifier.mjs'
-import { judgeObject, describeJudgeRoute } from './tools/judge.mjs'
+import { judgeObject, describeJudgeRoute, judgePromptFingerprint } from './tools/judge.mjs'
 import {
   createUsageLedger,
   resolveJudgeLlmConfig,
@@ -50,6 +55,9 @@ import {
   normalizeReasoningEffort,
   urlHost,
 } from './tools/llm-client.mjs'
+// `PIPELINE_VERSION` 从这里取，不另立常量：它是**整条流水线**的版本号，
+// 复制一份就等于有第二个真源，迟早会与 run.mjs 那份漂开。
+import { PIPELINE_VERSION } from './run.mjs'
 
 export const SYNTH_RECEIPT_SCHEMA_VERSION = 'antipattern-receipt/v1'
 /** 半成品格式。v2 把**用量**与原始正文一起存——用量是跨进程的，不能只活在本次进程的账本里。 */
@@ -132,18 +140,67 @@ function buildAnchorEntries(indices) {
   return map
 }
 
-/** 运行标识：由「主题集合 + 提示词指纹 + 目录哈希 + 模型 + 是否判定」确定性推出。同一输入 → 同一 runId。 */
-export function synthRunId({ themeIds, promptFingerprint, catalogHash, judgeEnabled, modelId }) {
-  const key = JSON.stringify({
+const digestRunId = (payload) =>
+  `run-${createHash('sha256').update(JSON.stringify(payload)).digest('hex').slice(0, 12)}`
+
+/**
+ * 生产者身份：**决定这批原始响应是什么**的全部输入。它命名 raw 与半成品。
+ *
+ * 为什么必须与判定产物分开命名（这一条是踩过之后拆的）：
+ * 续跑（`replayThemeFromRaw`）只认 `prior.runId === 本次 raw 身份`，也就是说
+ * **身份一换，已经付过钱的原始响应就再也读不到**。而该模块明写的设计意图是
+ * 「付过钱的产出不得因**下游**改动而重花一次」——改判据提示词、改合并规则、
+ * 改版本号都属于下游。把判据身份塞进这一个 id，就同时毁掉这条路径：
+ * 判据换代要重买全部主题的原始响应。
+ *
+ * 于是拆成两个：raw 只用生产者侧身份，判定产物（回执 / 判定表）再叠加判据身份。
+ * 两者都写进回执与判定表，可以互相引用。
+ */
+export function synthRawRunId({ themeIds, promptFingerprint, catalogHash, modelId }) {
+  return digestRunId({
+    kind: 'raw',
     themeIds: [...themeIds].sort(),
     promptFingerprint,
     catalogHash,
-    judgeEnabled,
-    // 模型必须进 runId。少了它，换模型后重跑会**复用上一个模型的原始响应**——
+    // 模型必须进身份。少了它，换模型后重跑会**复用上一个模型的原始响应**——
     // 而回执里写的是新模型的 id。那是一次会静默发生的归因错误。
     modelId,
   })
-  return `run-${createHash('sha256').update(key).digest('hex').slice(0, 12)}`
+}
+
+/**
+ * 判定产物身份：生产者身份 **+ 判据身份 + 流水线版本**。它命名回执与判定表。
+ *
+ * `judgeEnabled` 是布尔，表达不了「哪一版判据」——这正是上一次的缺口：
+ * 判据 `judge-prompt/v1 → v2` 之后，判定表与回执照旧落在同一个 runId 上，
+ * 判据身份只能逐个打开文件、从 `judge.instanceId` 前缀反推。
+ * `pipelineVersion` 覆盖提示词之外的流水线改动（合并规则、标记规则、物化逻辑）。
+ *
+ * `kind` 进摘要，使两个 id **在任何配置下都不相等**：否则一份「未启用判定者」
+ * 的产物身份可能碰巧与 raw 身份同形，读者无法只凭文件名分辨它装的是哪一类。
+ */
+export function synthRunId({
+  themeIds,
+  promptFingerprint,
+  catalogHash,
+  modelId,
+  judgeEnabled,
+  judgePromptFingerprint,
+  pipelineVersion,
+}) {
+  return digestRunId({
+    kind: 'artifacts',
+    themeIds: [...themeIds].sort(),
+    promptFingerprint,
+    catalogHash,
+    modelId,
+    judgeEnabled,
+    // 未启用判定者时记 null，**不记常量**：那是一次「本次没有判据」的事实，
+    // 而不是「本次用的是这一版判据」。若记常量，判据换代会让 `--no-judge`
+    // 的产物身份跟着漂移——纯噪声。
+    judgePromptFingerprint: judgeEnabled ? judgePromptFingerprint : null,
+    pipelineVersion,
+  })
 }
 
 async function writeJson(absPath, value) {
@@ -275,12 +332,20 @@ async function main(argv) {
   const judgeLedger = createUsageLedger()
   const judgeApplied = judgeConfig !== null
 
-  const runId = synthRunId({
+  // 身份分两层：`rawRunId` 只由生产者侧输入决定（它定位**已付费的原始响应**），
+  // `runId` 再叠加判据身份与流水线版本（它定位回执与判定表）。详见两个函数的 docstring。
+  const producerIdentity = {
     themeIds: selected.map((t) => t.id),
     promptFingerprint: synthPromptFingerprint({ maxPatterns }),
     catalogHash: manifest.catalogHash,
-    judgeEnabled: judgeApplied,
     modelId: producerConfig.modelId,
+  }
+  const rawRunId = synthRawRunId(producerIdentity)
+  const runId = synthRunId({
+    ...producerIdentity,
+    judgeEnabled: judgeApplied,
+    judgePromptFingerprint: judgePromptFingerprint(),
+    pipelineVersion: PIPELINE_VERSION,
   })
 
   // ---- 逐主题综合（**边跑边落盘**） ----
@@ -288,7 +353,14 @@ async function main(argv) {
   // 落盘时机是这一段的全部要点。第一版把写盘放在**全部主题之后**，T12 截断时整轮崩溃，
   // 已付费跑完的 T02 连同其原始响应一起丢了——这就是把「付过钱的产出」押在
   // 「后面每一个主题都成功」上的代价。现在每完成一个主题当场写一次。
-  const partialRawPath = path.join(repoRoot, 'pipeline', 'registry', `${runId}.antipattern-raw.partial.json`)
+  // 半成品用 **raw 身份**命名，不用 `runId`。它装的是原始响应，因此它的身份就该只由
+  // 「这批原始响应是什么」决定；用判定产物身份命名会让判据换代顺手废掉这份付费产出。
+  const partialRawPath = path.join(
+    repoRoot,
+    'pipeline',
+    'registry',
+    `${rawRunId}.antipattern-raw.partial.json`,
+  )
   const partialObjectsPath = path.join(
     repoRoot,
     'pipeline',
@@ -299,12 +371,13 @@ async function main(argv) {
   const writePartialRaw = () =>
     writeJson(partialRawPath, {
       schemaVersion: PARTIAL_RAW_SCHEMA_VERSION,
-      runId,
+      runId: rawRunId,
       entries: rawEntries,
     })
 
-  // 续跑：半成品是「已经付过费的产出」。只有 runId 一致才续——runId 含主题集合、提示词指纹、
-  // 目录哈希、模型与是否判定，任一变化都说明这批原始响应不再对应本次要产出的东西。
+  // 续跑：半成品是「已经付过费的产出」。只有 raw 身份一致才续——它含主题集合、生产者
+  // 提示词指纹、目录哈希与模型，任一变化都说明这批原始响应不再对应本次要产出的东西。
+  // **判据身份与流水线版本刻意不参与**：换判据不必重买原始响应，那正是 `replayThemeFromRaw` 的用途。
   //
   // `rawEntries[themeId] = { text, usage, modelId }`：用量**挂在它买到的那份原始响应上**。
   // 第一版把用量只放在本次进程的账本里，于是续跑时回执显示「生产者 0 次调用」——
@@ -312,7 +385,7 @@ async function main(argv) {
   let rawEntries = {}
   if (flags.resume !== false) {
     const prior = await readJsonIfExists(partialRawPath)
-    if (prior !== null && prior.runId === runId) {
+    if (prior !== null && prior.runId === rawRunId) {
       if (prior.entries !== undefined) {
         rawEntries = prior.entries
       } else if (prior.rawByTheme !== undefined) {
@@ -324,7 +397,7 @@ async function main(argv) {
       if (n > 0) process.stdout.write(`[续跑] 复用 ${n} 个主题的原始响应（零模型调用）\n`)
     } else if (prior !== null) {
       process.stderr.write(
-        `[续跑] 忽略旧半成品：其 runId ${prior.runId} 与本次 ${runId} 不一致（主题集合/提示词/目录/模型有一项变了）\n`,
+        `[续跑] 忽略旧半成品：其身份 ${prior.runId} 与本次 ${rawRunId} 不一致（主题集合/生产者提示词/目录/模型有一项变了）\n`,
       )
     }
   }
@@ -479,6 +552,11 @@ async function main(argv) {
   const receipt = {
     schemaVersion: SYNTH_RECEIPT_SCHEMA_VERSION,
     runId,
+    // 原始响应那一侧的身份。回执同时给出两者，使「这份回执对应哪份 raw」不必靠文件名猜。
+    producerRunId: rawRunId,
+    // 第 2 层的回执一直有这个字段，本命令此前**没有**——于是「这份回执是哪一版流水线产的」
+    // 只能靠 createdAt 加 git 历史反推，而流水线版本不完整时那件事做不出来。
+    pipelineVersion: PIPELINE_VERSION,
     createdAt,
     themes: {
       manifestPath: THEMES_REL_PATH,
@@ -563,12 +641,15 @@ async function main(argv) {
     },
   }
 
-  const rawPath = path.join(repoRoot, 'pipeline', 'registry', `${runId}.antipattern-raw.json`)
+  // raw 用生产者身份命名（与半成品同一身份，续跑才找得到）；回执与判定表用判定产物身份。
+  const rawPath = path.join(repoRoot, 'pipeline', 'registry', `${rawRunId}.antipattern-raw.json`)
   const receiptPath = path.join(repoRoot, 'pipeline', 'registry', `${runId}.antipattern-receipt.json`)
   const verdictsPath = path.join(repoRoot, 'pipeline', 'registry', `${runId}.antipattern-verdicts.json`)
   const objectsPath = path.join(repoRoot, 'pipeline', 'knowledge', 'antipatterns.objects.json')
 
   // 旧产物先归档，再写新的。重复运行是**运行事件**，不该静默覆盖上一次的记录。
+  // 身份拆开之后这条**不再是判据换代的主要防线**（换判据本来就换文件名了），
+  // 但仍然是「同一身份重跑」的防线，且是四份产物唯一的兜底。
   const archived = []
   for (const p of [rawPath, receiptPath, verdictsPath, objectsPath]) {
     const dest = await archiveIfExists(p, { repoRoot })
@@ -577,15 +658,24 @@ async function main(argv) {
 
   await writeJson(rawPath, {
     schemaVersion: PARTIAL_RAW_SCHEMA_VERSION,
-    runId,
+    runId: rawRunId,
     entries: rawEntries,
   })
   await writeJson(receiptPath, receipt)
   // 逐对象判定明细单独落盘，**不塞进回执**：回执要能一屏读完（卡 08 的「体量可控」），
   // 而明细要能回答「这一条为什么被拒」。两件事的读者不同，混在一起两件事都做不好。
+  //
+  // v1 → v2：判定表原来**自己不声明判据身份**——顶层只有 schemaVersion / runId / verdicts，
+  // 而 runId 里没有判据；判据身份只能逐个对象打开 `judge.instanceId` 反推前缀。这是个
+  // 真实的可读性缺口（分辨 v1 与 v2 两份判定表要写脚本），补上三个身份字段。
   await writeJson(verdictsPath, {
-    schemaVersion: 'antipattern-verdicts/v1',
+    schemaVersion: 'antipattern-verdicts/v2',
     runId,
+    producerRunId: rawRunId,
+    judgeEnabled: judgeApplied,
+    judgePromptVersion: judgeApplied ? receipt.judge.promptVersion : null,
+    judgePromptFingerprint: judgeApplied ? receipt.judge.promptFingerprint : null,
+    pipelineVersion: PIPELINE_VERSION,
     verdicts: verification.verdicts,
   })
   await writeJson(objectsPath, {
@@ -600,6 +690,7 @@ async function main(argv) {
 
   const out = {
     runId,
+    producerRunId: rawRunId,
     receipt: path.relative(repoRoot, receiptPath),
     objects: path.relative(repoRoot, objectsPath),
     objectsRaw: path.relative(repoRoot, rawPath),

@@ -15,11 +15,16 @@
 
 import { describe, it, before } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, utimes, writeFile } from 'node:fs/promises'
+import os from 'node:os'
 import path from 'node:path'
 
 import { DEFAULT_REPO_ROOT, buildAnchorIndex, normalizeSourceLines } from '../../tools/anchor-index.mjs'
 import { verifyObjects, anchorLookup } from '../../tools/verifier.mjs'
+import { judgePromptFingerprint } from '../../tools/judge.mjs'
+import { PIPELINE_VERSION } from '../../run.mjs'
+import { synthRawRunId, synthRunId } from '../../synthesize-antipatterns.mjs'
+import { findLatestAntipatternVerdicts } from '../../build-skill.mjs'
 import {
   ANTIPATTERN_MARKS,
   MARK_MEANING,
@@ -400,5 +405,127 @@ describe('06 · 多份锚点索引合并的边界', () => {
     const lookup = anchorLookup([IDX5, IDX7])
     for (const a of IDX5.anchors) assert.ok(lookup.has(`${a.file}::${a.anchor}`))
     for (const a of IDX7.anchors) assert.ok(lookup.has(`${a.file}::${a.anchor}`))
+  })
+})
+
+/**
+ * 身份解耦（ADR-022 已决 4）。
+ *
+ * 这组测试钉的是一条**机制**，不是一个数值：`synthRunId` 原来也吃 `judgeEnabled`，
+ * 于是判据换代（`judge-prompt/v1 → v2`）后判定表与回执照旧落在同一个 runId 上。
+ *
+ * 但「把判据身份塞进那一个 id」会连坐另一条性质：续跑（`replayThemeFromRaw`）只认
+ * `prior.runId === 本次身份`，身份一换，**已经付过钱的原始响应就再也读不到**。
+ * 所以断言分成两半——判定侧要变，raw 侧不许变。
+ */
+describe('06 · 身份解耦：raw 只认生产者，判定产物另加判据身份', () => {
+  const base = {
+    themeIds: ['T12', 'T02'],
+    promptFingerprint: 'synth-fixturefingerprint',
+    catalogHash: 'sha256:fixturecatalog',
+    modelId: 'deepseek-v4-pro',
+  }
+  const artifacts = (over = {}) =>
+    synthRunId({
+      ...base,
+      judgeEnabled: true,
+      judgePromptFingerprint: judgePromptFingerprint(),
+      pipelineVersion: PIPELINE_VERSION,
+      ...over,
+    })
+
+  it('两个身份永不相等——`kind` 进摘要，读者只凭文件名就能分辨装着哪一类', () => {
+    assert.notEqual(synthRawRunId(base), artifacts())
+    // 连「关掉判定者」这一侧也不能与 raw 同形。
+    assert.notEqual(synthRawRunId(base), artifacts({ judgeEnabled: false }))
+  })
+
+  it('换判据指纹：判定产物身份变，**raw 身份不变**（这一条就是「改下游不必重买 raw」）', () => {
+    const before = artifacts()
+    const after = artifacts({ judgePromptFingerprint: 'judge-anotherversion' })
+    assert.notEqual(after, before)
+    assert.equal(synthRawRunId(base), synthRawRunId(base))
+  })
+
+  it('换流水线版本：判定产物身份变，raw 身份不变', () => {
+    assert.notEqual(artifacts({ pipelineVersion: PIPELINE_VERSION + 1 }), artifacts())
+  })
+
+  it('生产者提示词指纹一变，**两边都变**——旧原始响应确实不该再被复用', () => {
+    const changed = { ...base, promptFingerprint: 'synth-renamed' }
+    assert.notEqual(synthRawRunId(changed), synthRawRunId(base))
+    assert.notEqual(artifacts({ promptFingerprint: 'synth-renamed' }), artifacts())
+  })
+
+  it('未启用判定者时判据身份记 null：换判据不让 `--no-judge` 的产物身份跟着漂', () => {
+    const a = artifacts({ judgeEnabled: false, judgePromptFingerprint: 'judge-x' })
+    const b = artifacts({ judgeEnabled: false, judgePromptFingerprint: 'judge-y' })
+    assert.equal(a, b)
+  })
+
+  it('身份与主题顺序无关（同一批主题只该有一个身份）', () => {
+    const shuffled = { ...base, themeIds: ['T02', 'T12'] }
+    assert.equal(synthRawRunId(shuffled), synthRawRunId(base))
+    assert.equal(artifacts(shuffled), artifacts())
+  })
+})
+
+/**
+ * 装配器取判定表的方式。身份拆开之后，「最新 mtime」不再等于「同一次运行的产物」：
+ * registry 里会同时留着不同身份的判定表，而最新那份可能来自一次 `--no-judge` 的运行
+ * ——那正是 build-skill 注释里明说要避免的「未判定 ≠ 通过」。
+ */
+describe('06 · 装配器按身份取判定表，不按 mtime', () => {
+  let TMP
+  const writeVerdicts = async (runId, { mtimeMs, judgeEnabled = true } = {}) => {
+    const dir = path.join(TMP, 'pipeline', 'registry')
+    await mkdir(dir, { recursive: true })
+    const abs = path.join(dir, `${runId}.antipattern-verdicts.json`)
+    await writeFile(
+      abs,
+      `${JSON.stringify({ schemaVersion: 'antipattern-verdicts/v2', runId, judgeEnabled, verdicts: [] }, null, 2)}\n`,
+    )
+    if (mtimeMs !== undefined) {
+      const t = new Date(mtimeMs)
+      await utimes(abs, t, t)
+    }
+    return abs
+  }
+
+  before(async () => {
+    TMP = await mkdtemp(path.join(os.tmpdir(), 'any2skills-ap-identity-'))
+  })
+
+  it('同身份的那份优先，**即使它更旧**', async () => {
+    const mine = await writeVerdicts('run-aaaaaaaaaaaa', { mtimeMs: Date.parse('2026-01-01T00:00:00Z') })
+    await writeVerdicts('run-bbbbbbbbbbbb', { mtimeMs: Date.parse('2026-06-01T00:00:00Z') })
+    const got = await findLatestAntipatternVerdicts({
+      repoRoot: TMP,
+      expectRunId: 'run-aaaaaaaaaaaa',
+    })
+    assert.equal(got.runId, 'run-aaaaaaaaaaaa')
+    assert.equal(got.identityMatch, true)
+    assert.equal(got.file, mine)
+  })
+
+  it('取不到同身份时回退最新，但 `identityMatch` 必须是 false——回退不许伪装成匹配', async () => {
+    const got = await findLatestAntipatternVerdicts({
+      repoRoot: TMP,
+      expectRunId: 'run-cccccccccccc',
+    })
+    assert.equal(got.runId, 'run-bbbbbbbbbbbb')
+    assert.equal(got.identityMatch, false)
+    assert.equal(got.candidateCount, 2)
+  })
+
+  it('不传 `expectRunId` 时保持旧语义（取最新），且不声称匹配', async () => {
+    const got = await findLatestAntipatternVerdicts({ repoRoot: TMP })
+    assert.equal(got.runId, 'run-bbbbbbbbbbbb')
+    assert.equal(got.identityMatch, false)
+  })
+
+  it('一份都没有时返回 null——「没有判定表」与「判定表说都通过了」不是一回事', async () => {
+    const empty = await mkdtemp(path.join(os.tmpdir(), 'any2skills-ap-empty-'))
+    assert.equal(await findLatestAntipatternVerdicts({ repoRoot: empty, expectRunId: 'run-x' }), null)
   })
 })

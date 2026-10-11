@@ -135,8 +135,13 @@ export function passedObjectIds(receipt) {
  * `synthesize-antipatterns.mjs`），它的对象 id（`AP-SYNTH-*`）根本不在 chapter4 回执的
  * `objectVerdicts` 里。第一版装配器图省事复用了 chapter 的回执，结果把两条**已被判拒绝**的
  * 反模式当成了「不存在」——两者在产物里长得一样，但原因完全不同。
+ *
+ * `expectRunId` 给出**对象文件自己声明的身份**时，优先取同身份的那份判定表。
+ * 「最新 mtime」只说明哪份文件最后被写，不说明它与对象文件是**同一次运行**的产物——
+ * 两次综合之间只要有一次是 `--no-judge`，最新那份就可能是一张没过判据的判定表。
+ * 取不到同身份时仍然回退到最新（不让装配整体失败），但把 `identityMatch` 如实报出去。
  */
-export async function findLatestAntipatternVerdicts({ repoRoot }) {
+export async function findLatestAntipatternVerdicts({ repoRoot, expectRunId = null }) {
   const dir = path.join(repoRoot, 'pipeline', 'registry')
   let names = []
   try {
@@ -151,13 +156,28 @@ export async function findLatestAntipatternVerdicts({ repoRoot }) {
     try {
       const st = await stat(abs)
       const j = JSON.parse(await readFile(abs, 'utf8'))
-      hits.push({ file: abs, mtime: st.mtimeMs, runId: j.runId, verdicts: j.verdicts || [] })
+      hits.push({
+        file: abs,
+        mtime: st.mtimeMs,
+        runId: j.runId,
+        judgeEnabled: j.judgeEnabled ?? null,
+        pipelineVersion: j.pipelineVersion ?? null,
+        verdicts: j.verdicts || [],
+      })
     } catch {
       // 坏文件不参与挑选。
     }
   }
-  hits.sort((a, b) => b.mtime - a.mtime)
-  return hits.length ? hits[0] : null
+  const identical = expectRunId === null ? [] : hits.filter((h) => h.runId === expectRunId)
+  const pool = identical.length > 0 ? identical : hits
+  pool.sort((a, b) => b.mtime - a.mtime)
+  if (pool.length === 0) return null
+  const picked = pool[0]
+  return {
+    ...picked,
+    candidateCount: hits.length,
+    identityMatch: expectRunId !== null && picked.runId === expectRunId,
+  }
 }
 
 async function main(argv) {
@@ -189,8 +209,12 @@ async function main(argv) {
     const apPath = path.join(repoRoot, 'pipeline', 'knowledge', 'antipatterns.objects.json')
     let allAntipatterns = []
     let antipatternsFileState = 'loaded'
+    // 对象文件自己声明的身份。它决定去取**哪一份**判定表——不是「最新的那一份」。
+    let antipatternsRunId = null
     try {
-      allAntipatterns = unwrapObjectsFile(JSON.parse(await readFile(apPath, 'utf8')), rel(apPath))
+      const apRaw = JSON.parse(await readFile(apPath, 'utf8'))
+      antipatternsRunId = typeof apRaw.runId === 'string' ? apRaw.runId : null
+      allAntipatterns = unwrapObjectsFile(apRaw, rel(apPath))
     } catch (err) {
       if (err.code === 'ENOENT') {
         // 文件确实不存在是一种状态；形状不对是另一种。两者都记录，不混为一谈。
@@ -217,7 +241,19 @@ async function main(argv) {
 
     // 跨章反模式走**它自己那次运行**的判定表，不能拿 chapter 的回执代判（见
     // findLatestAntipatternVerdicts 的说明）。缺判定表时一律不纳入——未判定 ≠ 通过。
-    const apVerdicts = await findLatestAntipatternVerdicts({ repoRoot })
+    // 身份取自对象文件：判定表与对象必须是同一次综合的产物，mtime 新不等于配套。
+    const apVerdicts = await findLatestAntipatternVerdicts({
+      repoRoot,
+      expectRunId: antipatternsRunId,
+    })
+    if (apVerdicts !== null && apVerdicts.identityMatch !== true) {
+      process.stderr.write(
+        `⚠ 跨章判定表与反模式对象**不是同一次运行的产物**：` +
+          `对象声明 ${antipatternsRunId ?? '(无身份)'}，取到的判定表是 ${apVerdicts.runId}` +
+          `（registry 里有 ${apVerdicts.candidateCount} 份候选，按 mtime 回退挑选）。\n` +
+          `  两者不同源时，「通过」的含义无法核实——请先重跑 pipeline/synthesize-antipatterns.mjs。\n`,
+      )
+    }
     const apVerdictById = new Map((apVerdicts?.verdicts || []).map((v) => [v.objectId, v]))
     const apPassSet = new Set(
       [...apVerdictById.entries()].filter(([, v]) => v.status === 'pass').map(([id]) => id),
@@ -242,6 +278,24 @@ async function main(argv) {
       relPrefix: codeRootRel,
     })
 
+    // ── 装配与校验所需的**全部**锚点索引 ──────────────────────────────────
+    // 本簇那一章 + 被采用的跨章反模式声明出处所在的各章。
+    //
+    // 为什么必须补齐：跨章反模式的出处按定义在别的章节。只给本簇索引时，「契约里每个
+    // sourceRefs[].file 都要能在索引里解析、并在深度阅读段回链」这条判据必然失败——
+    // 而它失败得**看起来像内容错误**（「锚点不可解析」），实际是我们没给足比对范围。
+    // 索引一律**按源文重建**（与主索引同一函数、同一口径），不读盘上可能过期的 `.anchors.json`。
+    const indexByFile = new Map([[index.sourceFile, index]])
+    const referencedFiles = new Set()
+    for (const ap of crossKept) {
+      for (const r of ap.sourceRefs || []) if (r && r.file) referencedFiles.add(r.file)
+    }
+    const extraIndexFiles = [...referencedFiles].filter((f) => !indexByFile.has(f)).sort()
+    for (const f of extraIndexFiles) {
+      indexByFile.set(f, await buildAnchorIndex(path.join(repoRoot, f), { repoRoot }))
+    }
+    const anchorIndexes = [...indexByFile.values()]
+
     const assembled = assembleSkill({
       cluster,
       objects: kept,
@@ -249,12 +303,16 @@ async function main(argv) {
       codePointers,
       slug: flags.slug,
       skillTitle: flags.title,
+      anchorIndexes,
     })
 
     const verdict = await verifySkill({
       markdown: assembled.markdown,
       contract: assembled.contract,
-      anchorIndexes: [index],
+      // 传**全部**索引，不是只传本簇那一章。跨章反模式的出处按定义落在别的章节，
+      // 只给它本簇的索引，校验器只能报 `SOURCEREF_UNRESOLVED`——而校验器本身早就支持多份
+      // （`Array.isArray(anchorIndexes)`）。单章假设是遗留缺陷，此前被 `crossChapterKept` 恒为 0 盖住。
+      anchorIndexes,
       repoRoot,
       sectionCountsExpected: assembled.sectionCounts,
     })
@@ -275,7 +333,13 @@ async function main(argv) {
       },
       provenance: {
         sourceFile: sourceRel,
+        // 主索引（本簇那一章）的哈希，语义不变——旧回执与新回执在这个字段上可比。
         anchorIndexHash: index.sourceHash,
+        // 本次装配**实际用到**的全部索引及其哈希。跨章出处一进 skill，单值字段就答不了
+        // 「这份契约是按哪些章装的」，而那正是 provenance 存在的目的。
+        anchorIndexHashes: Object.fromEntries(
+          anchorIndexes.map((idx) => [idx.sourceFile, idx.sourceHash]),
+        ),
         objectsFile: rel(objectsPath),
         objectsFileSha256: `sha256:${createHash('sha256').update(JSON.stringify(allObjects)).digest('hex')}`,
         objectsTotal: allObjects.length,
@@ -288,6 +352,10 @@ async function main(argv) {
         crossChapterExcludedByGate: crossExcludedDetail,
         antipatternVerdictsFile: apVerdicts ? rel(apVerdicts.file) : null,
         antipatternVerdictsRunId: apVerdicts ? apVerdicts.runId : null,
+        // 对象与判定表是否同源。回执里必须看得见——「不是同源」这件事若只写在 stderr 上，
+        // 审计者读的却是回执，那就等于没记。
+        antipatternVerdictsIdentityMatch: apVerdicts ? apVerdicts.identityMatch : null,
+        antipatternObjectsRunId: antipatternsRunId,
         gateReceiptFile: rel(found.file),
         gateReceiptRunId: found.receipt.runId,
       },
