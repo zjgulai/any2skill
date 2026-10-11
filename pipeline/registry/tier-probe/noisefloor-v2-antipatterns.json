@@ -1,0 +1,382 @@
+{
+  "probeVersion": "judge-tier-probe/v1",
+  "createdAt": "2026-10-09T18:08:41.047Z",
+  "repoRoot": "/Users/lute/Project/any2skills",
+  "judgePromptFingerprint": "judge-50ad9d57c1c8",
+  "judge": {
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "https://api.deepseek.com",
+    "sameModelAsProducer": true
+  },
+  "probeSet": {
+    "objectsPath": "pipeline/knowledge/antipatterns.objects.json",
+    "objectsFileCount": 16,
+    "anchorsPaths": [
+      "pipeline/knowledge/chapter1.anchors.json",
+      "pipeline/knowledge/chapter2.anchors.json",
+      "pipeline/knowledge/chapter4.anchors.json",
+      "pipeline/knowledge/chapter5.anchors.json",
+      "pipeline/knowledge/chapter6.anchors.json",
+      "pipeline/knowledge/chapter7.anchors.json",
+      "pipeline/knowledge/chapter9.anchors.json"
+    ],
+    "sourceFiles": [
+      "sources/ai-agent-book-zh/book/chapter1.md",
+      "sources/ai-agent-book-zh/book/chapter2.md",
+      "sources/ai-agent-book-zh/book/chapter4.md",
+      "sources/ai-agent-book-zh/book/chapter5.md",
+      "sources/ai-agent-book-zh/book/chapter6.md",
+      "sources/ai-agent-book-zh/book/chapter7.md",
+      "sources/ai-agent-book-zh/book/chapter9.md"
+    ],
+    "skipped": []
+  },
+  "arms": [
+    {
+      "tier": null,
+      "label": "default",
+      "verdicts": {
+        "supported": 14,
+        "insufficient": 1,
+        "unsupported": 1
+      },
+      "verdictDetails": {
+        "AP-SYNTH-T02-01": {
+          "verdict": "supported",
+          "reason": "主锚点明确以规则堆砌对比流程驱动SOP并指出缺少流程图/优先级导致多条规则冲突或未覆盖时困惑，佐证段落的实验也显示无序规则使成功率显著下降且经常违反业务规则。"
+        },
+        "AP-SYNTH-T02-02": {
+          "verdict": "supported",
+          "reason": "锚点原文明确写到模糊规则会导致Agent行为极不稳定、同样任务可能得到完全不同分类且业务逻辑不可预测，并强调规则应细化到可执行程度、不应赋予模型过多自由裁量权。"
+        },
+        "AP-SYNTH-T02-03": {
+          "verdict": "supported",
+          "reason": "主锚点原文明确区分“能做什么”与“什么时候用”，强调边界条件如“做不到什么、不接受什么输入”，并直接说明缺少反例会使LLM自行猜测、多数失败根因是不知道工具不能做什么，支撑主张。"
+        },
+        "AP-SYNTH-T02-04": {
+          "verdict": "supported",
+          "reason": "锚点原文明确描述了工具参数传递层在模型不知情时静默转换中文弯引号为英文直引号，并导致操作偏离意图、模型反复失败且困惑。"
+        },
+        "AP-SYNTH-T02-05": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明过多大同小异的示例会占用上下文并稀释模型对规则本身的注意力，且讨论的是系统提示词中的 few-shot 示例。"
+        },
+        "AP-SYNTH-T02-06": {
+          "verdict": "supported",
+          "reason": "锚点原文明确指出按请求动态检索最相关示例会每次都改写前缀、使缓存持续失效，并因此建议使用固定示例集，足以支撑该主张的模式与危害描述。"
+        },
+        "AP-SYNTH-T02-07": {
+          "verdict": "supported",
+          "reason": "锚点原文明确表述系统提示往往缺少与普通代码同等的版本控制和回归测试，直接支撑该主张。"
+        },
+        "AP-SYNTH-T02-08": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明在系统提示词中过度使用大写字母会导致强调效果被稀释，应保留给真正关键的约束，支撑主张。"
+        },
+        "AP-SYNTH-T12-01": {
+          "verdict": "insufficient",
+          "reason": "锚点原文支持“单个护栏不太可能提供足够保护”和个体护栏缺乏韧性，但未明确断言“攻击更容易穿透”，主张比原文多出这一层具体后果。"
+        },
+        "AP-SYNTH-T12-02": {
+          "verdict": "supported",
+          "reason": "原文明确说明上下文层只管模型能看到什么、只能降低攻击成功率而给不出保证，并强调必须有执行层和数据层，与主张的缺陷模式及危害一致。"
+        },
+        "AP-SYNTH-T12-03": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明黑名单不应作为唯一手段，攻击者可通过管道、子 shell、变量展开等变形命令绕过简单字符串匹配，足以支撑该主张。"
+        },
+        "AP-SYNTH-T12-04": {
+          "verdict": "supported",
+          "reason": "锚点原文明确讨论了直接管理个人账号与独立虚拟身份的选择，并指出直接管理一旦出错或被攻破会暴露用户全部数字身份。"
+        },
+        "AP-SYNTH-T12-05": {
+          "verdict": "supported",
+          "reason": "主锚点明确将原始网页、工具输出及LLM摘要归为不可信证据，要求不得当作指令执行或直接纳入Skill，并指出LLM摘要不是净化过程，足以支撑该主张。"
+        },
+        "AP-SYNTH-T12-06": {
+          "verdict": "unsupported",
+          "reason": "锚点原文明确写的是业务 Agent “不能修改”批准自身更新的验证器、测试用例、发布门槛、审计日志和稳定版本备份，与主张所称“允许修改”方向相反。"
+        },
+        "AP-SYNTH-T12-07": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明Sidecar同时读取主模型上下文或思考过程时，攻击者可在用户输入或网页内容中夹带话术使其误判，与主张一致。"
+        },
+        "AP-SYNTH-T12-08": {
+          "verdict": "supported",
+          "reason": "锚点原文明确要求新知识、Prompt、Skill、程序和参数先隔离于待验证区，代码与外部依赖经安全检查通过后才能服务真实流量，足以支撑该禁止模式。"
+        }
+      },
+      "detected": 2,
+      "calls": 16,
+      "tokens": {
+        "input": 30406,
+        "output": 9094
+      },
+      "tokensDetail": {
+        "reasoning": 8323,
+        "cachedInput": 29440
+      },
+      "failedCalls": 0,
+      "retries": 0
+    },
+    {
+      "tier": null,
+      "label": "default#2",
+      "verdicts": {
+        "supported": 14,
+        "insufficient": 1,
+        "unsupported": 1
+      },
+      "verdictDetails": {
+        "AP-SYNTH-T02-01": {
+          "verdict": "supported",
+          "reason": "主锚点以零散规则手册类比说明缺乏流程图和优先级会导致多条规则同时适用或未覆盖时的困惑，佐证实验则直接表明无序规则使模型难以识别优先级和依赖关系，导致任务成功率显著下降并经常违反关键业务规则。"
+        },
+        "AP-SYNTH-T02-02": {
+          "verdict": "supported",
+          "reason": "锚点原文明确以模糊规则“根据任务情况选择合适的计费类型”为例，指出其导致分类不可预测、行为不稳定，并强调必须细化到可执行程度、不应给予模型过多自由裁量权，足以支撑主张。"
+        },
+        "AP-SYNTH-T02-03": {
+          "verdict": "supported",
+          "reason": "主锚点原文明确说明工具描述不能只是描述功能而应说明何时使用，边界条件缺失会让LLM自行猜测且多数失败源于不知道工具不能做什么，足以支撑主张。"
+        },
+        "AP-SYNTH-T02-04": {
+          "verdict": "supported",
+          "reason": "锚点原文明确描述了工具参数传递层在模型不知情时静默将中文弯引号转换为英文直引号，并导致操作偏离意图、模型反复尝试失败且陷入困惑。"
+        },
+        "AP-SYNTH-T02-05": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明过多大同小异的示例不仅占用上下文，还会稀释模型对规则本身的注意力，且讨论的正是系统提示词中的 few-shot 示例。"
+        },
+        "AP-SYNTH-T02-06": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明按请求动态检索“最相关”示例会每次都改写前缀、导致缓存持续失效，并建议使用固定示例集而非逐请求挑选，完整支撑主张。"
+        },
+        "AP-SYNTH-T02-07": {
+          "verdict": "supported",
+          "reason": "锚点原文明确称系统提示往往缺少与代码同等的版本控制和回归测试，并说明需借助工具追踪提交影响和建立回归测试，足以支撑该主张。"
+        },
+        "AP-SYNTH-T02-08": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明大写字母（如 “NEVER do X”）过度使用会稀释效果，应保留给真正关键的约束，直接支撑主张及其危害描述。"
+        },
+        "AP-SYNTH-T12-01": {
+          "verdict": "insufficient",
+          "reason": "锚点原文支持单个护栏不够、多个护栏组合更有韧性，但未明确断言攻击更容易穿透。"
+        },
+        "AP-SYNTH-T12-02": {
+          "verdict": "supported",
+          "reason": "锚点原文明确指出上下文层管的是模型能看到什么、同上下文Agent难以判断自己是否被注入，且上下文层只能降低攻击成功率给不出保证，必须补执行层和数据层，足以支撑该模式及其危害。"
+        },
+        "AP-SYNTH-T12-03": {
+          "verdict": "supported",
+          "reason": "锚点原文明确说明黑名单不应作为唯一手段，且攻击者可通过管道、子shell、变量展开等变形命令绕过简单字符串匹配，足以支撑主张中的风险描述。"
+        },
+        "AP-SYNTH-T12-04": {
+          "verdict": "supported",
+          "reason": "锚点原文明确提到直接管理个人账号时，一旦 Agent 出错或被攻破，用户的全部数字身份会暴露，与主张一致。"
+        },
+        "AP-SYNTH-T12-05": {
+          "verdict": "supported",
+          "reason": "主锚点明确说明原始网页、工具输出及其LLM摘要属不可信证据，不能当作指令执行或直接纳入Skill，且LLM总结并非净化过程，直接支撑主张及绕过证据与指令隔离边界的危害。"
+        },
+        "AP-SYNTH-T12-06": {
+          "verdict": "unsupported",
+          "reason": "锚点原文明确禁止业务 Agent 修改这些验证器、测试用例、发布门槛、审计日志和稳定版本备份，而主张表述为允许修改，方向相反。"
+        },
+        "AP-SYNTH-T12-07": {
+          "verdict": "supported",
+          "reason": "主锚点明确描述：若 Sidecar 同时读取主模型上下文或思考过程，攻击者在用户输入或网页内容中夹带话术会使 Sidecar 误判为合理理由，与主张一致。"
+        },
+        "AP-SYNTH-T12-08": {
+          "verdict": "supported",
+          "reason": "锚点原文明确要求新知识、Prompt、Skill、程序和参数先进入待验证区，新代码与外部依赖须经沙盒等安全检查并通过后才能服务真实流量，足以支撑该未经隔离检查直接进入正式流量的风险模式。"
+        }
+      },
+      "detected": 2,
+      "calls": 16,
+      "tokens": {
+        "input": 30406,
+        "output": 12192
+      },
+      "tokensDetail": {
+        "reasoning": 11383,
+        "cachedInput": 29440
+      },
+      "failedCalls": 0,
+      "retries": 0
+    }
+  ],
+  "pairs": [
+    {
+      "comparedArms": [
+        "default",
+        "default#2"
+      ],
+      "counts": {
+        "total": 16,
+        "agree": 16,
+        "disagree": 0
+      },
+      "rows": []
+    }
+  ],
+  "disagreement": {
+    "comparedArms": [
+      "default",
+      "default#2"
+    ],
+    "counts": {
+      "total": 16,
+      "agree": 16,
+      "disagree": 0
+    },
+    "rows": []
+  },
+  "matrix": [
+    {
+      "objectId": "AP-SYNTH-T02-01",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-02",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-03",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-04",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-05",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-06",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-07",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-08",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-01",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "insufficient",
+        "default#2": "insufficient"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-02",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-03",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-04",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-05",
+      "objectType": "AntiPattern",
+      "anchorCount": 3,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-06",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "unsupported",
+        "default#2": "unsupported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-07",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-08",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported",
+        "default#2": "supported"
+      }
+    }
+  ]
+}

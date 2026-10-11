@@ -92,7 +92,7 @@ function parseArgs(argv) {
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i]
     if (a === '--objects') flags.objects = need(i, a), (i += 1)
-    else if (a === '--anchors') flags.anchors = need(i, a), (i += 1)
+    else if (a === '--anchors') flags.anchors = need(i, a).split(',').map((s) => s.trim()).filter(Boolean), (i += 1)
     else if (a === '--source') flags.source = need(i, a), (i += 1)
     else if (a === '--tiers') flags.tiers = need(i, a).split(',').map((s) => s.trim()).filter(Boolean), (i += 1)
     else if (a === '--judge-model') flags.judgeModel = need(i, a), (i += 1)
@@ -117,39 +117,78 @@ function asObjectList(parsed) {
 }
 
 /**
- * 重建每个对象在**判定者眼中**的输入：`{ claim, quote, anchorText }`。
+ * 重建每个对象在**判定者眼中**的输入。
  *
- * 锚点原文一律从**锚点索引**取（不采信对象自带的行号），与 `verifier.mjs` 同口径——
- * 否则探针量的就不是流水线实际发出的那个请求了。
+ * `judge-prompt/v2` 起判定者的视野是对象声明的**全部**锚点区间，因此这里也要按**多份**锚点索引
+ * 与**多个**源文件解析——跨章对象的 `sourceRefs` 横跨多章，只给一份索引会让另一半出处解析不到，
+ * 探针量的就不是流水线实际发出的那个请求了。锚点原文一律从**索引**取（不采信对象自带的行号），
+ * 与 `verifier.mjs` 同口径。
+ *
+ * `sourcePath`（`--source`）只在单份索引时可用：它的语义是「这份索引指向的源文件换一个」，
+ * 多份索引下没有唯一的「那份」，因此显式报错而不是挑一份来顶替。
  */
-async function buildProbeInputs({ objectsPath, anchorsPath, sourcePath, filter }) {
+async function buildProbeInputs({ objectsPath, anchorsPaths, sourcePath, filter }) {
   const objects = asObjectList(readJson(objectsPath))
-  const index = readJson(anchorsPath)
-  const lookup = new Map(index.anchors.map((a) => [`${a.file}::${a.anchor}`, a]))
 
-  const sourceAbs = path.resolve(REPO_ROOT, sourcePath ?? index.sourceFile)
-  const lines = fs.readFileSync(sourceAbs, 'utf8').split('\n')
+  // `--source` 的缺省值是 `null`（不是 `undefined`）。守卫必须显式认这两种「没传」，
+  // 否则 `null !== undefined` 会让它在**没传** `--source` 时也触发——实测踩过这一次。
+  const hasSourceOverride = sourcePath !== undefined && sourcePath !== null
+  if (hasSourceOverride && anchorsPaths.length > 1) {
+    throw new Error('--source 只在传单份 --anchors 时可用：多份索引没有唯一的「那份源文件」')
+  }
+
+  const lookup = new Map()
+  const linesByFile = new Map()
+  for (const anchorsPath of anchorsPaths) {
+    const index = readJson(anchorsPath)
+    const sourceRel = hasSourceOverride ? sourcePath : index.sourceFile
+    if (linesByFile.has(sourceRel)) {
+      throw new Error(`锚点索引重复给到了同一个源文件：${sourceRel}`)
+    }
+    linesByFile.set(sourceRel, fs.readFileSync(path.resolve(REPO_ROOT, sourceRel), 'utf8').split('\n'))
+    for (const a of index.anchors ?? []) {
+      const key = `${a.file}::${a.anchor}`
+      if (lookup.has(key)) {
+        throw new Error(`两份索引给了同一个锚点：${key}——解析到哪一份会取决于传入顺序`)
+      }
+      // 行的载入按索引的 `sourceFile` 走，而锚点按 `a.file` 归位：两者不同时报错，别静默错位。
+      if (a.file !== sourceRel) {
+        throw new Error(`锚点的 file（${a.file}）与索引的 sourceFile（${sourceRel}）不一致：${key}`)
+      }
+      lookup.set(key, a)
+    }
+  }
 
   const inputs = []
   const skipped = []
   for (const obj of objects) {
     if (filter && obj.objectType !== filter) continue
-    const ref = Array.isArray(obj.sourceRefs) ? obj.sourceRefs[0] : null
-    const entry = ref ? lookup.get(`${ref.file}::${ref.anchor}`) : undefined
-    if (!entry) {
+    const refs = Array.isArray(obj.sourceRefs) ? obj.sourceRefs : []
+    const anchors = []
+    for (const ref of refs) {
+      const entry = ref ? lookup.get(`${ref.file}::${ref.anchor}`) : undefined
+      if (!entry) continue
+      const lines = linesByFile.get(entry.file)
+      if (lines === undefined) continue
+      anchors.push({
+        anchor: entry.anchor,
+        text: lines.slice(entry.lineStart - 1, entry.lineEnd).join('\n'),
+      })
+    }
+    if (anchors.length === 0) {
       skipped.push({ id: obj.id, why: '锚点解析不到（无法构造判定者输入）' })
       continue
     }
-    const anchorText = lines.slice(entry.lineStart - 1, entry.lineEnd).join('\n')
     inputs.push({
       objectId: obj.id,
       objectType: obj.objectType,
-      input: buildJudgeInput({ objectType: obj.objectType, object: obj, anchorText }),
+      anchorCount: anchors.length,
+      input: buildJudgeInput({ objectType: obj.objectType, object: obj, anchors }),
     })
   }
   // 按 id 排序，使两个档位臂处理的是**同一顺序**的同一批对象。
   inputs.sort((a, b) => String(a.objectId).localeCompare(String(b.objectId)))
-  return { inputs, skipped, sourceFile: index.sourceFile }
+  return { inputs, skipped, sourceFiles: [...linesByFile.keys()] }
 }
 
 /** 逐对象跑一遍判定者（串行：并发会让两个臂的请求交错，用量数字就无法按臂归因）。 */
@@ -219,6 +258,9 @@ export function comparePair(a, b, matrix) {
       objectType: row.objectType,
       [a.label]: va,
       [b.label]: vb,
+      // 两臂各自的**理由**。只记判定值的话，「同一对象为何在两臂结论不同」无法回答，
+      // 而两臂唯一稳定的差异往往正是措辞关注点的差异——理由才是那个证据。
+      reasons: { [a.label]: a.verdicts[row.objectId]?.reason ?? null, [b.label]: b.verdicts[row.objectId]?.reason ?? null },
       direction:
         aDetected && !bDetected
           ? `${a.label}-only`
@@ -239,11 +281,16 @@ async function main(argv) {
   const flags = parseArgs(argv)
   if (flags.objects === null) throw new Error('必须传 --objects（固定对象集，探针的标尺）')
   if (flags.anchors === null) throw new Error('必须传 --anchors（锚点索引，用于重建判定者输入）')
-  const tiers = flags.tiers.map((t) => normalizeReasoningEffort(t))
+  // `default` / `none` 表示**不发 reasoning_effort**（跟随服务端默认），即 `reasoningEffort: null`。
+  // 没有这条路时 CLI 无法复现流水线默认调用（`REASONING_EFFORTS` 只有 low/high/max），
+  // 于是「判据修订前后」的对照会夹带一个档位差异，翻案就归因不清。
+  const tiers = flags.tiers.map((t) =>
+    t === 'default' || t === 'none' ? null : normalizeReasoningEffort(t),
+  )
 
-  const { inputs, skipped, sourceFile } = await buildProbeInputs({
+  const { inputs, skipped, sourceFiles } = await buildProbeInputs({
     objectsPath: path.resolve(REPO_ROOT, flags.objects),
-    anchorsPath: path.resolve(REPO_ROOT, flags.anchors),
+    anchorsPaths: flags.anchors.map((p) => path.resolve(REPO_ROOT, p)),
     sourcePath: flags.source,
     filter: flags.filter,
   })
@@ -257,7 +304,7 @@ async function main(argv) {
 
   const fingerprint = judgePromptFingerprint()
   process.stderr.write(
-    `探针集 ${inputs.length} 个对象（跳过 ${skipped.length}）｜源 ${sourceFile}\n` +
+    `探针集 ${inputs.length} 个对象（跳过 ${skipped.length}）｜源 ${sourceFiles.join(', ')}\n` +
       `判定者 ${config.modelId} @ ${config.baseUrl}｜提示词指纹 ${fingerprint}\n` +
       `档位臂：${tiers.map((t) => t ?? '默认').join(' vs ')}\n`,
   )
@@ -281,7 +328,9 @@ async function main(argv) {
 
   // ---- 逐对象对齐 ----
   const matrix = inputs.map((item) => {
-    const row = { objectId: item.objectId, objectType: item.objectType, byArm: {} }
+    // `anchorCount` 进矩阵：本次判据修订的自变量就是「判定者看到几段锚点」，
+    // 结果表里没有它，翻案与未翻案就无法按视野分组解释。
+    const row = { objectId: item.objectId, objectType: item.objectType, anchorCount: item.anchorCount, byArm: {} }
     for (const arm of arms) {
       row.byArm[arm.label] = arm.verdicts[item.objectId]?.verdict ?? null
     }
@@ -311,12 +360,18 @@ async function main(argv) {
     probeSet: {
       objectsPath: flags.objects,
       objectsFileCount: inputs.length,
+      anchorsPaths: flags.anchors,
+      sourceFiles,
       skipped,
     },
     arms: arms.map((arm) => ({
       tier: arm.tier,
       label: arm.label,
       verdicts: tally(arm.verdicts),
+      // 逐对象的判定**与理由**。`verdicts` 只是计数，两个档位都把同一批对象判成
+      // 「14 supported / 2 被拒」时，只有理由能区分「它们拒的是同两条」还是「拒的理由根本不同」。
+      // 实测踩过：第一版报告只落计数与判定值，回归跑完才发现理由没地方查。
+      verdictDetails: arm.verdicts,
       detected: Object.values(arm.verdicts).filter((v) => v.verdict !== PASSING_VERDICT).length,
       calls: arm.calls,
       tokens: { ...arm.usage.tokens },
@@ -398,6 +453,10 @@ function formatHuman(r) {
     L.push(`「${ka}」vs「${kb}」：${d.counts.agree}/${d.counts.total} 一致，${d.counts.disagree} 不一致`)
     for (const row of d.rows) {
       L.push(`  ${row.objectId.padEnd(34)} ${ka}=${row[ka]} | ${kb}=${row[kb]}   ${row.direction}`)
+      for (const k of [ka, kb]) {
+        const reason = row.reasons?.[k]
+        if (reason) L.push(`      ${k}：${reason}`)
+      }
     }
   }
   if (r.baselineCheck) {

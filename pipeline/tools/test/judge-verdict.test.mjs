@@ -388,7 +388,7 @@ describe('05 · 判定者响应的契约与失败归类', () => {
   })
 
   it('判定者判据的指纹随提示词版本变化（改了判据必须能看出来）', () => {
-    assert.equal(JUDGE_PROMPT_VERSION, 'judge-prompt/v1')
+    assert.equal(JUDGE_PROMPT_VERSION, 'judge-prompt/v2')
     assert.equal(judgePromptFingerprint(), judgePromptFingerprint(), '同一版本必须稳定')
     assert.match(judgePromptFingerprint(), /^judge-[0-9a-f]{12}$/)
   })

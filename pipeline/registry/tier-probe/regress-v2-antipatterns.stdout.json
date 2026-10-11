@@ -1,0 +1,189 @@
+{
+  "probeVersion": "judge-tier-probe/v1",
+  "createdAt": "2026-10-09T15:30:28.756Z",
+  "repoRoot": "/Users/lute/Project/any2skills",
+  "judgePromptFingerprint": "judge-50ad9d57c1c8",
+  "judge": {
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "https://api.deepseek.com",
+    "sameModelAsProducer": true
+  },
+  "probeSet": {
+    "objectsPath": "pipeline/knowledge/antipatterns.objects.json",
+    "objectsFileCount": 16,
+    "anchorsPaths": [
+      "pipeline/knowledge/chapter1.anchors.json",
+      "pipeline/knowledge/chapter2.anchors.json",
+      "pipeline/knowledge/chapter4.anchors.json",
+      "pipeline/knowledge/chapter5.anchors.json",
+      "pipeline/knowledge/chapter6.anchors.json",
+      "pipeline/knowledge/chapter7.anchors.json",
+      "pipeline/knowledge/chapter9.anchors.json"
+    ],
+    "sourceFiles": [
+      "sources/ai-agent-book-zh/book/chapter1.md",
+      "sources/ai-agent-book-zh/book/chapter2.md",
+      "sources/ai-agent-book-zh/book/chapter4.md",
+      "sources/ai-agent-book-zh/book/chapter5.md",
+      "sources/ai-agent-book-zh/book/chapter6.md",
+      "sources/ai-agent-book-zh/book/chapter7.md",
+      "sources/ai-agent-book-zh/book/chapter9.md"
+    ],
+    "skipped": []
+  },
+  "arms": [
+    {
+      "tier": null,
+      "label": "default",
+      "verdicts": {
+        "supported": 14,
+        "insufficient": 1,
+        "unsupported": 1
+      },
+      "detected": 2,
+      "calls": 16,
+      "tokens": {
+        "input": 30406,
+        "output": 9059
+      },
+      "tokensDetail": {
+        "reasoning": 8241,
+        "cachedInput": 5760
+      },
+      "failedCalls": 0,
+      "retries": 0
+    }
+  ],
+  "pairs": [],
+  "disagreement": null,
+  "matrix": [
+    {
+      "objectId": "AP-SYNTH-T02-01",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-02",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-03",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-04",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-05",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-06",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-07",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-08",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-01",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "insufficient"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-02",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-03",
+      "objectType": "AntiPattern",
+      "anchorCount": 2,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-04",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-05",
+      "objectType": "AntiPattern",
+      "anchorCount": 3,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-06",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "unsupported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-07",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-08",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    }
+  ]
+}

@@ -156,7 +156,7 @@ describe('05 · 判定者输入的构造式隔离（单元）', () => {
     const out = buildJudgeInput({
       objectType: 'Concept',
       object: { id: 'X-1', evidenceQuote: '引', canonicalTerm: '甲', definition: '定', aliases: ['哨兵'] },
-      anchorText: '正文',
+      anchors: [{ anchor: 'chapterX#h1-1', text: '正文' }],
     })
     assert.deepEqual(Object.keys(out).sort(), [...JUDGE_INPUT_KEYS].sort())
   })
@@ -173,7 +173,7 @@ describe('05 · 判定者输入的构造式隔离（单元）', () => {
       examples: [S_TOPLEVEL],
       sourceRefs: [{ anchor: S_RAWTAIL }],
     }
-    const out = buildJudgeInput({ objectType: 'Concept', object, anchorText: '正文' })
+    const out = buildJudgeInput({ objectType: 'Concept', object, anchors: [{ anchor: 'a', text: '正文' }] })
     const serialized = JSON.stringify(out)
 
     assert.ok(!serialized.includes(S_NONCLAIM), 'aliases 不是主张字段，不该进输入')
@@ -190,7 +190,7 @@ describe('05 · 判定者输入的构造式隔离（单元）', () => {
       const object = { evidenceQuote: '引' }
       for (const f of fields) object[f] = `值-${f}`
       object.__notAClaimField = '不该进'
-      const input = buildJudgeInput({ objectType: type, object, anchorText: '正文' })
+      const input = buildJudgeInput({ objectType: type, object, anchors: [{ anchor: 'a', text: '正文' }] })
 
       assert.deepEqual(Object.keys(input.claim).sort(), [...fields].sort(), `${type} 的主张字段不对`)
       assert.ok(!JSON.stringify(input).includes('不该进'), `${type} 混入了非主张字段`)
@@ -198,16 +198,16 @@ describe('05 · 判定者输入的构造式隔离（单元）', () => {
   })
 
   it('判定者输入里出现生产者上下文字段或任何额外键，都当场报错', () => {
-    const ok = { claim: {}, quote: 'q', anchorText: 'a' }
+    const ok = { claim: {}, quote: 'q', anchors: [{ anchor: 'a', text: 'a' }] }
     assert.doesNotThrow(() => assertJudgeInputShape(ok))
     assert.throws(() => assertJudgeInputShape({ ...ok, producerReasoning: 'x' }), /生产者上下文字段/)
     assert.throws(() => assertJudgeInputShape({ ...ok, whatever: 'x' }), /允许集合之外的键/)
   })
 
   it('提示词里只有判定者自己的常量，没有生产者的任何东西', () => {
-    const { system } = buildJudgePrompts({ claim: { definition: '定' }, quote: '引', anchorText: '正文' })
+    const { system } = buildJudgePrompts({ claim: { definition: '定' }, quote: '引', anchors: [{ anchor: 'a', text: '正文' }] })
     // 判定者的 system 是常量：同一个输入两次构造，system 必须逐字相同。
-    const again = buildJudgePrompts({ claim: {}, quote: 'x', anchorText: 'y' })
+    const again = buildJudgePrompts({ claim: {}, quote: 'x', anchors: [{ anchor: 'a', text: 'y' }] })
     assert.equal(system, again.system, '判定者的 system 提示词必须是常量')
   })
 })
@@ -293,13 +293,47 @@ describe('05 · 判定者隔离的端到端哨兵证明（真实链路）', () =
   it('正向对照：判定者确实收到了主张、引文与锚点原文三样', () => {
     for (const c of captured.judge) {
       assert.match(c.user, /【主张】/, '判定者必须收到主张')
-      assert.match(c.user, /【引文】/, '判定者必须收到引文')
+      assert.match(c.user, /【主引文】/, '判定者必须收到引文')
       assert.match(c.user, /【锚点原文】/, '判定者必须收到锚点原文')
     }
     // 引文与锚点原文必须真的落在请求里（不只是标签在）。
     const first = captured.judge[0]
     assert.match(first.user, /主张甲-DEFINITION-ONE-aaaa/)
     assert.ok(first.user.length > 300, '判定者收到的请求不该是空壳')
+  })
+
+  it('对象声明几条支撑，判定者就收到几段锚点原文（judge-prompt/v2 的视野放宽）', () => {
+    // 这条断言钉的是 v2 改动的**生效条件**：不是「提示词里写了多发几段」，而是
+    // 「对象声明 N 条锚点时，请求里就有 N 段、各自带出处标识」。少了这条，
+    // 提示词说一套、请求发另一套也不会有人发现。
+    // 本夹具为单锚点对象（chapter4），因此这里同时钉住「单锚点仍渲染一段」这一回归红线。
+    for (const c of captured.judge) {
+      const rendered = c.user.split('〔第 ').length - 1
+      assert.ok(rendered >= 1, '判定者至少应收到一段锚点原文')
+      assert.match(c.user, /主锚点/, '第一段必须标出主锚点，判定者需要知道哪一段对应主引文')
+    }
+    const first = captured.judge[0]
+    const declared = receipt.objectVerdicts[0].judgedAnchors.length
+    assert.equal(
+      first.user.split('〔第 ').length - 1,
+      declared,
+      '请求里的段数必须等于回执记下的 judgedAnchors 条数',
+    )
+  })
+
+  it('回执记下判定者实际看到的全部锚点区间，且主锚点语义仍是 sourceRefs[0]', () => {
+    for (const v of receipt.objectVerdicts) {
+      assert.ok(Array.isArray(v.judgedAnchors), '每个对象都必须记下判定者看到的锚点区间')
+      assert.ok(v.judgedAnchors.length >= 1)
+      // `checkedAgainst` 与 `judgedAnchors[0]` 必须指向同一段：v2 放宽的是视野范围，
+      // 不是「主锚点怎么算」。两者分叉会让回执里的两个字段互相矛盾。
+      assert.deepEqual(v.judgedAnchors[0], v.checkedAgainst, '主锚点必须与 checkedAgainst 一致')
+      for (const a of v.judgedAnchors) {
+        assert.equal(typeof a.anchor, 'string')
+        assert.equal(typeof a.lineStart, 'number')
+        assert.equal(typeof a.lineEnd, 'number')
+      }
+    }
   })
 
   it('回执逐对象记录判定者实例标识与它**实际收到**的三个键', () => {

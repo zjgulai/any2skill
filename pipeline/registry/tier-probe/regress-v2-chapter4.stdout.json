@@ -1,0 +1,361 @@
+{
+  "probeVersion": "judge-tier-probe/v1",
+  "createdAt": "2026-10-09T15:30:42.680Z",
+  "repoRoot": "/Users/lute/Project/any2skills",
+  "judgePromptFingerprint": "judge-50ad9d57c1c8",
+  "judge": {
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "https://api.deepseek.com",
+    "sameModelAsProducer": true
+  },
+  "probeSet": {
+    "objectsPath": "pipeline/knowledge/chapter4.objects.json",
+    "objectsFileCount": 39,
+    "anchorsPaths": [
+      "pipeline/knowledge/chapter4.anchors.json"
+    ],
+    "sourceFiles": [
+      "sources/ai-agent-book-zh/book/chapter4.md"
+    ],
+    "skipped": []
+  },
+  "arms": [
+    {
+      "tier": null,
+      "label": "default",
+      "verdicts": {
+        "supported": 39,
+        "insufficient": 0,
+        "unsupported": 0
+      },
+      "detected": 0,
+      "calls": 39,
+      "tokens": {
+        "input": 55542,
+        "output": 9439
+      },
+      "tokensDetail": {
+        "reasoning": 7671,
+        "cachedInput": 14208
+      },
+      "failedCalls": 0,
+      "retries": 0
+    }
+  ],
+  "pairs": [],
+  "disagreement": null,
+  "matrix": [
+    {
+      "objectId": "CHAPTER4-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H1-1-CONCEPT-02",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-3-CONCEPT-02",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-4-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-8-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-9-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H2-9-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-4-CONCEPT-02",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-6-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H3-7-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-1-CONCEPT-02",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-2-CONCEPT-02",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-CASE-02",
+      "objectType": "Case",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    },
+    {
+      "objectId": "CHAPTER4-H4-3-CONCEPT-01",
+      "objectType": "Concept",
+      "anchorCount": 1,
+      "byArm": {
+        "default": "supported"
+      }
+    }
+  ]
+}

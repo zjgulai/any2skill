@@ -22,6 +22,9 @@ import { DEFAULT_REPO_ROOT, buildAnchorIndex } from '../../tools/anchor-index.mj
 import { EXIT, PIPELINE_VERSION, computeRunId } from '../../run.mjs'
 import { extractQuote, normalizeLines, typeForAnchor } from '../../tools/model-stub.mjs'
 import { assertJudgeInputShape, FORBIDDEN_JUDGE_CONTEXT_KEYS } from '../../tools/verifier.mjs'
+// 缺键断言改为遍历 `JUDGE_INPUT_KEYS`：硬编码三个键名时，契约改键（v1 的 `anchorText` → v2 的
+// `anchors`）会让这条测试**看起来还在测白名单**，实际测的是三个已经不存在的键名。
+import { JUDGE_INPUT_KEYS } from '../../tools/judge.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const REPO = DEFAULT_REPO_ROOT
@@ -403,7 +406,7 @@ describe('03 · 第 3 层是独立阶段：不接收生产者上下文', () => {
     //      - `not-implemented` 这条**删除**（它断言的是「还没做」，卡 05 做完后它必然为假）。
     //    删掉一条断言不等于放宽要求：卡 05 另建了更严的白名单守卫与三条实测隔离证明，
     //    见 `judge-isolation.test.mjs`。
-    const base = { claim: { definition: '主张' }, quote: '引文', anchorText: '锚点正文' }
+    const base = { claim: { definition: '主张' }, quote: '引文', anchors: [{ anchor: 'a', text: '锚点正文' }] }
     assert.equal(assertJudgeInputShape(base), base, '合法的三键输入应原样通过')
 
     for (const forbidden of FORBIDDEN_JUDGE_CONTEXT_KEYS) {
@@ -418,7 +421,7 @@ describe('03 · 第 3 层是独立阶段：不接收生产者上下文', () => {
   it('判定者输入的守卫是白名单：任何第三个键之外的键都报错，缺键也报错', () => {
     // 黑名单只能拦住我们**想得到**的泄漏。将来给对象加一个字段、或把整个对象塞进某处，
     // 黑名单不会响——白名单才会。这条断言钉的正是「视野不得被静默扩大」。
-    const base = { claim: {}, quote: 'q', anchorText: 'a' }
+    const base = { claim: {}, quote: 'q', anchors: [{ anchor: 'a', text: 'a' }] }
     assert.throws(
       () => assertJudgeInputShape({ ...base, producerHint: 'x' }),
       /允许集合之外的键/,
@@ -428,7 +431,7 @@ describe('03 · 第 3 层是独立阶段：不接收生产者上下文', () => {
       () => assertJudgeInputShape({ ...base, disclaimer: 'x' }),
       /允许集合之外的键/,
     )
-    for (const k of ['claim', 'quote', 'anchorText']) {
+    for (const k of JUDGE_INPUT_KEYS) {
       const short = { ...base }
       delete short[k]
       assert.throws(() => assertJudgeInputShape(short), /缺少必需的键/, `缺 ${k} 时应报错`)

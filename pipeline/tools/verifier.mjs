@@ -561,13 +561,39 @@ export async function verifyObjects(objects, indexOrIndices, opts = {}) {
     // 用索引而非对象声明的区间，是为了让「对象改了行号」不能顺带把引文比对也一起改掉。
     let anchorText = ''
     let checkedAgainst = null
-    if (Array.isArray(obj?.sourceRefs) && obj.sourceRefs.length > 0) {
-      const ref = obj.sourceRefs[0]
-      const entry = ref ? lookup.get(`${ref.file}::${ref.anchor}`) : undefined
-      const lines = entry ? linesByFile.get(entry.file) : undefined
-      if (entry && lines !== undefined) {
-        anchorText = lines.slice(entry.lineStart - 1, entry.lineEnd).join('\n')
-        checkedAgainst = { file: entry.file, anchor: entry.anchor, lineStart: entry.lineStart, lineEnd: entry.lineEnd }
+    // 判定者**实际收到**的锚点区间：对象声明的全部可解析锚点，按声明顺序，第一条是主锚点。
+    //
+    // 与 `checkedAgainst` 分开记，因为这是两个不同的事实：`checkedAgainst` 答「主锚点是哪个」，
+    // `judgedAnchors` 答「判定者看了哪些」。v1 只解析 `sourceRefs[0]`，于是主张若由第二条锚点承载，
+    // 判定者按结构看不到它——`AP-SYNTH-T02-01` 就是这样被误拒的（判定理由要的那句话逐字在第二条锚点里）。
+    //
+    // 不去重、不排序：这里是「对象声明的支撑集合」的忠实投影。同一锚点被声明两次是生产侧的缺陷，
+    // 让它出现在回执里比在这里静默抹平更有用。
+    const judgedAnchors = []
+    // 判定输入用的锚点文本，与 `judgedAnchors` 同源同序（同一次解析产出，不二次读文件）。
+    const judgeAnchorTexts = []
+    if (Array.isArray(obj?.sourceRefs)) {
+      for (let r = 0; r < obj.sourceRefs.length; r += 1) {
+        const ref = obj.sourceRefs[r]
+        const entry = ref ? lookup.get(`${ref.file}::${ref.anchor}`) : undefined
+        const lines = entry ? linesByFile.get(entry.file) : undefined
+        if (!entry || lines === undefined) continue
+        const region = {
+          file: entry.file,
+          anchor: entry.anchor,
+          lineStart: entry.lineStart,
+          lineEnd: entry.lineEnd,
+        }
+        judgedAnchors.push(region)
+        judgeAnchorTexts.push({
+          anchor: entry.anchor,
+          text: lines.slice(entry.lineStart - 1, entry.lineEnd).join('\n'),
+        })
+        // 主锚点严格取 `sourceRefs[0]`，而不是「第一条能解析的」——v1 的语义逐字保留。
+        if (r === 0) {
+          anchorText = judgeAnchorTexts[0].text
+          checkedAgainst = region
+        }
       }
     }
 
@@ -604,7 +630,7 @@ export async function verifyObjects(objects, indexOrIndices, opts = {}) {
     } else {
       judgeCallCount += 1
       const input = assertJudgeInputShape(
-        buildJudgeInput({ objectType, object: obj, anchorText }),
+        buildJudgeInput({ objectType, object: obj, anchors: judgeAnchorTexts }),
       )
       const out = await judgeFn({
         config: judgeConfig,
@@ -647,6 +673,10 @@ export async function verifyObjects(objects, indexOrIndices, opts = {}) {
       reasonCode: ok ? null : primary,
       failures,
       checkedAgainst,
+      // 判定者**实际收到**的全部锚点区间（声明顺序，第一条是主锚点）。`checkedAgainst` 只记主锚点，
+      // 在 `judge-prompt/v2` 之后它不再足以回答「这条判定是对着什么判的」——一条主张可以靠第三条
+      // 锚点站住，而主锚点那段读不出来。两个字段都在，审计时才不必回到代码去复现当时传了什么。
+      judgedAnchors,
       // 两组判据各自的结果**分开记**。合并成一个 status 就答不了「这条被拒，是谁拒的」，
       // 而 ADR-010 决策 3 的交叉表（两组判据对不对得上）正是从这个字段读出来的。
       // 注意 `det.ok` 是**独立于判定者**的结论：判定者只否决幸存者，不会推翻确定性判据。
