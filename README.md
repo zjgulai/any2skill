@@ -3,7 +3,7 @@
 Any content → executable Agent Skills. MVP pipeline.
 
 **当前状态**：环 1–2 已跑通（源文件 → 锚点索引 → 知识对象 → 机器验证，含独立判定者）。
-**环 4 已实现（确定性装配 + 门禁一 skill 侧），但产物被门禁拦下**——见下。
+**环 4 已实现（确定性装配 + 门禁一 skill 侧），产物已过门禁一并发布**（见下）。
 环 3（语义聚类）、环 5（门禁二/三）尚未构建。
 
 > ### 盘上已有 1 个已发布的 skill（此前为 0）
@@ -11,18 +11,23 @@ Any content → executable Agent Skills. MVP pipeline.
 > `find . -path ./node_modules -prune -o -name "SKILL.md" -print` →
 > `skills/chapter4-tool-design-principles/SKILL.md` 与它的暂存副本。
 >
-> 达成路径是两件事依次落地，**都不是放宽判据本身**：
+> 达成路径是三件事依次落地，**前两件不是放宽判据本身**：
 > ① [ADR-020](docs/adr/ADR-020-source-expansion-chapter4-code.md) 扩充信息源——
 > 上游 `chapter4/` 配套代码镜像进 `sources/ai-agent-book-zh/code/`
 > （851 文件，逐文件哈希校验 851/851 一致，见
 > [`MIRROR-MANIFEST.md`](sources/ai-agent-book-zh/code/chapter4/MIRROR-MANIFEST.md)），
 > 「配套代码」段第一次有来源；② [ADR-021](docs/adr/ADR-021-section-item-counts-advisory.md)
 > 把骨架条目数降为**建议值**——ADR-004 的「必须遵守的约束」从未把它列为硬约束，
-> 而实测 chapter4 每簇最多 2 条反模式、整章也只有 5 条，6–8 出自作者人工写作。
+> 而实测 chapter4 每簇最多 2 条反模式、整章也只有 5 条，6–8 出自作者人工写作；
+> ③ [ADR-022](docs/adr/ADR-022-judge-vision-all-anchors.md) 把判定者的视野从
+> 「主锚点那一段」扩到「对象声明的全部锚点区间」——**这一件是有意放宽判据**，
+> 触发依据是一条可复现的假阴性（`AP-SYNTH-T02-01` 的拒绝理由要的那句话
+> 逐字就在该对象第二条锚点里，旧契约让它按结构看不到）。
 >
 > ### 「通过」不等于「合格」
 >
-> 发布时该 skill 的 `## 常见陷阱` 只有 **1 条**（建议值 6），契约里带风险标记
+> 发布时该 skill 的 `## 常见陷阱` 只有 **1 条**（建议值 6）；ADR-022 落地后重建为 **3 条**，
+> 新增的 2 条正是此前被旧判据误拒的两条跨章反模式。契约里仍带风险标记
 > `PITFALL_COVERAGE_BELOW_ADVISORY`。它还带着 11 条缺口：1 条语义不符
 > （「实践模式」装出来的是术语定义而非可操作模式）、1 条可疑触发条目、
 > **7 个契约字段在当前对象模型下没有任何来源**（`inputContract`/`outputContract`/
@@ -34,7 +39,8 @@ Any content → executable Agent Skills. MVP pipeline.
 >
 > 全部实测与未决项见 [`ADR-019`](docs/adr/ADR-019-ring4-deterministic-skill-assembly.md)、
 > [`ADR-020`](docs/adr/ADR-020-source-expansion-chapter4-code.md)、
-> [`ADR-021`](docs/adr/ADR-021-section-item-counts-advisory.md)。
+> [`ADR-021`](docs/adr/ADR-021-section-item-counts-advisory.md)、
+> [`ADR-022`](docs/adr/ADR-022-judge-vision-all-anchors.md)。
 
 ## 三段式链路
 
@@ -60,7 +66,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 379 项，零网络、零凭据
+npm test                                    # 403 项，零网络、零凭据
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -335,11 +341,28 @@ node pipeline/synthesize-antipatterns.mjs --themes T02,T12 \
   只记长度（`reasoningChars`）。
 - **短路使判定者无法推翻确定性判据的拒绝。** 逻辑上与「两组均须通过」等价（合取满足短路求值），
   代价是「确定性判据是否过严」（R6）仍需人工看 `quoteComparison` 才能检出。
-- **多锚点对象的引文逐条验，但判定者目前仍只看主锚点。** 判定者的输入契约（卡 05 的
-  `JUDGE_INPUT_KEYS`）是「主张 + 一条引文 + **那一个**锚点的原文」。因此一条把两章结论**合并**成
-  更大断言的反模式，主引文一个人扛不住，判定者会（正确地）判不充分——ADR-011 记录的
-  AntiPattern 100% 不充分就是这条路的终点。综合提示词据此要求**主张收窄到主引文能承载的粒度**，
-  其余章节作佐证。**是否该让判定者看到全部证据，是一个待实测决定的口径问题**（见 ADR-016）。
+- **多锚点对象的引文逐条验；判定者的视野已于 `judge-prompt/v2` 扩到全部锚点区间。**
+  旧契约（卡 05 的 `JUDGE_INPUT_KEYS`）是「主张 + 一条引文 + **那一个**锚点的原文」，
+  于是把两章结论**合并**成更大断言的反模式，主引文一个人扛不住，判定者会（正确地）判不充分
+  ——ADR-011 记录的 AntiPattern 100% 不充分就是这条路的终点。**这个「是否该让判定者看到全部
+  证据」的口径问题已经实测定夺**，见 [`ADR-022`](docs/adr/ADR-022-judge-vision-all-anchors.md)：
+  判定者现在看对象声明的全部锚点区间，判定对象也从「主引文」改为「锚点区间」（区间 ⊇ 引文，
+  因此对单锚点对象同样放宽）。副作用是**「证据必须点名」在判定环节失去约束力**，
+  代价已量化：2 条主张仅凭区间即被接受，其支撑落在生产者所引片段之外。
+  **合成层 §3 已随之对齐**（ADR-022 决策 7）：生产者过去被要求「把主张收窄到主锚点能承载的粒度」，
+  那是照着旧判定者的输入写的，判定者放宽后就成了一条**比判据更紧**的自我限制。对齐后实测
+  跨章占比 4/16 → 7/14、引用中位数 1 → 2、主张中位字数 83 → 95，而**主引文字数几乎没变**
+  （104.9 → 106.2）——放宽发生在主张一侧，不是靠拉长证据引文。
+- **跨章对象 id 是「位置序号」，不是内容身份。** `synthesizedIdFor(themeId, seq)` 把 id 派生为
+  `<前缀>-<主题>-<序号>`，所以同一个 `AP-SYNTH-T12-06` 在两批里是两条不同的反模式。
+  任何「同 id 的对象被改写了」式的读法都是错的——`pipeline/tools/compare-object-sets.mjs`
+  给出的对照里，**聚合可比、逐条不可比**。
+- **跨章综合的 raw 与判定产物用两个**不同的**身份命名**（ADR-022 决策 6）。
+  raw 只由生产者侧输入决定（主题集合 + 生产者提示词指纹 + 目录哈希 + 模型），回执与判定表再叠加
+  判据身份与 `PIPELINE_VERSION`。分开的理由是硬的：续跑只认 `prior.runId === 本次身份`，
+  把判据身份塞进那一个 id 就等于**每次改判据都要重买全部主题的原始响应**，与
+  `replayThemeFromRaw`「付过钱的产出不得因下游改动而重花一次」的设计意图相反。
+  装配器取判定表也改为**按身份匹配**（取不到才回退 mtime，并把 `identityMatch: false` 记进契约）。
 - **shell 视角的 `stat` 大小可能是错的（环境层，不是仓库缺陷）。** 实测有 7 个文件被
   `ls`/`stat` 报出比真实内容**多 4096 字节**的大小，`read` 工具因此按报出的大小分配缓冲、
   尾部被补零、判成 binary 而拒读。**内容从未损坏**：`git hash-object` 与工作区逐字节一致，
