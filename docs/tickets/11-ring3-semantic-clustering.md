@@ -13,7 +13,7 @@
 
 **原料规模（2026-10-12 回执口径，`book-07faf309c5a1`）：**对象 604（通过 593 / 拒绝 11）；逐文件 5–82 条；类型分布 Concept 265 / EngineeringRule 231 / AntiPattern 44 / Heuristic 31 / MentalModel 10 / DecisionModel 8 / Case 7 / Metric 5 / Playbook 3。
 
-**状态：**设计已拍板（[`ADR-024`](../adr/ADR-024-ring3-implementation-form.md)，2026-10-12）；未开工。
+**状态：**离线段已建成（2026-10-12，见文末构建记录）；**真实章级调用待启动**。
 
 ## 规格指针（真源，不在本卡复述）
 
@@ -61,3 +61,29 @@ grep -n "root-anchor" pipeline/build-skill.mjs | head -3
 # 单章规模（支撑输入预算的担忧）
 node -e 'const o=require("./pipeline/knowledge/chapter7.objects.json");const a=Array.isArray(o)?o:o.objects;console.log(a.length, JSON.stringify(o).length+"B")'
 ```
+
+## 构建记录（2026-10-12，离线段）
+
+### 建成的东西
+
+| 文件 | 作用 |
+|---|---|
+| `pipeline/tools/cluster-proposer.mjs`（新） | 提示词/解析/复用键/校核四件套/候选派生/跨章处置/诊断/落盘 |
+| `pipeline/propose-clusters.mjs`（新） | CLI：门禁过滤 → 逐章调用（可复用）→ partial 续跑 → 两份正式产物 |
+| `pipeline/build-skill.mjs`（改） | 新入口 `--cluster <skillId>`：按 `clusters.json` 的簇定义装配，复用装配管线与门禁一 |
+| `pipeline/tools/test/cluster-proposer.test.mjs`（新，24 用例） | 压缩/键/校核四件套/候选/处置/诊断，全离线（注入 chat 替身） |
+| `pipeline/tools/test/build-skill-cluster.test.mjs`（新，8 用例） | 环 4 簇入口端到端（临时仓库根 + 真实 chapter4.md 的锚点） |
+
+### 离线验证（实测）
+
+- `npm test` → **489 通过 / 0 失败**（2026-10-12；本卡新增 32 条）。
+- 真实仓库 dry-run：13 章、门禁通过 **593**、除外 **11**（与回执逐格一致）；
+  用户提示词 779–9,726 字符/章（合计约 74 KB）；**计划调用 13 次**。
+- 隔离（卡 09 的账本工具跑 dry-run）：1 份账本 / **608 条访问**；
+  `benchmark/` 内容访问 **0**、`skills/` 写入 **0**，`assertIsolation` 通过。
+
+### 尚未做（真实段）
+
+1. 13 次真实章级调用 → `clusters.json` + `skill-candidates.json` 落盘（含真实 `usage`）。
+2. 端到端：至少一个候选经 `--cluster` 装出 SKILL.md 过门禁一（或如实记录为什么不过）。
+3. 逐条验收核对 + README 状态终稿。

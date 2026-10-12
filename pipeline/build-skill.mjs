@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 /**
- * 环 4 装配 CLI（tracer bullet 第一版，ticket 10）。
+ * 环 4 装配 CLI（tracer bullet 第一版，ticket 10；簇入口见 ticket 11 / ADR-024）。
  *
  * 用法：
  *   node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 --slug <name> --title <标题> [--dry-run]
+ *   node pipeline/build-skill.mjs --cluster chapter4-s1 [--slug <覆盖>] [--title <覆盖>] [--dry-run]
+ *
+ * 两种入口的分工（ADR-024 决策 2）：
+ *   `--root-anchor`  手工挑一个文档子树（tracer bullet 的路径，保留作参照）；
+ *   `--cluster`      消费环 3 产出的簇定义（`pipeline/knowledge/clusters.json`），
+ *                    按**划分算法决定的**锚点集与对象集装配。slug 与 title 缺省取自候选。
  *
  * ## 副作用清单（本文件写什么，跑之前先说清）
  *
@@ -22,6 +28,9 @@
  * 只消费**最近一次门禁通过的**对象。判定依据是最新一份 `run-*.receipt.json` 的
  * `objectVerdicts[].status === 'pass'`。没有回执时本命令**拒绝装配**——
  * 「没有判定记录」不等于「都通过了」，把未判定的对象装进 skill 是把门禁一的结论静默作废。
+ *
+ * 簇入口的引用**不静默打折**：候选引用的锚点不在本章索引里、或对象不在对象文件里，
+ * 一律抛错停下——一条被悄悄丢掉的引用会让产出的 skill 看起来完整而实际缺证据。
  */
 
 import { createHash } from 'node:crypto'
@@ -42,6 +51,7 @@ import {
   unwrapObjectsFile,
 } from './tools/skill-builder.mjs'
 import { SKILL_REASON_CODES, verifySkill } from './tools/verify-skill.mjs'
+import { CLUSTERS_REL_PATH } from './tools/cluster-proposer.mjs'
 
 export const EXIT = Object.freeze({
   PASS: 0,
@@ -60,6 +70,7 @@ function parseArgs(argv) {
     title: null,
     source: null,
     receipt: null,
+    cluster: null,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -71,6 +82,7 @@ function parseArgs(argv) {
     if (a === '--dry-run') flags.dryRun = true
     else if (a === '--json') flags.json = true
     else if (a === '--root-anchor') (flags.rootAnchor = need(i, a)), (i += 1)
+    else if (a === '--cluster') (flags.cluster = need(i, a)), (i += 1)
     else if (a === '--slug') (flags.slug = need(i, a)), (i += 1)
     else if (a === '--title') (flags.title = need(i, a)), (i += 1)
     else if (a === '--source') (flags.source = need(i, a)), (i += 1)
@@ -180,6 +192,54 @@ export async function findLatestAntipatternVerdicts({ repoRoot, expectRunId = nu
   }
 }
 
+/**
+ * 从 `clusters.json` 里取一个候选的簇定义（ticket 11 / ADR-024 决策 2）。
+ *
+ * 簇定义取自**知识平面**的 `clusters.json`（而非 registry 里的候选书），
+ * 因为它是划分的原始记录；候选书是派生账，两者不一致时应先重跑聚类而不是将就。
+ * 引用不静默打折：候选没有任何锚点、或 skillId 不存在，都在这里抛错。
+ */
+export async function loadClusterCandidate(repoRoot, skillId) {
+  const abs = path.join(repoRoot, CLUSTERS_REL_PATH)
+  let doc
+  try {
+    doc = JSON.parse(await readFile(abs, 'utf8'))
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      throw new Error(`簇定义不存在：${CLUSTERS_REL_PATH}——先跑 pipeline/propose-clusters.mjs（环 3）。`)
+    }
+    throw err
+  }
+  const known = []
+  for (const ch of Array.isArray(doc.chapters) ? doc.chapters : []) {
+    for (const s of Array.isArray(ch.skills) ? ch.skills : []) {
+      if (s?.skillId) known.push(s.skillId)
+      if (s?.skillId !== skillId) continue
+      const units = (Array.isArray(ch.units) ? ch.units : []).filter((u) =>
+        (Array.isArray(s.unitIds) ? s.unitIds : []).includes(u.unitId),
+      )
+      const anchorIds = [...new Set(units.flatMap((u) => (Array.isArray(u.anchors) ? u.anchors : [])))]
+      const objectIds = [...new Set(units.flatMap((u) => (Array.isArray(u.objectIds) ? u.objectIds : [])))]
+      if (anchorIds.length === 0 || objectIds.length === 0) {
+        throw new Error(`候选 ${skillId} 没有锚点或对象——拒绝装配空簇（检查 clusters.json 的单元成员）。`)
+      }
+      return {
+        skillId,
+        fileKey: ch.fileKey,
+        name: typeof s.name === 'string' ? s.name : '',
+        trigger: typeof s.trigger === 'string' ? s.trigger : '',
+        rationale: typeof s.rationale === 'string' ? s.rationale : '',
+        units: Array.isArray(s.unitIds) ? s.unitIds : [],
+        anchorIds,
+        objectIds,
+      }
+    }
+  }
+  throw new Error(
+    `clusters.json 里没有 skillId=${skillId} 的候选。现有候选：${known.length ? known.join(', ') : '（无）'}`,
+  )
+}
+
 async function main(argv) {
   let flags
   try {
@@ -192,11 +252,24 @@ async function main(argv) {
   const rel = (p) => path.relative(repoRoot, p)
 
   try {
-    if (!flags.rootAnchor) throw new Error('--root-anchor 必填（形如 chapter4#h2-2）')
+    if (flags.cluster && flags.rootAnchor) {
+      throw new Error('--cluster 与 --root-anchor 互斥：簇模式按划分产物装配，不再手挑子树')
+    }
+    if (!flags.cluster && !flags.rootAnchor) {
+      throw new Error('--root-anchor 或 --cluster 必填（前者形如 chapter4#h2-2；后者是 clusters.json 里的 skillId）')
+    }
+
+    // 簇模式：slug/title 缺省取自候选（skillId 本身就是合法 slug；允许显式覆盖）。
+    let clusterDef = null
+    if (flags.cluster) {
+      clusterDef = await loadClusterCandidate(repoRoot, flags.cluster)
+      if (flags.slug === null) flags.slug = clusterDef.skillId
+      if (flags.title === null) flags.title = clusterDef.name || clusterDef.skillId
+    }
     assertSlug(flags.slug)
     if (!flags.title) throw new Error('--title 必填（SKILL.md 的 H1 标题）')
 
-    const chapterKey = String(flags.rootAnchor).split('#')[0]
+    const chapterKey = clusterDef ? clusterDef.fileKey : String(flags.rootAnchor).split('#')[0]
     const sourceRel = flags.source || path.join('sources', 'ai-agent-book-zh', 'book', `${chapterKey}.md`)
 
     // ── 读盘 ──────────────────────────────────────────────────────────────
@@ -259,8 +332,38 @@ async function main(argv) {
       [...apVerdictById.entries()].filter(([, v]) => v.status === 'pass').map(([id]) => id),
     )
 
-    const cluster = deriveCluster(index.anchors, flags.rootAnchor)
-    const inCluster = collectClusterObjects(allObjects, cluster.anchors)
+    let cluster
+    let inCluster
+    if (clusterDef) {
+      // 簇模式：锚点集与对象集都由划分产物给出，**逐条解析**，解析不到即停——
+      // 静默丢一条引用会让产物看起来完整而实际缺证据。
+      const byAnchor = new Map(index.anchors.map((a) => [a.anchor, a]))
+      const missingAnchors = clusterDef.anchorIds.filter((id) => !byAnchor.has(id))
+      if (missingAnchors.length > 0) {
+        throw new Error(
+          `候选 ${clusterDef.skillId} 引用了本章索引里不存在的锚点：${missingAnchors.join(', ')}` +
+            '——拒绝装配（先核对 clusters.json 与源文是否同一批输入）。',
+        )
+      }
+      cluster = {
+        rootAnchor: clusterDef.skillId,
+        title: clusterDef.name || clusterDef.skillId,
+        level: null,
+        anchors: clusterDef.anchorIds.map((id) => byAnchor.get(id)),
+      }
+      const want = new Set(clusterDef.objectIds)
+      inCluster = allObjects.filter((o) => want.has(o.id))
+      const missingObjects = clusterDef.objectIds.filter((id) => !inCluster.some((o) => o.id === id))
+      if (missingObjects.length > 0) {
+        throw new Error(
+          `候选 ${clusterDef.skillId} 引用的对象不在 ${rel(objectsPath)} 里：${missingObjects.slice(0, 5).join(', ')}` +
+            (missingObjects.length > 5 ? ` 等共 ${missingObjects.length} 个` : ''),
+        )
+      }
+    } else {
+      cluster = deriveCluster(index.anchors, flags.rootAnchor)
+      inCluster = collectClusterObjects(allObjects, cluster.anchors)
+    }
     const excluded = inCluster.filter((o) => !passSet.has(o.id))
     const kept = inCluster.filter((o) => passSet.has(o.id))
     const crossChapter = collectCrossChapterAntipatterns(allAntipatterns, cluster.anchors)
@@ -304,6 +407,7 @@ async function main(argv) {
       slug: flags.slug,
       skillTitle: flags.title,
       anchorIndexes,
+      ...(clusterDef ? { skillId: clusterDef.skillId } : {}),
     })
 
     const verdict = await verifySkill({
@@ -358,6 +462,16 @@ async function main(argv) {
         antipatternObjectsRunId: antipatternsRunId,
         gateReceiptFile: rel(found.file),
         gateReceiptRunId: found.receipt.runId,
+        // 簇来源（ticket 11）：「按划分装配」与「按子树装配」是两条来源路径，
+        // 事后核对不能靠猜——两种入口在 provenance 里必须可辨。
+        ...(clusterDef
+          ? {
+              clusterSource: 'clusters.json',
+              clusterSkillId: clusterDef.skillId,
+              clusterUnits: clusterDef.units,
+              clustersFile: CLUSTERS_REL_PATH,
+            }
+          : { clusterSource: 'root-anchor', clusterRootAnchor: cluster.rootAnchor }),
       },
     }
 
@@ -367,6 +481,7 @@ async function main(argv) {
 
     const summary = {
       slug: flags.slug,
+      clusterSource: clusterDef ? 'clusters.json' : 'root-anchor',
       rootAnchor: cluster.rootAnchor,
       clusterAnchors: cluster.anchors.length,
       clusterTitle: cluster.title,

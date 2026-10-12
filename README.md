@@ -3,8 +3,10 @@
 Any content → executable Agent Skills. MVP pipeline.
 
 **当前状态**：环 1–2 已跑通（源文件 → 锚点索引 → 知识对象 → 机器验证，含独立判定者）。
+**环 3 机制已建成**（章内语义聚类 + 技能候选 + 环 4 按簇装配入口；离线全绿，**真实聚类调用待跑**，见
+[`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。
 **环 4 已实现（确定性装配 + 门禁一 skill 侧），产物已过门禁一并发布**（见下）。
-环 3（语义聚类）、环 5（门禁二/三）尚未构建。
+环 5（门禁二/三）尚未构建。
 
 > ### 盘上已有 1 个已发布的 skill（此前为 0）
 >
@@ -66,7 +68,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 457 项，零网络、零凭据（实测 2026-10-12）
+npm test                                    # 489 项，零网络、零凭据（实测 2026-10-12）
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -75,9 +77,14 @@ node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md \
   --layer2 deepseek --llm-model deepseek-v4-pro --llm-base-url https://api.deepseek.com
 
+# 环 3：语义聚类（逐章一次调用），产出内容单元与技能候选（卡 11）
+node pipeline/propose-clusters.mjs --dry-run          # 只看规模与调用预算，零调用、零写盘
+node pipeline/propose-clusters.mjs --model deepseek-v4-pro --base-url https://api.deepseek.com
+
 # 环 4：把一批对象确定性装配成一个 SKILL.md，并跑门禁一（零模型调用）
 node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 \
   --slug chapter4-tool-design-principles --title "工具设计的通用原则" --dry-run
+node pipeline/build-skill.mjs --cluster chapter4-s1 --dry-run   # 按环 3 的簇定义装配（ADR-024）
 
 # 全书：13 个源文件逐个跑，产出一份聚合回执 + 污染隔离检查（卡 09）
 node pipeline/run-book.mjs --layer2 deepseek --concurrency 4 \
