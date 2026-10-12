@@ -240,3 +240,45 @@ node pipeline/run-book.mjs --verify-isolation pipeline/registry/book-07faf309c5a
 - 四个解析器改用 `model-json.mjs`（layer2/judge/theme/synth）
 - 文档更正（ADR-023、本卡、handoff）
 
+### 代码审查与修复批（2026-10-12 晚，提交 `f4a1034`）
+
+对 `d15b326` 做了两轴代码审查（Standards / Spec，各自独立子代理）。发现与处置：
+
+| 发现 | 处置 |
+|---|---|
+| `collectAntipatterns` 把跨章合成产物 `antipatterns.objects.json` 也算进「章内」统计——同一批对象被报两次，`fromLayer2.crossChapterIds` 全是一串 `AP-SYNTH-*`。**首跑「章内 28」与二次跑「章内 58」均因此虚高** | 排除该文件、单独成块；真值为 **14（首跑）/ 44（二次跑），跨章恒为 0**；`full-book-run.test.mjs` 新增夹具用例钉住这条边界 |
+| 报告行按 `judge.enabled`（旧义＝「每个文件都跑了判定者」）印「未启用」，混合回放时把 560 次调用印成「未启用」，回执内 `enabled:false` 与 `calls:560` 并存 | `totals.judge` 拆为 `enabled`（至少一个文件跑了判定者）/ `allFilesJudged`（全部）/ `filesJudged`（计数）；报告行判据改为 `calls > 0`（`judgeSummaryLine`，有测试）；**回执升 `book-receipt/v2`**（旧 v1 口径已写进 README「已知约束」） |
+| `bookRunId` 的 `gate:` 段按「透传里有没有 `--no-judge`」判：`--layer2 stub` 时会写出 `judgeApplied:true` + `gate:full`，而实际根本没有、也不可能有判定者调用（违反 ADR-014「实际值」约束） | 抽 `judgeAppliedFor()`：`stub` 与 `--no-judge` 一律 `deterministic-only`；纯回放运行的残留差异（预测 full、实际 0 次）由 `totals.judge.*` 的实际值承担——口径关系写进函数注释，不假装身份能覆盖它 |
+| `model-json.test.mjs` 的 6 例回归锚点读 registry 里**未跟踪**的 `run-failed-*`——干净检出上 `assert.ok(rawFiles.length >= 6)` 必失败（回归锚点不可复现） | 复制为受控 fixtures（`pipeline/tools/test/fixtures/first-run-layer2-failures/`，附 `MANIFEST.json` 逐文件 sha256），测试改读 fixtures 并校验哈希 |
+| `full-book-run.test.mjs` 一条恒真断言（`iso.ledgerFiles ?? iso.ledger.ledgerFiles` 自我相等）+ `/4 份账本/` 未锚定（实际匹配的是「14 份账本」） | 改为 `ledgerFiles === expectedProcesses`；断言锚定 `：14 份账本`，注释同步改为 13 子进程 + 1 编排 |
+| 账本 `schemaVersion` 在 `fs-ledger.cjs` 与 `fs-ledger.mjs` 各写一份，且 `loadLedger` 不校验读入版本（漂移无检查会发现） | 单一真源 `pipeline/tools/fs-ledger-schema.cjs`；`loadLedger` 校验版本，不认识即抛（不按「没记录」处理） |
+| 死代码与失真注释：`patchOpen` 两个分支体相同、`EXPECTED_READ_ROOTS` 全仓无消费者、`model-json` 默认导出无人引用、`fs-ledger.cjs` 注释引用不存在的测试文件；`antipattern-verdict-report` 对同一 argv 双调 `parseArgs`、裸 `4`/`0` 退出码 | 逐一清理（删除 / 改 `EXIT` 词表 / 注释指向真实用例 `full-book-run.test.mjs` 的「仪器能失败」负向对照） |
+
+**修复批不改提示词、不改 `PIPELINE_VERSION`、不动对象产出**——因此身份不变：修复后以
+**全回放**方式第三次运行（13 个文件各 0 秒复用，只有聚合与报告重算）。
+
+### 第三次运行（2026-10-12 20:08，全回放）
+
+- `npm test` → **457 通过 / 0 失败**（2026-10-12，含修复批新增 5 用例）
+- `--verify-isolation` → 通过：**14 份账本 / 2048 条访问**；benchmark 内容访问 0；skills 写入 0
+- 新回执（`book-receipt/v2`，身份仍是 `book-07faf309c5a1`，旧回执自动归档）：
+  `judge: {enabled: true, allFilesJudged: false, filesJudged: 12, calls: 560}`；
+  报告行 `判定者 调用 560 次（12/13 个文件过了判定者）`——不再出现「未启用 + 调用」并存
+- 反模式：**章内 44 条（跨章 0）**；跨章综合 14 条（跨章 7，50%）
+
+### 隔离验证·三次运行汇总
+
+| 运行 | 账本 / 访问记录 | benchmark 内容访问 | skills 写入 |
+|---|---|---|---|
+| 首跑（2026-10-11） | 14 / 5642 | 0 | 0 |
+| 二次（2026-10-12 19:07） | 14 / 3859 | 0 | 0 |
+| 三次（2026-10-12 20:08，全回放） | 14 / 2048 | 0 | 0 |
+
+### 追加未决（修复批带出）
+
+1. **全书身份的 gate 段是配置层面的**：`stub` 与 `--no-judge` 已能准确判定，纯回放运行的
+   「预测 full、实际 0 调用」差异由 `totals.judge.*` 的实际值承担（`judgeAppliedFor` 注释写明）。
+   若将来要求身份覆盖「实际」，需要像卡 06 的 raw/判定身份拆分那样再拆一层——本轮不做。
+2. **`totals.anchors` 伴随字段**与**失败花费进聚合回执**（首跑未决 2/3）仍开着，
+   当前两轮无失败文件、该字段值正确，宜与下一次出现失败时的需求一起处理。
+
