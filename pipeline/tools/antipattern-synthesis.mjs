@@ -50,6 +50,7 @@ import { createHash } from 'node:crypto'
 import { OBJECT_TYPES } from './object-contract.mjs'
 import { chatCompletion } from './llm-client.mjs'
 import { normalizeSourceLines } from './anchor-index.mjs'
+import { extractJsonPayload } from './model-json.mjs'
 
 export class SynthesisError extends Error {
   constructor(message, { rawText = null } = {}) {
@@ -189,25 +190,12 @@ export function buildSynthUserPrompt({ theme, sources }) {
   ].join('\n')
 }
 
-/** 从响应文本里取出 JSON（去壳，不修补）。 */
+/** 从响应文本里取出 JSON。解析共用 `model-json.mjs`（不做语义修补，见该模块）。 */
 export function parseSynthPayload(text) {
   const raw = String(text ?? '')
-  const fenced = /```(?:json)?\s*([\s\S]*?)```/.exec(raw)
-  const body = (fenced ? fenced[1] : raw).trim()
-  try {
-    return JSON.parse(body)
-  } catch (err) {
-    const start = body.indexOf('{')
-    const end = body.lastIndexOf('}')
-    if (start >= 0 && end > start) {
-      try {
-        return JSON.parse(body.slice(start, end + 1))
-      } catch {
-        /* 落到下面的报错 */
-      }
-    }
-    throw new SynthesisError(`综合响应不是可解析的 JSON：${err.message}`, { rawText: raw })
-  }
+  const result = extractJsonPayload(raw)
+  if (result.ok) return result.value
+  throw new SynthesisError(`综合响应不是可解析的 JSON：${result.diagnostic}`, { rawText: raw })
 }
 
 /** 从解析结果里取对象列表。形状不符即报错，不静默当作空列表。 */

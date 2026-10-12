@@ -30,6 +30,7 @@ import {
   objectIdFor,
 } from './object-contract.mjs'
 import { chatCompletion, createUsageLedger } from './llm-client.mjs'
+import { extractJsonPayload } from './model-json.mjs'
 
 /** 第 2 层自身失败（响应不可解析等）。属「工程问题」，由调用方判为运行失败。 */
 export class Layer2Error extends Error {
@@ -301,26 +302,25 @@ export function buildUserPrompt({ anchor, title, lineStart, lineEnd, anchorText,
   ].join('\n')
 }
 
-/** 从响应文本里取出 JSON。模型偶尔会套 markdown 围栏，这里只是去壳，不做语义修补。 */
+/**
+ * 从响应文本里取出 JSON。
+ *
+ * 实现搬到了 `model-json.mjs`——**四个解析器（第 2 层 / 判定者 / 主题提案 / 跨章综合）
+ * 曾各自抄了一份同样的、未锚定的围栏正则**，2026-10-11 全书首跑的 6 例失败全部出在这里：
+ * 响应本来合法，是解析器把字符串**内部**的代码围栏当成了外层壳。修一次四处都修好，
+ * 见该模块的注释。
+ *
+ * 本函数只做「把裸解析结果包成 `Layer2Error`」这一件本层特有的事——
+ * 错误类型不能统一，`run.mjs` 靠它把失败归到 `layer2-response` 这个 kind。
+ *
+ * @throws {Layer2Error} 三种形态都取不出合法 JSON 时，附上原文（`rawText`）供事后归因
+ */
 export function parseModelPayload(text) {
-  const raw = String(text ?? '')
-  const fenced = /```(?:json)?\s*([\s\S]*?)```/.exec(raw)
-  const body = (fenced ? fenced[1] : raw).trim()
-  try {
-    return JSON.parse(body)
-  } catch (err) {
-    // 退一步：截取第一个 { 到最后一个 }，容忍前后夹带的解释文字。
-    const start = body.indexOf('{')
-    const end = body.lastIndexOf('}')
-    if (start >= 0 && end > start) {
-      try {
-        return JSON.parse(body.slice(start, end + 1))
-      } catch {
-        /* 落到下面的报错 */
-      }
-    }
-    throw new Layer2Error(`第 2 层响应不是可解析的 JSON：${err.message}`, { rawText: raw })
-  }
+  const result = extractJsonPayload(text)
+  if (result.ok) return result.value
+  throw new Layer2Error(`第 2 层响应不是可解析的 JSON：${result.diagnostic}`, {
+    rawText: String(text ?? ''),
+  })
 }
 
 /** 从解析结果里取对象列表。形状不符即报错，不静默当作空列表。 */
@@ -473,7 +473,6 @@ export async function extractAnchor({
     })
     const payload = parseModelPayload(res.text)
     const records = extractObjectList(payload)
-
     const before = objects.length
     for (let i = 0; i < records.length; i += 1) {
       const { obj, ignored } = materializeObject(records[i], {

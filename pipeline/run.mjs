@@ -8,11 +8,17 @@
  * 一条命令覆盖第 1（确定性锚点索引）/ 2（综合）/ 3（机器验证）层，
  * 产出「知识对象 + 验证回执」两组产物，并用退出码承载判定结果。
  *
- * 退出码（详见 docs/adr/ADR-009-single-seam-cli-and-exit-codes.md）：
+ * 退出码（口径见 docs/specs/01-pipeline-spec.md 的 D8 一节）：
  *   0  全部对象通过第 3 层
  *   3  流水线成功执行，但有对象被拒（**内容问题**：需要人看回执）
  *   4  运行失败（**工程问题**：源文件不存在、路径守卫拒绝、锚点索引产不出、第 2 层调用失败、
  *      冻结产物已过期、无法确认冻结产物的产出者）
+ *
+ * ⚠ 引用更正（2026-10-11）：本行原文引的是 `docs/adr/ADR-009-single-seam-cli-and-exit-codes.md`，
+ *    该文件**不存在**（`ls docs/adr/` 下 ADR-009 的实际文件是
+ *    `ADR-009-layer2-reasoning-tier-deferred.md`，主题是第 2 层推理档位的推迟决定）。
+ *    两类非零语义的定义落点是规格的 D8 一节——
+ *    复核命令：`grep -n "退出码" docs/specs/01-pipeline-spec.md` → `289:### D8 · 退出码语义`。
  *
  * 两类非零码必须可区分：混成一个会让 CI 无法区分「这本书抽得不好」与「脚本坏了」。
  *
@@ -621,6 +627,40 @@ export function buildJudgeOverrides(input) {
   return overridesFrom(JUDGE_OVERRIDE_KEYS, input)
 }
 
+/**
+ * CLI 开关表 · **唯一真源**。
+ *
+ * 存在的理由与 `PRODUCER_OVERRIDE_KEYS` 同源：这份清单原先散在 `parseArgs` 的
+ * 一长串 `else if` 里，于是任何**第二个**需要认识这些开关的程序（`pipeline/run-book.mjs`
+ * 要把它们原样透传给每个子进程）都只能照着抄一遍——抄出来的那份会在新增开关时静默过期，
+ * 而「透传少了一个开关」的表现是「参数被接受但什么都没发生」，正是 ticket 05 踩过的那个坑。
+ *
+ * `kind: 'bool'` 的项自带取值（`--no-resume` 把 `resume` 置 false）；
+ * `kind: 'value'` 的项吃下一个参数，`parse` 缺省是原样字符串。
+ */
+export const CLI_FLAGS = Object.freeze({
+  '--json': { key: 'json', kind: 'bool', value: true },
+  '--rerun': { key: 'rerun', kind: 'bool', value: true },
+  '--no-resume': { key: 'resume', kind: 'bool', value: false },
+  '--judge-all': { key: 'judgeAll', kind: 'bool', value: true },
+  '--judge': { key: 'judge', kind: 'bool', value: true },
+  '--no-judge': { key: 'noJudge', kind: 'bool', value: true },
+  '--repo-root': { key: 'repoRoot', kind: 'value', parse: (v) => path.resolve(v) },
+  '--objects-fixture': { key: 'objectsFixture', kind: 'value' },
+  '--layer2': { key: 'layer2', kind: 'value' },
+  '--llm-model': { key: 'llmModel', kind: 'value' },
+  '--llm-base-url': { key: 'llmBaseUrl', kind: 'value' },
+  '--llm-provider': { key: 'llmProvider', kind: 'value' },
+  '--llm-reasoning-effort': { key: 'llmReasoningEffort', kind: 'value' },
+  '--judge-model': { key: 'judgeModel', kind: 'value' },
+  '--judge-base-url': { key: 'judgeBaseUrl', kind: 'value' },
+  '--judge-provider': { key: 'judgeProvider', kind: 'value' },
+  '--judge-reasoning-effort': { key: 'judgeReasoningEffort', kind: 'value' },
+  '--max-objects-per-anchor': { key: 'maxObjectsPerAnchor', kind: 'value', parse: Number },
+  '--max-tokens': { key: 'maxTokens', kind: 'value', parse: Number },
+  '--max-anchor-bytes': { key: 'maxAnchorBytes', kind: 'value', parse: Number },
+})
+
 export function parseArgs(argv) {
   const args = argv.slice(2)
   const flags = {
@@ -653,28 +693,19 @@ export function parseArgs(argv) {
   }
   for (let i = 0; i < args.length; i += 1) {
     const a = args[i]
-    if (a === '--json') flags.json = true
-    else if (a === '--rerun') flags.rerun = true
-    else if (a === '--no-resume') flags.resume = false
-    else if (a === '--repo-root') flags.repoRoot = path.resolve(need(i, a)), (i += 1)
-    else if (a === '--objects-fixture') flags.objectsFixture = need(i, a), (i += 1)
-    else if (a === '--layer2') flags.layer2 = need(i, a), (i += 1)
-    else if (a === '--llm-model') flags.llmModel = need(i, a), (i += 1)
-    else if (a === '--llm-base-url') flags.llmBaseUrl = need(i, a), (i += 1)
-    else if (a === '--llm-provider') flags.llmProvider = need(i, a), (i += 1)
-    else if (a === '--llm-reasoning-effort') flags.llmReasoningEffort = need(i, a), (i += 1)
-    else if (a === '--judge-all') flags.judgeAll = true
-    else if (a === '--judge') flags.judge = true
-    else if (a === '--no-judge') flags.noJudge = true
-    else if (a === '--judge-model') flags.judgeModel = need(i, a), (i += 1)
-    else if (a === '--judge-base-url') flags.judgeBaseUrl = need(i, a), (i += 1)
-    else if (a === '--judge-provider') flags.judgeProvider = need(i, a), (i += 1)
-    else if (a === '--judge-reasoning-effort') flags.judgeReasoningEffort = need(i, a), (i += 1)
-    else if (a === '--max-objects-per-anchor') flags.maxObjectsPerAnchor = Number(need(i, a)), (i += 1)
-    else if (a === '--max-tokens') flags.maxTokens = Number(need(i, a)), (i += 1)
-    else if (a === '--max-anchor-bytes') flags.maxAnchorBytes = Number(need(i, a)), (i += 1)
-    else if (a.startsWith('--')) throw new SourcePathError(`未知参数：${a}`)
-    else positional.push(a)
+    const spec = CLI_FLAGS[a]
+    if (spec === undefined) {
+      if (a.startsWith('--')) throw new SourcePathError(`未知参数：${a}`)
+      positional.push(a)
+      continue
+    }
+    if (spec.kind === 'bool') {
+      flags[spec.key] = spec.value
+      continue
+    }
+    const raw = need(i, a)
+    i += 1
+    flags[spec.key] = spec.parse ? spec.parse(raw) : raw
   }
   return { flags, positional }
 }

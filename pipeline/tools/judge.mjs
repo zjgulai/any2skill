@@ -33,6 +33,7 @@
 import { chatCompletion, createUsageLedger, redact, urlHost } from './llm-client.mjs'
 import { CLAIM_FIELDS, OBJECT_TYPES } from './object-contract.mjs'
 import { sha256Hex } from './anchor-index.mjs'
+import { extractJsonPayload } from './model-json.mjs'
 
 /** 提示词版本。进指纹；改提示词必须改它，否则「换了提示词却分不出产出」就成了隐形行为。 */
 export const JUDGE_PROMPT_VERSION = 'judge-prompt/v2'
@@ -181,28 +182,15 @@ export function buildJudgePrompts(input) {
 /** 宽容解析：容忍代码块包裹与前后夹带的解释文字，但**不**容忍判定值不在封闭集合内。 */
 export function parseJudgeVerdict(text) {
   const raw = String(text ?? '')
-  const fenced = /```(?:json)?\s*([\s\S]*?)```/.exec(raw)
-  const body = (fenced ? fenced[1] : raw).trim()
-
-  let payload = null
-  const attempts = [body]
-  const start = body.indexOf('{')
-  const end = body.lastIndexOf('}')
-  if (start >= 0 && end > start) attempts.push(body.slice(start, end + 1))
-
-  let lastErr = null
-  for (const a of attempts) {
-    try {
-      payload = JSON.parse(a)
-      break
-    } catch (err) {
-      lastErr = err
-    }
-  }
+  // 解析共用 `model-json.mjs`：判定者的输入是**锚点原文**，含代码块的概率与第 2 层同样高，
+  // 而旧的那份未锚定围栏正则在这里会把「不该判错」的响应判成解析失败（ADR-023）。
+  const result = extractJsonPayload(raw)
+  const payload = result.ok ? result.value : null
   if (payload === null || typeof payload !== 'object' || Array.isArray(payload)) {
-    throw new JudgeError(`判定者响应不是可解析的 JSON 对象：${lastErr ? lastErr.message : '未找到 JSON'}`, {
-      rawText: raw,
-    })
+    throw new JudgeError(
+      `判定者响应不是可解析的 JSON 对象：${result.ok ? '顶层不是对象' : result.diagnostic}`,
+      { rawText: raw },
+    )
   }
 
   const verdict = payload.verdict

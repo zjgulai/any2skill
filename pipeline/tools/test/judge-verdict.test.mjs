@@ -387,6 +387,21 @@ describe('05 · 判定者响应的契约与失败归类', () => {
     assert.throws(() => parseJudgeVerdict('[1,2,3]'), JudgeError)
   })
 
+  // 回归（ADR-023）：判定者的输入**就是锚点原文**，含代码块的概率与第 2 层同样高。
+  // 旧解析器的未锚定围栏正则会命中字符串**内部**的代码围栏，把一个本该正常裁决的
+  // 响应判成「解析失败」——而解析失败与真判否在回执里是两种东西，人工复核时却同样
+  // 容易被跳过，所以这个方向必须钉住。
+  it('reason 里含代码围栏时不得被剥壳剥坏（判定者视野是锚点原文，含代码块很常见）', () => {
+    const raw = JSON.stringify({
+      verdict: 'supported',
+      reason: '引文确实支撑主张：\n\n```text\n文件原始字节 → 工具返回 → 模型上下文\n```\n\n以上链路与主张一致。',
+    })
+    const v = parseJudgeVerdict(raw)
+    assert.equal(v.verdict, 'supported')
+    assert.ok(v.reason.includes('```'), '代码围栏必须原样保留')
+    assert.ok(v.reason.includes('\n'), '换行必须原样保留')
+  })
+
   it('判定者判据的指纹随提示词版本变化（改了判据必须能看出来）', () => {
     assert.equal(JUDGE_PROMPT_VERSION, 'judge-prompt/v2')
     assert.equal(judgePromptFingerprint(), judgePromptFingerprint(), '同一版本必须稳定')

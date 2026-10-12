@@ -66,7 +66,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 403 项，零网络、零凭据
+npm test                                    # 430 项，零网络、零凭据
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -78,6 +78,12 @@ node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md \
 # 环 4：把一批对象确定性装配成一个 SKILL.md，并跑门禁一（零模型调用）
 node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 \
   --slug chapter4-tool-design-principles --title "工具设计的通用原则" --dry-run
+
+# 全书：13 个源文件逐个跑，产出一份聚合回执 + 污染隔离检查（卡 09）
+node pipeline/run-book.mjs --layer2 deepseek --concurrency 4 \
+  --llm-model deepseek-v4-pro --llm-base-url https://api.deepseek.com \
+  --judge-model deepseek-v4-pro --judge-base-url https://api.deepseek.com
+node pipeline/run-book.mjs --layer2 stub            # 替身路径，零调用、离线可复跑
 ```
 
 > **⚠ 漏掉 `--layer2 deepseek` 会静默覆盖真实产物。** `--layer2` 缺省是 `stub`，而**替身路径不检查已有产出**——
@@ -106,6 +112,33 @@ node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 \
 
 退出码：`0` 全部通过；`3` 有对象被拒（流水线本身成功执行）；`4` 运行失败。
 `3` 与 `4` 必须可区分——前者是内容问题，后者是工程问题。
+
+### 全书运行（`run-book`，卡 09）
+
+把一个目录下的全部源文件跑一遍，产出一份**聚合回执**（`book-receipt/v1`），并机械地证明
+链路全程没读过盲测基准目录。
+
+| 开关 | 作用 |
+|---|---|
+| `--concurrency <1..8>` | 文件级并发。上限 8 不是性能调优，是**别把自己打成限流** |
+| `--layer2 stub\|deepseek` | 同 `run.mjs`；`stub` 为零调用路径 |
+| `--dry-run` | 只枚举与打印，不跑 |
+| `--json` | 聚合回执打到 stdout |
+| `--repo-root <dir>` | 仓库根（用于无歧义地解析源目录与账本目录） |
+| `--no-ledger` | 关掉访问账本。仍可运行，但回执写明账本缺席，`--verify-isolation` 会据此拒绝出结论 |
+| `--from <book-receipt.json> [--file <key>]` | 不重跑，只从既有聚合回执出报表 |
+| `--verify-isolation <book-receipt.json>` | 只复跑隔离检查，不重跑任何提取 |
+
+`run.mjs` 的生产者/判定者开关可原样透传。
+
+**隔离是落在代码里的，不靠使用者的纪律。** `run-book.mjs` 默认把自己用
+`--require pipeline/tools/fs-ledger.cjs` 重新拉起（「账本自举」），并给每个子进程注入
+`DSH_FS_LEDGER` 指向本文件账本；跑完再由 `--verify-isolation` 逐份账本断言
+`benchmark/` 内**内容**访问为 0（只问路径的 `realpath`/`stat` 调用单列，不计入）与 `skills/` 写入为 0。
+
+**单个文件失败不会中止整本书。** 某文件退出码为 `4` 时，其余文件照跑，聚合回执里逐文件记退出码，
+顶层退出码取最坏值（见 `run-book.mjs` 的收敛规则）。第 2 层已完成的锚点会落 `<file>.layer2-raw.partial.json`，
+**下一次运行自动从该处续跑**——失败的代价限于当次在飞的那个锚点。
 
 ## 第 3 层的理由码（封闭词表）
 
@@ -375,3 +408,17 @@ node pipeline/synthesize-antipatterns.mjs --themes T02,T12 \
   输出额度，额度卡在推理上时的表象是 JSON 未闭合。综合模块现在检测 `finish_reason=length`
   并把它报成**预算问题**（附原始响应，可从 partial 文件取回、无需重新付费）。
   实测：T12（6 章 / 39 KB 输入）在 16000 额度下被截断。
+- **「响应不是 JSON」有两种成因，错误串长得一样，必须靠原文区分。** 2026-10-11 全书首跑
+  6/13 个文件退出码 4，报错全是 `Unexpected token 'x', "…"`，一度被归因为「模型在字符串里
+  写了字面换行」。**那个归因是错的**：6 份原始响应经 `JSON.parse` 全部合法——是解析器把它们
+  切坏了。旧实现的围栏正则是**未锚定**的 `/```(?:json)?\s*([\s\S]*?)```/`，而技术书稿里几乎每个
+  锚点都含代码块，于是 JSON 字符串**内部**必然出现一对 ```` ``` ````；这个正则从响应头部一路匹配到
+  字符串内那个围栏的结束符，把一大段中间内容当成「围栏壳」剥掉，剩下的残片自然不是 JSON
+  （`Unexpected token 'b', "bash\ngit "` 里的 `'b'` 就是被切剩的 `bash` 首字母）。
+  同一份正则当时**抄在四个解析器里**（第 2 层 / 判定者 / 主题提案 / 跨章综合），因此修复方式是
+  提取 `pipeline/tools/model-json.mjs` 为唯一实现：先试**整份原样**，再试**锚定**围栏，最后才
+  退到首 `{` → 末 `}`。判定者那一处最危险——它的输入就是锚点原文，含代码块的概率与第 2 层
+  同样高，一个本该裁决为「支撑」的响应会被判成「解析失败」，而两者在人工复核时同样容易被跳过。
+  **不做语义修补**的立场不变：真坏的 JSON（字符串里真有裸换行）仍然被拒，
+  `pipeline/tools/test/model-json.test.mjs` 两边都钉住了。见
+  [`ADR-023`](docs/adr/ADR-023-unanchored-fence-regex.md)。

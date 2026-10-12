@@ -616,7 +616,45 @@ describe('04 · 第 2 层解析与对象实体化', () => {
     assert.deepEqual(parseModelPayload('[{"objectType":"Concept"}]'), [{ objectType: 'Concept' }])
   })
 
-  it('响应不可解析时报错并保留原文（否则「模型到底回了什么」永久丢失）', () => {
+  // 回归：2026-10-11 全书首跑 6/13 文件退出码 4，根因不是模型输出坏，
+  // 而是旧解析器把**本来合法的 JSON** 切坏了——它先在整份响应上跑一个**未锚定**的
+  // 围栏正则，于是命中字符串值**内部**的代码围栏，把一大段中间内容当「围栏壳」剥掉。
+  // 每个样本都取自 `pipeline/registry/run-failed-*.layer2-raw.json` 的真实原文。
+  it('**合法 JSON 内字符串含代码围栏时，不得被剥壳剥坏**（首跑 6 例的真实形态）', () => {
+    const cases = [
+      // introduction：evidenceQuote 里含 ```bash 代码块
+      '{"objects": [{"objectType": "Concept", "evidenceQuote": "获取全部配套代码：\\n\\n```bash\\ngit clone https://example.com/repo.git\\ncd repo\\n```\\n\\n以上是全部步骤。"}]}',
+      // chapter2：```text 代码块
+      '{"objects": [{"objectType": "Concept", "evidenceQuote": "比如一个系统提示词同时用了两者：\\n\\n```text\\n# 工具使用规范\\n\\n## 文件操作\\n</file_operation>\\n```\\n\\n这样组织。"}]}',
+      // chapter6：```text 且是字符串里**唯一**的一对围栏（旧正则从响应头切到它）
+      '{"objects": [{"objectType": "Concept", "evidenceQuote": "世界模型至少要能编码当前状态：\\n\\n```text\\n桌面状态 + click/type/scroll/wait ──> 下一状态的表示\\n```\\n\\n这样 Agent 就能比较后果。"}]}',
+      // chapter7：```text
+      '{"objects": [{"objectType": "EngineeringRule", "evidenceQuote": "沿以下链路寻找首个差异：\\n\\n```text\\n文件原始字节 → 工具返回 → Harness 序列化 → 模型上下文\\n→ 模型 token 输出 → 解码字符串 → JSON 解析\\n```\\n\\n最小化评估探针。"}]}',
+    ]
+    for (const raw of cases) {
+      const parsed = parseModelPayload(raw)
+      assert.equal(parsed.objects.length, 1, `应解析出 1 个对象：${raw.slice(0, 60)}…`)
+      // 关键断言：引文**逐字保留**了代码块，没有被剥壳吃掉中间那段。
+      assert.ok(
+        parsed.objects[0].evidenceQuote.includes('```'),
+        '引文里的代码围栏必须原样保留',
+      )
+      assert.ok(
+        parsed.objects[0].evidenceQuote.includes('\n'),
+        '引文里的换行必须原样保留（JSON.parse 后已是真实换行）',
+      )
+    }
+  })
+
+  it('整份被围栏包裹时才剥壳；围栏在字符串内部时不剥', () => {
+    // 包裹整份：剥壳
+    assert.deepEqual(parseModelPayload('```json\n{"objects":[]}\n```'), { objects: [] })
+    // 围栏在字符串内部：不剥壳，按原样解析
+    const inner = '{"objects":[{"objectType":"Concept","evidenceQuote":"```bash\\ngit x\\n```"}]}'
+    assert.equal(parseModelPayload(inner).objects[0].evidenceQuote, '```bash\ngit x\n```')
+  })
+
+  it('三种形态都取不出 JSON 时才报错，且报的是**首次原样尝试**的诊断', () => {
     try {
       parseModelPayload('这不是 JSON')
       assert.fail('应当抛错')

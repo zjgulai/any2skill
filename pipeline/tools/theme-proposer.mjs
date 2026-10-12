@@ -35,6 +35,7 @@ import { createHash } from 'node:crypto'
 
 import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
 import { chatCompletion, createUsageLedger } from './llm-client.mjs'
+import { extractJsonPayload } from './model-json.mjs'
 
 export const THEME_MANIFEST_SCHEMA_VERSION = 'themes/v1'
 export const THEMES_REL_PATH = path.join('pipeline', 'knowledge', 'themes.json')
@@ -144,25 +145,12 @@ export function proposalPromptFingerprint() {
   )}`
 }
 
-/** 从响应文本里取出 JSON 对象。去壳，不做语义修补（与第 2 层同一策略）。 */
+/** 从响应文本里取出 JSON 对象。解析共用 `model-json.mjs`（不做语义修补，见该模块）。 */
 export function parseThemeProposal(text) {
   const raw = String(text ?? '')
-  const fenced = /```(?:json)?\s*([\s\S]*?)```/.exec(raw)
-  const body = (fenced ? fenced[1] : raw).trim()
-  try {
-    return JSON.parse(body)
-  } catch (err) {
-    const start = body.indexOf('{')
-    const end = body.lastIndexOf('}')
-    if (start >= 0 && end > start) {
-      try {
-        return JSON.parse(body.slice(start, end + 1))
-      } catch {
-        /* 落到下面的报错 */
-      }
-    }
-    throw new ThemeProposalError(`主题提案响应不是可解析的 JSON：${err.message}`, { rawText: raw })
-  }
+  const result = extractJsonPayload(raw)
+  if (result.ok) return result.value
+  throw new ThemeProposalError(`主题提案响应不是可解析的 JSON：${result.diagnostic}`, { rawText: raw })
 }
 
 /**
