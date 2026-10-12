@@ -26,7 +26,8 @@ import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, resolveRealPath } from './anchor-index.mjs'
+import { EXIT } from '../run.mjs'
 
 const REGISTRY_REL = path.join('pipeline', 'registry')
 const OBJECTS_REL = path.join('pipeline', 'knowledge', 'antipatterns.objects.json')
@@ -179,8 +180,8 @@ export function parseArgs(argv) {
 }
 
 export async function main(argv) {
-  const repoRoot = (await import('./anchor-index.mjs')).resolveRealPath(parseArgs(argv).repoRoot ?? DEFAULT_REPO_ROOT)
   const flags = parseArgs(argv)
+  const repoRoot = resolveRealPath(flags.repoRoot ?? DEFAULT_REPO_ROOT)
   let verdictsPath = flags.verdicts
   let receipt = null
   if (!verdictsPath) {
@@ -191,7 +192,7 @@ export async function main(argv) {
           '按身份取不到时**不按 mtime 回退**——回退会让报告看起来是关于当前对象集的，实际不是。\n' +
           '请显式传 --verdicts <path>。\n',
       )
-      return 4
+      return EXIT.RUN_FAILED
     }
     verdictsPath = found.verdictsPath
   }
@@ -205,7 +206,7 @@ export async function main(argv) {
   const report = { ...buildReport(parsed.verdicts ?? [], { receipt, verdictsPath, themeFilter: flags.theme, rejectedOnly: flags.rejectedOnly }), verdictsRunId: runId }
   if (flags.json) process.stdout.write(JSON.stringify(report, null, 2) + '\n')
   else formatReport(report)
-  return 0
+  return EXIT.PASS
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

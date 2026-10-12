@@ -31,7 +31,7 @@ import { DEFAULT_REPO_ROOT } from '../../tools/anchor-index.mjs'
 import { EXIT } from '../../run.mjs'
 import { CLI_FLAGS } from '../../run.mjs'
 import { assertIsolation, loadLedger, mergeLedgers, summarizeLedger } from '../../tools/fs-ledger.mjs'
-import { computeBookRunId, parseBookArgs } from '../../run-book.mjs'
+import { aggregateTotals, collectAntipatterns, computeBookRunId, judgeSummaryLine, parseBookArgs } from '../../run-book.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const REPO = DEFAULT_REPO_ROOT
@@ -145,8 +145,7 @@ describe('09 · 污染隔离：机制在代码里，且可复跑', () => {
   it('13 个子进程的账本齐备（缺一份就判缺，不按「没记录」算过）', () => {
     const iso = RECEIPT_SERIAL.isolation.children
     assert.equal(iso.expectedProcesses, 13)
-    assert.equal(iso.ledgerFiles ?? iso.ledger.ledgerFiles, iso.ledger.ledgerFiles)
-    assert.equal(iso.ledger.ledgerFiles, 13, `子进程账本应有 13 份，实际 ${iso.ledger.ledgerFiles} 份`)
+    assert.equal(iso.ledger.ledgerFiles, iso.expectedProcesses, `子进程账本应有 13 份，实际 ${iso.ledger.ledgerFiles} 份`)
     assert.deepEqual(iso.missing, [])
     assert.equal(iso.complete, true)
   })
@@ -171,8 +170,10 @@ describe('09 · 污染隔离：机制在代码里，且可复跑', () => {
     const r = runCli(ROOT_SERIAL, ['--verify-isolation', `pipeline/registry/${RECEIPT_SERIAL.bookRunId}.book-receipt.json`])
     assert.equal(r.status, EXIT.PASS, `复核应通过，实测 ${r.status}；stderr=${r.stderr}`)
     assert.match(r.stdout, /污染隔离检查通过/)
-    // 复核读的是**最终**账本（含编排进程那份，它比回执晚一步落盘），因此数量应比回执里的多一份。
-    assert.match(r.stdout, /4 份账本/, `应合并 3 个子进程 + 1 个编排进程，实测 stdout=${r.stdout}`)
+    // 复核读的是**最终**账本（含编排进程那份，它比回执晚一步落盘），因此数量应比回执里的多一份：
+    // 13 个子进程 + 1 个编排进程 = 14 份。断言**锚定完整数字**——`/4 份账本/` 会以子串形式
+    // 匹配到「14 份账本」，一个永远不会失败的模式不构成证据。
+    assert.match(r.stdout, /：14 份账本/, `应合并 13 个子进程 + 1 个编排进程，实测 stdout=${r.stdout}`)
   })
 
   it('**仪器能失败**：真去读基准目录时，这个断言必须抛错', async () => {
@@ -331,5 +332,85 @@ describe('09 · 按文件维度查询与参数透传', () => {
     assert.notEqual(computeBookRunId(base), computeBookRunId({ ...base, modelId: 'm' }))
     assert.notEqual(computeBookRunId(base), computeBookRunId({ ...base, judgeApplied: false }))
     assert.notEqual(computeBookRunId(base), computeBookRunId({ ...base, sources: [{ path: 'a.md', sha256: 'sha256:2' }] }))
+  })
+})
+
+describe('09 · 判定者与反模式统计的口径（2026-10-12 修复批钉住）', () => {
+  it('回执声明的是 v2 schema（judge 块口径变更的那一版）', () => {
+    assert.equal(RECEIPT_SERIAL.schemaVersion, 'book-receipt/v2')
+  })
+
+  it('stub 全书的身份说 deterministic-only：`--layer2 stub` 下判定者无从调用，不得写 judgeApplied:true', () => {
+    // 旧实现按「透传里有没有 --no-judge」判：stub 路径会写出 inputs.judgeApplied:true
+    // 与 bookRunId 的 gate:full——而本次运行根本没有、也不可能有判定者调用（ADR-014 禁止该口径）。
+    assert.equal(RECEIPT_SERIAL.inputs.judgeApplied, false)
+    assert.equal(RECEIPT_SERIAL.totals.judge.enabled, false)
+    assert.equal(RECEIPT_SERIAL.totals.judge.filesJudged, 0)
+    assert.equal(RECEIPT_SERIAL.totals.judge.calls, 0)
+  })
+
+  it('混合回放：「至少一个文件跑了判定者」与「每个文件都跑了」是两个问题，不得互相冒充', () => {
+    const row = (fileKey, judge) => ({
+      fileKey,
+      exitCode: 0,
+      counts: { objects: 1, passed: 1, rejected: 0 },
+      coverage: {},
+      model: {},
+      reasonCodes: {},
+      objectTypes: {},
+      judge,
+    })
+    const totals = aggregateTotals([
+      row('a', { enabled: true, calls: 20, tokens: { input: 100, output: 50 }, summary: null }),
+      row('b', { enabled: false, calls: 0, tokens: null }),
+    ])
+    assert.equal(totals.judge.enabled, true, '至少一个文件跑了判定者 → enabled 必须为 true（真实回放场景里这条曾被印成「未启用」）')
+    assert.equal(totals.judge.allFilesJudged, false)
+    assert.equal(totals.judge.filesJudged, 1)
+    assert.equal(totals.judge.calls, 20)
+
+    const replayOnly = aggregateTotals([
+      row('a', { enabled: false, calls: 0, tokens: null }),
+      row('b', { enabled: false, calls: 0, tokens: null }),
+    ])
+    assert.equal(replayOnly.judge.enabled, false)
+    assert.equal(replayOnly.judge.calls, 0)
+    assert.equal(judgeSummaryLine(replayOnly.judge, 2), '判定者 未启用')
+  })
+
+  it('报告行口径：calls>0 时不得出现「未启用」', () => {
+    const line = judgeSummaryLine({ calls: 560, filesJudged: 12, inputTokens: 791253, outputTokens: 157763 }, 13)
+    assert.match(line, /560 次/)
+    assert.match(line, /12\/13 个文件/)
+    assert.doesNotMatch(line, /未启用/)
+  })
+
+  it('跨章合成的对象集**不混进**「章内」统计，且单独成块', async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), 'any2skills-antipattern-'))
+    try {
+      const knowledge = path.join(root, 'pipeline', 'knowledge')
+      await mkdir(knowledge, { recursive: true })
+      const ap = (id, anchors) => ({
+        id,
+        objectType: 'AntiPattern',
+        statement: '占位',
+        sourceRefs: anchors.map((a) => ({ anchor: a, quote: 'q' })),
+      })
+      await writeFile(path.join(knowledge, 'chapter1.objects.json'), JSON.stringify([ap('AP-1', ['chapter1#h2-1'])]))
+      await writeFile(path.join(knowledge, 'chapter2.objects.json'), JSON.stringify([ap('AP-2', ['chapter2#h2-2'])]))
+      await writeFile(
+        path.join(knowledge, 'antipatterns.objects.json'),
+        JSON.stringify({ runId: 'run-synth', objects: [ap('AP-SYNTH-T01-01', ['chapter1#h2-1', 'chapter2#h2-2'])] }),
+      )
+      const r = await collectAntipatterns(root)
+      assert.equal(r.fromLayer2.total, 2, '章内统计只能是 2 条逐章提取，合成产物不得混入（实测：混入会把 44 报成 58）')
+      assert.equal(r.fromLayer2.crossChapter, 0, '逐章提取按定义单锚点，跨章恒为 0')
+      assert.equal(r.perFile.some((f) => f.file === 'antipatterns.objects.json'), false, 'perFile 里不得有合成文件')
+      assert.equal(r.crossChapter.status, 'present')
+      assert.equal(r.crossChapter.total, 1)
+      assert.equal(r.crossChapter.crossChapter, 1)
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
   })
 })

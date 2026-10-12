@@ -14,19 +14,33 @@ import path from 'node:path'
 import { readFile as defaultReadFile } from 'node:fs/promises'
 
 import { DEFAULT_BENCHMARK_DIR, resolveRealPath } from './anchor-index.mjs'
+import fsLedgerSchema from './fs-ledger-schema.cjs'
 
-export const LEDGER_SCHEMA_VERSION = 'fs-ledger/v1'
-/** 生成链路只应读这些目录；清单外的读不是错误，但必须能被看见（有界表述见 `outsideRepo`）。 */
-export const EXPECTED_READ_ROOTS = Object.freeze(['sources', 'pipeline', 'node_modules'])
+// 版本常量的单一真源在 `fs-ledger-schema.cjs`（写入侧 `fs-ledger.cjs` 也从那里取）；
+// 在这里转出只是为了保持本模块的既有导出面。
+export const { LEDGER_SCHEMA_VERSION } = fsLedgerSchema
 
-/** 读取一份账本；文件不存在返回 null（「没有记录」不等于「没有访问」——由调用方判缺）。 */
+/**
+ * 读取一份账本；文件不存在返回 null（「没有记录」不等于「没有访问」——由调用方判缺）。
+ *
+ * **校验 schema 版本**：读方按自己的版本解释写方的产物，是所有字段级误解的温床；
+ * 版本不认识时抛错而不是当空处理——一份「读不懂的账本」不等于「不存在的账本」。
+ */
 export async function loadLedger(absPath, { readFile = defaultReadFile } = {}) {
+  let parsed
   try {
-    return JSON.parse(await readFile(absPath, 'utf8'))
+    parsed = JSON.parse(await readFile(absPath, 'utf8'))
   } catch (err) {
     if (err && err.code === 'ENOENT') return null
     throw err
   }
+  if (parsed?.schemaVersion !== LEDGER_SCHEMA_VERSION) {
+    throw new Error(
+      `账本 schema 版本不认识：${absPath} 声明 ${JSON.stringify(parsed?.schemaVersion ?? null)}，` +
+        `期望 ${LEDGER_SCHEMA_VERSION}——拒绝按「没有记录」处理（见 fs-ledger-schema.cjs）。`,
+    )
+  }
+  return parsed
 }
 
 /**

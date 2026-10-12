@@ -19,7 +19,8 @@
  *
  * Node 的 CJS 与 ESM 对本内置模块共用同一个导出对象，所以 `import { readFile } from
  * 'node:fs/promises'` 拿到的是**被替换后**的函数（实测：Node v26.7.0，见
- * `pipeline/tools/test/fs-ledger.test.mjs` 的「ESM 命名导入也被记录」用例）。
+ * `pipeline/tools/test/full-book-run.test.mjs` 的「**仪器能失败**」负向对照——
+ * 它的探针正是用 ESM 命名导入去读基准目录，且被如实记成 2 次内容访问）。
  *
  * ## 边界（诚实的部分）
  *
@@ -40,7 +41,8 @@ const fs = require('fs')
 const fsp = require('fs/promises')
 const { fileURLToPath } = require('url')
 
-const LEDGER_SCHEMA_VERSION = 'fs-ledger/v1'
+// 版本常量的单一真源：`fs-ledger-schema.cjs`（读侧 `fs-ledger.mjs` 也从这里取，见该文件注释）。
+const { LEDGER_SCHEMA_VERSION } = require('./fs-ledger-schema.cjs')
 /** 记录上限：超出即丢弃并置 `truncated=true`。截断的账本不等于完整账本，读方必须看见这个标志。 */
 const MAX_RECORDS = 200000
 
@@ -122,14 +124,14 @@ if (OUT && OUT.trim() !== '') {
   }
 
   // `open` 的读写方向由 flags 决定，单独处理（它是 readFile/createReadStream 之外的常见直达路径）。
-  const patchOpen = (obj, op, sync) => {
+  // fd 形式（首参是数字）由 `targetOf` 记成 `fd:N`；记录口径与其余 op 一致，无特殊分支。
+  const patchOpen = (obj, op) => {
     const orig = obj[op]
     if (typeof orig !== 'function' || orig.__fsLedgerWrapped) return
     const wrapped = function (...args) {
       const flags = typeof args[1] === 'string' ? args[1] : ''
       const writes = /[wa+]/.test(flags)
       push(op, targetOf(args[0]), writes ? 'write' : 'read')
-      if (!sync && typeof args[1] === 'number') return orig.apply(this, args) // fd 形式
       return orig.apply(this, args)
     }
     wrapped.__fsLedgerWrapped = true
@@ -140,14 +142,14 @@ if (OUT && OUT.trim() !== '') {
     for (const op of READ_OPS) patch(target, op, 'read')
     for (const op of META_OPS) patch(target, op, 'meta')
     for (const op of WRITE_OPS) patch(target, op, 'write')
-    patchOpen(target, 'open', false)
-    patchOpen(target, 'openSync', true)
+    patchOpen(target, 'open')
+    patchOpen(target, 'openSync')
   }
   if (fs.promises && fs.promises !== fsp) {
     for (const op of READ_OPS) patch(fs.promises, op, 'read')
     for (const op of META_OPS) patch(fs.promises, op, 'meta')
     for (const op of WRITE_OPS) patch(fs.promises, op, 'write')
-    patchOpen(fs.promises, 'open', false)
+    patchOpen(fs.promises, 'open')
   }
 
   const writeOut = () => {

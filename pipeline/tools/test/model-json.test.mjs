@@ -12,13 +12,14 @@
 import { test, describe } from 'node:test'
 import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { extractJsonPayload } from '../model-json.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
-const REGISTRY = path.resolve(HERE, '..', '..', 'registry')
+const FIXTURES = path.resolve(HERE, 'fixtures', 'first-run-layer2-failures')
 
 describe('model-json · 三种形态按「越少加工越优先」尝试', () => {
   test('① 整份原样：响应以 { 开头时按原样解析，不碰任何东西', () => {
@@ -105,25 +106,29 @@ describe('model-json · 真坏响应仍然报错，且诊断指向**首次原样
 })
 
 describe('model-json · 首跑 6 例的真实原文（回归锚点）', () => {
-  // 这些文件是 2026-10-11 首跑失败时由 `run.mjs` 落盘的原始响应。
+  // 这些文件是 2026-10-11 首跑失败时由 `run.mjs` 落盘的原始响应，**已复制进受控 fixtures**
+  // （`fixtures/first-run-layer2-failures/` + MANIFEST 哈希清单）——回归锚点不得依赖
+  // registry 里未跟踪、会随每次运行增删的本机残留（那会让干净检出上的测试退化甚至失败）。
   // **它们全部本来就是合法 JSON**——这正是「根因不在模型」的直接证据。
-  const rawFiles = (() => {
-    try {
-      return readdirSync(REGISTRY).filter(
-        (f) => f.startsWith('run-failed-') && f.endsWith('.layer2-raw.json'),
-      )
-    } catch {
-      return []
-    }
-  })()
+  const MANIFEST = JSON.parse(readFileSync(path.join(FIXTURES, 'MANIFEST.json'), 'utf8'))
+  const rawFiles = readdirSync(FIXTURES)
+    .filter((f) => f.endsWith('.layer2-raw.json'))
+    .sort()
 
-  test('样本存在（否则本组退化成空跑，必须在别处钉住）', () => {
+  test('样本存在，且逐文件哈希与清单一致（否则本组是空跑或跑了别的样本）', () => {
     assert.ok(rawFiles.length >= 6, `期望至少 6 份首跑失败原文，实得 ${rawFiles.length}`)
+    assert.equal(MANIFEST.files.length, rawFiles.length, '清单条目数必须与样本数一致')
+    for (const f of rawFiles) {
+      const entry = MANIFEST.files.find((x) => x.name === f)
+      assert.ok(entry, `${f} 不在 MANIFEST.json 里`)
+      const sha = `sha256:${createHash('sha256').update(readFileSync(path.join(FIXTURES, f))).digest('hex')}`
+      assert.equal(sha, entry.sha256, `${f} 内容与清单不符——样本被改动过`)
+    }
   })
 
   for (const f of rawFiles) {
     test(`${f}：原样就是合法 JSON，解析器必须通过`, () => {
-      const { rawText } = JSON.parse(readFileSync(path.join(REGISTRY, f), 'utf8'))
+      const { rawText } = JSON.parse(readFileSync(path.join(FIXTURES, f), 'utf8'))
       // 前提断言：这份原文本身合法（若哪天真坏了，这条会失败而不是让下一条误判）
       assert.doesNotThrow(() => JSON.parse(rawText.trim()), '该样本应本就是合法 JSON')
 

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "layer2-raw/v1",
+  "runId": "run-failed-bbdf5a95d049",
+  "createdAt": "2026-10-11T13:33:48.211Z",
+  "note": "第 2 层响应解析失败时的**原文**，用于事后归因。",
+  "error": "第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n文件原始字\"... is not valid JSON",
+  "rawText": "{\"objects\": [{\"objectType\": \"EngineeringRule\", \"evidenceQuote\": \"`old_string` 失败也不能只归因于“模型抄错了”。应对同一个字符串保存原始字节哈希、Unicode code point 序列和 tokenizer token ID 序列，沿以下链路寻找首个差异：\\n\\n```text\\n文件原始字节 → 工具返回 → Harness 序列化 → 模型上下文\\n→ 模型 token 输出 → 解码字符串 → JSON/tool-call 解析 → 工具匹配\\n```\\n\\n最小化评估探针覆盖直接复述、从长上下文抽取、放入工具参数、相似字符串选择，以及空格、换行、反斜杠、Unicode 组合字符和低频 token。指标使用 byte-exact match、code-point-exact match、token-exact match、首次分歧位置和真实工具成功率。若模型在直接探针测试中输出正确而工具调用失败，应修复 tokenizer、序列化、Harness 或工具协议；只有首个差异出现在模型输出时，才把该案例转成第八章的复制训练数据。\", \"statement\": \"若模型在直接探针测试中输出正确而工具调用失败，应修复 tokenizer、序列化、Harness 或工具协议；只有首个差异出现在模型输出时，才把该案例转成第八章的复制训练数据。\", \"rationale\": \"old_string 失败也不能只归因于“模型抄错了”\", \"appliesWhen\": \"当 old_string 失败时\", \"violation\": \"当首个差异并非出现在模型输出时，将案例转成第八章的复制训练数据\"}]}"
+}

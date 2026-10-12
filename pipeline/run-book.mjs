@@ -54,7 +54,15 @@ const HERE = path.dirname(fileURLToPath(import.meta.url))
 const CLI = path.join(HERE, 'run.mjs')
 const LEDGER_PRELOAD = path.join(HERE, 'tools', 'fs-ledger.cjs')
 
-export const BOOK_RECEIPT_SCHEMA_VERSION = 'book-receipt/v1'
+/**
+ * 聚合回执的 schema 版本。
+ *
+ * v1 → v2（2026-10-12）：`totals.judge.enabled` 的口径从「**每个**文件都跑了判定者」
+ * 改为「**至少一个**文件真的跑了判定者」，并新增 `allFilesJudged` 与 `filesJudged`。
+ * 旧口径在混合回放时会印出「未启用 + 560 次调用」的自相矛盾读数（见测试钉住）。
+ * 逐文件行与其余字段未变；读 v1 回执的旧代码不受影响（`--from` 不校验版本）。
+ */
+export const BOOK_RECEIPT_SCHEMA_VERSION = 'book-receipt/v2'
 /** 文件级并发的上限：不是性能调优，是**别把自己打成限流**。 */
 export const MAX_CONCURRENCY = 8
 export const LEDGER_DIR = path.join(REGISTRY_DIR, 'fs-ledger')
@@ -110,7 +118,24 @@ export function bookReceiptPathFor(bookRunId) {
   return path.join(REGISTRY_DIR, `${bookRunId}.book-receipt.json`)
 }
 
+/**
+ * 全书身份里 `gate:` 段的取值：**配置层面**判定者是否可能生效。
+ *
+ * 这里刻意不照抄 `run.mjs` 的「本次实际有没有调用判定者」口径——那一个要等子进程回来才知道，
+ * 而 bookRunId 必须在运行**之前**定下来（编排进程的账本文件名用它，见 `fs-ledger.cjs` 的 outPath）。
+ * 两处口径的关系写清楚了才算数：`stub` 路径在 `run.mjs` 里判定者必被关（无从调用），
+ * `--no-judge` 显式关闭，因此这里的 `false` 是「实际也不会跑」的准确预测；
+ * 纯回放运行的残留差异（预测 `full`、实际 0 次调用）由回执 `totals.judge.*` 的**实际值**承担，
+ * 不假装身份能覆盖它。
+ */
+export function judgeAppliedFor(flags, passthrough) {
+  return flags.layer2 !== 'stub' && !passthrough.includes('--no-judge')
+}
+
 /* ──────────────────────────── 反模式分布 ──────────────────────────── */
+
+/** 跨章综合的落盘文件名（卡 06）。在 `collectAntipatterns` 里单独成块，不得混进逐章统计。 */
+const CROSS_CHAPTER_OBJECTS_FILE = 'antipatterns.objects.json'
 
 /** `chapter4#h2-2` → `chapter4`；无 `#` 时退回文件基名。 */
 export function chapterOfRef(ref) {
@@ -304,7 +329,7 @@ export async function runBook(input) {
   const sources = await listBookSources(repoRoot)
   if (sources.length === 0) throw new Error(`源正文目录内没有任何 .md：${DEFAULT_SOURCE_ROOT}`)
 
-  const judgeApplied = !passthrough.includes('--no-judge')
+  const judgeApplied = judgeAppliedFor(flags, passthrough)
   const modelId = readFlagValue(passthrough, '--llm-model')
   const bookRunId = computeBookRunId({ sources, layer2: flags.layer2, modelId, judgeApplied })
 
@@ -487,7 +512,13 @@ export function aggregateTotals(files) {
       failedCalls: sum((f) => f.model?.failedCalls),
     },
     judge: {
-      enabled: files.every((f) => f.judge?.enabled === true),
+      // 「本次运行判定者生效了吗」与「是不是**每个**文件都过了判定者」是两个问题。
+      // 旧实现把后者填进 `enabled`，于是混合回放（12 个文件跑、1 个文件回放）时会出现
+      // `enabled:false` + `calls:560` 这种自相矛盾的读数，报告行据此印出「未启用」。
+      // 现在各归其名：`enabled` = 至少一个文件真的过了判定者；`allFilesJudged` = 全部文件都过了。
+      enabled: files.some((f) => f.judge?.enabled === true || (f.judge?.calls ?? 0) > 0),
+      allFilesJudged: files.every((f) => f.judge?.enabled === true),
+      filesJudged: files.filter((f) => f.judge?.enabled === true).length,
       calls: sum((f) => f.judge?.calls),
       inputTokens: sum((f) => f.judge?.tokens?.input),
       outputTokens: sum((f) => f.judge?.tokens?.output),
@@ -505,6 +536,11 @@ export async function collectAntipatterns(repoRoot) {
   const knowledge = path.join(repoRoot, 'pipeline', 'knowledge')
   const perFile = []
   for (const name of (await readdir(knowledge)).filter((f) => f.endsWith('.objects.json')).sort()) {
+    // `antipatterns.objects.json` 是**跨章综合**的产物（卡 06 的命令），不是「各章第 2 层提取」。
+    // 不排除它会把同一批对象报两次：`fromLayer2` 里混入合成对象后，「跨章恒为 0」的前提被破坏，
+    // 且 `crossChapterIds` 会变成一串 AP-SYNTH id，读者会以为「章内」也能产出跨章对象。
+    // 实测（2026-10-12 全书跑）：58 = 44 真·章内 + 14 合成；首跑回执的「章内 28」同病。
+    if (name === CROSS_CHAPTER_OBJECTS_FILE) continue
     const parsed = JSON.parse(await readFile(path.join(knowledge, name), 'utf8'))
     const objects = objectsOf(parsed)
     if (!objects.some((o) => o?.objectType === 'AntiPattern')) continue
@@ -512,9 +548,9 @@ export async function collectAntipatterns(repoRoot) {
   }
   const layer2Objects = perFile.flatMap((f) => f.objects)
 
-  let crossChapter = { status: 'absent', note: '盘上没有跨章综合的对象集（pipeline/knowledge/antipatterns.objects.json）；先跑卡 06 的命令再回看本块。' }
+  let crossChapter = { status: 'absent', note: `盘上没有跨章综合的对象集（pipeline/knowledge/${CROSS_CHAPTER_OBJECTS_FILE}）；先跑卡 06 的命令再回看本块。` }
   try {
-    const parsed = JSON.parse(await readFile(path.join(knowledge, 'antipatterns.objects.json'), 'utf8'))
+    const parsed = JSON.parse(await readFile(path.join(knowledge, CROSS_CHAPTER_OBJECTS_FILE), 'utf8'))
     const objects = objectsOf(parsed)
     crossChapter = {
       status: 'present',
@@ -539,6 +575,17 @@ export async function collectAntipatterns(repoRoot) {
 }
 
 /* ──────────────────────────── 报告 / 复核模式 ──────────────────────────── */
+
+/**
+ * 报告行的判定者段（导出以便测试钉住口径）。
+ *
+ * 「未启用」只允许出现在**调用数为 0** 时——旧实现按 `judge.enabled`（当时语义是
+ * 「每个文件都跑了判定者」）来印，混合回放时会把 560 次调用印成「未启用」。
+ */
+export function judgeSummaryLine(judge, files) {
+  if (!(judge?.calls > 0)) return '判定者 未启用'
+  return `判定者 调用 ${judge.calls} 次（${judge.filesJudged}/${files} 个文件过了判定者）token ${judge.inputTokens}+${judge.outputTokens}`
+}
 
 function printFileRow(f, out = process.stdout) {
   const c = f.counts ?? {}
@@ -638,7 +685,7 @@ export async function main(argv) {
     }
     if (flags.dryRun) {
       const sources = await listBookSources(repoRoot)
-      const judgeApplied = !passthrough.includes('--no-judge')
+      const judgeApplied = judgeAppliedFor(flags, passthrough)
       const bookRunId = computeBookRunId({ sources, layer2: flags.layer2, modelId: readFlagValue(passthrough, '--llm-model'), judgeApplied })
       process.stdout.write(`全书运行（dry-run，零模型调用）${bookRunId}\n`)
       let anchors = 0
@@ -682,7 +729,7 @@ export async function main(argv) {
       process.stdout.write(
         `合计：锚点 ${t.anchors}（有产出 ${t.coveredAnchors}，零产出 ${t.anchorsWithoutObjects}）对象 ${t.objects} ` +
           `通过 ${t.passed} 拒绝 ${t.rejected}；第 2 层调用 ${t.model.calls} 次 token ${t.model.inputTokens}+${t.model.outputTokens}` +
-          `；判定者 ${t.judge.enabled ? `调用 ${t.judge.calls} 次 token ${t.judge.inputTokens}+${t.judge.outputTokens}` : '未启用'}\n` +
+          `；${judgeSummaryLine(t.judge, t.files)}\n` +
           `理由码：${JSON.stringify(t.reasonCodesByCode)}\n` +
           `反模式：章内 ${receipt.antipatterns.fromLayer2.total} 条（跨章 ${receipt.antipatterns.fromLayer2.crossChapter}）；` +
           `跨章综合 ${receipt.antipatterns.crossChapter.status === 'present' ? `${receipt.antipatterns.crossChapter.total} 条 / 跨章 ${receipt.antipatterns.crossChapter.crossChapter} 条（${(receipt.antipatterns.crossChapter.crossChapterRatio * 100).toFixed(0)}%）` : receipt.antipatterns.crossChapter.status}\n` +

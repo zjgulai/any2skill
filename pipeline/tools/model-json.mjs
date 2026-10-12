@@ -78,5 +78,3 @@ export function extractJsonPayload(text) {
   }
   return { ok: false, diagnostic }
 }
-
-export { extractJsonPayload as default }

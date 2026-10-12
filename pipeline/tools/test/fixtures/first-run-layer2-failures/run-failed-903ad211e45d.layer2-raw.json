@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "layer2-raw/v1",
+  "runId": "run-failed-903ad211e45d",
+  "createdAt": "2026-10-11T13:06:52.879Z",
+  "note": "第 2 层响应解析失败时的**原文**，用于事后归因。",
+  "error": "第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n# 工具使\"... is not valid JSON",
+  "rawText": "{\"objects\": [{\"objectType\": \"Concept\", \"evidenceQuote\": \"Markdown 在保持可读性的同时提供了轻量级的结构，特别适合组织层次化的指令和信息。XML 和 Markdown 配合使用，可以形成一种双层结构：XML 负责机器可解析的精确语义，Markdown 负责人机共读的组织逻辑。\\n\\n比如一个系统提示词同时用了两者：\\n\\n```text\\n# 工具使用规范\\n\\n## 文件操作\\n<file_operation>\\n- 读取文件前必须先检查路径是否存在\\n- 写入文件前必须先备份\\n</file_operation>\\n\\n## 网络请求\\n<network_request>\\n- 超时时间设置为 30 秒\\n- 失败后最多重试 3 次\\n</network_request>\\n```\", \"canonicalTerm\": \"XML 与 Markdown 双层结构\", \"aliases\": [\"结构化提示\"], \"definition\": \"在系统提示词中同时使用 XML 与 Markdown 形成双层结构：XML 负责机器可解析的精确语义，Markdown 负责人机共读的组织逻辑。\", \"examples\": [\"# 工具使用规范 下用 ## 文件操作 与 <file_operation> 组织文件操作规范；用 ## 网络请求 与 <network_request> 组织网络请求规范\"]}]}"
+}

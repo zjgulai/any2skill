@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "layer2-raw/v1",
+  "runId": "run-failed-cd7e8a96f3fd",
+  "createdAt": "2026-10-11T12:52:56.564Z",
+  "note": "第 2 层响应解析失败时的**原文**，用于事后归因。",
+  "error": "第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\nExtra\"... is not valid JSON",
+  "rawText": "{\"objects\": [{\"objectType\": \"EngineeringRule\", \"evidenceQuote\": \"要让 Agent 跨会话提供个性化服务，需要一层持久的用户记忆。它不保存每句对话，而是用额外的 LLM 调用提取、压缩并审查对未来有用的事实；这与只在当前窗口生效的上下文学习不同。\", \"statement\": \"持久用户记忆不保存每句对话，而是用额外的 LLM 调用提取、压缩并审查对未来有用的事实。\", \"rationale\": \"该机制用于支持 Agent 跨会话提供个性化服务，并区别于只在当前窗口生效的上下文学习。\", \"appliesWhen\": \"在构建或设计用于跨会话个性化服务的用户记忆系统时。\", \"violation\": \"如果系统保存每句对话，或者未使用额外的 LLM 调用来提取、压缩并审查对未来有用的事实，则违反该规则。\"}, {\"objectType\": \"EngineeringRule\", \"evidenceQuote\": \"这段对话结束后，Agent 框架会调用一次专门的 LLM 来分析对话内容，提取出值得长期记住的信息：\\n\\n```text\\nExtracted memories:\\n- User prefers window seats (preference)\\n- User is vegetarian, needs special meals on flights (dietary restriction)\\n- User's United MileagePlus number: 12345678 (loyalty program)\\n- User has travel plans to Tokyo (recent activity)\\n```\\n\\n提取结果应同时满足三条规则：**选择性**（丢弃“搜索返回 3 个选项”这类短期细节）、**抽象化**（把本次“靠窗座位”归纳为长期偏好）和**结构化**（用可检索的字段保存事实）。\", \"statement\": \"提取结果应同时满足选择性、抽象化和结构化三条规则。\", \"rationale\": \"选择性用于丢弃短期细节，抽象化用于把本次“靠窗座位”归纳为长期偏好，结构化用于用可检索的字段保存事实。\", \"appliesWhen\": \"当 Agent 框架调用专门的 LLM 分析对话内容并提取值得长期记住的信息时。\", \"violation\": \"如果提取结果保留短期细节、未将本次偏好归纳为长期偏好，或未用可检索字段保存事实，则违反该规则。\"}]}"
+}

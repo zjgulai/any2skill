@@ -66,7 +66,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 430 项，零网络、零凭据
+npm test                                    # 457 项，零网络、零凭据（实测 2026-10-12）
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -115,7 +115,7 @@ node pipeline/run-book.mjs --layer2 stub            # 替身路径，零调用�
 
 ### 全书运行（`run-book`，卡 09）
 
-把一个目录下的全部源文件跑一遍，产出一份**聚合回执**（`book-receipt/v1`），并机械地证明
+把一个目录下的全部源文件跑一遍，产出一份**聚合回执**（`book-receipt/v2`），并机械地证明
 链路全程没读过盲测基准目录。
 
 | 开关 | 作用 |
@@ -422,3 +422,14 @@ node pipeline/synthesize-antipatterns.mjs --themes T02,T12 \
   **不做语义修补**的立场不变：真坏的 JSON（字符串里真有裸换行）仍然被拒，
   `pipeline/tools/test/model-json.test.mjs` 两边都钉住了。见
   [`ADR-023`](docs/adr/ADR-023-unanchored-fence-regex.md)。
+- **聚合回执的判定者读数分三个字段，别把「没全跑」读成「没跑」。** `book-receipt/v2` 起，
+  `totals.judge.enabled` = **至少一个**文件真的过了判定者，`allFilesJudged` = **每个**文件都过了，
+  `filesJudged` = 过了的文件数。`v1` 的旧口径是「每个文件都过了」都塞在 `enabled` 里——
+  实测混合回放（12 个文件跑判定者、1 个回放）时它会给出 `enabled:false` + `calls:560` 的读数，
+  报告行据此印出「未启用」。报告行现在的判据是 `calls > 0`（见 `judgeSummaryLine`）。
+  **v1 与 v2 回执都在盘上，跨版本引用该字段时必须带版本。**
+- **「章内反模式」的统计不含跨章合成产物。** `pipeline/knowledge/antipatterns.objects.json`
+  是卡 06 的合成产物，单独成块（`antipatterns.crossChapter`）。2026-10-12 前的实现把它也扫进
+  `fromLayer2`，于是同一个对象被报两次、且「章内」里混着 `AP-SYNTH-*` 的跨章 id——
+  首跑公布的「章内 28」与第二次跑的「章内 58」都因此虚高，真值是 **14** 与 **44**
+  （跨章恒为 0，逐章提取按定义单锚点）。`full-book-run.test.mjs` 已用夹具钉住这条边界。
