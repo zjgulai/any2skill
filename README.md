@@ -11,7 +11,8 @@ Any content → executable Agent Skills. MVP pipeline.
 第三读数**部分消解**（共认领 78→46）——合并的边际收益已到顶，下一层是**收敛描述**；
 全过程见 [`docs/tickets/12-gate2-trigger-blind-test.md`](docs/tickets/12-gate2-trigger-blind-test.md)
 与 [`docs/tickets/13-ring3-resplit-from-gate2.md`](docs/tickets/13-ring3-resplit-from-gate2.md)。
-**门禁三（效用 A/B）机制已建成**，真实实测进行中
+**门禁三（效用 A/B）已实测首跑**：2 个已发布 skill 判为 passed / low-utility，
+**均无确认退化（negative transfer 排除——MVP 验收第 3 条达成）**；三道门禁至此全部建成并实测
 （[`docs/tickets/14-gate3-utility-ab.md`](docs/tickets/14-gate3-utility-ab.md)）。
 
 > ### 盘上已有 2 个已发布的 skill
