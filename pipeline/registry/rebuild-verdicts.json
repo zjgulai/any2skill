@@ -1,40 +1,22 @@
 {
-  "schemaVersion": "rebuild-verdicts/v1",
-  "createdAt": "2026-10-13T12:36:22.052Z",
-  "note": "重切后 11 个吸收者的环 4 重建 × 门禁一判定（--dry-run 复算，零模型调用；比对报告 §5 指出的机器可读归档缺口）。发布实况：唯一通过者的重建产物已按原 slug 重发为 skills/chapter4-single-tool-design/SKILL.md（2026-10-13，7146→9538 字节）。",
+  "schemaVersion": "rebuild-verdicts/v2",
+  "createdAt": "2026-10-13T12:55:20.559Z",
+  "note": "重切后 11 个吸收者的环 4 重建 × 门禁一判定（--dry-run 复算，零模型调用）。v2：阈值对齐原书上限（16,568B，ADR-028）+ 溢出阀实现 + 其余章代码 README 镜像之后复算。v1（12,288B 阈值时代）的判决见 docs/tickets/13-ring3-resplit-from-gate2.md 构建记录表。",
   "command": "node pipeline/build-skill.mjs --cluster <skillId> --dry-run --json（逐个，退出码 0/3）",
+  "sizeLimitBytes": 16568,
   "verdicts": [
     {
       "skillId": "chapter10-s3",
       "title": "协作模式编排",
       "gate": {
-        "passed": false,
-        "reasonCodes": [
-          "SECTION_EMPTY",
-          "SIZE_EXCEEDED"
-        ],
-        "bytes": 13451,
-        "sizeLimitBytes": 12288
+        "passed": true,
+        "reasonCodes": [],
+        "bytes": 15650,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": null,
       "objectsInCluster": 36,
-      "objectsKept": 36,
-      "clusterAnchors": 20
+      "objectsKept": 36
     },
     {
       "skillId": "chapter1-s2",
@@ -44,25 +26,12 @@
         "reasonCodes": [
           "SECTION_EMPTY"
         ],
-        "bytes": 7660,
-        "sizeLimitBytes": 12288
+        "bytes": 9244,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [],
-      "gapCodes": [
-        "SECTION_EMPTY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": null,
       "objectsInCluster": 18,
-      "objectsKept": 18,
-      "clusterAnchors": 10
+      "objectsKept": 18
     },
     {
       "skillId": "chapter9-s3",
@@ -72,25 +41,12 @@
         "reasonCodes": [
           "SECTION_EMPTY"
         ],
-        "bytes": 5182,
-        "sizeLimitBytes": 12288
+        "bytes": 7861,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [],
-      "gapCodes": [
-        "SECTION_EMPTY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": null,
       "objectsInCluster": 14,
-      "objectsKept": 14,
-      "clusterAnchors": 7
+      "objectsKept": 14
     },
     {
       "skillId": "chapter4-s1",
@@ -99,28 +55,11 @@
         "passed": true,
         "reasonCodes": [],
         "bytes": 9522,
-        "sizeLimitBytes": 12288
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "SECTION_SOURCE_GRANULARITY_COARSE"
-      ],
+      "overflow": null,
       "objectsInCluster": 20,
-      "objectsKept": 20,
-      "clusterAnchors": 11
+      "objectsKept": 20
     },
     {
       "skillId": "chapter7-s1",
@@ -128,96 +67,54 @@
       "gate": {
         "passed": false,
         "reasonCodes": [
-          "SECTION_EMPTY",
           "SIZE_EXCEEDED"
         ],
-        "bytes": 24950,
-        "sizeLimitBytes": 12288
+        "bytes": 21914,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": {
+        "applied": true,
+        "rule": "实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）",
+        "target": "references/practice-patterns.md",
+        "bytesFull": 28259,
+        "bytesAfter": 21914,
+        "stillOverLimit": true
+      },
       "objectsInCluster": 68,
-      "objectsKept": 68,
-      "clusterAnchors": 38
+      "objectsKept": 68
     },
     {
       "skillId": "chapter1-s1",
       "title": "Agent基础与边界设计",
       "gate": {
-        "passed": false,
-        "reasonCodes": [
-          "SECTION_EMPTY",
-          "SIZE_EXCEEDED"
-        ],
-        "bytes": 12995,
-        "sizeLimitBytes": 12288
+        "passed": true,
+        "reasonCodes": [],
+        "bytes": 14579,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": null,
       "objectsInCluster": 30,
-      "objectsKept": 30,
-      "clusterAnchors": 17
+      "objectsKept": 30
     },
     {
       "skillId": "chapter5-s3",
       "title": "代码生成应用与规则正确性",
       "gate": {
-        "passed": false,
-        "reasonCodes": [
-          "SECTION_EMPTY",
-          "SIZE_EXCEEDED"
-        ],
-        "bytes": 13141,
-        "sizeLimitBytes": 12288
+        "passed": true,
+        "reasonCodes": [],
+        "bytes": 14112,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": {
+        "applied": true,
+        "rule": "实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）",
+        "target": "references/practice-patterns.md",
+        "bytesFull": 17549,
+        "bytesAfter": 14112,
+        "stillOverLimit": false
+      },
       "objectsInCluster": 29,
-      "objectsKept": 29,
-      "clusterAnchors": 16
+      "objectsKept": 29
     },
     {
       "skillId": "chapter10-s1",
@@ -225,121 +122,74 @@
       "gate": {
         "passed": false,
         "reasonCodes": [
-          "SECTION_EMPTY",
           "SIZE_EXCEEDED"
         ],
-        "bytes": 20369,
-        "sizeLimitBytes": 12288
+        "bytes": 17531,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": {
+        "applied": true,
+        "rule": "实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）",
+        "target": "references/practice-patterns.md",
+        "bytesFull": 24851,
+        "bytesAfter": 17531,
+        "stillOverLimit": true
+      },
       "objectsInCluster": 49,
-      "objectsKept": 49,
-      "clusterAnchors": 28
+      "objectsKept": 49
     },
     {
       "skillId": "chapter3-s1",
       "title": "用户记忆体系设计",
       "gate": {
-        "passed": false,
-        "reasonCodes": [
-          "SECTION_EMPTY",
-          "SIZE_EXCEEDED"
-        ],
-        "bytes": 13660,
-        "sizeLimitBytes": 12288
+        "passed": true,
+        "reasonCodes": [],
+        "bytes": 13419,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": {
+        "applied": true,
+        "rule": "实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）",
+        "target": "references/practice-patterns.md",
+        "bytesFull": 17561,
+        "bytesAfter": 13419,
+        "stillOverLimit": false
+      },
       "objectsInCluster": 34,
-      "objectsKept": 34,
-      "clusterAnchors": 18
+      "objectsKept": 34
     },
     {
       "skillId": "chapter2-s3",
       "title": "运行时上下文治理与安全",
       "gate": {
-        "passed": false,
-        "reasonCodes": [
-          "SIZE_EXCEEDED"
-        ],
-        "bytes": 16286,
-        "sizeLimitBytes": 12288
+        "passed": true,
+        "reasonCodes": [],
+        "bytes": 16328,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "SECTION_SOURCE_GRANULARITY_COARSE"
-      ],
+      "overflow": {
+        "applied": true,
+        "rule": "实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）",
+        "target": "references/practice-patterns.md",
+        "bytesFull": 18569,
+        "bytesAfter": 16328,
+        "stillOverLimit": false
+      },
       "objectsInCluster": 33,
-      "objectsKept": 33,
-      "clusterAnchors": 18
+      "objectsKept": 33
     },
     {
       "skillId": "chapter9-s2",
       "title": "学习载体与自进化更新",
       "gate": {
-        "passed": false,
-        "reasonCodes": [
-          "SECTION_EMPTY"
-        ],
-        "bytes": 6034,
-        "sizeLimitBytes": 12288
+        "passed": true,
+        "reasonCodes": [],
+        "bytes": 8713,
+        "sizeLimitBytes": 16568
       },
-      "riskFlags": [
-        "PITFALL_COVERAGE_BELOW_ADVISORY"
-      ],
-      "gapCodes": [
-        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
-        "SECTION_NO_SOURCE",
-        "SECTION_FIELD_SEMANTICS_MISMATCH",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED",
-        "CONTRACT_FIELD_UNSUPPORTED"
-      ],
+      "overflow": null,
       "objectsInCluster": 15,
-      "objectsKept": 15,
-      "clusterAnchors": 8
+      "objectsKept": 15
     }
   ]
 }

@@ -1,0 +1,366 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "chapter10-s3",
+  "name": "chapter10-s3",
+  "description": "协作模式编排：当 Agent 数量增多且需异步并行时，应改用消息总线进行通信；适用于Agent 数量增多且需异步并行时、多数需要掌握子 Agent 执行进展的场景、对等协作涉及 2-3 个平等身份的 Agent，并需要引入独立视角和认知多样性时。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 15650,
+    "markdownHash": "sha256:a34aeaa6759bdb613396173c0135be20412cf48bf8f44766db573c21df851cb8",
+    "checkedAt": "2026-10-13T12:55:05.623Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CHAPTER10-H3-2-CONCEPT-01",
+    "CHAPTER10-H3-2-CONCEPT-02",
+    "CHAPTER10-H3-3-CONCEPT-01",
+    "CHAPTER10-H3-3-CONCEPT-02",
+    "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+    "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+    "CHAPTER10-H3-5-ANTIPATTERN-01",
+    "CHAPTER10-H3-5-ENGINEERINGRULE-02",
+    "CHAPTER10-H4-1-CONCEPT-01",
+    "CHAPTER10-H4-1-ENGINEERINGRULE-02",
+    "CHAPTER10-H4-2-CONCEPT-01",
+    "CHAPTER10-H4-2-ENGINEERINGRULE-02",
+    "CHAPTER10-H4-3-CONCEPT-01",
+    "CHAPTER10-H4-3-MENTALMODEL-02",
+    "CHAPTER10-H4-4-CONCEPT-01",
+    "CHAPTER10-H4-5-CONCEPT-01",
+    "CHAPTER10-H3-6-ENGINEERINGRULE-01",
+    "CHAPTER10-H3-6-ENGINEERINGRULE-02",
+    "CHAPTER10-H3-7-CONCEPT-01",
+    "CHAPTER10-H3-7-DECISIONMODEL-02",
+    "CHAPTER10-H3-8-CONCEPT-01",
+    "CHAPTER10-H3-8-ENGINEERINGRULE-02",
+    "CHAPTER10-H2-5-CONCEPT-01",
+    "CHAPTER10-H2-5-CONCEPT-02",
+    "CHAPTER10-H3-9-CONCEPT-01",
+    "CHAPTER10-H3-9-ENGINEERINGRULE-02",
+    "CHAPTER10-H3-10-CONCEPT-01",
+    "CHAPTER10-H3-10-HEURISTIC-02",
+    "CHAPTER10-H3-11-ANTIPATTERN-01",
+    "CHAPTER10-H3-11-CASE-02",
+    "CHAPTER10-H3-12-ENGINEERINGRULE-01",
+    "CHAPTER10-H3-12-ANTIPATTERN-02",
+    "CHAPTER10-H3-13-ANTIPATTERN-01",
+    "CHAPTER10-H3-14-CONCEPT-01",
+    "CHAPTER10-H3-14-CONCEPT-02",
+    "CHAPTER10-H3-16-ENGINEERINGRULE-01"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-2",
+      "title": "维度二：协作拓扑",
+      "lineStart": 34,
+      "lineEnd": 45
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-3",
+      "title": "Agent 眼中的文件系统",
+      "lineStart": 133,
+      "lineEnd": 165
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-4",
+      "title": "Agent 间的通信与控制",
+      "lineStart": 166,
+      "lineEnd": 193
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-5",
+      "title": "对等协作模式：相互制衡与迭代改进",
+      "lineStart": 194,
+      "lineEnd": 199
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-1",
+      "title": "Loop 工程",
+      "lineStart": 200,
+      "lineEnd": 227
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-2",
+      "title": "提议者-审核者范式",
+      "lineStart": 228,
+      "lineEnd": 267
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-3",
+      "title": "辩论模式",
+      "lineStart": 268,
+      "lineEnd": 275
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-4",
+      "title": "头脑风暴模式",
+      "lineStart": 276,
+      "lineEnd": 279
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-5",
+      "title": "专家小组模式",
+      "lineStart": 280,
+      "lineEnd": 283
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-6",
+      "title": "管理者模式：中心化协调",
+      "lineStart": 284,
+      "lineEnd": 442
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-7",
+      "title": "去中心化模式",
+      "lineStart": 443,
+      "lineEnd": 512
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-8",
+      "title": "跨组织协作：A2A 协议",
+      "lineStart": 513,
+      "lineEnd": 522
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h2-5",
+      "title": "多 Agent 协作的失败模式",
+      "lineStart": 523,
+      "lineEnd": 536
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-9",
+      "title": "失败模式一：共享文件系统的并发冲突",
+      "lineStart": 537,
+      "lineEnd": 548
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-10",
+      "title": "失败模式二：错误的级联放大",
+      "lineStart": 549,
+      "lineEnd": 554
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-11",
+      "title": "失败模式三：同质趋同",
+      "lineStart": 555,
+      "lineEnd": 560
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-12",
+      "title": "失败模式四：互相扯皮",
+      "lineStart": 561,
+      "lineEnd": 566
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-13",
+      "title": "失败模式五：循环失控",
+      "lineStart": 567,
+      "lineEnd": 570
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-14",
+      "title": "失败模式六：理解债与认知投降",
+      "lineStart": 571,
+      "lineEnd": 580
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-16",
+      "title": "Agentopia：十年尺度的长期生活模拟",
+      "lineStart": 635,
+      "lineEnd": 649
+    }
+  ],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-13T12:55:05.623Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 12 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 12
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 4 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 4
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 17
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 8 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 8,
+      "coarse": true
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 12,
+    "principles": 11,
+    "patterns": 17,
+    "pitfalls": 4,
+    "code": 8,
+    "reading": 20
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 4 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "SECTION_SOURCE_GRANULARITY_COARSE"
+  ],
+  "provenance": {
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter10.md",
+    "anchorIndexHash": "sha256:a6a901583fe68f2d00933b0a16f0b7ea3e4d4ad5465f881317ae189a5251b670",
+    "anchorIndexHashes": {
+      "sources/ai-agent-book-zh/book/chapter10.md": "sha256:a6a901583fe68f2d00933b0a16f0b7ea3e4d4ad5465f881317ae189a5251b670"
+    },
+    "objectsFile": "pipeline/knowledge/chapter10.objects.json",
+    "objectsFileSha256": "sha256:6a760c9564c7a3d371a0096d4680fb8c3dd0a0b815d2c48383ad9070448d2a95",
+    "objectsTotal": 61,
+    "objectsInCluster": 36,
+    "objectsKept": 36,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 14,
+    "crossChapterInCluster": 0,
+    "crossChapterKept": 0,
+    "crossChapterExcludedByGate": [],
+    "antipatternVerdictsFile": "pipeline/registry/run-6bc0e8a0e8b9.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-6bc0e8a0e8b9",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-6bc0e8a0e8b9",
+    "gateReceiptFile": "pipeline/registry/run-87ad04bf522f.receipt.json",
+    "gateReceiptRunId": "run-87ad04bf522f",
+    "clusterSource": "clusters.json",
+    "clusterSkillId": "chapter10-s3",
+    "clusterUnits": [
+      "chapter10-u3",
+      "chapter10-u5",
+      "chapter10-u6",
+      "chapter10-u4",
+      "chapter10-u7"
+    ],
+    "clusterChapterRefs": [
+      "chapter10"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.json"
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "slug": "chapter2-s3",
+  "clusterSource": "clusters.json",
+  "rootAnchor": "chapter2-s3",
+  "clusterAnchors": 18,
+  "clusterTitle": "运行时上下文治理与安全",
+  "objectsInCluster": 33,
+  "objectsKept": 33,
+  "crossChapterAntipatternsInCluster": 6,
+  "crossChapterAntipatternsKept": 4,
+  "crossChapterExcluded": [
+    {
+      "id": "AP-SYNTH-T12-03",
+      "reasonCode": "JUDGE_NOT_SUPPORTED"
+    },
+    {
+      "id": "AP-SYNTH-T12-06",
+      "reasonCode": "QUOTE_MISMATCH"
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 16,
+    "principles": 15,
+    "patterns": 12,
+    "pitfalls": 7,
+    "code": 14,
+    "reading": 21
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 16 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 16
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 12
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 14 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 14,
+      "coarse": true
+    }
+  ],
+  "gate": {
+    "passed": true,
+    "reasonCodes": [],
+    "failures": [],
+    "bytes": 16328,
+    "sizeLimitBytes": 16568
+  },
+  "riskFlags": [],
+  "overflow": {
+    "applied": true,
+    "rule": "实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）",
+    "target": "references/practice-patterns.md",
+    "bytesFull": 18569,
+    "bytesAfter": 16328,
+    "stillOverLimit": false
+  },
+  "references": [
+    "references/practice-patterns.md"
+  ],
+  "artifacts": {
+    "staged": "pipeline/registry/build/chapter2-s3/SKILL.md",
+    "contract": "pipeline/registry/build/chapter2-s3/skill-contract.json",
+    "receipt": "pipeline/registry/build/chapter2-s3/gate-receipt.json",
+    "published": "skills/chapter2-s3/SKILL.md"
+  },
+  "verdict": {
+    "passed": true,
+    "failures": [],
+    "reasonCodes": [],
+    "checks": {
+      "bytes": 16328,
+      "sizeLimitBytes": 16568,
+      "sectionItemCounts": {
+        "## 何时使用": 16,
+        "## 核心原则": 15,
+        "## 实践模式": 12,
+        "## 常见陷阱": 7,
+        "## 配套代码": 14,
+        "## 深度阅读": 21
+      },
+      "sourceRefCount": 21
+    },
+    "markdownHash": "sha256:3d64e37d19d987a31fdf1565e3302f23ddcac12a75f1638df37929336851ee8c"
+  }
+}

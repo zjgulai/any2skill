@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "chapter3-s1",
+  "name": "chapter3-s1",
+  "description": "用户记忆体系设计：提取结果应同时满足选择性、抽象化和结构化三条规则；适用于提取用户记忆时、在实践中选择用户记忆存储格式时，面对不同类别和关键性的用户数据、当状态是带类型的状态时。",
+  "references": [
+    {
+      "path": "references/practice-patterns.md",
+      "bytes": 5660,
+      "sha256": "sha256:c384bc1a6cd7804575a77335d163cea19fe71393b5bb44972a0d07a00a044408"
+    }
+  ],
+  "overflow": {
+    "applied": true,
+    "rule": "实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）",
+    "target": "references/practice-patterns.md",
+    "bytesFull": 17561,
+    "bytesAfter": 13419,
+    "stillOverLimit": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 13419,
+    "markdownHash": "sha256:7cdb29bac4a56eaabb0ee17e480cec41aa1d0f612bd39b63933f92cef0950191",
+    "checkedAt": "2026-10-13T12:55:06.037Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CHAPTER3-H1-1-CONCEPT-01",
+    "CHAPTER3-H2-1-CONCEPT-01",
+    "CHAPTER3-H2-1-ENGINEERINGRULE-02",
+    "CHAPTER3-H3-1-CONCEPT-01",
+    "CHAPTER3-H3-1-CONCEPT-02",
+    "CHAPTER3-H3-2-CONCEPT-01",
+    "CHAPTER3-H3-2-CONCEPT-02",
+    "CHAPTER3-H3-3-ENGINEERINGRULE-01",
+    "CHAPTER3-H3-3-MENTALMODEL-02",
+    "CHAPTER3-H3-4-CONCEPT-01",
+    "CHAPTER3-H3-4-ENGINEERINGRULE-02",
+    "CHAPTER3-H3-5-CONCEPT-01",
+    "CHAPTER3-H3-5-CONCEPT-02",
+    "CHAPTER3-H3-6-CONCEPT-01",
+    "CHAPTER3-H3-6-CONCEPT-02",
+    "CHAPTER3-H3-7-ANTIPATTERN-01",
+    "CHAPTER3-H3-7-CONCEPT-02",
+    "CHAPTER3-H3-8-ENGINEERINGRULE-01",
+    "CHAPTER3-H3-8-CONCEPT-02",
+    "CHAPTER3-H3-13-DECISIONMODEL-01",
+    "CHAPTER3-H3-13-ENGINEERINGRULE-02",
+    "CHAPTER3-H3-14-CONCEPT-01",
+    "CHAPTER3-H3-14-ENGINEERINGRULE-02",
+    "CHAPTER3-H3-15-ENGINEERINGRULE-01",
+    "CHAPTER3-H4-3-ENGINEERINGRULE-01",
+    "CHAPTER3-H4-3-ENGINEERINGRULE-02",
+    "CHAPTER3-H4-4-ENGINEERINGRULE-01",
+    "CHAPTER3-H4-4-ENGINEERINGRULE-02",
+    "CHAPTER3-H3-18-CONCEPT-01",
+    "CHAPTER3-H3-18-ENGINEERINGRULE-02",
+    "CHAPTER3-H3-19-CONCEPT-01",
+    "CHAPTER3-H3-19-ANTIPATTERN-02",
+    "CHAPTER3-H2-4-ENGINEERINGRULE-01",
+    "CHAPTER3-H2-4-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h1-1",
+      "title": "用户记忆和知识库",
+      "lineStart": 1,
+      "lineEnd": 14
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h2-1",
+      "title": "用户记忆系统",
+      "lineStart": 15,
+      "lineEnd": 42
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-1",
+      "title": "记忆能力的评估：三层次框架",
+      "lineStart": 43,
+      "lineEnd": 71
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-2",
+      "title": "记忆的层次结构",
+      "lineStart": 72,
+      "lineEnd": 87
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-3",
+      "title": "用户记忆的四种存储格式",
+      "lineStart": 88,
+      "lineEnd": 112
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-4",
+      "title": "进阶知识表示形态：可执行代码",
+      "lineStart": 113,
+      "lineEnd": 169
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-5",
+      "title": "用户记忆的认知科学基础",
+      "lineStart": 170,
+      "lineEnd": 191
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-6",
+      "title": "记忆框架案例",
+      "lineStart": 192,
+      "lineEnd": 220
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-7",
+      "title": "记忆压缩与整理机制",
+      "lineStart": 221,
+      "lineEnd": 230
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-8",
+      "title": "隐私保护：日志脱敏",
+      "lineStart": 231,
+      "lineEnd": 242
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-13",
+      "title": "结构化索引：从信息检索到知识建模",
+      "lineStart": 445,
+      "lineEnd": 481
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-14",
+      "title": "文件系统范式：用目录结构组织知识",
+      "lineStart": 482,
+      "lineEnd": 504
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-15",
+      "title": "知识应该如何更新",
+      "lineStart": 505,
+      "lineEnd": 508
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h4-3",
+      "title": "用户记忆和知识库的增量更新",
+      "lineStart": 509,
+      "lineEnd": 525
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h4-4",
+      "title": "用户记忆和知识库的定期整理",
+      "lineStart": 526,
+      "lineEnd": 541
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-18",
+      "title": "从数据集中提取深度知识：从信息检索到知识发现",
+      "lineStart": 637,
+      "lineEnd": 664
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h3-19",
+      "title": "前沿探索：多模态记忆",
+      "lineStart": 665,
+      "lineEnd": 676
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter3.md",
+      "anchor": "chapter3#h2-4",
+      "title": "本章小结",
+      "lineStart": 677,
+      "lineEnd": 686
+    }
+  ],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-13T12:55:06.037Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 14 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 14
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 2 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 2
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 16
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 14 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 14,
+      "coarse": true
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 14,
+    "principles": 14,
+    "patterns": 16,
+    "pitfalls": 2,
+    "code": 14,
+    "reading": 18
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 2 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "SECTION_SOURCE_GRANULARITY_COARSE"
+  ],
+  "provenance": {
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter3.md",
+    "anchorIndexHash": "sha256:aef4bd529d906b7cd1fa32ab25e55ef88254a9220d769bebead423b1c754d6bc",
+    "anchorIndexHashes": {
+      "sources/ai-agent-book-zh/book/chapter3.md": "sha256:aef4bd529d906b7cd1fa32ab25e55ef88254a9220d769bebead423b1c754d6bc"
+    },
+    "objectsFile": "pipeline/knowledge/chapter3.objects.json",
+    "objectsFileSha256": "sha256:a4d64159ec091cad0f9954e2c8e87a48bcc3d78c94e2f80307e3ec0457401053",
+    "objectsTotal": 52,
+    "objectsInCluster": 34,
+    "objectsKept": 34,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 14,
+    "crossChapterInCluster": 0,
+    "crossChapterKept": 0,
+    "crossChapterExcludedByGate": [],
+    "antipatternVerdictsFile": "pipeline/registry/run-6bc0e8a0e8b9.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-6bc0e8a0e8b9",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-6bc0e8a0e8b9",
+    "gateReceiptFile": "pipeline/registry/run-2173b6f94c6b.receipt.json",
+    "gateReceiptRunId": "run-2173b6f94c6b",
+    "clusterSource": "clusters.json",
+    "clusterSkillId": "chapter3-s1",
+    "clusterUnits": [
+      "chapter3-u1",
+      "chapter3-u2",
+      "chapter3-u3",
+      "chapter3-u4",
+      "chapter3-u9",
+      "chapter3-u10",
+      "chapter3-u11"
+    ],
+    "clusterChapterRefs": [
+      "chapter3"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.json"
+  }
+}

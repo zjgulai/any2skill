@@ -19,14 +19,18 @@ Any content → executable Agent Skills. MVP pipeline.
 （发布门径 / 来源缺口 / 体积阈值，不诉诸「质量不够」），报告见
 [`docs/specs/02-benchmark-report.md`](docs/specs/02-benchmark-report.md)。
 
-> ### 盘上已有 2 个已发布的 skill
+> ### 盘上已有 8 个已发布的 skill
 >
-> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` →
-> `skills/chapter4-tool-design-principles/SKILL.md` 与
-> `skills/chapter4-single-tool-design/SKILL.md`（含各自的暂存副本）。
+> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 8 个：
+> `chapter4-tool-design-principles`（首个，卡 10/ADR-019）、`chapter4-single-tool-design`
+> （环 3 端到端首件，卡 11），以及卡 16「打通发布门径」一次放行的 6 个：
+> `chapter10-s3` / `chapter1-s1` / `chapter5-s3` / `chapter3-s1` / `chapter2-s3` / `chapter9-s2`
+> （后三个带 `references/` 溢出文件——ADR-004 溢出阀的首批产物）。
 >
-> 第二个是**环 3 端到端的第一件产物**（卡 11）：由 `clusters.json` 的划分（`chapter4-s1`）
-> 经 `--cluster` 装配、过门禁一后发布——「切哪里」第一次由机制而非手挑决定。
+> 放行的三件依据（见 [`卡 16`](docs/tickets/16-publish-path.md)）：其余章配套代码
+> **轻镜像**（README 100% 覆盖）、溢出阀实现、体积阈值**对齐原书实测上限**（
+> [`ADR-028`](docs/adr/ADR-028-size-limit-aligned-to-source.md)）。⚠ 这 6 个只过了门禁一；
+> 门禁二/三门测尚未覆盖它们（已记为未决）。
 >
 > 达成路径是三件事依次落地，**前两件不是放宽判据本身**：
 > ① [ADR-020](docs/adr/ADR-020-source-expansion-chapter4-code.md) 扩充信息源——
@@ -83,7 +87,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 549 项，零网络、零凭据（实测 2026-10-13）
+npm test                                    # 553 项，零网络、零凭据（实测 2026-10-13）
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md

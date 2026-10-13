@@ -1,0 +1,364 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "chapter1-s1",
+  "name": "chapter1-s1",
+  "description": "Agent基础与边界设计：没有通过观察通道进入上下文的信息，对模型来说就像不存在；没有被动作接口允许的操作，模型即使知道该怎么做，也只能停留在文字建议上；适用于当 Agent 依赖观察通道感知信息、依赖动作接口执行操作时、当任务升级为读取表格、清洗缺失值、计算统计量并绘图时、当存在支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作时。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 14579,
+    "markdownHash": "sha256:59e687353f7de5915cd283497640a08f60bd4237f1575dde0e2613d8645baaa8",
+    "checkedAt": "2026-10-13T12:55:05.755Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CHAPTER1-H1-1-CONCEPT-01",
+    "CHAPTER1-H2-1-CONCEPT-01",
+    "CHAPTER1-H2-1-CONCEPT-02",
+    "CHAPTER1-H3-1-CONCEPT-01",
+    "CHAPTER1-H3-1-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-2-ENGINEERINGRULE-01",
+    "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-3-CONCEPT-01",
+    "CHAPTER1-H3-3-ENGINEERINGRULE-02",
+    "CHAPTER1-H4-1-CONCEPT-01",
+    "CHAPTER1-H4-1-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-4-CONCEPT-01",
+    "CHAPTER1-H3-5-CONCEPT-01",
+    "CHAPTER1-H3-5-CONCEPT-02",
+    "CHAPTER1-H2-2-CONCEPT-01",
+    "CHAPTER1-H2-2-HEURISTIC-02",
+    "CHAPTER1-H3-6-CONCEPT-01",
+    "CHAPTER1-H3-6-CONCEPT-02",
+    "CHAPTER1-H3-7-CONCEPT-01",
+    "CHAPTER1-H3-7-CONCEPT-02",
+    "CHAPTER1-H3-10-CONCEPT-01",
+    "CHAPTER1-H3-10-ENGINEERINGRULE-02",
+    "CHAPTER1-H4-7-ENGINEERINGRULE-01",
+    "CHAPTER1-H4-7-ENGINEERINGRULE-02",
+    "CHAPTER1-H4-8-CONCEPT-01",
+    "CHAPTER1-H4-8-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-11-ENGINEERINGRULE-01",
+    "CHAPTER1-H2-3-CONCEPT-01",
+    "CHAPTER1-H2-4-CONCEPT-01",
+    "CHAPTER1-H2-4-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T12-02"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h1-1",
+      "title": "AI Agent 入门",
+      "lineStart": 1,
+      "lineEnd": 10
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-1",
+      "title": "现代 Agent = LLM + 上下文 + 工具",
+      "lineStart": 11,
+      "lineEnd": 36
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-1",
+      "title": "观察空间与动作空间：模型与世界的接口",
+      "lineStart": 37,
+      "lineEnd": 60
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-2",
+      "title": "工具：Agent 的手脚",
+      "lineStart": 61,
+      "lineEnd": 108
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-3",
+      "title": "LLM：Agent 的大脑",
+      "lineStart": 109,
+      "lineEnd": 114
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h4-1",
+      "title": "模型即 Agent：当模型本身成为产品",
+      "lineStart": 115,
+      "lineEnd": 124
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-4",
+      "title": "上下文：Agent 的眼睛",
+      "lineStart": 137,
+      "lineEnd": 160
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-5",
+      "title": "ReAct 循环",
+      "lineStart": 161,
+      "lineEnd": 262
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-2",
+      "title": "Harness 工程：模型之外的竞争力",
+      "lineStart": 263,
+      "lineEnd": 320
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-6",
+      "title": "从提示工程到 Loop 工程：工程范式的演进",
+      "lineStart": 321,
+      "lineEnd": 340
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-7",
+      "title": "构建有效 Agent 的核心原则",
+      "lineStart": 341,
+      "lineEnd": 354
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-10",
+      "title": "护栏与安全性",
+      "lineStart": 466,
+      "lineEnd": 473
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h4-7",
+      "title": "护栏类型",
+      "lineStart": 474,
+      "lineEnd": 489
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h4-8",
+      "title": "人工干预",
+      "lineStart": 490,
+      "lineEnd": 505
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-11",
+      "title": "Harness 五要素与「构建」部分的对应",
+      "lineStart": 506,
+      "lineEnd": 524
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-3",
+      "title": "贯穿全书的设计模式",
+      "lineStart": 525,
+      "lineEnd": 538
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-4",
+      "title": "本章小结",
+      "lineStart": 539,
+      "lineEnd": 560
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-18",
+      "title": "提示注入：上下文安全的核心威胁",
+      "lineStart": 730,
+      "lineEnd": 764
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-9",
+      "title": "Coding Agent 的安全",
+      "lineStart": 309,
+      "lineEnd": 350
+    }
+  ],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-13T12:55:05.755Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 12 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 12
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 1 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 1
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 18
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 5 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 5,
+      "coarse": true
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 12,
+    "principles": 11,
+    "patterns": 18,
+    "pitfalls": 1,
+    "code": 5,
+    "reading": 19
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 1 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "SECTION_SOURCE_GRANULARITY_COARSE"
+  ],
+  "provenance": {
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter1.md",
+    "anchorIndexHash": "sha256:8041969762009cd0797c682acdf513050908b2b40de625de8a1a6f3b27516e76",
+    "anchorIndexHashes": {
+      "sources/ai-agent-book-zh/book/chapter1.md": "sha256:8041969762009cd0797c682acdf513050908b2b40de625de8a1a6f3b27516e76",
+      "sources/ai-agent-book-zh/book/chapter2.md": "sha256:06872e831c6e42fa9c222342cb459dc7a6db392cc12c8ac948df2b14e966d0d5",
+      "sources/ai-agent-book-zh/book/chapter5.md": "sha256:7a87dcbf48016e48d1da5f005a16400e47aa19d884fbcfe17b4d270eefac601c"
+    },
+    "objectsFile": "pipeline/knowledge/chapter1.objects.json",
+    "objectsFileSha256": "sha256:4c0c261e42c287fb3fd9af598ada78047fdcb831a386ea4101859b93a198189f",
+    "objectsTotal": 47,
+    "objectsInCluster": 30,
+    "objectsKept": 30,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 14,
+    "crossChapterInCluster": 2,
+    "crossChapterKept": 1,
+    "crossChapterExcludedByGate": [
+      {
+        "id": "AP-SYNTH-T12-03",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      }
+    ],
+    "antipatternVerdictsFile": "pipeline/registry/run-6bc0e8a0e8b9.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-6bc0e8a0e8b9",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-6bc0e8a0e8b9",
+    "gateReceiptFile": "pipeline/registry/run-f73a959172d0.receipt.json",
+    "gateReceiptRunId": "run-f73a959172d0",
+    "clusterSource": "clusters.json",
+    "clusterSkillId": "chapter1-s1",
+    "clusterUnits": [
+      "chapter1-u1",
+      "chapter1-u2",
+      "chapter1-u3",
+      "chapter1-u4",
+      "chapter1-u5",
+      "chapter1-u10",
+      "chapter1-u11"
+    ],
+    "clusterChapterRefs": [
+      "chapter1"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.json"
+  }
+}

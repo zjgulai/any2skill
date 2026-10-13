@@ -1,0 +1,152 @@
+{
+  "slug": "chapter10-s3",
+  "clusterSource": "clusters.json",
+  "rootAnchor": "chapter10-s3",
+  "clusterAnchors": 20,
+  "clusterTitle": "协作模式编排",
+  "objectsInCluster": 36,
+  "objectsKept": 36,
+  "crossChapterAntipatternsInCluster": 0,
+  "crossChapterAntipatternsKept": 0,
+  "crossChapterExcluded": [],
+  "sectionCounts": {
+    "whenToUse": 12,
+    "principles": 11,
+    "patterns": 17,
+    "pitfalls": 4,
+    "code": 8,
+    "reading": 20
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 12 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 12
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 4 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 4
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 17
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 8 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 8,
+      "coarse": true
+    }
+  ],
+  "gate": {
+    "passed": true,
+    "reasonCodes": [],
+    "failures": [],
+    "bytes": 15650,
+    "sizeLimitBytes": 16568
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 4 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "overflow": null,
+  "references": [],
+  "artifacts": {
+    "staged": "pipeline/registry/build/chapter10-s3/SKILL.md",
+    "contract": "pipeline/registry/build/chapter10-s3/skill-contract.json",
+    "receipt": "pipeline/registry/build/chapter10-s3/gate-receipt.json",
+    "published": "skills/chapter10-s3/SKILL.md"
+  },
+  "verdict": {
+    "passed": true,
+    "failures": [],
+    "reasonCodes": [],
+    "checks": {
+      "bytes": 15650,
+      "sizeLimitBytes": 16568,
+      "sectionItemCounts": {
+        "## 何时使用": 12,
+        "## 核心原则": 11,
+        "## 实践模式": 17,
+        "## 常见陷阱": 4,
+        "## 配套代码": 8,
+        "## 深度阅读": 20
+      },
+      "sourceRefCount": 20
+    },
+    "markdownHash": "sha256:a34aeaa6759bdb613396173c0135be20412cf48bf8f44766db573c21df851cb8"
+  }
+}
