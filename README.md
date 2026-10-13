@@ -3,15 +3,19 @@
 Any content → executable Agent Skills. MVP pipeline.
 
 **当前状态**：环 1–2 已跑通（源文件 → 锚点索引 → 知识对象 → 机器验证，含独立判定者）。
-**环 3 机制已建成**（章内语义聚类 + 技能候选 + 环 4 按簇装配入口；离线全绿，**真实聚类调用待跑**，见
-[`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。
-**环 4 已实现（确定性装配 + 门禁一 skill 侧），产物已过门禁一并发布**（见下）。
-环 5（门禁二/三）尚未构建。
+**环 3 已跑通**（章内语义聚类 + 技能候选：13 章 / 115 单元 / 40 候选，593 个对象全归类；
+见 [`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。
+**环 4 已实现（确定性装配 + 门禁一 skill 侧）**，两种入口并存：手工子树（`--root-anchor`）与
+**环 3 的划分产物（`--cluster`）**。环 5（门禁二/三）尚未构建。
 
-> ### 盘上已有 1 个已发布的 skill（此前为 0）
+> ### 盘上已有 2 个已发布的 skill
 >
 > `find . -path ./node_modules -prune -o -name "SKILL.md" -print` →
-> `skills/chapter4-tool-design-principles/SKILL.md` 与它的暂存副本。
+> `skills/chapter4-tool-design-principles/SKILL.md` 与
+> `skills/chapter4-single-tool-design/SKILL.md`（含各自的暂存副本）。
+>
+> 第二个是**环 3 端到端的第一件产物**（卡 11）：由 `clusters.json` 的划分（`chapter4-s1`）
+> 经 `--cluster` 装配、过门禁一后发布——「切哪里」第一次由机制而非手挑决定。
 >
 > 达成路径是三件事依次落地，**前两件不是放宽判据本身**：
 > ① [ADR-020](docs/adr/ADR-020-source-expansion-chapter4-code.md) 扩充信息源——
@@ -68,7 +72,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 489 项，零网络、零凭据（实测 2026-10-12）
+npm test                                    # 491 项，零网络、零凭据（实测 2026-10-12）
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md

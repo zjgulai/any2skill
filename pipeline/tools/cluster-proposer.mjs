@@ -42,12 +42,13 @@ export const CANDIDATES_REL_PATH = path.join('pipeline', 'registry', 'skill-cand
 export const CROSS_CHAPTER_OBJECTS_FILE = 'antipatterns.objects.json'
 
 /**
- * 输出上限（含推理 token）。取 16000（与第 2 层同档）而不是 32000（主题提案那档）：
- * 本步的输入是**一章**的对象摘要（最大一章约 100 条 × ~120 字），比全书目录小一个量级；
- * 且输出只是一份聚类清单。上限卡在推理上时的失败形态与第 2 层相同（响应无可解析 JSON），
- * 综合模块的实测已证明要先看 `finishReason` 再谈归因。
+ * 输出上限（含推理 token）。取 24000 而不是最初的 16000：
+ * chapter4 试跑（2026-10-12，39 个对象）实测完成量 **12,241**（其中推理 **10,428**，占 85%），
+ * 距 16000 只剩 24% 余量——而 chapter7 是它的两倍对象（82 条），推理量会同步增长。
+ * 上限卡在推理上时的失败形态与第 2 层相同（响应无可解析 JSON），
+ * 综合模块的实测已证明要先看 `finishReason` 再谈归因。上限本身记进每章产物。
  */
-export const DEFAULT_CLUSTER_MAX_TOKENS = 16000
+export const DEFAULT_CLUSTER_MAX_TOKENS = 24000
 export const DEFAULT_CLUSTER_TEMPERATURE = 0
 
 /** 摘要截断长度（字符）。它是**输入压缩**，不影响任何判据——原文始终在对象文件里。 */
@@ -398,6 +399,7 @@ export async function proposeChapterClusters({
     usage: res.usage ?? null,
     finishReason: res.finishReason ?? null,
     reasoningChars: res.reasoningChars ?? 0,
+    maxTokens,
   }
 }
 

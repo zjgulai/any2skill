@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "chapter4-s1",
+  "name": "chapter4-single-tool-design",
+  "description": "单工具设计与审查：感知工具的设计关键在于控制输出信息量，防止上下文爆炸；适用于在设计感知工具时、在设计执行工具时、当设计面向 Agent 使用的工具时。",
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 7146,
+    "markdownHash": "sha256:17cc21f013b8c92d792f8ac001bdac4cbba70af8d1a9c8b84e09377439eb13a0",
+    "checkedAt": "2026-10-13T02:58:23.887Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CHAPTER4-H1-1-CONCEPT-01",
+    "CHAPTER4-H1-1-CONCEPT-02",
+    "CHAPTER4-H2-1-ENGINEERINGRULE-01",
+    "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+    "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+    "CHAPTER4-H2-2-ANTIPATTERN-02",
+    "CHAPTER4-H3-1-ENGINEERINGRULE-02",
+    "CHAPTER4-H3-2-HEURISTIC-01",
+    "CHAPTER4-H3-2-HEURISTIC-02",
+    "CHAPTER4-H3-3-CONCEPT-01",
+    "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+    "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+    "CHAPTER4-H2-5-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T02-03",
+    "AP-SYNTH-T02-04"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h1-1",
+      "title": "工具",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-1",
+      "title": "工具的分类",
+      "lineStart": 7,
+      "lineEnd": 33
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-2",
+      "title": "工具设计的通用原则",
+      "lineStart": 34,
+      "lineEnd": 37
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h3-1",
+      "title": "能力的表达形式：专用工具、通用执行器与 Skill",
+      "lineStart": 38,
+      "lineEnd": 69
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h3-2",
+      "title": "工具描述的艺术",
+      "lineStart": 70,
+      "lineEnd": 87
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h3-3",
+      "title": "参数传递的保真性",
+      "lineStart": 88,
+      "lineEnd": 99
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-5",
+      "title": "感知工具",
+      "lineStart": 218,
+      "lineEnd": 243
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-17",
+      "title": "工具定义的设计",
+      "lineStart": 700,
+      "lineEnd": 729
+    }
+  ],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-13T02:58:23.887Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 9 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 9
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 3 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 3
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 3
+    },
+    {
+      "code": "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目中包含「必须/不得/应当/应该」的 2 条可能不是触发条件，而是被写进 `appliesWhen` 的规则陈述（条件 + 要求 的复合句）。启发式，不导致门禁失败。",
+      "required": null,
+      "actual": 2,
+      "items": [
+        {
+          "from": "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+          "text": "当确实需要对输入进行规范化处理（如统一编码格式）时，必须在工具描述中加以说明，并在工具返回中明确告知模型。"
+        },
+        {
+          "from": "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+          "text": "读取类工具内容超过阈值必须截断时。"
+        }
+      ]
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 6 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 6,
+      "coarse": true
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 9,
+    "principles": 7,
+    "patterns": 3,
+    "pitfalls": 3,
+    "code": 6,
+    "reading": 8
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 3 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "SECTION_SOURCE_GRANULARITY_COARSE"
+  ],
+  "provenance": {
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter4.md",
+    "anchorIndexHash": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+    "anchorIndexHashes": {
+      "sources/ai-agent-book-zh/book/chapter4.md": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+      "sources/ai-agent-book-zh/book/chapter2.md": "sha256:06872e831c6e42fa9c222342cb459dc7a6db392cc12c8ac948df2b14e966d0d5"
+    },
+    "objectsFile": "pipeline/knowledge/chapter4.objects.json",
+    "objectsFileSha256": "sha256:b28b59c29ed0af059e9598ff9c9815db08725ac4caa98a1f842a98f90ffac1f4",
+    "objectsTotal": 39,
+    "objectsInCluster": 13,
+    "objectsKept": 13,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 14,
+    "crossChapterInCluster": 2,
+    "crossChapterKept": 2,
+    "crossChapterExcludedByGate": [],
+    "antipatternVerdictsFile": "pipeline/registry/run-6bc0e8a0e8b9.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-6bc0e8a0e8b9",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-6bc0e8a0e8b9",
+    "gateReceiptFile": "pipeline/registry/run-ec4a90a91b01.receipt.json",
+    "gateReceiptRunId": "run-ec4a90a91b01",
+    "clusterSource": "clusters.json",
+    "clusterSkillId": "chapter4-s1",
+    "clusterUnits": [
+      "chapter4-u1",
+      "chapter4-u2",
+      "chapter4-u3",
+      "chapter4-u7"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.json"
+  }
+}

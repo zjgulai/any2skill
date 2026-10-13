@@ -1,0 +1,168 @@
+{
+  "slug": "chapter4-single-tool-design",
+  "clusterSource": "clusters.json",
+  "rootAnchor": "chapter4-s1",
+  "clusterAnchors": 7,
+  "clusterTitle": "单工具设计与审查",
+  "objectsInCluster": 13,
+  "objectsKept": 13,
+  "crossChapterAntipatternsInCluster": 2,
+  "crossChapterAntipatternsKept": 2,
+  "crossChapterExcluded": [],
+  "sectionCounts": {
+    "whenToUse": 9,
+    "principles": 7,
+    "patterns": 3,
+    "pitfalls": 3,
+    "code": 6,
+    "reading": 8
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 9 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 9
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 3 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 3
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 3
+    },
+    {
+      "code": "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目中包含「必须/不得/应当/应该」的 2 条可能不是触发条件，而是被写进 `appliesWhen` 的规则陈述（条件 + 要求 的复合句）。启发式，不导致门禁失败。",
+      "required": null,
+      "actual": 2,
+      "items": [
+        {
+          "from": "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+          "text": "当确实需要对输入进行规范化处理（如统一编码格式）时，必须在工具描述中加以说明，并在工具返回中明确告知模型。"
+        },
+        {
+          "from": "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+          "text": "读取类工具内容超过阈值必须截断时。"
+        }
+      ]
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_SOURCE_GRANULARITY_COARSE",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段列的是**本章全部** 6 个代码目录，不是本簇专属。理由：对象模型没有「锚点 → 代码目录」的映射字段，章级列举是当前唯一可确定派生的口径。",
+      "required": null,
+      "actual": 6,
+      "coarse": true
+    }
+  ],
+  "gate": {
+    "passed": true,
+    "reasonCodes": [],
+    "failures": [],
+    "bytes": 7146,
+    "sizeLimitBytes": 12288
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 3 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "artifacts": {
+    "staged": "pipeline/registry/build/chapter4-single-tool-design/SKILL.md",
+    "contract": "pipeline/registry/build/chapter4-single-tool-design/skill-contract.json",
+    "receipt": "pipeline/registry/build/chapter4-single-tool-design/gate-receipt.json",
+    "published": "skills/chapter4-single-tool-design/SKILL.md"
+  },
+  "verdict": {
+    "passed": true,
+    "failures": [],
+    "reasonCodes": [],
+    "checks": {
+      "bytes": 7146,
+      "sizeLimitBytes": 12288,
+      "sectionItemCounts": {
+        "## 何时使用": 9,
+        "## 核心原则": 7,
+        "## 实践模式": 3,
+        "## 常见陷阱": 3,
+        "## 配套代码": 6,
+        "## 深度阅读": 8
+      },
+      "sourceRefCount": 8
+    },
+    "markdownHash": "sha256:17cc21f013b8c92d792f8ac001bdac4cbba70af8d1a9c8b84e09377439eb13a0"
+  }
+}
