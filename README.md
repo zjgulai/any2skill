@@ -6,7 +6,10 @@ Any content → executable Agent Skills. MVP pipeline.
 **环 3 已跑通**（章内语义聚类 + 技能候选：13 章 / 115 单元 / 40 候选，593 个对象全归类；
 见 [`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。
 **环 4 已实现（确定性装配 + 门禁一 skill 侧）**，两种入口并存：手工子树（`--root-anchor`）与
-**环 3 的划分产物（`--cluster`）**。环 5（门禁二/三）尚未构建。
+**环 3 的划分产物（`--cluster`）**。环 5 的**门禁二机制已建成**（触发盲测：场景生成与盲测分离、
+题面白名单是机制；**真实盲测待跑**，见
+[`docs/tickets/12-gate2-trigger-blind-test.md`](docs/tickets/12-gate2-trigger-blind-test.md)）；
+门禁三尚未构建。
 
 > ### 盘上已有 2 个已发布的 skill
 >
@@ -72,7 +75,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 491 项，零网络、零凭据（实测 2026-10-12）
+npm test                                    # 513 项，零网络、零凭据（实测 2026-10-12）
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
@@ -89,6 +92,10 @@ node pipeline/propose-clusters.mjs --model deepseek-v4-pro --base-url https://ap
 node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 \
   --slug chapter4-tool-design-principles --title "工具设计的通用原则" --dry-run
 node pipeline/build-skill.mjs --cluster chapter4-s1 --dry-run   # 按环 3 的簇定义装配（ADR-024）
+
+# 门禁二：触发盲测——场景生成 + 盲测两段分离（ADR-026；盲测题面只含 name+description）
+node pipeline/run-gate2.mjs --dry-run          # 只看规模与调用预算，零调用、零写盘
+node pipeline/run-gate2.mjs --model deepseek-v4-pro --base-url https://api.deepseek.com
 
 # 全书：13 个源文件逐个跑，产出一份聚合回执 + 污染隔离检查（卡 09）
 node pipeline/run-book.mjs --layer2 deepseek --concurrency 4 \

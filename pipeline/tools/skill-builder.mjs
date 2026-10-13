@@ -697,9 +697,15 @@ export function assembleSkill(input) {
     }
   }
 
+  // skillId 兜底：显式传入优先（环 3 的簇模式传真实候选 id）；否则从根锚点派生。
+  // 旧实现写死了 `CHAPTER4-${split('#')[1]}`——两个毛病：前缀与章节无关（别的章会盖错名），
+  // 且根锚点不含 `#`（簇模式的 skillId 形如 `chapter4-s1`）时 split 取到 undefined 直接崩。
+  const [anchorChapter, anchorFragment] = String(cluster.rootAnchor).split('#')
+  const fallbackSkillId = `${anchorChapter.toUpperCase()}-${(anchorFragment ?? 'CLUSTER').toUpperCase()}-SKILL-01`
+
   const contract = {
     schemaVersion: 'skill-contract/v1',
-    skillId: input.skillId || `CHAPTER4-${cluster.rootAnchor.split('#')[1].toUpperCase()}-SKILL-01`,
+    skillId: input.skillId || fallbackSkillId,
     name: slug,
     description,
     // 环 5 未构建：这三项此刻只是占位，不得被读成「已通过」。

@@ -240,6 +240,93 @@ export async function loadClusterCandidate(repoRoot, skillId) {
   )
 }
 
+/**
+ * 两种装配入口共用的读盘：锚点索引、对象文件、跨章反模式及其判定表、门禁回执与通过集。
+ *
+ * 抽出来的理由不是「少写几行」，是**门禁二与环 4 必须看到同一批对象**：触发盲测要测的是
+ * 「发布出去的那份会怎样」，若两边各自过滤（比如一边忘掉门禁通过集），被测的就成了另一份
+ * 东西——而两份在产物里长得一样。
+ */
+export async function loadAssemblyInputs(repoRoot, { chapterKey, sourceRel }) {
+  const rel = (p) => path.relative(repoRoot, p)
+  const index = await buildAnchorIndex(path.join(repoRoot, sourceRel), { repoRoot })
+  const objectsPath = path.join(repoRoot, 'pipeline', 'knowledge', `${chapterKey}.objects.json`)
+  const allObjects = unwrapObjectsFile(
+    JSON.parse(await readFile(objectsPath, 'utf8')),
+    rel(objectsPath),
+  )
+
+  const apPath = path.join(repoRoot, 'pipeline', 'knowledge', 'antipatterns.objects.json')
+  let allAntipatterns = []
+  let antipatternsRunId = null
+  try {
+    const apRaw = JSON.parse(await readFile(apPath, 'utf8'))
+    // 对象文件自己声明的身份。它决定去取**哪一份**判定表——不是「最新的那一份」。
+    antipatternsRunId = typeof apRaw.runId === 'string' ? apRaw.runId : null
+    allAntipatterns = unwrapObjectsFile(apRaw, rel(apPath))
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      // 文件确实不存在是一种状态：跨章池按空处理，读取方按「没有」显示，不假装判定过。
+      allAntipatterns = []
+    } else {
+      throw err
+    }
+  }
+
+  const found = await findLatestReceipt(sourceRel, { repoRoot })
+  const passSet = found ? passedObjectIds(found.receipt) : new Set()
+  const apVerdicts = await findLatestAntipatternVerdicts({ repoRoot, expectRunId: antipatternsRunId })
+  const apVerdictById = new Map((apVerdicts?.verdicts || []).map((v) => [v.objectId, v]))
+  const apPassSet = new Set(
+    [...apVerdictById.entries()].filter(([, v]) => v.status === 'pass').map(([id]) => id),
+  )
+
+  return { index, objectsPath, allObjects, allAntipatterns, antipatternsRunId, apVerdicts, apVerdictById, apPassSet, found, passSet }
+}
+
+/** 跨章判定表与对象不同源时的告警文本（没有问题时返回 null）。两种入口共用同一句。 */
+export function antipatternIdentityWarning(apVerdicts, antipatternsRunId) {
+  if (apVerdicts === null || apVerdicts.identityMatch === true) return null
+  return (
+    `⚠ 跨章判定表与反模式对象**不是同一次运行的产物**：` +
+    `对象声明 ${antipatternsRunId ?? '(无身份)'}，取到的判定表是 ${apVerdicts.runId}` +
+    `（registry 里有 ${apVerdicts.candidateCount} 份候选，按 mtime 回退挑选）。\n` +
+    `  两者不同源时，「通过」的含义无法核实——请先重跑 pipeline/synthesize-antipatterns.mjs。\n`
+  )
+}
+
+/**
+ * 由候选的簇定义构造环 4 的 `cluster` 与簇内对象集（簇模式的唯一构造点）。
+ *
+ * 引用**逐条解析**，解析不到即停——静默丢一条引用会让产物看起来完整而实际缺证据。
+ */
+export function clusterFromCandidate(clusterDef, index, allObjects, { objectsLabel = '对象文件' } = {}) {
+  const byAnchor = new Map(index.anchors.map((a) => [a.anchor, a]))
+  const missingAnchors = clusterDef.anchorIds.filter((id) => !byAnchor.has(id))
+  if (missingAnchors.length > 0) {
+    throw new Error(
+      `候选 ${clusterDef.skillId} 引用了本章索引里不存在的锚点：${missingAnchors.join(', ')}` +
+        '——拒绝装配（先核对 clusters.json 与源文是否同一批输入）。',
+    )
+  }
+  const cluster = {
+    rootAnchor: clusterDef.skillId,
+    title: clusterDef.name || clusterDef.skillId,
+    level: null,
+    anchors: clusterDef.anchorIds.map((id) => byAnchor.get(id)),
+  }
+  const want = new Set(clusterDef.objectIds)
+  const inCluster = allObjects.filter((o) => want.has(o.id))
+  const missingObjects = clusterDef.objectIds.filter((id) => !inCluster.some((o) => o.id === id))
+  if (missingObjects.length > 0) {
+    throw new Error(
+      `候选 ${clusterDef.skillId} 引用的对象不在 ${objectsLabel} 里：${missingObjects.slice(0, 5).join(', ')}` +
+        (missingObjects.length > 5 ? ` 等共 ${missingObjects.length} 个` : ''),
+    )
+  }
+  return { cluster, inCluster }
+}
+
 async function main(argv) {
   let flags
   try {
@@ -272,36 +359,14 @@ async function main(argv) {
     const chapterKey = clusterDef ? clusterDef.fileKey : String(flags.rootAnchor).split('#')[0]
     const sourceRel = flags.source || path.join('sources', 'ai-agent-book-zh', 'book', `${chapterKey}.md`)
 
-    // ── 读盘 ──────────────────────────────────────────────────────────────
-    const index = await buildAnchorIndex(path.join(repoRoot, sourceRel), { repoRoot })
-    const objectsPath = path.join(repoRoot, 'pipeline', 'knowledge', `${chapterKey}.objects.json`)
-    const allObjects = unwrapObjectsFile(
-      JSON.parse(await readFile(objectsPath, 'utf8')),
-      rel(objectsPath),
-    )
-    const apPath = path.join(repoRoot, 'pipeline', 'knowledge', 'antipatterns.objects.json')
-    let allAntipatterns = []
-    let antipatternsFileState = 'loaded'
-    // 对象文件自己声明的身份。它决定去取**哪一份**判定表——不是「最新的那一份」。
-    let antipatternsRunId = null
-    try {
-      const apRaw = JSON.parse(await readFile(apPath, 'utf8'))
-      antipatternsRunId = typeof apRaw.runId === 'string' ? apRaw.runId : null
-      allAntipatterns = unwrapObjectsFile(apRaw, rel(apPath))
-    } catch (err) {
-      if (err.code === 'ENOENT') {
-        // 文件确实不存在是一种状态；形状不对是另一种。两者都记录，不混为一谈。
-        allAntipatterns = []
-        antipatternsFileState = 'missing'
-      } else {
-        throw err
-      }
-    }
+    // ── 读盘（两种入口共用；门禁二走同一函数，保证被测对象与发布对象是同一批） ──
+    const loaded = await loadAssemblyInputs(repoRoot, { chapterKey, sourceRel })
+    const { index, objectsPath, allObjects, allAntipatterns, antipatternsRunId, apVerdicts, apVerdictById, apPassSet } = loaded
 
     // ── 门禁一的结论是环 4 的前置，不是可选项 ─────────────────────────────
     const found = flags.receipt
       ? { file: path.resolve(repoRoot, flags.receipt), receipt: JSON.parse(await readFile(path.resolve(repoRoot, flags.receipt), 'utf8')) }
-      : await findLatestReceipt(sourceRel, { repoRoot })
+      : loaded.found
     if (!found) {
       process.stderr.write(
         `拒绝装配：未找到 ${sourceRel} 的判定回执。\n` +
@@ -310,56 +375,17 @@ async function main(argv) {
       )
       return EXIT.RUN_FAILED
     }
-    const passSet = passedObjectIds(found.receipt)
+    const passSet = flags.receipt ? passedObjectIds(found.receipt) : loaded.passSet
 
     // 跨章反模式走**它自己那次运行**的判定表，不能拿 chapter 的回执代判（见
     // findLatestAntipatternVerdicts 的说明）。缺判定表时一律不纳入——未判定 ≠ 通过。
-    // 身份取自对象文件：判定表与对象必须是同一次综合的产物，mtime 新不等于配套。
-    const apVerdicts = await findLatestAntipatternVerdicts({
-      repoRoot,
-      expectRunId: antipatternsRunId,
-    })
-    if (apVerdicts !== null && apVerdicts.identityMatch !== true) {
-      process.stderr.write(
-        `⚠ 跨章判定表与反模式对象**不是同一次运行的产物**：` +
-          `对象声明 ${antipatternsRunId ?? '(无身份)'}，取到的判定表是 ${apVerdicts.runId}` +
-          `（registry 里有 ${apVerdicts.candidateCount} 份候选，按 mtime 回退挑选）。\n` +
-          `  两者不同源时，「通过」的含义无法核实——请先重跑 pipeline/synthesize-antipatterns.mjs。\n`,
-      )
-    }
-    const apVerdictById = new Map((apVerdicts?.verdicts || []).map((v) => [v.objectId, v]))
-    const apPassSet = new Set(
-      [...apVerdictById.entries()].filter(([, v]) => v.status === 'pass').map(([id]) => id),
-    )
+    const identityWarning = antipatternIdentityWarning(apVerdicts, antipatternsRunId)
+    if (identityWarning) process.stderr.write(identityWarning)
 
     let cluster
     let inCluster
     if (clusterDef) {
-      // 簇模式：锚点集与对象集都由划分产物给出，**逐条解析**，解析不到即停——
-      // 静默丢一条引用会让产物看起来完整而实际缺证据。
-      const byAnchor = new Map(index.anchors.map((a) => [a.anchor, a]))
-      const missingAnchors = clusterDef.anchorIds.filter((id) => !byAnchor.has(id))
-      if (missingAnchors.length > 0) {
-        throw new Error(
-          `候选 ${clusterDef.skillId} 引用了本章索引里不存在的锚点：${missingAnchors.join(', ')}` +
-            '——拒绝装配（先核对 clusters.json 与源文是否同一批输入）。',
-        )
-      }
-      cluster = {
-        rootAnchor: clusterDef.skillId,
-        title: clusterDef.name || clusterDef.skillId,
-        level: null,
-        anchors: clusterDef.anchorIds.map((id) => byAnchor.get(id)),
-      }
-      const want = new Set(clusterDef.objectIds)
-      inCluster = allObjects.filter((o) => want.has(o.id))
-      const missingObjects = clusterDef.objectIds.filter((id) => !inCluster.some((o) => o.id === id))
-      if (missingObjects.length > 0) {
-        throw new Error(
-          `候选 ${clusterDef.skillId} 引用的对象不在 ${rel(objectsPath)} 里：${missingObjects.slice(0, 5).join(', ')}` +
-            (missingObjects.length > 5 ? ` 等共 ${missingObjects.length} 个` : ''),
-        )
-      }
+      ;({ cluster, inCluster } = clusterFromCandidate(clusterDef, index, allObjects, { objectsLabel: rel(objectsPath) }))
     } else {
       cluster = deriveCluster(index.anchors, flags.rootAnchor)
       inCluster = collectClusterObjects(allObjects, cluster.anchors)

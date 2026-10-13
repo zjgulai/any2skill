@@ -19,7 +19,7 @@
 
 **被谁阻塞：**11（已达成：40 候选 + 触发语就位）。**无阻塞。**
 
-**状态：**设计已拍板（[`ADR-026`](../adr/ADR-026-gate2-implementation-form.md)，2026-10-12）；未开工。
+**状态：**离线段已建成（2026-10-12，见文末构建记录）；**真实盲测待启动**。
 
 ## 规格指针（真源，不在本卡复述）
 
@@ -80,3 +80,31 @@ node -e 'import("./pipeline/tools/skill-builder.mjs").then(m=>console.log(typeof
 # agents/ 目录也还不存在（ADR-002 结构里预留）
 ls agents 2>&1
 ```
+
+## 构建记录（2026-10-12，离线段）
+
+### 建成的东西
+
+| 文件 | 作用 |
+|---|---|
+| `pipeline/tools/gate2-blind-test.mjs`（新） | 两段提示词（场景生成/盲测）、解析与校核（名称泄漏、未知代号逐条记录）、确定性乱序与代号、判分与 ADR-007 动作清单、三个身份键的单一真源 |
+| `pipeline/run-gate2.mjs`（新） | CLI：候选加载（描述走装配器同源）→ 场景生成（逐候选复用）→ 盲测（逐场景复用）→ 报告；`--dry-run` 零调用零写盘 |
+| `pipeline/build-skill.mjs`（改） | 抽 `loadAssemblyInputs` / `clusterFromCandidate` / `antipatternIdentityWarning`——**门禁二与环 4 走同一条加载与门禁过滤路径**，被测对象 = 发布对象 |
+| `pipeline/tools/skill-builder.mjs`（改） | `skillId` 兜底修雷：旧式 `CHAPTER4-${split('#')[1]}` 对不含 `#` 的根锚点（簇模式 skillId）直接崩、且前缀写死与章节无关；改为从根锚点派生 |
+| `pipeline/tools/test/gate2-blind-test.test.mjs`（新，22 用例） | 白名单反证、校核、确定性乱序、判分与动作清单、身份键、CLI 干跑 |
+
+### 离线验证（实测）
+
+- `npm test` → **513 通过 / 0 失败**（本卡新增 22 条）。
+- 真实仓库 `--dry-run`：40 个候选；**计划调用 41（生成）+ 140（盲测）= 181 次**；
+  生成侧输入合计约 56,512 字符；描述由装配器生成（与发布产物同源）。
+- **白名单是机制且有反证**：向目录条目塞入正文/出处/引文哨兵与 skillId，题面逐一断言不出现——
+  谁把题面改成直吐整个候选对象，这组测试立刻变红。
+- 隔离（卡 09 的账本工具跑 dry-run）：1 份账本 / **2,084 条访问**；`benchmark/` 内容访问 0、
+  `skills/` 写入 0，`assertIsolation` 通过。
+
+### 尚未做（真实段）
+
+1. 181 次真实调用（场景生成 + 盲测）→ `gate2-scenarios.json` 与 `gate2-report.json` 落盘。
+2. 逐条验收核对（三态状态机、动作清单、隔离复核）+ README 终稿；报告出来后再看
+   s4 类划分修正是否要立执行卡。
