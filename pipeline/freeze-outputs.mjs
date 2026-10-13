@@ -20,6 +20,7 @@
 
 import path from 'node:path'
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises'
+import { readdirSync, statSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
@@ -28,14 +29,16 @@ import { DEFAULT_REPO_ROOT } from './tools/anchor-index.mjs'
 
 export const EXIT = Object.freeze({ PASS: 0, DRIFT: 3, RUN_FAILED: 4 })
 
-/** 冻结面：显式列举（含理由）。新增产出面时在注释里写清「比对为什么需要它」。 */
+/**
+ * 冻结面：显式列举（含理由）。新增产出面时在注释里写清「比对为什么需要它」。
+ * 以 `/**` 结尾的条目是**目录展开**（递归该目录下全部文件）——发布区在长大
+ * （2 → 7），逐文件列举会漏；目录展开让「冻结 = 发布区全集」是结构事实而非纪律。
+ */
 export const FROZEN_PATHS = Object.freeze([
-  // 已发布物（比对的主角：「产出 vs 原书 22 个」）
-  'skills/chapter4-tool-design-principles/SKILL.md',
-  'skills/chapter4-single-tool-design/SKILL.md',
+  // 已发布物（比对的主角：「产出 vs 原书 22 个」）。目录展开：新增/下架都会进/出冻结面。
+  'skills/**',
   // 冻结态各自的构建契约（风险标记、provenance——比对时解释差异要用）
-  'pipeline/registry/build/chapter4-tool-design-principles/skill-contract.json',
-  'pipeline/registry/build/chapter4-single-tool-design/skill-contract.json',
+  'pipeline/registry/build/**/skill-contract.json',
   // 划分与候选（验收 4 的「数量/覆盖差异」要对着它们解释）
   'pipeline/knowledge/clusters.json',
   'pipeline/knowledge/gate2-scenarios.json',
@@ -50,6 +53,38 @@ export const FROZEN_PATHS = Object.freeze([
 ])
 
 const sha256 = (buf) => `sha256:${createHash('sha256').update(buf).digest('hex')}`
+
+/** 把含 `/**` 的条目展开为具体文件路径（递归；忽略空目录与非文件）。 */
+function expandPaths(repoRoot, declared) {
+  const out = []
+  for (const entry of declared) {
+    if (!entry.includes('/**')) {
+      out.push(entry)
+      continue
+    }
+    const base = entry.slice(0, entry.indexOf('/**'))
+    const absBase = path.join(repoRoot, base)
+    const walk = (absDir, relDir) => {
+      let names
+      try {
+        names = statDir(absDir)
+      } catch {
+        return
+      }
+      for (const n of names.sort()) {
+        const abs = path.join(absDir, n)
+        const rel = path.join(relDir, n)
+        if (isDir(abs)) walk(abs, rel)
+        else out.push(rel)
+      }
+    }
+    walk(absBase, base)
+  }
+  return [...new Set(out)]
+}
+
+const statDir = (d) => readdirSync(d)
+const isDir = (p) => statSync(p).isDirectory()
 
 async function readGitCommit(repoRoot) {
   try {
@@ -135,7 +170,7 @@ async function main(argv) {
       return EXIT.PASS
     }
 
-    const files = await hashAll(repoRoot, FROZEN_PATHS)
+    const files = await hashAll(repoRoot, expandPaths(repoRoot, FROZEN_PATHS))
     const missing = files.filter((f) => f.missing)
     if (missing.length > 0) {
       throw new Error(`冻结面里有文件不存在：${missing.map((m) => m.path).join(', ')}——先修正冻结面再冻结。`)
