@@ -451,7 +451,26 @@ export async function chatCompletion(config, req) {
       throw lastError
     }
 
-    const text = await res.text()
+    // 读响应体同样是传输层：响应头已到、连接在读完正文前中断时（undici 报 `terminated`），
+    // 这里若不接住就会**裸抛且不重试**——实测三次门禁二运行全栽在这一行上。
+    // 与 fetch 失败同一套重试策略、同一种包装（错误串必须能说明是传输故障）。
+    let text
+    try {
+      text = await res.text()
+    } catch (err) {
+      ledger.failedCalls += 1
+      lastError = new LlmCallError(
+        `读取模型响应体失败（${urlHost(config.baseUrl) ?? config.baseUrl}）：${redact(err?.message ?? err, config.apiKey)}` +
+          '——响应头已返回、正文未读完，属传输层故障，不是模型输出问题。',
+        { attempts: attempt, cause: err },
+      )
+      if (attempt < maxAttempts) {
+        ledger.retries += 1
+        if (retryDelayMs > 0) await new Promise((r) => setTimeout(r, retryDelayMs))
+        continue
+      }
+      throw lastError
+    }
     if (!res.ok) {
       ledger.failedCalls += 1
       lastError = new LlmCallError(
