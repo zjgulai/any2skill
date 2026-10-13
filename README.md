@@ -6,11 +6,13 @@ Any content → executable Agent Skills. MVP pipeline.
 **环 3 已跑通**（章内语义聚类 + 技能候选：13 章 / 115 单元 / 40 候选，593 个对象全归类；
 见 [`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。
 **环 4 已实现（确定性装配 + 门禁一 skill 侧）**，两种入口并存：手工子树（`--root-anchor`）与
-**环 3 的划分产物（`--cluster`）**。环 5 的**门禁二已建成并跑出两读数**（触发盲测：场景生成与
-盲测分离、题面白名单是机制；`list` 与 `strict` 两口径对照后，**87 对共认领在两读数都存活**——
-划分存在真实的描述重叠，动作清单与校准见
-[`docs/tickets/12-gate2-trigger-blind-test.md`](docs/tickets/12-gate2-trigger-blind-test.md)）；
-门禁三尚未构建。
+**环 3 的划分产物（`--cluster`，已支持跨章候选）**。环 5 的**门禁二已建成并跑出三读数 +
+一轮按反馈的重切**：两口径对照得 87 对稳定共认领 → 执行 11 对合并（候选 40→29）→
+第三读数**部分消解**（共认领 78→46）——合并的边际收益已到顶，下一层是**收敛描述**；
+全过程见 [`docs/tickets/12-gate2-trigger-blind-test.md`](docs/tickets/12-gate2-trigger-blind-test.md)
+与 [`docs/tickets/13-ring3-resplit-from-gate2.md`](docs/tickets/13-ring3-resplit-from-gate2.md)。
+**门禁三（效用 A/B）机制已建成**，真实实测进行中
+（[`docs/tickets/14-gate3-utility-ab.md`](docs/tickets/14-gate3-utility-ab.md)）。
 
 > ### 盘上已有 2 个已发布的 skill
 >
@@ -76,7 +78,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 521 项，零网络、零凭据（实测 2026-10-13）
+npm test                                    # 547 项，零网络、零凭据（实测 2026-10-13）
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md
