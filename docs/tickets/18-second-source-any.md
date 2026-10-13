@@ -19,7 +19,7 @@ mdBook 结构）**分段实跑**，回答项目名的另一半：**any 是否成
 
 **被谁阻塞：**无（MVP 已收尾；上游仓库可达已验证）。
 
-**状态：**未开工（分段推进：① 多源参数化 → ② 环 1 全量 + 环 2 抽样 → ③ 看结果定全链切片）。
+**状态：**段① ② 已完成（2026-10-14，记录在文末）；**段③ 待拍板**（先做环3按源过滤改造，再选切片跑环4/门禁一）。
 
 ## 拍板（2026-10-14）
 
@@ -55,3 +55,58 @@ grep -rn "ai-agent-book-zh" pipeline/*.mjs pipeline/tools/*.mjs | grep -v test  
 npm test                                                                          # 起点：553 通过
 node -e 'const s=require("./pipeline/registry/gate3-report.json");console.log("当前发布面:",require("fs").readdirSync("skills").length,"个 skill")'
 ```
+
+## 构建记录（2026-10-14）
+
+### 段① 多源参数化（提交 b64e81a / c2c2b35）
+
+- `anchor-index`：`DEFAULT_SOURCE_KEY` + `sourceBookRoot/sourceCodeRoot` 助手为**单一真源**；
+  路径守卫本就支持 `sourceRoot` 覆盖，本次把它真正接上。
+- 全部写死点参数化：`run.mjs`（CLI_FLAGS + 守卫 + 用法）、`run-book`（消费并从子进程透传
+  `--source-key`）、`propose-clusters`、`build-skill`（含 `loadClusterAssemblyInputs`）、`run-gate2`。
+- **第一源回归**：默认键行为不变（三条 dry-run 烟测 + 555 测试全绿）；烟测顺带抓到一个
+  `--json` 路径掩盖的残留引用（人肉输出里的 `codeRootRel`，已修 c2c2b35）。
+- 新增测试：源键助手 + 守卫按源键放行/不匹配仍拒（`source-key.test.mjs`，2 条）。
+
+### 段② 结构泛化实跑
+
+**镜像**：rust-lang-cn/book-cn @ `cde74c44`（blobless + sparse-checkout src），
+**105 个 .md / 1,055,581 字节**，逐文件哈希在 `sources/rust-book-cn/MIRROR-MANIFEST.md`。
+
+**环 1 全量（零成本，105 文件）**：**513 个锚点、层级 1–5、零解析失败、零零锚点文件**——
+解析器对第二源结构**零改造即通**。粒度对照：每文件锚点中位 **4**（节级）vs 第一源 **25.8**（章级）。
+
+**环 2 抽样（4 文件真跑）**：`ch02-00`（代码教程 18 锚）/ `ch04-01`（概念 10 锚）/
+`appendix-02`（表格 3 锚）/ `ch15-04`（短节 3 锚）：
+
+| 口径 | 值 |
+|---|---|
+| 对象产出 | **55**（29 / 17 / 3 / 6） |
+| 门禁一 | **100% 通过，零拒绝** |
+| 判定者 | **100% supported**（29/17/3/6，零 insufficient） |
+| 类型分布 | Concept 32 / EngineeringRule 20 / Heuristic 2 / AntiPattern 1 |
+| 抽检 | ownership 的定义忠实、引文逐字（markdown 强调保留）、锚点可解析 |
+
+类型分布自洽：语言教科书概念偏重；AntiPattern 仅 1 条是因为反模式集中在**未抽样**的章
+（错误处理/设计模式章）——领域信号，不是抽取失败。
+
+### 撞墙清单（哪些假设被打破——实测，不是猜测）
+
+| 环节 | 结果 |
+|---|---|
+| 环 1 / 环 2 | **参数化后即通，零改造**（这就是段①的全部工作量） |
+| **下游枚举（环 3 输入 / 主题目录）** | **实锤混源**：`propose-clusters` 的枚举源无关——任一源键下，另一半文件的回执都找不到（实测：默认键下列出 rust 文件并报「缺 ai-agent-book-zh 的回执」）。knowledge 平面跨源混流是段③前的**必备改造**：按回执的 `source.path` 归属过滤 |
+| `diagnosticsOf` 的 `/^chapter\d+$/` | rust 文件名是 `ch04-01-…` → 2.2/章诊断计 0（纯诊断，无功能影响，如实记录） |
+| 配套代码段 | `sources/rust-book-cn/code/` 不存在 → 段③若装配 rust skill，`SECTION_EMPTY` 大概率复现——**代码镜像与源强耦合**是已知限制的第二次显形 |
+
+### 隔离（含一条方法错误自查）
+
+- 首轮抽样的账本被外层 `node -e` 覆盖（共用同一 `DSH_FS_LEDGER` 路径）→ 读到 **0 条**。
+  按本仓纪律，**0 条不是证据、是方法错误**——用**回放**（零模型调用）逐文件独立账本路径复取：
+  **4 份 / 265 条 / benchmark 内容访问 0**，证据成立。
+- 教训已可入陷阱清单：**绝不共用账本路径做循环运行**。
+
+### 成本
+
+第 2 层 34 次调用（35857+112698 / 19713+68393 / 7416+13845 / 6712+21503）；
+判定者 57 次。
