@@ -35,9 +35,11 @@ import { fileURLToPath } from 'node:url'
 import {
   DEFAULT_BENCHMARK_DIR,
   DEFAULT_REPO_ROOT,
+  DEFAULT_SOURCE_KEY,
   DEFAULT_SOURCE_ROOT,
   SourcePathError,
   assertAllowedSource,
+  sourceBookRoot,
   buildAnchorIndex,
   resolveRealPath,
   sha256Hex,
@@ -646,6 +648,7 @@ export const CLI_FLAGS = Object.freeze({
   '--judge': { key: 'judge', kind: 'bool', value: true },
   '--no-judge': { key: 'noJudge', kind: 'bool', value: true },
   '--repo-root': { key: 'repoRoot', kind: 'value', parse: (v) => path.resolve(v) },
+  '--source-key': { key: 'sourceKey', kind: 'value' },
   '--objects-fixture': { key: 'objectsFixture', kind: 'value' },
   '--layer2': { key: 'layer2', kind: 'value' },
   '--llm-model': { key: 'llmModel', kind: 'value' },
@@ -729,7 +732,11 @@ export async function runPipeline(input) {
       : path.resolve(repoRoot, input.objectsFixture)
 
   // ---- 第 0 步：路径守卫（工程问题：不合法即拒绝，绝不静默） ----
-  const sourceAbs = assertAllowedSource(path.resolve(repoRoot, input.source), { repoRoot })
+  // 源根由源键决定（ticket 18）：`sources/<sourceKey>/book/`；缺省键保持第一源行为不变。
+  const sourceAbs = assertAllowedSource(path.resolve(repoRoot, input.source), {
+    repoRoot,
+    sourceRoot: sourceBookRoot(input.sourceKey ?? DEFAULT_SOURCE_KEY),
+  })
 
   // ---- 第 1 层：确定性锚点索引 ----
   const index = await buildAnchorIndex(sourceAbs, { repoRoot })
@@ -1555,8 +1562,8 @@ async function main(argv) {
   const target = positional[0]
   if (!target) {
     process.stderr.write(
-      '用法：node pipeline/run.mjs <内容源.md> [--json]\n' +
-        `内容源必须位于 ${DEFAULT_SOURCE_ROOT}/ 之内。\n`,
+      '用法：node pipeline/run.mjs <内容源.md> [--source-key <key>] [--json]\n' +
+        `内容源必须位于 ${sourceBookRoot(flags.sourceKey ?? DEFAULT_SOURCE_KEY)}/ 之内。\n`,
     )
     return EXIT.RUN_FAILED
   }

@@ -29,7 +29,7 @@ import { readdir, readFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT, buildAnchorIndex } from './tools/anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY, buildAnchorIndex, sourceBookRoot } from './tools/anchor-index.mjs'
 import { resolveLlmConfig, LlmConfigError, normalizeReasoningEffort } from './tools/llm-client.mjs'
 import { unwrapObjectsFile } from './tools/skill-builder.mjs'
 import { findLatestReceipt, passedObjectIds } from './build-skill.mjs'
@@ -71,6 +71,7 @@ function parseArgs(argv) {
     reasoningEffort: null,
     maxTokens: null,
     chapter: null,
+    sourceKey: DEFAULT_SOURCE_KEY,
     resume: true,
   }
   const need = (i, name) => {
@@ -84,6 +85,7 @@ function parseArgs(argv) {
     else if (a === '--json') flags.json = true
     else if (a === '--no-resume') flags.resume = false
     else if (a === '--chapter') (flags.chapter = need(i, a)), (i += 1)
+    else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a === '--model') (flags.model = need(i, a)), (i += 1)
     else if (a === '--base-url') (flags.baseUrl = need(i, a)), (i += 1)
     else if (a === '--provider') (flags.provider = need(i, a)), (i += 1)
@@ -96,7 +98,6 @@ function parseArgs(argv) {
   return flags
 }
 
-const SOURCE_ROOT_REL = path.join('sources', 'ai-agent-book-zh', 'book')
 const KNOWLEDGE_REL = path.join('pipeline', 'knowledge')
 const REGISTRY_REL = path.join('pipeline', 'registry')
 
@@ -116,14 +117,14 @@ export async function enumerateClusterInputs(repoRoot) {
  * 每章的输入准备：读对象、跑门禁过滤、算复用键。**不发调用、不写盘**。
  * 缺回执的章进 `missingReceipts`——调用方在任何模型调用发生**之前**统一拒绝。
  */
-export async function prepareChapterInputs(repoRoot, { modelId }) {
+export async function prepareChapterInputs(repoRoot, { modelId, sourceKey = DEFAULT_SOURCE_KEY }) {
   const inputs = []
   const missingReceipts = []
   for (const { fileKey, fileName } of await enumerateClusterInputs(repoRoot)) {
     const objectsPathRel = path.join(KNOWLEDGE_REL, fileName)
     const raw = await readFile(path.join(repoRoot, objectsPathRel))
     const allObjects = unwrapObjectsFile(JSON.parse(raw.toString('utf8')), objectsPathRel)
-    const sourceRel = path.join(SOURCE_ROOT_REL, `${fileKey}.md`)
+    const sourceRel = path.join(sourceBookRoot(sourceKey), `${fileKey}.md`)
     const found = await findLatestReceipt(sourceRel, { repoRoot })
     if (!found) {
       missingReceipts.push({ fileKey, sourceRel })
@@ -199,7 +200,7 @@ async function main(argv) {
 
   try {
     const modelId = flags.model ?? process.env.ANY2SKILLS_LLM_MODEL ?? null
-    let { inputs, missingReceipts } = await prepareChapterInputs(repoRoot, { modelId })
+    let { inputs, missingReceipts } = await prepareChapterInputs(repoRoot, { modelId, sourceKey: flags.sourceKey })
 
     if (flags.chapter) {
       inputs = inputs.filter((c) => c.fileKey === flags.chapter)

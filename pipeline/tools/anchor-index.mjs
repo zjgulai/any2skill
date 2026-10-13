@@ -28,7 +28,18 @@ export const DEFAULT_REPO_ROOT = path.resolve(
  * 允许的源正文根目录（相对于仓库根）。
  * 这是路径守卫的正向白名单：解析后的路径必须落在其内。
  */
-export const DEFAULT_SOURCE_ROOT = path.join('sources', 'ai-agent-book-zh', 'book')
+/**
+ * 源键与源根（ticket 18：多源参数化的单一真源）。
+ *
+ * 约定：`sources/<sourceKey>/book/`＝源正文、`sources/<sourceKey>/code/`＝配套代码镜像。
+ * 缺省源键 `ai-agent-book-zh` 保持第一源的全部既有行为逐字节不变；
+ * 第二个源（rust-book-cn）只是换一个键——路径写死点全部从这里取。
+ */
+export const DEFAULT_SOURCE_KEY = 'ai-agent-book-zh'
+export const sourceBookRoot = (key = DEFAULT_SOURCE_KEY) => path.join('sources', key, 'book')
+export const sourceCodeRoot = (key = DEFAULT_SOURCE_KEY) => path.join('sources', key, 'code')
+
+export const DEFAULT_SOURCE_ROOT = sourceBookRoot()
 
 /** 盲测基准目录（相对于仓库根）。生成链路任何环节不得读取；本模块显式拒绝。 */
 export const DEFAULT_BENCHMARK_DIR = 'benchmark'
@@ -260,20 +271,22 @@ export async function writeAnchorIndex(index, opts = {}) {
 function main(argv) {
   const args = argv.slice(2)
   const asJson = args.includes('--json')
-  const positional = args.filter((a) => !a.startsWith('--'))
+  const sourceKeyIdx = args.indexOf('--source-key')
+  const sourceKey = sourceKeyIdx >= 0 ? args[sourceKeyIdx + 1] : DEFAULT_SOURCE_KEY
+  const positional = args.filter((a, i) => !a.startsWith('--') && (sourceKeyIdx < 0 || i !== sourceKeyIdx + 1))
   const target = positional[0]
 
   if (!target) {
     process.stderr.write(
-      '用法：node pipeline/tools/anchor-index.mjs <内容源.md> [--json]\n' +
-        `内容源必须位于 ${DEFAULT_SOURCE_ROOT}/ 之内。\n`,
+      '用法：node pipeline/tools/anchor-index.mjs <内容源.md> [--source-key <key>] [--json]\n' +
+        `内容源必须位于 ${sourceBookRoot(sourceKey)}/ 之内。\n`,
     )
     return 2
   }
 
   let allowed
   try {
-    allowed = assertAllowedSource(path.resolve(target))
+    allowed = assertAllowedSource(path.resolve(target), { sourceRoot: sourceBookRoot(sourceKey) })
   } catch (err) {
     if (err instanceof SourcePathError) {
       process.stderr.write(`[路径守卫] ${err.message}\n`)

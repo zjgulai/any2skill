@@ -41,11 +41,13 @@ import { fileURLToPath } from 'node:url'
 import {
   DEFAULT_BENCHMARK_DIR,
   DEFAULT_REPO_ROOT,
+  DEFAULT_SOURCE_KEY,
   DEFAULT_SOURCE_ROOT,
   SourcePathError,
   assertAllowedSource,
   resolveRealPath,
   sha256Hex,
+  sourceBookRoot,
 } from './tools/anchor-index.mjs'
 import { assertIsolation, loadLedger, mergeLedgers, summarizeLedger } from './tools/fs-ledger.mjs'
 import { EXIT, PIPELINE_VERSION, RECEIPT_SCHEMA_VERSION, REGISTRY_DIR, CLI_FLAGS } from './run.mjs'
@@ -209,6 +211,9 @@ export function parseBookArgs(argv) {
     repoRoot: DEFAULT_REPO_ROOT,
     concurrency: 1,
     layer2: 'stub',
+    // 源键（ticket 18）：本命令**自己消费**它（要枚举书源）并原样注入每个子进程——
+    // 透传白名单管不到它，因为编排进程自己也要用同一个值。
+    sourceKey: DEFAULT_SOURCE_KEY,
     from: null,
     file: null,
     verifyIsolation: null,
@@ -227,6 +232,7 @@ export function parseBookArgs(argv) {
     else if (a === '--repo-root') flags.repoRoot = path.resolve(need(i, a)), (i += 1)
     else if (a === '--concurrency') flags.concurrency = Number(need(i, a)), (i += 1)
     else if (a === '--layer2') flags.layer2 = need(i, a), (i += 1), passthrough.push('--layer2', flags.layer2)
+    else if (a === '--source-key') flags.sourceKey = need(i, a), (i += 1), passthrough.push('--source-key', flags.sourceKey)
     else if (a === '--from') flags.from = need(i, a), (i += 1)
     else if (a === '--file') flags.file = need(i, a), (i += 1)
     else if (a === '--verify-isolation') flags.verifyIsolation = need(i, a), (i += 1)
@@ -326,8 +332,10 @@ export async function runBook(input) {
   const { flags, passthrough } = input
   const startedAt = new Date().toISOString()
 
-  const sources = await listBookSources(repoRoot)
-  if (sources.length === 0) throw new Error(`源正文目录内没有任何 .md：${DEFAULT_SOURCE_ROOT}`)
+  const sourceKey = flags.sourceKey ?? DEFAULT_SOURCE_KEY
+  const sourceRoot = sourceBookRoot(sourceKey)
+  const sources = await listBookSources(repoRoot, { sourceRoot })
+  if (sources.length === 0) throw new Error(`源正文目录内没有任何 .md：${sourceRoot}（源键 ${sourceKey}）`)
 
   const judgeApplied = judgeAppliedFor(flags, passthrough)
   const modelId = readFlagValue(passthrough, '--llm-model')
@@ -444,6 +452,8 @@ export async function runBook(input) {
       concurrency: flags.concurrency,
       passthrough,
       judgeApplied,
+      sourceKey,
+      sourceRoot,
       sources: sources.map((s) => ({ fileKey: s.fileKey, path: s.path, sha256: s.sha256, bytes: s.bytes })),
     },
     exitCode,
@@ -666,7 +676,8 @@ export async function main(argv) {
     process.stderr.write(
       `参数错误：${err.message}\n` +
         '用法：node pipeline/run-book.mjs [--layer2 stub|deepseek] [--concurrency 1..8] [--dry-run] [--json]\n' +
-        '      [--no-ledger] [--repo-root <dir>] [--from <book-receipt.json> [--file <key>]]\n' +
+        '      [--no-ledger] [--repo-root <dir>] [--source-key <key>（缺省 ai-agent-book-zh；决定 sources/<key>/book）]\n' +
+        '      [--from <book-receipt.json> [--file <key>]]\n' +
         '      [--verify-isolation <book-receipt.json>] [run.mjs 的生产者/判定者路由开关]\n',
     )
     return EXIT.RUN_FAILED

@@ -32,7 +32,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT } from './tools/anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY } from './tools/anchor-index.mjs'
 import { resolveLlmConfig, LlmConfigError, normalizeReasoningEffort } from './tools/llm-client.mjs'
 import { assembleSkill } from './tools/skill-builder.mjs'
 import { parseFrontmatter } from './tools/verify-skill.mjs'
@@ -87,6 +87,7 @@ function parseArgs(argv) {
     skill: null,
     blindMode: 'list',
     compare: false,
+    sourceKey: DEFAULT_SOURCE_KEY,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -99,6 +100,7 @@ function parseArgs(argv) {
     else if (a === '--json') flags.json = true
     else if (a === '--no-resume') flags.resume = false
     else if (a === '--compare') flags.compare = true
+    else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a === '--blind-mode') {
       const v = need(i, a)
       if (!Object.hasOwn(BLIND_MODES, v)) {
@@ -124,7 +126,7 @@ function parseArgs(argv) {
  * 候选 → 盲测素材：描述由装配器同一代码路径生成（ADR-026 决策 5），
  * 对象集走环 4 的门禁过滤（未过门禁的对象不得进入被测物）。
  */
-export async function loadCandidatesForBlindTest(repoRoot, { only = null } = {}) {
+export async function loadCandidatesForBlindTest(repoRoot, { only = null, sourceKey = DEFAULT_SOURCE_KEY } = {}) {
   const rel = (p) => path.relative(repoRoot, p)
   let doc
   try {
@@ -149,7 +151,7 @@ export async function loadCandidatesForBlindTest(repoRoot, { only = null } = {})
     const clusterDef = await loadClusterCandidate(repoRoot, c.skillId)
     let prep
     try {
-      prep = await loadClusterAssemblyInputs(repoRoot, clusterDef)
+      prep = await loadClusterAssemblyInputs(repoRoot, clusterDef, { sourceKey })
     } catch (err) {
       missingReceipts.push({ skillId: c.skillId, message: err.message })
       continue
@@ -251,7 +253,7 @@ async function main(argv) {
       return EXIT.PASS
     }
 
-    const { candidates, missingReceipts } = await loadCandidatesForBlindTest(repoRoot, { only: flags.skill })
+    const { candidates, missingReceipts } = await loadCandidatesForBlindTest(repoRoot, { only: flags.skill, sourceKey: flags.sourceKey })
     if (missingReceipts.length > 0) {
       process.stderr.write(
         '拒绝开工：以下候选所在源文件缺门禁一回执（被测对象无法确定为「发布出去的那批」）——\n' +

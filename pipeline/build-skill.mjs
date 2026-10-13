@@ -38,7 +38,7 @@ import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT, buildAnchorIndex } from './tools/anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY, buildAnchorIndex, sourceBookRoot, sourceCodeRoot } from './tools/anchor-index.mjs'
 import {
   GAP_CODES,
   assembleSkill,
@@ -71,6 +71,7 @@ function parseArgs(argv) {
     source: null,
     receipt: null,
     cluster: null,
+    sourceKey: DEFAULT_SOURCE_KEY,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -83,6 +84,7 @@ function parseArgs(argv) {
     else if (a === '--json') flags.json = true
     else if (a === '--root-anchor') (flags.rootAnchor = need(i, a)), (i += 1)
     else if (a === '--cluster') (flags.cluster = need(i, a)), (i += 1)
+    else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a === '--slug') (flags.slug = need(i, a)), (i += 1)
     else if (a === '--title') (flags.title = need(i, a)), (i += 1)
     else if (a === '--source') (flags.source = need(i, a)), (i += 1)
@@ -352,12 +354,12 @@ export function clusterFromCandidate(clusterDef, indexes, allObjects, { objectsL
  * 单章候选即 `chapterRefs.length === 1` 的情况——两条路径**同一段代码**，
  * 不存在「单章走老路、跨章走新路」的分叉（分叉会让两种候选的产物口径悄悄漂移）。
  */
-export async function loadClusterAssemblyInputs(repoRoot, clusterDef) {
+export async function loadClusterAssemblyInputs(repoRoot, clusterDef, { sourceKey = DEFAULT_SOURCE_KEY } = {}) {
   const rel = (p) => path.relative(repoRoot, p)
   const perFile = []
   const missingReceipts = []
   for (const fileKey of clusterDef.chapterRefs) {
-    const sourceRel = path.join('sources', 'ai-agent-book-zh', 'book', `${fileKey}.md`)
+    const sourceRel = path.join(sourceBookRoot(sourceKey), `${fileKey}.md`)
     const loaded = await loadAssemblyInputs(repoRoot, { chapterKey: fileKey, sourceRel })
     if (!loaded.found) {
       missingReceipts.push({ fileKey, sourceRel })
@@ -397,7 +399,7 @@ export async function loadClusterAssemblyInputs(repoRoot, clusterDef) {
   // 配套代码：逐章取（目前只有 chapter4 有镜像；缺目录的章返回空数组，不编）。
   const codePointers = []
   for (const fileKey of clusterDef.chapterRefs) {
-    const codeRootRel = path.join('sources', 'ai-agent-book-zh', 'code', fileKey)
+    const codeRootRel = path.join(sourceCodeRoot(sourceKey), fileKey)
     for (const p of collectCodePointers(path.join(repoRoot, codeRootRel), { relPrefix: codeRootRel })) {
       codePointers.push(p)
     }
@@ -463,7 +465,7 @@ async function main(argv) {
     if (!flags.title) throw new Error('--title 必填（SKILL.md 的 H1 标题）')
 
     const chapterKey = clusterDef ? clusterDef.chapterRefs[0] : String(flags.rootAnchor).split('#')[0]
-    const sourceRel = flags.source || path.join('sources', 'ai-agent-book-zh', 'book', `${chapterKey}.md`)
+    const sourceRel = flags.source || path.join(sourceBookRoot(flags.sourceKey), `${chapterKey}.md`)
 
     // ── 读盘、门禁前置与簇内过滤 ─────────────────────────────────────────
     //
@@ -514,9 +516,9 @@ async function main(argv) {
         reasonCode: loaded.apVerdictById.get(o.id)?.reasonCode || (loaded.apVerdicts ? 'NOT_IN_VERDICTS' : 'NO_VERDICTS_FILE'),
       }))
 
-      // 配套代码目录的来源。实测口径：镜像到 sources/ai-agent-book-zh/code/<chapter>/，
+      // 配套代码目录的来源。实测口径：镜像到 sources/<sourceKey>/code/<chapter>/，
       // 见该目录下的 MIRROR-MANIFEST.md。不存在时返回空数组，由装配器记 NO_SOURCE 缺口。
-      const codeRootRel = path.join('sources', 'ai-agent-book-zh', 'code', chapterKey)
+      const codeRootRel = path.join(sourceCodeRoot(flags.sourceKey), chapterKey)
       const codePointers = collectCodePointers(path.join(repoRoot, codeRootRel), {
         relPrefix: codeRootRel,
       })
