@@ -11,26 +11,34 @@ Any content → executable Agent Skills. MVP pipeline.
 第三读数**部分消解**（共认领 78→46）——合并的边际收益已到顶，下一层是**收敛描述**；
 全过程见 [`docs/tickets/12-gate2-trigger-blind-test.md`](docs/tickets/12-gate2-trigger-blind-test.md)
 与 [`docs/tickets/13-ring3-resplit-from-gate2.md`](docs/tickets/13-ring3-resplit-from-gate2.md)。
-**门禁三（效用 A/B）已实测首跑**：2 个已发布 skill 判为 passed / low-utility，
-**均无确认退化（negative transfer 排除——MVP 验收第 3 条达成）**；三道门禁至此全部建成并实测
-（[`docs/tickets/14-gate3-utility-ab.md`](docs/tickets/14-gate3-utility-ab.md)）。
+**门禁三（效用 A/B）已全量实测**（8 个发布物：4 通过 / 3 低效用 / 1 拒绝）：
+首跑**排除** negative transfer，扩样**检出**一次确认的 negative transfer（chapter3-s1，
+复跑复现）并按 ADR-006 拒绝下架——「唯一能检出 skill 有害」的定位第一次有真实产出；
+三道门禁至此全部建成并实测
+（[`docs/tickets/14-gate3-utility-ab.md`](docs/tickets/14-gate3-utility-ab.md)、
+[`卡 17`](docs/tickets/17-gates-cover-new-publishes.md)）。
 **MVP 验收 4 已达成**：产出经冻结（`freeze-outputs.mjs`）后由**独立于构建者的子代理**
 完成与 `benchmark/` 22 个原书 skill 的比对——**正向覆盖 22/22，数量差异完成专项归因**
 （发布门径 / 来源缺口 / 体积阈值，不诉诸「质量不够」），报告见
 [`docs/specs/02-benchmark-report.md`](docs/specs/02-benchmark-report.md)。
 
-> ### 盘上已有 8 个已发布的 skill
+> ### 盘上已有 7 个已发布的 skill
 >
-> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 8 个：
+> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 7 个：
 > `chapter4-tool-design-principles`（首个，卡 10/ADR-019）、`chapter4-single-tool-design`
-> （环 3 端到端首件，卡 11），以及卡 16「打通发布门径」一次放行的 6 个：
-> `chapter10-s3` / `chapter1-s1` / `chapter5-s3` / `chapter3-s1` / `chapter2-s3` / `chapter9-s2`
-> （后三个带 `references/` 溢出文件——ADR-004 溢出阀的首批产物）。
+> （环 3 端到端首件，卡 11），以及卡 16「打通发布门径」放行的 6 个中的 5 个：
+> `chapter10-s3` / `chapter1-s1` / `chapter5-s3` / `chapter2-s3` / `chapter9-s2`
+> （其中三个带 `references/` 溢出文件——ADR-004 溢出阀的首批产物）。
+>
+> ⚠ **`chapter3-s1` 已被门禁三拒绝并下架**（`pipeline/registry/rejected/chapter3-s1/`，
+> 移动而非删除）：全量效用 A/B 检出**首个确认的 negative transfer**（任务 t2 复跑复现：
+> 无 skill 过、有 skill 败），按 ADR-006 硬约束执行拒绝。发布区 8 → 7。
+> 8 个发布物的门禁三判定（4 通过 / 3 低效用 / 1 拒绝）与门禁二登记表见
+> [`卡 17`](docs/tickets/17-gates-cover-new-publishes.md)。
 >
 > 放行的三件依据（见 [`卡 16`](docs/tickets/16-publish-path.md)）：其余章配套代码
 > **轻镜像**（README 100% 覆盖）、溢出阀实现、体积阈值**对齐原书实测上限**（
-> [`ADR-028`](docs/adr/ADR-028-size-limit-aligned-to-source.md)）。⚠ 这 6 个只过了门禁一；
-> 门禁二/三门测尚未覆盖它们（已记为未决）。
+> [`ADR-028`](docs/adr/ADR-028-size-limit-aligned-to-source.md)）。
 >
 > 达成路径是三件事依次落地，**前两件不是放宽判据本身**：
 > ① [ADR-020](docs/adr/ADR-020-source-expansion-chapter4-code.md) 扩充信息源——

@@ -38,7 +38,14 @@ export const RUNS_PARTIAL_REL_PATH = path.join('pipeline', 'registry', 'gate3-ru
 export const REPORT_REL_PATH = path.join('pipeline', 'registry', 'gate3-report.json')
 
 export const DEFAULT_TASKS_PER_SKILL = 6
-export const DEFAULT_GATE3_MAX_TOKENS = 16000
+/**
+ * 输出上限（含推理 token）。取 32000（与主题提案同档）而不是 16000：
+ * 2026-10-13 实测 `chapter5-s3-t4` 的推理吃掉 15,999/16,000、正文一个字没出
+ * （`finish_reason=length`）——有 skill 臂的题面带着完整 SKILL.md，推理量显著更大。
+ * 截断的失败形态会被如实报成「响应被 max_tokens 截断」（llm-client 的既有检测），
+ * 但为它付一次整轮中断的代价不值。上限本身逐任务可被 --max-tokens 覆盖。
+ */
+export const DEFAULT_GATE3_MAX_TOKENS = 32000
 export const DEFAULT_GATE3_TEMPERATURE = 0
 
 export const CHECK_TYPES = Object.freeze(['file_exists', 'contains', 'not_contains', 'regex', 'json_field'])
