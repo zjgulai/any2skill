@@ -87,6 +87,56 @@
 - [ ] 测试：对照工具与执行器全离线；本卡不新增任何「改判据」类改动
 - [ ] README 状态更新 + 卡 12「动作清单」各条标注执行去向（执行/缓办/理由）
 
+## 构建记录（2026-10-13）
+
+### 离线段（已提交 `0b0c145`）
+
+- `--compare`：两读数三分对照产品化，真实数据复算 **87/68/5** 与卡 12 一致；
+  产物 `pipeline/registry/gate2-stable.json`。
+- 环 4 多章支持：`loadClusterAssemblyInputs`（候选 `chapterRefs` 各章合流后走同一过滤，
+  单章是长度为 1 的特例、无分叉）；`loadClusterCandidate` 单元跨章收集 + `chapterRefs` 显式化；
+  provenance 增 `clusterChapterRefs`。门禁二候选加载切到同一函数。
+- `apply-resplit`：三条硬校验（approved / 配对不相交 / 零静默丢失）、内容哈希归档、`resplit` 块。
+- 测试新增 9 条；`npm test` **530 通过 / 0 失败**。
+
+### 执行（2026-10-13）
+
+- 计划批准落痕：`approved:true` + `approvedBy:"user（对话批准：全量含跨章 11 对原样执行）"`。
+- `apply-resplit` 实跑：**11 对合并应用，候选 40 → 29**；归档
+  `knowledge/history/clusters.1323557f.json` 与 `registry/history/skill-candidates.98842f73.json`；
+  两份新产物带 `resplit` 块（合并记录 + 移除清单 + 计划哈希）。
+- 跨章 4 对落成：`chapter10-s1 ← chapter2-s1`（49 对象）、`chapter2-s3 ← chapter4-s2`（33）、
+  `chapter5-s3 ← reference-answers-s1`（29）、`chapter9-s2 ← afterword-s1`（15）。
+
+### 重建判决（11 个吸收者走环 4 + 门禁一）
+
+| 吸收者 | 对象 | 体积 | 门禁一 | 备注 |
+|---|---:|---:|---|---|
+| **chapter4-s1** | 20 | 9,538 | **通过** | 已按原 slug 重新发布：`chapter4-single-tool-design` 7,146 → **9,538 字节** |
+| chapter10-s3 | 36 | 13,451 | 拒：SECTION_EMPTY + SIZE_EXCEEDED | 合并后超 12KB |
+| chapter1-s2 | 18 | 7,660 | 拒：SECTION_EMPTY | 配套代码段无来源（只有 chapter4 有镜像，ADR-020 的已知缺口） |
+| chapter9-s3 | 14 | 5,182 | 拒：SECTION_EMPTY | 同上 |
+| chapter7-s1 | 68 | 24,950 | 拒：SECTION_EMPTY + SIZE_EXCEEDED | 最大合并体，体积是最重的问题 |
+| chapter1-s1 | 30 | 12,995 | 拒：同上 | |
+| chapter5-s3 | 29 | 13,141 | 拒：同上 | |
+| chapter10-s1 | 49 | 20,369 | 拒：同上 | |
+| chapter3-s1 | 34 | 13,660 | 拒：同上 | |
+| chapter2-s3 | 33 | 16,286 | 拒：**仅 SIZE_EXCEEDED** | 吸收了 chapter4-s2 → 带上了 chapter4 的配套代码段（跨章候选继承来源的意外好处） |
+| chapter9-s2 | 15 | 6,034 | 拒：SECTION_EMPTY | |
+
+**读法**：合并消解争抢的代价被门禁一量化了——**8/11 撞体积上限、9/11 缺配套代码来源**。
+这不是「合并错了」，是两条已记录的既有约束在更大簇上第一次被同时压到（ADR-019 的体积阈值、
+ADR-020 只镜像了 chapter4 的来源缺口）。下一步若要让合并候选发布，得先决定：缩小合并粒度、
+允许溢出到 `references/`、或补镜像其余章的配套代码——三条都超出本卡，记为后续议题。
+
+### 第三读数与证据归档
+
+- 第二次严格读数的报告与答案账本已按内容哈希归档进 `registry/history/`
+  （`gate2-report.strict.5f6d90d4.json` / `gate2-answers.strict.cc16820b.json`）——
+  **不静默覆盖**；「报告覆盖应机制化为自动归档」记为后续改进项。
+- 第三次严格读数（重切后目录）：11 个变更候选重生成场景、其余复用；盲测场景数
+  29×3 + 20 = 107。验收指标：11 对被修正的稳定对是否消解（结果见下节）。
+
 ## 核实方式（开工前先跑）
 
 ```bash

@@ -200,26 +200,7 @@
           "rationale": "该对象回答“在模型之上造应用时，短期应如何利用 harness 争取时间，并构筑数据、渠道、信任、网络效应与物理世界场景等护城河”的问题，属于应用落地策略的问题空间。"
         }
       ],
-      "skills": [
-        {
-          "skillId": "afterword-s1",
-          "name": "后记核心框架与策略",
-          "trigger": "当读者需要概览后记中 Agent 的组成公式、小世界与大世界假设，以及利用 harness 推动模型演进并建立应用护城河的整体思路时，应使用该候选。",
-          "unitIds": [
-            "afterword-u1",
-            "afterword-u2",
-            "afterword-u3"
-          ],
-          "objectIds": [
-            "AFTERWORD-H1-1-CONCEPT-01",
-            "AFTERWORD-H2-1-CONCEPT-01",
-            "AFTERWORD-H2-1-CONCEPT-02",
-            "AFTERWORD-H2-2-CONCEPT-01",
-            "AFTERWORD-H2-2-HEURISTIC-02"
-          ],
-          "rationale": "这三个单元共同覆盖后记从理论公式与知识假设，到演进飞轮，再到应用层策略的完整论述，面向同一批需要把握后记核心框架和工程策略的场景。"
-        }
-      ],
+      "skills": [],
       "coverage": {
         "gatePassed": 5,
         "assigned": 5,
@@ -436,7 +417,9 @@
             "chapter1-u2",
             "chapter1-u3",
             "chapter1-u4",
-            "chapter1-u5"
+            "chapter1-u5",
+            "chapter1-u10",
+            "chapter1-u11"
           ],
           "objectIds": [
             "CHAPTER1-H1-1-CONCEPT-01",
@@ -459,9 +442,40 @@
             "CHAPTER1-H3-7-CONCEPT-01",
             "CHAPTER1-H3-7-CONCEPT-02",
             "CHAPTER1-H3-5-CONCEPT-01",
-            "CHAPTER1-H3-5-CONCEPT-02"
+            "CHAPTER1-H3-5-CONCEPT-02",
+            "CHAPTER1-H3-10-CONCEPT-01",
+            "CHAPTER1-H3-10-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-7-ENGINEERINGRULE-01",
+            "CHAPTER1-H4-7-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-8-CONCEPT-01",
+            "CHAPTER1-H4-8-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER1-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER1-H2-3-CONCEPT-01"
           ],
-          "rationale": "这些单元从核心定义到 Harness、上下文与工具边界、ReAct 循环，构成构建 Agent 前所需的基础问题空间。"
+          "rationale": "这些单元从核心定义到 Harness、上下文与工具边界、ReAct 循环，构成构建 Agent 前所需的基础问题空间。",
+          "chapterRefs": [
+            "chapter1"
+          ],
+          "mergedFrom": [
+            "chapter1-s3"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter1-s1|chapter1-s3",
+              "strictScenarios": 2,
+              "listScenarios": 3,
+              "strictScenarioIds": [
+                "chapter1-s1-sc1",
+                "chapter1-s3-sc2"
+              ],
+              "listScenarioIds": [
+                "chapter1-s1-sc1",
+                "chapter1-s3-sc2",
+                "chapter1-s3-sc3"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter1-s2",
@@ -471,7 +485,9 @@
             "chapter1-u5",
             "chapter1-u6",
             "chapter1-u7",
-            "chapter1-u8"
+            "chapter1-u8",
+            "chapter1-u9",
+            "chapter1-u11"
           ],
           "objectIds": [
             "CHAPTER1-H3-5-CONCEPT-01",
@@ -488,60 +504,35 @@
             "CHAPTER1-H4-5-CONCEPT-01",
             "CHAPTER1-H4-5-HEURISTIC-02",
             "CHAPTER1-H4-6-CONCEPT-01",
-            "CHAPTER1-H4-6-ENGINEERINGRULE-02"
-          ],
-          "rationale": "这些单元共同面向执行路径设计与技术选型：从循环机制、模型能力评估，到编排模式、工作流与自主性，再到具体框架集成。"
-        },
-        {
-          "skillId": "chapter1-s3",
-          "name": "安全治理与高风险控制",
-          "trigger": "当需要为生产级 Agent 设计护栏、沙盒执行、人工确认和产物复核机制，以控制高风险操作和声誉/数据风险时。",
-          "unitIds": [
-            "chapter1-u2",
-            "chapter1-u4",
-            "chapter1-u10",
-            "chapter1-u11"
-          ],
-          "objectIds": [
-            "CHAPTER1-H2-1-CONCEPT-01",
-            "CHAPTER1-H2-2-CONCEPT-01",
-            "CHAPTER1-H4-1-CONCEPT-01",
-            "CHAPTER1-H3-6-CONCEPT-02",
-            "CHAPTER1-H2-2-HEURISTIC-02",
-            "CHAPTER1-H3-2-ENGINEERINGRULE-01",
-            "CHAPTER1-H3-2-ENGINEERINGRULE-02",
-            "CHAPTER1-H3-7-CONCEPT-01",
-            "CHAPTER1-H3-7-CONCEPT-02",
-            "CHAPTER1-H3-10-CONCEPT-01",
-            "CHAPTER1-H3-10-ENGINEERINGRULE-02",
-            "CHAPTER1-H4-7-ENGINEERINGRULE-01",
-            "CHAPTER1-H4-7-ENGINEERINGRULE-02",
-            "CHAPTER1-H4-8-CONCEPT-01",
-            "CHAPTER1-H4-8-ENGINEERINGRULE-02",
-            "CHAPTER1-H4-1-ENGINEERINGRULE-02",
-            "CHAPTER1-H2-4-ENGINEERINGRULE-02",
-            "CHAPTER1-H2-3-CONCEPT-01"
-          ],
-          "rationale": "这些单元均面向安全可控性问题：Harness 的约束验证纠正、工具/代码执行限制、分层护栏与人工干预，以及不共享上下文的审核验证。"
-        },
-        {
-          "skillId": "chapter1-s4",
-          "name": "评估验证与能力更新",
-          "trigger": "当需要复盘 Agent 是否真正完成任务、验证关键产物，并决定哪些经验或能力应通过外部产物或参数更新跨任务保留时。",
-          "unitIds": [
-            "chapter1-u6",
-            "chapter1-u9",
-            "chapter1-u11"
-          ],
-          "objectIds": [
-            "CHAPTER1-H3-8-ENGINEERINGRULE-01",
-            "CHAPTER1-H3-8-ENGINEERINGRULE-02",
-            "CHAPTER1-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-6-ENGINEERINGRULE-02",
             "CHAPTER1-H4-2-CONCEPT-01",
             "CHAPTER1-H4-2-CONCEPT-02",
             "CHAPTER1-H2-3-CONCEPT-01"
           ],
-          "rationale": "这些单元共同构成持续改进闭环：评估任务完成与模型适配，用提议者-审核者验证产物，再通过外部产物或参数更新沉淀能力。"
+          "rationale": "这些单元共同面向执行路径设计与技术选型：从循环机制、模型能力评估，到编排模式、工作流与自主性，再到具体框架集成。",
+          "chapterRefs": [
+            "chapter1"
+          ],
+          "mergedFrom": [
+            "chapter1-s4"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter1-s2|chapter1-s4",
+              "strictScenarios": 2,
+              "listScenarios": 4,
+              "strictScenarioIds": [
+                "chapter1-s2-sc2",
+                "chapter1-s4-sc2"
+              ],
+              "listScenarioIds": [
+                "chapter1-s2-sc1",
+                "chapter1-s2-sc2",
+                "chapter1-s4-sc1",
+                "chapter1-s4-sc2"
+              ]
+            }
+          ]
         }
       ],
       "coverage": {
@@ -761,7 +752,10 @@
             "chapter10-u1",
             "chapter10-u2",
             "chapter10-u3",
-            "chapter10-u4"
+            "chapter10-u4",
+            "chapter2-u1",
+            "chapter2-u2",
+            "chapter2-u3"
           ],
           "objectIds": [
             "CHAPTER10-H1-1-CONCEPT-01",
@@ -788,44 +782,55 @@
             "CHAPTER10-H3-3-CONCEPT-02",
             "CHAPTER10-H3-4-ENGINEERINGRULE-01",
             "CHAPTER10-H3-4-ENGINEERINGRULE-02",
-            "CHAPTER10-H3-16-ENGINEERINGRULE-01"
-          ],
-          "rationale": "这些单元覆盖多 Agent 系统设计的主要结构性决策：采用判断、上下文模型、拓扑与互操作、通信与持久化机制。"
-        },
-        {
-          "skillId": "chapter10-s2",
-          "name": "可靠性验证与失效治理",
-          "trigger": "当多 Agent 系统出现同质化判断、错误传播、目标冲突、循环失控或理解债，需要建立验证、权限与人工裁决机制时。",
-          "unitIds": [
-            "chapter10-u4",
-            "chapter10-u5",
-            "chapter10-u7"
-          ],
-          "objectIds": [
-            "CHAPTER10-H3-3-CONCEPT-01",
-            "CHAPTER10-H3-3-CONCEPT-02",
-            "CHAPTER10-H3-4-ENGINEERINGRULE-01",
-            "CHAPTER10-H3-4-ENGINEERINGRULE-02",
             "CHAPTER10-H3-16-ENGINEERINGRULE-01",
-            "CHAPTER10-H3-5-ANTIPATTERN-01",
-            "CHAPTER10-H3-5-ENGINEERINGRULE-02",
-            "CHAPTER10-H3-10-CONCEPT-01",
-            "CHAPTER10-H3-10-HEURISTIC-02",
-            "CHAPTER10-H3-11-ANTIPATTERN-01",
-            "CHAPTER10-H3-11-CASE-02",
-            "CHAPTER10-H4-1-CONCEPT-01",
-            "CHAPTER10-H4-1-ENGINEERINGRULE-02",
-            "CHAPTER10-H2-5-CONCEPT-01",
-            "CHAPTER10-H2-5-CONCEPT-02",
-            "CHAPTER10-H3-9-CONCEPT-01",
-            "CHAPTER10-H3-9-ENGINEERINGRULE-02",
-            "CHAPTER10-H3-12-ENGINEERINGRULE-01",
-            "CHAPTER10-H3-12-ANTIPATTERN-02",
-            "CHAPTER10-H3-13-ANTIPATTERN-01",
-            "CHAPTER10-H3-14-CONCEPT-01",
-            "CHAPTER10-H3-14-CONCEPT-02"
+            "CHAPTER2-H1-1-CONCEPT-01",
+            "CHAPTER2-H2-1-CONCEPT-01",
+            "CHAPTER2-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER2-H2-8-CONCEPT-01",
+            "CHAPTER2-H3-1-CONCEPT-01",
+            "CHAPTER2-H3-2-CONCEPT-01",
+            "CHAPTER2-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-3-CONCEPT-01",
+            "CHAPTER2-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-4-CONCEPT-01",
+            "CHAPTER2-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-6-CONCEPT-01",
+            "CHAPTER2-H3-6-ANTIPATTERN-02",
+            "CHAPTER2-H3-5-CONCEPT-01",
+            "CHAPTER2-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER2-H2-3-ENGINEERINGRULE-01",
+            "CHAPTER2-H2-3-HEURISTIC-02",
+            "CHAPTER2-H3-7-CONCEPT-01",
+            "CHAPTER2-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-8-CONCEPT-01",
+            "CHAPTER2-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-10-CONCEPT-01",
+            "CHAPTER2-H3-17-ENGINEERINGRULE-01"
           ],
-          "rationale": "这些单元都处理多 Agent 运行中的可靠性问题：通信与持久化机制提供状态和一致性基础，独立判断与验证 Loop 提供防同质与交叉验证，失败模式与治理提供冲突、失控和人工裁决机制。"
+          "rationale": "这些单元覆盖多 Agent 系统设计的主要结构性决策：采用判断、上下文模型、拓扑与互操作、通信与持久化机制。",
+          "chapterRefs": [
+            "chapter10",
+            "chapter2"
+          ],
+          "mergedFrom": [
+            "chapter2-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter10-s1|chapter2-s1",
+              "strictScenarios": 2,
+              "listScenarios": 2,
+              "strictScenarioIds": [
+                "chapter10-s1-sc2",
+                "chapter2-s1-sc3"
+              ],
+              "listScenarioIds": [
+                "chapter10-s1-sc2",
+                "chapter2-s1-sc3"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter10-s3",
@@ -834,7 +839,9 @@
           "unitIds": [
             "chapter10-u3",
             "chapter10-u5",
-            "chapter10-u6"
+            "chapter10-u6",
+            "chapter10-u4",
+            "chapter10-u7"
           ],
           "objectIds": [
             "CHAPTER10-H3-2-CONCEPT-01",
@@ -858,9 +865,47 @@
             "CHAPTER10-H4-3-CONCEPT-01",
             "CHAPTER10-H4-3-MENTALMODEL-02",
             "CHAPTER10-H4-4-CONCEPT-01",
-            "CHAPTER10-H4-5-CONCEPT-01"
+            "CHAPTER10-H4-5-CONCEPT-01",
+            "CHAPTER10-H3-3-CONCEPT-01",
+            "CHAPTER10-H3-3-CONCEPT-02",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-16-ENGINEERINGRULE-01",
+            "CHAPTER10-H2-5-CONCEPT-01",
+            "CHAPTER10-H2-5-CONCEPT-02",
+            "CHAPTER10-H3-9-CONCEPT-01",
+            "CHAPTER10-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-12-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-12-ANTIPATTERN-02",
+            "CHAPTER10-H3-13-ANTIPATTERN-01",
+            "CHAPTER10-H3-14-CONCEPT-01",
+            "CHAPTER10-H3-14-CONCEPT-02"
           ],
-          "rationale": "这些单元共同服务于编排多个 Agent 完成具体任务：从选择控制权与信息流的拓扑，到建立独立验证循环，再到提议者-审核者、辩论、头脑风暴、专家小组等具体协作模式。"
+          "rationale": "这些单元共同服务于编排多个 Agent 完成具体任务：从选择控制权与信息流的拓扑，到建立独立验证循环，再到提议者-审核者、辩论、头脑风暴、专家小组等具体协作模式。",
+          "chapterRefs": [
+            "chapter10"
+          ],
+          "mergedFrom": [
+            "chapter10-s2"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter10-s2|chapter10-s3",
+              "strictScenarios": 2,
+              "listScenarios": 5,
+              "strictScenarioIds": [
+                "chapter10-s2-sc1",
+                "chapter10-s2-sc3"
+              ],
+              "listScenarioIds": [
+                "chapter10-s2-sc1",
+                "chapter10-s2-sc2",
+                "chapter10-s2-sc3",
+                "chapter10-s3-sc2",
+                "chapter10-s3-sc3"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter10-s4",
@@ -1122,43 +1167,6 @@
       ],
       "skills": [
         {
-          "skillId": "chapter2-s1",
-          "name": "上下文框架与执行基础",
-          "trigger": "需要理解上下文工程总览、API 消息结构与 Agent 核心循环，或设计缓存友好的基础执行骨架时使用。",
-          "unitIds": [
-            "chapter2-u1",
-            "chapter2-u2",
-            "chapter2-u3"
-          ],
-          "objectIds": [
-            "CHAPTER2-H1-1-CONCEPT-01",
-            "CHAPTER2-H2-1-CONCEPT-01",
-            "CHAPTER2-H2-1-ENGINEERINGRULE-02",
-            "CHAPTER2-H2-8-CONCEPT-01",
-            "CHAPTER2-H3-1-CONCEPT-01",
-            "CHAPTER2-H3-2-CONCEPT-01",
-            "CHAPTER2-H3-2-ENGINEERINGRULE-02",
-            "CHAPTER2-H3-3-CONCEPT-01",
-            "CHAPTER2-H3-3-ENGINEERINGRULE-02",
-            "CHAPTER2-H3-4-CONCEPT-01",
-            "CHAPTER2-H3-4-ENGINEERINGRULE-02",
-            "CHAPTER2-H3-6-CONCEPT-01",
-            "CHAPTER2-H3-6-ANTIPATTERN-02",
-            "CHAPTER2-H3-5-CONCEPT-01",
-            "CHAPTER2-H3-5-ENGINEERINGRULE-02",
-            "CHAPTER2-H2-3-ENGINEERINGRULE-01",
-            "CHAPTER2-H2-3-HEURISTIC-02",
-            "CHAPTER2-H3-7-CONCEPT-01",
-            "CHAPTER2-H3-7-ENGINEERINGRULE-02",
-            "CHAPTER2-H3-8-CONCEPT-01",
-            "CHAPTER2-H3-9-ENGINEERINGRULE-01",
-            "CHAPTER2-H3-9-ENGINEERINGRULE-02",
-            "CHAPTER2-H3-10-CONCEPT-01",
-            "CHAPTER2-H3-17-ENGINEERINGRULE-01"
-          ],
-          "rationale": "这些单元共同覆盖上下文工程的基础框架：总体定义、消息与工具调用骨架、核心循环，以及稳定前缀和缓存机制；面向需要搭建或理解 Agent 上下文执行基础架构的场景。"
-        },
-        {
           "skillId": "chapter2-s2",
           "name": "提示词与 Skills 编排",
           "trigger": "需要编写、审查或重构系统提示词、具体业务规则、few-shot 示例，并设计按需加载的 Skill 体系时使用。",
@@ -1200,7 +1208,10 @@
           "unitIds": [
             "chapter2-u7",
             "chapter2-u8",
-            "chapter2-u9"
+            "chapter2-u9",
+            "chapter4-u4",
+            "chapter4-u10",
+            "chapter4-u11"
           ],
           "objectIds": [
             "CHAPTER2-H3-11-CONCEPT-01",
@@ -1226,9 +1237,40 @@
             "CHAPTER2-H3-32-CONCEPT-01",
             "CHAPTER2-H3-32-ENGINEERINGRULE-02",
             "CHAPTER2-H3-18-CONCEPT-01",
-            "CHAPTER2-H3-18-ENGINEERINGRULE-02"
+            "CHAPTER2-H3-18-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-3-CONCEPT-01",
+            "CHAPTER4-H2-3-CONCEPT-02",
+            "CHAPTER4-H2-6-CONCEPT-01",
+            "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-9-CONCEPT-01",
+            "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-8-ENGINEERINGRULE-02"
           ],
-          "rationale": "这些单元共同回答 Agent 运行起来之后如何管理上下文：状态栏与侧信道、压缩与降噪、子 Agent 隔离，以及提示注入防护；面向运行时治理与安全场景。"
+          "rationale": "这些单元共同回答 Agent 运行起来之后如何管理上下文：状态栏与侧信道、压缩与降噪、子 Agent 隔离，以及提示注入防护；面向运行时治理与安全场景。",
+          "chapterRefs": [
+            "chapter2",
+            "chapter4"
+          ],
+          "mergedFrom": [
+            "chapter4-s2"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter2-s3|chapter4-s2",
+              "strictScenarios": 2,
+              "listScenarios": 2,
+              "strictScenarioIds": [
+                "chapter4-s2-sc1",
+                "chapter4-s2-sc2"
+              ],
+              "listScenarioIds": [
+                "chapter4-s2-sc1",
+                "chapter4-s2-sc2"
+              ]
+            }
+          ]
         }
       ],
       "coverage": {
@@ -1452,7 +1494,10 @@
             "chapter3-u1",
             "chapter3-u2",
             "chapter3-u3",
-            "chapter3-u4"
+            "chapter3-u4",
+            "chapter3-u9",
+            "chapter3-u10",
+            "chapter3-u11"
           ],
           "objectIds": [
             "CHAPTER3-H1-1-CONCEPT-01",
@@ -1475,9 +1520,43 @@
             "CHAPTER3-H3-8-ENGINEERINGRULE-01",
             "CHAPTER3-H3-8-CONCEPT-02",
             "CHAPTER3-H3-19-CONCEPT-01",
-            "CHAPTER3-H3-19-ANTIPATTERN-02"
+            "CHAPTER3-H3-19-ANTIPATTERN-02",
+            "CHAPTER3-H3-13-DECISIONMODEL-01",
+            "CHAPTER3-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-14-CONCEPT-01",
+            "CHAPTER3-H3-14-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-15-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-3-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-3-ENGINEERINGRULE-02",
+            "CHAPTER3-H4-4-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-4-ENGINEERINGRULE-02",
+            "CHAPTER3-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER3-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-18-CONCEPT-01",
+            "CHAPTER3-H3-18-ENGINEERINGRULE-02"
           ],
-          "rationale": "这些单元都面向如何让 Agent 记住用户并维护这些记忆的设计场景，从能力层级、表示、管线到多模态边界。"
+          "rationale": "这些单元都面向如何让 Agent 记住用户并维护这些记忆的设计场景，从能力层级、表示、管线到多模态边界。",
+          "chapterRefs": [
+            "chapter3"
+          ],
+          "mergedFrom": [
+            "chapter3-s3"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter3-s1|chapter3-s3",
+              "strictScenarios": 2,
+              "listScenarios": 2,
+              "strictScenarioIds": [
+                "chapter3-s1-sc1",
+                "chapter3-s3-sc2"
+              ],
+              "listScenarioIds": [
+                "chapter3-s1-sc1",
+                "chapter3-s3-sc2"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter3-s2",
@@ -1510,32 +1589,6 @@
             "CHAPTER3-H3-17-ANTIPATTERN-02"
           ],
           "rationale": "这些单元共同覆盖从原始文本准备、语义与稀疏检索到重排序和智能体调用的完整检索链路。"
-        },
-        {
-          "skillId": "chapter3-s3",
-          "name": "知识治理与领域建模",
-          "trigger": "当需要设计知识组织结构、写入审核、权限、更新机制，或参考领域数据建模案例时使用。",
-          "unitIds": [
-            "chapter3-u9",
-            "chapter3-u10",
-            "chapter3-u11"
-          ],
-          "objectIds": [
-            "CHAPTER3-H3-13-DECISIONMODEL-01",
-            "CHAPTER3-H3-13-ENGINEERINGRULE-02",
-            "CHAPTER3-H3-14-CONCEPT-01",
-            "CHAPTER3-H3-14-ENGINEERINGRULE-02",
-            "CHAPTER3-H3-15-ENGINEERINGRULE-01",
-            "CHAPTER3-H4-3-ENGINEERINGRULE-01",
-            "CHAPTER3-H4-3-ENGINEERINGRULE-02",
-            "CHAPTER3-H4-4-ENGINEERINGRULE-01",
-            "CHAPTER3-H4-4-ENGINEERINGRULE-02",
-            "CHAPTER3-H2-4-ENGINEERINGRULE-01",
-            "CHAPTER3-H2-4-ENGINEERINGRULE-02",
-            "CHAPTER3-H3-18-CONCEPT-01",
-            "CHAPTER3-H3-18-ENGINEERINGRULE-02"
-          ],
-          "rationale": "这些单元面向知识的组织、治理和具体领域建模场景，强调可审计、可回滚和可解释的结构。"
         }
       ],
       "coverage": {
@@ -1740,7 +1793,9 @@
             "chapter4-u1",
             "chapter4-u2",
             "chapter4-u3",
-            "chapter4-u7"
+            "chapter4-u7",
+            "chapter4-u8",
+            "chapter4-u9"
           ],
           "objectIds": [
             "CHAPTER4-H1-1-CONCEPT-01",
@@ -1755,31 +1810,39 @@
             "CHAPTER4-H3-3-CONCEPT-01",
             "CHAPTER4-H3-3-ENGINEERINGRULE-02",
             "CHAPTER4-H2-5-ENGINEERINGRULE-01",
-            "CHAPTER4-H2-5-ENGINEERINGRULE-02"
+            "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+            "CHAPTER4-H3-7-CONCEPT-01",
+            "CHAPTER4-H4-1-CONCEPT-01",
+            "CHAPTER4-H4-1-CONCEPT-02",
+            "CHAPTER4-H4-2-CONCEPT-01",
+            "CHAPTER4-H4-2-CONCEPT-02",
+            "CHAPTER4-H4-3-CONCEPT-01",
+            "CHAPTER4-H4-3-CASE-02"
           ],
-          "rationale": "这些单元共同回答“一个工具应如何被定义、描述并返回结果”，面向工具设计者和审查者的日常场景。"
-        },
-        {
-          "skillId": "chapter4-s2",
-          "name": "工具供应链与执行治理",
-          "trigger": "引入外部工具或能力、运行子 Agent、执行不可信操作时，需要审查提示注入风险、隔离权限并建立审核验证机制。",
-          "unitIds": [
-            "chapter4-u4",
-            "chapter4-u10",
-            "chapter4-u11"
+          "rationale": "这些单元共同回答“一个工具应如何被定义、描述并返回结果”，面向工具设计者和审查者的日常场景。",
+          "chapterRefs": [
+            "chapter4"
           ],
-          "objectIds": [
-            "CHAPTER4-H2-3-CONCEPT-01",
-            "CHAPTER4-H2-3-CONCEPT-02",
-            "CHAPTER4-H2-6-CONCEPT-01",
-            "CHAPTER4-H2-6-ENGINEERINGRULE-02",
-            "CHAPTER4-H2-9-CONCEPT-01",
-            "CHAPTER4-H2-7-ENGINEERINGRULE-01",
-            "CHAPTER4-H2-7-ENGINEERINGRULE-02",
-            "CHAPTER4-H2-8-ENGINEERINGRULE-01",
-            "CHAPTER4-H2-8-ENGINEERINGRULE-02"
+          "mergedFrom": [
+            "chapter4-s4"
           ],
-          "rationale": "这些单元都涉及工具生态中的信任边界：MCP/提示注入、执行隔离与审核验证、子 Agent 与外部能力治理。"
+          "mergeBasis": [
+            {
+              "stablePair": "chapter4-s1|chapter4-s4",
+              "strictScenarios": 2,
+              "listScenarios": 4,
+              "strictScenarioIds": [
+                "chapter4-s1-sc1",
+                "chapter4-s4-sc1"
+              ],
+              "listScenarioIds": [
+                "chapter4-s1-sc1",
+                "chapter4-s4-sc1",
+                "chapter4-s4-sc2",
+                "chapter4-s4-sc3"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter4-s3",
@@ -1805,28 +1868,6 @@
             "CHAPTER4-H2-5-ENGINEERINGRULE-02"
           ],
           "rationale": "这些单元针对工具规模化后选择困难与上下文爆炸，共同提供从静态索引、渐进披露到动态发现和结果分页的组织方案。"
-        },
-        {
-          "skillId": "chapter4-s4",
-          "name": "多模态感知与内容读取",
-          "trigger": "处理搜索结果、长文档、PDF、图片、音视频等多模态输入时，需要选择合适感知路线并控制信息量。",
-          "unitIds": [
-            "chapter4-u7",
-            "chapter4-u8",
-            "chapter4-u9"
-          ],
-          "objectIds": [
-            "CHAPTER4-H2-5-ENGINEERINGRULE-01",
-            "CHAPTER4-H2-5-ENGINEERINGRULE-02",
-            "CHAPTER4-H3-7-CONCEPT-01",
-            "CHAPTER4-H4-1-CONCEPT-01",
-            "CHAPTER4-H4-1-CONCEPT-02",
-            "CHAPTER4-H4-2-CONCEPT-01",
-            "CHAPTER4-H4-2-CONCEPT-02",
-            "CHAPTER4-H4-3-CONCEPT-01",
-            "CHAPTER4-H4-3-CASE-02"
-          ],
-          "rationale": "这些单元共同覆盖多模态感知能力与三类技术路线，并借助工具返回结构设计控制复杂内容读取时的信息量。"
         }
       ],
       "coverage": {
@@ -2070,7 +2111,10 @@
             "chapter5-u2",
             "chapter5-u7",
             "chapter5-u8",
-            "chapter5-u9"
+            "chapter5-u9",
+            "reference-answers-u2",
+            "reference-answers-u6",
+            "reference-answers-u7"
           ],
           "objectIds": [
             "CHAPTER5-H2-2-CONCEPT-01",
@@ -2090,9 +2134,43 @@
             "CHAPTER5-H3-14-CONCEPT-01",
             "CHAPTER5-H3-14-ENGINEERINGRULE-02",
             "CHAPTER5-H3-15-ENGINEERINGRULE-01",
-            "CHAPTER5-H3-15-ENGINEERINGRULE-02"
+            "CHAPTER5-H3-15-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+            "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-10-HEURISTIC-02"
           ],
-          "rationale": "单元1提供元能力总览，单元6处理业务规则正确性，单元7覆盖多维应用与审核/安全，单元8覆盖自举与自我修复，共同服务于利用代码生成交付复杂任务的场景。"
+          "rationale": "单元1提供元能力总览，单元6处理业务规则正确性，单元7覆盖多维应用与审核/安全，单元8覆盖自举与自我修复，共同服务于利用代码生成交付复杂任务的场景。",
+          "chapterRefs": [
+            "chapter5",
+            "reference-answers"
+          ],
+          "mergedFrom": [
+            "reference-answers-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter5-s3|reference-answers-s1",
+              "strictScenarios": 2,
+              "listScenarios": 3,
+              "strictScenarioIds": [
+                "chapter5-s3-sc2",
+                "chapter5-s3-sc3"
+              ],
+              "listScenarioIds": [
+                "chapter5-s3-sc2",
+                "chapter5-s3-sc3",
+                "reference-answers-s1-sc1"
+              ]
+            }
+          ]
         }
       ],
       "coverage": {
@@ -2690,7 +2768,11 @@
             "chapter7-u2",
             "chapter7-u3",
             "chapter7-u4",
-            "chapter7-u10"
+            "chapter7-u10",
+            "chapter7-u5",
+            "chapter7-u6",
+            "chapter7-u7",
+            "chapter7-u8"
           ],
           "objectIds": [
             "CHAPTER7-H1-1-ENGINEERINGRULE-01",
@@ -2732,29 +2814,7 @@
             "CHAPTER7-H2-11-CONCEPT-01",
             "CHAPTER7-H2-11-ENGINEERINGRULE-02",
             "CHAPTER7-H3-31-CONCEPT-01",
-            "CHAPTER7-H3-31-HEURISTIC-02"
-          ],
-          "rationale": "这五个单元共同覆盖搭建评估系统所需的核心设计：先明确评估对象与成功判定，再构建模拟用户或工具环境，设计任务难度与基准，建立可核实评价与边界，并用可观测性与仿真基础设施支撑运行。它们面向如何建一个可信评估系统的同一批场景。"
-        },
-        {
-          "skillId": "chapter7-s2",
-          "name": "评估结果分析与诊断",
-          "trigger": "当需要解读评估分数、比较模型、定位失败根因或优化推理成本时，使用该候选。",
-          "unitIds": [
-            "chapter7-u4",
-            "chapter7-u5",
-            "chapter7-u6",
-            "chapter7-u7",
-            "chapter7-u8"
-          ],
-          "objectIds": [
-            "CHAPTER7-H3-8-ENGINEERINGRULE-01",
-            "CHAPTER7-H3-8-ENGINEERINGRULE-02",
-            "CHAPTER7-H3-13-ENGINEERINGRULE-01",
-            "CHAPTER7-H3-13-ENGINEERINGRULE-02",
-            "CHAPTER7-H3-14-ENGINEERINGRULE-01",
-            "CHAPTER7-H3-14-ENGINEERINGRULE-02",
-            "CHAPTER7-H2-12-CONCEPT-01",
+            "CHAPTER7-H3-31-HEURISTIC-02",
             "CHAPTER7-H4-1-CONCEPT-01",
             "CHAPTER7-H4-1-ENGINEERINGRULE-02",
             "CHAPTER7-H4-2-ENGINEERINGRULE-01",
@@ -2784,7 +2844,30 @@
             "CHAPTER7-H3-23-ENGINEERINGRULE-02",
             "CHAPTER7-H3-24-ENGINEERINGRULE-01"
           ],
-          "rationale": "这些单元都服务于已有评估结果之后怎么办：可核实评价帮助判断证据质量，诊断与错误定位处理失败案例，模型比较与选型解读差距是否可信，推理成本与行动策略解释执行差异，评测系统可靠性确保结论不是来自评测本身的问题。它们面向结果分析、模型选型与失败归因场景。"
+          "rationale": "这五个单元共同覆盖搭建评估系统所需的核心设计：先明确评估对象与成功判定，再构建模拟用户或工具环境，设计任务难度与基准，建立可核实评价与边界，并用可观测性与仿真基础设施支撑运行。它们面向如何建一个可信评估系统的同一批场景。",
+          "chapterRefs": [
+            "chapter7"
+          ],
+          "mergedFrom": [
+            "chapter7-s2"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter7-s1|chapter7-s2",
+              "strictScenarios": 2,
+              "listScenarios": 4,
+              "strictScenarioIds": [
+                "chapter7-s1-sc2",
+                "chapter7-s1-sc3"
+              ],
+              "listScenarioIds": [
+                "chapter7-s1-sc1",
+                "chapter7-s1-sc2",
+                "chapter7-s1-sc3",
+                "chapter7-s2-sc2"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter7-s3",
@@ -3384,32 +3467,16 @@
       ],
       "skills": [
         {
-          "skillId": "chapter9-s1",
-          "name": "轨迹经验提取",
-          "trigger": "需要从生产轨迹中评价任务完成质量，并提取可靠行动经验时。",
-          "unitIds": [
-            "chapter9-u1",
-            "chapter9-u2",
-            "chapter9-u4"
-          ],
-          "objectIds": [
-            "CHAPTER9-H1-1-MENTALMODEL-01",
-            "CHAPTER9-H1-1-ENGINEERINGRULE-02",
-            "CHAPTER9-H2-1-MENTALMODEL-01",
-            "CHAPTER9-H2-1-ENGINEERINGRULE-02",
-            "CHAPTER9-H3-1-CONCEPT-01",
-            "CHAPTER9-H3-1-ENGINEERINGRULE-02"
-          ],
-          "rationale": "这些单元覆盖从轨迹原料、轨迹评价到行动经验提取的完整证据链，共同服务于从执行历史中提炼可复用经验。"
-        },
-        {
           "skillId": "chapter9-s2",
           "name": "学习载体与自进化更新",
           "trigger": "需要决定学习信号改写到知识、提示词、程序或模型参数，并组织自进化循环时。",
           "unitIds": [
             "chapter9-u3",
             "chapter9-u5",
-            "chapter9-u9"
+            "chapter9-u9",
+            "afterword-u1",
+            "afterword-u2",
+            "afterword-u3"
           ],
           "objectIds": [
             "CHAPTER9-H2-2-CONCEPT-01",
@@ -3421,9 +3488,35 @@
             "CHAPTER9-H3-5-ANTIPATTERN-02",
             "CHAPTER9-H3-5-CONCEPT-01",
             "CHAPTER9-H2-3-CONCEPT-01",
-            "CHAPTER9-H2-3-ENGINEERINGRULE-02"
+            "CHAPTER9-H2-3-ENGINEERINGRULE-02",
+            "AFTERWORD-H1-1-CONCEPT-01",
+            "AFTERWORD-H2-1-CONCEPT-01",
+            "AFTERWORD-H2-1-CONCEPT-02",
+            "AFTERWORD-H2-2-CONCEPT-01",
+            "AFTERWORD-H2-2-HEURISTIC-02"
           ],
-          "rationale": "这些单元分别回答学习信号应写入何种载体、提示词与记忆如何最小更新，以及发现树和技能库如何支撑持续进化。"
+          "rationale": "这些单元分别回答学习信号应写入何种载体、提示词与记忆如何最小更新，以及发现树和技能库如何支撑持续进化。",
+          "chapterRefs": [
+            "afterword",
+            "chapter9"
+          ],
+          "mergedFrom": [
+            "afterword-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "afterword-s1|chapter9-s2",
+              "strictScenarios": 2,
+              "listScenarios": 1,
+              "strictScenarioIds": [
+                "afterword-s1-sc1",
+                "afterword-s1-sc2"
+              ],
+              "listScenarioIds": [
+                "afterword-s1-sc2"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter9-s3",
@@ -3432,7 +3525,10 @@
           "unitIds": [
             "chapter9-u6",
             "chapter9-u7",
-            "chapter9-u10"
+            "chapter9-u10",
+            "chapter9-u1",
+            "chapter9-u2",
+            "chapter9-u4"
           ],
           "objectIds": [
             "CHAPTER9-H4-1-ENGINEERINGRULE-01",
@@ -3442,9 +3538,38 @@
             "CHAPTER9-H3-3-PLAYBOOK-01",
             "CHAPTER9-H3-3-ENGINEERINGRULE-02",
             "CHAPTER9-H3-6-CONCEPT-01",
-            "CHAPTER9-H3-6-ENGINEERINGRULE-02"
+            "CHAPTER9-H3-6-ENGINEERINGRULE-02",
+            "CHAPTER9-H1-1-MENTALMODEL-01",
+            "CHAPTER9-H1-1-ENGINEERINGRULE-02",
+            "CHAPTER9-H2-1-MENTALMODEL-01",
+            "CHAPTER9-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-1-CONCEPT-01",
+            "CHAPTER9-H3-1-ENGINEERINGRULE-02"
           ],
-          "rationale": "这些单元都关注把业务或流程经验变成可验证产物：策略更新需要独立验证和关联轨迹，工作流需要三重验证，同时要清楚可验证闭环的适用边界。"
+          "rationale": "这些单元都关注把业务或流程经验变成可验证产物：策略更新需要独立验证和关联轨迹，工作流需要三重验证，同时要清楚可验证闭环的适用边界。",
+          "chapterRefs": [
+            "chapter9"
+          ],
+          "mergedFrom": [
+            "chapter9-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "chapter9-s1|chapter9-s3",
+              "strictScenarios": 2,
+              "listScenarios": 4,
+              "strictScenarioIds": [
+                "chapter9-s1-sc2",
+                "chapter9-s3-sc1"
+              ],
+              "listScenarioIds": [
+                "chapter9-s1-sc2",
+                "chapter9-s1-sc3",
+                "chapter9-s3-sc1",
+                "chapter9-s3-sc2"
+              ]
+            }
+          ]
         },
         {
           "skillId": "chapter9-s4",
@@ -3704,30 +3829,6 @@
       ],
       "skills": [
         {
-          "skillId": "reference-answers-s1",
-          "name": "运行安全与工具治理",
-          "trigger": "当需要构建或审查 Agent 的工具调用、不可逆操作、生成代码/UI、阶段切换和预算分配时，用它对照风险分级、隔离发布和硬阈值治理方案。",
-          "unitIds": [
-            "reference-answers-u2",
-            "reference-answers-u6",
-            "reference-answers-u7"
-          ],
-          "objectIds": [
-            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
-            "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
-            "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
-            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
-            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
-            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
-            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02",
-            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
-            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02",
-            "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
-            "REFERENCE-ANSWERS-H2-10-HEURISTIC-02"
-          ],
-          "rationale": "这些单元面向同一批安全与运行时治理场景：工具与动作风险控制、生成物与护栏、预算与角色切换共同决定 Agent 在运行中如何被约束和发布。"
-        },
-        {
           "skillId": "reference-answers-s2",
           "name": "上下文检索与评估设计",
           "trigger": "当需要设计上下文压缩与状态展示、选择检索索引结构，或搭建防作弊评估与训练数据策略时，用它权衡方案。",
@@ -3830,5 +3931,566 @@
       "promptTokens": 42673,
       "completionTokens": 167074
     }
+  },
+  "resplit": {
+    "appliedAt": "2026-10-13T10:34:28.435Z",
+    "planFile": "pipeline/registry/resplit-plan.json",
+    "planSha256": "sha256:20c7ab34cf4f8afb2accd6bf58ad49d6d033ce5061eabb0ebb1fa8a947eb55e4",
+    "rule": "在「strict 场景数 ≥2 且两读数都存」的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序。传递闭包不可用：全量 87 稳定对的连通分量是 38/40 个候选的巨型分量（共认领不是等价关系）。跨章对按用户 2026-10-13 拍板一并执行（需环 4 多章候选支持）。",
+    "merges": [
+      {
+        "into": "chapter10-s3",
+        "target": "chapter10-s2",
+        "unitIds": [
+          "chapter10-u3",
+          "chapter10-u5",
+          "chapter10-u6",
+          "chapter10-u4",
+          "chapter10-u7"
+        ],
+        "objectCount": 36,
+        "chapterRefs": [
+          "chapter10"
+        ],
+        "basis": {
+          "stablePair": "chapter10-s2|chapter10-s3",
+          "strictScenarios": 2,
+          "listScenarios": 5,
+          "strictScenarioIds": [
+            "chapter10-s2-sc1",
+            "chapter10-s2-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter10-s2-sc1",
+            "chapter10-s2-sc2",
+            "chapter10-s2-sc3",
+            "chapter10-s3-sc2",
+            "chapter10-s3-sc3"
+          ]
+        }
+      },
+      {
+        "into": "chapter1-s2",
+        "target": "chapter1-s4",
+        "unitIds": [
+          "chapter1-u5",
+          "chapter1-u6",
+          "chapter1-u7",
+          "chapter1-u8",
+          "chapter1-u9",
+          "chapter1-u11"
+        ],
+        "objectCount": 18,
+        "chapterRefs": [
+          "chapter1"
+        ],
+        "basis": {
+          "stablePair": "chapter1-s2|chapter1-s4",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter1-s2-sc2",
+            "chapter1-s4-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter1-s2-sc1",
+            "chapter1-s2-sc2",
+            "chapter1-s4-sc1",
+            "chapter1-s4-sc2"
+          ]
+        }
+      },
+      {
+        "into": "chapter9-s3",
+        "target": "chapter9-s1",
+        "unitIds": [
+          "chapter9-u6",
+          "chapter9-u7",
+          "chapter9-u10",
+          "chapter9-u1",
+          "chapter9-u2",
+          "chapter9-u4"
+        ],
+        "objectCount": 14,
+        "chapterRefs": [
+          "chapter9"
+        ],
+        "basis": {
+          "stablePair": "chapter9-s1|chapter9-s3",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter9-s1-sc2",
+            "chapter9-s3-sc1"
+          ],
+          "listScenarioIds": [
+            "chapter9-s1-sc2",
+            "chapter9-s1-sc3",
+            "chapter9-s3-sc1",
+            "chapter9-s3-sc2"
+          ]
+        }
+      },
+      {
+        "into": "chapter4-s1",
+        "target": "chapter4-s4",
+        "unitIds": [
+          "chapter4-u1",
+          "chapter4-u2",
+          "chapter4-u3",
+          "chapter4-u7",
+          "chapter4-u8",
+          "chapter4-u9"
+        ],
+        "objectCount": 20,
+        "chapterRefs": [
+          "chapter4"
+        ],
+        "basis": {
+          "stablePair": "chapter4-s1|chapter4-s4",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter4-s1-sc1",
+            "chapter4-s4-sc1"
+          ],
+          "listScenarioIds": [
+            "chapter4-s1-sc1",
+            "chapter4-s4-sc1",
+            "chapter4-s4-sc2",
+            "chapter4-s4-sc3"
+          ]
+        }
+      },
+      {
+        "into": "chapter7-s1",
+        "target": "chapter7-s2",
+        "unitIds": [
+          "chapter7-u1",
+          "chapter7-u2",
+          "chapter7-u3",
+          "chapter7-u4",
+          "chapter7-u10",
+          "chapter7-u5",
+          "chapter7-u6",
+          "chapter7-u7",
+          "chapter7-u8"
+        ],
+        "objectCount": 68,
+        "chapterRefs": [
+          "chapter7"
+        ],
+        "basis": {
+          "stablePair": "chapter7-s1|chapter7-s2",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter7-s1-sc2",
+            "chapter7-s1-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter7-s1-sc1",
+            "chapter7-s1-sc2",
+            "chapter7-s1-sc3",
+            "chapter7-s2-sc2"
+          ]
+        }
+      },
+      {
+        "into": "chapter1-s1",
+        "target": "chapter1-s3",
+        "unitIds": [
+          "chapter1-u1",
+          "chapter1-u2",
+          "chapter1-u3",
+          "chapter1-u4",
+          "chapter1-u5",
+          "chapter1-u10",
+          "chapter1-u11"
+        ],
+        "objectCount": 30,
+        "chapterRefs": [
+          "chapter1"
+        ],
+        "basis": {
+          "stablePair": "chapter1-s1|chapter1-s3",
+          "strictScenarios": 2,
+          "listScenarios": 3,
+          "strictScenarioIds": [
+            "chapter1-s1-sc1",
+            "chapter1-s3-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter1-s1-sc1",
+            "chapter1-s3-sc2",
+            "chapter1-s3-sc3"
+          ]
+        }
+      },
+      {
+        "into": "chapter5-s3",
+        "target": "reference-answers-s1",
+        "unitIds": [
+          "chapter5-u2",
+          "chapter5-u7",
+          "chapter5-u8",
+          "chapter5-u9",
+          "reference-answers-u2",
+          "reference-answers-u6",
+          "reference-answers-u7"
+        ],
+        "objectCount": 29,
+        "chapterRefs": [
+          "chapter5",
+          "reference-answers"
+        ],
+        "basis": {
+          "stablePair": "chapter5-s3|reference-answers-s1",
+          "strictScenarios": 2,
+          "listScenarios": 3,
+          "strictScenarioIds": [
+            "chapter5-s3-sc2",
+            "chapter5-s3-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter5-s3-sc2",
+            "chapter5-s3-sc3",
+            "reference-answers-s1-sc1"
+          ]
+        }
+      },
+      {
+        "into": "chapter10-s1",
+        "target": "chapter2-s1",
+        "unitIds": [
+          "chapter10-u1",
+          "chapter10-u2",
+          "chapter10-u3",
+          "chapter10-u4",
+          "chapter2-u1",
+          "chapter2-u2",
+          "chapter2-u3"
+        ],
+        "objectCount": 49,
+        "chapterRefs": [
+          "chapter10",
+          "chapter2"
+        ],
+        "basis": {
+          "stablePair": "chapter10-s1|chapter2-s1",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "chapter10-s1-sc2",
+            "chapter2-s1-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter10-s1-sc2",
+            "chapter2-s1-sc3"
+          ]
+        }
+      },
+      {
+        "into": "chapter3-s1",
+        "target": "chapter3-s3",
+        "unitIds": [
+          "chapter3-u1",
+          "chapter3-u2",
+          "chapter3-u3",
+          "chapter3-u4",
+          "chapter3-u9",
+          "chapter3-u10",
+          "chapter3-u11"
+        ],
+        "objectCount": 34,
+        "chapterRefs": [
+          "chapter3"
+        ],
+        "basis": {
+          "stablePair": "chapter3-s1|chapter3-s3",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "chapter3-s1-sc1",
+            "chapter3-s3-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter3-s1-sc1",
+            "chapter3-s3-sc2"
+          ]
+        }
+      },
+      {
+        "into": "chapter2-s3",
+        "target": "chapter4-s2",
+        "unitIds": [
+          "chapter2-u7",
+          "chapter2-u8",
+          "chapter2-u9",
+          "chapter4-u4",
+          "chapter4-u10",
+          "chapter4-u11"
+        ],
+        "objectCount": 33,
+        "chapterRefs": [
+          "chapter2",
+          "chapter4"
+        ],
+        "basis": {
+          "stablePair": "chapter2-s3|chapter4-s2",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "chapter4-s2-sc1",
+            "chapter4-s2-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter4-s2-sc1",
+            "chapter4-s2-sc2"
+          ]
+        }
+      },
+      {
+        "into": "chapter9-s2",
+        "target": "afterword-s1",
+        "unitIds": [
+          "chapter9-u3",
+          "chapter9-u5",
+          "chapter9-u9",
+          "afterword-u1",
+          "afterword-u2",
+          "afterword-u3"
+        ],
+        "objectCount": 15,
+        "chapterRefs": [
+          "afterword",
+          "chapter9"
+        ],
+        "basis": {
+          "stablePair": "afterword-s1|chapter9-s2",
+          "strictScenarios": 2,
+          "listScenarios": 1,
+          "strictScenarioIds": [
+            "afterword-s1-sc1",
+            "afterword-s1-sc2"
+          ],
+          "listScenarioIds": [
+            "afterword-s1-sc2"
+          ]
+        }
+      }
+    ],
+    "removed": [
+      {
+        "skillId": "chapter10-s2",
+        "mergedInto": "chapter10-s3",
+        "basis": {
+          "stablePair": "chapter10-s2|chapter10-s3",
+          "strictScenarios": 2,
+          "listScenarios": 5,
+          "strictScenarioIds": [
+            "chapter10-s2-sc1",
+            "chapter10-s2-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter10-s2-sc1",
+            "chapter10-s2-sc2",
+            "chapter10-s2-sc3",
+            "chapter10-s3-sc2",
+            "chapter10-s3-sc3"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 5/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter10-s3 obj=22 hits=3）"
+      },
+      {
+        "skillId": "chapter1-s4",
+        "mergedInto": "chapter1-s2",
+        "basis": {
+          "stablePair": "chapter1-s2|chapter1-s4",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter1-s2-sc2",
+            "chapter1-s4-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter1-s2-sc1",
+            "chapter1-s2-sc2",
+            "chapter1-s4-sc1",
+            "chapter1-s4-sc2"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 4/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter1-s2 obj=15 hits=2）"
+      },
+      {
+        "skillId": "chapter9-s1",
+        "mergedInto": "chapter9-s3",
+        "basis": {
+          "stablePair": "chapter9-s1|chapter9-s3",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter9-s1-sc2",
+            "chapter9-s3-sc1"
+          ],
+          "listScenarioIds": [
+            "chapter9-s1-sc2",
+            "chapter9-s1-sc3",
+            "chapter9-s3-sc1",
+            "chapter9-s3-sc2"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 4/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter9-s3 obj=8 hits=2）"
+      },
+      {
+        "skillId": "chapter4-s4",
+        "mergedInto": "chapter4-s1",
+        "basis": {
+          "stablePair": "chapter4-s1|chapter4-s4",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter4-s1-sc1",
+            "chapter4-s4-sc1"
+          ],
+          "listScenarioIds": [
+            "chapter4-s1-sc1",
+            "chapter4-s4-sc1",
+            "chapter4-s4-sc2",
+            "chapter4-s4-sc3"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 4/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter4-s1 obj=13 hits=2）"
+      },
+      {
+        "skillId": "chapter7-s2",
+        "mergedInto": "chapter7-s1",
+        "basis": {
+          "stablePair": "chapter7-s1|chapter7-s2",
+          "strictScenarios": 2,
+          "listScenarios": 4,
+          "strictScenarioIds": [
+            "chapter7-s1-sc2",
+            "chapter7-s1-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter7-s1-sc1",
+            "chapter7-s1-sc2",
+            "chapter7-s1-sc3",
+            "chapter7-s2-sc2"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 4/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter7-s1 obj=40 hits=2）"
+      },
+      {
+        "skillId": "chapter1-s3",
+        "mergedInto": "chapter1-s1",
+        "basis": {
+          "stablePair": "chapter1-s1|chapter1-s3",
+          "strictScenarios": 2,
+          "listScenarios": 3,
+          "strictScenarioIds": [
+            "chapter1-s1-sc1",
+            "chapter1-s3-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter1-s1-sc1",
+            "chapter1-s3-sc2",
+            "chapter1-s3-sc3"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 3/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter1-s1 obj=21 hits=3）"
+      },
+      {
+        "skillId": "reference-answers-s1",
+        "mergedInto": "chapter5-s3",
+        "basis": {
+          "stablePair": "chapter5-s3|reference-answers-s1",
+          "strictScenarios": 2,
+          "listScenarios": 3,
+          "strictScenarioIds": [
+            "chapter5-s3-sc2",
+            "chapter5-s3-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter5-s3-sc2",
+            "chapter5-s3-sc3",
+            "reference-answers-s1-sc1"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 3/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter5-s3 obj=18 hits=2）"
+      },
+      {
+        "skillId": "chapter2-s1",
+        "mergedInto": "chapter10-s1",
+        "basis": {
+          "stablePair": "chapter10-s1|chapter2-s1",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "chapter10-s1-sc2",
+            "chapter2-s1-sc3"
+          ],
+          "listScenarioIds": [
+            "chapter10-s1-sc2",
+            "chapter2-s1-sc3"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 2/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter10-s1 obj=25 hits=2）"
+      },
+      {
+        "skillId": "chapter3-s3",
+        "mergedInto": "chapter3-s1",
+        "basis": {
+          "stablePair": "chapter3-s1|chapter3-s3",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "chapter3-s1-sc1",
+            "chapter3-s3-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter3-s1-sc1",
+            "chapter3-s3-sc2"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 2/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter3-s1 obj=21 hits=2）"
+      },
+      {
+        "skillId": "chapter4-s2",
+        "mergedInto": "chapter2-s3",
+        "basis": {
+          "stablePair": "chapter2-s3|chapter4-s2",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "chapter4-s2-sc1",
+            "chapter4-s2-sc2"
+          ],
+          "listScenarioIds": [
+            "chapter4-s2-sc1",
+            "chapter4-s2-sc2"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 2/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter2-s3 obj=24 hits=3）"
+      },
+      {
+        "skillId": "afterword-s1",
+        "mergedInto": "chapter9-s2",
+        "basis": {
+          "stablePair": "afterword-s1|chapter9-s2",
+          "strictScenarios": 2,
+          "listScenarios": 1,
+          "strictScenarioIds": [
+            "afterword-s1-sc1",
+            "afterword-s1-sc2"
+          ],
+          "listScenarioIds": [
+            "afterword-s1-sc2"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2/3，list 1/3）；吸收者由「对象数→严格命中数→字典序」确定（chapter9-s2 obj=10 hits=3）"
+      }
+    ]
   }
 }

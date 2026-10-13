@@ -382,8 +382,12 @@ async function main(argv) {
     }
     if (!answers.scenarios) answers.scenarios = {}
     if (!answers.usage) answers.usage = { promptTokens: 0, completionTokens: 0 }
+    // 重切（或其他原因）移除的候选：其场景集在库里保留作历史，但**不得进入本轮**——
+    // 一个没有对应候选的「应触发场景」会让判分出现无主的 intended。
+    const currentIds = new Set(candidates.map((c) => c.skillId))
+    const liveScenarioChapters = scenariosDoc.candidates.filter((c) => currentIds.has(c.skillId))
     const allScenarios = [
-      ...scenariosDoc.candidates.flatMap((c) => (c.scenarios ?? []).map((s) => ({ ...s, kind: 'candidate' }))),
+      ...liveScenarioChapters.flatMap((c) => (c.scenarios ?? []).map((s) => ({ ...s, kind: 'candidate' }))),
       ...(scenariosDoc.unrelated?.scenarios ?? []).map((s) => ({ ...s, kind: 'unrelated' })),
     ]
     let blindCalls = 0
@@ -416,7 +420,7 @@ async function main(argv) {
 
     // ── 报告 ──
     const scenarioSet = {
-      candidates: scenariosDoc.candidates.map((c) => ({ skillId: c.skillId, scenarios: c.scenarios })),
+      candidates: liveScenarioChapters.map((c) => ({ skillId: c.skillId, scenarios: c.scenarios })),
       unrelated: scenariosDoc.unrelated?.scenarios ?? [],
     }
     const answersMap = Object.fromEntries(

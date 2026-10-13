@@ -74,6 +74,50 @@ description: 单工具设计与审查：感知工具的设计关键在于控制�
 
 - 某 IDE 的 bash 工具在执行所有 git commit 命令时自动附加一个额外参数，用于标记这次提交是由 AI 生成的。
 
+**多模态感知**
+
+Agent 理解图片、视频、音频、PDF 等多模态数据所必需具备的能力。
+
+- 理解图片
+- 理解视频
+- 理解音频
+- 理解PDF
+
+**原生多模态处理**
+
+能力上限最高的技术路线，其核心技术突破在于通过专门的编码器将不同类型的数据全部映射到统一的高维语义空间；原生支持多模态的模型可以直接看到 PDF 的页面布局、图表和文字，理解图文之间的空间和语义关系。
+
+- 在原生支持多模态的模型中，模型可以直接看到 PDF 的页面布局、图表和文字，理解图文之间的空间和语义关系
+
+**Vision Transformer**
+
+一种视觉编码器，将图像分割为固定大小的图像块（Patches），像处理句子中的单词一样将每个块序列化为向量，与文本词向量共存于共享的多模态嵌入空间。
+
+- 架构公开的多模态模型（如 Qwen-VL、LLaVA）通常集成了基于 Vision Transformer（ViT）的视觉编码器
+
+**提取为文本**
+
+当模型不支持原生多模态处理时，将多模态内容先通过专门工具（如 OCR 服务、音频转录服务）转为纯文本，再输入语言模型的两阶段变通方法。
+
+- 通过 OCR 服务将非文本内容转为纯文本
+- 通过音频转录服务将非文本内容转为纯文本
+
+**信息损失**
+
+提取为文本方法的代价：所有版式、图表、图像信息在提取过程中被丢弃。
+
+- 版式信息被丢弃
+- 图表信息被丢弃
+- 图像信息被丢弃
+
+**工具化多模态分析**
+
+当 Agent 的主模型不支持多模态时，将多模态分析作为工具以对原始文件进行深入分析的方法；Agent 使用 `analyze_image`、`analyze_pdf`、`analyze_audio` 等工具，这些工具接受一个多模态文件和一个自然语言问题作为参数，返回自然语言描述的分析结果；工具内部可用多模态模型实现，该多模态模型不一定需要很强的 Agent 能力。
+
+- `analyze_image`
+- `analyze_pdf`
+- `analyze_audio`
+
 ## 常见陷阱
 
 - **把每个 API 端点包成一个工具，粒度过细。**
@@ -104,4 +148,8 @@ description: 单工具设计与审查：感知工具的设计关键在于控制�
 - `sources/ai-agent-book-zh/book/chapter4.md` · 工具描述的艺术（第 70–87 行）
 - `sources/ai-agent-book-zh/book/chapter4.md` · 参数传递的保真性（第 88–99 行）
 - `sources/ai-agent-book-zh/book/chapter4.md` · 感知工具（第 218–243 行）
+- `sources/ai-agent-book-zh/book/chapter4.md` · 多模态感知（第 244–247 行）
+- `sources/ai-agent-book-zh/book/chapter4.md` · 原生多模态处理（第 248–251 行）
+- `sources/ai-agent-book-zh/book/chapter4.md` · 提取为文本（第 252–257 行）
+- `sources/ai-agent-book-zh/book/chapter4.md` · 工具化多模态分析（第 258–269 行）
 - `sources/ai-agent-book-zh/book/chapter2.md` · 工具定义的设计（第 700–729 行）
