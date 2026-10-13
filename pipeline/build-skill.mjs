@@ -718,7 +718,7 @@ async function main(argv) {
       if (!apVerdicts) {
         o.write('⚠ 未找到跨章反模式的判定表（run-*.antipattern-verdicts.json）——本簇的常见陷阱段只由簇内对象填充。\n')
       }
-      o.write(`配套代码目录：${codePointers.length} 个（来源 ${codeRootRel}）\n`)
+      o.write(`配套代码目录：${codePointers.length} 个（来源 ${sourceCodeRoot(flags.sourceKey)}/）\n`)
       const names = {
         whenToUse: '何时使用',
         principles: '核心原则',
