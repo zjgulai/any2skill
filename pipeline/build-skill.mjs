@@ -662,6 +662,8 @@ async function main(argv) {
         sizeLimitBytes: verdict.checks.sizeLimitBytes,
       },
       riskFlags: assembled.riskFlags,
+      overflow: assembled.overflow,
+      references: (assembled.references ?? []).map((r) => r.path),
       artifacts: flags.dryRun
         ? { staged: null, contract: null, receipt: null, published: null }
         : {
@@ -675,12 +677,24 @@ async function main(argv) {
     if (!flags.dryRun) {
       await mkdir(path.dirname(staging), { recursive: true })
       await writeFile(staging, assembled.markdown, 'utf8')
+      // 溢出文件（references/，ADR-004 决策 2）：暂存区与发布区各写一份——
+      // 发布区里的 SKILL.md 指的指针必须真的存在。
+      for (const ref of assembled.references ?? []) {
+        const refStaging = path.join(path.dirname(staging), ref.path)
+        await mkdir(path.dirname(refStaging), { recursive: true })
+        await writeFile(refStaging, ref.content, 'utf8')
+      }
       await writeFile(contractOut, `${JSON.stringify(contract, null, 2)}\n`, 'utf8')
       await writeFile(receiptOut, `${JSON.stringify({ ...summary, verdict }, null, 2)}\n`, 'utf8')
       if (verdict.passed) {
         const pub = buildPublishedPath(flags.slug, { repoRoot })
         await mkdir(path.dirname(pub), { recursive: true })
         await writeFile(pub, assembled.markdown, 'utf8')
+        for (const ref of assembled.references ?? []) {
+          const refPub = path.join(path.dirname(pub), ref.path)
+          await mkdir(path.dirname(refPub), { recursive: true })
+          await writeFile(refPub, ref.content, 'utf8')
+        }
       }
     }
 

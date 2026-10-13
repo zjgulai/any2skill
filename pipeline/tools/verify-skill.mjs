@@ -23,10 +23,10 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 
 import { sha256Hex } from './anchor-index.mjs'
-import { SKELETON_SECTIONS } from './skill-builder.mjs'
+import { SKELETON_SECTIONS, SIZE_LIMIT_BYTES } from './skill-builder.mjs'
 
-/** 体积阈值（字节），取自 ADR-004 决策 2。 */
-export const SIZE_LIMIT_BYTES = 12 * 1024
+// 体积阈值定义在 skill-builder（溢出阀渲染时也要用它）；这里转出以保持既有导入面。
+export { SIZE_LIMIT_BYTES }
 /** frontmatter 硬限，取自 Claude 官方规范（ADR-004 已核实）。 */
 export const NAME_MAX_LENGTH = 64
 export const DESCRIPTION_MAX_LENGTH = 1024

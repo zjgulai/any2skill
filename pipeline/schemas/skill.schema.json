@@ -38,21 +38,49 @@
     },
     "promotionState": {
       "type": "string",
-      "enum": ["assembled", "gate-passed", "approved", "rejected", "superseded"],
+      "enum": [
+        "assembled",
+        "gate-passed",
+        "approved",
+        "rejected",
+        "superseded"
+      ],
       "description": "生命周期。`assembled` = 已装配但未过门禁；`gate-passed` = 过门禁一；`approved` 需门禁二与门禁三，二者尚未构建，故当前不得出现。取值集合与知识对象的 status 刻意不同：后者的 approved 只依赖确定性判据，而 skill 的 approved 依赖效用实测。"
     },
     "gateReceipt": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
-          "required": ["passed", "reasonCodes", "bytes", "markdownHash", "checkedAt"],
+          "required": [
+            "passed",
+            "reasonCodes",
+            "bytes",
+            "markdownHash",
+            "checkedAt"
+          ],
           "properties": {
-            "passed": { "type": "boolean" },
-            "reasonCodes": { "type": "array", "items": { "type": "string" } },
-            "bytes": { "type": "integer", "minimum": 0 },
-            "markdownHash": { "$ref": "#/$defs/hash" },
-            "checkedAt": { "$ref": "#/$defs/isoDateTime" }
+            "passed": {
+              "type": "boolean"
+            },
+            "reasonCodes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "markdownHash": {
+              "$ref": "#/$defs/hash"
+            },
+            "checkedAt": {
+              "$ref": "#/$defs/isoDateTime"
+            }
           },
           "additionalProperties": true
         }
@@ -60,11 +88,25 @@
       "description": "最近一次门禁一的结果。`passed: false` 时本条契约描述的是一个**被拒的**产物，不得被读成可发布。"
     },
     "inputContract": {
-      "oneOf": [{ "type": "null" }, { "type": "object" }],
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object"
+        }
+      ],
       "description": "环 5 的字段。当前恒为 null——构建者不预测消费者需要什么契约。"
     },
     "outputContract": {
-      "oneOf": [{ "type": "null" }, { "type": "object" }],
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object"
+        }
+      ],
       "description": "环 5 的字段。当前恒为 null。"
     },
     "tools": {
@@ -80,7 +122,14 @@
       "description": "停止条件。环 5 的字段，当前恒为空数组。"
     },
     "rollback": {
-      "oneOf": [{ "type": "null" }, { "type": "object" }],
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object"
+        }
+      ],
       "description": "回滚方式。环 5 的字段，当前恒为 null。"
     },
     "tests": {
@@ -90,18 +139,24 @@
     "sourceObjects": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/identifier" },
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
       "description": "装配 input 的知识对象 id。无来源对象不得成为 skill。"
     },
     "crossChapterObjects": {
       "type": "array",
-      "items": { "$ref": "#/$defs/identifier" },
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
       "description": "来自跨章反模式池的对象 id（ADR-016）。与 sourceObjects 分开记，因为它们的出处可能落在别的章。"
     },
     "sourceRefs": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/sourceRef" },
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      },
       "description": "装配 input 的**全部**出处锚点，去重。门禁一逐条验证可解析。"
     },
     "evidenceGrade": {
@@ -112,23 +167,39 @@
     },
     "gapCodes": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "缺口理由码，取自 skill-builder.mjs 的 GAP_CODES。它是「这个 skill 装不完整」的机器可读记录。"
     },
     "gaps": {
       "type": "array",
-      "items": { "type": "object" },
+      "items": {
+        "type": "object"
+      },
       "description": "逐条缺口。含 SECTION_NO_SOURCE / SECTION_EMPTY / SECTION_ITEM_COUNT_BELOW_SKELETON / SECTION_FIELD_SEMANTICS_MISMATCH / SECTION_ITEM_SUSPECT_NOT_TRIGGER。后两者靠计数查不出来，故必须逐条留文。"
     },
     "riskFlags": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["flag", "detail", "routing"],
+        "required": [
+          "flag",
+          "detail",
+          "routing"
+        ],
         "properties": {
-          "flag": { "type": "string", "description": "取自 skill-builder.mjs 的 RISK_FLAGS。" },
-          "detail": { "type": "string" },
-          "routing": { "type": "string", "description": "该风险标记的去处。" }
+          "flag": {
+            "type": "string",
+            "description": "取自 skill-builder.mjs 的 RISK_FLAGS。"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "routing": {
+            "type": "string",
+            "description": "该风险标记的去处。"
+          }
         },
         "additionalProperties": true
       },
@@ -141,6 +212,59 @@
     "provenance": {
       "type": "object",
       "description": "装配输入的可复核记录：源文件、锚点索引哈希、对象文件及其哈希、门禁回执文件与 runId、被门禁排除的对象 id。没有这一段，「这份契约是按哪批对象装的」就答不上来。"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "相对 skill 目录的路径（如 references/practice-patterns.md）。"
+          },
+          "bytes": {
+            "type": "integer"
+          },
+          "sha256": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "溢出阀产出的 references 文件（ADR-004 决策 2）。空数组＝未溢出。发布区里这些文件与 SKILL.md 同目录落盘。"
+    },
+    "overflow": {
+      "type": "object",
+      "required": [
+        "applied"
+      ],
+      "properties": {
+        "applied": {
+          "type": "boolean"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "bytesFull": {
+          "type": "integer"
+        },
+        "bytesAfter": {
+          "type": "integer"
+        },
+        "stillOverLimit": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "description": "溢出阀的可读记录：是否溢出、把什么移去了哪里、溢出前后字节数。applied:false 时只有该字段。"
     }
   },
   "additionalProperties": false,
@@ -160,29 +284,72 @@
     },
     "evidenceGrade": {
       "type": "string",
-      "enum": ["LO-S-synthetic", "LO-P-public", "LO-I-internal", "E1-observed", "E2-derived", "E3-restricted"]
+      "enum": [
+        "LO-S-synthetic",
+        "LO-P-public",
+        "LO-I-internal",
+        "E1-observed",
+        "E2-derived",
+        "E3-restricted"
+      ]
     },
     "freshness": {
       "type": "object",
-      "required": ["state"],
+      "required": [
+        "state"
+      ],
       "properties": {
-        "asOf": { "$ref": "#/$defs/isoDateTime" },
-        "reviewedAt": { "$ref": "#/$defs/isoDateTime" },
-        "expiresAt": { "$ref": "#/$defs/isoDateTime" },
-        "state": { "type": "string", "enum": ["fresh", "stale", "unknown"] }
+        "asOf": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "reviewedAt": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/isoDateTime"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "fresh",
+            "stale",
+            "unknown"
+          ]
+        }
       },
       "additionalProperties": true
     },
     "sourceRef": {
       "type": "object",
-      "required": ["file", "anchor", "lineStart", "lineEnd"],
+      "required": [
+        "file",
+        "anchor",
+        "lineStart",
+        "lineEnd"
+      ],
       "properties": {
-        "file": { "type": "string", "minLength": 1 },
-        "anchor": { "type": "string", "minLength": 3 },
-        "title": { "type": "string" },
-        "lineStart": { "type": "integer", "minimum": 1 },
-        "lineEnd": { "type": "integer", "minimum": 1 },
-        "contentHash": { "$ref": "#/$defs/hash" }
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anchor": {
+          "type": "string",
+          "minLength": 3
+        },
+        "title": {
+          "type": "string"
+        },
+        "lineStart": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lineEnd": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contentHash": {
+          "$ref": "#/$defs/hash"
+        }
       },
       "additionalProperties": true
     }

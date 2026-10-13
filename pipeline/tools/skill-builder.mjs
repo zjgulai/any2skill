@@ -32,6 +32,7 @@
  */
 
 import { readFileSync, readdirSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import path from 'node:path'
 
 import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
@@ -57,6 +58,18 @@ import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
  * 硬填一个数字只是为了让它看起来严谨。
  */
 export const SECTION_HARD_LOWER_BOUND = 1
+
+/**
+ * 体积阈值（字节）。
+ *
+ * **2026-10-13 修订（ADR-028）**：由 12,288 改为 **16,568**——即原书 22 个 skill 的实测
+ * **最大值**（比对报告实测：原书 5/22 超过 12KB，中位 10.9KB、最大 16,568B）。
+ * 旧值的依据是「原书中位偏上」，但那是一个**比信息源自身实践更严**的推估；
+ * 重切后的 6 个合并候选在溢出阀已尽力的情况下仍被 12KB 拒绝，而它们比原书最大的
+ * 那个 skill 还小——阈值该对齐的是对照物的事实，不是我们的构图偏好。
+ * 定义在本模块是因为**溢出阀（渲染时）也要用它**；`verify-skill.mjs` 从这里导入并转出。
+ */
+export const SIZE_LIMIT_BYTES = 16568
 
 /**
  * 每段的「条目」是哪一种行——**这是判据的一部分，不是排版细节**。
@@ -612,69 +625,116 @@ export function assembleSkill(input) {
   }
 
   // ── 正文装配 ────────────────────────────────────────────────────────────
-  const L = []
+  // ── 正文装配 ────────────────────────────────────────────────────────────
+  //
+  // 渲染是 `patternMode` 的两态函数：`full` = 常规；`pointer` = 溢出态
+  // （实践模式完整内容已移入 references/，SKILL.md 只留加粗小节头与指针）。
+  // 两态共用同一段代码，避免「溢出版骨架」与常规版悄悄漂移。
   const description = buildDescription({ cluster, whenToUse, principles })
-  L.push('---')
-  L.push(`name: ${slug}`)
-  L.push(`description: ${description}`)
-  L.push('---')
-  L.push('')
-  L.push(`# ${skillTitle}`)
-  L.push('')
-
-  L.push(SKELETON_SECTIONS[0].heading)
-  L.push('')
-  for (const it of whenToUse) L.push(`- ${it.text}`)
-  L.push('')
-
-  L.push(SKELETON_SECTIONS[1].heading)
-  L.push('')
-  for (const p of principles) {
-    L.push(`**${p.text}**`)
+  const render = (patternMode) => {
+    const L = []
+    const description = buildDescription({ cluster, whenToUse, principles })
+    L.push('---')
+    L.push(`name: ${slug}`)
+    L.push(`description: ${description}`)
+    L.push('---')
     L.push('')
-    if (p.rationale) {
-      L.push(p.rationale)
+    L.push(`# ${skillTitle}`)
+    L.push('')
+
+    L.push(SKELETON_SECTIONS[0].heading)
+    L.push('')
+    for (const it of whenToUse) L.push(`- ${it.text}`)
+    L.push('')
+
+    L.push(SKELETON_SECTIONS[1].heading)
+    L.push('')
+    for (const p of principles) {
+      L.push(`**${p.text}**`)
       L.push('')
+      if (p.rationale) {
+        L.push(p.rationale)
+        L.push('')
+      }
     }
-  }
 
-  L.push(SKELETON_SECTIONS[2].heading)
-  L.push('')
-  for (const p of patterns) {
-    L.push(`**${p.term}**`)
+    L.push(SKELETON_SECTIONS[2].heading)
     L.push('')
+  for (const p of patterns) {
+    L.push('**' + p.term + '**')
+    L.push('')
+    if (patternMode === 'pointer') {
+      // 指针态：保留加粗小节头（条目数口径 itemKind=bold 不变），细节移入 references/。
+      L.push('- 完整内容见 ' + String.fromCharCode(96) + 'references/practice-patterns.md' + String.fromCharCode(96) + '。')
+      L.push('')
+      continue
+    }
     if (p.definition) {
       L.push(p.definition)
       L.push('')
     }
-    for (const ex of p.examples) L.push(`- ${ex}`)
+    for (const ex of p.examples) L.push('- ' + ex)
     if (p.examples.length) L.push('')
   }
 
-  L.push(SKELETON_SECTIONS[3].heading)
-  L.push('')
-  for (const p of pitfallItems) {
-    L.push(`- **${p.pattern}**`)
-    if (p.harm) L.push(`  - 后果：${p.harm}`)
-    if (p.corrective) L.push(`  - 纠正：${p.corrective}`)
-  }
-  L.push('')
+    L.push(SKELETON_SECTIONS[3].heading)
+    L.push('')
+    for (const p of pitfallItems) {
+      L.push(`- **${p.pattern}**`)
+      if (p.harm) L.push(`  - 后果：${p.harm}`)
+      if (p.corrective) L.push(`  - 纠正：${p.corrective}`)
+    }
+    L.push('')
 
-  L.push(SKELETON_SECTIONS[4].heading)
-  L.push('')
-  for (const c of codeItems) {
-    L.push(c.summary ? `- \`${c.path}/\` —— ${c.summary}` : `- \`${c.path}/\``)
-  }
-  L.push('')
+    L.push(SKELETON_SECTIONS[4].heading)
+    L.push('')
+    for (const c of codeItems) {
+      L.push(c.summary ? `- \`${c.path}/\` —— ${c.summary}` : `- \`${c.path}/\``)
+    }
+    L.push('')
 
-  L.push(SKELETON_SECTIONS[5].heading)
-  L.push('')
-  for (const r of reading) {
-    L.push(`- \`${r.file}\` · ${r.title}（第 ${r.lineStart}–${r.lineEnd} 行）`)
-  }
-  L.push('')
+    L.push(SKELETON_SECTIONS[5].heading)
+    L.push('')
+    for (const r of reading) {
+      L.push(`- \`${r.file}\` · ${r.title}（第 ${r.lineStart}–${r.lineEnd} 行）`)
+    }
+    L.push('')
 
-  const markdown = L.join('\n')
+    return L.join('\n')
+  }
+
+  // ADR-004 决策 2 的溢出阀（规格早已写定、2026-10-13 首次实现）：超出体积阈值时把
+  // 「实践模式」整段完整内容移入 references/practice-patterns.md，SKILL.md 保留骨架与指针。
+  // 指针态仍超限则保持原样——交给门禁如实拒绝，不在这里造更多花样。
+  let markdown = render('full')
+  const references = []
+  let overflow = null
+  if (Buffer.byteLength(markdown, 'utf8') > SIZE_LIMIT_BYTES && patterns.length > 0) {
+    const full = render('full')
+    const fullPatternsBody = full
+      .split(SKELETON_SECTIONS[2].heading)[1]
+      .split(SKELETON_SECTIONS[3].heading)[0]
+      .trim()
+    const refContent = [
+      '# 实践模式（完整版）',
+      '',
+      '本文件是 SKILL.md「实践模式」段的完整内容。装配时整段体积超出阈值，按 ADR-004 决策 2',
+      '溢出至此；SKILL.md 保留 6 段骨架与该段的加粗小节头 + 指针。内容来源与 SKILL.md 同批对象。',
+      '',
+      fullPatternsBody,
+      '',
+    ].join('\n')
+    markdown = render('pointer')
+    references.push({ path: 'references/practice-patterns.md', content: refContent })
+    overflow = {
+      applied: true,
+      rule: '实践模式完整内容移入 references/，SKILL.md 保留加粗小节头与指针（ADR-004 决策 2）',
+      target: 'references/practice-patterns.md',
+      bytesFull: Buffer.byteLength(full, 'utf8'),
+      bytesAfter: Buffer.byteLength(markdown, 'utf8'),
+      stillOverLimit: Buffer.byteLength(markdown, 'utf8') > SIZE_LIMIT_BYTES,
+    }
+  }
 
   // ── 契约侧车 ────────────────────────────────────────────────────────────
   // ADR-004 决策 3：机器契约不进 SKILL.md，放 pipeline/registry/。
@@ -708,6 +768,13 @@ export function assembleSkill(input) {
     skillId: input.skillId || fallbackSkillId,
     name: slug,
     description,
+    // 溢出阀的机器可读面（ADR-004 决策 2）：references 文件带哈希，overflow 记口径。
+    references: references.map((r) => ({
+      path: r.path,
+      bytes: Buffer.byteLength(r.content, 'utf8'),
+      sha256: `sha256:${createHash('sha256').update(r.content).digest('hex')}`,
+    })),
+    overflow: overflow ?? { applied: false },
     // 环 5 未构建：这三项此刻只是占位，不得被读成「已通过」。
     promotionState: 'assembled',
     gateReceipt: null,
@@ -728,7 +795,7 @@ export function assembleSkill(input) {
     riskFlags: buildRiskFlags(gaps),
   }
 
-  return { markdown, contract, gaps, sectionCounts, description, riskFlags: contract.riskFlags }
+  return { markdown, references, overflow, contract, gaps, sectionCounts, description, riskFlags: contract.riskFlags }
 }
 
 /**
