@@ -8,7 +8,7 @@
  */
 import { describe, it, before, after } from 'node:test'
 import assert from 'node:assert/strict'
-import { copyFile, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { spawnSync } from 'node:child_process'
 import os from 'node:os'
 import path from 'node:path'
@@ -32,7 +32,7 @@ import {
   validateBlindAnswer,
   validateScenarioGen,
 } from '../gate2-blind-test.mjs'
-import { loadCandidatesForBlindTest, parseArgs as parseGate2Args } from '../../run-gate2.mjs'
+import { archiveIfExists, loadCandidatesForBlindTest, parseArgs as parseGate2Args } from '../../run-gate2.mjs'
 
 /* ──────────────────────────── 盲测隔离（本文件最要紧的一组） ──────────────────────────── */
 
@@ -274,6 +274,26 @@ describe('12 · 身份键与两段替身调用', () => {
     })
     assert.deepEqual(r.skillIds, ['B'])
     assert.deepEqual(r.unknownCodes, ['k99'])
+  })
+})
+
+/* ──────────────────────────── 不静默覆盖（ticket 13 的纪律） ──────────────────────────── */
+
+describe('13 · 真实运行前的归档：旧报告/旧账本按内容哈希进 history', () => {
+  it('存在的文件被复制进 history（内容相同、原名不动）；不存在的返回 null', async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), 'any2skills-archive-'))
+    try {
+      const target = path.join(root, 'pipeline', 'registry', 'gate2-report.strict.json')
+      await mkdir(path.dirname(target), { recursive: true })
+      await writeFile(target, '{"old":true}\n')
+      const dest = await archiveIfExists(root, target)
+      assert.match(dest, /history\/gate2-report\.strict\.[0-9a-f]{8}\.json$/)
+      assert.equal(await readFile(dest, 'utf8'), '{"old":true}\n')
+      assert.equal(await readFile(target, 'utf8'), '{"old":true}\n', '原名不动（归档是复制，覆盖发生在随后）')
+      assert.equal(await archiveIfExists(root, path.join(root, 'nope.json')), null)
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
   })
 })
 

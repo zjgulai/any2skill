@@ -28,7 +28,7 @@
  */
 
 import path from 'node:path'
-import { readFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
@@ -187,6 +187,28 @@ const addUsage = (acc, u) => {
 const scenarioSetSha = (scenariosDoc) =>
   `sha256:${createHash('sha256').update(JSON.stringify({ candidates: scenariosDoc.candidates, unrelated: scenariosDoc.unrelated })).digest('hex')}`
 
+/**
+ * 报告与答案账本**不静默覆盖**：真实运行开始前，已存在的旧文件按内容哈希归档进
+ * `registry/history/`（与 run-book 的 archiveIfExists 同一条纪律）。
+ * 重切后的第三读数会覆盖第二读数的报告——这一刻的覆盖必须是「有据可查的替换」，
+ * 不是「后来者悄悄顶掉前者」。dry-run 与 --skill 子集模式不触发（它们本就不写正式产物）。
+ */
+export async function archiveIfExists(repoRoot, absPath) {
+  let raw
+  try {
+    raw = await readFile(absPath, 'utf8')
+  } catch (err) {
+    if (err.code === 'ENOENT') return null
+    throw err
+  }
+  const historyDir = path.join(repoRoot, 'pipeline', 'registry', 'history')
+  await mkdir(historyDir, { recursive: true })
+  const sha = createHash('sha256').update(raw).digest('hex').slice(0, 8)
+  const dest = path.join(historyDir, `${path.basename(absPath, '.json')}.${sha}.json`)
+  await writeFile(dest, raw, 'utf8')
+  return dest
+}
+
 async function main(argv) {
   let flags
   try {
@@ -303,6 +325,11 @@ async function main(argv) {
     }
     const modelId = config.modelId ?? null
     const maxTokens = Number.isFinite(flags.maxTokens) ? flags.maxTokens : DEFAULT_GATE2_MAX_TOKENS
+
+    // 不静默覆盖：本轮会重写的三份正式产物，先把旧版按内容哈希归档进 registry/history/。
+    await archiveIfExists(repoRoot, scenariosAbs)
+    await archiveIfExists(repoRoot, path.join(repoRoot, reportRelPath(blindMode)))
+    await archiveIfExists(repoRoot, answersPartialAbs)
 
     const scenariosDoc = usableBase ?? {
       schemaVersion: GATE2_SCENARIOS_SCHEMA_VERSION,
