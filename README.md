@@ -14,6 +14,10 @@ Any content → executable Agent Skills. MVP pipeline.
 **门禁三（效用 A/B）已实测首跑**：2 个已发布 skill 判为 passed / low-utility，
 **均无确认退化（negative transfer 排除——MVP 验收第 3 条达成）**；三道门禁至此全部建成并实测
 （[`docs/tickets/14-gate3-utility-ab.md`](docs/tickets/14-gate3-utility-ab.md)）。
+**MVP 验收 4 已达成**：产出经冻结（`freeze-outputs.mjs`）后由**独立于构建者的子代理**
+完成与 `benchmark/` 22 个原书 skill 的比对——**正向覆盖 22/22，数量差异完成专项归因**
+（发布门径 / 来源缺口 / 体积阈值，不诉诸「质量不够」），报告见
+[`docs/specs/02-benchmark-report.md`](docs/specs/02-benchmark-report.md)。
 
 > ### 盘上已有 2 个已发布的 skill
 >
@@ -79,7 +83,7 @@ Any content → executable Agent Skills. MVP pipeline.
 ## 运行
 
 ```bash
-npm test                                    # 547 项，零网络、零凭据（实测 2026-10-13）
+npm test                                    # 549 项，零网络、零凭据（实测 2026-10-13）
 
 # 替身路径：零凭据、零网络、确定性产出（第 3 层的判定者判据不启用）
 node pipeline/run.mjs sources/ai-agent-book-zh/book/chapter4.md

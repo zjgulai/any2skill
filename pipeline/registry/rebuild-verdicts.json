@@ -1,0 +1,345 @@
+{
+  "schemaVersion": "rebuild-verdicts/v1",
+  "createdAt": "2026-10-13T12:36:22.052Z",
+  "note": "重切后 11 个吸收者的环 4 重建 × 门禁一判定（--dry-run 复算，零模型调用；比对报告 §5 指出的机器可读归档缺口）。发布实况：唯一通过者的重建产物已按原 slug 重发为 skills/chapter4-single-tool-design/SKILL.md（2026-10-13，7146→9538 字节）。",
+  "command": "node pipeline/build-skill.mjs --cluster <skillId> --dry-run --json（逐个，退出码 0/3）",
+  "verdicts": [
+    {
+      "skillId": "chapter10-s3",
+      "title": "协作模式编排",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY",
+          "SIZE_EXCEEDED"
+        ],
+        "bytes": 13451,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 36,
+      "objectsKept": 36,
+      "clusterAnchors": 20
+    },
+    {
+      "skillId": "chapter1-s2",
+      "title": "执行路径与框架选择",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY"
+        ],
+        "bytes": 7660,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [],
+      "gapCodes": [
+        "SECTION_EMPTY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 18,
+      "objectsKept": 18,
+      "clusterAnchors": 10
+    },
+    {
+      "skillId": "chapter9-s3",
+      "title": "可验证业务与流程提炼",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY"
+        ],
+        "bytes": 5182,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [],
+      "gapCodes": [
+        "SECTION_EMPTY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 14,
+      "objectsKept": 14,
+      "clusterAnchors": 7
+    },
+    {
+      "skillId": "chapter4-s1",
+      "title": "单工具设计与审查",
+      "gate": {
+        "passed": true,
+        "reasonCodes": [],
+        "bytes": 9522,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "SECTION_SOURCE_GRANULARITY_COARSE"
+      ],
+      "objectsInCluster": 20,
+      "objectsKept": 20,
+      "clusterAnchors": 11
+    },
+    {
+      "skillId": "chapter7-s1",
+      "title": "评估系统设计搭建",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY",
+          "SIZE_EXCEEDED"
+        ],
+        "bytes": 24950,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 68,
+      "objectsKept": 68,
+      "clusterAnchors": 38
+    },
+    {
+      "skillId": "chapter1-s1",
+      "title": "Agent基础与边界设计",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY",
+          "SIZE_EXCEEDED"
+        ],
+        "bytes": 12995,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 30,
+      "objectsKept": 30,
+      "clusterAnchors": 17
+    },
+    {
+      "skillId": "chapter5-s3",
+      "title": "代码生成应用与规则正确性",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY",
+          "SIZE_EXCEEDED"
+        ],
+        "bytes": 13141,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 29,
+      "objectsKept": 29,
+      "clusterAnchors": 16
+    },
+    {
+      "skillId": "chapter10-s1",
+      "title": "架构设计多 Agent 系统",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY",
+          "SIZE_EXCEEDED"
+        ],
+        "bytes": 20369,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 49,
+      "objectsKept": 49,
+      "clusterAnchors": 28
+    },
+    {
+      "skillId": "chapter3-s1",
+      "title": "用户记忆体系设计",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY",
+          "SIZE_EXCEEDED"
+        ],
+        "bytes": 13660,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 34,
+      "objectsKept": 34,
+      "clusterAnchors": 18
+    },
+    {
+      "skillId": "chapter2-s3",
+      "title": "运行时上下文治理与安全",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SIZE_EXCEEDED"
+        ],
+        "bytes": 16286,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "SECTION_SOURCE_GRANULARITY_COARSE"
+      ],
+      "objectsInCluster": 33,
+      "objectsKept": 33,
+      "clusterAnchors": 18
+    },
+    {
+      "skillId": "chapter9-s2",
+      "title": "学习载体与自进化更新",
+      "gate": {
+        "passed": false,
+        "reasonCodes": [
+          "SECTION_EMPTY"
+        ],
+        "bytes": 6034,
+        "sizeLimitBytes": 12288
+      },
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "gapCodes": [
+        "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+        "SECTION_NO_SOURCE",
+        "SECTION_FIELD_SEMANTICS_MISMATCH",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED",
+        "CONTRACT_FIELD_UNSUPPORTED"
+      ],
+      "objectsInCluster": 15,
+      "objectsKept": 15,
+      "clusterAnchors": 8
+    }
+  ]
+}

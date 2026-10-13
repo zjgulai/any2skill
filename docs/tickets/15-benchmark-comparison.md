@@ -16,13 +16,14 @@
 
 **被谁阻塞：**无——对照物与冻结面均已就位（本卡是「等一个独立执行者」的状态）。
 
-**状态：**未开工（协议就绪，等待独立会话执行）。
+**状态：**已达成（2026-10-13）——由**独立子代理**（零构建上下文）按本协议执行完毕，
+报告落盘 `docs/specs/02-benchmark-report.md`；执行记录与发现见文末。
 
 ## 前置（均已就位，执行前先验证）
 
 | 项 | 位置 | 校验命令 |
 |---|---|---|
-| 对照物 | `benchmark/upstream-skills/`（22 skill + README，23 文件哈希在册） | 见 `MIRROR-MANIFEST.md` |
+| 对照物 | `benchmark/upstream-skills/`（23 个上游文件哈希在册 + MANIFEST 自身 = 盘上 24 个文件） | 见 `MIRROR-MANIFEST.md` |
 | 产出冻结 | `pipeline/registry/freeze-2026-10-13T11-52-41.json`（13 文件，commit c52856d） | `node pipeline/freeze-outputs.mjs --verify <冻结文件>` |
 | 三门禁状态 | `gate2-report{,.strict}.json` / `gate2-stable.json` / `gate3-report.json` | 冻结面包含它们 |
 | 划分与候选 | `clusters.json`（29 候选）/ `skill-candidates.json` | 冻结面包含它们 |
@@ -78,3 +79,28 @@ ls benchmark/upstream-skills | wc -l                      # 24（22 skill + READ
 node pipeline/freeze-outputs.mjs --verify pipeline/registry/freeze-2026-10-13T11-52-41.json
 node -e 'const c=require("./pipeline/registry/skill-candidates.json");console.log("候选",c.candidates.length)'   # 29
 ```
+
+## 执行记录（2026-10-13）
+
+**执行者**：独立子代理（零构建上下文，只拿到本卡路径与协议）；**冻结两次校验均通过**（开工 + 收尾），
+比对前后冻结面无漂移；本会话唯一新增文件即报告本身。
+
+**四维度结论摘要**（全文与逐格依据见 `docs/specs/02-benchmark-report.md`）：
+
+- **主题映射：正向覆盖率 22/22**——不存在「原书有而我方完全无对应」的主题；
+  类型分布：专属一对一 8、多对一 6、一对多 8。反向：7 个候选在原书无对应主题。
+- **数量差异专项归因**（ADR-007 硬约束）：22→2 的差距首要归因「发布门径」（其余 27 候选
+  未走完全流程；重切 11 个吸收者重建 1 过 10 拒）与「来源缺口」（配套代码段仅 chapter4 有镜像），
+  另有体积阈值严于原书自身实践（原书 5/22 超 12KB 阈）、聚类粒度差异；**无一层归因诉诸「质量不够」**。
+- **结构**：原书 22/22 六段命中（镜像上逐文件实测），我方已发布 2/2。
+- **不可比项清单 8 项**（人工写作 vs 自动提取、跨章取用自由度等）已写入报告。
+
+**报告 §5 带出的口径问题与处置**：
+
+| 发现 | 处置 |
+|---|---|
+| 被拒合并候选的拒因无机器可读归档 | **已补**：`pipeline/registry/rebuild-verdicts.json`（11 条判定，复算与卡 13 表格逐行一致） |
+| 镜像文件数两种口径（23 哈希行 vs 盘上 24） | 本卡前置表已改口径；MANIFEST 表述本就写明「23 行是全部上游文件」 |
+| conflictGroups 的 strict/list 两口径易混 | 报告已并列标注（strict 46 / list 96 / coClaimed 51）；卡 13 行文保留 strict 口径 |
+| gate2 两报告的 scenarioSetSha256 与盘上最新场景集不互证 | 读数 2 的场景文本可从其归档报告恢复（`registry/history/gate2-report.strict.5f6d90d4.json` 内嵌每场景文本）；**自动归档已覆盖后续运行**；记入后续改进项 |
+| 604 vs 593 差 11 未逐条核源 | 差额即 11 条被拒对象（`QUOTE_MISMATCH` 5 + `JUDGE_INSUFFICIENT` 6，见 book 回执），报告选择并列不推断，可接受 |
