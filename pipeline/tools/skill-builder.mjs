@@ -58,11 +58,26 @@ import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
  */
 export const SECTION_HARD_LOWER_BOUND = 1
 
+/**
+ * 每段的「条目」是哪一种行——**这是判据的一部分，不是排版细节**。
+ *
+ * 门禁一有一条与条目数无关的检查：契约记录的条目数必须与正文实际一致
+ * （防「契约说 6 条、正文写 1 条」）。要执行它，双方必须对「一条」的定义一致。
+ *
+ * 2026-10-12 环 3 端到端暴露的实测：`## 实践模式` 的条目是**加粗小节头**
+ * （每个概念一个），示例 `- ` 列表项是它的**子行**；而校验器旧口径取
+ * `max(顶格列表项, 加粗行)`，概念带多个示例时列表项会盖过概念数——
+ * chapter4-s1 实测契约 3 / 顶格列表项 10 / 加粗行 3，被误报为
+ * `SECTION_COUNT_OUT_OF_RANGE`。已发布的 chapter4-tool-design-principles 只是
+ * 恰好每个概念只有一个示例才没踩到。故这里把每段的条目种类写明，校验器按它计数。
+ * 见 [`ADR-025`](../../docs/adr/ADR-025-section-item-kind.md)。
+ */
 export const SKELETON_SECTIONS = Object.freeze([
   {
     key: 'whenToUse',
     heading: '## 何时使用',
     shape: '列表，5–8 条用户场景/触发条件',
+    itemKind: 'bullet',
     advisoryMin: 5,
     advisoryMax: 8,
     sources: ['EngineeringRule.appliesWhen', 'Heuristic.trigger'],
@@ -71,6 +86,7 @@ export const SKELETON_SECTIONS = Object.freeze([
     key: 'principles',
     heading: '## 核心原则',
     shape: '加粗小标题 + 解释；列书的判断规则',
+    itemKind: 'bold',
     advisoryMin: 1,
     advisoryMax: null,
     sources: ['EngineeringRule.statement', 'EngineeringRule.rationale'],
@@ -79,6 +95,7 @@ export const SKELETON_SECTIONS = Object.freeze([
     key: 'patterns',
     heading: '## 实践模式',
     shape: '主体；可再分 ### 1..N 编号子节，含表格',
+    itemKind: 'bold',
     advisoryMin: 1,
     advisoryMax: null,
     sources: ['Concept.canonicalTerm', 'Concept.definition', 'Concept.examples'],
@@ -87,6 +104,7 @@ export const SKELETON_SECTIONS = Object.freeze([
     key: 'pitfalls',
     heading: '## 常见陷阱',
     shape: '列表，6–8 条反模式',
+    itemKind: 'bullet',
     advisoryMin: 6,
     advisoryMax: 8,
     sources: ['AntiPattern.pattern', 'AntiPattern.harm', 'AntiPattern.corrective'],
@@ -95,6 +113,7 @@ export const SKELETON_SECTIONS = Object.freeze([
     key: 'code',
     heading: '## 配套代码',
     shape: '仓库相对路径 + 每个目录一句话说明',
+    itemKind: 'bullet',
     advisoryMin: 1,
     advisoryMax: null,
     sources: [],
@@ -103,6 +122,7 @@ export const SKELETON_SECTIONS = Object.freeze([
     key: 'reading',
     heading: '## 深度阅读',
     shape: '`book/chapterN.md` + 书中小节名',
+    itemKind: 'bullet',
     advisoryMin: 1,
     advisoryMax: null,
     sources: ['sourceRefs[].file', 'sourceRefs[].title'],

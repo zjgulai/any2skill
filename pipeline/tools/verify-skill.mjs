@@ -106,12 +106,25 @@ export function splitSections(body) {
   for (const s of sections) {
     const texts = s.lines.map((l) => l.trim()).filter(Boolean)
     // 只有**顶格**的 `- ` 行算条目；缩进行是上一条的子行（如「常见陷阱」的「后果/纠正」）。
-    const bullets = s.lines.filter((l) => /^- /.test(l))
-    const bolds = texts.filter((l) => /^\*\*[^*]+\*\*$/.test(l))
-    s.itemCount = Math.max(bullets.length, bolds.length)
+    s.bullets = s.lines.filter((l) => /^- /.test(l)).length
+    // 加粗小节头行（核心原则 / 实践模式的那种写法）。
+    s.bolds = texts.filter((l) => /^\*\*[^*]+\*\*$/.test(l)).length
+    // 通配兜底：种类不明的段落取两者较大值。**具体段落按骨架声明的 itemKind 计**——
+    // 实践模式的示例列表项会盖过概念数，用 max 会误报（见 ADR-025）。
+    s.itemCount = Math.max(s.bullets, s.bolds)
     s.isEmpty = texts.length === 0
   }
   return sections
+}
+
+/**
+ * 段落条目数：按骨架声明的条目种类计（`SKELETON_SECTIONS[].itemKind`，见 ADR-025）。
+ * 认不出种类的段落退回通配口径，保持旧行为。
+ */
+export function itemCountFor(section, spec) {
+  if (spec?.itemKind === 'bold') return section.bolds ?? 0
+  if (spec?.itemKind === 'bullet') return section.bullets ?? 0
+  return section.itemCount ?? 0
 }
 
 /** 门禁一 · skill 侧。`opts.repoRoot` 可覆盖仓库根（测试用）。 */
@@ -185,10 +198,11 @@ export async function verifySkill(input) {
     }
     // 这一条与条目数无关，故仍在判据内：契约记录数与正文实际数必须一致，
     // 否则「契约说 6 条、正文写 1 条」这类不一致永远不会被发现。
-    if (sectionCountsExpected && sectionCountsExpected[spec.key] != null && sectionCountsExpected[spec.key] !== sec.itemCount) {
+    const actualItems = itemCountFor(sec, spec)
+    if (sectionCountsExpected && sectionCountsExpected[spec.key] != null && sectionCountsExpected[spec.key] !== actualItems) {
       push(
         'SECTION_COUNT_OUT_OF_RANGE',
-        `契约记录的条目数（${sectionCountsExpected[spec.key]}）与正文实际（${sec.itemCount}）不一致：${spec.heading}`,
+        `契约记录的条目数（${sectionCountsExpected[spec.key]}）与正文实际（${actualItems}）不一致：${spec.heading}`,
         spec.heading,
       )
     }
@@ -251,7 +265,9 @@ export async function verifySkill(input) {
     checks: {
       bytes,
       sizeLimitBytes: SIZE_LIMIT_BYTES,
-      sectionItemCounts: Object.fromEntries(sections.map((s) => [s.heading, s.itemCount])),
+      sectionItemCounts: Object.fromEntries(
+        sections.map((s) => [s.heading, itemCountFor(s, SKELETON_SECTIONS.find((x) => x.heading === s.heading))]),
+      ),
       sourceRefCount: refs.length,
     },
     markdownHash: bytesSha,

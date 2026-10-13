@@ -108,6 +108,33 @@ describe('splitSections · 条目计数', () => {
   })
 })
 
+describe('实践模式的条目是加粗小节头，不是示例列表项（ADR-025，环 3 端到端暴露）', () => {
+  const withCounts = (markdown, patternsExpected) => ({
+    markdown,
+    contract: { sourceRefs: [{ file: SOURCE_REL, anchor: 'chapter4#h2-2', lineStart: 34, lineEnd: 37 }] },
+    anchorIndexes: [IDX],
+    sectionCountsExpected: { patterns: patternsExpected },
+  })
+
+  it('概念带多个示例时不再误报（实际形状：契约 N / 列表项 > N / 加粗行 N）', async () => {
+    const expected = ASSEMBLED.sectionCounts.patterns
+    assert.ok(expected >= 1, '夹具前提：实践模式至少有一个概念')
+    const withMoreExamples = ASSEMBLED.markdown.replace('\n## 常见陷阱', '- 额外示例一\n- 额外示例二\n\n## 常见陷阱')
+    const v = await verifySkill(withCounts(withMoreExamples, expected))
+    assert.ok(!v.reasonCodes.includes('SECTION_COUNT_OUT_OF_RANGE'), JSON.stringify(v.failures))
+  })
+
+  it('少了一个概念（加粗小节头）仍会被抓住——检查本身没有被放宽', async () => {
+    const expected = ASSEMBLED.sectionCounts.patterns
+    const at = ASSEMBLED.markdown.indexOf('## 实践模式')
+    const m = /^\*\*[^*]+\*\*$/m.exec(ASSEMBLED.markdown.slice(at))
+    assert.ok(m, '夹具前提：实践模式里有加粗小节头')
+    const dropped = ASSEMBLED.markdown.slice(0, at + m.index) + ASSEMBLED.markdown.slice(at + m.index + m[0].length)
+    const v = await verifySkill(withCounts(dropped, expected))
+    assert.ok(v.reasonCodes.includes('SECTION_COUNT_OUT_OF_RANGE'), JSON.stringify(v.failures))
+  })
+})
+
 describe('frontmatter 硬限（ADR-004 / 官方规范）', () => {
   it('合法产物通过这两项', async () => {
     const v = await verifySkill(doc(ASSEMBLED.markdown))
