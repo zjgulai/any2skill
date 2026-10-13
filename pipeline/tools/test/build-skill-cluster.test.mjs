@@ -33,9 +33,15 @@ async function makeRoot(tag, { anchors = null, objectIds = ['T-1', 'T-2', 'T-3']
   const dir = await mkdtemp(path.join(os.tmpdir(), `any2skills-cluster-${tag}-`))
   await mkdir(path.join(dir, 'sources', 'ai-agent-book-zh', 'book'), { recursive: true })
   await copyFile(path.join(REPO, SOURCE_REL), path.join(dir, SOURCE_REL))
+  await copyFile(
+    path.join(REPO, 'sources', 'ai-agent-book-zh', 'book', 'chapter1.md'),
+    path.join(dir, 'sources', 'ai-agent-book-zh', 'book', 'chapter1.md'),
+  )
   const idx = await buildAnchorIndex(path.join(dir, SOURCE_REL), { repoRoot: dir })
   const a = idx.anchors[0].anchor
   const b = idx.anchors[1].anchor
+  const idx1 = await buildAnchorIndex(path.join(dir, 'sources', 'ai-agent-book-zh', 'book', 'chapter1.md'), { repoRoot: dir })
+  const c1 = idx1.anchors[1].anchor
 
   await mkdir(path.join(dir, 'pipeline', 'knowledge'), { recursive: true })
   await mkdir(path.join(dir, 'pipeline', 'registry'), { recursive: true })
@@ -45,6 +51,19 @@ async function makeRoot(tag, { anchors = null, objectIds = ['T-1', 'T-2', 'T-3']
     { id: 'T-3', objectType: 'Concept', canonicalTerm: '术语', definition: '定义', sourceRefs: [{ file: SOURCE_REL, anchor: b }] },
   ]
   await writeFile(path.join(dir, 'pipeline', 'knowledge', 'chapter4.objects.json'), JSON.stringify(objs, null, 2))
+  await writeFile(
+    path.join(dir, 'pipeline', 'knowledge', 'chapter1.objects.json'),
+    JSON.stringify([
+      {
+        id: 'T-5',
+        objectType: 'EngineeringRule',
+        statement: '规则丙（第一章）',
+        appliesWhen: '场景丙',
+        rationale: '理由',
+        sourceRefs: [{ file: path.join('sources', 'ai-agent-book-zh', 'book', 'chapter1.md'), anchor: c1 }],
+      },
+    ], null, 2),
+  )
   await writeFile(
     path.join(dir, 'pipeline', 'registry', 'run-testcluster.receipt.json'),
     JSON.stringify({
@@ -60,6 +79,15 @@ async function makeRoot(tag, { anchors = null, objectIds = ['T-1', 'T-2', 'T-3']
     }),
   )
   await writeFile(
+    path.join(dir, 'pipeline', 'registry', 'run-testcluster-ch1.receipt.json'),
+    JSON.stringify({
+      runId: 'run-testcluster-ch1',
+      createdAt: new Date().toISOString(),
+      source: { path: path.join('sources', 'ai-agent-book-zh', 'book', 'chapter1.md') },
+      objectVerdicts: [{ objectId: 'T-5', status: 'pass' }],
+    }),
+  )
+  await writeFile(
     path.join(dir, 'pipeline', 'knowledge', 'clusters.json'),
     JSON.stringify(
       {
@@ -72,6 +100,22 @@ async function makeRoot(tag, { anchors = null, objectIds = ['T-1', 'T-2', 'T-3']
             ],
             skills: [
               { skillId: 'chapter4-s1', name: '候选一', trigger: '什么时候用', unitIds: ['chapter4-u1'], rationale: 'r' },
+            ],
+          },
+          {
+            fileKey: 'chapter1',
+            units: [{ unitId: 'chapter1-u1', name: '单元二', objectIds: ['T-5'], anchors: [c1], rationale: 'r' }],
+            // 跨章候选（重切后的形态）：单元跨两章，skill 条目落在 chapter1 的章节记录里、
+            // 用显式 chapterRefs 声明所跨章节。
+            skills: [
+              {
+                skillId: 'cross-s1',
+                name: '跨章候选',
+                trigger: '跨章场景',
+                unitIds: ['chapter4-u1', 'chapter1-u1'],
+                chapterRefs: ['chapter1', 'chapter4'],
+                rationale: 'r',
+              },
             ],
           },
         ],
@@ -127,6 +171,24 @@ describe('11 · 环 4 簇入口：按划分产物装配', () => {
     } else {
       await assert.rejects(() => readFile(path.join(ROOT, 'skills', 'chapter4-s1', 'SKILL.md'), 'utf8'))
     }
+  })
+
+  it('跨章候选（重切形态）：两章对象合流、chapterRefs 进 provenance、深度阅读含两章', async () => {
+    const r = runCli(ROOT, ['--cluster', 'cross-s1', '--json'])
+    assert.ok([0, 3].includes(r.status), `实测 ${r.status}；stderr=${r.stderr}`)
+    const summary = JSON.parse(r.stdout)
+    assert.equal(summary.objectsInCluster, 4, 'chapter4 的 T-1..T-3 与 chapter1 的 T-5 合流')
+    assert.equal(summary.objectsKept, 3, 'T-3 未过门禁，仍被排除')
+    const contract = JSON.parse(
+      await readFile(path.join(ROOT, 'pipeline', 'registry', 'build', 'cross-s1', 'skill-contract.json'), 'utf8'),
+    )
+    assert.deepEqual(contract.provenance.clusterChapterRefs, ['chapter1', 'chapter4'])
+    assert.match(contract.provenance.objectsFile, /chapter1\.objects\.json/)
+    assert.match(contract.provenance.objectsFile, /chapter4\.objects\.json/)
+    assert.match(contract.provenance.objectsFile, / \+ /)
+    assert.equal(contract.provenance.objectsTotal, 4)
+    const staged = await readFile(path.join(ROOT, 'pipeline', 'registry', 'build', 'cross-s1', 'SKILL.md'), 'utf8')
+    assert.match(staged, /chapter1\.md/, '深度阅读段必须回链第一章')
   })
 
   it('簇与根的来源不混：root-anchor 入口的 provenance 仍标 root-anchor', async () => {

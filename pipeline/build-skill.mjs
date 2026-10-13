@@ -193,11 +193,15 @@ export async function findLatestAntipatternVerdicts({ repoRoot, expectRunId = nu
 }
 
 /**
- * 从 `clusters.json` 里取一个候选的簇定义（ticket 11 / ADR-024 决策 2）。
+ * 从 `clusters.json` 里取一个候选的簇定义（ticket 11 / ADR-024 决策 2；多章支持见 ticket 13）。
  *
  * 簇定义取自**知识平面**的 `clusters.json`（而非 registry 里的候选书），
  * 因为它是划分的原始记录；候选书是派生账，两者不一致时应先重跑聚类而不是将就。
  * 引用不静默打折：候选没有任何锚点、或 skillId 不存在，都在这里抛错。
+ *
+ * **多章（重切后的形态）**：单元按 `unitIds` 在**全部章节记录**里收集（重切会把跨章候选的
+ * skill 条目放在吸收者的章节下，而其单元留在各自章节）；`chapterRefs` 取显式声明、
+ * 缺省时由单元的锚点前缀派生，再并上声明章。
  */
 export async function loadClusterCandidate(repoRoot, skillId) {
   const abs = path.join(repoRoot, CLUSTERS_REL_PATH)
@@ -210,26 +214,37 @@ export async function loadClusterCandidate(repoRoot, skillId) {
     }
     throw err
   }
+  const chapters = Array.isArray(doc.chapters) ? doc.chapters : []
   const known = []
-  for (const ch of Array.isArray(doc.chapters) ? doc.chapters : []) {
+  for (const ch of chapters) {
     for (const s of Array.isArray(ch.skills) ? ch.skills : []) {
       if (s?.skillId) known.push(s.skillId)
       if (s?.skillId !== skillId) continue
-      const units = (Array.isArray(ch.units) ? ch.units : []).filter((u) =>
-        (Array.isArray(s.unitIds) ? s.unitIds : []).includes(u.unitId),
-      )
+      const unitIds = Array.isArray(s.unitIds) ? s.unitIds : []
+      const units = chapters
+        .flatMap((c) => (Array.isArray(c.units) ? c.units : []))
+        .filter((u) => unitIds.includes(u.unitId))
+      const missingUnits = unitIds.filter((id) => !units.some((u) => u.unitId === id))
+      if (missingUnits.length > 0) {
+        throw new Error(`候选 ${skillId} 的单元在 clusters.json 里找不到：${missingUnits.join(', ')}——拒绝装配。`)
+      }
       const anchorIds = [...new Set(units.flatMap((u) => (Array.isArray(u.anchors) ? u.anchors : [])))]
       const objectIds = [...new Set(units.flatMap((u) => (Array.isArray(u.objectIds) ? u.objectIds : [])))]
       if (anchorIds.length === 0 || objectIds.length === 0) {
         throw new Error(`候选 ${skillId} 没有锚点或对象——拒绝装配空簇（检查 clusters.json 的单元成员）。`)
       }
+      const derived = [...new Set(anchorIds.map((a) => String(a).split('#')[0]))]
+      const chapterRefs = Array.isArray(s.chapterRefs) && s.chapterRefs.length > 0
+        ? [...new Set(s.chapterRefs)]
+        : [...new Set([ch.fileKey, ...derived])]
       return {
         skillId,
+        chapterRefs,
         fileKey: ch.fileKey,
         name: typeof s.name === 'string' ? s.name : '',
         trigger: typeof s.trigger === 'string' ? s.trigger : '',
         rationale: typeof s.rationale === 'string' ? s.rationale : '',
-        units: Array.isArray(s.unitIds) ? s.unitIds : [],
+        units: unitIds,
         anchorIds,
         objectIds,
       }
@@ -299,13 +314,16 @@ export function antipatternIdentityWarning(apVerdicts, antipatternsRunId) {
  * 由候选的簇定义构造环 4 的 `cluster` 与簇内对象集（簇模式的唯一构造点）。
  *
  * 引用**逐条解析**，解析不到即停——静默丢一条引用会让产物看起来完整而实际缺证据。
+ * `indexes` 接受一份或多份锚点索引（重切后的跨章候选有多份）。
  */
-export function clusterFromCandidate(clusterDef, index, allObjects, { objectsLabel = '对象文件' } = {}) {
-  const byAnchor = new Map(index.anchors.map((a) => [a.anchor, a]))
+export function clusterFromCandidate(clusterDef, indexes, allObjects, { objectsLabel = '对象文件' } = {}) {
+  const list = Array.isArray(indexes) ? indexes : [indexes]
+  const byAnchor = new Map()
+  for (const idx of list) for (const a of idx?.anchors ?? []) byAnchor.set(a.anchor, a)
   const missingAnchors = clusterDef.anchorIds.filter((id) => !byAnchor.has(id))
   if (missingAnchors.length > 0) {
     throw new Error(
-      `候选 ${clusterDef.skillId} 引用了本章索引里不存在的锚点：${missingAnchors.join(', ')}` +
+      `候选 ${clusterDef.skillId} 引用了索引里不存在的锚点：${missingAnchors.join(', ')}` +
         '——拒绝装配（先核对 clusters.json 与源文是否同一批输入）。',
     )
   }
@@ -325,6 +343,94 @@ export function clusterFromCandidate(clusterDef, index, allObjects, { objectsLab
     )
   }
   return { cluster, inCluster }
+}
+
+/**
+ * 簇模式的装配输入（ticket 13 抽出的多章版本）：把候选 `chapterRefs` 各章的对象、
+ * 回执、锚点索引、配套代码与跨章反模式合到一起，再走与单章完全相同的过滤。
+ *
+ * 单章候选即 `chapterRefs.length === 1` 的情况——两条路径**同一段代码**，
+ * 不存在「单章走老路、跨章走新路」的分叉（分叉会让两种候选的产物口径悄悄漂移）。
+ */
+export async function loadClusterAssemblyInputs(repoRoot, clusterDef) {
+  const rel = (p) => path.relative(repoRoot, p)
+  const perFile = []
+  const missingReceipts = []
+  for (const fileKey of clusterDef.chapterRefs) {
+    const sourceRel = path.join('sources', 'ai-agent-book-zh', 'book', `${fileKey}.md`)
+    const loaded = await loadAssemblyInputs(repoRoot, { chapterKey: fileKey, sourceRel })
+    if (!loaded.found) {
+      missingReceipts.push({ fileKey, sourceRel })
+      continue
+    }
+    perFile.push({ fileKey, sourceRel, loaded })
+  }
+  if (missingReceipts.length > 0) {
+    throw new Error(
+      `候选 ${clusterDef.skillId} 的以下章节缺门禁一回执，无法确定「哪些对象通过」：` +
+        missingReceipts.map((m) => `${m.fileKey}（${m.sourceRel}）`).join('、') +
+        '——拒绝装配（没有回执 ≠ 对象都通过了）。',
+    )
+  }
+  const first = perFile[0].loaded
+  const allObjects = perFile.flatMap((p) => p.loaded.allObjects)
+  const passSet = new Set(perFile.flatMap((p) => [...p.loaded.passSet]))
+  const indexByFile = new Map(perFile.map((p) => [p.loaded.index.sourceFile, p.loaded.index]))
+  const { cluster, inCluster } = clusterFromCandidate(clusterDef, [...indexByFile.values()], allObjects, {
+    objectsLabel: clusterDef.chapterRefs.map((k) => `pipeline/knowledge/${k}.objects.json`).join(' + '),
+  })
+  const excluded = inCluster.filter((o) => !passSet.has(o.id))
+  const kept = inCluster.filter((o) => passSet.has(o.id))
+
+  // 跨章反模式池是全局单文件；各章加载拿到的是同一份，取第一份即可。
+  const allAntipatterns = first.allAntipatterns
+  const apVerdicts = first.apVerdicts
+  const antipatternsRunId = first.antipatternsRunId
+  const crossChapter = collectCrossChapterAntipatterns(allAntipatterns, cluster.anchors)
+  const crossExcluded = crossChapter.filter((o) => !first.apPassSet.has(o.id))
+  const crossKept = crossChapter.filter((o) => first.apPassSet.has(o.id))
+  const crossExcludedDetail = crossExcluded.map((o) => ({
+    id: o.id,
+    reasonCode: first.apVerdictById.get(o.id)?.reasonCode || (apVerdicts ? 'NOT_IN_VERDICTS' : 'NO_VERDICTS_FILE'),
+  }))
+
+  // 配套代码：逐章取（目前只有 chapter4 有镜像；缺目录的章返回空数组，不编）。
+  const codePointers = []
+  for (const fileKey of clusterDef.chapterRefs) {
+    const codeRootRel = path.join('sources', 'ai-agent-book-zh', 'code', fileKey)
+    for (const p of collectCodePointers(path.join(repoRoot, codeRootRel), { relPrefix: codeRootRel })) {
+      codePointers.push(p)
+    }
+  }
+
+  // 跨章出处可能落在既非本候选章节、也非首批索引里的文件——按需补索引（承 ADR-022 的教训：
+  // 只给本簇索引时，跨章出处的回链校验失败得**看起来像内容错误**）。
+  const referencedFiles = new Set()
+  for (const ap of crossKept) {
+    for (const r of ap.sourceRefs || []) if (r && r.file) referencedFiles.add(r.file)
+  }
+  const extraIndexFiles = [...referencedFiles].filter((f) => !indexByFile.has(f)).sort()
+  for (const f of extraIndexFiles) {
+    indexByFile.set(f, await buildAnchorIndex(path.join(repoRoot, f), { repoRoot }))
+  }
+
+  return {
+    clusterDef,
+    perFile,
+    cluster,
+    inCluster,
+    excluded,
+    kept,
+    crossChapter,
+    crossKept,
+    crossExcludedDetail,
+    apVerdicts,
+    antipatternsRunId,
+    allAntipatterns,
+    codePointers,
+    anchorIndexes: [...indexByFile.values()],
+    objectsLabel: clusterDef.chapterRefs.map((k) => rel(path.join(repoRoot, 'pipeline', 'knowledge', `${k}.objects.json`))).join(' + '),
+  }
 }
 
 async function main(argv) {
@@ -356,74 +462,101 @@ async function main(argv) {
     assertSlug(flags.slug)
     if (!flags.title) throw new Error('--title 必填（SKILL.md 的 H1 标题）')
 
-    const chapterKey = clusterDef ? clusterDef.fileKey : String(flags.rootAnchor).split('#')[0]
+    const chapterKey = clusterDef ? clusterDef.chapterRefs[0] : String(flags.rootAnchor).split('#')[0]
     const sourceRel = flags.source || path.join('sources', 'ai-agent-book-zh', 'book', `${chapterKey}.md`)
 
-    // ── 读盘（两种入口共用；门禁二走同一函数，保证被测对象与发布对象是同一批） ──
-    const loaded = await loadAssemblyInputs(repoRoot, { chapterKey, sourceRel })
-    const { index, objectsPath, allObjects, allAntipatterns, antipatternsRunId, apVerdicts, apVerdictById, apPassSet } = loaded
-
-    // ── 门禁一的结论是环 4 的前置，不是可选项 ─────────────────────────────
-    const found = flags.receipt
-      ? { file: path.resolve(repoRoot, flags.receipt), receipt: JSON.parse(await readFile(path.resolve(repoRoot, flags.receipt), 'utf8')) }
-      : loaded.found
-    if (!found) {
-      process.stderr.write(
-        `拒绝装配：未找到 ${sourceRel} 的判定回执。\n` +
-          `原因：环 4 只能消费门禁一判过「通过」的对象。没有回执 ≠ 对象都通过了。\n` +
-          `先跑：node pipeline/run.mjs ${sourceRel} --layer2 deepseek ...\n`,
-      )
-      return EXIT.RUN_FAILED
-    }
-    const passSet = flags.receipt ? passedObjectIds(found.receipt) : loaded.passSet
-
-    // 跨章反模式走**它自己那次运行**的判定表，不能拿 chapter 的回执代判（见
-    // findLatestAntipatternVerdicts 的说明）。缺判定表时一律不纳入——未判定 ≠ 通过。
-    const identityWarning = antipatternIdentityWarning(apVerdicts, antipatternsRunId)
-    if (identityWarning) process.stderr.write(identityWarning)
-
-    let cluster
-    let inCluster
-    if (clusterDef) {
-      ;({ cluster, inCluster } = clusterFromCandidate(clusterDef, index, allObjects, { objectsLabel: rel(objectsPath) }))
-    } else {
-      cluster = deriveCluster(index.anchors, flags.rootAnchor)
-      inCluster = collectClusterObjects(allObjects, cluster.anchors)
-    }
-    const excluded = inCluster.filter((o) => !passSet.has(o.id))
-    const kept = inCluster.filter((o) => passSet.has(o.id))
-    const crossChapter = collectCrossChapterAntipatterns(allAntipatterns, cluster.anchors)
-    const crossExcluded = crossChapter.filter((o) => !apPassSet.has(o.id))
-    const crossKept = crossChapter.filter((o) => apPassSet.has(o.id))
-    const crossExcludedDetail = crossExcluded.map((o) => ({
-      id: o.id,
-      reasonCode: apVerdictById.get(o.id)?.reasonCode || (apVerdicts ? 'NOT_IN_VERDICTS' : 'NO_VERDICTS_FILE'),
-    }))
-
-    // 配套代码目录的来源。实测口径：镜像到 sources/ai-agent-book-zh/code/<chapter>/，
-    // 见该目录下的 MIRROR-MANIFEST.md。不存在时返回空数组，由装配器记 NO_SOURCE 缺口。
-    const codeRootRel = path.join('sources', 'ai-agent-book-zh', 'code', chapterKey)
-    const codePointers = collectCodePointers(path.join(repoRoot, codeRootRel), {
-      relPrefix: codeRootRel,
-    })
-
-    // ── 装配与校验所需的**全部**锚点索引 ──────────────────────────────────
-    // 本簇那一章 + 被采用的跨章反模式声明出处所在的各章。
+    // ── 读盘、门禁前置与簇内过滤 ─────────────────────────────────────────
     //
-    // 为什么必须补齐：跨章反模式的出处按定义在别的章节。只给本簇索引时，「契约里每个
-    // sourceRefs[].file 都要能在索引里解析、并在深度阅读段回链」这条判据必然失败——
-    // 而它失败得**看起来像内容错误**（「锚点不可解析」），实际是我们没给足比对范围。
-    // 索引一律**按源文重建**（与主索引同一函数、同一口径），不读盘上可能过期的 `.anchors.json`。
-    const indexByFile = new Map([[index.sourceFile, index]])
-    const referencedFiles = new Set()
-    for (const ap of crossKept) {
-      for (const r of ap.sourceRefs || []) if (r && r.file) referencedFiles.add(r.file)
+    // 簇模式：整段（含多章合并、跨章反模式、补索引）由 `loadClusterAssemblyInputs` 完成——
+    // **与门禁二同一个函数**，保证被测对象与发布对象是同一批（ticket 13 抽出的共用路径）。
+    // 子树模式：仍是单章读盘 + 回执前置。
+    let ctx
+    if (clusterDef) {
+      if (flags.receipt) {
+        throw new Error('簇模式下 --receipt 不受支持：回执由候选各章自动选取（多章候选没有单一回执）。')
+      }
+      const prep = await loadClusterAssemblyInputs(repoRoot, clusterDef)
+      const identityWarning = antipatternIdentityWarning(prep.apVerdicts, prep.antipatternsRunId)
+      if (identityWarning) process.stderr.write(identityWarning)
+      ctx = {
+        ...prep,
+        found: prep.perFile[0].loaded.found,
+        allObjects: prep.perFile.flatMap((p) => p.loaded.allObjects),
+        objectsFileLabel: prep.objectsLabel,
+      }
+    } else {
+      const loaded = await loadAssemblyInputs(repoRoot, { chapterKey, sourceRel })
+      const found = flags.receipt
+        ? { file: path.resolve(repoRoot, flags.receipt), receipt: JSON.parse(await readFile(path.resolve(repoRoot, flags.receipt), 'utf8')) }
+        : loaded.found
+      if (!found) {
+        process.stderr.write(
+          `拒绝装配：未找到 ${sourceRel} 的判定回执。\n` +
+            `原因：环 4 只能消费门禁一判过「通过」的对象。没有回执 ≠ 对象都通过了。\n` +
+            `先跑：node pipeline/run.mjs ${sourceRel} --layer2 deepseek ...\n`,
+        )
+        return EXIT.RUN_FAILED
+      }
+      const passSet = flags.receipt ? passedObjectIds(found.receipt) : loaded.passSet
+      // 跨章反模式走**它自己那次运行**的判定表，不能拿 chapter 的回执代判（见
+      // findLatestAntipatternVerdicts 的说明）。缺判定表时一律不纳入——未判定 ≠ 通过。
+      const identityWarning = antipatternIdentityWarning(loaded.apVerdicts, loaded.antipatternsRunId)
+      if (identityWarning) process.stderr.write(identityWarning)
+      const cluster = deriveCluster(loaded.index.anchors, flags.rootAnchor)
+      const inCluster = collectClusterObjects(loaded.allObjects, cluster.anchors)
+      const excluded = inCluster.filter((o) => !passSet.has(o.id))
+      const kept = inCluster.filter((o) => passSet.has(o.id))
+      const crossChapter = collectCrossChapterAntipatterns(loaded.allAntipatterns, cluster.anchors)
+      const crossExcluded = crossChapter.filter((o) => !loaded.apPassSet.has(o.id))
+      const crossKept = crossChapter.filter((o) => loaded.apPassSet.has(o.id))
+      const crossExcludedDetail = crossExcluded.map((o) => ({
+        id: o.id,
+        reasonCode: loaded.apVerdictById.get(o.id)?.reasonCode || (loaded.apVerdicts ? 'NOT_IN_VERDICTS' : 'NO_VERDICTS_FILE'),
+      }))
+
+      // 配套代码目录的来源。实测口径：镜像到 sources/ai-agent-book-zh/code/<chapter>/，
+      // 见该目录下的 MIRROR-MANIFEST.md。不存在时返回空数组，由装配器记 NO_SOURCE 缺口。
+      const codeRootRel = path.join('sources', 'ai-agent-book-zh', 'code', chapterKey)
+      const codePointers = collectCodePointers(path.join(repoRoot, codeRootRel), {
+        relPrefix: codeRootRel,
+      })
+
+      // ── 装配与校验所需的**全部**锚点索引 ──────────────────────────────────
+      // 本簇那一章 + 被采用的跨章反模式声明出处所在的各章。
+      //
+      // 为什么必须补齐：跨章反模式的出处按定义在别的章节。只给本簇索引时，「契约里每个
+      // sourceRefs[].file 都要能在索引里解析、并在深度阅读段回链」这条判据必然失败——
+      // 而它失败得**看起来像内容错误**（「锚点不可解析」），实际是我们没给足比对范围。
+      // 索引一律**按源文重建**（与主索引同一函数、同一口径），不读盘上可能过期的 `.anchors.json`。
+      const indexByFile = new Map([[loaded.index.sourceFile, loaded.index]])
+      const referencedFiles = new Set()
+      for (const ap of crossKept) {
+        for (const r of ap.sourceRefs || []) if (r && r.file) referencedFiles.add(r.file)
+      }
+      const extraIndexFiles = [...referencedFiles].filter((f) => !indexByFile.has(f)).sort()
+      for (const f of extraIndexFiles) {
+        indexByFile.set(f, await buildAnchorIndex(path.join(repoRoot, f), { repoRoot }))
+      }
+      ctx = {
+        cluster,
+        inCluster,
+        excluded,
+        kept,
+        crossChapter,
+        crossKept,
+        crossExcludedDetail,
+        apVerdicts: loaded.apVerdicts,
+        antipatternsRunId: loaded.antipatternsRunId,
+        allAntipatterns: loaded.allAntipatterns,
+        codePointers,
+        anchorIndexes: [...indexByFile.values()],
+        found,
+        allObjects: loaded.allObjects,
+        objectsFileLabel: rel(loaded.objectsPath),
+      }
     }
-    const extraIndexFiles = [...referencedFiles].filter((f) => !indexByFile.has(f)).sort()
-    for (const f of extraIndexFiles) {
-      indexByFile.set(f, await buildAnchorIndex(path.join(repoRoot, f), { repoRoot }))
-    }
-    const anchorIndexes = [...indexByFile.values()]
+    const { cluster, inCluster, kept, excluded, crossChapter, crossKept, crossExcludedDetail, codePointers, anchorIndexes, found, apVerdicts, antipatternsRunId, allAntipatterns } = ctx
+    const allObjects = ctx.allObjects
 
     const assembled = assembleSkill({
       cluster,
@@ -463,14 +596,14 @@ async function main(argv) {
       },
       provenance: {
         sourceFile: sourceRel,
-        // 主索引（本簇那一章）的哈希，语义不变——旧回执与新回执在这个字段上可比。
-        anchorIndexHash: index.sourceHash,
+        // 主索引（候选声明章 / 子树那一章）的哈希，语义不变——旧回执与新回执在这个字段上可比。
+        anchorIndexHash: anchorIndexes[0].sourceHash,
         // 本次装配**实际用到**的全部索引及其哈希。跨章出处一进 skill，单值字段就答不了
         // 「这份契约是按哪些章装的」，而那正是 provenance 存在的目的。
         anchorIndexHashes: Object.fromEntries(
           anchorIndexes.map((idx) => [idx.sourceFile, idx.sourceHash]),
         ),
-        objectsFile: rel(objectsPath),
+        objectsFile: ctx.objectsFileLabel,
         objectsFileSha256: `sha256:${createHash('sha256').update(JSON.stringify(allObjects)).digest('hex')}`,
         objectsTotal: allObjects.length,
         objectsInCluster: inCluster.length,
@@ -495,6 +628,9 @@ async function main(argv) {
               clusterSource: 'clusters.json',
               clusterSkillId: clusterDef.skillId,
               clusterUnits: clusterDef.units,
+              // 跨章候选（重切产物）在 provenance 里必须一眼可辨——「这份 skill 由哪几章装成」
+              // 与「按一次划分装配」是两个问题。单章候选时它是长度为 1 的数组。
+              clusterChapterRefs: clusterDef.chapterRefs,
               clustersFile: CLUSTERS_REL_PATH,
             }
           : { clusterSource: 'root-anchor', clusterRootAnchor: cluster.rootAnchor }),

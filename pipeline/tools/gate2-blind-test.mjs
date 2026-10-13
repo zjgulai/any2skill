@@ -551,6 +551,65 @@ export function catalogHash(candidates) {
   return hashOf([...candidates].map((c) => `${c.skillId}\t${c.name}\t${c.description}`).sort())
 }
 
+/* ──────────────────────────── 两读数对照 ──────────────────────────── */
+
+/**
+ * 两读数（list / strict）的对照（ticket 13）：把「共认领对」分成三分。
+ *
+ * **稳定对**（两读数都存）= 划分的真实重叠信号；**仅宽松**= 答案格式的产物；
+ * **仅严格**= 噪声（严格口径下偶发、宽松口径下没出现的对）。每对带两读数的场景数与
+ * 场景 id（依据可查）。这一函数的作用是把卡 12 里一次性的 `node -e` 变成可复跑断言。
+ */
+export function compareReadings(listReport, strictReport) {
+  const pairsOf = (report) => {
+    const map = new Map()
+    for (const c of report.perCandidate ?? []) {
+      for (const s of c.scenarios ?? []) {
+        for (const t of s.triggered ?? []) {
+          if (t === c.skillId) continue
+          const key = [c.skillId, t].sort().join('|')
+          if (!map.has(key)) map.set(key, [])
+          map.get(key).push(s.scenarioId)
+        }
+      }
+    }
+    return map
+  }
+  const PL = pairsOf(listReport)
+  const PS = pairsOf(strictReport)
+  const entry = (key, strictIds, listIds) => {
+    const [a, b] = key.split('|')
+    return {
+      pair: key,
+      candidates: [a, b],
+      strictScenarios: strictIds.length,
+      listScenarios: listIds.length,
+      strictScenarioIds: strictIds,
+      listScenarioIds: listIds,
+    }
+  }
+  const stable = []
+  const listOnly = []
+  const strictOnly = []
+  for (const [key, strictIds] of PS) {
+    if (PL.has(key)) stable.push(entry(key, strictIds, PL.get(key)))
+    else strictOnly.push(entry(key, strictIds, []))
+  }
+  for (const [key, listIds] of PL) {
+    if (!PS.has(key)) listOnly.push(entry(key, [], listIds))
+  }
+  const byPair = (x, y) => x.pair.localeCompare(y.pair)
+  stable.sort(byPair)
+  listOnly.sort(byPair)
+  strictOnly.sort(byPair)
+  return {
+    counts: { stable: stable.length, listOnly: listOnly.length, strictOnly: strictOnly.length },
+    stable,
+    listOnly,
+    strictOnly,
+  }
+}
+
 /* ──────────────────────────── 落盘 ──────────────────────────── */
 
 export async function readJsonOrNull(absPath) {

@@ -37,7 +37,7 @@ import { resolveLlmConfig, LlmConfigError, normalizeReasoningEffort } from './to
 import { assembleSkill } from './tools/skill-builder.mjs'
 import { parseFrontmatter } from './tools/verify-skill.mjs'
 import { summaryOfObject } from './tools/cluster-proposer.mjs'
-import { loadAssemblyInputs, loadClusterCandidate, clusterFromCandidate } from './build-skill.mjs'
+import { loadClusterAssemblyInputs, loadClusterCandidate } from './build-skill.mjs'
 import {
   BLIND_MODES,
   DEFAULT_GATE2_MAX_TOKENS,
@@ -52,6 +52,7 @@ import {
   buildBlindCatalog,
   buildGate2Report,
   catalogHash,
+  compareReadings,
   generateScenariosForCandidate,
   generateUnrelatedScenarios,
   readJsonOrNull,
@@ -70,7 +71,6 @@ export const EXIT = Object.freeze({
 })
 
 const CANDIDATES_REL = path.join('pipeline', 'registry', 'skill-candidates.json')
-const SOURCE_ROOT_REL = path.join('sources', 'ai-agent-book-zh', 'book')
 
 function parseArgs(argv) {
   const args = argv.slice(2)
@@ -86,6 +86,7 @@ function parseArgs(argv) {
     maxTokens: null,
     skill: null,
     blindMode: 'list',
+    compare: false,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -97,6 +98,7 @@ function parseArgs(argv) {
     if (a === '--dry-run') flags.dryRun = true
     else if (a === '--json') flags.json = true
     else if (a === '--no-resume') flags.resume = false
+    else if (a === '--compare') flags.compare = true
     else if (a === '--blind-mode') {
       const v = need(i, a)
       if (!Object.hasOwn(BLIND_MODES, v)) {
@@ -142,22 +144,19 @@ export async function loadCandidatesForBlindTest(repoRoot, { only = null } = {})
   const candidates = []
   const missingReceipts = []
   for (const c of picked) {
-    const fileKey = (c.chapterRefs ?? [])[0]
-    if (!fileKey) throw new Error(`候选 ${c.skillId} 没有 chapterRefs——门禁二 v1 只支持单章候选。`)
+    // 与环 4 走**同一条加载路径**（ticket 13 抽出）：多章候选由 chapterRefs 自动展开，
+    // 单章候选是它的长度为 1 的特例——不存在「盲测看一份、装配看另一份」的可能。
     const clusterDef = await loadClusterCandidate(repoRoot, c.skillId)
-    const sourceRel = path.join(SOURCE_ROOT_REL, `${fileKey}.md`)
-    const loaded = await loadAssemblyInputs(repoRoot, { chapterKey: fileKey, sourceRel })
-    if (!loaded.found) {
-      missingReceipts.push({ skillId: c.skillId, sourceRel })
+    let prep
+    try {
+      prep = await loadClusterAssemblyInputs(repoRoot, clusterDef)
+    } catch (err) {
+      missingReceipts.push({ skillId: c.skillId, message: err.message })
       continue
     }
-    const { cluster, inCluster } = clusterFromCandidate(clusterDef, loaded.index, loaded.allObjects, {
-      objectsLabel: rel(loaded.objectsPath),
-    })
-    const kept = inCluster.filter((o) => loaded.passSet.has(o.id))
     const assembled = assembleSkill({
-      cluster,
-      objects: kept,
+      cluster: prep.cluster,
+      objects: prep.kept,
       antipatterns: [],
       codePointers: [],
       slug: c.skillId,
@@ -171,8 +170,8 @@ export async function loadCandidatesForBlindTest(repoRoot, { only = null } = {})
       name: c.name || c.skillId,
       trigger: c.trigger || '',
       description: fm.fields.description,
-      fileKey,
-      objectRows: kept.map((o) => ({ objectType: o.objectType, summary: summaryOfObject(o) })),
+      chapterRefs: clusterDef.chapterRefs,
+      objectRows: prep.kept.map((o) => ({ objectType: o.objectType, summary: summaryOfObject(o) })),
     })
   }
   return { candidates, missingReceipts, candidatesTotal: all.length }
@@ -204,11 +203,37 @@ async function main(argv) {
   const blindMax = BLIND_MODES[blindMode].max
 
   try {
+    // ── 对照模式（ticket 13）：两读数 → 稳定对/仅宽松/仅严格三分，落盘 gate2-stable.json ──
+    if (flags.compare) {
+      const listAbs = path.join(repoRoot, reportRelPath('list'))
+      const strictAbs = path.join(repoRoot, reportRelPath('strict'))
+      const listReport = await readJsonOrNull(listAbs)
+      const strictReport = await readJsonOrNull(strictAbs)
+      if (!listReport || !strictReport) {
+        throw new Error(`--compare 需要两份读数都在盘：${rel(listAbs)} 与 ${rel(strictAbs)}（先各跑一轮）。`)
+      }
+      const cmp = compareReadings(listReport, strictReport)
+      const stableAbs = await writeJson(path.join(repoRoot, 'pipeline', 'registry', 'gate2-stable.json'), {
+        schemaVersion: 'gate2-stable/v1',
+        createdAt: new Date().toISOString(),
+        sources: { list: rel(listAbs), strict: rel(strictAbs) },
+        ...cmp,
+      })
+      if (flags.json) process.stdout.write(`${JSON.stringify({ stable: rel(stableAbs), counts: cmp.counts }, null, 2)}\n`)
+      else {
+        process.stdout.write(
+          `两读数对照：稳定对 ${cmp.counts.stable} / 仅宽松 ${cmp.counts.listOnly} / 仅严格 ${cmp.counts.strictOnly}\n` +
+            `产物：${rel(stableAbs)}\n`,
+        )
+      }
+      return EXIT.PASS
+    }
+
     const { candidates, missingReceipts } = await loadCandidatesForBlindTest(repoRoot, { only: flags.skill })
     if (missingReceipts.length > 0) {
       process.stderr.write(
         '拒绝开工：以下候选所在源文件缺门禁一回执（被测对象无法确定为「发布出去的那批」）——\n' +
-          missingReceipts.map((m) => `  · ${m.skillId}（缺 ${m.sourceRel} 的回执）`).join('\n') +
+          missingReceipts.map((m) => `  · ${m.skillId}：${m.message}`).join('\n') +
           '\n先跑 run.mjs 补齐回执；此处提前拒绝，避免为注定重做的盲测白付调用。\n',
       )
       return EXIT.RUN_FAILED

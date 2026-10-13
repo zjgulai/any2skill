@@ -24,6 +24,7 @@ import {
   buildBlindUserPrompt,
   buildGate2Report,
   catalogHash,
+  compareReadings,
   generateScenariosForCandidate,
   runBlindScenario,
   scenarioGenInputHash,
@@ -273,6 +274,47 @@ describe('12 · 身份键与两段替身调用', () => {
     })
     assert.deepEqual(r.skillIds, ['B'])
     assert.deepEqual(r.unknownCodes, ['k99'])
+  })
+})
+
+/* ──────────────────────────── 两读数对照（ticket 13 产品化的那一个） ──────────────────────────── */
+
+describe('13 · 两读数对照：稳定 / 仅宽松 / 仅严格三分', () => {
+  const report = (map) => ({
+    perCandidate: [...map.entries()].map(([skillId, rows]) => ({
+      skillId,
+      scenarios: rows.map((triggered, i) => ({ scenarioId: `${skillId}-sc${i + 1}`, triggered })),
+    })),
+  })
+  const list = report(
+    new Map([
+      ['A', [['A', 'B'], ['A', 'C'], ['A', 'B']]],
+      ['B', [['B']]],
+    ]),
+  )
+  const strict = report(
+    new Map([
+      ['A', [['A', 'B'], ['A'], ['A', 'D']]],
+      ['B', [['B']]],
+    ]),
+  )
+
+  it('稳定对=两读数都存；仅宽松=格式产物；仅严格=噪声；每对带场景 id', () => {
+    const cmp = compareReadings(list, strict)
+    assert.deepEqual(cmp.counts, { stable: 1, listOnly: 1, strictOnly: 1 })
+    const stable = cmp.stable[0]
+    assert.equal(stable.pair, 'A|B')
+    assert.equal(stable.strictScenarios, 1)
+    assert.equal(stable.listScenarios, 2)
+    assert.deepEqual(stable.strictScenarioIds, ['A-sc1'])
+    assert.deepEqual(stable.listScenarioIds, ['A-sc1', 'A-sc3'])
+    assert.equal(cmp.listOnly[0].pair, 'A|C')
+    assert.equal(cmp.strictOnly[0].pair, 'A|D')
+  })
+
+  it('空读数不炸：两份都空 → 三处皆空', () => {
+    const cmp = compareReadings(report(new Map()), report(new Map()))
+    assert.deepEqual(cmp.counts, { stable: 0, listOnly: 0, strictOnly: 0 })
   })
 })
 
