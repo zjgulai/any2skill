@@ -1,0 +1,1221 @@
+{
+  "schemaVersion": "gate2-scenarios/v1",
+  "createdAt": "2026-10-13T03:28:30.046Z",
+  "promptFingerprint": "prompt-e3c3959885e0",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "candidates": [
+    {
+      "skillId": "chapter4-s1",
+      "name": "单工具设计与审查",
+      "inputHash": "sha256:289cd85502bab8fc73a05ef77894d2bf6483146a3eb4fe8dd6fe61cc1645eb44",
+      "scenarios": [
+        {
+          "scenarioId": "chapter4-s1-sc1",
+          "text": "我准备给内部知识库接一个检索工具，现在返回结果把整篇文档拼进去，跑几次上下文就爆了。帮我定一下这个工具应该返回什么字段、默认给多少条、怎么翻页。",
+          "why": "这需要从感知工具输出信息量和搜索返回结构角度设计，控制上下文膨胀并给出分页或游标策略。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s1-sc2",
+          "text": "我有个查询用户权限的工具，Agent 老拿它去改权限，已经在描述里写了用途还是选错。帮我看下这个工具的描述和边界该怎么改，让它明确做不到什么。",
+          "why": "这是因为 Agent 频繁选错工具时应优先审查工具描述边界，补充反例和不接受的操作，而不是怀疑模型能力。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s1-sc3",
+          "text": "我们有个执行命令工具，后端会自动给所有命令追加 --yes 避免交互卡住，但模型不知道。这样会不会有问题？请帮我审查这个工具的参数透明和安全性。",
+          "why": "这涉及静默参数注入和执行工具安全约束，需要检查模型不知情时的参数修改与风险。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "afterword-s1",
+      "name": "后记核心框架与策略",
+      "inputHash": "sha256:8ec09efe7080c077a58ec240c06bb2ea7fecc09f6c19bb165936add08e4479e7",
+      "scenarios": [
+        {
+          "scenarioId": "afterword-s1-sc1",
+          "text": "我们在做一个面向客户的报价助手，模型对产品常识说得还行，但一涉及客户等级、历史订单和内部折扣规则就乱编。我想从架构上理清，哪些能力应该靠模型本身，哪些必须放进上下文和工具里，而不是继续堆提示词。",
+          "why": "这需要区分模型已具备的通用知识与具体企业知识，并映射到 Agent 组成方式，正是该框架要回答的问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "afterword-s1-sc2",
+          "text": "我们给客服 Agent 加了不少兜底规则和合规补丁，最近底层模型升级后，团队在纠结这些补丁该删还是该留。我想有个判断原则：什么情况下补丁可以退役，什么情况下应该沉淀成下一轮训练或评测信号。",
+          "why": "这涉及 harness 补模型短板并推动模型内化的共同演进飞轮，不是单个补丁的实现问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "afterword-s1-sc3",
+          "text": "投资人问我们，底层大模型是别人提供的，我们的产品凭什么不容易被抄。我需要准备一页纸的逻辑，说明短期靠工程补强争取时间，长期靠哪些非技术壁垒把优势做实。",
+          "why": "这需要关于短期 leverage 与长期护城河的整体策略，而不是纯技术架构或模型对比。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter1-s1",
+      "name": "Agent基础与边界设计",
+      "inputHash": "sha256:2e499baf5825951f6a1ca77b7a5ec0574747bbb76741fcb379aec8299f12caa9",
+      "scenarios": [
+        {
+          "scenarioId": "chapter1-s1-sc1",
+          "text": "我们准备做一个自动处理销售日报的助手，它要能从数仓拉表、清洗缺失值并生成图表；我现在需要先理清它能访问哪几个数据源、能调用哪些接口，以及哪些像删库、发邮件这类操作必须被拦下来。",
+          "why": "这需要定义观察空间和动作空间，并对高风险操作设置约束，正是该技能的设计边界内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s1-sc2",
+          "text": "我想给组里新同学讲清楚，为什么模型明明知道该执行某个操作，最后却只给了文字建议；请帮我设计一个具体例子，说明信息没进入上下文和没有对应工具时的差别。",
+          "why": "这需要讲解核心组成、上下文与工具边界，属于该技能的讲解触发场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s1-sc3",
+          "text": "我们线上有个处理工单的助手最近总是反复调用同一个查询接口，好像没看到上一步已经返回的结果；帮我判断是上下文没记录工具输出，还是循环控制有问题，并给出加固方案。",
+          "why": "这涉及 ReAct 循环、上下文管理和运行层的验证与纠正，应由该技能来诊断。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter1-s2",
+      "name": "执行路径与框架选择",
+      "inputHash": "sha256:b6440180182eff6c1beca5e20b080995a642999c52f7940f609529f921deccdd",
+      "scenarios": [
+        {
+          "scenarioId": "chapter1-s2-sc1",
+          "text": "我在写订单履约服务，退款审核现在全是 if-else，遇到没见过的申诉就卡住；我想分清哪些环节必须用代码写死，哪些环节可以交给模型自己判断，模型又该怎么选。帮我评估一下执行路径和模型能力该怎么搭配。",
+          "why": "这需要区分必须由代码强制执行的关键业务规则与需要灵活决策的部分，并据此选择模型，正是该技能覆盖的工作流、自主 Agent 与混合模式判断。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s2-sc2",
+          "text": "我们要做一个自动排查云账号异常登录的工具，它会连续调好几个 API，根据返回结果决定下一步查什么，还要自己确认有没有真正解决问题，而不是输出一段分析就结束。该怎么选模型和运行方式？",
+          "why": "该任务涉及多步思考与动态决策，并强调不能把“给出了回答”等同于“完成了任务”，需要选择支持思考的模型并设计明确的执行路径。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s2-sc3",
+          "text": "我在给内部运维平台加一个智能助手，有些变更流程必须按固定审批走，有些故障定位希望它自己探索；现在拿不准该用一次性脚本、SDK 还是 app-server 的方式接，框架怎么选才不会被抽象层拖住。",
+          "why": "这需要同时决定工作流与自主 Agent 的混合边界，并从集成路径和抽象层负担角度选择 Agent 框架，属于该技能直接覆盖的框架选择与执行路径问题。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter1-s3",
+      "name": "安全治理与高风险控制",
+      "inputHash": "sha256:8b0b64991d9bc4c3b71d0c9a3cafadb60f65f3768f54b411e56f6046e513bc8d",
+      "scenarios": [
+        {
+          "scenarioId": "chapter1-s3-sc1",
+          "text": "我在给一个会执行 Python 的数据分析 agent 加执行环境，需要它默认不能联网、只能读取 ./data 和 ./output 目录，并且单次执行若 CPU 超过 2 核、内存超过 1GB 或输出超过 10MB 就自动终止并返回错误。",
+          "why": "这需要为代码执行设计隔离沙盒和资源上限，属于对高风险代码行为的执行层控制。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s3-sc2",
+          "text": "我们有个 agent 会触发客户数据删除和邮件发送，请帮我设计一套审批流：这些操作在执行前必须生成影响摘要，由值班同事确认，确认记录写入审计日志。",
+          "why": "这涉及不可逆、敏感操作的人工确认与审计，应由高风险操作治理机制来约束。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s3-sc3",
+          "text": "我要为生产 agent 增加产出复核环节：让一个独立检查器只基于最终生成的报表和配置来判定是否放行，不能看到生成过程中的中间推理，避免自审放水。",
+          "why": "这对应产物复核中的提议者—审核者机制，要求评判方与产出方不共享上下文。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter1-s4",
+      "name": "评估验证与能力更新",
+      "inputHash": "sha256:8625e45123a735c4df81778ecd13d0ed65108b6ce91f10454418fc2df2645f34",
+      "scenarios": [
+        {
+          "scenarioId": "chapter1-s4-sc1",
+          "text": "上周我们让一个自动化 Agent 对内网做了一次漏洞验证并给出修复建议，它返回了一份看起来很完整的报告。我现在需要复盘这次任务，确认它是否真的在目标环境里完成了验证，而不只是生成了回答；如果某些步骤是有效的，我想把这次得到的判定逻辑和注意事项沉淀成可复用的知识文档或检查规则。",
+          "why": "该技能用于判断 Agent 是否真正完成任务，并把经验通过外部产物更新跨任务保留，不能把回答等同于完成。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s4-sc2",
+          "text": "我在给一个需要多步推理和动态决策的威胁狩猎 Agent 选底座模型，之前按准确率和价格选的模型在实际任务里经常拒绝执行某些操作，或者接口不暴露我需要的结构化工具调用能力。我想在真实任务上测试几个候选模型，确认真实任务里是否愿意执行、接口是否暴露能力，以及服务条款是否允许这种安全研究用途。",
+          "why": "该技能覆盖涉及多步思考或动态决策时选择支持思考的模型，并强调在真实任务上测试执行意愿、接口能力和服务条款，而不是只看准确率价格速度。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter1-s4-sc3",
+          "text": "我们的影像报告生成 Agent 总学不会不同科室医生在描述阴性、阳性时的隐式措辞习惯，继续往 Prompt 和规则里堆例子已经没什么提升了。我想评估是否需要基于脱敏的历史报告做后训练来更新模型参数，而不是继续扩充外部指令。",
+          "why": "该技能涉及当外部规则难以完整表达高维隐式能力时，通过参数更新来跨任务保留能力。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter10-s1",
+      "name": "架构设计多 Agent 系统",
+      "inputHash": "sha256:b6471f78276d7855fefb36dce3690370f9ecc412bd891aea1b954ed8382925b5",
+      "scenarios": [
+        {
+          "scenarioId": "chapter10-s1-sc1",
+          "text": "我准备把现有的代码生成、静态检查和测试修复流程拆成三个独立 Agent 并行跑，它们之间需要传递结果和相互触发，我该怎么设计它们之间的消息传递和终止控制，避免互相等待或重复执行？",
+          "why": "这涉及多 Agent 之间的通信机制和控制权拓扑设计，需要架构层面的指导，而不是单个 Agent 的功能实现。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s1-sc2",
+          "text": "我们现在用两个 Agent 做规划和执行，但感觉规划 Agent 经常出错，执行 Agent 拿到的上下文太长导致跑偏，我想知道应该把更强的模型和提示词放在哪一边，以及怎么让规划 Agent 实时看到执行进度而不是靠翻历史记录。",
+          "why": "这是 Planner-Executor 架构中的资源分配和进展掌握问题，需要根据多 Agent 架构规则给出决策，而不是仅优化单个提示词。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s1-sc3",
+          "text": "我手头有一个客户支持处理流程，本来一个 Agent 也能做，但有人建议拆成多个角色互相审查，我不确定这样会不会只是多花钱，而且担心共享全部对话会让后来 Agent 被前面带偏，想先判断一下值不值得拆，如果不共享上下文又怎么协作。",
+          "why": "这需要在采用多 Agent 前评估信息增量和成本，并选择共享/不共享上下文策略，属于该技能的整体架构决策范畴。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter10-s2",
+      "name": "可靠性验证与失效治理",
+      "inputHash": "sha256:83c80892bfd408a3b0c5f01d92564139da0c81fb428d569e0c6f53b564f80884",
+      "scenarios": [
+        {
+          "scenarioId": "chapter10-s2-sc1",
+          "text": "我们现在的审核流程里四个 Agent 都基于同一个模型和差不多的上下文，给出的结论几乎一模一样。我希望让它们先各自独立判断、不共享思考过程，再引入一个只对照原始材料复核结论的独立视角，看看是否真的达成一致。",
+          "why": "它对应同质化判断不可视为独立证据的问题，需要主动区分上下文和角色，并用交叉验证检查最终结论与原始证据的一致性。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s2-sc2",
+          "text": "三个并行工作的 Agent 同时改一个项目的配置和迁移脚本，最后文件层面没有冲突，但数据库连接串和实际端口对不上。我需要一种能检测这种跨文件逻辑矛盾，并在无法自动裁决时暂停让人工介入的机制。",
+          "why": "它对应跨文件语义冲突，乐观锁无法发现这种逻辑级不一致，需要更高层的语义校验和人工裁决机制。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s2-sc3",
+          "text": "有个负责任务规划的 Agent 现在会不断拆出新的子任务，已经出现几百个还在继续，它自己说可以停了但我不能信。我希望改成由一个独立的验证环节依据完成标准来叫停，并限制它的子任务数量。",
+          "why": "它对应循环失控和模型不能批准自己完成的问题，需要由验证器判定停止条件，并对 Agent 的扩展行为做约束。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter10-s3",
+      "name": "协作模式编排",
+      "inputHash": "sha256:28b0211eaf67c04cb5c348174d04a8376116715d2f741411a0e464eb0096074e",
+      "scenarios": [
+        {
+          "scenarioId": "chapter10-s3-sc1",
+          "text": "帮我搭一个实现/审查循环：一个 Agent 负责写这个数据校验模块，另一个 Agent 只依据运行结果和测试输出来判断是否满足验收标准并反馈修改意见，循环到验收通过为止。",
+          "why": "这需要提议者-审核者协作，并让审查方独立验证证据，而不是让生成方自己批准完成。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s3-sc2",
+          "text": "关于要不要把订单状态同步改成事件驱动，我想让两个 Agent 分别站在“立即重构”和“先维持同步方案”的立场交叉质询，最后把两边论点、风险和适用条件整理给我。",
+          "why": "这需要辩论模式来结构化展开对抗性论证，帮助做技术决策，而不是做普通方案对比。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s3-sc3",
+          "text": "我在做跨部门的数据共享方案，请让三个 Agent 分别代表数据工程、安全合规和业务分析独立评估，先不共享判断，最后汇总成一份各自的顾虑和共同风险清单。",
+          "why": "这需要专家小组模式和主动区分的专业视角，先独立判断再汇总，避免同质化意见相互强化。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter10-s4",
+      "name": "涌现与社会经济系统",
+      "inputHash": "sha256:c79c93a23f682e4526d705106696557e40f77aa0a616e4ce30caa4d38f6e655d",
+      "scenarios": [
+        {
+          "scenarioId": "chapter10-s4-sc1",
+          "text": "我要做一个六人狼人杀模拟器，每个角色 Agent 只能拿到自己的夜间行动结果、公共发言和投票结果，不能把上帝视角的全局上下文传给它们。请给我一套角色调用时的信息隔离方案。",
+          "why": "这对应策略博弈中的信息不对称与角色权限控制，需要该技能关于法官只传角色应见信息的工程规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s4-sc2",
+          "text": "团队想给漏洞挖掘流水线加一套多 Agent 互评机制，可能是几个 Agent 看同一份报告讨论。我正在写评估方案，需要判断这到底有没有信息增量、值不值额外 token，并给出能引入外部反馈回路的架构。",
+          "why": "这需要该技能中的新信息框架来判断是否采用多 Agent，而不是单纯编排多个 Agent 讨论。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter10-s4-sc3",
+          "text": "我想搭一个沙盒，让多个经营自动售货机的 Agent 在同一个镇子里互相抢客户、各自长期运营，只按最终账户余额排名。请帮我设计它们的经验记忆检索和外部环境评分机制。",
+          "why": "这涉及经济涌现、长期连贯记忆与多 Agent 市场竞争，需要该技能中关于经济竞争基准与生活奖励的设计。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter2-s1",
+      "name": "上下文框架与执行基础",
+      "inputHash": "sha256:ac1b81cce06313d6a70412986a0c5d2fde24f2d7c9efa7159ffe0e19eb816236",
+      "scenarios": [
+        {
+          "scenarioId": "chapter2-s1-sc1",
+          "text": "我在实现一个会调用外部工具的 Agent 循环，模型返回 tool_calls 后我会执行工具，但不确定把工具执行结果送回模型时应该用哪类消息角色、每次请求要回传哪些历史，才能让模型知道刚才发生了什么。",
+          "why": "这涉及大模型 API 的消息结构、工具调用消息角色以及多轮调用无状态需要完整历史回传，正是该技能涵盖的基础执行规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter2-s1-sc2",
+          "text": "我们线上 Agent 的系统提示词里拼了当前时间和用户套餐，导致每次请求前缀都不一样，缓存命中很差；我想改成稳定的提示词，但又不希望模型看不到这些动态信息，应该怎么组织消息？",
+          "why": "这涉及静态前缀与轨迹、KV Cache 前缀不变性，以及动态信息应作为新消息追加而不是修改系统提示词，属于该技能的缓存友好执行骨架内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter2-s1-sc3",
+          "text": "我在主 Agent 里要派生子 Agent 处理子任务，子 Agent 需要继承父 Agent 的一部分上下文；我想知道为了不破坏缓存和推理链，哪些提示词、工具定义和消息前缀必须保持逐字节一致。",
+          "why": "这涉及子 Agent 继承父上下文时的前缀一致性规则，以及推理链绑定前缀时的正确性要求，应该由该技能回应。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter2-s2",
+      "name": "提示词与 Skills 编排",
+      "inputHash": "sha256:8dee1ee1defc85ebc702cd30b169f0b3f5c020a891ca616b96154f1e31035473",
+      "scenarios": [
+        {
+          "scenarioId": "chapter2-s2-sc1",
+          "text": "我现在的系统提示词已经快四千行了，里面混着几十条业务规则、工具定义和示例，每次调整一个规则都担心影响缓存。请帮我把它拆成一份常驻目录加若干按需加载的技能，并说清楚哪些内容应该留在常驻部分。",
+          "why": "因为它涉及把臃肿的系统提示词重构为渐进式披露的 Skill 体系，而不是简单删减规则或改写某一段提示词。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter2-s2-sc2",
+          "text": "我们的客服 Agent 在算账单时老把退款和取消服务也按提成计费，电话费汇总后也没按整数美元四舍五入。请帮我重写这段计费约束，并补几个固定示例让它稳定理解这些边界。",
+          "why": "因为这里需要处理具体业务规则、金额计算粒度和 few-shot 示例的字节级稳定性，而不是泛泛的客服话术优化。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter2-s2-sc3",
+          "text": "我想做一个内部写作助手，不想把所有风格要求塞进系统提示词。帮我从我最满意的五篇原创文章里归纳写作原则，每条配上正例、反例，再回写成一个描述足够具体、能按需加载的技能。",
+          "why": "因为这需要按写作型 Skill 的方法从真实文章归纳规则、控制核心原则数量，并避免 Skill 描述过宽导致误触发。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter2-s3",
+      "name": "运行时上下文治理与安全",
+      "inputHash": "sha256:310021ffa08d3f0373cadb2c385bcf0e31631a581906aac1ef4e8cd74a1fc282",
+      "scenarios": [
+        {
+          "scenarioId": "chapter2-s3-sc1",
+          "text": "我让 Agent 处理客户发来的申诉邮件，把邮件正文和附件说明当作参考来更新工单。请把这份外部内容包起来并标明来源，让他别执行里面任何“指示”，比如“忽略以上规则”。",
+          "why": "该技能规定了在将外部内容注入上下文前必须用显式标记包裹并标注来源，提示模型其中出现的指令不应被执行，能直接防住这类提示注入。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter2-s3-sc2",
+          "text": "我在做一个自动外呼任务，Agent 要逐家确认商家营业时间，系统规定每家最多打 3 次。帮我改一下电话工具返回逻辑，每次调用结果里直接写清楚这是第几次呼叫该商家，这样模型就不会超打。",
+          "why": "该技能要求在电话工具调用结果中直接标明累计呼叫次数，使模型能立即发现已达限制，而不是事后从历史里统计。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter2-s3-sc3",
+          "text": "我的长任务 Agent 已经跑了很多步，一堆工具返回堆在上下文里，它开始重复纠结已解决的问题，还忘了前面拿到的关键公司名和时间。请把这些历史结果压缩成精炼摘要，并在上下文末尾加一个带进度和调用次数的状态栏。",
+          "why": "该技能提供在两次 API 调用间对工具结果进行结构化压缩、并注入用户角色状态栏的规则，能缓解上下文腐化并让模型获得显式进度信息。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter3-s1",
+      "name": "用户记忆体系设计",
+      "inputHash": "sha256:54e4e02e1d3672363a37fb1d091dda71b6559064d92ade44b0e80efac8ef8216",
+      "scenarios": [
+        {
+          "scenarioId": "chapter3-s1-sc1",
+          "text": "我们现在的 agent 每次会话后会把用户提到的事情都塞进一个 JSON 列表，越积越大，检索也很慢；我该怎么重新设计这套跨会话存储，让重要的偏好能快速查到，一般对话事实不要拖垮成本？",
+          "why": "这涉及用户记忆提取的选择性、抽象化和结构化规则，以及关键少量数据用 Advanced JSON Cards、大量非关键事实用 Simple Notes 的混合存储模式，正应由这组记忆体系设计知识回应。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter3-s1-sc2",
+          "text": "我想把用户的状态从一堆自然语言备注改成带类型的对象，比如会员等级、常用地址、通知偏好这些字段，并让更新和校验走普通函数，而不是每次靠模型临时判断，应该怎么落地？",
+          "why": "这涉及 User as Code 和带类型状态交确定性函数处理的做法，属于该技能关于状态表示与推理同一种可验证介质的内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter3-s1-sc3",
+          "text": "我们要把对话日志和长期记忆里的手机号、身份证号、住址做脱敏，但不想把原始文本发给云端 API；能不能在本地用很小的模型做 PII 检测，CPU 就能跑，有哪些坑？",
+          "why": "这涉及 PII 检测与脱敏、本地部署而非云端 API，以及用 Ollama 调用本地小模型的具体方案，应由这组知识回应。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter3-s2",
+      "name": "RAG检索链路构建",
+      "inputHash": "sha256:d3c5866b1576535571cdfe3505ecef93cd810cd7cebded990d1a3eb1ff5e9253",
+      "scenarios": [
+        {
+          "scenarioId": "chapter3-s2-sc1",
+          "text": "现在文档按 800 字符固定切块后，很多表格和代码段被截断，用户问具体参数时经常检索不到对应片段，我想改成按结构分块，并给每个块补上能说明它来自哪里的上下文再进向量库。",
+          "why": "这涉及分块导致上下文丢失和上下文感知索引，是构建检索链路时要解决的典型问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter3-s2-sc2",
+          "text": "我们的内部文档检索现在只靠向量相似度，用户搜型号“X-200”时返回一堆语义相近但不包含精确型号的内容，我想加上关键词倒排索引做稀疏检索，再用一个打分模型对合并后的候选精排。",
+          "why": "它要求组合稠密检索、稀疏检索和重排序，是生产级检索模块而非单纯问答生成问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter3-s2-sc3",
+          "text": "我要把知识库查询做成一个能在 Agent 循环里被反复调用的工具，但知识库里有些内容会建议“给客户发通知”或“删除工单”，我需要在检索结果影响输出和真正执行前加一道独立判断。",
+          "why": "这涉及智能体化检索工具设计以及检索内容对副作用的授权边界，是该技能覆盖的场景。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter3-s3",
+      "name": "知识治理与领域建模",
+      "inputHash": "sha256:09479e9bac5056ce489b0a9f88c9ddb0791bfb793c76ba67fc078172baaa65f5",
+      "scenarios": [
+        {
+          "scenarioId": "chapter3-s3-sc1",
+          "text": "我们在给客服团队搭一个共享知识库，现在最头疼的是不同人改完文档后没人复核，而且有些内部排查记录不应该让外包同事看到。帮我把提交、审核、按角色可见这套机制设计成可落地的流程。",
+          "why": "这需要设计写入审核与权限过滤机制，特别是双Agent审核和检索层按调用者权限过滤，正是该技能的核心治理内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter3-s3-sc2",
+          "text": "我们线上有个用户记忆库，每天模型都会往里写新的对话摘要，但最近发现旧摘要把“未复现”写成了“已复现”，还丢了一些时间条件。我想加一套既能随事件增量更新、又能定期回到原始对话记录重新整理索引的机制。",
+          "why": "这涉及增量更新与周期全量整理两条路径，以及整理时对照原始对话检查否定词和时间条件，应由该技能回应。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter3-s3-sc3",
+          "text": "我在做一个判决书检索原型，想把案件里的多个分类字段转成特征来聚类，但现在的编码方式会让相近案件距离很远。帮我参考一下这类领域数据建模里多选项字段该怎么表示。",
+          "why": "这对应领域数据建模中的多选项分类字段用独立开关位表示，以及案件原型聚类建模案例，是该技能的知识对象。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter4-s2",
+      "name": "工具供应链与执行治理",
+      "inputHash": "sha256:a77f2789cb8a10a8dfa97ba10aec3dcfd76ec8ce7f41c84ccbfcae78265ba9c8",
+      "scenarios": [
+        {
+          "scenarioId": "chapter4-s2-sc1",
+          "text": "我想在现在的 agent 里接一个社区维护的 MCP 服务器来读内部 wiki，但不太放心它的权限。帮我审查一下接入方案，重点看工具描述有没有被投毒、凭证会不会泄露，以及它实际执行的参数是不是我批准的那些。",
+          "why": "它涉及通过 MCP 引入外部能力，需要审查工具描述与版本、隔离凭证，并保证模型看到的参数与实际执行参数一致。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s2-sc2",
+          "text": "我要写一个子 Agent，它会同时收到我转发的用户消息和从网页抓下来的内容。请帮我设计提示词，把消息来源标清楚，避免它把网页里的指令当成我的指令执行。",
+          "why": "子 Agent 接收多个来源的信息时，需要明确区分 FROM_USER、FROM_MAIN_AGENT 和 TOOL_RESULT 等来源，以防范提示注入。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s2-sc3",
+          "text": "我这边需要自动运行用户上传的 Python 脚本来复现问题，原先想用 venv 隔离，但担心它读写服务器文件或外联。请给我一个真正隔离的执行方案，并在跑完后自动做一次校验。",
+          "why": "这涉及执行不可信代码，venv 不能提供文件系统、网络和进程隔离，需要真正的沙盒方案，并建立执行后自动验证的闭环。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter4-s3",
+      "name": "大规模工具组织与发现",
+      "inputHash": "sha256:cec336116855a446ceb6c8850e077649d3cbba00cff89f2ac4880f43b66e6030",
+      "scenarios": [
+        {
+          "scenarioId": "chapter4-s3-sc1",
+          "text": "我们接入了大约 160 个内部 MCP 工具，现在每次对话光工具定义就占掉大量上下文，能不能改成默认只加载工具名称和用途的索引，等确定要调用时再读取具体参数定义？",
+          "why": "它涉及工具数量超过一百后的按需加载与目录索引策略，正是该技能解决工具膨胀和上下文预算紧张的直接场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s3-sc2",
+          "text": "我在改公司的知识库搜索接口，现在一搜就返回整篇文档拼起来，Agent 调用一次就超限；请帮我设计成返回标题、位置和摘要，并加分页或游标，默认只给前 20 条。",
+          "why": "这需要设计搜索工具的结果返回格式、分页与 token 控制，属于该技能中搜索工具结构化候选列表和分页策略的规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s3-sc3",
+          "text": "我们想让 Agent 能访问几千个工具，但不想在系统提示里预置所有 schema；我想先让模型描述它需要哪类工具，再由系统从候选中匹配几个注入上下文，这个流程该怎么设计？",
+          "why": "它涉及主动工具发现、两层语义路由和避免全量注入 schema，是该技能中动态发现机制要解决的典型问题。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter4-s4",
+      "name": "多模态感知与内容读取",
+      "inputHash": "sha256:f93163c926f4205ed306fbef9eb51ae972302288148596db748710ac3698385b",
+      "scenarios": [
+        {
+          "scenarioId": "chapter4-s4-sc1",
+          "text": "我在改公司知识库搜索的工具接口，现在搜一次会返回几十篇命中文档的全文，模型上下文经常爆掉。希望默认只返回前20条结果，每条只给标题、链接和命中片段，同时返回总命中数和能继续取下一页的游标。",
+          "why": "它要求设计搜索工具的返回格式与分页策略，避免一次性倾倒全部结果，让调用方按需翻页。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s4-sc2",
+          "text": "我用的PDF读取工具读一份200页的投标文件时，每次到第50页左右就静默截断，下游完全不知道后面还有内容。请把它改成超过阈值时在返回里明确标记截断，写出省略了多少页，并提供按页或按章节继续读取的方式。",
+          "why": "它涉及读取类工具在内容超过阈值截断时如何显式提示剩余内容，而不是静默截断。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter4-s4-sc3",
+          "text": "我们要处理用户上传的工单附件，里面有现场照片、扫描版PDF和通话录音，但主模型不支持直接理解这些。需要我评估三条路线：换成原生支持视觉和音频的模型、统一先OCR或转写成文本、还是把图像和音频理解封装成工具让模型调用，重点看表格和手写批注的丢失情况。",
+          "why": "它需要在多模态输入下选择合适感知路线并控制信息量，对比原生多模态、提取为文本和工具化分析之间的信息损失与成本。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter5-s1",
+      "name": "通用 Agent 架构设计",
+      "inputHash": "sha256:01245633e2eda0e68f0f45b61dd2f0094b08cd0d04d9e44afddf26821ed74c7b",
+      "scenarios": [
+        {
+          "scenarioId": "chapter5-s1-sc1",
+          "text": "我准备从零搭一个能自己写代码解决开放任务的智能体，现在不确定该把代码执行和文件系统放在多核心的位置，以及第一版应该先给它配哪几个基础工具。帮我从架构上做一次整体设计。",
+          "why": "这个请求要求从整体上确定通用 Agent 以 Coding 和文件系统为核心，并给出基础工具集，正是该技能覆盖的架构设计范围。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter5-s1-sc2",
+          "text": "我们的智能体已经在跑，但代码执行环境现在是直接放开网络的，Shell 命令也只做关键词黑名单过滤。我想重新设计这块的执行边界，既要保证安全又不影响它干活。",
+          "why": "这涉及代码执行沙盒的网络出口策略和 Shell 命令安全校验方式，属于该技能中执行边界与安全规则的设计内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter5-s1-sc3",
+          "text": "我在做代码检索和自动改文件的功能，现在拿不准文件编辑时该让主模型直接给补丁还是给差异描述再合并，以及代码分块应该按什么粒度切。帮我定一套编辑和分块方案。",
+          "why": "这涉及文件编辑模型（差异描述 + Apply Model）、old string 唯一性以及代码分块的语义切分规则，正是该技能中工具与工程规则的一部分。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter5-s2",
+      "name": "Agent 工程落地与可靠性",
+      "inputHash": "sha256:5df87714aad5e0752832bede7438fe72485d6ec898ea8f9178eb95de341f7614",
+      "scenarios": [
+        {
+          "scenarioId": "chapter5-s2-sc1",
+          "text": "我想给我们的编码 agent 配一份项目级约束文件，让它每次开工就自动带上构建、测试命令和禁止改动的目录，并且任务只有跑到测试全绿才算做完。",
+          "why": "它需要项目指令文件的自动注入机制，以及“测试通过才算完成”的完成标准，而不是普通提示词设计。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter5-s2-sc2",
+          "text": "现在 agent 并行调一堆工具时，只要一个查文件的调用失败，整批任务就全停了。我希望它只上报失败的那个调用，其他同批调用继续跑，同时给长连接加个心跳，别靠超时才发现断连。",
+          "why": "这对应并行工具调用中故障隔离不上升到父级操作，以及长连接需要活性信号的可靠性规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter5-s2-sc3",
+          "text": "我要给 agent 的 shell 执行加一道安全策略：沙箱默认断网，只能访问少量白名单地址；命令检查不能再用关键词黑名单，比如见着 curl 就拦，要能按参数语义来判断。",
+          "why": "它涉及代码执行沙盒的默认断网与白名单代理，以及 Shell 命令安全校验要采用语义解析而非关键字黑名单。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter5-s3",
+      "name": "代码生成应用与规则正确性",
+      "inputHash": "sha256:71821bb393ebb3bab1c53542fdb664005a37caa40434288e6bc15ed6286611e8",
+      "scenarios": [
+        {
+          "scenarioId": "chapter5-s3-sc1",
+          "text": "帮我做一个退改签资格校验的后端接口：舱位等级、保险状态、预订时间、航段使用情况和航班状态必须从订单库和航班接口实时读取，当前时间取服务器时钟，不要让调用方把这些参数传进来。",
+          "why": "这需要把政策事实固化为服务端代码校验，防止模型或调用方自报参数造成规则绕过，属于代码即规则和服务端真值校验的典型场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter5-s3-sc2",
+          "text": "帮我生成一个可交互的周销售报表页面，支持按地区、品类筛选，并在生成后自动渲染截图检查图表布局、图例和空数据状态，发现问题后给我一份修改意见。",
+          "why": "该请求不仅要生成前端代码，还要求渲染审核机制来发现视觉或布局缺陷，正是生成式 UI 与多媒体渲染验证应覆盖的范围。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter5-s3-sc3",
+          "text": "我们接入一个第三方物流服务商，他们返回的 JSON 和文档对不上，我发给你一段真实响应样本，请帮我生成一个适配层，把他们的字段映射到我们的标准物流状态结构；以后再遇到无法解析的新格式时，直接把原始报错和样本上报给我分析。",
+          "why": "这需要现场阅读真实响应即时生成胶水适配代码，并让前端在解析失败时把原始日志交给 Agent 处理，符合系统适配器与 Agent 自改进的能力。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter6-s1",
+      "name": "事件驱动 Agent 架构",
+      "inputHash": "sha256:057d91bcd174934e4c710c28f93561b8fcd339cadc1fc4962be25101b21b4c4d",
+      "scenarios": [
+        {
+          "scenarioId": "chapter6-s1-sc1",
+          "text": "我们有个代码扫描任务经常要跑十几分钟，现在 Agent 只能同步等它结束。能不能改成扫描完成时由结果服务主动把结果推给 Agent，并且只在出现高危漏洞或失败时才唤醒 Agent 继续处理，其它情况先静默归档？",
+          "why": "这需要把外部异步回调接入 Agent 运行回路，并为事件触发工具定义清晰的触发条件和上下文载荷，避免无关事件反复唤醒。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s1-sc2",
+          "text": "用户在让助手生成发布说明时，常常在它还在调用构建平台查询变更列表或组织内容时插一句“按模块重新分组”。我希望同一轮里保留已经查到的变更信息，只把新约束带进去继续生成，而不是从头执行一遍。",
+          "why": "这涉及回合中途引导和工具执行中的打断处理，需要为未完成工具保留占位符并把用户追加要求作为打断事件重新驱动推理。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s1-sc3",
+          "text": "我们的值班 Agent 同时盯着工单、邮件和 Slack，同一个告警经常被回复三次，偶尔又漏掉需要升级的消息。能不能让三个来源的到达先汇到一起，用一个很轻量的判断决定立刻通知、合并到已有告警还是忽略？",
+          "why": "这要求把多渠道输入统一成事件流，并用轻量级事件路由器在到达时选择处理策略，同时平衡不错过重要消息和不重复打扰。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter6-s2",
+      "name": "语音实时交互",
+      "inputHash": "sha256:54dd3fe9cbad5d636ecfe4ec96f8eb7fdc827a5b882123a0f6a1e03864223559",
+      "scenarios": [
+        {
+          "scenarioId": "chapter6-s2-sc1",
+          "text": "我们做的语音助手在用户报银行卡号时，中间喘口气就被当成说完了，号码经常被截断。我想改一下流式识别里的端点判断，让它结合语义和停顿来决定是不是真的说完了。",
+          "why": "因为需要把轮次判断直接做进流式识别器，端点标签只用决策时刻可见的信息，并处理用户报数字时的中途停顿，这正是该技能覆盖的工程规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s2-sc2",
+          "text": "用户问一个需要分析报表的复杂问题时，我不希望语音助手干等好几秒才出声。我想让它先用语音回一句“我看看”，等后台把推理做完再接着把结果说出来。",
+          "why": "因为它需要协调前台即时回应与后台深度推理，对应快思考回应慢思考回答的前后台模型分工，属于该技能的实时交互与深度思考协调场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s2-sc3",
+          "text": "我要做一个语音 Agent，用户说话时可以随时打断它，或者两个人同时说话；而且它应该能从语气里听出用户犹豫，而不是先转成文本把这些丢了。",
+          "why": "因为它需要全双工持续听说的交互模型，保留静音、重叠、打断等连续上下文，并避免级联方案转纯文本丢失情绪语调，这是该技能描述的核心能力。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter6-s3",
+      "name": "Computer Use 智能体",
+      "inputHash": "sha256:eff9128b4c9abf9f2a543e4e44b7601336593fd1cc456e06bb35bd5582e6c4a8",
+      "scenarios": [
+        {
+          "scenarioId": "chapter6-s3-sc1",
+          "text": "在测试环境里，帮我用浏览器打开运营后台，把订单列表筛选到最近24小时，逐页点击“导出明细”，等下载列表里出现文件后再把这些文件移到 /data/exports/2025/ 下；如果页面刷新或按钮位置变了，先重新确认再继续。",
+          "why": "这是需要 AI 观察屏幕并操作鼠标键盘完成浏览器导出流程的任务，且要求在动作后重新确认页面和下载状态。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s3-sc2",
+          "text": "在安卓模拟器里打开我们 App，走一遍新用户注册流程：输入手机号、填写收到的验证码、处理权限和通知弹窗，并自动把每个关键界面截图保存到 ./screens，记录流程在哪里卡住。",
+          "why": "这是移动端 App 操作，需要通过无障碍服务读取界面元素并下发点击、文本输入和手势，而不是调用后端接口或使用桌面坐标。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s3-sc3",
+          "text": "我要在服务器上自动访问某个供应商网站的报价页并抓取每日价格，但每次登录都会被验证码和 IP 风险提示拦住，请先帮我准备一套住宅代理出口，再用独立身份完成登录和查询。",
+          "why": "这是虚拟身份访问网站时遇到 CAPTCHA 和 IP 信誉检测的反机器人拦截，需要先配置住宅代理网络再访问，而不是普通接口抓取。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter6-s4",
+      "name": "机器人操作智能体",
+      "inputHash": "sha256:1d142055350082c87b0183a5cf4b8c404d80c8b7fa43f374df0475d90505e065",
+      "scenarios": [
+        {
+          "scenarioId": "chapter6-s4-sc1",
+          "text": "我们产线上用机械臂从料箱里抓金属件，工件每次位置都不一样，视觉给了坐标但夹爪还是经常抓空。我想让系统在抓取失败后自己调整而不是整条流程停掉，应该怎么改？",
+          "why": "它涉及真实机器人抓取失败后的闭环重试与观察判定，需要把眼前动作和后续规划分开处理，而不是静态视觉识别或一次性规划问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s4-sc2",
+          "text": "我要给机械臂的策略模型开放一组动作工具，但担心它一次输出太长的轨迹会卡住或超时。能不能帮我设计成每次只做一个固定范围动作、执行完马上重新看画面的接口？",
+          "why": "它对应机器人智能体工具设计中的约束：一次调用只做一件事、动作范围固定、有超时限制且执行后立即重新观察，这是该技能直接覆盖的工程规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter6-s4-sc3",
+          "text": "我们在仿真里训练好的抓取策略，部署到真实机械臂上后完全不对，连定位都偏。我想知道该从哪些方面排查和改，而不是又去加仿真数据重新训一个模型。",
+          "why": "它涉及从仿真到真实机器人的迁移差异以及真机部署前必须做的相机标定、执行器测试和安全闭环，不是单纯提升模型精度或增加训练数据的问题。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter7-s1",
+      "name": "评估系统设计搭建",
+      "inputHash": "sha256:58129b50a1d0d5537388e5d5c1d06167c8b277835d3c82b07ea3340c5e867399",
+      "scenarios": [
+        {
+          "scenarioId": "chapter7-s1-sc1",
+          "text": "我们要给一个能查账单、改套餐的客服 Agent 搭一套自动化评估，目前只有模型本身，还没有可重置的客户数据库和模拟用户。我该怎么把模拟用户、业务环境、验证器和追踪串成一个可重复的评测闭环？",
+          "why": "因为它涉及从零设计评估系统，需要同时定义评估对象、任务环境、验证器和可观测性，并让每个 episode 能重置到干净状态。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter7-s1-sc2",
+          "text": "现在的评估只看任务结束后状态对不对，结果有个 Agent 中途先取消了一笔订单、又重下了一单，最终状态一致也算通过。我想改成对过程逐项核验，副作用操作必须在可回滚环境里做，失败也要计入可靠性，并输出结构化的失败归因。",
+          "why": "因为它涉及过程合规性检查、副作用操作的可回滚采样，以及归因记录的结构化保存，而不是只给最终奖励。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter7-s1-sc3",
+          "text": "我手上有几百条线上失败工单，想和公开基准一起组成分层评估集，并且把每个成功条件都写成可程序化断言的检查项。现在不知道该怎么设定不同难度、怎么判断 0.8 的成功率能不能上线。",
+          "why": "因为它涉及评估集来源与难度分层、程序化断言验证，以及结合业务场景判断成功率阈值。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter7-s2",
+      "name": "评估结果分析与诊断",
+      "inputHash": "sha256:fbfffc20cee46948744a9962845bb501278f01961d4ec21ce3e2e03cdbfa6e3b",
+      "scenarios": [
+        {
+          "scenarioId": "chapter7-s2-sc1",
+          "text": "我们在内部跑 SWE-bench，一个提交的修复结果显示 FAIL_TO_PASS 的几个测试过了，但 PASS_TO_PASS 有几项我没细看，也担心测试本身不稳定。帮我把这个结果拆开核一遍，确认这次修复是不是真的成立。",
+          "why": "它需要按 SWE-bench Verified 的规则同时检验 FAIL_TO_PASS 和 PASS_TO_PASS 两组命题，并额外确认测试稳定性，而不是只看目标测试通过。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter7-s2-sc2",
+          "text": "我让两个模型在同一批代码任务上对决，裁判也是用另一个 LLM 打的，结果分差很小，而且我怀疑裁判有位置偏好。现在要判断这个分差是否可信、能不能据此切换默认模型。",
+          "why": "它涉及 LLM 裁判位置偏差的缓解方法，以及分差必须超过噪声、能在配对分析中成立并复现才值得切换模型的规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter7-s2-sc3",
+          "text": "我们 agent 改成长上下文配置后成功率没提升，但 token 费用暴涨。我想从完整轨迹里定位到底是思考阶段输出太多、工具返回太长，还是没复用 KV Cache 导致每轮输入不断累积。",
+          "why": "它涉及推理成本与上下文累积的诊断，需要区分 Prefill/Decode 成本、检查 KV Cache 复用和思考 token 收益，而不是只看总体成功率。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter7-s3",
+      "name": "评估基础设施与持续实验",
+      "inputHash": "sha256:e4164569c77c38c1209e402e6b94ce7c5302bf38fa9ddbb37b8c4c9b71e72f41",
+      "scenarios": [
+        {
+          "scenarioId": "chapter7-s3-sc1",
+          "text": "昨晚 nightly 的总体成功率从 72% 掉到 58%，先不要改模型代码，帮我把这批 run 按能力维度聚类，回放几条失败轨迹，确认是评测脚本或环境本身出了问题，还是 Agent 行为真的回退了。",
+          "why": "它要求先检查评测系统本身再动 Agent，并按任务聚类、回放轨迹定位失败，属于该技能对 benchmark 报告与回归排查的工程规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter7-s3-sc2",
+          "text": "我们准备把检索重排模块默认开启，请设计一个受控实验：固定模型版本、温度、随机种子和步数上限，A/B 两组交替跑同一任务集，只改这一个开关，同时监控成功率、平均操作次数和用户满意度，任一项恶化就停。",
+          "why": "这是多轮对照实验与特性开关验证，需要固定参数、交替运行、区分机制指标与目标指标并设置护栏，属于该技能的持续实验内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter7-s3-sc3",
+          "text": "我想搭一个机械臂抓取的仿真训练场：每局都能从固定且干净的初始状态开始，同时把物体摩擦、光照和相机噪声随机化，避免策略只记住某个特定配置，练稳了再迁移到真机。",
+          "why": "这是仿真训练环境建设，要求每个 episode 可重置到确定初始状态并引入领域随机化，对应技能中的仿真环境和训练环境规则。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter8-s1",
+      "name": "后训练路径规划与数据准备",
+      "inputHash": "sha256:3f824c22168c4fb1c92406f684f1f5f7a46adbeceb8a07feb3b0898708db748a",
+      "scenarios": [
+        {
+          "scenarioId": "chapter8-s1-sc1",
+          "text": "我拿一个通用基座模型做公司内部硬件设计文档的问答，文档有几百万字且相互关联，但我不确定应该先让模型在这些文档上继续训练，还是直接用现有的几千条问答对去微调；如果继续训练，通用数据该怎么配比才能不丢掉原有能力？",
+          "why": "需要判断领域知识注入应走 Mid-training 还是 SFT，并准备对应训练数据，涉及数据分布收窄、通用保留数据配比等要点。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter8-s1-sc2",
+          "text": "模型已经能回答客服问题，但输出经常不按我们系统要求的 JSON 字段来，我手头有十万条线上交互记录，应该怎么筛出多少条来训练才能让它稳定输出这个格式？",
+          "why": "这是典型的格式/协议固化问题，需要 SFT 数据构造与质量优先策略，而不是用大量脏数据或事实注入，符合该技能对 SFT 数据的指导。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter8-s1-sc3",
+          "text": "我们有一个代码生成模型，能写出一堆候选但只有部分能通过测试，我想用这些通过/失败的样本提升一次通过率，但不确定直接拿失败样本当 SFT 对不对，还是应该构造偏好对做强化学习？",
+          "why": "涉及失败轨迹不能直接当正确示范、拒绝采样构造 SFT 数据、以及判断当前策略是否具备可评分且有奖励差异的轨迹来使用 RL，属于该技能覆盖的数据准备与路径判断。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter8-s2",
+      "name": "RL训练与奖励环境搭建",
+      "inputHash": "sha256:3d8ef6e6aab067bafbe3961a0bc951975e98c4fe23b82f6c139b9cbd782e63a2",
+      "scenarios": [
+        {
+          "scenarioId": "chapter8-s2-sc1",
+          "text": "我们有一个 11B 量级的视觉语言模型，目标是输出严格 JSON 的结果。我试了不加监督数据、直接让它按奖励信号探索，但多次训练都不收敛。现在想弄清楚这类规模下是不是必须先做一步有监督初始化，以及怎么设置第一个可跑的奖励环境。",
+          "why": "它需要判断端到端强化学习失败是否源于缺少 SFT 初始化，并给出先做冷启动再训练的工程规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter8-s2-sc2",
+          "text": "我负责做一个多工具 agent 的强化学习训练，沙盒环境已经能重置和重放，但现在担心训练任务和上线后真实任务分布不一致。我想把训练题库和评估题库分开，但复用同一套执行与校验代码，应该按什么原则划分？",
+          "why": "它涉及训练环境与评估环境的设计，需要共享任务生成器与验证代码但不能共享同一批任务的规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter8-s2-sc3",
+          "text": "我在做带工具调用的策略梯度训练，每个 episode 里环境会返回执行结果，模型也有自己的推理 token。计算梯度时，我发现如果把环境返回的文本也一起回传，训练会变得不稳定；我想确认正确的遮罩边界。",
+          "why": "它涉及工具调用强化学习中策略梯度计算时对环境反馈 token 的屏蔽规则。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter8-s3",
+      "name": "训练诊断与评估数据利用",
+      "inputHash": "sha256:b4ad37280a2c40ce8da1e5c0ef1a2d01e2404a2c99e9cf9e0b129259cb2dcaff",
+      "scenarios": [
+        {
+          "scenarioId": "chapter8-s3-sc1",
+          "text": "我把训练 batch size 从 128 改成 512 后，同一批样本跑出来的 loss 和梯度对不上，帮我查一下是不是改动把计算归约方式弄混了，导致数值结果不一致。",
+          "why": "该技能包含批大小改变破坏 batch invariance 的反模式，以及训练数值问题诊断方法。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter8-s3-sc2",
+          "text": "我想验证一个新的奖励塑形改动是否有效，但现在的算力预算只够做小规模实验，请帮我设计一个在更新参数前就跑的 on-policy 对比方案，先别全量训练。",
+          "why": "该技能强调在固定小规模预算下验证关键假设，以及在任何参数更新前执行 on-policy 单元测试。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter8-s3-sc3",
+          "text": "我们有一批评估后留下的失败轨迹，每条都标了第一个错误步骤和错误类别，我想把这些数据变成下一轮训练的监督信号，但不确定该对前缀做回归还是全轨迹回归，帮我给出映射和注意点。",
+          "why": "该技能包含评估数据集到训练用法的映射，以及把失败轨迹转化为后训练诊断和修复信号。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter9-s1",
+      "name": "轨迹经验提取",
+      "inputHash": "sha256:8d5234aef3f6857596293857e87c84890d7850d3ffe55668f7463e5d60f92e7b",
+      "scenarios": [
+        {
+          "scenarioId": "chapter9-s1-sc1",
+          "text": "我这里有上个月订单处理 agent 跑过的全部轨迹，大概三四百条，我想知道哪些任务算真正成功，哪些虽然结果对了但中间绕了弯路或者违规操作，最好能按失败类型归类，并把其中值得复用的做法整理出来。",
+          "why": "它需要从结果、过程、质量多个维度评价轨迹，并提取可复用经验，这正是该技能的核心能力。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s1-sc2",
+          "text": "最近几次订票流程里，agent 有好几次在付款后才检查特殊餐食截止时间，导致用户不满；我想把这些失败轨迹分析一下，形成几条具体的行动约束，但先不要直接应用到生产，得经过回归测试和安全检查后再更新到我们的运行规则里。",
+          "why": "它强调所有修改先形成待验证版本，经过验证才能改变下一轮运行，同时从轨迹中提取行动经验。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s1-sc3",
+          "text": "我想让系统每次跑完任务后自动判断这次干得怎么样——有没有达到目标、过程是否合规、用户是否满意，并且只有证据充分、跨轨迹反复出现且验证有效的经验，才能进入正式的经验文档，低置信度的案例直接过滤掉。",
+          "why": "它需要建立基于结果验证器、过程验证器和质量验证器的评价，并对经验进行严格筛选和验证，防止不可靠经验进入正式文档。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter9-s2",
+      "name": "学习载体与自进化更新",
+      "inputHash": "sha256:be0929a2ed32e0d06cfaa4fe7e832a289e42bc94cd20b6676fdb1ebc0dc645e0",
+      "scenarios": [
+        {
+          "scenarioId": "chapter9-s2-sc1",
+          "text": "我们线上助手最近因为几次格式解析错误，把它自己的系统提示整段重写了三遍，结果之前修好的其他约束又丢了。请帮我在现有提示上只增补出问题的那一小段，并让后续改动都带上来源记录，不要再整份重写。",
+          "why": "这需要把提示词修改改成带来源的最小 diff，避免反复重写整份 Prompt 的反模式。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s2-sc2",
+          "text": "我们想让 Agent 稳定使用一套内部引用格式，现在规则写在提示词里还是经常漏，每次都要人工纠正。帮我判断这个能力是继续靠提示词约束，还是应该直接微调进模型参数更划算。",
+          "why": "这需要判断一项能力能否被外部符号较完整地表达，还是需要写入模型参数，属于学习载体的决策问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s2-sc3",
+          "text": "我手上有近一周的 Agent 生产日志，每条都带环境奖励信号和人工修正后的最终答案。我想把高质量轨迹转成 SFT 样本，把明显好坏对比转成偏好数据，并搭一个可自动验证的更新闭环，让模型每周用新轨迹迭代一次。",
+          "why": "这需要把经过评价的生产轨迹转化为训练数据，并组织可持续的自我进化循环。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter9-s3",
+      "name": "可验证业务与流程提炼",
+      "inputHash": "sha256:7676ee5b9f5191374133d45adf052e4ef111fd645cef95b770db0eed94223dae",
+      "scenarios": [
+        {
+          "scenarioId": "chapter9-s3-sc1",
+          "text": "我翻了一批退票费、改签费争议的客服会话记录，系统里经常直接把这类问题转给人工。帮我从这些轨迹里抽出哪些情况其实不用转人工，并且能自动验证这条判断规则是否成立。",
+          "why": "它需要从业务反馈和实际轨迹中提炼可复用策略，并判断该策略能否形成自动验证闭环，而不是只做会话分类或情绪分析。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s3-sc2",
+          "text": "我录了一段处理航班改签的浏览器操作轨迹，里面有些步骤明显是临时兜底。能不能把它整理成一个可以回放、并且每一步前后都能自动校验的工作流？",
+          "why": "这是从浏览器轨迹生成可验证工作流的需求，且明确要求动作前验证、动作后验证和回放验证，正是该技能的典型触发场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s3-sc3",
+          "text": "我们团队想把一批重复性任务自动化，但有些任务的结果好坏很难立刻判断。帮我评估一下手头这些任务里，哪些适合做成能快速自动验证的闭环，哪些先不要碰。",
+          "why": "该请求需要判断可验证闭环的边界，根据任务类型和反馈信号来筛选哪些适合自动验证，而不是直接设计自动化方案或编写脚本。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "chapter9-s4",
+      "name": "自进化系统治理",
+      "inputHash": "sha256:4714fab3c84c294f65de2335c1ddf041efca5c16a55e700451e0dc1574327e0b",
+      "scenarios": [
+        {
+          "scenarioId": "chapter9-s4-sc1",
+          "text": "我正在做一个会抓取竞品网页和自己工具日志的内部助手，它有时会把网页里的文字当成后续动作，我担心被注入。请帮我梳理哪些内容最多只能作为摘要证据，哪些经过什么流程才能进入长期技能。",
+          "why": "该技能在处理网页、工具输出等内容是否可纳入长期能力时提供可信证据边界，避免不可信输入被当作指令执行。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s4-sc2",
+          "text": "我负责的订单处理 Agent 会调用库存和风控两个子 Agent，现在每次子 Agent 更新提示词后整体链路就容易出问题。请帮我设计接口和约束，让子组件可以在不破坏整体的前提下独立演进。",
+          "why": "该技能涉及相互交错的组件系统在自我更新时如何保持可组合性可传递，而不是只解决单一 Agent 的代码问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "chapter9-s4-sc3",
+          "text": "我这边 Agent 每天会产生大量线上运行记录，我想把这些记录存下来，离线分析后生成改进补丁，通过自动化测试再小流量发布，失败自动回退。请给我一个从证据采集到发布回滚的完整流程。",
+          "why": "该技能覆盖在线记录证据、离线生成和验证更新提案再逐步发布、整理或回滚的治理流程，能处理从日志到发布的全链路。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "introduction-s1",
+      "name": "引言入门与全局导航",
+      "inputHash": "sha256:2328d9be62da1ff954c68e120a80ac86f18d6afe6a176ad01f7f10b584aac107",
+      "scenarios": [
+        {
+          "scenarioId": "introduction-s1-sc1",
+          "text": "我刚翻开这本书的引言，想先理清十章内容是怎么分块、各章大致解决什么问题，以及示例代码应该从哪里开始跑，好安排接下来的阅读顺序。",
+          "why": "它能在引言阶段提供全书结构概览和查找实验代码入口的导航说明。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "introduction-s1-sc2",
+          "text": "我刚读到引言里对 Agent 的拆解，但还是分不清上下文和工具各自承担什么职责，能不能用最小化的方式帮我把 LLM、上下文、工具三者的边界讲清楚？",
+          "why": "该技能包含 Agent = LLM + 上下文 + 工具 的核心定义和三层公式，能直接澄清这些组成及其作用边界。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "introduction-s1-sc3",
+          "text": "我在调整一个 Agent 的评测流程时，某项指标涨了一个点，但我不确定这是真实改进还是随机波动，想先建立一套系统判断机制再继续迭代。",
+          "why": "该技能包含建立系统评估机制的内容，专门用于判断一次改动带来的提升是来自设计本身还是随机波动。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "reference-answers-s1",
+      "name": "运行安全与工具治理",
+      "inputHash": "sha256:87af6bc8611cf323e7e470c5e9b8aab5054197d70c5571d0c3b4dba626b43229",
+      "scenarios": [
+        {
+          "scenarioId": "reference-answers-s1-sc1",
+          "text": "我正在给一个客服自动化 Agent 增加“发送邮件给用户”的能力，但我担心它把邮件发错人或者发出不该发的内容。我想在工具调用前加一道基于规则的风险检查，比如根据收件人域名、邮件标题和正文中的关键词来阻断高风险调用，而不是让模型自己判断。",
+          "why": "这涉及工具调用前的风险评级与事前审批，需要把评级细化到工具+参数并用确定性规则检查，而不是模型判断。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "reference-answers-s1-sc2",
+          "text": "我让 Agent 自动生成一个内部数据看板的界面，它目前会返回一段 HTML 直接嵌进我们的后台页面。我担心这段 HTML 里可能混入脚本或事件处理器，想改成让它只输出界面描述 JSON，由我们已有的前端组件库来渲染。",
+          "why": "这需要 Agent 生成 UI 时采用声明式协议，只输出结构化描述并由受信组件渲染，避免执行任意 HTML/JS。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "reference-answers-s1-sc3",
+          "text": "我搭了一个多 Agent 流程，前期需求澄清阶段 Agent 会不断向用户提问，但切到编码阶段后它还保留着提问工具，导致流程卡在等待输入。我想在阶段切换时同步换掉系统提示词和工具集，移除提问工具并加上代码检查工具。",
+          "why": "这涉及多 Agent 协作中切换阶段时消除角色干扰，需要同时更换提示词与工具集并强化当前角色状态。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "reference-answers-s2",
+      "name": "上下文检索与评估设计",
+      "inputHash": "sha256:8eb51907f8cd69eefc13fce3e13af1b713792d86c1a4184c5936a95a1449db68",
+      "scenarios": [
+        {
+          "scenarioId": "reference-answers-s2-sc1",
+          "text": "我们有个跑长任务的 Agent，对话历史越来越长，为了控制缓存读取成本，我本来想每轮都对最早的消息做压缩，但又担心丢掉关键上下文后模型行为变差，想请你帮我定一套压缩和保留策略。",
+          "why": "它涉及累计缓存读取费用二次增长时是否每轮压缩早期轨迹的权衡，以及有损压缩与信息保留的规则，正是该技能的核心。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "reference-answers-s2-sc2",
+          "text": "我想给内部 wiki 做一个检索问答，查询语句有些是“给我讲讲 XX 服务的整体设计”，有些是“XX 服务与 YY 服务之间是什么关系”，现在纠结用哪种索引结构来支持这两种粒度。",
+          "why": "它涉及 RAPTOR（总览到细节）和 GraphRAG（多跳关系推理）的选型比较，应由该技能来权衡。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "reference-answers-s2-sc3",
+          "text": "我们做代码 Agent 评测，题库一旦公开就被针对性刷分，训练时如果直接复用评测题又会导致指标虚高，我想设计一套可以持续生成新题、同时训练评估数据隔离的方案。",
+          "why": "该技能包含静态题库无终局、公开生成机制与私有化实例、评估数据复用环境不复用题目等防作弊与训练数据策略。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "reference-answers-s3",
+      "name": "参考答案综合复习",
+      "inputHash": "sha256:46d0d4a345d472bdba2d75d7cb02405322e512c1754e2c71925f7e10b7e886b6",
+      "scenarios": [
+        {
+          "scenarioId": "reference-answers-s3-sc1",
+          "text": "我把这一章所有思考题的参考答案都整理出来了，想按主题重新过一遍，每道题都对着书稿相应段落看看要不要补充讨论；请从头到尾覆盖，别跳过任何一条。",
+          "why": "它要求按主题逐条对照书稿并覆盖全部参考答案条目，正是该技能的综合复习用途。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "reference-answers-s3-sc2",
+          "text": "书里那道工具调用风险的思考题，参考答案只给了“看能不能撤回、权限多大、波及多广”几个字，我想结合书稿对应小节，逐条解释为什么风险要按每次调用的具体参数来评，而不是按工具统一定；也要说说这里为什么不让模型去判断风险。",
+          "why": "它要求针对具体参考答案条目结合书稿展开机制讨论，而不是泛泛复述，这应由该技能触发。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "reference-answers-s3-sc3",
+          "text": "我正在复习这一章，请把思考题答案按主题列成清单，每题标出对应的书稿小节，然后我们一条一条讨论；题目之间如果有重复或矛盾也帮我标出来。",
+          "why": "它要求建立主题索引并逐一讨论全部答案，是该技能对整章参考答案做综合复习的用法。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    }
+  ],
+  "unrelated": {
+    "inputHash": "sha256:8dac2a89879a70147355fa9a643931f8b00ab3aa54f793d7786b5b7e0ca6c5a6",
+    "scenarios": [
+      {
+        "scenarioId": "unrelated-sc1",
+        "text": "我想做戚风蛋糕，但家里没有低筋面粉，帮我看看能用什么替代？",
+        "why": "这是烘焙原料替代咨询，与 Agent 工程、模型训练、工具设计、上下文治理、评测等技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc2",
+        "text": "我刚恢复运动，想每周去三次健身房，帮我安排一个不伤膝盖的入门计划。",
+        "why": "这是普通个人健身计划咨询，不涉及任何 Agent 架构、安全控制、训练评估或工具治理技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc3",
+        "text": "我的多肉盆土板结了，打算换盆，帮我说说具体步骤和配土比例。",
+        "why": "这是家庭园艺养护问题，不触及清单中的 LLM Agent、上下文注入、工具设计或自进化系统等主题。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc4",
+        "text": "五一想带两个孩子去杭州玩三天，不想太累，帮我排个大致行程和住宿区域建议。",
+        "why": "这是普通旅行规划请求，与 Agent 多智能体协作、安全治理、训练数据、RAG 检索等技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc5",
+        "text": "帮我把这段中秋家庭聚会的素材扩写成一篇八百字左右的记叙文。",
+        "why": "这是日常写作辅助，不涉及任何 Agent 任务执行、工具供应链、模型评估或记忆体系设计技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc6",
+        "text": "周末想和父母一起看两部老电影，不要太沉重，有什么适合的选择？",
+        "why": "这是影视推荐咨询，不触及 Agent 工程、工具风险评级、上下文检索、后训练或语音交互等技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc7",
+        "text": "我家博美脚底毛太长，走路有点打滑，该怎么安全地修剪？",
+        "why": "这是宠物护理问题，与 Agent 边界设计、执行路径、安全治理、多模态感知、机器人操作等技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc8",
+        "text": "卫生间墙角发霉了，想知道自己处理用什么清洁剂比较有效。",
+        "why": "这是家庭清洁和家居维护问题，不涉及任何 Agent 框架、工具组织、事件驱动架构或评估系统技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc9",
+        "text": "我准备贷款买房，按现在的利率，等额本息和等额本金每月分别大概还多少？",
+        "why": "这是个人财务计算咨询，不触碰清单中的上下文框架、安全控制、RAG 构建、工具设计或训练诊断等技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc10",
+        "text": "帮我起草一封给客户的项目进度说明邮件，语气礼貌、简短。",
+        "why": "这是普通商务写作请求，与 Agent 上下文治理、工具执行、多 Agent 系统、模型后训练或自进化无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc11",
+        "text": "我女儿刚上小学，怎么帮她养成每天先完成作业再玩的习惯？",
+        "why": "这是儿童教育及习惯培养咨询，不涉及 Agent 能力更新、安全治理、工具供应链、检索评估或 RL 训练。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc12",
+        "text": "每天久坐腰很酸，请给我几个在办公室就能做的拉伸动作。",
+        "why": "这是日常健康与办公场景下的身体放松建议，与清单中的 Agent 架构、记忆体系、多模态读取、语音交互等无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc13",
+        "text": "黑色大衣配什么颜色的围巾和内搭更适合初冬通勤？",
+        "why": "这是个人穿搭建议，不涉及 Agent 协作、高风险控制、上下文注入、知识建模、工具发现或自进化治理。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc14",
+        "text": "我想用旧牛仔裤改成一个单肩包，需要准备哪些工具和大致步骤？",
+        "why": "这是旧物改造手工艺问题，不触及 Agent 上下文框架、工具审查、事件驱动架构、评估基础设施或轨迹经验提取。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc15",
+        "text": "我们家庭聚会想玩几个不用道具、十分钟内能结束的小游戏，有推荐吗？",
+        "why": "这是家庭娱乐活动建议，与 Agent 技能清单中的安全控制、工具治理、多智能体编排、后训练或语音交互无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc16",
+        "text": "手机晚上拍车流光轨总是糊，该怎么设置快门和感光度？",
+        "why": "这是手机摄影参数设置问题，不涉及 Agent 设计、工具执行、上下文检索、模型训练、Computer Use 或机器人操作。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc17",
+        "text": "我是业主，想写一份楼道禁止堆放杂物的温馨提示，语气别太生硬。",
+        "why": "这是社区公共沟通写作，与 LLM Agent 构建、安全治理、工具供应链、多模态感知、评估系统或自进化无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc18",
+        "text": "请用高中生能听懂的方式解释为什么冬天玻璃上会有冰花。",
+        "why": "这是自然科学知识科普，不涉及清单中的 Agent 边界、上下文安全、RAG 检索、工具组织、训练诊断或语音技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc19",
+        "text": "帮我想一个十岁男孩的生日派对流程，预算控制在五百元以内。",
+        "why": "这是普通活动策划请求，不触及 Agent 工程、工具风险、记忆体系、多 Agent 编排、评估验证或自进化系统。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc20",
+        "text": "我想入手一把人体工学椅，预算两千左右，哪些参数应该优先看？",
+        "why": "这是日常购物选品咨询，与 Agent 架构设计、安全控制、上下文治理、工具设计、模型训练或机器人操作无关。",
+        "containsNameLeak": false
+      }
+    ],
+    "problems": [],
+    "finishReason": "stop"
+  },
+  "usage": {
+    "promptTokens": 47558,
+    "completionTokens": 78972
+  }
+}

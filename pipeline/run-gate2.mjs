@@ -39,13 +39,12 @@ import { parseFrontmatter } from './tools/verify-skill.mjs'
 import { summaryOfObject } from './tools/cluster-proposer.mjs'
 import { loadAssemblyInputs, loadClusterCandidate, clusterFromCandidate } from './build-skill.mjs'
 import {
-  ANSWERS_PARTIAL_REL_PATH,
+  BLIND_MODES,
   DEFAULT_GATE2_MAX_TOKENS,
   DEFAULT_HIT_SCENARIOS_PER_CANDIDATE,
   DEFAULT_UNRELATED_SCENARIOS,
   GATE2_REPORT_SCHEMA_VERSION,
   GATE2_SCENARIOS_SCHEMA_VERSION,
-  REPORT_REL_PATH,
   SCENARIOS_PARTIAL_REL_PATH,
   SCENARIOS_REL_PATH,
   blindInputHash,
@@ -61,6 +60,8 @@ import {
   scenarioGenPromptFingerprint,
   unrelatedGenInputHash,
   writeJson,
+  answersPartialRelPath,
+  reportRelPath,
 } from './tools/gate2-blind-test.mjs'
 
 export const EXIT = Object.freeze({
@@ -84,6 +85,7 @@ function parseArgs(argv) {
     reasoningEffort: null,
     maxTokens: null,
     skill: null,
+    blindMode: 'list',
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -95,6 +97,14 @@ function parseArgs(argv) {
     if (a === '--dry-run') flags.dryRun = true
     else if (a === '--json') flags.json = true
     else if (a === '--no-resume') flags.resume = false
+    else if (a === '--blind-mode') {
+      const v = need(i, a)
+      if (!Object.hasOwn(BLIND_MODES, v)) {
+        throw new Error(`--blind-mode 只支持 ${Object.keys(BLIND_MODES).join(' | ')}，实得：${v}`)
+      }
+      flags.blindMode = v
+      i += 1
+    }
     else if (a === '--skill') (flags.skill = need(i, a)), (i += 1)
     else if (a === '--model') (flags.model = need(i, a)), (i += 1)
     else if (a === '--base-url') (flags.baseUrl = need(i, a)), (i += 1)
@@ -190,6 +200,8 @@ async function main(argv) {
   const rel = (p) => path.relative(repoRoot, p)
   const K = DEFAULT_HIT_SCENARIOS_PER_CANDIDATE
   const N = DEFAULT_UNRELATED_SCENARIOS
+  const blindMode = flags.blindMode
+  const blindMax = BLIND_MODES[blindMode].max
 
   try {
     const { candidates, missingReceipts } = await loadCandidatesForBlindTest(repoRoot, { only: flags.skill })
@@ -205,11 +217,11 @@ async function main(argv) {
     // ── 复用底座：正式产物与 partial 同形状，后者优先（它是更新的那次运行） ──
     const scenariosAbs = path.join(repoRoot, SCENARIOS_REL_PATH)
     const scenariosPartialAbs = path.join(repoRoot, SCENARIOS_PARTIAL_REL_PATH)
-    const answersPartialAbs = path.join(repoRoot, ANSWERS_PARTIAL_REL_PATH)
+    const answersPartialAbs = path.join(repoRoot, answersPartialRelPath(blindMode))
     const baseScenarios = (await readJsonOrNull(scenariosPartialAbs)) ?? (await readJsonOrNull(scenariosAbs))
     const usableBase = flags.resume && baseScenarios?.promptFingerprint === scenarioGenPromptFingerprint() ? baseScenarios : null
     const baseAnswers = flags.resume ? await readJsonOrNull(answersPartialAbs) : null
-    const answersUsable = baseAnswers?.promptFingerprint === blindPromptFingerprint() ? baseAnswers : null
+    const answersUsable = baseAnswers?.promptFingerprint === blindPromptFingerprint({ max: blindMax }) ? baseAnswers : null
 
     // ── dry-run：只报规模 ──
     if (flags.dryRun) {
@@ -225,6 +237,7 @@ async function main(argv) {
       const out = {
         dryRun: true,
         candidates: candidates.length,
+        blindMode,
         hitScenariosPerCandidate: K,
         unrelatedScenarios: N,
         plannedGenerationCalls: genCalls,
@@ -338,7 +351,7 @@ async function main(argv) {
     // ── 盲测（逐场景复用/调用） ──
     const answers = answersUsable ?? {
       schemaVersion: `${GATE2_REPORT_SCHEMA_VERSION}-answers`,
-      promptFingerprint: blindPromptFingerprint(),
+      promptFingerprint: blindPromptFingerprint({ max: blindMax }),
       scenarios: {},
       usage: { promptTokens: 0, completionTokens: 0 },
     }
@@ -350,7 +363,7 @@ async function main(argv) {
     ]
     let blindCalls = 0
     for (const sc of allScenarios) {
-      const wantHash = blindInputHash({ scenarioText: sc.text, catalog: promptCatalog, modelId })
+      const wantHash = blindInputHash({ scenarioText: sc.text, catalog: promptCatalog, modelId, max: blindMax })
       const existing = answers.scenarios[sc.scenarioId]
       if (existing?.inputHash === wantHash) continue
       const res = await runBlindScenario({
@@ -359,12 +372,14 @@ async function main(argv) {
         scenarioText: sc.text,
         catalog: promptCatalog,
         codeToSkillId,
+        max: blindMax,
         maxTokens,
       })
       answers.scenarios[sc.scenarioId] = {
         inputHash: res.inputHash ?? wantHash,
         skillIds: res.skillIds,
         unknownCodes: res.unknownCodes,
+        overMax: res.overMax,
         finishReason: res.finishReason,
       }
       addUsage(answers.usage, res.usage)
@@ -393,7 +408,8 @@ async function main(argv) {
       createdAt: new Date().toISOString(),
       subset: flags.skill ?? null,
       model: { modelId },
-      promptFingerprints: { scenarioGen: scenarioGenPromptFingerprint(), blind: blindPromptFingerprint() },
+      blindMode,
+      promptFingerprints: { scenarioGen: scenarioGenPromptFingerprint(), blind: blindPromptFingerprint({ max: blindMax }) },
       scenarioSetFile: rel(scenariosAbs),
       scenarioSetSha256: scenarioSetSha(scenariosDoc),
       catalogSha256: catalogHash(candidates),
@@ -412,7 +428,7 @@ async function main(argv) {
     }
 
     await writeJson(scenariosAbs, scenariosDoc)
-    const reportAbs = await writeJson(path.join(repoRoot, REPORT_REL_PATH), report)
+    const reportAbs = await writeJson(path.join(repoRoot, reportRelPath(blindMode)), report)
 
     const t = report.totals
     const summary = {

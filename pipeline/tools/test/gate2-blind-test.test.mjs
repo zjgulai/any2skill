@@ -31,7 +31,7 @@ import {
   validateBlindAnswer,
   validateScenarioGen,
 } from '../gate2-blind-test.mjs'
-import { loadCandidatesForBlindTest } from '../../run-gate2.mjs'
+import { loadCandidatesForBlindTest, parseArgs as parseGate2Args } from '../../run-gate2.mjs'
 
 /* ──────────────────────────── 盲测隔离（本文件最要紧的一组） ──────────────────────────── */
 
@@ -276,6 +276,33 @@ describe('12 · 身份键与两段替身调用', () => {
   })
 })
 
+/* ──────────────────────────── 严格口径第二读数（口径校准） ──────────────────────────── */
+
+describe('12 · 严格口径第二读数：换口径即换身份，超限如实记录', () => {
+  it('系统/用户提示词按口径变化；两种口径的指纹不同', () => {
+    assert.ok(buildBlindSystemPrompt({ max: 2 }).includes('至多列 2 个'))
+    assert.ok(buildBlindUserPrompt({ scenarioText: 's', catalog: [], max: 2 }).includes('至多 2 个'))
+    assert.notEqual(blindPromptFingerprint({ max: null }), blindPromptFingerprint({ max: 2 }))
+  })
+
+  it('身份键随口径变化（同场景同目录，两种口径不互相复用）', () => {
+    const base = { scenarioText: 's', catalog: [{ code: 'k01', name: 'n', description: 'd' }], modelId: 'm' }
+    assert.notEqual(blindInputHash({ ...base, max: null }), blindInputHash({ ...base, max: 2 }))
+  })
+
+  it('超限如实记录、不截断（截断等于替模型改答案）', () => {
+    const map = new Map([['k01', 'A'], ['k02', 'B'], ['k03', 'C']])
+    const r = validateBlindAnswer({ triggered: ['k01', 'k02', 'k03'] }, { codeToSkillId: map, max: 2 })
+    assert.equal(r.skillIds.length, 3)
+    assert.equal(r.overMax, 3)
+    assert.equal(validateBlindAnswer({ triggered: ['k01'] }, { codeToSkillId: map, max: 2 }).overMax, null)
+  })
+
+  it('CLI --blind-mode 非法值被拒（列出可用口径）', () => {
+    assert.throws(() => parseGate2Args(['node', 'run-gate2.mjs', '--blind-mode', 'nope']), /--blind-mode 只支持 list \| strict/)
+  })
+})
+
 /* ──────────────────────────── CLI 干跑（临时仓库根） ──────────────────────────── */
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
@@ -363,6 +390,13 @@ describe('12 · CLI 干跑与前置拒绝', () => {
     assert.equal(out.plannedGenerationCalls, 2) // 1 候选 + 无关场景
     assert.equal(out.plannedBlindCalls, 3 + 20)
     assert.ok(!r.stdout.includes('哨兵'))
+  })
+
+  it('--blind-mode strict：干跑如实标记口径（两份读数各走各的 partial 与报告）', () => {
+    const r = runCli(['--dry-run', '--json', '--blind-mode', 'strict'])
+    assert.equal(r.status, 0, r.stderr)
+    const out = JSON.parse(r.stdout)
+    assert.equal(out.blindMode, 'strict')
   })
 
   it('--skill 未知候选 → 拒绝并列出现有', () => {

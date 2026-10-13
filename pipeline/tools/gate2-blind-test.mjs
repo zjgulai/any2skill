@@ -101,42 +101,60 @@ export function buildUnrelatedGenUserPrompt({ catalog }) {
 
 /* ──────────────────────────── 提示词 · 盲测 ──────────────────────────── */
 
-export function buildBlindSystemPrompt() {
-  return [
+/**
+ * 盲测系统提示词。`max` 为 `null` = 第一读数（列全部适用者）；
+ * `max = 2` = **严格口径第二读数**（至多 1–2 个最匹配者）——它是 ADR-026 未决 2
+ * 的敏感性校准仪器，不是判据变更：两份读数并存，对照之后才谈「哪种口径是对的」。
+ */
+export function buildBlindSystemPrompt({ max = null } = {}) {
+  const lines = [
     '你是「技能触发器」。你只会看到：一个用户场景，以及若干技能的短名与描述。',
     '你的任务：判断这个场景会触发下列**哪些**技能——可能一个都不触发。',
     '',
     '硬性要求：',
     '1. 只依据场景本身的意图与技能描述里的触发条件判断；**宁缺毋滥**：',
     '   只有描述真的覆盖这个场景时才列入。',
-    '2. 输出场景会触发的**全部**技能（可能不止一个），或空列表。',
+  ]
+  if (max === null) {
+    lines.push('2. 输出场景会触发的**全部**技能（可能不止一个），或空列表。')
+  } else {
+    lines.push(
+      `2. **至多列 ${max} 个**——只列与该场景**最匹配**的，不要把所有沾边的都列上。`,
+      '   若没有明确匹配的，空列表。',
+    )
+  }
+  lines.push(
     '3. 只输出一个 JSON 对象，不要解释文字，不要 markdown 代码围栏：',
     '   {"triggered": ["<技能代号>", "…"]}   // 空列表写作 []',
-  ].join('\n')
+  )
+  return lines.join('\n')
 }
 
 /**
  * 盲测题面。**这是盲测隔离的实现**：函数只读白名单字段 `{code, name, description}`，
  * 任何对象内容、units、来源都不可能经由这里进入题面。
  */
-export function buildBlindUserPrompt({ scenarioText, catalog }) {
+export function buildBlindUserPrompt({ scenarioText, catalog, max = null }) {
   return [
     `用户场景：${scenarioText}`,
     '',
     '候选技能（代号 —— 短名 —— 描述）：',
     ...catalog.map((c) => `- ${c.code} —— ${c.name} —— ${c.description}`),
     '',
-    '这个场景会触发下列哪些技能？给出代号列表（可以为空）。',
+    max === null
+      ? '这个场景会触发下列哪些技能？给出代号列表（可以为空）。'
+      : `这个场景最匹配下列哪${max === 1 ? '一' : ` 1–${max} `}个技能？给出代号列表（可以为空，至多 ${max} 个）。`,
   ].join('\n')
 }
 
-/** 盲测提示词指纹（与全仓同构：提示词是实现的一部分）。 */
-export function blindPromptFingerprint() {
+/** 盲测提示词指纹（与全仓同构：提示词是实现的一部分；两种口径各有各的指纹）。 */
+export function blindPromptFingerprint({ max = null } = {}) {
   const sample = buildBlindUserPrompt({
     scenarioText: '<scenario>',
     catalog: [{ code: 'k01', name: '<name>', description: '<description>' }],
+    max,
   })
-  const digest = createHash('sha256').update(`${buildBlindSystemPrompt()}\n\u0000\n${sample}`).digest('hex').slice(0, 12)
+  const digest = createHash('sha256').update(`${buildBlindSystemPrompt({ max })}\n\u0000\n${sample}`).digest('hex').slice(0, 12)
   return `prompt-${digest}`
 }
 
@@ -191,8 +209,8 @@ export function validateScenarioGen(parsed, { expected, forbiddenName = null }) 
   return { scenarios, problems }
 }
 
-/** 盲测回答的解析：代号解析到映射表；未知代号逐条记录（不静默丢）。 */
-export function validateBlindAnswer(parsed, { codeToSkillId }) {
+/** 盲测回答的解析：代号解析到映射表；未知代号与超限逐条记录（不静默丢）。 */
+export function validateBlindAnswer(parsed, { codeToSkillId, max = null }) {
   const list = Array.isArray(parsed?.triggered) ? parsed.triggered : null
   if (list === null) {
     throw new Gate2Error(
@@ -214,7 +232,9 @@ export function validateBlindAnswer(parsed, { codeToSkillId }) {
     }
     skillIds.push(hit)
   }
-  return { skillIds, unknownCodes }
+  // 超限**不截断**（截断会替模型改答案），如实带上标志由判分层处理。
+  const overMax = max !== null && skillIds.length > max ? skillIds.length : null
+  return { skillIds, unknownCodes, overMax }
 }
 
 /* ──────────────────────────── 乱序与代号 ──────────────────────────── */
@@ -457,22 +477,24 @@ export async function runBlindScenario({
   chat,
   fetchImpl,
   ledger,
+  max = null,
   maxTokens = 4000,
   temperature = DEFAULT_GATE2_TEMPERATURE,
 }) {
   const chatFn = chat ?? chatCompletion
-  const system = buildBlindSystemPrompt()
-  const user = buildBlindUserPrompt({ scenarioText, catalog })
+  const system = buildBlindSystemPrompt({ max })
+  const user = buildBlindUserPrompt({ scenarioText, catalog, max })
   const res = await chatFn(config, { system, user, maxTokens, temperature, fetchImpl, ledger })
   const parsed = parseJsonOrThrow(res.text, '盲测')
-  const { skillIds, unknownCodes } = validateBlindAnswer(parsed, { codeToSkillId })
+  const { skillIds, unknownCodes, overMax } = validateBlindAnswer(parsed, { codeToSkillId, max })
   return {
     scenarioId,
     skillIds,
     unknownCodes,
+    overMax,
     usage: res.usage ?? null,
     finishReason: res.finishReason ?? null,
-    inputHash: blindInputHash({ scenarioText, catalog, modelId: config?.modelId }),
+    inputHash: blindInputHash({ scenarioText, catalog, modelId: config?.modelId, max }),
   }
 }
 
@@ -500,8 +522,28 @@ export function unrelatedGenInputHash({ catalog, n = DEFAULT_UNRELATED_SCENARIOS
   ])
 }
 
-export function blindInputHash({ scenarioText, catalog, modelId }) {
-  return hashOf([buildBlindSystemPrompt(), buildBlindUserPrompt({ scenarioText, catalog }), `model:${modelId ?? 'default'}`])
+export function blindInputHash({ scenarioText, catalog, modelId, max = null }) {
+  return hashOf([
+    buildBlindSystemPrompt({ max }),
+    buildBlindUserPrompt({ scenarioText, catalog, max }),
+    `model:${modelId ?? 'default'}`,
+  ])
+}
+
+/** 盲测口径：`list` = 第一读数（列全部适用者）；`strict` = 严格口径第二读数（至多 2 个最匹配者）。 */
+export const BLIND_MODES = Object.freeze({
+  list: { max: null },
+  strict: { max: 2 },
+})
+
+/** 口径对应的 partial/报告路径（两份读数并存，不互相覆盖）。 */
+export function answersPartialRelPath(mode) {
+  return mode === 'list'
+    ? ANSWERS_PARTIAL_REL_PATH
+    : path.join('pipeline', 'registry', `gate2-answers.${mode}.partial.json`)
+}
+export function reportRelPath(mode) {
+  return mode === 'list' ? REPORT_REL_PATH : path.join('pipeline', 'registry', `gate2-report.${mode}.json`)
 }
 
 /** 候选目录（盲测用）的整体哈希：描述或名称改变 → 身份变。 */
