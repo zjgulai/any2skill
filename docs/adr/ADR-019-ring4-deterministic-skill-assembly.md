@@ -200,7 +200,7 @@ ADR-004 写的是回链 `book/chapterN.md`，而本实现回链
 |---|---|
 | 未决 2：「常见陷阱 6–8 条」是**唯一**障碍 | **已决**（[`ADR-021`](ADR-021-section-item-counts-advisory.md)）：条目数降为建议值 `advisoryMin/advisoryMax`，低于建议值只记缺口 + 推风险标记，不产生拒因。门禁一由此全过，`skills/chapter4-tool-design-principles/SKILL.md` 已发布（此前全盘 SKILL.md 为 0） |
 | 决策 5：双口径（strict / presence-only）**都实现** | **开关已作废并移除**（ADR-021 决策 5）——留一个不再改变结论的开关只会让后来者以为它还有用 |
-| 未决 4：`sources/` 下的原书 skills README 是否移出 | **已决并执行**（2026-10-12，用户拍板「移进 `benchmark/`」）：`git mv` 至 `benchmark/upstream-skills/README.md`，附 `MIRROR-MANIFEST.md`（哈希与缺件口径）。上游 22 个 skill 目录本体**仍未镜像**——验收 4 的对照物仍缺 |
+| 未决 4：`sources/` 下的原书 skills README 是否移出 | **已决并执行**（2026-10-12，用户拍板「移进 `benchmark/`」）：`git mv` 至 `benchmark/upstream-skills/README.md`，附 `MIRROR-MANIFEST.md`。**22 个 skill 目录本体已于 2026-10-13 镜像就位**（23 文件 / 248,436 字节，逐文件哈希 + 三处交叉核对见该清单）——验收 4 的对照物至此完整 |
 
 仍未决：契约侧车 7 个字段（未决 3）——2026-10-12 用户拍板**留缺口到环 5** 再定夺（它们正是环 5 消费者的输入面，现在删将来还要加回来）。
 
