@@ -21,11 +21,13 @@ Any content → executable Agent Skills. MVP pipeline.
 完成与 `benchmark/` 22 个原书 skill 的比对——**正向覆盖 22/22，数量差异完成专项归因**
 （发布门径 / 来源缺口 / 体积阈值，不诉诸「质量不够」），报告见
 [`docs/specs/02-benchmark-report.md`](docs/specs/02-benchmark-report.md)。
-**「any」已验证第一步**（[`卡 18`](docs/tickets/18-second-source-any.md)）：多源参数化后，
-第二信息源（《Rust 程序设计语言》中文，105 个 .md，节级粒度）**环 1–4 机制零隐藏假设地跑通**，
-且**发布门径已通**（卡 18–20）：反模式章补抽 + 跨源命名空间 + [ADR-029](docs/adr/ADR-029-code-section-source-conditional.md)
-源条件骨架之后，`ch12-03-improving-error-handling-and-modularity-s1`（门禁三 **passed**）与
-`ch17-03-oo-design-patterns-s1`（门禁三 low-utility，如实记录）已入发布区——见 [`卡 20`](docs/tickets/20-second-source-first-publish.md)。
+**「any」已验证**（[`卡 18`](docs/tickets/18-second-source-any.md) 起）：多源参数化后，第二信息源
+（《Rust 程序设计语言》中文，105 个 .md，节级粒度）**环 1–4 零隐藏假设跑通、发布门径全通**——
+反模式章补抽 + 跨源命名空间 + [ADR-029](docs/adr/ADR-029-code-section-source-conditional.md)
+源条件骨架 + 跨章合成按源命名（[`卡 19`](docs/tickets/19-second-source-materials.md)–
+[`卡 22`](docs/tickets/22-cross-chapter-synthesis-per-source.md)）之后，**9 个 rust skill 入发布区**
+（门禁三：2 passed / 7 low-utility / 0 确认退化）。全链结论与实测规律（陷阱门槛、准入≠效用、
+五处固定路径漏网）见 [`docs/specs/03-second-source-report.md`](docs/specs/03-second-source-report.md)。
 
 > ### 盘上已有 16 个已发布的 skill
 >

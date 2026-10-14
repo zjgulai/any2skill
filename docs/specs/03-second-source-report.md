@@ -1,0 +1,122 @@
+# 03 · 第二信息源报告：rust-book-cn 从零到 9 个发布物（卡 18–22）
+
+- 撰写日期：2026-10-14（收口于卡 22 提交 `48ba3d5`）
+- 被述物：第二源（《Rust 程序设计语言》中文，`sources/rust-book-cn/`，上游 pin
+  `cde74c448e301ce8ac7960a0d3dc879efd83635d`，105 个 .md / 513 锚点）
+- 本报告数字全部有盘上出处；出处逐条标注（卡文件 / 冻结清单 / 报告文件）。
+
+---
+
+## 1. 一句话结论
+
+**「任何书 → skills」的主张拿到了第二本书的全链证据**：rust-cn 经过本项目的环 1–4
+与三道门禁，产出 **9 个已发布 skill**（发布区总计 16 个）；且过程中**没有为第二源改过
+任何一条判据**——改动全部在「产物按源命名」「骨架的源条件化」这两类**机制面**，
+且每处改动都伴随可复算的回归（`npm test` 564 通过 / 0 失败）。
+
+## 2. 发布物（9 个，全部过门禁一；门禁三判定如实）
+
+| # | skill | 入区卡 | 门禁三 | 依据 |
+|---|---|---|---|---|
+| 1 | ch12-03-improving-error-handling-and-modularity-s1 | 卡 20 | passed | 改进 1 / 0 退化 |
+| 2 | ch17-03-oo-design-patterns-s1 | 卡 20 | low-utility | 0 改进 0 退化，1 噪声 |
+| 3 | ch04-03-slices-s1 | 卡 21 | low-utility | 0 / 0 |
+| 4 | ch05-01-defining-structs-s1 | 卡 21 | passed | 改进 1 / 0 退化 |
+| 5 | ch05-03-method-syntax-s1 | 卡 21 | low-utility | 0 / 0 |
+| 6 | ch04-02-references-and-borrowing-s1 | 卡 22（合成解锁） | low-utility | 0 / 0 |
+| 7 | ch06-01-defining-an-enum-s1 | 卡 22（合成解锁） | low-utility | 0 / 0 |
+| 8 | ch06-02-match-s1 | 卡 22（合成解锁） | low-utility | 0 / 0 |
+| 9 | ch18-02-refutability-s1 | 卡 22（合成解锁） | low-utility | 0 / 0 |
+
+- 门禁三合计：**2 passed / 7 low-utility / 0 确认退化**
+  （来源：`pipeline/registry/gate3-report.rust-book-cn.json`）。
+- **准入 ≠ 效用（本报告最需要被读到的一句）：** 卡 22 的跨章合成把 4 个候选从
+  「陷阱段空」解锁到发布区——解锁的是**门禁一准入**；门禁三对它们的效用判定是
+  「任务要么双过要么双败，测不出增量」（low-utility 的如实定义，ADR-006 降级不拒绝）。
+  把「准入面扩大」读成「产出变好了」是本项目最容易被将来的人误读的一处。
+
+## 3. 里程碑链条（卡 18 → 卡 22）
+
+| 卡 | 一句话 | 证明的关键点 |
+|---|---|---|
+| 18 | 多源参数化 + 镜像 + ownership 切片（隔离根） | 环 1–4 机制对第二源**零改造即通**；发布门径被两处「配套素材」挡住 |
+| 19 | 产物按源命名空间（环 3/跨章池）+ 反模式章补抽 + ADR-029 源条件骨架 | 实仓（非隔离根）全链；陷阱段修复生效；骨架对源目录形态的隐含假设被揭穿 |
+| 20 | 门禁二/三按源命名空间 + 第二源首发 | 发布区 7 → 9；门禁二稳定合并对（s1↔s2）先合并再发布 |
+| 21 | 第二波（ch04/05/06 共 8 文件） | 发布区 9 → 12；`apply-resplit` 幂等重放；**陷阱门槛规律**实证 |
+| 22 | 跨章合成按源命名（三件套） | 发布区 12 → 16；ADR-016 机制第二次全链显形；**准入≠效用**实证 |
+
+每一步的实验事实与逐条出处：
+
+- **环 3 实仓全量（卡 19）**：8 章 → 16 单元 → 6 候选；覆盖 50 全过（未归类/未解析/
+  重复归属全 0）。`pipeline/knowledge/clusters.rust-book-cn.json`。
+- **第一源零接触**：卡 14 的 45 文件基线冻结在全部工作后仍 `--verify` 逐一致
+  （`pipeline/registry/freeze-2026-10-13T16-14-59.json`）；最新冻结
+  `freeze-2026-10-14T13-34-13.json`（93 文件）含第二源全部产物。
+- **门禁二（rust）**：两轮读数。首轮（wave-1 集合）稳定对 1（s1↔s2）；
+  wave-2 合并后重跑，稳定对 3 条且全为 strict=1 → 按既定规则**不再合并**。
+  全程 **0 漏触发、0 误触发**（`gate2-report.rust-book-cn.json` / `…strict….json` /
+  `gate2-stable.rust-book-cn.json`）。
+- **重切**：3 对合并（s2→s1、ch05-02→ch05-03、ch06-02←ch06-03），规则=卡 13 既定
+  （strict≥2 稳定边、不相交最强配对、吸收者=对象数）；候选 14 → 11。
+  `apply-resplit` 新增**幂等重放**语义（环 3 重跑后整体重放，卡 21）。
+- **跨章合成（卡 22）**：主题提案 12 个（全跨 ≥2 章）；合成 **95 产出 / 76 过 / 19 拒**；
+  4 个「陷阱空」候选解锁（ch04-02/06-01/06-02/18-02）；跨章 AP 注入使 4 个已发布物陈旧
+  → 全部重建（字节一致复查 9/9 ✓）。
+  `pipeline/knowledge/themes.rust-book-cn.json` / `antipatterns.rust-book-cn.objects.json`。
+
+## 4. 实测规律（将来做第三本书/第三波前必读）
+
+1. **陷阱段门槛 = AntiPattern 在章内的存在性。** 卡 21 实证：某波通过门禁一的候选，
+   **恰为**该波抽到 AntiPattern 的章（含合并体吃进 AP 的情形，ch05-03）。
+   教科书式小节（枚举/match 语法讲解）**不在章内供给反面教材**——这不是管线缺口，
+   是源的性质。对应正解是 ADR-016 的跨章合成（卡 22 已证实可以供来源），
+   而非放松判据。
+2. **共认领不是等价关系。** 两源的稳定边都呈「弥散/成链」（第一源 38/40 巨型分量；
+   rust 波 2 的链 ch06-01–06-02–06-03–18-02）。既定规则（strict≥2 + 不相交配对）
+   是把链**机械**剪成对的唯一不吃口径的选择。
+3. **目录哈希进盲测输入 ⇒ 候选集合一变，全部场景重答。** （卡 21 代价发现：
+   wave-2 合并后重跑两读数 ≈53×2 次调用，而非增量。）
+4. **哨兵面越大，固定路径漏网越多。** 本里程碑共抓到 **5 处同名根因**（固定的单源
+   文件名/写死路径）：clusters/candidates（卡 19）、跨章反模式池（卡 19 补漏，装配层实漏）、
+   门禁二/三产物（卡 20）、门禁二**候选清单**（卡 20 补漏，实跑才暴露）、
+   主题三件套（卡 22）。每处都已命名空间化并有回归；**新加产物面时先问「这个名字按源了吗」**。
+5. **catalog 内存现算会掩盖落盘缺失。** 卡 22 抓到的环 1 实漏：rust 锚点索引只落盘
+   16/105 文件——anchor-catalog 是内存现算的所以没暴露，直到合成按文件读锚点才 ENOENT。
+   （**已补落盘 89 个**；将来核对「ring-1 覆盖率」要数盘上文件，不要信一次跑通。）
+
+## 5. 口径修正与过程事故（如实归档）
+
+- **口径虚假陈述（卡 22 修正）**：`antipattern-verdict-report` 旧文称「被拒对象不在
+  `antipatterns.objects.json` 里——那份文件只装通过的」——**实测证伪**：rust 合成
+  19/19 条被拒对象都在文件里（章级对象文件同口径）。更糟的是有一条**测试把错误文本
+  钉成了回归**。文档两处 + 该测试已按真实口径修正。
+- **误发布（卡 19）**：一条核验命令漏带 `--dry-run` 实际发布了一个 rust skill；
+  即时撤回（发布区与 `registry/build` 回原状、冻结核验通过），并按卡 17 纪律
+  改为走完整门禁二/三流程后才入区。
+- **过程事故三连（卡 21）**：gate2 首启漏带 `--require` 账本（重启，partial 复用、
+  重复付费 0；首启约 3 分钟无账本如实记录）；`--require` 裸相对路径被当包名解析
+  （`./` 前缀修复）；一次「空内容」瞬时失败（设计上不可重试，走续跑）。
+- **账本纪律**：本里程碑全部真实运行产出 fs 账本（环 2 抽取 893 条；门禁二/三与合成
+  658/443/1038/1032/864/2346 条），**基准目录外访问全部为 0**；日志与账本归档
+  `pipeline/registry/history/rust-realgit-2026-10-14/`。
+
+## 6. 未解与后续
+
+- **未发布的 rust 候选 2 个**：`ch02-00-guessing-game-tutorial-s1`（合成未覆盖其锚点）、
+  `ch09-03-to-panic-or-not-to-panic-s1`（缺口类别不同：无 Concept → 实践模式空，合成不产
+  对象类型）。两者的处置是选项题（接受不发布 vs 更细的抽取/合成策略），未拍板。
+- **第三波**：ch07 模块 / ch08 集合 / ch10 泛型 trait 生命周期等 20+ 文件未抽——
+  合成机制现在在位（T03/T05/T10 主题已就位），命中率应高于第二波。
+- **`antipattern-verdict-report` 的 OBJECTS_REL** 仍是缺省名单值路径（指第二源要
+  `--objects`），未按源参数化主入口。
+- 第一源的 11 项 backlog 见 `docs/handoff-2026-10-14.md` §8。
+
+## 7. 核实方式（全部可复算）
+
+```bash
+cd /Users/lute/Project/any2skills
+ls skills/ | wc -l                                                        # 16
+node pipeline/freeze-outputs.mjs --verify pipeline/registry/freeze-2026-10-14T13-34-13.json  # 93 文件
+node pipeline/freeze-outputs.mjs --verify pipeline/registry/freeze-2026-10-13T16-14-59.json  # 45 文件（第一源基线）
+node -e 'const r=require("./pipeline/registry/gate3-report.rust-book-cn.json");for(const s of r.skills)console.log(s.slug,s.verdict.verdict)'
+node -e 'const v=require("./pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json");console.log("合成判定",v.verdicts.length,"过",v.verdicts.filter(x=>x.status==="pass").length)'
