@@ -45,6 +45,9 @@ export const FROZEN_PATHS = Object.freeze([
   'pipeline/knowledge/gate3-tasks.json',
   'pipeline/registry/skill-candidates.json',
   'pipeline/registry/resplit-plan.json',
+  // 第二源（卡 19）的环 3 产物按源命名空间，同入冻结面——第二源的结论也要可被 --verify 证明
+  'pipeline/knowledge/clusters.rust-book-cn.json',
+  'pipeline/registry/skill-candidates.rust-book-cn.json',
   // 三道门禁的最终报告（比对结论须引用它们的状态）
   'pipeline/registry/gate2-report.json',
   'pipeline/registry/gate2-report.strict.json',
