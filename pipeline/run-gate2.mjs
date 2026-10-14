@@ -36,7 +36,7 @@ import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY } from './tools/anchor-index.mjs'
 import { resolveLlmConfig, LlmConfigError, normalizeReasoningEffort } from './tools/llm-client.mjs'
 import { assembleSkill } from './tools/skill-builder.mjs'
 import { parseFrontmatter } from './tools/verify-skill.mjs'
-import { summaryOfObject } from './tools/cluster-proposer.mjs'
+import { candidatesRelPath, summaryOfObject } from './tools/cluster-proposer.mjs'
 import { loadClusterAssemblyInputs, loadClusterCandidate } from './build-skill.mjs'
 import {
   BLIND_MODES,
@@ -71,7 +71,6 @@ export const EXIT = Object.freeze({
   RUN_FAILED: 4,
 })
 
-const CANDIDATES_REL = path.join('pipeline', 'registry', 'skill-candidates.json')
 
 function parseArgs(argv) {
   const args = argv.slice(2)
@@ -129,12 +128,13 @@ function parseArgs(argv) {
  */
 export async function loadCandidatesForBlindTest(repoRoot, { only = null, sourceKey = DEFAULT_SOURCE_KEY } = {}) {
   const rel = (p) => path.relative(repoRoot, p)
+  const candidatesRel = candidatesRelPath(sourceKey)
   let doc
   try {
-    doc = JSON.parse(await readFile(path.join(repoRoot, CANDIDATES_REL), 'utf8'))
+    doc = JSON.parse(await readFile(path.join(repoRoot, candidatesRel), 'utf8'))
   } catch (err) {
     if (err.code === 'ENOENT') {
-      throw new Error(`${CANDIDATES_REL} 不存在——先跑 pipeline/propose-clusters.mjs（环 3）。`)
+      throw new Error(`${candidatesRel} 不存在——先跑 pipeline/propose-clusters.mjs --source-key ${sourceKey}（环 3）。`)
     }
     throw err
   }
