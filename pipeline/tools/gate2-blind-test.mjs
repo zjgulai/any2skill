@@ -24,6 +24,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
 
+import { DEFAULT_SOURCE_KEY } from './anchor-index.mjs'
 import { chatCompletion } from './llm-client.mjs'
 import { extractJsonPayload } from './model-json.mjs'
 
@@ -536,14 +537,39 @@ export const BLIND_MODES = Object.freeze({
   strict: { max: 2 },
 })
 
-/** 口径对应的 partial/报告路径（两份读数并存，不互相覆盖）。 */
-export function answersPartialRelPath(mode) {
+/**
+ * 口径对应的 partial/报告路径（两份读数并存，不互相覆盖）。
+ *
+ * 按源命名空间（卡 20）：缺省键逐字节不变；其他源加 `.<key>` 后缀——第二源的门禁二
+ * 产物绝不能覆盖第一源冻结面上的场景/报告（卡 19 同一纪律：产物按源命名）。
+ */
+export function answersPartialRelPath(mode, sourceKey = DEFAULT_SOURCE_KEY) {
+  const suffix = sourceKey === DEFAULT_SOURCE_KEY ? '' : `.${sourceKey}`
   return mode === 'list'
-    ? ANSWERS_PARTIAL_REL_PATH
-    : path.join('pipeline', 'registry', `gate2-answers.${mode}.partial.json`)
+    ? (sourceKey === DEFAULT_SOURCE_KEY ? ANSWERS_PARTIAL_REL_PATH : path.join('pipeline', 'registry', `gate2-answers${suffix}.partial.json`))
+    : path.join('pipeline', 'registry', `gate2-answers.${mode}${suffix}.partial.json`)
 }
-export function reportRelPath(mode) {
-  return mode === 'list' ? REPORT_REL_PATH : path.join('pipeline', 'registry', `gate2-report.${mode}.json`)
+export function reportRelPath(mode, sourceKey = DEFAULT_SOURCE_KEY) {
+  const suffix = sourceKey === DEFAULT_SOURCE_KEY ? '' : `.${sourceKey}`
+  return mode === 'list'
+    ? (sourceKey === DEFAULT_SOURCE_KEY ? REPORT_REL_PATH : path.join('pipeline', 'registry', `gate2-report${suffix}.json`))
+    : path.join('pipeline', 'registry', `gate2-report.${mode}${suffix}.json`)
+}
+/** 场景集与两读数对照产物的路径（同样按源命名空间）。 */
+export function scenariosRelPath(sourceKey = DEFAULT_SOURCE_KEY) {
+  return sourceKey === DEFAULT_SOURCE_KEY
+    ? SCENARIOS_REL_PATH
+    : path.join('pipeline', 'knowledge', `gate2-scenarios.${sourceKey}.json`)
+}
+export function scenariosPartialRelPath(sourceKey = DEFAULT_SOURCE_KEY) {
+  return sourceKey === DEFAULT_SOURCE_KEY
+    ? SCENARIOS_PARTIAL_REL_PATH
+    : path.join('pipeline', 'knowledge', `gate2-scenarios.${sourceKey}.partial.json`)
+}
+export function stableRelPath(sourceKey = DEFAULT_SOURCE_KEY) {
+  return sourceKey === DEFAULT_SOURCE_KEY
+    ? path.join('pipeline', 'registry', 'gate2-stable.json')
+    : path.join('pipeline', 'registry', `gate2-stable.${sourceKey}.json`)
 }
 
 /** 候选目录（盲测用）的整体哈希：描述或名称改变 → 身份变。 */

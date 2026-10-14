@@ -27,6 +27,7 @@ import os from 'node:os'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
 
+import { DEFAULT_SOURCE_KEY } from './anchor-index.mjs'
 import { chatCompletion } from './llm-client.mjs'
 import { extractJsonPayload } from './model-json.mjs'
 
@@ -36,6 +37,23 @@ export const TASKS_REL_PATH = path.join('pipeline', 'knowledge', 'gate3-tasks.js
 export const TASKS_PARTIAL_REL_PATH = path.join('pipeline', 'knowledge', 'gate3-tasks.partial.json')
 export const RUNS_PARTIAL_REL_PATH = path.join('pipeline', 'registry', 'gate3-runs.partial.json')
 export const REPORT_REL_PATH = path.join('pipeline', 'registry', 'gate3-report.json')
+
+// 按源命名空间（卡 20）：缺省键逐字节不变；其他源加 `.<key>` 后缀。partial 必须仍以
+// `.partial.json` 结尾（.gitignore 的 `*.partial.json` 靠它生效）。
+export const tasksRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY ? TASKS_REL_PATH : path.join('pipeline', 'knowledge', `gate3-tasks.${sourceKey}.json`)
+export const tasksPartialRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? TASKS_PARTIAL_REL_PATH
+    : path.join('pipeline', 'knowledge', `gate3-tasks.${sourceKey}.partial.json`)
+export const runsPartialRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? RUNS_PARTIAL_REL_PATH
+    : path.join('pipeline', 'registry', `gate3-runs.${sourceKey}.partial.json`)
+export const reportRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? REPORT_REL_PATH
+    : path.join('pipeline', 'registry', `gate3-report.${sourceKey}.json`)
 
 export const DEFAULT_TASKS_PER_SKILL = 6
 /**

@@ -45,8 +45,6 @@ import {
   DEFAULT_UNRELATED_SCENARIOS,
   GATE2_REPORT_SCHEMA_VERSION,
   GATE2_SCENARIOS_SCHEMA_VERSION,
-  SCENARIOS_PARTIAL_REL_PATH,
-  SCENARIOS_REL_PATH,
   blindInputHash,
   blindPromptFingerprint,
   buildBlindCatalog,
@@ -63,6 +61,9 @@ import {
   writeJson,
   answersPartialRelPath,
   reportRelPath,
+  scenariosPartialRelPath,
+  scenariosRelPath,
+  stableRelPath,
 } from './tools/gate2-blind-test.mjs'
 
 export const EXIT = Object.freeze({
@@ -229,15 +230,15 @@ async function main(argv) {
   try {
     // ── 对照模式（ticket 13）：两读数 → 稳定对/仅宽松/仅严格三分，落盘 gate2-stable.json ──
     if (flags.compare) {
-      const listAbs = path.join(repoRoot, reportRelPath('list'))
-      const strictAbs = path.join(repoRoot, reportRelPath('strict'))
+      const listAbs = path.join(repoRoot, reportRelPath('list', flags.sourceKey))
+      const strictAbs = path.join(repoRoot, reportRelPath('strict', flags.sourceKey))
       const listReport = await readJsonOrNull(listAbs)
       const strictReport = await readJsonOrNull(strictAbs)
       if (!listReport || !strictReport) {
         throw new Error(`--compare 需要两份读数都在盘：${rel(listAbs)} 与 ${rel(strictAbs)}（先各跑一轮）。`)
       }
       const cmp = compareReadings(listReport, strictReport)
-      const stableAbs = await writeJson(path.join(repoRoot, 'pipeline', 'registry', 'gate2-stable.json'), {
+      const stableAbs = await writeJson(path.join(repoRoot, stableRelPath(flags.sourceKey)), {
         schemaVersion: 'gate2-stable/v1',
         createdAt: new Date().toISOString(),
         sources: { list: rel(listAbs), strict: rel(strictAbs) },
@@ -264,9 +265,9 @@ async function main(argv) {
     }
 
     // ── 复用底座：正式产物与 partial 同形状，后者优先（它是更新的那次运行） ──
-    const scenariosAbs = path.join(repoRoot, SCENARIOS_REL_PATH)
-    const scenariosPartialAbs = path.join(repoRoot, SCENARIOS_PARTIAL_REL_PATH)
-    const answersPartialAbs = path.join(repoRoot, answersPartialRelPath(blindMode))
+    const scenariosAbs = path.join(repoRoot, scenariosRelPath(flags.sourceKey))
+    const scenariosPartialAbs = path.join(repoRoot, scenariosPartialRelPath(flags.sourceKey))
+    const answersPartialAbs = path.join(repoRoot, answersPartialRelPath(blindMode, flags.sourceKey))
     const baseScenarios = (await readJsonOrNull(scenariosPartialAbs)) ?? (await readJsonOrNull(scenariosAbs))
     const usableBase = flags.resume && baseScenarios?.promptFingerprint === scenarioGenPromptFingerprint() ? baseScenarios : null
     const baseAnswers = flags.resume ? await readJsonOrNull(answersPartialAbs) : null
@@ -330,7 +331,7 @@ async function main(argv) {
 
     // 不静默覆盖：本轮会重写的三份正式产物，先把旧版按内容哈希归档进 registry/history/。
     await archiveIfExists(repoRoot, scenariosAbs)
-    await archiveIfExists(repoRoot, path.join(repoRoot, reportRelPath(blindMode)))
+    await archiveIfExists(repoRoot, path.join(repoRoot, reportRelPath(blindMode, flags.sourceKey)))
     await archiveIfExists(repoRoot, answersPartialAbs)
 
     const scenariosDoc = usableBase ?? {
@@ -486,7 +487,7 @@ async function main(argv) {
     }
 
     await writeJson(scenariosAbs, scenariosDoc)
-    const reportAbs = await writeJson(path.join(repoRoot, reportRelPath(blindMode)), report)
+    const reportAbs = await writeJson(path.join(repoRoot, reportRelPath(blindMode, flags.sourceKey)), report)
 
     const t = report.totals
     const summary = {

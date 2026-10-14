@@ -3,8 +3,12 @@
  * 门禁三 · 效用 A/B CLI（ticket 14，决策见 ADR-027）。
  *
  * 用法：
- *   node pipeline/run-gate3.mjs --dry-run [--skill <slug>]
- *   node pipeline/run-gate3.mjs --model <id> --base-url <url> [--skill <slug>] [--no-resume]
+ *   node pipeline/run-gate3.mjs --dry-run [--skill <slug>] [--source-key <key>]
+ *   node pipeline/run-gate3.mjs --model <id> --base-url <url> [--skill <slug>] [--no-resume] [--source-key <key>]
+ *
+ * `--source-key`（卡 20）：被测物与产物都按源——发布物以契约 provenance.sourceFile 归属过滤；
+ * 产物写 `gate3-tasks.<key>.json` / `gate3-report.<key>.json`（缺省键逐字节不变）。
+ * 两源的书不同，效用结论不可互相代表——所以本命令**从不**把两个源的发布物混进一份报告。
  *
  * ## 副作用清单
  *
@@ -27,7 +31,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT } from './tools/anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY, sourceBookRoot } from './tools/anchor-index.mjs'
 import { resolveLlmConfig, LlmConfigError, normalizeReasoningEffort } from './tools/llm-client.mjs'
 import { parseFrontmatter } from './tools/verify-skill.mjs'
 import {
@@ -35,10 +39,10 @@ import {
   DEFAULT_TASKS_PER_SKILL,
   GATE3_REPORT_SCHEMA_VERSION,
   GATE3_TASKS_SCHEMA_VERSION,
-  REPORT_REL_PATH,
-  RUNS_PARTIAL_REL_PATH,
-  TASKS_PARTIAL_REL_PATH,
-  TASKS_REL_PATH,
+  reportRelPath,
+  runsPartialRelPath,
+  tasksPartialRelPath,
+  tasksRelPath,
   armInputHash,
   executionPromptFingerprint,
   generateTasksForSkill,
@@ -69,6 +73,7 @@ function parseArgs(argv) {
     reasoningEffort: null,
     maxTokens: null,
     skill: null,
+    sourceKey: DEFAULT_SOURCE_KEY,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -87,6 +92,7 @@ function parseArgs(argv) {
     else if (a === '--reasoning-effort') (flags.reasoningEffort = need(i, a)), (i += 1)
     else if (a === '--max-tokens') (flags.maxTokens = Number(need(i, a))), (i += 1)
     else if (a === '--repo-root') (flags.repoRoot = path.resolve(need(i, a))), (i += 1)
+    else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a.startsWith('--')) throw new Error(`未知参数：${a}`)
     else throw new Error(`未知位置参数：${a}（本命令不接受位置参数）`)
   }
@@ -97,7 +103,7 @@ function parseArgs(argv) {
  * 被测物 = **已发布物**：`skills/<slug>/SKILL.md` 原文 + 它构建时的契约（取风险标记）。
  * 缺契约的 skill 拒绝进入（没有风险标记与 provenance，判分口径无从校准）。
  */
-export async function enumeratePublishedSkills(repoRoot, { only = null } = {}) {
+export async function enumeratePublishedSkills(repoRoot, { only = null, sourceKey = DEFAULT_SOURCE_KEY } = {}) {
   const skillsDir = path.join(repoRoot, 'skills')
   let names = []
   try {
@@ -106,6 +112,9 @@ export async function enumeratePublishedSkills(repoRoot, { only = null } = {}) {
     if (err.code === 'ENOENT') return []
     throw err
   }
+  // 归属过滤（卡 20）：契约 provenance.sourceFile 决定这个发布物属于哪个源。
+  // 别的源的发布物不进本源的门禁三报告——两个源的书不同，效用结论不可互相代表。
+  const ownRoot = path.normalize(sourceBookRoot(sourceKey))
   const out = []
   for (const slug of names.sort()) {
     if (only && slug !== only) continue
@@ -122,6 +131,8 @@ export async function enumeratePublishedSkills(repoRoot, { only = null } = {}) {
     if (!contract) {
       throw new Error(`已发布物 ${slug} 缺构建契约（${path.relative(repoRoot, contractAbs)}）——拒绝进入门禁三。`)
     }
+    const sourceFile = contract.provenance?.sourceFile
+    if (typeof sourceFile === 'string' && path.normalize(path.dirname(sourceFile)) !== ownRoot) continue
     const fm = parseFrontmatter(markdown)
     if (!fm.ok) throw new Error(`已发布物 ${slug} 的 frontmatter 不可解析——先排查发布流程。`)
     out.push({
@@ -157,12 +168,12 @@ async function main(argv) {
   const K = DEFAULT_TASKS_PER_SKILL
 
   try {
-    const skills = await enumeratePublishedSkills(repoRoot, { only: flags.skill })
+    const skills = await enumeratePublishedSkills(repoRoot, { only: flags.skill, sourceKey: flags.sourceKey })
 
-    const tasksAbs = path.join(repoRoot, TASKS_REL_PATH)
-    const tasksPartialAbs = path.join(repoRoot, TASKS_PARTIAL_REL_PATH)
-    const runsPartialAbs = path.join(repoRoot, RUNS_PARTIAL_REL_PATH)
-    const reportAbs = path.join(repoRoot, REPORT_REL_PATH)
+    const tasksAbs = path.join(repoRoot, tasksRelPath(flags.sourceKey))
+    const tasksPartialAbs = path.join(repoRoot, tasksPartialRelPath(flags.sourceKey))
+    const runsPartialAbs = path.join(repoRoot, runsPartialRelPath(flags.sourceKey))
+    const reportAbs = path.join(repoRoot, reportRelPath(flags.sourceKey))
 
     const baseTasks = (await readJsonOrNull(tasksPartialAbs)) ?? (await readJsonOrNull(tasksAbs))
     const usableTasks = flags.resume && baseTasks?.promptFingerprint === taskGenPromptFingerprint() ? baseTasks : null

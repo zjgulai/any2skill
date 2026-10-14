@@ -236,4 +236,49 @@ describe('18 · 源键与源根', () => {
       await rm(root, { recursive: true, force: true })
     }
   })
+
+  it('门禁二/三产物按源命名空间（卡 20）：缺省逐字不变、其他源加后缀、partial 后缀约束保持', async () => {
+    const g2 = await import('../../tools/gate2-blind-test.mjs')
+    const reg = (...p) => path.join('pipeline', 'registry', ...p)
+    const know = (...p) => path.join('pipeline', 'knowledge', ...p)
+    assert.equal(g2.reportRelPath('list'), reg('gate2-report.json'))
+    assert.equal(g2.reportRelPath('strict'), reg('gate2-report.strict.json'))
+    assert.equal(g2.reportRelPath('strict', 'rust-book-cn'), reg('gate2-report.strict.rust-book-cn.json'))
+    assert.equal(g2.reportRelPath('list', 'rust-book-cn'), reg('gate2-report.rust-book-cn.json'))
+    assert.equal(g2.scenariosRelPath('rust-book-cn'), know('gate2-scenarios.rust-book-cn.json'))
+    assert.equal(g2.stableRelPath('rust-book-cn'), reg('gate2-stable.rust-book-cn.json'))
+    assert.ok(g2.answersPartialRelPath('list', 'rust-book-cn').endsWith('.partial.json'))
+    assert.ok(g2.scenariosPartialRelPath('rust-book-cn').endsWith('.partial.json'))
+
+    const g3 = await import('../../tools/gate3-utility-ab.mjs')
+    assert.equal(g3.reportRelPath(), reg('gate3-report.json'))
+    assert.equal(g3.reportRelPath('rust-book-cn'), reg('gate3-report.rust-book-cn.json'))
+    assert.equal(g3.tasksRelPath('rust-book-cn'), know('gate3-tasks.rust-book-cn.json'))
+    assert.ok(g3.runsPartialRelPath('rust-book-cn').endsWith('.partial.json'))
+    assert.ok(g3.tasksPartialRelPath('rust-book-cn').endsWith('.partial.json'))
+  })
+
+  it('门禁三被测物按源归属过滤：别的源的发布物不进本源报告（契约 provenance.sourceFile）', async () => {
+    const { enumeratePublishedSkills } = await import('../../run-gate3.mjs')
+    const root = await mkdtemp(path.join(os.tmpdir(), 'any2skills-gate3-attr-'))
+    try {
+      const mk = async (slug, key) => {
+        await mkdir(path.join(root, 'skills', slug), { recursive: true })
+        await writeFile(path.join(root, 'skills', slug, 'SKILL.md'), `---\nname: ${slug}\ndescription: 做一件事并说明何时用\n---\n# ${slug}\n`)
+        await mkdir(path.join(root, 'pipeline', 'registry', 'build', slug), { recursive: true })
+        await writeFile(
+          path.join(root, 'pipeline', 'registry', 'build', slug, 'skill-contract.json'),
+          JSON.stringify({ name: slug, riskFlags: [], provenance: { sourceFile: path.join('sources', key, 'book', 'x.md') } }),
+        )
+      }
+      await mk('srcA-skill', 'srcA')
+      await mk('srcB-skill', 'srcB')
+      const a = await enumeratePublishedSkills(root, { sourceKey: 'srcA' })
+      assert.deepEqual(a.map((s) => s.slug), ['srcA-skill'])
+      const b = await enumeratePublishedSkills(root, { sourceKey: 'srcB' })
+      assert.deepEqual(b.map((s) => s.slug), ['srcB-skill'])
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
 })
