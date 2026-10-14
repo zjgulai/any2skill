@@ -1,8 +1,8 @@
 {
   "schemaVersion": "skill-candidates/v1",
-  "createdAt": "2026-10-14T04:49:40.100Z",
+  "createdAt": "2026-10-14T09:42:47.303Z",
   "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json",
-  "clustersSha256": "sha256:89adeb4df5f272e520232b6677e280eb778b7fb64d5e3433f8f88c2df24182b8",
+  "clustersSha256": "sha256:a184c30cfd4ced5832e32b76742fd9a81a5bc41384d5df6c0616654f6ee8048d",
   "candidates": [
     {
       "skillId": "ch02-00-guessing-game-tutorial-s1",
@@ -27,6 +27,227 @@
         "ch02-00-guessing-game-tutorial#h2-4"
       ],
       "rationale": "这两个单元覆盖从程序目标到关键实现规则的内容，面向同一批使用场景：理解并实现该章所教的猜数字游戏。"
+    },
+    {
+      "skillId": "ch04-02-references-and-borrowing-s1",
+      "sourceObjects": [
+        "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H2-1-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-1-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02"
+      ],
+      "trigger": "当需要理解或判断 Rust 代码中的引用、可变性和借用合法性，并避免悬垂引用时使用。",
+      "chapterRefs": [
+        "ch04-02-references-and-borrowing"
+      ],
+      "promotionState": "candidate",
+      "name": "引用与借用规则",
+      "units": [
+        "ch04-02-references-and-borrowing-u1",
+        "ch04-02-references-and-borrowing-u2",
+        "ch04-02-references-and-borrowing-u3"
+      ],
+      "anchors": [
+        "ch04-02-references-and-borrowing#h2-1",
+        "ch04-02-references-and-borrowing#h3-1",
+        "ch04-02-references-and-borrowing#h3-3",
+        "ch04-02-references-and-borrowing#h3-2",
+        "ch04-02-references-and-borrowing#h3-3"
+      ],
+      "rationale": "这些单元分别覆盖借用基础、可变引用限制和引用有效性，属于同一批阅读和编写 Rust 引用相关代码时需要综合使用的规则。"
+    },
+    {
+      "skillId": "ch04-03-slices-s1",
+      "sourceObjects": [
+        "CH04-03-SLICES-H2-1-ANTIPATTERN-01",
+        "CH04-03-SLICES-H3-1-ENGINEERINGRULE-01",
+        "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+        "CH04-03-SLICES-H4-1-CONCEPT-01",
+        "CH04-03-SLICES-H4-2-HEURISTIC-01",
+        "CH04-03-SLICES-H3-2-CONCEPT-01"
+      ],
+      "trigger": "当需要阅读或编写处理 Rust 字符串切片、设计接受 &str 的 API、避免切片索引或借用错误，或理解 slice 在数组等集合上的通用行为时使用。",
+      "chapterRefs": [
+        "ch04-03-slices"
+      ],
+      "promotionState": "candidate",
+      "name": "Rust 切片类型使用",
+      "units": [
+        "ch04-03-slices-u1",
+        "ch04-03-slices-u2",
+        "ch04-03-slices-u3"
+      ],
+      "anchors": [
+        "ch04-03-slices#h2-1",
+        "ch04-03-slices#h3-1",
+        "ch04-03-slices#h3-1",
+        "ch04-03-slices#h4-1",
+        "ch04-03-slices#h4-2",
+        "ch04-03-slices#h3-2"
+      ],
+      "rationale": "这三个单元分别覆盖切片安全边界、&str 的不可变借用与参数设计、以及通用集合 slice，共同服务于同一个任务场景：正确、安全地理解和使用 Rust 的 slice 类型。"
+    },
+    {
+      "skillId": "ch05-01-defining-structs-s1",
+      "sourceObjects": [
+        "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+        "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+        "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02",
+        "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+        "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02"
+      ],
+      "trigger": "当开发者需要声明 Rust 结构体、用字段或简写语法构造值、基于已有实例更新值，或选择元组/类单元结构体并处理引用字段生命周期时，阅读本章内容。",
+      "chapterRefs": [
+        "ch05-01-defining-structs"
+      ],
+      "promotionState": "candidate",
+      "name": "结构体定义与实例化",
+      "units": [
+        "ch05-01-defining-structs-u1",
+        "ch05-01-defining-structs-u2",
+        "ch05-01-defining-structs-u3",
+        "ch05-01-defining-structs-u4"
+      ],
+      "anchors": [
+        "ch05-01-defining-structs#h2-1",
+        "ch05-01-defining-structs#h3-1",
+        "ch05-01-defining-structs#h3-2",
+        "ch05-01-defining-structs#h3-3",
+        "ch05-01-defining-structs#h3-4",
+        "ch05-01-defining-structs#h3-4"
+      ],
+      "rationale": "这些单元同属“定义并实例化结构体”一章的完整知识链路，覆盖从普通结构体声明与构造、更新语法、特殊结构体形式到引用字段生命周期的连续使用场景。"
+    },
+    {
+      "skillId": "ch05-03-method-syntax-s1",
+      "sourceObjects": [
+        "CH05-03-METHOD-SYNTAX-H2-1-ENGINEERINGRULE-01",
+        "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-01",
+        "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-02",
+        "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-01",
+        "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-02",
+        "CH05-03-METHOD-SYNTAX-H3-3-CONCEPT-01",
+        "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
+        "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01",
+        "CH05-02-EXAMPLE-STRUCTS-H2-1-ENGINEERINGRULE-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-1-ANTIPATTERN-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-2-CONCEPT-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-2-ENGINEERINGRULE-02",
+        "CH05-02-EXAMPLE-STRUCTS-H3-3-CONCEPT-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-3-HEURISTIC-02"
+      ],
+      "trigger": "当需要为结构体定义方法、调用方法、选择参数借用方式或组织关联函数与多个 impl 块时使用。",
+      "chapterRefs": [
+        "ch05-02-example-structs",
+        "ch05-03-method-syntax"
+      ],
+      "promotionState": "candidate",
+      "name": "方法语法全流程",
+      "units": [
+        "ch05-03-method-syntax-u1",
+        "ch05-03-method-syntax-u2",
+        "ch05-03-method-syntax-u3",
+        "ch05-03-method-syntax-u4",
+        "ch05-02-example-structs-u1",
+        "ch05-02-example-structs-u2",
+        "ch05-02-example-structs-u3"
+      ],
+      "anchors": [
+        "ch05-03-method-syntax#h2-1",
+        "ch05-03-method-syntax#h3-1",
+        "ch05-03-method-syntax#h3-2",
+        "ch05-03-method-syntax#h3-3",
+        "ch05-03-method-syntax#h3-4",
+        "ch05-02-example-structs#h2-1",
+        "ch05-02-example-structs#h3-1",
+        "ch05-02-example-structs#h3-2",
+        "ch05-02-example-structs#h3-3"
+      ],
+      "rationale": "四个单元覆盖从 self 方法定义与调用机制，到方法参数借用选择，再到关联函数与 impl 块组织，面向阅读并使用方法语法的同一批场景。",
+      "mergedFrom": [
+        "ch05-02-example-structs-s1"
+      ]
+    },
+    {
+      "skillId": "ch06-01-defining-an-enum-s1",
+      "sourceObjects": [
+        "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-01",
+        "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-02",
+        "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-01",
+        "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-02",
+        "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-01",
+        "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-02"
+      ],
+      "trigger": "当需要把一组相关可能值建模为 Rust 枚举、为成员附加不同类型数据，或安全处理 Option<T> 的可空值时，使用本候选。",
+      "chapterRefs": [
+        "ch06-01-defining-an-enum"
+      ],
+      "promotionState": "candidate",
+      "name": "定义与使用枚举",
+      "units": [
+        "ch06-01-defining-an-enum-u1",
+        "ch06-01-defining-an-enum-u2",
+        "ch06-01-defining-an-enum-u3"
+      ],
+      "anchors": [
+        "ch06-01-defining-an-enum#h2-1",
+        "ch06-01-defining-an-enum#h3-1",
+        "ch06-01-defining-an-enum#h3-2"
+      ],
+      "rationale": "这些单元构成同一条使用链路：先定义枚举表示一组可能值，再让成员携带数据，最后在遇到 Option<T> 时安全判断空值或解包；读这一章通常是为了完成这个完整任务链。"
+    },
+    {
+      "skillId": "ch06-02-match-s1",
+      "sourceObjects": [
+        "CH06-02-MATCH-H2-1-CONCEPT-01",
+        "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
+        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-02",
+        "CH06-02-MATCH-H3-1-CONCEPT-01",
+        "CH06-02-MATCH-H3-1-CONCEPT-02",
+        "CH06-02-MATCH-H3-2-CONCEPT-01",
+        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H3-3-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H3-4-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H3-4-CONCEPT-02",
+        "CH06-03-IF-LET-H2-1-CONCEPT-01",
+        "CH06-03-IF-LET-H2-1-HEURISTIC-02",
+        "CH06-03-IF-LET-H2-2-HEURISTIC-01"
+      ],
+      "trigger": "当需要编写或阅读 match 表达式，从枚举或 Option 中取出并绑定内部值，同时保证所有可能分支都被穷尽处理时使用。",
+      "chapterRefs": [
+        "ch06-02-match",
+        "ch06-03-if-let"
+      ],
+      "promotionState": "candidate",
+      "name": "match 控制流与穷举模式匹配",
+      "units": [
+        "ch06-02-match-u1",
+        "ch06-02-match-u2",
+        "ch06-02-match-u3",
+        "ch06-03-if-let-u1"
+      ],
+      "anchors": [
+        "ch06-02-match#h2-1",
+        "ch06-02-match#h4-1",
+        "ch06-02-match#h3-1",
+        "ch06-02-match#h3-2",
+        "ch06-02-match#h3-3",
+        "ch06-02-match#h3-4",
+        "ch06-03-if-let#h2-1",
+        "ch06-03-if-let#h2-2"
+      ],
+      "rationale": "这三个单元覆盖了从 match 基本分支语义、模式绑定内部数据，到穷举与通配处理的完整任务链，面向需要正确且完整地使用 match 的场景。",
+      "mergedFrom": [
+        "ch06-03-if-let-s1"
+      ]
     },
     {
       "skillId": "ch09-03-to-panic-or-not-to-panic-s1",
@@ -188,159 +409,8 @@
     }
   ],
   "crossChapterDisposition": {
-    "status": "present",
-    "declaredRunId": "run-6bc0e8a0e8b9",
-    "items": [
-      {
-        "objectId": "AP-SYNTH-T02-01",
-        "chapters": [
-          "chapter2"
-        ],
-        "chapterCount": 1,
-        "decision": "distribute-to-pitfalls",
-        "basis": "出处只落在一章（chapter2）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
-        "unverifiedCondition": null
-      },
-      {
-        "objectId": "AP-SYNTH-T02-02",
-        "chapters": [
-          "chapter2"
-        ],
-        "chapterCount": 1,
-        "decision": "distribute-to-pitfalls",
-        "basis": "出处只落在一章（chapter2）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
-        "unverifiedCondition": null
-      },
-      {
-        "objectId": "AP-SYNTH-T02-03",
-        "chapters": [
-          "chapter2",
-          "chapter4"
-        ],
-        "chapterCount": 2,
-        "decision": "independent-candidate-pending-gate2",
-        "basis": "出处跨 2 章（chapter2, chapter4）——不属于任何单章",
-        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
-      },
-      {
-        "objectId": "AP-SYNTH-T02-04",
-        "chapters": [
-          "chapter4"
-        ],
-        "chapterCount": 1,
-        "decision": "distribute-to-pitfalls",
-        "basis": "出处只落在一章（chapter4）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
-        "unverifiedCondition": null
-      },
-      {
-        "objectId": "AP-SYNTH-T02-05",
-        "chapters": [
-          "chapter2"
-        ],
-        "chapterCount": 1,
-        "decision": "distribute-to-pitfalls",
-        "basis": "出处只落在一章（chapter2）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
-        "unverifiedCondition": null
-      },
-      {
-        "objectId": "AP-SYNTH-T02-06",
-        "chapters": [
-          "chapter2"
-        ],
-        "chapterCount": 1,
-        "decision": "distribute-to-pitfalls",
-        "basis": "出处只落在一章（chapter2）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
-        "unverifiedCondition": null
-      },
-      {
-        "objectId": "AP-SYNTH-T02-07",
-        "chapters": [
-          "chapter7"
-        ],
-        "chapterCount": 1,
-        "decision": "distribute-to-pitfalls",
-        "basis": "出处只落在一章（chapter7）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
-        "unverifiedCondition": null
-      },
-      {
-        "objectId": "AP-SYNTH-T02-08",
-        "chapters": [
-          "chapter2"
-        ],
-        "chapterCount": 1,
-        "decision": "distribute-to-pitfalls",
-        "basis": "出处只落在一章（chapter2）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
-        "unverifiedCondition": null
-      },
-      {
-        "objectId": "AP-SYNTH-T12-01",
-        "chapters": [
-          "chapter4",
-          "chapter5"
-        ],
-        "chapterCount": 2,
-        "decision": "independent-candidate-pending-gate2",
-        "basis": "出处跨 2 章（chapter4, chapter5）——不属于任何单章",
-        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
-      },
-      {
-        "objectId": "AP-SYNTH-T12-02",
-        "chapters": [
-          "chapter1",
-          "chapter2",
-          "chapter5"
-        ],
-        "chapterCount": 3,
-        "decision": "independent-candidate-pending-gate2",
-        "basis": "出处跨 3 章（chapter1, chapter2, chapter5）——不属于任何单章",
-        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
-      },
-      {
-        "objectId": "AP-SYNTH-T12-03",
-        "chapters": [
-          "chapter1",
-          "chapter4"
-        ],
-        "chapterCount": 2,
-        "decision": "independent-candidate-pending-gate2",
-        "basis": "出处跨 2 章（chapter1, chapter4）——不属于任何单章",
-        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
-      },
-      {
-        "objectId": "AP-SYNTH-T12-04",
-        "chapters": [
-          "chapter2",
-          "chapter9"
-        ],
-        "chapterCount": 2,
-        "decision": "independent-candidate-pending-gate2",
-        "basis": "出处跨 2 章（chapter2, chapter9）——不属于任何单章",
-        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
-      },
-      {
-        "objectId": "AP-SYNTH-T12-05",
-        "chapters": [
-          "chapter2",
-          "chapter5",
-          "chapter9"
-        ],
-        "chapterCount": 3,
-        "decision": "independent-candidate-pending-gate2",
-        "basis": "出处跨 3 章（chapter2, chapter5, chapter9）——不属于任何单章",
-        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
-      },
-      {
-        "objectId": "AP-SYNTH-T12-06",
-        "chapters": [
-          "chapter2",
-          "chapter5"
-        ],
-        "chapterCount": 2,
-        "decision": "independent-candidate-pending-gate2",
-        "basis": "出处跨 2 章（chapter2, chapter5）——不属于任何单章",
-        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
-      }
-    ]
+    "status": "absent",
+    "note": "盘上没有 antipatterns.rust-book-cn.objects.json（先跑卡 06 的命令再回看本块）。"
   },
   "diagnostics": {
     "byFile": [
@@ -365,6 +435,70 @@
         "units": 0,
         "skills": 0,
         "objects": 0,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch04-02-references-and-borrowing",
+        "units": 3,
+        "skills": 1,
+        "objects": 8,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch04-03-slices",
+        "units": 3,
+        "skills": 1,
+        "objects": 6,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch05-01-defining-structs",
+        "units": 4,
+        "skills": 1,
+        "objects": 9,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch05-02-example-structs",
+        "units": 3,
+        "skills": 1,
+        "objects": 6,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch05-03-method-syntax",
+        "units": 4,
+        "skills": 1,
+        "objects": 8,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch06-01-defining-an-enum",
+        "units": 3,
+        "skills": 1,
+        "objects": 6,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch06-02-match",
+        "units": 3,
+        "skills": 1,
+        "objects": 10,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch06-03-if-let",
+        "units": 1,
+        "skills": 1,
+        "objects": 3,
         "unassigned": 0,
         "unresolved": 0
       },
@@ -409,18 +543,18 @@
         "unresolved": 0
       }
     ],
-    "candidateCount": 6,
+    "candidateCount": 14,
     "unitSize": {
       "min": 1,
       "median": 3,
       "max": 6,
-      "n": 16
+      "n": 40
     },
     "unitsPerSkill": {
       "min": 1,
       "median": 3,
       "max": 5,
-      "n": 6
+      "n": 14
     },
     "reference": {
       "skillsPerChapter": 2.2,
@@ -431,10 +565,10 @@
     }
   },
   "resplit": {
-    "appliedAt": "2026-10-14T07:29:14.121Z",
+    "appliedAt": "2026-10-14T10:23:39.432Z",
     "planFile": "pipeline/registry/resplit-plan.rust-book-cn.json",
-    "planSha256": "sha256:5480f5ae9df8390c14e881ed2448cfd7d951cdeef9e1e824411ebf2c1836e935",
-    "rule": "只取「strict ≥2 且两读数都存」的稳定边（stable 集），rust 源恰 1 对、天然不相交；strictOnly 弱信号（ch09-03-s1|ch12-03-s2）不动——单读数出现的对在 ADR-026 的稳定口径下不构成合并依据。吸收者：两候选对象数同为 12，取字典序先者（s1 为两冲突场景的 intended 之一，且是被 s2 场景触发的接收方）。同一个通知的第一源对应实例（卡 13）可参照。",
+    "planSha256": "sha256:dfcd0cdb68fe199005daea3b0d5a82baad22336e1e75941aee1893002116964e",
+    "rule": "在「strict 场景数 ≥2 且两读数都存」的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序。传递闭包不可用：共认领不是等价关系（第一源实测：87 稳定对的连通分量是 38/40 的巨型分量；本源的稳定边亦成链 ch06-01–06-02–06-03–18-02，规则把链机械剪为不共享候选的对）。",
     "merges": [
       {
         "into": "ch12-03-improving-error-handling-and-modularity-s1",
@@ -463,28 +597,171 @@
             "ch12-03-improving-error-handling-and-modularity-s2-sc2"
           ]
         }
+      },
+      {
+        "into": "ch05-03-method-syntax-s1",
+        "target": "ch05-02-example-structs-s1",
+        "unitIds": [
+          "ch05-03-method-syntax-u1",
+          "ch05-03-method-syntax-u2",
+          "ch05-03-method-syntax-u3",
+          "ch05-03-method-syntax-u4",
+          "ch05-02-example-structs-u1",
+          "ch05-02-example-structs-u2",
+          "ch05-02-example-structs-u3"
+        ],
+        "objectCount": 14,
+        "chapterRefs": [
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax"
+        ],
+        "basis": {
+          "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
+          ],
+          "listScenarioIds": [
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
+          ]
+        }
+      },
+      {
+        "into": "ch06-02-match-s1",
+        "target": "ch06-03-if-let-s1",
+        "unitIds": [
+          "ch06-02-match-u1",
+          "ch06-02-match-u2",
+          "ch06-02-match-u3",
+          "ch06-03-if-let-u1"
+        ],
+        "objectCount": 13,
+        "chapterRefs": [
+          "ch06-02-match",
+          "ch06-03-if-let"
+        ],
+        "basis": {
+          "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+          "strictScenarios": 2,
+          "listScenarios": 1,
+          "strictScenarioIds": [
+            "ch06-02-match-s1-sc1",
+            "ch06-02-match-s1-sc2"
+          ],
+          "listScenarioIds": [
+            "ch06-02-match-s1-sc2"
+          ]
+        }
       }
     ],
     "removed": [
       {
-        "skillId": "ch12-03-improving-error-handling-and-modularity-s2",
-        "mergedInto": "ch12-03-improving-error-handling-and-modularity-s1",
+        "skillId": "ch05-02-example-structs-s1",
+        "mergedInto": "ch05-03-method-syntax-s1",
         "basis": {
-          "stablePair": "ch12-03-improving-error-handling-and-modularity-s1|ch12-03-improving-error-handling-and-modularity-s2",
+          "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
           "strictScenarios": 2,
           "listScenarios": 2,
           "strictScenarioIds": [
-            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
-            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
           ],
           "listScenarioIds": [
-            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
-            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
           ]
         },
-        "reason": "两读数都存在的稳定共认领对（strict 2、list 2）——门禁二 list 与 strict 两份报告的动作清单都给出同一 merge（ADR-007：同一场景被 ≥2 个候选同时认领，粒度太碎）。"
+        "reason": "波 2 稳定对（strict 2、list 2，两读数同场景集——本波最强边）。吸收者按规则「对象数→严格命中数→字典序」：ch05-03（8 对象）> ch05-02（6 对象）。（注意：吸收者是门禁一未过的那个，合并后吃进 ch05-02 的 AntiPattern 对象，陷阱段有来源——合并不是「让未过的蹭过」，是规则先行、判决随后。）"
+      },
+      {
+        "skillId": "ch06-03-if-let-s1",
+        "mergedInto": "ch06-02-match-s1",
+        "basis": {
+          "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+          "strictScenarios": 2,
+          "listScenarios": 1,
+          "strictScenarioIds": [
+            "ch06-02-match-s1-sc1",
+            "ch06-02-match-s1-sc2"
+          ],
+          "listScenarioIds": [
+            "ch06-02-match-s1-sc2"
+          ]
+        },
+        "reason": "波 2 稳定对（strict 2、list 1；「两读数都存」指该边在两读数中均出现，list 侧计数不设阈值——第一源 chapter9-s2|afterword-s1 即 strict 2 / list 1 录取）。吸收者按规则：ch06-02（10 对象）> ch06-03（3 对象）。同一链条上的 06-01|06-02 与 06-03|18-02 为 strict=1，低于阈值，按规则不取——链被机械剪为不相交对。"
       }
     ],
+    "thisRun": {
+      "merges": [
+        {
+          "into": "ch05-03-method-syntax-s1",
+          "target": "ch05-02-example-structs-s1",
+          "unitIds": [
+            "ch05-03-method-syntax-u1",
+            "ch05-03-method-syntax-u2",
+            "ch05-03-method-syntax-u3",
+            "ch05-03-method-syntax-u4",
+            "ch05-02-example-structs-u1",
+            "ch05-02-example-structs-u2",
+            "ch05-02-example-structs-u3"
+          ],
+          "objectCount": 14,
+          "chapterRefs": [
+            "ch05-02-example-structs",
+            "ch05-03-method-syntax"
+          ],
+          "basis": {
+            "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
+            "strictScenarios": 2,
+            "listScenarios": 2,
+            "strictScenarioIds": [
+              "ch05-03-method-syntax-s1-sc1",
+              "ch05-03-method-syntax-s1-sc3"
+            ],
+            "listScenarioIds": [
+              "ch05-03-method-syntax-s1-sc1",
+              "ch05-03-method-syntax-s1-sc3"
+            ]
+          }
+        },
+        {
+          "into": "ch06-02-match-s1",
+          "target": "ch06-03-if-let-s1",
+          "unitIds": [
+            "ch06-02-match-u1",
+            "ch06-02-match-u2",
+            "ch06-02-match-u3",
+            "ch06-03-if-let-u1"
+          ],
+          "objectCount": 13,
+          "chapterRefs": [
+            "ch06-02-match",
+            "ch06-03-if-let"
+          ],
+          "basis": {
+            "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+            "strictScenarios": 2,
+            "listScenarios": 1,
+            "strictScenarioIds": [
+              "ch06-02-match-s1-sc1",
+              "ch06-02-match-s1-sc2"
+            ],
+            "listScenarioIds": [
+              "ch06-02-match-s1-sc2"
+            ]
+          }
+        }
+      ],
+      "alreadyApplied": [
+        {
+          "into": "ch12-03-improving-error-handling-and-modularity-s1",
+          "target": "ch12-03-improving-error-handling-and-modularity-s2"
+        }
+      ]
+    },
     "note": "diagnostics 与 candidates 的聚类时点字段保持原样（本块是重切记录，不重算聚类诊断）。"
   }
 }

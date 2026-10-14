@@ -1,0 +1,24 @@
+  ch02-00-guessing-game-tutorial-s1：场景复用（输入身份一致，0 次调用）
+  ch04-02-references-and-borrowing-s1：场景复用（输入身份一致，0 次调用）
+  ch04-03-slices-s1：场景复用（输入身份一致，0 次调用）
+  ch05-01-defining-structs-s1：场景复用（输入身份一致，0 次调用）
+  ch05-03-method-syntax-s1：场景 3/3
+  ch06-01-defining-an-enum-s1：场景复用（输入身份一致，0 次调用）
+  ch06-02-match-s1：场景 3/3
+  ch09-03-to-panic-or-not-to-panic-s1：场景复用（输入身份一致，0 次调用）
+  ch12-03-improving-error-handling-and-modularity-s1：场景复用（输入身份一致，0 次调用）
+  ch17-03-oo-design-patterns-s1：场景复用（输入身份一致，0 次调用）
+  ch18-02-refutability-s1：场景复用（输入身份一致，0 次调用）
+  无关场景：20/20
+  …盲测进行中（已调用 20 次）
+  …盲测进行中（已调用 40 次）
+盲测完成：本轮调用 53 次（复用 0 场景）
+门禁二完成：11 个候选 × 3 场景 + 20 个无关场景
+判定：通过 2 / 争抢 9 / 零命中 0；无关场景误触发 0/20
+报告：pipeline/registry/gate2-report.rust-book-cn.json
+动作清单（ADR-007；本命令不执行）：
+  [merge] 猜数字游戏实现 + match 控制流与穷举模式匹配——同一场景（ch02-00-guessing-game-tutorial-s1-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并
+  [merge] 引用与借用规则 + Rust 切片类型使用——同一场景（ch04-03-slices-s1-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并
+  [merge] 模块化CLI重构 + 方法语法全流程——同一场景（ch05-03-method-syntax-s1-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并
+  [merge] 判断模式可反驳性与语法位置 + match 控制流与穷举模式匹配 + 定义与使用枚举——同一场景（ch06-02-match-s1-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并
+  [merge] 引用与借用规则 + 方法语法全流程 + Rust 状态模式实现与权衡——同一场景（ch17-03-oo-design-patterns-s1-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并

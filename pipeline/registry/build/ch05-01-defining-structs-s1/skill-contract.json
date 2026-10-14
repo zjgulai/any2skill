@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "ch05-01-defining-structs-s1",
+  "name": "ch05-01-defining-structs-s1",
+  "description": "结构体定义与实例化：在 Rust 结构体更新语法中，`..user1` 必须放在最后，以指定其余字段应从 `user1` 的相应字段中获取其值；适用于使用结构体更新语法从其他实例创建新实例时、使用结构体更新语法创建新实例并判断源实例是否仍可使用时、一个获取 `Color` 类型参数的函数不能接受 `Point` 作为参数，即便这两个类型都由三个 `i32` 值组成。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 4518,
+    "markdownHash": "sha256:c12a72a84cdd86be694efca4574d88b308c63b2718dc519df4603c2113a69530",
+    "checkedAt": "2026-10-14T10:47:40.868Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+    "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+    "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02",
+    "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+    "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h2-1",
+      "title": "定义并实例化结构体",
+      "lineStart": 1,
+      "lineEnd": 40
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-1",
+      "title": "变量与字段同名时的字段初始化简写语法",
+      "lineStart": 41,
+      "lineEnd": 52
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-2",
+      "title": "使用结构体更新语法从其他实例创建实例",
+      "lineStart": 53,
+      "lineEnd": 76
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-3",
+      "title": "使用没有命名字段的元组结构体来创建不同的类型",
+      "lineStart": 77,
+      "lineEnd": 88
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-4",
+      "title": "没有任何字段的类单元结构体",
+      "lineStart": 89,
+      "lineEnd": 175
+    }
+  ],
+  "codeSource": {
+    "available": false,
+    "note": "> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。"
+  },
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-14T10:47:40.868Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 4 低于骨架的建议值（列表，5–8 条用户场景/触发条件）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 5,
+      "actual": 4
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 1 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 1
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 4
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "principles": 4,
+    "patterns": 4,
+    "pitfalls": 1,
+    "code": 0,
+    "reading": 5
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 1 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_SOURCE_ABSENT",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED"
+  ],
+  "provenance": {
+    "sourceFile": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+    "anchorIndexHash": "sha256:bb41b4f5c8c4c48cad6b6bc0901292d85261abe5d55561e6a1eca4ad4338f62e",
+    "anchorIndexHashes": {
+      "sources/rust-book-cn/book/ch05-01-defining-structs.md": "sha256:bb41b4f5c8c4c48cad6b6bc0901292d85261abe5d55561e6a1eca4ad4338f62e"
+    },
+    "objectsFile": "pipeline/knowledge/ch05-01-defining-structs.objects.json",
+    "objectsFileSha256": "sha256:14bffd8ea0bef329a8411bea2788390720deb72cac1fcf4aece9dee5d8a49a25",
+    "objectsTotal": 9,
+    "objectsInCluster": 9,
+    "objectsKept": 9,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 0,
+    "crossChapterInCluster": 0,
+    "crossChapterKept": 0,
+    "crossChapterExcludedByGate": [],
+    "antipatternVerdictsFile": null,
+    "antipatternVerdictsRunId": null,
+    "antipatternVerdictsIdentityMatch": null,
+    "antipatternObjectsRunId": null,
+    "gateReceiptFile": "pipeline/registry/run-415c09ea6b23.receipt.json",
+    "gateReceiptRunId": "run-415c09ea6b23",
+    "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "clusterSkillId": "ch05-01-defining-structs-s1",
+    "clusterUnits": [
+      "ch05-01-defining-structs-u1",
+      "ch05-01-defining-structs-u2",
+      "ch05-01-defining-structs-u3",
+      "ch05-01-defining-structs-u4"
+    ],
+    "clusterChapterRefs": [
+      "ch05-01-defining-structs"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json"
+  }
+}

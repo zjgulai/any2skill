@@ -1,6 +1,6 @@
 {
   "schemaVersion": "clusters/v1",
-  "createdAt": "2026-10-14T04:49:40.096Z",
+  "createdAt": "2026-10-14T09:42:47.301Z",
   "promptFingerprint": "prompt-a2e5c6043c57",
   "model": {
     "modelId": "deepseek-v4-pro"
@@ -87,6 +87,86 @@
         ]
       },
       {
+        "fileKey": "ch04-02-references-and-borrowing",
+        "path": "pipeline/knowledge/ch04-02-references-and-borrowing.objects.json",
+        "sha256": "sha256:f94f292eb2eb2ac384a15e256c6894b9a9c0bf413b42ceb091a0d5974208d765",
+        "gateReceiptFile": "pipeline/registry/run-8dddd9797015.receipt.json",
+        "gateReceiptRunId": "run-8dddd9797015",
+        "objectsTotal": 8,
+        "gatePassed": 8,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch04-03-slices",
+        "path": "pipeline/knowledge/ch04-03-slices.objects.json",
+        "sha256": "sha256:63527d58952625b02883e86d081cd1fc24b248a550e4aa7d892fdb5c2a9f373d",
+        "gateReceiptFile": "pipeline/registry/run-39272354acb5.receipt.json",
+        "gateReceiptRunId": "run-39272354acb5",
+        "objectsTotal": 6,
+        "gatePassed": 6,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch05-01-defining-structs",
+        "path": "pipeline/knowledge/ch05-01-defining-structs.objects.json",
+        "sha256": "sha256:efd5b8e8d14cc17f86a54ae2fb74a3962742c2ef703ad676f139caa351a6e448",
+        "gateReceiptFile": "pipeline/registry/run-415c09ea6b23.receipt.json",
+        "gateReceiptRunId": "run-415c09ea6b23",
+        "objectsTotal": 9,
+        "gatePassed": 9,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch05-02-example-structs",
+        "path": "pipeline/knowledge/ch05-02-example-structs.objects.json",
+        "sha256": "sha256:5c38865f0fdf529ab8083f37958eceecc52df84e6a6e79a44b292090cf2ad113",
+        "gateReceiptFile": "pipeline/registry/run-b72c4b3fcf6b.receipt.json",
+        "gateReceiptRunId": "run-b72c4b3fcf6b",
+        "objectsTotal": 6,
+        "gatePassed": 6,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch05-03-method-syntax",
+        "path": "pipeline/knowledge/ch05-03-method-syntax.objects.json",
+        "sha256": "sha256:cb2deb108865232415da11010e22c77558b6c4d1c4727375cd317994dbaa95f9",
+        "gateReceiptFile": "pipeline/registry/run-32c91be1d71f.receipt.json",
+        "gateReceiptRunId": "run-32c91be1d71f",
+        "objectsTotal": 8,
+        "gatePassed": 8,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch06-01-defining-an-enum",
+        "path": "pipeline/knowledge/ch06-01-defining-an-enum.objects.json",
+        "sha256": "sha256:499122cbf7520d47f3b75e6017030d7557b2493ec51601b0cc79d3eaa23337a3",
+        "gateReceiptFile": "pipeline/registry/run-3d4babfbac27.receipt.json",
+        "gateReceiptRunId": "run-3d4babfbac27",
+        "objectsTotal": 6,
+        "gatePassed": 6,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch06-02-match",
+        "path": "pipeline/knowledge/ch06-02-match.objects.json",
+        "sha256": "sha256:4bc97cf36d80f0042218444862f77542739cd8109ce904655ba35a27389837b5",
+        "gateReceiptFile": "pipeline/registry/run-d0c2f574121d.receipt.json",
+        "gateReceiptRunId": "run-d0c2f574121d",
+        "objectsTotal": 10,
+        "gatePassed": 10,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch06-03-if-let",
+        "path": "pipeline/knowledge/ch06-03-if-let.objects.json",
+        "sha256": "sha256:5dd432a9bff033e80ab930d31202518783347cde7e66137a1722ee8a73ba47ea",
+        "gateReceiptFile": "pipeline/registry/run-c0f9628fcb91.receipt.json",
+        "gateReceiptRunId": "run-c0f9628fcb91",
+        "objectsTotal": 3,
+        "gatePassed": 3,
+        "gateExcluded": []
+      },
+      {
         "fileKey": "ch09-03-to-panic-or-not-to-panic",
         "path": "pipeline/knowledge/ch09-03-to-panic-or-not-to-panic.objects.json",
         "sha256": "sha256:27fc59c7045ce1d9768db98e352054bb7dc235944f5e02b78dd89e08d304b36b",
@@ -149,7 +229,7 @@
     {
       "fileKey": "appendix-02-operators",
       "inputHash": "sha256:a0c9ce15ab60783197aea7ad3cde83df18a648b59dc185e2987cd70c162bf7ea",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:45:08.977Z",
       "modelId": "deepseek-v4-pro",
       "units": [],
@@ -182,7 +262,7 @@
     {
       "fileKey": "ch02-00-guessing-game-tutorial",
       "inputHash": "sha256:2612ab01b7badb66495f1d321a68698c3fe6167563f5358c4f87c157b46b297a",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:45:11.933Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -256,7 +336,7 @@
     {
       "fileKey": "ch04-01-what-is-ownership",
       "inputHash": "sha256:58042b37a1ace4097a4df63a97a7fd16765e13f5d854fc53ff014bb0a1e56758",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:45:35.187Z",
       "modelId": "deepseek-v4-pro",
       "units": [],
@@ -287,9 +367,781 @@
       "maxTokens": 24000
     },
     {
+      "fileKey": "ch04-02-references-and-borrowing",
+      "inputHash": "sha256:d269c3f101ab7087bfda1255f8eef395c24d2a3411b3e49466bca09dc8c75133",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:36:19.361Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch04-02-references-and-borrowing-u1",
+          "name": "借用与不可变引用",
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch04-02-references-and-borrowing#h2-1"
+          ],
+          "rationale": "这两个对象围绕“引用是什么以及默认行为”这一相同问题空间：创建引用即借用，且引用默认不可变，不能通过引用修改目标。"
+        },
+        {
+          "unitId": "ch04-02-references-and-borrowing-u2",
+          "name": "可变引用与借用限制",
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch04-02-references-and-borrowing#h3-1",
+            "ch04-02-references-and-borrowing#h3-3"
+          ],
+          "rationale": "这些对象回答同一类问题：可变引用如何创建、同一数据为何不能被同时多次可变借用，以及同一时刻可变与不可变引用互斥规则。"
+        },
+        {
+          "unitId": "ch04-02-references-and-borrowing-u3",
+          "name": "悬垂指针与引用有效性",
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch04-02-references-and-borrowing#h3-2",
+            "ch04-02-references-and-borrowing#h3-3"
+          ],
+          "rationale": "这三个对象共同处理引用在内存安全层面的有效性问题：悬垂指针是什么、编译器如何保证引用不悬垂、以及引用必须始终有效。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch04-02-references-and-borrowing-s1",
+          "name": "引用与借用规则",
+          "trigger": "当需要理解或判断 Rust 代码中的引用、可变性和借用合法性，并避免悬垂引用时使用。",
+          "unitIds": [
+            "ch04-02-references-and-borrowing-u1",
+            "ch04-02-references-and-borrowing-u2",
+            "ch04-02-references-and-borrowing-u3"
+          ],
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元分别覆盖借用基础、可变引用限制和引用有效性，属于同一批阅读和编写 Rust 引用相关代码时需要综合使用的规则。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 8,
+        "assigned": 8,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1070,
+        "completion_tokens": 2728,
+        "total_tokens": 3798,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2221
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 558
+      },
+      "finishReason": "stop",
+      "reasoningChars": 4473,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch04-03-slices",
+      "inputHash": "sha256:4de28ff5b852a9381b319341370c04978963a713d25b5f0ccb0f2e571e5b22af",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:36:59.791Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch04-03-slices-u1",
+          "name": "字符串切片索引与边界安全",
+          "objectIds": [
+            "CH04-03-SLICES-H2-1-ANTIPATTERN-01",
+            "CH04-03-SLICES-H3-1-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch04-03-slices#h2-1",
+            "ch04-03-slices#h3-1"
+          ],
+          "rationale": "这两个对象都回答“如何安全地定位字符串切片范围”的问题：一个指出用多个与底层数据状态无关的索引跟踪位置的反模式，另一个规定 range 索引必须落在 UTF-8 字符边界内。"
+        },
+        {
+          "unitId": "ch04-03-slices-u2",
+          "name": "&str 不可变引用与借用限制",
+          "objectIds": [
+            "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+            "CH04-03-SLICES-H4-1-CONCEPT-01",
+            "CH04-03-SLICES-H4-2-HEURISTIC-01"
+          ],
+          "anchors": [
+            "ch04-03-slices#h3-1",
+            "ch04-03-slices#h4-1",
+            "ch04-03-slices#h4-2"
+          ],
+          "rationale": "这三个对象都围绕 &str 的不可变引用属性：一条规则指出拥有不可变引用后不能再取可变引用，概念说明字符串字面量是 &str 且不可变，启发式建议函数参数用 &str 以保持通用且不丢失功能。"
+        },
+        {
+          "unitId": "ch04-03-slices-u3",
+          "name": "通用集合 slice",
+          "objectIds": [
+            "CH04-03-SLICES-H3-2-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch04-03-slices#h3-2"
+          ],
+          "rationale": "该对象单独成单元，因为它把字符串 slice 推广到数组等其他集合，解释 &a[1..3] 得到 &[i32] 及 slice 存储引用和长度的通用机制；与其他单元的问题空间不同，但为保持本章对象全覆盖而单独保留。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch04-03-slices-s1",
+          "name": "Rust 切片类型使用",
+          "trigger": "当需要阅读或编写处理 Rust 字符串切片、设计接受 &str 的 API、避免切片索引或借用错误，或理解 slice 在数组等集合上的通用行为时使用。",
+          "unitIds": [
+            "ch04-03-slices-u1",
+            "ch04-03-slices-u2",
+            "ch04-03-slices-u3"
+          ],
+          "objectIds": [
+            "CH04-03-SLICES-H2-1-ANTIPATTERN-01",
+            "CH04-03-SLICES-H3-1-ENGINEERINGRULE-01",
+            "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+            "CH04-03-SLICES-H4-1-CONCEPT-01",
+            "CH04-03-SLICES-H4-2-HEURISTIC-01",
+            "CH04-03-SLICES-H3-2-CONCEPT-01"
+          ],
+          "rationale": "这三个单元分别覆盖切片安全边界、&str 的不可变借用与参数设计、以及通用集合 slice，共同服务于同一个任务场景：正确、安全地理解和使用 Rust 的 slice 类型。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 6,
+        "assigned": 6,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 989,
+        "completion_tokens": 3400,
+        "total_tokens": 4389,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2874
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 477
+      },
+      "finishReason": "stop",
+      "reasoningChars": 5311,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch05-01-defining-structs",
+      "inputHash": "sha256:7753bf71744278073f6c4b1119f1da5950c835dabae09d71459f42d97dc68d49",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:37:56.958Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch05-01-defining-structs-u1",
+          "name": "定义与字段构造",
+          "objectIds": [
+            "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+            "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+            "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch05-01-defining-structs#h2-1",
+            "ch05-01-defining-structs#h3-1"
+          ],
+          "rationale": "这些对象共同回答“如何声明普通结构体并通过字段构造值”：先定义 struct 与字段，再指出重复字段名的反模式，最后给出字段初始化简写语法。"
+        },
+        {
+          "unitId": "ch05-01-defining-structs-u2",
+          "name": "结构体更新语法",
+          "objectIds": [
+            "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+            "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch05-01-defining-structs#h3-2"
+          ],
+          "rationale": "这两个对象都围绕基于已有结构体实例创建新实例的更新语法：一个规定 ..user1 的位置，另一个说明移动字段后的所有权后果。"
+        },
+        {
+          "unitId": "ch05-01-defining-structs-u3",
+          "name": "特殊结构体形式",
+          "objectIds": [
+            "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+            "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+            "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch05-01-defining-structs#h3-3",
+            "ch05-01-defining-structs#h3-4"
+          ],
+          "rationale": "这些对象共同回答“除普通命名字段结构体外还有哪些结构体形式”：元组结构体、结构体类型唯一性，以及没有任何字段的类单元结构体。"
+        },
+        {
+          "unitId": "ch05-01-defining-structs-u4",
+          "name": "引用字段与生命周期",
+          "objectIds": [
+            "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch05-01-defining-structs#h3-4"
+          ],
+          "rationale": "该对象回答“在结构体中存储引用需要什么条件”，涉及生命周期规则，与结构体形式的选择不同，因此单独成一个单元。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch05-01-defining-structs-s1",
+          "name": "结构体定义与实例化",
+          "trigger": "当开发者需要声明 Rust 结构体、用字段或简写语法构造值、基于已有实例更新值，或选择元组/类单元结构体并处理引用字段生命周期时，阅读本章内容。",
+          "unitIds": [
+            "ch05-01-defining-structs-u1",
+            "ch05-01-defining-structs-u2",
+            "ch05-01-defining-structs-u3",
+            "ch05-01-defining-structs-u4"
+          ],
+          "objectIds": [
+            "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+            "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+            "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01",
+            "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+            "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02",
+            "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+            "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+            "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+            "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元同属“定义并实例化结构体”一章的完整知识链路，覆盖从普通结构体声明与构造、更新语法、特殊结构体形式到引用字段生命周期的连续使用场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 9,
+        "assigned": 9,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1290,
+        "completion_tokens": 2595,
+        "total_tokens": 3885,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1979
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 778
+      },
+      "finishReason": "stop",
+      "reasoningChars": 4262,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch05-02-example-structs",
+      "inputHash": "sha256:7bd5669011ff47583cb018c0e5415c637268489d77c931c2c903920bb73dd361",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:38:36.595Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch05-02-example-structs-u1",
+          "name": "用结构体表达关联数据",
+          "objectIds": [
+            "CH05-02-EXAMPLE-STRUCTS-H2-1-ENGINEERINGRULE-01",
+            "CH05-02-EXAMPLE-STRUCTS-H3-1-ANTIPATTERN-01"
+          ],
+          "anchors": [
+            "ch05-02-example-structs#h2-1",
+            "ch05-02-example-structs#h3-1"
+          ],
+          "rationale": "这两个对象回答同一问题：当多个数据在业务上彼此关联时，应如何让代码表达这种关联。一个从正面规则说明应组合为结构体，另一个从反面说明用元组索引表达宽高如何丢失数据意义，共同构成同一判断依据。"
+        },
+        {
+          "unitId": "ch05-02-example-structs-u2",
+          "name": "结构体借用访问",
+          "objectIds": [
+            "CH05-02-EXAMPLE-STRUCTS-H3-2-CONCEPT-01",
+            "CH05-02-EXAMPLE-STRUCTS-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch05-02-example-structs#h3-2"
+          ],
+          "rationale": "这两个对象都围绕 Rectangle 结构体的使用：一个定义其字段，一个说明在函数中访问该结构体时何时应传不可变借用而不是所有权，二者共同回答“如何定义结构体并在函数中访问其数据”这一同一问题空间。"
+        },
+        {
+          "unitId": "ch05-02-example-structs-u3",
+          "name": "调试打印结构体",
+          "objectIds": [
+            "CH05-02-EXAMPLE-STRUCTS-H3-3-CONCEPT-01",
+            "CH05-02-EXAMPLE-STRUCTS-H3-3-HEURISTIC-02"
+          ],
+          "anchors": [
+            "ch05-02-example-structs#h3-3"
+          ],
+          "rationale": "这两个对象都服务于同一问题：如何打印结构体以便调试。一个说明需要 Debug trait，另一个给出当结构体较大时使用 {:#?} 获得更易读输出的启发式判断，二者共同构成调试打印的完整依据。"
+        }
+      ],
+      "skills": [],
+      "coverage": {
+        "gatePassed": 6,
+        "assigned": 6,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 980,
+        "completion_tokens": 2357,
+        "total_tokens": 3337,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1820
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 468
+      },
+      "finishReason": "stop",
+      "reasoningChars": 3688,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch05-03-method-syntax",
+      "inputHash": "sha256:bca4728e5c3434d73a6f3edafcb0e69b64f7edc92bf7b239b657d458f60b8ac8",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:39:16.923Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch05-03-method-syntax-u1",
+          "name": "self 参数规则",
+          "objectIds": [
+            "CH05-03-METHOD-SYNTAX-H2-1-ENGINEERINGRULE-01",
+            "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch05-03-method-syntax#h2-1",
+            "ch05-03-method-syntax#h3-1"
+          ],
+          "rationale": "两者共同回答方法如何通过第一个参数 self 代表结构体实例，以及 impl 块中 self 参数的类型要求。"
+        },
+        {
+          "unitId": "ch05-03-method-syntax-u2",
+          "name": "方法调用自动引用",
+          "objectIds": [
+            "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch05-03-method-syntax#h3-1"
+          ],
+          "rationale": "该规则单独聚焦方法调用时的语法机制：Rust 没有 -> 运算符，而是通过自动引用和解引用完成调用。"
+        },
+        {
+          "unitId": "ch05-03-method-syntax-u3",
+          "name": "不可变借用参数",
+          "objectIds": [
+            "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-01",
+            "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch05-03-method-syntax#h3-2"
+          ],
+          "rationale": "can_hold 示例与不可变借用参数的选择依据，共同回答方法参数在只需读取、保留调用者所有权时为何使用不可变借用。"
+        },
+        {
+          "unitId": "ch05-03-method-syntax-u4",
+          "name": "关联函数与 impl 组织",
+          "objectIds": [
+            "CH05-03-METHOD-SYNTAX-H3-3-CONCEPT-01",
+            "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
+            "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch05-03-method-syntax#h3-3",
+            "ch05-03-method-syntax#h3-4"
+          ],
+          "rationale": "它们都围绕 impl 块中不作用于实例的关联函数、使用 :: 调用的规则，以及允许多个 impl 块的组织方式。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch05-03-method-syntax-s1",
+          "name": "方法语法全流程",
+          "trigger": "当需要为结构体定义方法、调用方法、选择参数借用方式或组织关联函数与多个 impl 块时使用。",
+          "unitIds": [
+            "ch05-03-method-syntax-u1",
+            "ch05-03-method-syntax-u2",
+            "ch05-03-method-syntax-u3",
+            "ch05-03-method-syntax-u4",
+            "ch05-02-example-structs-u1",
+            "ch05-02-example-structs-u2",
+            "ch05-02-example-structs-u3"
+          ],
+          "objectIds": [
+            "CH05-03-METHOD-SYNTAX-H2-1-ENGINEERINGRULE-01",
+            "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-01",
+            "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-02",
+            "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-01",
+            "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-02",
+            "CH05-03-METHOD-SYNTAX-H3-3-CONCEPT-01",
+            "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
+            "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01",
+            "CH05-02-EXAMPLE-STRUCTS-H2-1-ENGINEERINGRULE-01",
+            "CH05-02-EXAMPLE-STRUCTS-H3-1-ANTIPATTERN-01",
+            "CH05-02-EXAMPLE-STRUCTS-H3-2-CONCEPT-01",
+            "CH05-02-EXAMPLE-STRUCTS-H3-2-ENGINEERINGRULE-02",
+            "CH05-02-EXAMPLE-STRUCTS-H3-3-CONCEPT-01",
+            "CH05-02-EXAMPLE-STRUCTS-H3-3-HEURISTIC-02"
+          ],
+          "rationale": "四个单元覆盖从 self 方法定义与调用机制，到方法参数借用选择，再到关联函数与 impl 块组织，面向阅读并使用方法语法的同一批场景。",
+          "chapterRefs": [
+            "ch05-02-example-structs",
+            "ch05-03-method-syntax"
+          ],
+          "mergedFrom": [
+            "ch05-02-example-structs-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
+              "strictScenarios": 2,
+              "listScenarios": 2,
+              "strictScenarioIds": [
+                "ch05-03-method-syntax-s1-sc1",
+                "ch05-03-method-syntax-s1-sc3"
+              ],
+              "listScenarioIds": [
+                "ch05-03-method-syntax-s1-sc1",
+                "ch05-03-method-syntax-s1-sc3"
+              ]
+            }
+          ]
+        }
+      ],
+      "coverage": {
+        "gatePassed": 8,
+        "assigned": 8,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1130,
+        "completion_tokens": 4058,
+        "total_tokens": 5188,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3516
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 618
+      },
+      "finishReason": "stop",
+      "reasoningChars": 7723,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch06-01-defining-an-enum",
+      "inputHash": "sha256:f15a1821e6b441e6de2b0d12654174e06707daca8f37e763b40ab0120a96b16e",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:40:25.408Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch06-01-defining-an-enum-u1",
+          "name": "枚举与成员定义",
+          "objectIds": [
+            "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-01",
+            "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch06-01-defining-an-enum#h2-1"
+          ],
+          "rationale": "这两个对象都回答“什么是枚举、什么是枚举成员”等基础定义问题，出自同一锚点 h2-1，并共用 IpAddrKind 中 V4 与 V6 的例子。"
+        },
+        {
+          "unitId": "ch06-01-defining-an-enum-u2",
+          "name": "成员携带数据",
+          "objectIds": [
+            "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-01",
+            "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch06-01-defining-an-enum#h3-1"
+          ],
+          "rationale": "这两个对象都回答“枚举成员能携带什么数据”的问题，出自同一锚点 h3-1，说明枚举成员可以直接携带数据，并且各成员可以处理不同类型和数量的数据。"
+        },
+        {
+          "unitId": "ch06-01-defining-an-enum-u3",
+          "name": "Option 安全规则",
+          "objectIds": [
+            "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-01",
+            "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch06-01-defining-an-enum#h3-2"
+          ],
+          "rationale": "这两个工程规则都回答“如何处理 Option<T> 的可空性”的问题，出自同一锚点 h3-2，共同约束对 Option<T> 与非 Option<T> 值的空值判断和运算方式。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch06-01-defining-an-enum-s1",
+          "name": "定义与使用枚举",
+          "trigger": "当需要把一组相关可能值建模为 Rust 枚举、为成员附加不同类型数据，或安全处理 Option<T> 的可空值时，使用本候选。",
+          "unitIds": [
+            "ch06-01-defining-an-enum-u1",
+            "ch06-01-defining-an-enum-u2",
+            "ch06-01-defining-an-enum-u3"
+          ],
+          "objectIds": [
+            "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-01",
+            "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-02",
+            "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-01",
+            "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-02",
+            "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-01",
+            "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元构成同一条使用链路：先定义枚举表示一组可能值，再让成员携带数据，最后在遇到 Option<T> 时安全判断空值或解包；读这一章通常是为了完成这个完整任务链。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 6,
+        "assigned": 6,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 984,
+        "completion_tokens": 2208,
+        "total_tokens": 3192,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1702
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 472
+      },
+      "finishReason": "stop",
+      "reasoningChars": 3333,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch06-02-match",
+      "inputHash": "sha256:5219aed0edbf5d9520886bdd156ba4b125bf9b2f497795d46840f28c09f6d079",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:40:58.592Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch06-02-match-u1",
+          "name": "match 基本语义与分支返回",
+          "objectIds": [
+            "CH06-02-MATCH-H2-1-CONCEPT-01",
+            "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
+            "CH06-02-MATCH-H4-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch06-02-match#h2-1",
+            "ch06-02-match#h4-1"
+          ],
+          "rationale": "这些对象共同回答 match 如何比较并选择分支，以及分支代码作为表达式如何产生返回值。"
+        },
+        {
+          "unitId": "ch06-02-match-u2",
+          "name": "模式绑定与携带数据",
+          "objectIds": [
+            "CH06-02-MATCH-H3-1-CONCEPT-01",
+            "CH06-02-MATCH-H3-1-CONCEPT-02",
+            "CH06-02-MATCH-H3-2-CONCEPT-01",
+            "CH06-02-MATCH-H4-1-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch06-02-match#h3-1",
+            "ch06-02-match#h3-2",
+            "ch06-02-match#h4-1"
+          ],
+          "rationale": "这些对象都涉及如何在 match 模式中绑定枚举成员或 Option 内部的值，例如 Coin::Quarter 的 state 与 Some(i) 的 i。"
+        },
+        {
+          "unitId": "ch06-02-match-u3",
+          "name": "穷举与通配占位",
+          "objectIds": [
+            "CH06-02-MATCH-H3-3-ENGINEERINGRULE-01",
+            "CH06-02-MATCH-H3-4-ENGINEERINGRULE-01",
+            "CH06-02-MATCH-H3-4-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch06-02-match#h3-3",
+            "ch06-02-match#h3-4"
+          ],
+          "rationale": "这些对象共同回答如何满足 match 的穷举要求，以及如何使用通配分支和 _ 占位符处理剩余或未使用的值。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch06-02-match-s1",
+          "name": "match 控制流与穷举模式匹配",
+          "trigger": "当需要编写或阅读 match 表达式，从枚举或 Option 中取出并绑定内部值，同时保证所有可能分支都被穷尽处理时使用。",
+          "unitIds": [
+            "ch06-02-match-u1",
+            "ch06-02-match-u2",
+            "ch06-02-match-u3",
+            "ch06-03-if-let-u1"
+          ],
+          "objectIds": [
+            "CH06-02-MATCH-H2-1-CONCEPT-01",
+            "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
+            "CH06-02-MATCH-H4-1-ENGINEERINGRULE-02",
+            "CH06-02-MATCH-H3-1-CONCEPT-01",
+            "CH06-02-MATCH-H3-1-CONCEPT-02",
+            "CH06-02-MATCH-H3-2-CONCEPT-01",
+            "CH06-02-MATCH-H4-1-ENGINEERINGRULE-01",
+            "CH06-02-MATCH-H3-3-ENGINEERINGRULE-01",
+            "CH06-02-MATCH-H3-4-ENGINEERINGRULE-01",
+            "CH06-02-MATCH-H3-4-CONCEPT-02",
+            "CH06-03-IF-LET-H2-1-CONCEPT-01",
+            "CH06-03-IF-LET-H2-1-HEURISTIC-02",
+            "CH06-03-IF-LET-H2-2-HEURISTIC-01"
+          ],
+          "rationale": "这三个单元覆盖了从 match 基本分支语义、模式绑定内部数据，到穷举与通配处理的完整任务链，面向需要正确且完整地使用 match 的场景。",
+          "chapterRefs": [
+            "ch06-02-match",
+            "ch06-03-if-let"
+          ],
+          "mergedFrom": [
+            "ch06-03-if-let-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+              "strictScenarios": 2,
+              "listScenarios": 1,
+              "strictScenarioIds": [
+                "ch06-02-match-s1-sc1",
+                "ch06-02-match-s1-sc2"
+              ],
+              "listScenarioIds": [
+                "ch06-02-match-s1-sc2"
+              ]
+            }
+          ]
+        }
+      ],
+      "coverage": {
+        "gatePassed": 10,
+        "assigned": 10,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1300,
+        "completion_tokens": 4932,
+        "total_tokens": 6232,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4506
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 788
+      },
+      "finishReason": "stop",
+      "reasoningChars": 12198,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch06-03-if-let",
+      "inputHash": "sha256:10e3a91c807e318d62a0680e5de85c41648b163d30fddcf99512184ace1cc46a",
+      "status": "proposed",
+      "createdAt": "2026-10-14T09:42:09.164Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch06-03-if-let-u1",
+          "name": "if let 简化匹配",
+          "objectIds": [
+            "CH06-03-IF-LET-H2-1-CONCEPT-01",
+            "CH06-03-IF-LET-H2-1-HEURISTIC-02",
+            "CH06-03-IF-LET-H2-2-HEURISTIC-01"
+          ],
+          "anchors": [
+            "ch06-03-if-let#h2-1",
+            "ch06-03-if-let#h2-2"
+          ],
+          "rationale": "三者共同回答同一个问题空间：在只关心一个模式并获取其内部数据时，如何用 if let 简化控制流，以及何时在 match 与 if let 之间选择。对象1给出 if let 的核心定义，对象2给出其触发条件，对象3给出枚举值访问时的选择依据。"
+        }
+      ],
+      "skills": [],
+      "coverage": {
+        "gatePassed": 3,
+        "assigned": 3,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 788,
+        "completion_tokens": 2082,
+        "total_tokens": 2870,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1790
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 276
+      },
+      "finishReason": "stop",
+      "reasoningChars": 3717,
+      "maxTokens": 24000
+    },
+    {
       "fileKey": "ch09-03-to-panic-or-not-to-panic",
       "inputHash": "sha256:a7e73dbeaa984cff64761517e365f02f96030dd1826219be446923ef56889196",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:45:38.874Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -388,7 +1240,7 @@
     {
       "fileKey": "ch12-03-improving-error-handling-and-modularity",
       "inputHash": "sha256:015e70d8d1ec3ac89a4a6da3764e41838fe989e967c8f8e918f003df16d02596",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:46:29.618Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -560,7 +1412,7 @@
     {
       "fileKey": "ch15-04-rc",
       "inputHash": "sha256:1397f4b4ff1a4c5bd5f79a9df53a1f142a10cce292fd31ecea31d1bc6026e83f",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:48:14.395Z",
       "modelId": "deepseek-v4-pro",
       "units": [],
@@ -593,7 +1445,7 @@
     {
       "fileKey": "ch17-03-oo-design-patterns",
       "inputHash": "sha256:e61fd8c24b328a546ca4c3fde1b2ca3a4c76984a7515ccaedc50eb1e01e28bb7",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:48:19.099Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -728,7 +1580,7 @@
     {
       "fileKey": "ch18-02-refutability",
       "inputHash": "sha256:b80cccdbd8cb7983d03b67a583f92db267e2396680a90410f16e1fa8d132785b",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T04:49:24.015Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -787,27 +1639,27 @@
     }
   ],
   "totals": {
-    "chapters": 8,
-    "units": 16,
-    "skills": 6,
-    "gatePassed": 50,
+    "chapters": 16,
+    "units": 40,
+    "skills": 14,
+    "gatePassed": 106,
     "unassigned": 0,
     "unresolvedObjectIds": 0,
     "duplicates": 0,
     "unitsWithoutSkill": 0,
     "usage": {
       "proposed": 8,
-      "reused": 0,
+      "reused": 8,
       "calls": 8,
-      "promptTokens": 9025,
-      "completionTokens": 26415
+      "promptTokens": 8531,
+      "completionTokens": 24360
     }
   },
   "resplit": {
-    "appliedAt": "2026-10-14T07:29:14.121Z",
+    "appliedAt": "2026-10-14T10:23:39.432Z",
     "planFile": "pipeline/registry/resplit-plan.rust-book-cn.json",
-    "planSha256": "sha256:5480f5ae9df8390c14e881ed2448cfd7d951cdeef9e1e824411ebf2c1836e935",
-    "rule": "只取「strict ≥2 且两读数都存」的稳定边（stable 集），rust 源恰 1 对、天然不相交；strictOnly 弱信号（ch09-03-s1|ch12-03-s2）不动——单读数出现的对在 ADR-026 的稳定口径下不构成合并依据。吸收者：两候选对象数同为 12，取字典序先者（s1 为两冲突场景的 intended 之一，且是被 s2 场景触发的接收方）。同一个通知的第一源对应实例（卡 13）可参照。",
+    "planSha256": "sha256:dfcd0cdb68fe199005daea3b0d5a82baad22336e1e75941aee1893002116964e",
+    "rule": "在「strict 场景数 ≥2 且两读数都存」的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序。传递闭包不可用：共认领不是等价关系（第一源实测：87 稳定对的连通分量是 38/40 的巨型分量；本源的稳定边亦成链 ch06-01–06-02–06-03–18-02，规则把链机械剪为不共享候选的对）。",
     "merges": [
       {
         "into": "ch12-03-improving-error-handling-and-modularity-s1",
@@ -836,27 +1688,170 @@
             "ch12-03-improving-error-handling-and-modularity-s2-sc2"
           ]
         }
+      },
+      {
+        "into": "ch05-03-method-syntax-s1",
+        "target": "ch05-02-example-structs-s1",
+        "unitIds": [
+          "ch05-03-method-syntax-u1",
+          "ch05-03-method-syntax-u2",
+          "ch05-03-method-syntax-u3",
+          "ch05-03-method-syntax-u4",
+          "ch05-02-example-structs-u1",
+          "ch05-02-example-structs-u2",
+          "ch05-02-example-structs-u3"
+        ],
+        "objectCount": 14,
+        "chapterRefs": [
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax"
+        ],
+        "basis": {
+          "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
+          ],
+          "listScenarioIds": [
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
+          ]
+        }
+      },
+      {
+        "into": "ch06-02-match-s1",
+        "target": "ch06-03-if-let-s1",
+        "unitIds": [
+          "ch06-02-match-u1",
+          "ch06-02-match-u2",
+          "ch06-02-match-u3",
+          "ch06-03-if-let-u1"
+        ],
+        "objectCount": 13,
+        "chapterRefs": [
+          "ch06-02-match",
+          "ch06-03-if-let"
+        ],
+        "basis": {
+          "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+          "strictScenarios": 2,
+          "listScenarios": 1,
+          "strictScenarioIds": [
+            "ch06-02-match-s1-sc1",
+            "ch06-02-match-s1-sc2"
+          ],
+          "listScenarioIds": [
+            "ch06-02-match-s1-sc2"
+          ]
+        }
       }
     ],
     "removed": [
       {
-        "skillId": "ch12-03-improving-error-handling-and-modularity-s2",
-        "mergedInto": "ch12-03-improving-error-handling-and-modularity-s1",
+        "skillId": "ch05-02-example-structs-s1",
+        "mergedInto": "ch05-03-method-syntax-s1",
         "basis": {
-          "stablePair": "ch12-03-improving-error-handling-and-modularity-s1|ch12-03-improving-error-handling-and-modularity-s2",
+          "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
           "strictScenarios": 2,
           "listScenarios": 2,
           "strictScenarioIds": [
-            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
-            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
           ],
           "listScenarioIds": [
-            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
-            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+            "ch05-03-method-syntax-s1-sc1",
+            "ch05-03-method-syntax-s1-sc3"
           ]
         },
-        "reason": "两读数都存在的稳定共认领对（strict 2、list 2）——门禁二 list 与 strict 两份报告的动作清单都给出同一 merge（ADR-007：同一场景被 ≥2 个候选同时认领，粒度太碎）。"
+        "reason": "波 2 稳定对（strict 2、list 2，两读数同场景集——本波最强边）。吸收者按规则「对象数→严格命中数→字典序」：ch05-03（8 对象）> ch05-02（6 对象）。（注意：吸收者是门禁一未过的那个，合并后吃进 ch05-02 的 AntiPattern 对象，陷阱段有来源——合并不是「让未过的蹭过」，是规则先行、判决随后。）"
+      },
+      {
+        "skillId": "ch06-03-if-let-s1",
+        "mergedInto": "ch06-02-match-s1",
+        "basis": {
+          "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+          "strictScenarios": 2,
+          "listScenarios": 1,
+          "strictScenarioIds": [
+            "ch06-02-match-s1-sc1",
+            "ch06-02-match-s1-sc2"
+          ],
+          "listScenarioIds": [
+            "ch06-02-match-s1-sc2"
+          ]
+        },
+        "reason": "波 2 稳定对（strict 2、list 1；「两读数都存」指该边在两读数中均出现，list 侧计数不设阈值——第一源 chapter9-s2|afterword-s1 即 strict 2 / list 1 录取）。吸收者按规则：ch06-02（10 对象）> ch06-03（3 对象）。同一链条上的 06-01|06-02 与 06-03|18-02 为 strict=1，低于阈值，按规则不取——链被机械剪为不相交对。"
       }
-    ]
+    ],
+    "thisRun": {
+      "merges": [
+        {
+          "into": "ch05-03-method-syntax-s1",
+          "target": "ch05-02-example-structs-s1",
+          "unitIds": [
+            "ch05-03-method-syntax-u1",
+            "ch05-03-method-syntax-u2",
+            "ch05-03-method-syntax-u3",
+            "ch05-03-method-syntax-u4",
+            "ch05-02-example-structs-u1",
+            "ch05-02-example-structs-u2",
+            "ch05-02-example-structs-u3"
+          ],
+          "objectCount": 14,
+          "chapterRefs": [
+            "ch05-02-example-structs",
+            "ch05-03-method-syntax"
+          ],
+          "basis": {
+            "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
+            "strictScenarios": 2,
+            "listScenarios": 2,
+            "strictScenarioIds": [
+              "ch05-03-method-syntax-s1-sc1",
+              "ch05-03-method-syntax-s1-sc3"
+            ],
+            "listScenarioIds": [
+              "ch05-03-method-syntax-s1-sc1",
+              "ch05-03-method-syntax-s1-sc3"
+            ]
+          }
+        },
+        {
+          "into": "ch06-02-match-s1",
+          "target": "ch06-03-if-let-s1",
+          "unitIds": [
+            "ch06-02-match-u1",
+            "ch06-02-match-u2",
+            "ch06-02-match-u3",
+            "ch06-03-if-let-u1"
+          ],
+          "objectCount": 13,
+          "chapterRefs": [
+            "ch06-02-match",
+            "ch06-03-if-let"
+          ],
+          "basis": {
+            "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+            "strictScenarios": 2,
+            "listScenarios": 1,
+            "strictScenarioIds": [
+              "ch06-02-match-s1-sc1",
+              "ch06-02-match-s1-sc2"
+            ],
+            "listScenarioIds": [
+              "ch06-02-match-s1-sc2"
+            ]
+          }
+        }
+      ],
+      "alreadyApplied": [
+        {
+          "into": "ch12-03-improving-error-handling-and-modularity-s1",
+          "target": "ch12-03-improving-error-handling-and-modularity-s2"
+        }
+      ]
+    }
   }
 }

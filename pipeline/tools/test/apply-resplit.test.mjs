@@ -148,4 +148,28 @@ describe('13 · apply-resplit CLI：批准门、归档、resplit 块', () => {
       await rm(root, { recursive: true, force: true })
     }
   })
+
+  it('幂等重放（卡 21）：已应用的对跳过不报错、不重复写盘；"两边都没有"照旧拒绝', async () => {
+    // 先在盘上制造「已应用」状态：跑一次真实合并
+    const root = await makeRoot('replay')
+    try {
+      assert.equal(runCli(root, []).status, 0)
+      const before = await readFile(path.join(root, 'pipeline', 'knowledge', 'clusters.json'), 'utf8')
+      // 重放同一计划：全部已应用 → 不写盘（逐字节未变），退出码 0
+      const replay = runCli(root, ['--json'])
+      assert.equal(replay.status, 0, replay.stderr)
+      const out = JSON.parse(replay.stdout)
+      assert.deepEqual(out.applied, [])
+      assert.equal(out.alreadyApplied.length, 1)
+      assert.equal(await readFile(path.join(root, 'pipeline', 'knowledge', 'clusters.json'), 'utf8'), before, '已应用的重放不得刷新产物')
+      // 「两边都没有」仍是拒绝：换成另一对不存在的候选
+      const plan2 = { ...PLAN, pairs: [{ action: 'merge', into: 'chapter4-s1', target: 'ghost', basis: {}, reason: null }] }
+      await writeFile(path.join(root, 'pipeline', 'registry', 'resplit-plan.json'), JSON.stringify(plan2))
+      const bad = runCli(root, [])
+      assert.equal(bad.status, 4)
+      assert.match(bad.stderr, /找不到被并入者 ghost/)
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
 })

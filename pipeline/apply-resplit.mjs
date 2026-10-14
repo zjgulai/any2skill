@@ -99,9 +99,17 @@ export function applyPlan({ clustersDoc, candidatesDoc, plan }) {
 
   const removed = []
   const mergeRecords = []
+  const alreadyApplied = []
   for (const m of merges) {
     const intoHit = findSkill(m.into)
     const targetHit = findSkill(m.target)
+    // 幂等重放（卡 21）：计划是**决策的完整记录**（环 3 重跑后可整体重放），而重跑前的
+    // 部分对可能已在盘上。判据用产物自身的血统：被并入者不在、且并入者的 mergedFrom
+    // 已声明它——这是「记过账」，不是「找不到」；后者（两边都没有）照旧拒绝。
+    if (!targetHit && intoHit && (intoHit.s.mergedFrom ?? []).includes(m.target)) {
+      alreadyApplied.push({ into: m.into, target: m.target })
+      continue
+    }
     if (!intoHit) throw new Error(`clusters.json 里找不到并入者 ${m.into}`)
     if (!targetHit) throw new Error(`clusters.json 里找不到被并入者 ${m.target}`)
     const intoCand = candidateById.get(m.into)
@@ -160,7 +168,7 @@ export function applyPlan({ clustersDoc, candidatesDoc, plan }) {
     }
   }
 
-  return { clustersDoc, candidatesDoc, removed, mergeRecords }
+  return { clustersDoc, candidatesDoc, removed, mergeRecords, alreadyApplied }
 }
 
 async function main(argv) {
@@ -189,6 +197,18 @@ async function main(argv) {
 
     const applied = applyPlan({ clustersDoc, candidatesDoc, plan })
 
+    // 全部条目都已应用（重放一个已整体落盘的计划前的计划）：状态未变，不写盘、不归档——
+    // 幂等重放不应制造漂移（写同样的内容也会刷新 resplit 块时间戳，那是假变更）。
+    if (applied.mergeRecords.length === 0 && applied.alreadyApplied.length > 0) {
+      const pairs = applied.alreadyApplied.map((a) => `${a.target} → ${a.into}`)
+      process.stdout.write(
+        flags.json
+          ? `${JSON.stringify({ applied: [], alreadyApplied: pairs, candidates: applied.candidatesDoc.candidates.length }, null, 2)}\n`
+          : `计划全部已应用（${pairs.length} 对）——盘上状态未变，未写盘。\n${pairs.map((x) => `  已应用：${x}`).join('\n')}\n`,
+      )
+      return EXIT.PASS
+    }
+
     // 对象级零丢失：每个候选（含并入者）声明的对象必须能在其各章的对象文件里找到。
     const objectIdsByFile = new Map()
     for (const ch of clustersDoc.chapters) {
@@ -211,13 +231,21 @@ async function main(argv) {
       }
     }
 
+    // 重切块按**追加**语义写：增量应用（先波 1 后波 2）时旧的合并记录不得被新块顶掉。
+    const prevResplit = clustersDoc.resplit ?? null
+    const prevMerges = Array.isArray(prevResplit?.merges) ? prevResplit.merges : []
+    const allMerges = [...prevMerges]
+    for (const rec of applied.mergeRecords) {
+      if (!allMerges.some((x) => x.into === rec.into && x.target === rec.target)) allMerges.push(rec)
+    }
     const resplitBlock = {
       appliedAt: new Date().toISOString(),
       planFile: rel(path.join(repoRoot, flags.plan)),
       planSha256: `sha256:${createHash('sha256').update(planRaw).digest('hex')}`,
       rule: plan.rule ?? null,
-      merges: applied.mergeRecords,
+      merges: allMerges,
       removed: applied.removed,
+      thisRun: { merges: applied.mergeRecords, alreadyApplied: applied.alreadyApplied },
     }
     applied.clustersDoc.resplit = resplitBlock
     applied.candidatesDoc.resplit = { ...resplitBlock, note: 'diagnostics 与 candidates 的聚类时点字段保持原样（本块是重切记录，不重算聚类诊断）。' }
@@ -226,10 +254,17 @@ async function main(argv) {
       const out = {
         dryRun: true,
         merges: applied.mergeRecords.map((m) => `${m.target} → ${m.into}（${m.chapterRefs.join('+')}，${m.objectCount} 对象）`),
+        alreadyApplied: applied.alreadyApplied.map((a) => `${a.target} → ${a.into}`),
         removed: applied.removed.map((r) => r.skillId),
         candidatesAfter: applied.candidatesDoc.candidates.length,
       }
-      process.stdout.write(flags.json ? `${JSON.stringify(out, null, 2)}\n` : `[dry-run] 校验通过，未写盘。\n${out.merges.map((x) => `  ${x}`).join('\n')}\n候选数：${out.candidatesAfter}\n`)
+      process.stdout.write(
+        flags.json
+          ? `${JSON.stringify(out, null, 2)}\n`
+          : `[dry-run] 校验通过，未写盘。\n${out.merges.map((x) => `  ${x}`).join('\n')}\n` +
+              (out.alreadyApplied.length ? `已应用（本次跳过）：${out.alreadyApplied.join('；')}\n` : '') +
+              `候选数：${out.candidatesAfter}\n`,
+      )
       return EXIT.PASS
     }
 

@@ -1,9 +1,11 @@
 {
   "schemaVersion": "resplit-plan/v1",
   "createdAt": "2026-10-14T07:40:00.000Z",
+  "updatedAt": "2026-10-14T10:20:00.000Z",
   "approved": true,
   "approvedAt": "2026-10-14T07:40:00.000Z",
   "approvedBy": "用户（AskUserQuestion：「先合并再发布（推荐）」）",
+  "updateNote": "波 2（卡 21）按同一既定规则机械扩展：新增两对（ch05-03←ch05-02、ch06-02←ch06-03，均为 strict≥2 稳定边、与既有对不相交）。规则本身在卡 13 已获批准（「在 strict≥2 且两读数都存的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序」），此处只是对 rust 源第二批候选机械执行同一规则。保留波 1 的 s1←s2，使环 3 重跑后可整体重放。",
   "sources": {
     "gate2ReportList": "pipeline/registry/gate2-report.rust-book-cn.json",
     "gate2ReportStrict": "pipeline/registry/gate2-report.strict.rust-book-cn.json",
@@ -11,7 +13,7 @@
     "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json",
     "candidatesFile": "pipeline/registry/skill-candidates.rust-book-cn.json"
   },
-  "rule": "只取「strict ≥2 且两读数都存」的稳定边（stable 集），rust 源恰 1 对、天然不相交；strictOnly 弱信号（ch09-03-s1|ch12-03-s2）不动——单读数出现的对在 ADR-026 的稳定口径下不构成合并依据。吸收者：两候选对象数同为 12，取字典序先者（s1 为两冲突场景的 intended 之一，且是被 s2 场景触发的接收方）。同一个通知的第一源对应实例（卡 13）可参照。",
+  "rule": "在「strict 场景数 ≥2 且两读数都存」的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序。传递闭包不可用：共认领不是等价关系（第一源实测：87 稳定对的连通分量是 38/40 的巨型分量；本源的稳定边亦成链 ch06-01–06-02–06-03–18-02，规则把链机械剪为不共享候选的对）。",
   "pairs": [
     {
       "action": "merge",
@@ -30,7 +32,44 @@
           "ch12-03-improving-error-handling-and-modularity-s2-sc2"
         ]
       },
-      "reason": "两读数都存在的稳定共认领对（strict 2、list 2）——门禁二 list 与 strict 两份报告的动作清单都给出同一 merge（ADR-007：同一场景被 ≥2 个候选同时认领，粒度太碎）。"
+      "reason": "两读数都存在的稳定共认领对（strict 2、list 2）——门禁二 list 与 strict 两份报告的动作清单都给出同一 merge（ADR-007：同一场景被 ≥2 个候选同时认领，粒度太碎）。两候选对象数同为 12，取字典序先者 s1（亦为卡 20 已批准的原对）。"
+    },
+    {
+      "action": "merge",
+      "into": "ch05-03-method-syntax-s1",
+      "target": "ch05-02-example-structs-s1",
+      "basis": {
+        "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
+        "strictScenarios": 2,
+        "listScenarios": 2,
+        "strictScenarioIds": [
+          "ch05-03-method-syntax-s1-sc1",
+          "ch05-03-method-syntax-s1-sc3"
+        ],
+        "listScenarioIds": [
+          "ch05-03-method-syntax-s1-sc1",
+          "ch05-03-method-syntax-s1-sc3"
+        ]
+      },
+      "reason": "波 2 稳定对（strict 2、list 2，两读数同场景集——本波最强边）。吸收者按规则「对象数→严格命中数→字典序」：ch05-03（8 对象）> ch05-02（6 对象）。（注意：吸收者是门禁一未过的那个，合并后吃进 ch05-02 的 AntiPattern 对象，陷阱段有来源——合并不是「让未过的蹭过」，是规则先行、判决随后。）"
+    },
+    {
+      "action": "merge",
+      "into": "ch06-02-match-s1",
+      "target": "ch06-03-if-let-s1",
+      "basis": {
+        "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+        "strictScenarios": 2,
+        "listScenarios": 1,
+        "strictScenarioIds": [
+          "ch06-02-match-s1-sc1",
+          "ch06-02-match-s1-sc2"
+        ],
+        "listScenarioIds": [
+          "ch06-02-match-s1-sc2"
+        ]
+      },
+      "reason": "波 2 稳定对（strict 2、list 1；「两读数都存」指该边在两读数中均出现，list 侧计数不设阈值——第一源 chapter9-s2|afterword-s1 即 strict 2 / list 1 录取）。吸收者按规则：ch06-02（10 对象）> ch06-03（3 对象）。同一链条上的 06-01|06-02 与 06-03|18-02 为 strict=1，低于阈值，按规则不取——链被机械剪为不相交对。"
     }
   ]
 }

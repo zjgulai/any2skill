@@ -1,0 +1,265 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "ch05-03-method-syntax-s1",
+  "name": "ch05-03-method-syntax-s1",
+  "description": "方法语法全流程：当函数需要接收多个彼此相关联的参数时，应把它们组合在一起，使函数签名体现这种关联，从而更易懂、更易处理；适用于函数需要多个相互关联的输入来完成计算，例如用宽度和高度计算长方形面积、函数参数是结构体实例，调用方需要在调用后保持所有权并继续使用该实例、适用于在结构体上下文中定义的方法，也适用于枚举或 trait 对象的上下文。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 5363,
+    "markdownHash": "sha256:7803de1f42dac460b9487c3617685bbfb1060bf3f94ec5721e089483bd228777",
+    "checkedAt": "2026-10-14T10:47:40.979Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CH05-02-EXAMPLE-STRUCTS-H2-1-ENGINEERINGRULE-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-1-ANTIPATTERN-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-2-CONCEPT-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-2-ENGINEERINGRULE-02",
+    "CH05-02-EXAMPLE-STRUCTS-H3-3-CONCEPT-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-3-HEURISTIC-02",
+    "CH05-03-METHOD-SYNTAX-H2-1-ENGINEERINGRULE-01",
+    "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-01",
+    "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-02",
+    "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-01",
+    "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-02",
+    "CH05-03-METHOD-SYNTAX-H3-3-CONCEPT-01",
+    "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
+    "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h2-1",
+      "title": "一个使用结构体的示例程序",
+      "lineStart": 1,
+      "lineEnd": 30
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h3-1",
+      "title": "使用元组重构",
+      "lineStart": 31,
+      "lineEnd": 46
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h3-2",
+      "title": "使用结构体重构：赋予更多意义",
+      "lineStart": 47,
+      "lineEnd": 64
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h3-3",
+      "title": "通过派生 trait 增加实用功能",
+      "lineStart": 65,
+      "lineEnd": 155
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h2-1",
+      "title": "方法语法",
+      "lineStart": 1,
+      "lineEnd": 4
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-1",
+      "title": "定义方法",
+      "lineStart": 5,
+      "lineEnd": 68
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-2",
+      "title": "带有更多参数的方法",
+      "lineStart": 69,
+      "lineEnd": 99
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-3",
+      "title": "关联函数",
+      "lineStart": 100,
+      "lineEnd": 113
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-4",
+      "title": "多个 `impl` 块",
+      "lineStart": 114,
+      "lineEnd": 125
+    }
+  ],
+  "codeSource": {
+    "available": false,
+    "note": "> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。"
+  },
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-14T10:47:40.979Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 1 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 1
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 6
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 7,
+    "principles": 6,
+    "patterns": 6,
+    "pitfalls": 1,
+    "code": 0,
+    "reading": 9
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 1 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_SOURCE_ABSENT",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED"
+  ],
+  "provenance": {
+    "sourceFile": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+    "anchorIndexHash": "sha256:0d26eb1e6e764967aefea131e582c49227036c45f12569111870bb10c1df603b",
+    "anchorIndexHashes": {
+      "sources/rust-book-cn/book/ch05-02-example-structs.md": "sha256:0d26eb1e6e764967aefea131e582c49227036c45f12569111870bb10c1df603b",
+      "sources/rust-book-cn/book/ch05-03-method-syntax.md": "sha256:0f835eb7fe56bbbac6c0ba7e47d771858ed10e7fff847c5087f10f57581fe2a6"
+    },
+    "objectsFile": "pipeline/knowledge/ch05-02-example-structs.objects.json + pipeline/knowledge/ch05-03-method-syntax.objects.json",
+    "objectsFileSha256": "sha256:748f19e1f86a76fe5e7ab726bb70bf2dddb356a3dd5b962e26b90593b77ade1e",
+    "objectsTotal": 14,
+    "objectsInCluster": 14,
+    "objectsKept": 14,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 0,
+    "crossChapterInCluster": 0,
+    "crossChapterKept": 0,
+    "crossChapterExcludedByGate": [],
+    "antipatternVerdictsFile": null,
+    "antipatternVerdictsRunId": null,
+    "antipatternVerdictsIdentityMatch": null,
+    "antipatternObjectsRunId": null,
+    "gateReceiptFile": "pipeline/registry/run-b72c4b3fcf6b.receipt.json",
+    "gateReceiptRunId": "run-b72c4b3fcf6b",
+    "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "clusterSkillId": "ch05-03-method-syntax-s1",
+    "clusterUnits": [
+      "ch05-03-method-syntax-u1",
+      "ch05-03-method-syntax-u2",
+      "ch05-03-method-syntax-u3",
+      "ch05-03-method-syntax-u4",
+      "ch05-02-example-structs-u1",
+      "ch05-02-example-structs-u2",
+      "ch05-02-example-structs-u3"
+    ],
+    "clusterChapterRefs": [
+      "ch05-02-example-structs",
+      "ch05-03-method-syntax"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json"
+  }
+}

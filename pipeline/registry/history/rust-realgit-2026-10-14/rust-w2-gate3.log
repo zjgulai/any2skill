@@ -1,0 +1,49 @@
+  ch04-03-slices-s1：任务 6/6
+  ch05-01-defining-structs-s1：任务 6/6
+  ch05-03-method-syntax-s1：任务 6/6
+  ch12-03-improving-error-handling-and-modularity-s1：任务复用（0 次调用）
+  ch17-03-oo-design-patterns-s1：任务复用（0 次调用）
+    ch04-03-slices-s1-t1：无skill 过 / 有skill 过
+    ch04-03-slices-s1-t2：无skill 败 / 有skill 过
+    ch04-03-slices-s1-t3：无skill 败 / 有skill 败
+    ch04-03-slices-s1-t4：无skill 败 / 有skill 败
+    ch04-03-slices-s1-t5：无skill 败 / 有skill 过
+    ch04-03-slices-s1-t6：无skill 过 / 有skill 过
+    ch05-01-defining-structs-s1-t1：无skill 败 / 有skill 过
+    ↻ 退化事件，复跑确认：ch05-01-defining-structs-s1-t2
+    ch05-01-defining-structs-s1-t2：无skill 过 / 有skill 败（退化，已复跑）
+    ch05-01-defining-structs-s1-t3：无skill 过 / 有skill 过
+    ch05-01-defining-structs-s1-t4：无skill 过 / 有skill 过
+    ch05-01-defining-structs-s1-t5：无skill 败 / 有skill 败
+    ch05-01-defining-structs-s1-t6：无skill 败 / 有skill 败
+    ch05-03-method-syntax-s1-t1：无skill 过 / 有skill 过
+    ch05-03-method-syntax-s1-t2：无skill 过 / 有skill 过
+    ch05-03-method-syntax-s1-t3：无skill 败 / 有skill 败
+    ch05-03-method-syntax-s1-t4：无skill 过 / 有skill 过
+    ch05-03-method-syntax-s1-t5：无skill 过 / 有skill 过
+    ch05-03-method-syntax-s1-t6：无skill 败 / 有skill 过
+    ch12-03-improving-error-handling-and-modularity-s1-t1：无skill 败 / 有skill 败
+    ch12-03-improving-error-handling-and-modularity-s1-t2：无skill 败 / 有skill 败
+    ch12-03-improving-error-handling-and-modularity-s1-t3：无skill 过 / 有skill 过
+    ch12-03-improving-error-handling-and-modularity-s1-t4：无skill 过 / 有skill 过
+    ch12-03-improving-error-handling-and-modularity-s1-t5：无skill 败 / 有skill 过
+    ch12-03-improving-error-handling-and-modularity-s1-t6：无skill 过 / 有skill 过
+    ch17-03-oo-design-patterns-s1-t1：无skill 过 / 有skill 过
+    ch17-03-oo-design-patterns-s1-t2：无skill 过 / 有skill 过
+    ch17-03-oo-design-patterns-s1-t3：无skill 败 / 有skill 败
+    ch17-03-oo-design-patterns-s1-t4：无skill 过 / 有skill 过
+    ch17-03-oo-design-patterns-s1-t5：无skill 过 / 有skill 过
+    ↻ 退化事件，复跑确认：ch17-03-oo-design-patterns-s1-t6
+    ch17-03-oo-design-patterns-s1-t6：无skill 过 / 有skill 败（退化，已复跑）
+门禁三完成：5 个已发布 skill 的效用 A/B
+  ch04-03-slices-s1 → passed（改进 2 / 确认退化 0 / 噪声 0 / 无效任务 2）
+    有 skill 臂在 2 个任务上严格更优（ch04-03-slices-s1-t2, ch04-03-slices-s1-t5），无确认退化
+  ch05-01-defining-structs-s1 → passed（改进 1 / 确认退化 0 / 噪声 1 / 无效任务 2）
+    有 skill 臂在 1 个任务上严格更优（ch05-01-defining-structs-s1-t1），无确认退化
+  ch05-03-method-syntax-s1 → passed（改进 1 / 确认退化 0 / 噪声 0 / 无效任务 1）
+    有 skill 臂在 1 个任务上严格更优（ch05-03-method-syntax-s1-t6），无确认退化
+  ch12-03-improving-error-handling-and-modularity-s1 → passed（改进 1 / 确认退化 0 / 噪声 0 / 无效任务 2）
+    有 skill 臂在 1 个任务上严格更优（ch12-03-improving-error-handling-and-modularity-s1-t5），无确认退化
+  ch17-03-oo-design-patterns-s1 → low-utility（改进 0 / 确认退化 0 / 噪声 1 / 无效任务 1）
+    无确认退化也无改进；1 个退化事件复跑后不复现（记噪声）——ADR-006：标记低效用（不拒绝，但降级）
+报告：pipeline/registry/gate3-report.rust-book-cn.json

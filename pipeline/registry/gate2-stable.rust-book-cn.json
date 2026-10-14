@@ -1,46 +1,140 @@
 {
   "schemaVersion": "gate2-stable/v1",
-  "createdAt": "2026-10-14T07:28:03.467Z",
+  "createdAt": "2026-10-14T10:47:30.924Z",
   "sources": {
     "list": "pipeline/registry/gate2-report.rust-book-cn.json",
     "strict": "pipeline/registry/gate2-report.strict.rust-book-cn.json"
   },
   "counts": {
-    "stable": 1,
-    "listOnly": 0,
-    "strictOnly": 1
+    "stable": 3,
+    "listOnly": 4,
+    "strictOnly": 2
   },
   "stable": [
     {
-      "pair": "ch12-03-improving-error-handling-and-modularity-s1|ch12-03-improving-error-handling-and-modularity-s2",
+      "pair": "ch04-02-references-and-borrowing-s1|ch04-03-slices-s1",
       "candidates": [
-        "ch12-03-improving-error-handling-and-modularity-s1",
-        "ch12-03-improving-error-handling-and-modularity-s2"
+        "ch04-02-references-and-borrowing-s1",
+        "ch04-03-slices-s1"
       ],
-      "strictScenarios": 2,
-      "listScenarios": 2,
+      "strictScenarios": 1,
+      "listScenarios": 1,
       "strictScenarioIds": [
-        "ch12-03-improving-error-handling-and-modularity-s1-sc1",
-        "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+        "ch04-03-slices-s1-sc3"
       ],
       "listScenarioIds": [
-        "ch12-03-improving-error-handling-and-modularity-s1-sc1",
-        "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+        "ch04-03-slices-s1-sc3"
+      ]
+    },
+    {
+      "pair": "ch04-02-references-and-borrowing-s1|ch17-03-oo-design-patterns-s1",
+      "candidates": [
+        "ch04-02-references-and-borrowing-s1",
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch17-03-oo-design-patterns-s1-sc2"
+      ],
+      "listScenarioIds": [
+        "ch17-03-oo-design-patterns-s1-sc2"
+      ]
+    },
+    {
+      "pair": "ch06-01-defining-an-enum-s1|ch06-02-match-s1",
+      "candidates": [
+        "ch06-01-defining-an-enum-s1",
+        "ch06-02-match-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch06-02-match-s1-sc1"
+      ],
+      "listScenarioIds": [
+        "ch06-02-match-s1-sc1"
       ]
     }
   ],
-  "listOnly": [],
+  "listOnly": [
+    {
+      "pair": "ch02-00-guessing-game-tutorial-s1|ch06-02-match-s1",
+      "candidates": [
+        "ch02-00-guessing-game-tutorial-s1",
+        "ch06-02-match-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch02-00-guessing-game-tutorial-s1-sc1"
+      ]
+    },
+    {
+      "pair": "ch05-03-method-syntax-s1|ch12-03-improving-error-handling-and-modularity-s1",
+      "candidates": [
+        "ch05-03-method-syntax-s1",
+        "ch12-03-improving-error-handling-and-modularity-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch05-03-method-syntax-s1-sc3"
+      ]
+    },
+    {
+      "pair": "ch05-03-method-syntax-s1|ch17-03-oo-design-patterns-s1",
+      "candidates": [
+        "ch05-03-method-syntax-s1",
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch17-03-oo-design-patterns-s1-sc2"
+      ]
+    },
+    {
+      "pair": "ch06-02-match-s1|ch18-02-refutability-s1",
+      "candidates": [
+        "ch06-02-match-s1",
+        "ch18-02-refutability-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch06-02-match-s1-sc1"
+      ]
+    }
+  ],
   "strictOnly": [
     {
-      "pair": "ch09-03-to-panic-or-not-to-panic-s1|ch12-03-improving-error-handling-and-modularity-s2",
+      "pair": "ch05-01-defining-structs-s1|ch05-03-method-syntax-s1",
       "candidates": [
-        "ch09-03-to-panic-or-not-to-panic-s1",
-        "ch12-03-improving-error-handling-and-modularity-s2"
+        "ch05-01-defining-structs-s1",
+        "ch05-03-method-syntax-s1"
       ],
       "strictScenarios": 1,
       "listScenarios": 0,
       "strictScenarioIds": [
-        "ch09-03-to-panic-or-not-to-panic-s1-sc2"
+        "ch05-03-method-syntax-s1-sc1"
+      ],
+      "listScenarioIds": []
+    },
+    {
+      "pair": "ch05-01-defining-structs-s1|ch09-03-to-panic-or-not-to-panic-s1",
+      "candidates": [
+        "ch05-01-defining-structs-s1",
+        "ch09-03-to-panic-or-not-to-panic-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 0,
+      "strictScenarioIds": [
+        "ch09-03-to-panic-or-not-to-panic-s1-sc3"
       ],
       "listScenarioIds": []
     }
