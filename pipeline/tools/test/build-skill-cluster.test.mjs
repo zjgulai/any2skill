@@ -144,7 +144,7 @@ describe('11 · 环 4 簇入口：按划分产物装配', () => {
     // 退出码 3 = 门禁一拒（本夹具没有配套代码，正是预期）；本用例断言的是**入口本身**跑通。
     assert.ok([0, 3].includes(r.status), `应为 0 或 3，实测 ${r.status}；stderr=${r.stderr}`)
     const summary = JSON.parse(r.stdout)
-    assert.equal(summary.clusterSource, 'clusters.json')
+    assert.equal(summary.clusterSource, 'pipeline/knowledge/clusters.json')
     assert.equal(summary.slug, 'chapter4-s1')
     assert.equal(summary.rootAnchor, 'chapter4-s1')
     assert.equal(summary.clusterAnchors, 2)
@@ -157,7 +157,7 @@ describe('11 · 环 4 簇入口：按划分产物装配', () => {
     assert.ok([0, 3].includes(r.status), `应为 0（过门禁）或 3（被门禁拒），实测 ${r.status}；stderr=${r.stderr}`)
     const summary = JSON.parse(r.stdout)
     const contract = JSON.parse(await readFile(path.join(ROOT, 'pipeline', 'registry', 'build', 'chapter4-s1', 'skill-contract.json'), 'utf8'))
-    assert.equal(contract.provenance.clusterSource, 'clusters.json')
+    assert.equal(contract.provenance.clusterSource, 'pipeline/knowledge/clusters.json')
     assert.equal(contract.provenance.clusterSkillId, 'chapter4-s1')
     assert.deepEqual(contract.provenance.clusterUnits, ['chapter4-u1'])
     assert.deepEqual(contract.provenance.objectsExcludedByGate, ['T-3'])

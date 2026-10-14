@@ -295,7 +295,12 @@ export async function loadAssemblyInputs(repoRoot, { chapterKey, sourceRel, sour
 
   const found = await findLatestReceipt(sourceRel, { repoRoot })
   const passSet = found ? passedObjectIds(found.receipt) : new Set()
-  const apVerdicts = await findLatestAntipatternVerdicts({ repoRoot, expectRunId: antipatternsRunId })
+  // 空池不查判定表（卡 19）：本源没有跨章反模式时，去翻***别的源***的判定表只会得到
+  // 一条「判定表与对象不同源」的告警——池是空的，没有任何对象要用它判。
+  const apVerdicts =
+    allAntipatterns.length > 0
+      ? await findLatestAntipatternVerdicts({ repoRoot, expectRunId: antipatternsRunId })
+      : null
   const apVerdictById = new Map((apVerdicts?.verdicts || []).map((v) => [v.objectId, v]))
   const apPassSet = new Set(
     [...apVerdictById.entries()].filter(([, v]) => v.status === 'pass').map(([id]) => id),
@@ -630,7 +635,7 @@ async function main(argv) {
         // 事后核对不能靠猜——两种入口在 provenance 里必须可辨。
         ...(clusterDef
           ? {
-              clusterSource: 'clusters.json',
+              clusterSource: clustersRelPath(flags.sourceKey),
               clusterSkillId: clusterDef.skillId,
               clusterUnits: clusterDef.units,
               // 跨章候选（重切产物）在 provenance 里必须一眼可辨——「这份 skill 由哪几章装成」
@@ -648,7 +653,7 @@ async function main(argv) {
 
     const summary = {
       slug: flags.slug,
-      clusterSource: clusterDef ? 'clusters.json' : 'root-anchor',
+      clusterSource: clusterDef ? clustersRelPath(flags.sourceKey) : 'root-anchor',
       rootAnchor: cluster.rootAnchor,
       clusterAnchors: cluster.anchors.length,
       clusterTitle: cluster.title,
