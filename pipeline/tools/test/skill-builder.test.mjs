@@ -140,7 +140,7 @@ describe('assembleSkill · 确定性与「不编内容」', () => {
     assert.equal(a.markdown, b.markdown)
   })
 
-  it('没有来源的段落留空，且记一条 SECTION_NO_SOURCE 缺口', () => {
+  it('没有来源的段落出「来源说明」而非留空，且记一条 SECTION_SOURCE_ABSENT 缺口（ADR-029）', () => {
     const r = assembleSkill({
       cluster: cluster(),
       objects: inCluster(),
@@ -148,12 +148,15 @@ describe('assembleSkill · 确定性与「不编内容」', () => {
       slug: 'x',
       skillTitle: 'T',
     })
-    assert.equal(r.sectionCounts.code, 0)
+    assert.equal(r.sectionCounts.code, 0, '来源说明不是条目——段计数口径不变')
     const gap = r.gaps.find((g) => g.section === 'code')
-    assert.equal(gap.code, GAP_CODES.NO_SOURCE)
-    // 留空的段落里不得出现任何替代性文字——「看似完整」比「看起来缺」更危险。
+    assert.equal(gap.code, GAP_CODES.SOURCE_ABSENT)
+    // 旧的「留空」口径已被 ADR-029 取代：空段读起来像忘写，来源说明如实回答为什么没有。
+    // 说明是引用块（>），不是列表项——不得被条目计数吃进去。
     const seg = r.markdown.split('## 配套代码')[1].split('## 深度阅读')[0]
-    assert.equal(seg.trim(), '')
+    assert.match(seg, /本段无来源/)
+    assert.equal(r.contract.codeSource.available, false)
+    assert.match(r.contract.codeSource.note, /本段无来源/)
   })
 
   it('六段标题齐全且顺序与骨架一致', () => {
@@ -315,7 +318,9 @@ describe('配套代码目录（信息源扩充后新增的来源）', () => {
       skillTitle: 'T',
     })
     assert.equal(r.sectionCounts.code, 6)
-    assert.ok(!r.gaps.some((g) => g.section === 'code' && g.code === GAP_CODES.NO_SOURCE))
+    assert.equal(r.contract.codeSource.available, true)
+    assert.equal(r.contract.codeSource.note, null)
+    assert.ok(!r.gaps.some((g) => g.section === 'code' && (g.code === GAP_CODES.NO_SOURCE || g.code === GAP_CODES.SOURCE_ABSENT)))
     // 但粒度是章级而非簇级，这件事必须留痕——否则读者会以为做过锚点级映射。
     const gran = r.gaps.find((g) => g.code === GAP_CODES.GRANULARITY)
     assert.ok(gran, '应记录「章级列举」的粒度缺口')

@@ -130,6 +130,10 @@ export const SKELETON_SECTIONS = Object.freeze([
     advisoryMin: 1,
     advisoryMax: null,
     sources: [],
+    // 源条件骨架（ADR-029）：本段的来源是镜像代码树而非知识对象。信息源**提供可消费的
+    // 目录形态**时要求真内容；没有时要求的是**来源说明**（非空由渲染器保证）——
+    // 「空段」与「无来源」必须长得不一样：前者读起来像忘写，后者如实回答为什么没有。
+    sourceCondition: 'codeDir',
   },
   {
     key: 'reading',
@@ -156,6 +160,7 @@ export const RISK_FLAGS = Object.freeze({
 /** 缺口理由码。命名与 verifier 的理由码同风格：全大写下划线，语义自明。 */
 export const GAP_CODES = Object.freeze({
   NO_SOURCE: 'SECTION_NO_SOURCE',
+  SOURCE_ABSENT: 'SECTION_SOURCE_ABSENT',
   EMPTY: 'SECTION_EMPTY',
   BELOW_ADVISORY: 'SECTION_ITEM_COUNT_BELOW_ADVISORY',
   ABOVE_ADVISORY: 'SECTION_ITEM_COUNT_ABOVE_ADVISORY',
@@ -164,6 +169,18 @@ export const GAP_CODES = Object.freeze({
   CONTRACT_UNSUPPORTED: 'CONTRACT_FIELD_UNSUPPORTED',
   GRANULARITY: 'SECTION_SOURCE_GRANULARITY_COARSE',
 })
+
+/**
+ * 「配套代码」段的**无来源说明**（ADR-029，源条件骨架的渲染面）。
+ *
+ * 它是一行引用块（`>`）而不是列表项：条目计数口径里「配套代码的条目」= 代码指针，
+ * 说明不是指针——记成条目会让契约的段计数撒谎。而门禁一的硬下限是「段非空」，
+ * 说明行恰好让段非空且语义如实。措辞里点明「别把它读成『源里有代码但没写』」是刻意的：
+ * 这一段最容易的误读就是把「无来源」当成「提取失败」。
+ */
+export const CODE_SECTION_ABSENT_NOTE =
+  '> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。' +
+  '按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。'
 
 /**
  * 从镜像下来的配套代码目录里取「路径 + 一句话说明」。
@@ -514,6 +531,21 @@ export function assembleSkill(input) {
     const items = built[spec.key]
     sectionCounts[spec.key] = items.length
 
+    // 源条件段（配套代码）的「无来源」是一种**状态**，不是一个要凑的缺口：
+    // 渲染器按 ADR-029 出「来源说明」，这里如实记一条 SOURCE_ABSENT（建议值不适用）。
+    if (spec.sourceCondition === 'codeDir' && items.length === 0) {
+      gaps.push({
+        code: GAP_CODES.SOURCE_ABSENT,
+        section: spec.key,
+        heading: spec.heading,
+        detail:
+          '本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。' +
+          '按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。',
+        advisory: spec.advisoryMin,
+        actual: 0,
+      })
+      continue
+    }
     if (spec.sources.length === 0 && items.length === 0) {
       gaps.push({
         code: GAP_CODES.NO_SOURCE,
@@ -688,8 +720,13 @@ export function assembleSkill(input) {
 
     L.push(SKELETON_SECTIONS[4].heading)
     L.push('')
-    for (const c of codeItems) {
-      L.push(c.summary ? `- \`${c.path}/\` —— ${c.summary}` : `- \`${c.path}/\``)
+    if (codeItems.length === 0) {
+      // 源条件骨架（ADR-029）：信息源没有可消费代码目录时，出「来源说明」而非空段。
+      L.push(CODE_SECTION_ABSENT_NOTE)
+    } else {
+      for (const c of codeItems) {
+        L.push(c.summary ? `- \`${c.path}/\` —— ${c.summary}` : `- \`${c.path}/\``)
+      }
     }
     L.push('')
 
@@ -788,6 +825,12 @@ export function assembleSkill(input) {
     sourceObjects: objects.map((o) => o.id),
     crossChapterObjects: antipatterns.map((o) => o.id),
     sourceRefs,
+    // 源条件骨架的机器可读面（ADR-029）：契约要能回答「本段为什么是说明而不是指针」，
+    // 不然审计者只能从正文措辞猜。
+    codeSource: {
+      available: codeItems.length > 0,
+      note: codeItems.length > 0 ? null : CODE_SECTION_ABSENT_NOTE,
+    },
     evidenceGrade: 'E2-derived',
     freshness: { state: 'fresh', asOf: new Date(0).toISOString() },
     gaps,

@@ -209,6 +209,25 @@
       "type": "object",
       "description": "六段各自的条目数。键为骨架段的 key。门禁一会拿它与正文实际条目数比对，不一致即拒——防「契约说 6 条、正文写 1 条」。"
     },
+    "codeSource": {
+      "type": "object",
+      "required": [
+        "available",
+        "note"
+      ],
+      "properties": {
+        "available": {
+          "type": "boolean",
+          "description": "「配套代码」段是否拿到了可消费的代码目录（源条件骨架，ADR-029）。"
+        },
+        "note": {
+          "type": ["string", "null"],
+          "description": "不可用时正文渲染的来源说明原文；可用时为 null。契约要能回答「本段为什么是说明而不是指针」。"
+        }
+      },
+      "additionalProperties": false,
+      "description": "源条件骨架的机器可读面（ADR-029）：第二源揭穿了「配套代码」段对源目录形态的隐含假设；本字段记录该段本次装的是真内容还是来源说明。"
+    },
     "provenance": {
       "type": "object",
       "description": "装配输入的可复核记录：源文件、锚点索引哈希、对象文件及其哈希、门禁回执文件与 runId、被门禁排除的对象 id。没有这一段，「这份契约是按哪批对象装的」就答不上来。"

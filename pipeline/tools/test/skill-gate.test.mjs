@@ -246,9 +246,12 @@ describe('条目数不再入判据（ADR-021），但契约与正文的不一致
 })
 
 describe('tracer bullet 的结论（改动它必须显式说明理由）', () => {
-  // 本节的结论在 2026-10-09 被**显式修订过一次**，原因是信息源真的变了：
-  // 上游 chapter4/ 的配套代码目录被镜像进 sources/（ADR-020），
-  // 「配套代码」段第一次有了来源，SECTION_EMPTY 消失。改的是原因，不是判据。
+  // 本节的结论被**显式修订过两次**，两次都是因为「信息源或对它的认识真的变了」：
+  //   1. 2026-10-09：上游 chapter4/ 的配套代码目录被镜像进 sources/（ADR-020），
+  //      「配套代码」段第一次有了来源，SECTION_EMPTY 消失。改的是原因，不是判据。
+  //   2. 2026-10-14：第二源揭穿了该段的隐含假设——它要求源提供**目录形态**的配套代码
+  //      （第一源能过是巧合，不是机制）。ADR-029 改为**源条件骨架**：无来源时渲染
+  //      「来源说明」而非空段，门禁一放行（非空下限不变，变的是该段装什么算内容）。
 
   it('含配套代码时：门禁一通过（2026-10-09 起）', async () => {
     const v = await verifySkill(doc(ASSEMBLED.markdown))
@@ -256,12 +259,12 @@ describe('tracer bullet 的结论（改动它必须显式说明理由）', () =>
     assert.deepEqual(v.reasonCodes, [])
   })
 
-  it('不含配套代码时：仍被拒，拒因是配套代码段为空', async () => {
+  it('不含配套代码时：渲染来源说明，门禁一不再拒（ADR-029，2026-10-14 修订）', async () => {
     const v = await verifySkill(doc(ASSEMBLED_NO_CODE.markdown))
-    assert.equal(v.passed, false)
-    const empty = v.failures.find((f) => f.code === 'SECTION_EMPTY')
-    assert.ok(empty, '必须有 SECTION_EMPTY')
-    assert.match(empty.detail, /配套代码/)
+    assert.equal(v.passed, true, JSON.stringify(v.failures, null, 2))
+    const seg = ASSEMBLED_NO_CODE.markdown.split('## 配套代码')[1].split('## 深度阅读')[0]
+    assert.match(seg, /本段无来源/)
+    assert.equal(ASSEMBLED_NO_CODE.contract.codeSource.available, false)
   })
 
   it('低覆盖不拒绝，但必须被标记为高风险（ADR-006 门禁三的入口）', () => {
