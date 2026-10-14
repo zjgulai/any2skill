@@ -13,11 +13,27 @@ import path from 'node:path'
 
 import { DEFAULT_SOURCE_KEY, DEFAULT_SOURCE_ROOT, sourceBookRoot, sourceCodeRoot } from '../../tools/anchor-index.mjs'
 import { prepareChapterInputs } from '../../propose-clusters.mjs'
+import { candidatesRelPath, clustersPartialRelPath, clustersRelPath, writeClusters } from '../../tools/cluster-proposer.mjs'
 
 const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..', '..')
 const CLI = path.join(REPO, 'pipeline', 'run.mjs')
 
 describe('18 · 源键与源根', () => {
+  it('环 3 产物按源命名空间：缺省键逐字节保持既有文件名，其他源加后缀', async () => {
+    assert.equal(clustersRelPath(), 'pipeline/knowledge/clusters.json')
+    assert.equal(candidatesRelPath(), 'pipeline/registry/skill-candidates.json')
+    assert.equal(clustersRelPath('rust-book-cn'), path.join('pipeline', 'knowledge', 'clusters.rust-book-cn.json'))
+    assert.equal(candidatesRelPath('rust-book-cn'), path.join('pipeline', 'registry', 'skill-candidates.rust-book-cn.json'))
+    // .gitignore 的 *.partial.json 靠后缀生效——partial 路径必须以它结尾
+    assert.ok(clustersPartialRelPath('rust-book-cn').endsWith('.partial.json'))
+    const root = await mkdtemp(path.join(os.tmpdir(), 'any2skills-ns-'))
+    try {
+      const abs = await writeClusters({ schemaVersion: 'clusters/v1', chapters: [] }, root, { sourceKey: 'rust-book-cn' })
+      assert.match(abs, /clusters\.rust-book-cn\.json$/)
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
   it(' 缺省键逐字等于既有常量；自定义键按约定拼路径', () => {
     assert.equal(DEFAULT_SOURCE_KEY, 'ai-agent-book-zh')
     assert.equal(DEFAULT_SOURCE_ROOT, path.join('sources', 'ai-agent-book-zh', 'book'))

@@ -29,7 +29,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
 
-import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY } from './anchor-index.mjs'
 import { chatCompletion } from './llm-client.mjs'
 import { extractJsonPayload } from './model-json.mjs'
 
@@ -38,6 +38,24 @@ export const SKILL_CANDIDATES_SCHEMA_VERSION = 'skill-candidates/v1'
 export const CLUSTERS_REL_PATH = path.join('pipeline', 'knowledge', 'clusters.json')
 export const CLUSTERS_PARTIAL_REL_PATH = path.join('pipeline', 'knowledge', 'clusters.partial.json')
 export const CANDIDATES_REL_PATH = path.join('pipeline', 'registry', 'skill-candidates.json')
+
+/**
+ * 环 3 产物的**按源命名空间**（ticket 19）：缺省键与既有文件名逐字节相同
+ * （第一源的冻结/报告/引用一概不动）；其他源追加 `.<sourceKey>` 后缀。
+ * `.partial.json` 后缀必须保留在末尾——`.gitignore` 的 `*.partial.json` 靠它生效。
+ */
+export const clustersRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? CLUSTERS_REL_PATH
+    : path.join('pipeline', 'knowledge', `clusters.${sourceKey}.json`)
+export const clustersPartialRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? CLUSTERS_PARTIAL_REL_PATH
+    : path.join('pipeline', 'knowledge', `clusters.${sourceKey}.partial.json`)
+export const candidatesRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? CANDIDATES_REL_PATH
+    : path.join('pipeline', 'registry', `skill-candidates.${sourceKey}.json`)
 /** 跨章综合产物。它不是「某章第 2 层的对象」，不进聚类输入（与 run-book 的反模式统计同一口径）。 */
 export const CROSS_CHAPTER_OBJECTS_FILE = 'antipatterns.objects.json'
 
@@ -495,31 +513,31 @@ export function diagnosticsOf(chapters, candidates) {
 
 /* ──────────────────────────── 落盘 ──────────────────────────── */
 
-export async function readPartialClusters(repoRoot) {
+export async function readPartialClusters(repoRoot, { sourceKey = DEFAULT_SOURCE_KEY } = {}) {
   try {
-    return JSON.parse(await readFile(path.join(repoRoot, CLUSTERS_PARTIAL_REL_PATH), 'utf8'))
+    return JSON.parse(await readFile(path.join(repoRoot, clustersPartialRelPath(sourceKey)), 'utf8'))
   } catch (err) {
     if (err.code === 'ENOENT') return null
     throw err
   }
 }
 
-export async function writePartialClusters(partial, repoRoot) {
-  const outPath = path.join(repoRoot, CLUSTERS_PARTIAL_REL_PATH)
+export async function writePartialClusters(partial, repoRoot, { sourceKey = DEFAULT_SOURCE_KEY } = {}) {
+  const outPath = path.join(repoRoot, clustersPartialRelPath(sourceKey))
   await mkdir(path.dirname(outPath), { recursive: true })
   await writeFile(outPath, `${JSON.stringify(partial, null, 2)}\n`, 'utf8')
   return outPath
 }
 
-export async function writeClusters(clustersDoc, repoRoot) {
-  const outPath = path.join(repoRoot, CLUSTERS_REL_PATH)
+export async function writeClusters(clustersDoc, repoRoot, { sourceKey = DEFAULT_SOURCE_KEY } = {}) {
+  const outPath = path.join(repoRoot, clustersRelPath(sourceKey))
   await mkdir(path.dirname(outPath), { recursive: true })
   await writeFile(outPath, `${JSON.stringify(clustersDoc, null, 2)}\n`, 'utf8')
   return outPath
 }
 
-export async function writeSkillCandidates(candidatesDoc, repoRoot) {
-  const outPath = path.join(repoRoot, CANDIDATES_REL_PATH)
+export async function writeSkillCandidates(candidatesDoc, repoRoot, { sourceKey = DEFAULT_SOURCE_KEY } = {}) {
+  const outPath = path.join(repoRoot, candidatesRelPath(sourceKey))
   await mkdir(path.dirname(outPath), { recursive: true })
   await writeFile(outPath, `${JSON.stringify(candidatesDoc, null, 2)}\n`, 'utf8')
   return outPath

@@ -33,7 +33,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT } from './tools/anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY } from './tools/anchor-index.mjs'
+import { candidatesRelPath, clustersRelPath } from './tools/cluster-proposer.mjs'
 import { unwrapObjectsFile } from './tools/skill-builder.mjs'
 
 export const EXIT = Object.freeze({
@@ -41,13 +42,11 @@ export const EXIT = Object.freeze({
   RUN_FAILED: 4,
 })
 
-const CLUSTERS_REL = path.join('pipeline', 'knowledge', 'clusters.json')
-const CANDIDATES_REL = path.join('pipeline', 'registry', 'skill-candidates.json')
 const PLAN_REL = path.join('pipeline', 'registry', 'resplit-plan.json')
 
 function parseArgs(argv) {
   const args = argv.slice(2)
-  const flags = { dryRun: false, json: false, repoRoot: DEFAULT_REPO_ROOT, plan: PLAN_REL }
+  const flags = { dryRun: false, json: false, repoRoot: DEFAULT_REPO_ROOT, plan: PLAN_REL, sourceKey: DEFAULT_SOURCE_KEY }
   const need = (i, name) => {
     const v = args[i + 1]
     if (v === undefined || v.startsWith('--')) throw new Error(`${name} 缺少取值`)
@@ -58,6 +57,7 @@ function parseArgs(argv) {
     if (a === '--dry-run') flags.dryRun = true
     else if (a === '--json') flags.json = true
     else if (a === '--plan') (flags.plan = need(i, a)), (i += 1)
+    else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a === '--repo-root') (flags.repoRoot = path.resolve(need(i, a))), (i += 1)
     else if (a.startsWith('--')) throw new Error(`未知参数：${a}`)
     else throw new Error(`未知位置参数：${a}（本命令不接受位置参数）`)
@@ -182,8 +182,8 @@ async function main(argv) {
         `${flags.plan} 的 approved 不是 true——执行与决策分开：先在计划文件里记录批准（approved:true + approvedAt），再执行。`,
       )
     }
-    const clustersRaw = await readFile(path.join(repoRoot, CLUSTERS_REL), 'utf8')
-    const candidatesRaw = await readFile(path.join(repoRoot, CANDIDATES_REL), 'utf8')
+    const clustersRaw = await readFile(path.join(repoRoot, clustersRelPath(flags.sourceKey)), 'utf8')
+    const candidatesRaw = await readFile(path.join(repoRoot, candidatesRelPath(flags.sourceKey)), 'utf8')
     const clustersDoc = JSON.parse(clustersRaw)
     const candidatesDoc = JSON.parse(candidatesRaw)
 
@@ -249,8 +249,8 @@ async function main(argv) {
       null,
       2,
     )}\n`
-    await writeFile(path.join(repoRoot, CLUSTERS_REL), newClustersRaw, 'utf8')
-    await writeFile(path.join(repoRoot, CANDIDATES_REL), newCandidatesRaw, 'utf8')
+    await writeFile(path.join(repoRoot, clustersRelPath(flags.sourceKey)), newClustersRaw, 'utf8')
+    await writeFile(path.join(repoRoot, candidatesRelPath(flags.sourceKey)), newCandidatesRaw, 'utf8')
 
     const out = {
       merges: applied.mergeRecords.map((m) => `${m.target} → ${m.into}`),

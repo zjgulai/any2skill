@@ -51,7 +51,7 @@ import {
   unwrapObjectsFile,
 } from './tools/skill-builder.mjs'
 import { SKILL_REASON_CODES, verifySkill } from './tools/verify-skill.mjs'
-import { CLUSTERS_REL_PATH } from './tools/cluster-proposer.mjs'
+import { clustersRelPath } from './tools/cluster-proposer.mjs'
 
 export const EXIT = Object.freeze({
   PASS: 0,
@@ -205,14 +205,15 @@ export async function findLatestAntipatternVerdicts({ repoRoot, expectRunId = nu
  * skill 条目放在吸收者的章节下，而其单元留在各自章节）；`chapterRefs` 取显式声明、
  * 缺省时由单元的锚点前缀派生，再并上声明章。
  */
-export async function loadClusterCandidate(repoRoot, skillId) {
-  const abs = path.join(repoRoot, CLUSTERS_REL_PATH)
+export async function loadClusterCandidate(repoRoot, skillId, { sourceKey = DEFAULT_SOURCE_KEY } = {}) {
+  const clustersRel = clustersRelPath(sourceKey)
+  const abs = path.join(repoRoot, clustersRel)
   let doc
   try {
     doc = JSON.parse(await readFile(abs, 'utf8'))
   } catch (err) {
     if (err.code === 'ENOENT') {
-      throw new Error(`簇定义不存在：${CLUSTERS_REL_PATH}——先跑 pipeline/propose-clusters.mjs（环 3）。`)
+      throw new Error(`簇定义不存在：${clustersRel}——先跑 pipeline/propose-clusters.mjs${sourceKey === DEFAULT_SOURCE_KEY ? '' : ` --source-key ${sourceKey}`}（环 3）。`)
     }
     throw err
   }
@@ -457,7 +458,7 @@ async function main(argv) {
     // 簇模式：slug/title 缺省取自候选（skillId 本身就是合法 slug；允许显式覆盖）。
     let clusterDef = null
     if (flags.cluster) {
-      clusterDef = await loadClusterCandidate(repoRoot, flags.cluster)
+      clusterDef = await loadClusterCandidate(repoRoot, flags.cluster, { sourceKey: flags.sourceKey })
       if (flags.slug === null) flags.slug = clusterDef.skillId
       if (flags.title === null) flags.title = clusterDef.name || clusterDef.skillId
     }
@@ -633,7 +634,7 @@ async function main(argv) {
               // 跨章候选（重切产物）在 provenance 里必须一眼可辨——「这份 skill 由哪几章装成」
               // 与「按一次划分装配」是两个问题。单章候选时它是长度为 1 的数组。
               clusterChapterRefs: clusterDef.chapterRefs,
-              clustersFile: CLUSTERS_REL_PATH,
+              clustersFile: clustersRelPath(flags.sourceKey),
             }
           : { clusterSource: 'root-anchor', clusterRootAnchor: cluster.rootAnchor }),
       },

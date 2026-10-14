@@ -265,7 +265,7 @@ async function main(argv) {
       return EXIT.RUN_FAILED
     }
 
-    const partial = flags.resume ? await readPartialClusters(repoRoot) : null
+    const partial = flags.resume ? await readPartialClusters(repoRoot, { sourceKey: flags.sourceKey }) : null
     const reusableOf = (c) =>
       partial &&
       partial.promptFingerprint === clusterPromptFingerprint() &&
@@ -372,7 +372,7 @@ async function main(argv) {
       proposed += 1
       chapterRecords.push(record)
       partialDoc.chapters[c.fileKey] = record
-      await writePartialClusters(partialDoc, repoRoot)
+      await writePartialClusters(partialDoc, repoRoot, { sourceKey: flags.sourceKey })
       process.stdout.write(
         `  ${c.fileKey}：单元 ${record.units.length} / 候选 ${record.skills.length}` +
           `（未归类 ${record.coverage.unassigned.length}，未解析 id ${record.coverage.unresolvedObjectIds.length}）\n`,
@@ -384,7 +384,7 @@ async function main(argv) {
 
     if (flags.chapter) {
       const rec = chapterRecords[0]
-      const out = { chapter: rec, partial: rel(path.join(repoRoot, 'pipeline', 'knowledge', 'clusters.partial.json')) }
+      const out = { chapter: rec, partial: rel(path.join(repoRoot, flags.sourceKey === 'ai-agent-book-zh' ? CLUSTERS_PARTIAL_REL_PATH : path.join('pipeline','knowledge',`clusters.${flags.sourceKey}.partial.json`))) }
       process.stdout.write(flags.json ? `${JSON.stringify(out, null, 2)}\n` : `单章模式：已更新 partial（未写正式产物）。\n`)
       return EXIT.PASS
     }
@@ -424,7 +424,7 @@ async function main(argv) {
         },
       },
     }
-    const clustersAbs = await writeClusters(clustersDoc, repoRoot)
+    const clustersAbs = await writeClusters(clustersDoc, repoRoot, { sourceKey: flags.sourceKey })
 
     // 跨章综合物：读不到就如实记 absent（与 run-book 同一口径），不按「没有」处理。
     let dispositionBlock
@@ -454,7 +454,7 @@ async function main(argv) {
       crossChapterDisposition: dispositionBlock,
       diagnostics: diagnosticsOf(orderedChapters, candidates),
     }
-    const candidatesAbs = await writeSkillCandidates(candidatesDoc, repoRoot)
+    const candidatesAbs = await writeSkillCandidates(candidatesDoc, repoRoot, { sourceKey: flags.sourceKey })
 
     const t = clustersDoc.totals
     const summary = {

@@ -148,7 +148,7 @@ export async function loadCandidatesForBlindTest(repoRoot, { only = null, source
   for (const c of picked) {
     // 与环 4 走**同一条加载路径**（ticket 13 抽出）：多章候选由 chapterRefs 自动展开，
     // 单章候选是它的长度为 1 的特例——不存在「盲测看一份、装配看另一份」的可能。
-    const clusterDef = await loadClusterCandidate(repoRoot, c.skillId)
+    const clusterDef = await loadClusterCandidate(repoRoot, c.skillId, { sourceKey })
     let prep
     try {
       prep = await loadClusterAssemblyInputs(repoRoot, clusterDef, { sourceKey })
