@@ -1624,10 +1624,1341 @@
       ],
       "problems": [],
       "finishReason": "stop"
+    },
+    {
+      "slug": "ch08-02-strings-s1",
+      "name": "ch08-02-strings-s1",
+      "description": "Rust String 处理：在 Rust 字符串拼接中，`+` 运算符调用 `add` 函数，`add` 的 `s` 参数为 `&str`，因此只能将 `&str` 和 `String` 相加，不能将两个 `String` 值相加；`&String` 可通过解引用强制转换为 `&str`，所以 `s2` 在操作后仍然有效。`add` 获取 `self` 的所有权（因为 `self` 没有 `&`），导致 `s1` 的所有权被移动到 `add` 调用中，相加后不再有效；适用于当使用 `+` 运算符连接 `String` 值，或需要理解第一个字符串为何在相加后失效、第二个字符串为何仍有效时、当需要连接多个字符串，且 `+` 运算符组合显得笨重时、当尝试对 String 使用索引语法（例如 s1[0]）时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:49c54887be69aa45628ad5ae6556dfc0352b96050be2206b1bb62d14e60f3f09",
+      "inputHash": "sha256:e0a49bb387f184f9704bf9377d05d5629974c323110955cabff01901f1ed6c8a",
+      "tasks": [
+        {
+          "taskId": "ch08-02-strings-s1-t1",
+          "prompt": "我有个 Rust 拼接问题：`let s1 = String::from(\"hello\"); let s2 = String::from(\" world\"); let s3 = s1 + &s2;` 之后为什么 `s1` 不能再用，`s2` 还可以？请写一个完整的可运行 Rust 程序保存为 main.rs，演示这一行为并在注释中解释。注释中必须出现“s1 的所有权被移动”和“s2 仍然有效”这两个短句。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "let s1 = String::from(\"hello\");",
+                "let s2 = String::from(\" world\");",
+                "let s3 = s1 + &s2;",
+                "println!",
+                "s1 的所有权被移动",
+                "s2 仍然有效"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-02-strings-s1-t2",
+          "prompt": "请写一个 Rust 程序保存为 main.rs，用 `format!` 宏把三个不同的字符串字面量（例如 \"Hello\"、\"Rust\"、\"World\"）连接成一句话并打印。请在注释里说明 `format!` 不会获取任何参数的所有权。注释中必须出现“不会获取任何参数的所有权”。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "println!",
+                "不会获取任何参数的所有权",
+                "Hello",
+                "Rust",
+                "World"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "main.rs",
+              "pattern": "format!\\("
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-02-strings-s1-t3",
+          "prompt": "请写一份 Markdown 文档保存为 index.md，说明在 Rust 中尝试用 `s[0]` 索引 String 会编译错误。文中必须包含原因解释：`String` 不支持索引，Rust 为保证 UTF-8 安全而禁止；并给出用 `chars()` 获取第一个字符的替代代码片段。文档中必须出现“String 不支持索引”、“UTF-8”和“let c = s.chars().next();”。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "index.md"
+            },
+            {
+              "type": "contains",
+              "path": "index.md",
+              "patterns": [
+                "String 不支持索引",
+                "UTF-8",
+                "let c = s.chars().next();",
+                "s[0]"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-02-strings-s1-t4",
+          "prompt": "请写一个 Rust 程序保存为 main.rs，创建 `let hello = String::from(\"Здравствуйте\");`，打印 `hello.len()`（应输出 24），并创建字符串 slice 取前 4 个字节并打印（应输出 `Зд`）。注释里必须包含“每个 Unicode 标量值需要 2 个字节存储”和“24”。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "String::from(\"Здравствуйте\")",
+                "hello.len()",
+                "&hello[0..4]",
+                "println!",
+                "每个 Unicode 标量值需要 2 个字节存储",
+                "24"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-02-strings-s1-t5",
+          "prompt": "请写一个 Rust 程序保存为 main.rs，创建 `let s = String::from(\"नमस्ते\");`，然后用 `chars()` 遍历并打印每个字符，再用 `bytes()` 遍历并打印每个字节。注释中必须出现“chars() 遍历 Unicode 标量值”和“bytes() 遍历原始字节”。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "String::from(\"नमस्ते\")",
+                "chars()",
+                "bytes()",
+                "println!",
+                "chars() 遍历 Unicode 标量值",
+                "bytes() 遍历原始字节"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-02-strings-s1-t6",
+          "prompt": "请写一个 Rust 程序保存为 main.rs，演示 `push_str` 和 `push` 的用法：先创建 `let mut s = String::from(\"foo\");`，用 `push_str(\"bar\")` 追加后打印；再创建 `let mut t = String::from(\"lo\");`，用 `push('l')` 追加后打印。注释里必须说明 `push_str` 不获取参数的所有权。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "let mut s = String::from(\"foo\");",
+                "s.push_str(\"bar\");",
+                "println!",
+                "let mut t = String::from(\"lo\");",
+                "t.push('l');",
+                "push_str 不获取参数的所有权"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch08-03-hash-maps-s1",
+      "name": "ch08-03-hash-maps-s1",
+      "description": "HashMap 核心操作：在 Rust 中使用 `HashMap` 前，必须先用 `use std::collections::HashMap;` 显式导入；适用于当 Rust 代码需要使用 `HashMap` 集合时、当使用 `collect` 构建 `HashMap` 时、将像 String 这样拥有所有权的值作为键或值插入哈希 map 时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:b293172b8342c3f8829368a108942d6d725eb280a928bbf1a0932a51aa7fd4e4",
+      "inputHash": "sha256:6e18dc7197c7418e12385d3bccb24123fdcde1576719f6170916b813c9330e87",
+      "tasks": [
+        {
+          "taskId": "ch08-03-hash-maps-s1-t1",
+          "prompt": "请创建一个 `src/main.rs`，演示用 `collect` 从向量构建 HashMap。要求代码中使用 `use std::collections::HashMap;`，并用 `let scores: HashMap<_, _> = ...;` 从 `vec![(\"Blue\", 10), (\"Yellow\", 50)]` 通过 `collect()` 构建，最后用 `println!` 打印出 Blue 对应的分数。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "use std::collections::HashMap;",
+                "HashMap<_, _>",
+                "collect()",
+                "println!"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-03-hash-maps-s1-t2",
+          "prompt": "请创建一个 `src/main.rs`，演示对同一个键再次插入不同值会覆盖旧值。先插入 `(\"Blue\", 10)`，再插入 `(\"Blue\", 25)`，最后用 `println!` 打印出当前 Blue 对应的值（应为 25）。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "use std::collections::HashMap;",
+                "insert(\"Blue\", 10)",
+                "insert(\"Blue\", 25)",
+                "println!"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-03-hash-maps-s1-t3",
+          "prompt": "请创建一个 `src/main.rs`，写一个程序统计给定单词列表中每个单词出现的次数。要求使用 `let mut map = HashMap::new();` 创建 HashMap，并在循环中对每个单词 `word` 使用 `map.entry(word).or_insert(0)` 获取计数，然后对返回的可变引用 `count` 执行 `*count += 1;` 最后打印每个单词及其计数。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "use std::collections::HashMap;",
+                "let mut map = HashMap::new();",
+                "map.entry(word).or_insert(0)",
+                "*count += 1"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-03-hash-maps-s1-t4",
+          "prompt": "请创建一个 `src/main.rs`，定义一个函数 `fn add_pair(map: &mut HashMap<String, String>, key: String, value: String)`，在函数体内将 `key` 和 `value` 插入 `map`，并在 `main` 中调用该函数后打印 `map.len()`。使用 `use std::collections::HashMap;`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "use std::collections::HashMap;",
+                "fn add_pair(map: &mut HashMap<String, String>, key: String, value: String)",
+                "map.insert(key, value);"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-03-hash-maps-s1-t5",
+          "prompt": "请创建一个 `src/main.rs`，演示将值的引用插入 HashMap 而不移动值。使用 `let key = \"Blue\";` 和 `let value = 10;`，创建 `HashMap<&str, i32>` 并插入 `(key, value)`，插入后再用 `println!` 打印 `key` 和 `value` 证明它们仍可访问。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "use std::collections::HashMap;",
+                "HashMap<&str, i32>",
+                "scores.insert(key, value);",
+                "println!(\"{}\", key)",
+                "println!(\"{}\", value)"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch08-03-hash-maps-s1-t6",
+          "prompt": "请创建一个 `src/main.rs`，演示用 `get` 方法查询 HashMap 并处理 `Option`。先使用 `use std::collections::HashMap;` 和 `let mut scores = HashMap::new();` 插入 `(\"Blue\", 10)`，然后用 `match scores.get(\"Blue\")` 处理 `Some` 和 `None` 两种情况：`Some` 分支打印分数，`None` 分支打印 `Blue not found`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "use std::collections::HashMap;",
+                "let mut scores = HashMap::new();",
+                "insert(\"Blue\", 10)",
+                "match scores.get(\"Blue\")",
+                "Some",
+                "None",
+                "Blue not found",
+                "println!"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch10-01-syntax-s1",
+      "name": "ch10-01-syntax-s1",
+      "description": "Rust泛型语法与代价：在函数签名中使用类型参数时，必须在使用之前先声明该类型参数；类型参数声明位于函数名称与参数列表中间的尖括号 `<>` 中；适用于在 Rust 中定义泛型函数、在函数签名中引入类型参数时、当结构体中多个字段共用一个泛型参数时、为泛型结构体 `Point<T>` 实现方法时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:82b1d990fc05fa5fb4771e6ccf628cdd23c87daf65fb08ac56560b76bf56f94b",
+      "inputHash": "sha256:375907a0b2656acb3432e7ac5fbee330c5e72de30e65c9a21ed206788b3001a5",
+      "tasks": [
+        {
+          "taskId": "ch10-01-syntax-s1-t1",
+          "prompt": "请在 largest.rs 中写一个 Rust 泛型函数 largest，接收 `&[T]` 并返回 `T`；类型参数 T 需要同时支持 `PartialOrd` 和 `Copy`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "largest.rs"
+            },
+            {
+              "type": "regex",
+              "path": "largest.rs",
+              "pattern": "fn\\s+largest[\\s\\S]*?<\\s*T\\s*:\\s*PartialOrd\\s*\\+\\s*Copy\\s*>[\\s\\S]*?\\(\\s*list\\s*:\\s*&\\[T\\]\\s*\\)[\\s\\S]*?->\\s*T"
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-01-syntax-s1-t2",
+          "prompt": "请在 point.rs 中定义一个泛型结构体 Point<T>，字段 x 和 y 都使用同一个类型参数 T。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "point.rs"
+            },
+            {
+              "type": "regex",
+              "path": "point.rs",
+              "pattern": "struct\\s+Point\\s*<\\s*T\\s*>"
+            },
+            {
+              "type": "contains",
+              "path": "point.rs",
+              "patterns": [
+                "x: T",
+                "y: T"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-01-syntax-s1-t3",
+          "prompt": "请在 point2.rs 中定义泛型结构体 Point<T, U>，字段 x 类型为 T，字段 y 类型为 U，让两个字段可以接受不同类型。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "point2.rs"
+            },
+            {
+              "type": "regex",
+              "path": "point2.rs",
+              "pattern": "struct\\s+Point\\s*<\\s*T\\s*,\\s*U\\s*>"
+            },
+            {
+              "type": "contains",
+              "path": "point2.rs",
+              "patterns": [
+                "x: T",
+                "y: U"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-01-syntax-s1-t4",
+          "prompt": "请在 point_impl.rs 中定义泛型结构体 Point<T>，并为其实现方法 x，返回字段 x 的引用；实现块请写成 `impl<T> Point<T>` 的形式。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "point_impl.rs"
+            },
+            {
+              "type": "regex",
+              "path": "point_impl.rs",
+              "pattern": "impl\\s*<\\s*T\\s*>\\s*Point\\s*<\\s*T\\s*>"
+            },
+            {
+              "type": "contains",
+              "path": "point_impl.rs",
+              "patterns": [
+                "fn x(&self) -> &T"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-01-syntax-s1-t5",
+          "prompt": "请在 mixup.rs 中定义泛型结构体 Point<T, U>，并为其实现方法 mixup，方法接收另一个 Point<V, W>，返回 Point<T, W>；实现块的泛型参数为 T、U。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "mixup.rs"
+            },
+            {
+              "type": "regex",
+              "path": "mixup.rs",
+              "pattern": "impl\\s*<\\s*T\\s*,\\s*U\\s*>\\s*Point\\s*<\\s*T\\s*,\\s*U\\s*>"
+            },
+            {
+              "type": "regex",
+              "path": "mixup.rs",
+              "pattern": "fn\\s+mixup\\s*<\\s*V\\s*,\\s*W\\s*>\\s*\\(\\s*self\\s*,\\s*other\\s*:\\s*Point\\s*<\\s*V\\s*,\\s*W\\s*>\\s*\\)\\s*->\\s*Point\\s*<\\s*T\\s*,\\s*W\\s*>"
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-01-syntax-s1-t6",
+          "prompt": "请在 monomorphization.md 中解释 Rust 泛型为什么在运行时没有额外开销；文中必须出现“单态化”和“为每个具体类型生成代码”这两个短语。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "monomorphization.md"
+            },
+            {
+              "type": "contains",
+              "path": "monomorphization.md",
+              "patterns": [
+                "单态化",
+                "为每个具体类型生成代码"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch10-02-traits-s1",
+      "name": "ch10-02-traits-s1",
+      "description": "trait 共享行为与约束：在 trait 中声明方法签名时，方法签名后跟分号，而不是在大括号中提供其实现；适用于在 trait 中声明方法签名时、当 trait 与要实现该 trait 的类型均定义于当前 crate 本地作用域之外时、调用参数使用 `impl` 关键字和 trait 名称的函数，并传入未实现该 trait 的类型时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:71532f7808993ef27b2a7adb8d8c8e131755ca24e12a8e003a78bcb10d8c34bd",
+      "inputHash": "sha256:83b0aa6c5dffb6a3793d33585949a62ba6a486b900494eb7cb4b5b12d64a0e80",
+      "tasks": [
+        {
+          "taskId": "ch10-02-traits-s1-t1",
+          "prompt": "请创建 `summary.rs`，定义一个 `Summary` trait，其中声明 `fn summarize(&self) -> String;`（只写签名，不要实现）。再定义一个结构体 `NewsArticle`，包含一个 `title: String` 字段，并为它实现 `Summary`，在 `summarize` 方法中返回 `self.title.clone()`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "summary.rs"
+            },
+            {
+              "type": "regex",
+              "path": "summary.rs",
+              "pattern": "trait\\s+Summary"
+            },
+            {
+              "type": "regex",
+              "path": "summary.rs",
+              "pattern": "fn\\s+summarize\\s*\\([^)]*\\)\\s*->\\s*String\\s*;"
+            },
+            {
+              "type": "contains",
+              "path": "summary.rs",
+              "patterns": [
+                "impl Summary for NewsArticle",
+                "self.title.clone()"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-02-traits-s1-t2",
+          "prompt": "请创建 `notify.rs`，定义一个 `Summary` trait（方法 `summarize` 使用签名即可）和一个结构体 `Tweet`（包含字段 `content: String`）。为 `Tweet` 实现 `Summary`，在 `summarize` 方法中返回 `self.content.clone()`。然后定义函数 `fn notify(item: impl Summary)`，在函数体中打印 `item.summarize()`。在 `main` 中创建 `let tweet = Tweet { content: String::from(\"hello\") };` 并调用 `notify(tweet);`。不要添加任何传入 `String`、`i32` 或其他未实现 `Summary` 类型的 `notify` 调用。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "notify.rs"
+            },
+            {
+              "type": "regex",
+              "path": "notify.rs",
+              "pattern": "trait\\s+Summary"
+            },
+            {
+              "type": "contains",
+              "path": "notify.rs",
+              "patterns": [
+                "fn notify(item: impl Summary)",
+                "impl Summary for Tweet",
+                "self.content.clone()",
+                "notify(tweet)"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "notify.rs",
+              "patterns": [
+                "notify(String",
+                "notify(42"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-02-traits-s1-t3",
+          "prompt": "请创建 `wrapper.rs`，导入 `std::fmt`。使用 newtype 模式定义本地结构体 `VecDisplay(Vec<String>)`，并为它实现 `std::fmt::Display` trait。在 `Display::fmt` 中，用 `write!(f, \"{}\", self.0.join(\", \"))` 输出向量元素。不要为 `Vec<String>` 直接实现任何外部 trait（例如 `Display`）。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "wrapper.rs"
+            },
+            {
+              "type": "regex",
+              "path": "wrapper.rs",
+              "pattern": "struct\\s+VecDisplay\\(Vec<String>\\)"
+            },
+            {
+              "type": "regex",
+              "path": "wrapper.rs",
+              "pattern": "impl\\s+(?:std::fmt::)?Display\\s+for\\s+VecDisplay"
+            },
+            {
+              "type": "contains",
+              "path": "wrapper.rs",
+              "patterns": [
+                "self.0.join(\", \")"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "wrapper.rs",
+              "patterns": [
+                "for Vec<String>"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-02-traits-s1-t4",
+          "prompt": "请创建 `same_summary.rs`，定义一个 `Summary` trait（方法 `summarize` 使用签名即可）。然后编写函数 `fn announce_both<T: Summary>(a: &T, b: &T)`，在函数体中打印 `a.summarize()` 和 `b.summarize()`。不要使用 `impl Summary` 作为参数类型。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "same_summary.rs"
+            },
+            {
+              "type": "contains",
+              "path": "same_summary.rs",
+              "patterns": [
+                "fn announce_both<T: Summary>(a: &T, b: &T)",
+                "a.summarize()",
+                "b.summarize()"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "same_summary.rs",
+              "patterns": [
+                "impl Summary"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-02-traits-s1-t5",
+          "prompt": "请创建 `display_summary.rs`，定义一个 `Summary` trait（方法 `summarize` 使用签名即可）。然后编写函数 `fn show_summary(item: impl Summary + Display)`，函数体先使用 `println!(\"{}\", item)` 打印该值，再打印 `item.summarize()`。需要导入 `std::fmt::Display`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "display_summary.rs"
+            },
+            {
+              "type": "contains",
+              "path": "display_summary.rs",
+              "patterns": [
+                "use std::fmt::Display;",
+                "fn show_summary(item: impl Summary + Display)",
+                "println!(\"{}\", item)",
+                "item.summarize()"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-02-traits-s1-t6",
+          "prompt": "请创建 `largest.rs`，编写泛型函数 `fn largest<T: PartialOrd + Copy>(list: &[T]) -> T`，返回切片中最大的元素。函数体使用 `let mut largest = list[0];`，然后 `for i in 1..list.len()` 循环，内部用 `if list[i] > largest` 比较，并在更大时执行 `largest = list[i];`。最后返回 `largest`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "largest.rs"
+            },
+            {
+              "type": "regex",
+              "path": "largest.rs",
+              "pattern": "fn\\s+largest\\s*<T:\\s*PartialOrd\\s*\\+\\s*Copy>"
+            },
+            {
+              "type": "contains",
+              "path": "largest.rs",
+              "patterns": [
+                "let mut largest = list[0];",
+                "for i in 1..list.len()",
+                "if list[i] > largest",
+                "largest = list[i];"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch10-03-lifetime-syntax-s1",
+      "name": "ch10-03-lifetime-syntax-s1",
+      "description": "生命周期标注与诊断：Rust 中的每一个引用都有其生命周期，也就是引用保持有效的作用域；适用于任何 Rust 引用、引用的生命周期以一些不同方式相关联时、引用所指向的值在引用被使用之前离开作用域。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:fd4d76a44d2ab59e2435857e0828cc72d13b8058f207560a4633310e854017b7",
+      "inputHash": "sha256:2f5dd30bf314ebaf37f71c0862a9b2fbdc962d7704a7af08135c189bf0b0c941",
+      "tasks": [
+        {
+          "taskId": "ch10-03-lifetime-syntax-s1-t1",
+          "prompt": "请写一个 Rust 源文件 longest.rs，实现函数 longest，它接受两个字符串切片 x 和 y，并返回较长的一个；如果一样长返回第一个。函数签名必须包含必要的生命周期标注。函数体请用 `if x.len() >= y.len() { x } else { y }` 实现。文件里还要有一个 main 函数演示调用 longest。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "longest.rs"
+            },
+            {
+              "type": "contains",
+              "path": "longest.rs",
+              "patterns": [
+                "fn longest<'a>",
+                "&'a str",
+                "-> &'a str",
+                "if x.len() >= y.len() { x } else { y }",
+                "fn main"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-03-lifetime-syntax-s1-t2",
+          "prompt": "请写一个 Rust 源文件 excerpt.rs，定义一个结构体 ImportantExcerpt，它包含一个字符串切片字段 part。结构体和它生命周期标注必须完整。然后为 ImportantExcerpt 实现两个方法：level 返回 i32；announce_and_return_part 接受 &self 和 announcement: &str 参数，打印 announcement 并返回 part。所有必要的生命周期标注都要写在正确位置（包括 impl 之后）。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "excerpt.rs"
+            },
+            {
+              "type": "contains",
+              "path": "excerpt.rs",
+              "patterns": [
+                "struct ImportantExcerpt<'a>",
+                "part: &'a str",
+                "impl<'a> ImportantExcerpt<'a>",
+                "fn level(&self) -> i32",
+                "fn announce_and_return_part",
+                "announcement",
+                "println!",
+                "self.part"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-03-lifetime-syntax-s1-t3",
+          "prompt": "当前目录下有一个不能编译的 dangling.rs。请阅读它，写一个 diagnosis.md 文件，用中文说明这段代码为什么不能编译、Rust 的哪条规则阻止了它，并给出至少两种修复方向，其中至少一种提到返回拥有所有权的类型或所有权。请使用“悬垂引用”、“借用检查器”、“作用域”这些术语。",
+          "fixtures": {
+            "dangling.rs": "fn main() {\n    let r;\n    {\n        let x = 5;\n        r = &x;\n    }\n    println!(\"{}\", r);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "diagnosis.md"
+            },
+            {
+              "type": "contains",
+              "path": "diagnosis.md",
+              "patterns": [
+                "悬垂引用",
+                "借用检查器",
+                "作用域",
+                "所有权"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-03-lifetime-syntax-s1-t4",
+          "prompt": "写一个 markdown 文件 elision.md，用中文列出 Rust 生命周期省略的三条规则（用数字编号 1. 2. 3.），并解释为什么 `fn first_word(s: &str) -> &str` 不需要显式生命周期标注。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "elision.md"
+            },
+            {
+              "type": "contains",
+              "path": "elision.md",
+              "patterns": [
+                "1.",
+                "2.",
+                "3.",
+                "fn first_word(s: &str) -> &str",
+                "输入生命周期",
+                "输出生命周期"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-03-lifetime-syntax-s1-t5",
+          "prompt": "写一个 Rust 源文件 longest_announce.rs，实现函数 longest_with_announcement，它接受两个字符串切片 x、y 和一个泛型参数 ann: T，在比较长度之前打印 ann，然后比较长度并返回较长的一个；如果一样长返回 x。比较长度时用 `if x.len() >= y.len() { x } else { y }`。函数必须同时使用生命周期标注和泛型类型参数，并用 where 子句要求 T 实现 Display。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "longest_announce.rs"
+            },
+            {
+              "type": "contains",
+              "path": "longest_announce.rs",
+              "patterns": [
+                "fn longest_with_announcement<'a, T>",
+                "ann: T",
+                "where T",
+                "Display",
+                "-> &'a str",
+                "println!(\"{}\", ann)",
+                "if x.len() >= y.len() { x } else { y }"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch10-03-lifetime-syntax-s1-t6",
+          "prompt": "写一个 Rust 源文件 static_lifetime.rs，定义一个函数 static_str，它返回一个 &'static str，返回的字符串字面量内容为 I have a static lifetime.。同时写一个 main 函数，用显式类型标注 let s: &'static str 绑定这个字符串，并打印它。文件里可以用注释简要说明为什么字符串字面量拥有 'static 生命周期。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "static_lifetime.rs"
+            },
+            {
+              "type": "contains",
+              "path": "static_lifetime.rs",
+              "patterns": [
+                "fn static_str() -> &'static str",
+                "\"I have a static lifetime.\"",
+                "let s: &'static str",
+                "fn main"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch13-01-closures-s1",
+      "name": "ch13-01-closures-s1",
+      "description": "闭包创建与调用控制：对于一个计算函数，在同一次流程中应只调用一次，并且仅在需要其结果时才调用；适用于当代码存在多余的连续多次调用，或可能在完全无需其结果时调用函数时、定义闭包并需要指定参数时、当闭包已被第一次调用，其参数和返回值类型被锁定后。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:138bfddc2692e6e6112ebb36b869a50bce709ff174dd12f13c6012d407e434b5",
+      "inputHash": "sha256:9fca0d6639a7db78c9fbda1db18666a28239c7a8ffbf726d2a09a7b770a32a64",
+      "tasks": [
+        {
+          "taskId": "ch13-01-closures-s1-t1",
+          "prompt": "请修改 src/main.rs 中的代码，把重复调用 `expensive_closure(intensity)` 改为只在 if 块中调用一次，并将结果保存在本地变量中供后续使用。最终代码写入 src/main.rs。",
+          "fixtures": {
+            "src/main.rs": "fn simulated_expensive_calculation(intensity: u32) -> u32 {\n    println!(\"calculating slowly...\");\n    std::thread::sleep(std::time::Duration::from_secs(2));\n    intensity\n}\n\nfn main() {\n    let intensity = 12;\n    let expensive_closure = |intensity| {\n        println!(\"calculating slowly...\");\n        std::thread::sleep(std::time::Duration::from_secs(2));\n        intensity\n    };\n\n    if expensive_closure(intensity) > 10 {\n        println!(\"High\");\n    } else {\n        println!(\"Low: {}\", expensive_closure(intensity));\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "let result = expensive_closure(intensity);",
+                "if result > 10",
+                "println!(\"Low: {}\", result);"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "if expensive_closure(intensity) > 10",
+                "println!(\"Low: {}\", expensive_closure(intensity));"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s1-t2",
+          "prompt": "请在 src/lib.rs 中实现一个函数 `get_value_or_default`，它接受 `Option<i32>` 和一个闭包 `default_provider`，当 Option 是 Some 时直接返回内部值并且不调用闭包，只有 None 时才调用闭包并返回结果。请使用 `Option::unwrap_or_else` 实现。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "pub fn get_value_or_default",
+                "unwrap_or_else",
+                "impl FnOnce() -> i32"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "unwrap_or("
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s1-t3",
+          "prompt": "请在 src/main.rs 中写一个 Rust 程序：定义变量 `threshold = 10`，定义一个闭包 `is_above_threshold` 捕获该变量，接受一个 `i32` 参数并返回该值是否大于阈值；然后分别用 5 和 12 调用并打印结果。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "let is_above_threshold",
+                "|value|",
+                "value > threshold",
+                "is_above_threshold(5)",
+                "is_above_threshold(12)"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s1-t4",
+          "prompt": "请在 src/main.rs 中写一个 Rust 示例程序：定义一个闭包 `let example_closure = |x| x;`，第一次用字符串调用它并打印；保留一个被注释掉的整数调用（例如 `// let n = example_closure(5);`），并在注释中说明该整数调用会导致类型错误，因为闭包类型已被第一次调用锁定为 String。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "let example_closure = |x| x;",
+                "example_closure(String::from(\"hello\"));",
+                "// let n = example_closure(5);",
+                "类型错误"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s1-t5",
+          "prompt": "请在 src/lib.rs 中实现一个 `Cacher<T>` 结构体，它持有一个计算闭包和一个可选结果值。要求第一次调用 `value` 方法时执行闭包并缓存结果，后续调用直接返回缓存值。闭包类型为 `Fn() -> u32`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "pub struct Cacher<T>",
+                "value: Option<u32>",
+                "self.value = Some(v);",
+                "Fn() -> u32"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s1-t6",
+          "prompt": "请修改 src/main.rs，引入一个闭包 `expensive_closure` 封装 `simulated_expensive_calculation`，并仅在 `if intensity < 25` 分支中调用该闭包得到结果；不要在进入 if 之前提前计算。最终代码写入 src/main.rs。",
+          "fixtures": {
+            "src/main.rs": "fn simulated_expensive_calculation(intensity: u32) -> u32 {\n    println!(\"calculating slowly...\");\n    std::thread::sleep(std::time::Duration::from_secs(2));\n    intensity\n}\n\nfn main() {\n    let intensity = 12;\n    let expensive_result = simulated_expensive_calculation(intensity);\n\n    if intensity < 25 {\n        println!(\"Result: {}\", expensive_result);\n    } else {\n        println!(\"No calculation needed\");\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "let expensive_closure = |intensity| simulated_expensive_calculation(intensity);",
+                "if intensity < 25 {",
+                "let expensive_result = expensive_closure(intensity);"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "let expensive_result = simulated_expensive_calculation(intensity);"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch13-01-closures-s2",
+      "name": "ch13-01-closures-s2",
+      "description": "闭包存储与缓存实现：定义使用闭包的结构体、枚举或函数参数时，需要指定闭包类型并使用泛型和 trait bound；适用于当结构体、枚举或函数参数需要存放或接收闭包时、当需要让 `Cacher` 按 `arg` 查找并保存闭包结果，而不是只存单独一个值时、当需要让 `Cacher` 能够缓存不同签名的闭包，例如获取字符串 slice 并返回 `usize` 值的闭包时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:88fcd79a54d42927df0193a0558ce7bb59d7a05df93653f5983d1a11e62c3586",
+      "inputHash": "sha256:f862fdb3f0d8fbeb38013c71ae008bba43d4aee7132c5cc08f724bd481d8901d",
+      "tasks": [
+        {
+          "taskId": "ch13-01-closures-s2-t1",
+          "prompt": "创建 `cacher.rs`，实现一个名为 `Cacher` 的泛型结构体，字段 `calculation` 存放闭包、`values` 存放 `HashMap` 缓存。要求使用泛型和 `Fn` trait bound，使它能存放获取 `&str` 并返回 `usize` 的闭包；实现 `new` 和 `value` 方法，`value` 按 `arg` 键查找缓存，未命中时调用闭包并插入缓存。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "cacher.rs"
+            },
+            {
+              "type": "contains",
+              "path": "cacher.rs",
+              "patterns": [
+                "struct Cacher",
+                "HashMap",
+                "Fn",
+                "fn value",
+                "insert"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s2-t2",
+          "prompt": "修复 `main.rs` 中的 `Cacher`：当前实现只缓存一个值，导致对不同参数仍返回第一次结果。请改为使用 `HashMap` 以参数为键缓存不同参数的结果，保持原有公共接口（`new` 和 `value`）不变。",
+          "fixtures": {
+            "main.rs": "use std::collections::HashMap;\n\nstruct Cacher<T>\nwhere\n    T: Fn(u32) -> u32,\n{\n    calculation: T,\n    value: Option<u32>,\n}\n\nimpl<T> Cacher<T>\nwhere\n    T: Fn(u32) -> u32,\n{\n    fn new(calculation: T) -> Cacher<T> {\n        Cacher { calculation, value: None }\n    }\n\n    fn value(&mut self, arg: u32) -> u32 {\n        match self.value {\n            Some(v) => v,\n            None => {\n                let v = (self.calculation)(arg);\n                self.value = Some(v);\n                v\n            }\n        }\n    }\n}\n\nfn main() {\n    let mut c = Cacher::new(|a| a + 1);\n    println!(\"{}\", c.value(5));\n    println!(\"{}\", c.value(6));\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "HashMap",
+                "insert",
+                "arg"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "Option<u32>"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s2-t3",
+          "prompt": "创建 `ops.rs`，定义一个泛型枚举 `Operation<F>`，其变体 `Add(F)` 和 `Mul(F)` 可存放实现了 `Fn(i32, i32) -> i32` 的闭包。再定义函数 `apply_twice<F>(f: F, x: i32) -> i32 where F: Fn(i32) -> i32`，对 `x` 连续应用两次 `f`，并在 `main` 中演示使用这两个定义。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "ops.rs"
+            },
+            {
+              "type": "contains",
+              "path": "ops.rs",
+              "patterns": [
+                "enum Operation",
+                "Fn(",
+                "where",
+                "apply_twice",
+                "f(f(x))"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s2-t4",
+          "prompt": "在 `capture.rs` 中编写示例代码，分别演示闭包通过 FnOnce（获取所有权，通常需要 `move`）、FnMut（可变借用）和 Fn（不可变借用）捕获环境变量。为每个示例标注注释，并包含一个 `main` 函数调用这些闭包。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "capture.rs"
+            },
+            {
+              "type": "contains",
+              "path": "capture.rs",
+              "patterns": [
+                "FnOnce",
+                "FnMut",
+                "move",
+                "&mut"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "capture.rs",
+              "pattern": "\\bFn\\b"
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s2-t5",
+          "prompt": "修改 `cacher.rs` 中的 `Cacher`，目前它只能缓存 `u32 -> u32` 的闭包。请将其泛型化或改为支持获取字符串 slice 并返回 `usize` 的闭包，并添加一个 `main` 函数演示使用该闭包（如 `|s: &str| s.len()`）。",
+          "fixtures": {
+            "cacher.rs": "use std::collections::HashMap;\n\nstruct Cacher<T>\nwhere\n    T: Fn(u32) -> u32,\n{\n    calculation: T,\n    values: HashMap<u32, u32>,\n}\n\nimpl<T> Cacher<T>\nwhere\n    T: Fn(u32) -> u32,\n{\n    fn new(calculation: T) -> Cacher<T> {\n        Cacher { calculation, values: HashMap::new() }\n    }\n\n    fn value(&mut self, arg: u32) -> u32 {\n        match self.values.get(&arg) {\n            Some(v) => *v,\n            None => {\n                let v = (self.calculation)(arg);\n                self.values.insert(arg, v);\n                v\n            }\n        }\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "cacher.rs"
+            },
+            {
+              "type": "contains",
+              "path": "cacher.rs",
+              "patterns": [
+                "HashMap",
+                "Fn",
+                "&str",
+                "usize"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "cacher.rs",
+              "patterns": [
+                "Fn(u32) -> u32",
+                "HashMap<u32, u32>"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-01-closures-s2-t6",
+          "prompt": "在 `word_length_cache.rs` 中实现一个按字符串参数缓存其长度的程序：使用 `HashMap` 存放缓存，闭包为 `|s: &str| s.len()`。在 `main` 中至少对 `\"rust\"` 和 `\"closures\"` 两个字符串调用缓存并打印长度；确保计算函数只会在第一次遇到某个字符串时被调用（可打印 `calculating...` 作为提示）。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "word_length_cache.rs"
+            },
+            {
+              "type": "contains",
+              "path": "word_length_cache.rs",
+              "patterns": [
+                "HashMap",
+                "s.len()",
+                "&str",
+                "usize",
+                "println!"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "word_length_cache.rs",
+              "pattern": "\\|s: &str\\| s\\.len\\(\\)"
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch13-02-iterators-s1",
+      "name": "ch13-02-iterators-s1",
+      "description": "使用标准迭代器处理序列：调用 `sum` 之后不再允许使用 `v1_iter`，因为调用 `sum` 时它会获取迭代器的所有权；适用于调用 `sum` 之后、调用迭代器适配器方法并需要获取其结果时、在 Rust 中为某个类型实现标准库的 `Iterator` trait 时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:02a0da6c91762f63d6eb91e93034f13520e63fa08ffe6da1d7a8935bcb287323",
+      "inputHash": "sha256:77203efcc51ee7b5b96b411316afd32e8f32980f7e97c82e62c9bca5d6e298d2",
+      "tasks": [
+        {
+          "taskId": "ch13-02-iterators-s1-t1",
+          "prompt": "请在本目录创建 `sum_demo.rs`，编写一个完整的 Rust 程序：定义整数向量 `let v1 = vec![1, 2, 3];`，创建迭代器变量 `let v1_iter = v1.iter();`，计算总和 `let total: i32 = v1_iter.sum();`，并打印总和。注意：在调用 `sum` 之后不要再使用 `v1_iter`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "sum_demo.rs"
+            },
+            {
+              "type": "contains",
+              "path": "sum_demo.rs",
+              "patterns": [
+                "let v1_iter = v1.iter();",
+                "let total: i32 = v1_iter.sum();",
+                "println!"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "sum_demo.rs",
+              "patterns": [
+                "v1_iter.next",
+                "v1_iter.nth",
+                "v1_iter.map",
+                "v1_iter.filter",
+                "for x in v1_iter",
+                "v1_iter.collect",
+                "v1_iter.count"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-02-iterators-s1-t2",
+          "prompt": "请在本目录创建 `map_collect.rs`，编写一个完整的 Rust 程序：定义 `let nums = vec![1, 2, 3, 4, 5];`；然后使用 `let result: Vec<i32> = nums.iter().map(|x| x + 10).collect();` 得到每个元素加 10 的新向量；最后打印 `result`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "map_collect.rs"
+            },
+            {
+              "type": "contains",
+              "path": "map_collect.rs",
+              "patterns": [
+                "let nums = vec![1, 2, 3, 4, 5];",
+                "let result: Vec<i32> = nums.iter().map(|x| x + 10).collect();",
+                "println!"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-02-iterators-s1-t3",
+          "prompt": "请在本目录创建 `counter.rs`，实现一个 `Counter` 结构体，包含字段 `count: u32`。为 `Counter` 实现标准库 `Iterator` trait：`type Item = u32;`，`next` 方法每次返回 `self.count` 的值，然后将 `self.count` 加一；当 `self.count < 6` 时返回 `Some(值)`，否则返回 `None`。在 `main` 中创建 `Counter { count: 0 }`，直接调用两次 `next` 方法并打印这两个值。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "counter.rs"
+            },
+            {
+              "type": "contains",
+              "path": "counter.rs",
+              "patterns": [
+                "struct Counter",
+                "impl Iterator for Counter",
+                "type Item = u32;",
+                "fn next(&mut self) -> Option<Self::Item>",
+                "if self.count < 6",
+                "self.count += 1",
+                "Counter { count: 0 }",
+                "counter.next()",
+                "println!"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-02-iterators-s1-t4",
+          "prompt": "请在本目录创建 `shoes_filter.rs`，定义 `Shoe` 结构体（字段 `size: u32` 和 `style: String`）。实现函数 `shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe>`：使用 `shoes.into_iter().filter(|s| s.size == shoe_size).collect()` 返回指定尺码的鞋子。在 `main` 中创建一组鞋，调用该函数过滤尺码为 10 的鞋并打印结果。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "shoes_filter.rs"
+            },
+            {
+              "type": "contains",
+              "path": "shoes_filter.rs",
+              "patterns": [
+                "struct Shoe",
+                "size: u32",
+                "style: String",
+                "fn shoes_in_size",
+                "shoes.into_iter()",
+                ".filter(|s| s.size == shoe_size)",
+                ".collect()",
+                "println!"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-02-iterators-s1-t5",
+          "prompt": "请在本目录创建 `zip_pairs.rs`，定义两个向量 `let a = vec![1, 2, 3, 4, 5];` 和 `let b = vec![10, 20, 30, 40];`。使用 `a.iter().zip(b.iter())` 将它们配对，并通过 `collect::<Vec<_>>()` 收集到向量中，最后打印这个配对向量。利用 zip 的终止行为，结果应只有 4 对。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "zip_pairs.rs"
+            },
+            {
+              "type": "contains",
+              "path": "zip_pairs.rs",
+              "patterns": [
+                "let a = vec![1, 2, 3, 4, 5];",
+                "let b = vec![10, 20, 30, 40];",
+                "a.iter().zip(b.iter())",
+                ".collect::<Vec<_>>()",
+                "println!"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch13-02-iterators-s1-t6",
+          "prompt": "当前目录已有一个 `legacy_loop.rs` 文件，它使用 while 循环和显式索引变量遍历数组。请创建新文件 `idiomatic_loop.rs`，编写一个功能等价的 Rust 程序：使用 `for` 循环遍历同一个数组（可以直接用 `for item in &arr` 或 `for item in arr.iter()`，但不要使用索引变量或边界检查），打印每个元素。",
+          "fixtures": {
+            "legacy_loop.rs": "fn main() {\n    let arr = [10, 20, 30, 40, 50];\n    let mut index = 0;\n    while index < 5 {\n        println!(\"{}\", arr[index]);\n        index += 1;\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "idiomatic_loop.rs"
+            },
+            {
+              "type": "contains",
+              "path": "idiomatic_loop.rs",
+              "patterns": [
+                "let arr = [10, 20, 30, 40, 50];",
+                "for ",
+                "println!"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "idiomatic_loop.rs",
+              "patterns": [
+                "while ",
+                "index",
+                "arr[index]"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
     }
   ],
   "usage": {
-    "promptTokens": 24742,
-    "completionTokens": 152526
+    "promptTokens": 42637,
+    "completionTokens": 235415
   }
 }

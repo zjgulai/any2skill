@@ -10,9 +10,12 @@
 ## 1. 一句话结论
 
 **「任何书 → skills」的主张拿到了第二本书的全链证据**：rust-cn 经过本项目的环 1–4
-与三道门禁，产出 **9 个已发布 skill**（发布区总计 16 个）；且过程中**没有为第二源改过
-任何一条判据**——改动全部在「产物按源命名」「骨架的源条件化」这两类**机制面**，
-且每处改动都伴随可复算的回归（`npm test` 564 通过 / 0 失败）。
+与三道门禁，**17 个 skill 过门禁一入发布区、其中 1 个被门禁三确认退化而下架**
+（终态：rust 在区 **16 个**，发布区总计 **23 个**，见 §6 第三波增补）；且过程中
+**没有为第二源改过任何一条判据**——改动全部在「产物按源命名」「骨架的源条件化」这两类
+**机制面**，且每处改动都伴随可复算的回归（`npm test` 564 通过 / 0 失败）。
+
+> §2 的 9 个发布物表是卡 22 时点的快照；第三波后的终态与全量判定见 §6。
 
 ## 2. 发布物（9 个，全部过门禁一；门禁三判定如实）
 
@@ -100,13 +103,30 @@
   658/443/1038/1032/864/2346 条），**基准目录外访问全部为 0**；日志与账本归档
   `pipeline/registry/history/rust-realgit-2026-10-14/`。
 
-## 6. 未解与后续
+## 6. 第三波增补（卡 23，2026-10-14/15）
 
-- **未发布的 rust 候选 2 个**：`ch02-00-guessing-game-tutorial-s1`（合成未覆盖其锚点）、
-  `ch09-03-to-panic-or-not-to-panic-s1`（缺口类别不同：无 Concept → 实践模式空，合成不产
-  对象类型）。两者的处置是选项题（接受不发布 vs 更细的抽取/合成策略），未拍板。
-- **第三波**：ch07 模块 / ch08 集合 / ch10 泛型 trait 生命周期等 20+ 文件未抽——
-  合成机制现在在位（T03/T05/T10 主题已就位），命中率应高于第二波。
+- **8 文件补抽**（ch08 集合 / ch10 泛型 trait 生命周期 / ch13 闭包迭代器）：
+  **122 对象**、3 反模式、账本 1211 条；罕见类型 `DecisionModel`/`MentalModel`/`Case` 首现。
+- **规律 1 的预测被强确认**：门禁一 **18/22 过**（波 2 为 5/11）——合成池在位后，
+  新章候选的陷阱段直接由跨章 AP 供给，成批过关。未过 4 个全是**另一种缺口类**
+  （核心原则空/实践模式空/合成未覆盖），非陷阱门槛。
+- **规律 2 再次显形**：本波读数唯一 strict≥2 稳定边（ch13-02-s1↔s2）按规则录取后，
+  合并后集合再读的 10 条稳定边**无一达标**——链被机械剪净。
+- **规律 3 的代价如实计入**：本波门禁二因目录两次变化共跑 4 份读数（≈630 次盲测调用）。
+- **第二个确认 negative transfer（全项目）**：`ch13-02-iterators-s1`（**合并体**）——
+  任务 t5 无 skill 臂两轮过、有 skill 臂两轮败（缺 `.collect::<Vec<_>>()`），复现 → 按
+  ADR-006 下架 `registry/rejected/ch13-02-iterators-s1/`。与 chapter3-s1 同族失效
+  （skill 词汇改写任务显式要求），落在**代码片段字面**上。
+- **终态**：发布区 **23**（第一源 7 + rust 16）；rust 门禁三 **5 passed / 11 low-utility /
+  1 rejected / 0 噪声转确认**。
+
+## 7. 未解与后续
+
+- **未发布的 rust 候选 4 个**：`ch02-00-…-s1`（合成未覆盖其锚点）、`ch08-01-vectors-s1`
+  （核心原则空）、`ch08-03-hash-maps-s2`（陷阱空、无 AP 重叠）、`ch09-03-…-s1`
+  （实践模式空：无 Concept）。四种缺口各有名字——处置是选项题（接受不发布 vs 换策略）。
+- **剩余章节**：ch07 模块 / ch11 测试 / ch14 cargo / ch15 智能指针 / ch16 并发 /
+  ch18-01/03 / ch19-20 等尚可再抽——机制（合成池、命名空间、幂等重放）已全部在位。
 - **`antipattern-verdict-report` 的 OBJECTS_REL** 仍是缺省名单值路径（指第二源要
   `--objects`），未按源参数化主入口。
 - 第一源的 11 项 backlog 见 `docs/handoff-2026-10-14.md` §8。
@@ -115,7 +135,7 @@
 
 ```bash
 cd /Users/lute/Project/any2skills
-ls skills/ | wc -l                                                        # 16
+ls skills/ | wc -l                                                        # 23
 node pipeline/freeze-outputs.mjs --verify pipeline/registry/freeze-2026-10-14T13-34-13.json  # 93 文件
 node pipeline/freeze-outputs.mjs --verify pipeline/registry/freeze-2026-10-13T16-14-59.json  # 45 文件（第一源基线）
 node -e 'const r=require("./pipeline/registry/gate3-report.rust-book-cn.json");for(const s of r.skills)console.log(s.slug,s.verdict.verdict)'

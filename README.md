@@ -29,19 +29,18 @@ Any content → executable Agent Skills. MVP pipeline.
 （门禁三：2 passed / 7 low-utility / 0 确认退化）。全链结论与实测规律（陷阱门槛、准入≠效用、
 五处固定路径漏网）见 [`docs/specs/03-second-source-report.md`](docs/specs/03-second-source-report.md)。
 
-> ### 盘上已有 16 个已发布的 skill
+> ### 盘上已有 23 个已发布的 skill
 >
-> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 16 个：
+> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 23 个：
 > `chapter4-tool-design-principles`（首个，卡 10/ADR-019）、`chapter4-single-tool-design`
 > （环 3 端到端首件，卡 11），卡 16「打通发布门径」放行的 6 个中的 5 个：
 > `chapter10-s3` / `chapter1-s1` / `chapter5-s3` / `chapter2-s3` / `chapter9-s2`
 > （其中三个带 `references/` 溢出文件——ADR-004 溢出阀的首批产物），以及第二源
-> （rust-book-cn）的 **9 个**：首发 2 个（卡 20）、第二波 3 个（卡 21）、
-> 跨章合成解锁 4 个（卡 22：`ch04-02-references-and-borrowing-s1` /
-> `ch06-01-defining-an-enum-s1` / `ch06-02-match-s1` / `ch18-02-refutability-s1`
-> ——陷阱段来源＝本源跨章反模式合成池，ADR-016 机制的第二次全链显形）。
-> 第二源 9 个的门禁三判定（卡 22 全量重跑，诚实记录）：**2 passed / 7 low-utility / 0 确认退化**
-> ——low-utility 是「无改进也无退化（任务要么双过要么双败）」的如实标记，不拒绝。
+> （rust-book-cn）的 **16 个**：首发 2（卡 20）+ 第二波 3（卡 21）+ 跨章合成解锁 4（卡 22）
+> + 第三波 7（卡 23：集合/泛型 trait 生命周期/闭包迭代器）。
+> 第二源门禁三（卡 23 全量）：**5 passed / 11 low-utility / 1 rejected**——low-utility 是
+> 「无改进也无退化」的如实标记，不拒绝；**`ch13-02-iterators-s1` 因 negative transfer
+> 复现被下架**（`pipeline/registry/rejected/`，全项目第二个确认拒绝、第一个在第二源检出）。
 >
 > ⚠ **`chapter3-s1` 已被门禁三拒绝并下架**（`pipeline/registry/rejected/chapter3-s1/`，
 > 移动而非删除）：全量效用 A/B 检出**首个确认的 negative transfer**（任务 t2 复跑复现：

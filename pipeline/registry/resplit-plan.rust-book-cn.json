@@ -1,11 +1,11 @@
 {
   "schemaVersion": "resplit-plan/v1",
   "createdAt": "2026-10-14T07:40:00.000Z",
-  "updatedAt": "2026-10-14T10:20:00.000Z",
+  "updatedAt": "2026-10-15T00:30:00.000Z",
   "approved": true,
   "approvedAt": "2026-10-14T07:40:00.000Z",
   "approvedBy": "用户（AskUserQuestion：「先合并再发布（推荐）」）",
-  "updateNote": "波 2（卡 21）按同一既定规则机械扩展：新增两对（ch05-03←ch05-02、ch06-02←ch06-03，均为 strict≥2 稳定边、与既有对不相交）。规则本身在卡 13 已获批准（「在 strict≥2 且两读数都存的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序」），此处只是对 rust 源第二批候选机械执行同一规则。保留波 1 的 s1←s2，使环 3 重跑后可整体重放。",
+  "updateNote": "波 2（卡 21）按同一既定规则机械扩展：新增两对（ch05-03←ch05-02、ch06-02←ch06-03，均为 strict≥2 稳定边、与既有对不相交）。规则本身在卡 13 已获批准（「在 strict≥2 且两读数都存的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序」），此处只是对 rust 源第二批候选机械执行同一规则。保留波 1 的 s1←s2，使环 3 重跑后可整体重放。 波 3（卡 23）再按同一规则新增一对（ch13-02-s1←ch13-02-s2，strict 2/list 2，同章两候选）；波 3 读数中三条既有对（s1←s2、ch05-03←ch05-02、ch06-02←ch06-03）以幂等重放恢复。",
   "sources": {
     "gate2ReportList": "pipeline/registry/gate2-report.rust-book-cn.json",
     "gate2ReportStrict": "pipeline/registry/gate2-report.strict.rust-book-cn.json",
@@ -70,6 +70,25 @@
         ]
       },
       "reason": "波 2 稳定对（strict 2、list 1；「两读数都存」指该边在两读数中均出现，list 侧计数不设阈值——第一源 chapter9-s2|afterword-s1 即 strict 2 / list 1 录取）。吸收者按规则：ch06-02（10 对象）> ch06-03（3 对象）。同一链条上的 06-01|06-02 与 06-03|18-02 为 strict=1，低于阈值，按规则不取——链被机械剪为不相交对。"
+    },
+    {
+      "action": "merge",
+      "into": "ch13-02-iterators-s1",
+      "target": "ch13-02-iterators-s2",
+      "basis": {
+        "stablePair": "ch13-02-iterators-s1|ch13-02-iterators-s2",
+        "strictScenarios": 2,
+        "listScenarios": 2,
+        "strictScenarioIds": [
+          "ch13-02-iterators-s1-sc2",
+          "ch13-02-iterators-s2-sc3"
+        ],
+        "listScenarioIds": [
+          "ch13-02-iterators-s1-sc2",
+          "ch13-02-iterators-s2-sc3"
+        ]
+      },
+      "reason": "波 3 唯一 strict≥2 稳定边（两读数同场景集）。同章两候选相互共认领（各 2 场景）。吸收者按规则：对象数同为 9 → 严格命中数同 → 字典序 s1。波 3 其余 8 条稳定边全为 strict=1，低于阈值不取；其中 ch05-01|ch05-03 与 ch06-01|ch06-02 是既有合并的残留弱边，规则机械不取。"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "skill-candidates/v1",
-  "createdAt": "2026-10-14T09:42:47.303Z",
+  "createdAt": "2026-10-14T17:10:28.078Z",
   "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json",
-  "clustersSha256": "sha256:a184c30cfd4ced5832e32b76742fd9a81a5bc41384d5df6c0616654f6ee8048d",
+  "clustersSha256": "sha256:ed82afa4b6c72c208cb895a73ac82320d5c767c202733275b508d2115e6a1a95",
   "candidates": [
     {
       "skillId": "ch02-00-guessing-game-tutorial-s1",
@@ -250,6 +250,159 @@
       ]
     },
     {
+      "skillId": "ch08-01-vectors-s1",
+      "sourceObjects": [
+        "CH08-01-VECTORS-H2-1-CONCEPT-01",
+        "CH08-01-VECTORS-H3-1-CONCEPT-01",
+        "CH08-01-VECTORS-H3-1-CONCEPT-02",
+        "CH08-01-VECTORS-H3-2-ENGINEERINGRULE-02",
+        "CH08-01-VECTORS-H3-3-ENGINEERINGRULE-01",
+        "CH08-01-VECTORS-H3-4-CONCEPT-01",
+        "CH08-01-VECTORS-H3-4-DECISIONMODEL-02",
+        "CH08-01-VECTORS-H3-5-CONCEPT-01",
+        "CH08-01-VECTORS-H3-5-ENGINEERINGRULE-02",
+        "CH08-01-VECTORS-H3-6-HEURISTIC-01",
+        "CH08-01-VECTORS-H3-6-CONCEPT-02"
+      ],
+      "trigger": "当你编写或审查 Rust 代码，需要用 vector 存储一系列值，并需要决定如何创建、更新、访问、遍历及处理多种类型时，使用本候选。",
+      "chapterRefs": [
+        "ch08-01-vectors"
+      ],
+      "promotionState": "candidate",
+      "name": "使用 Vec<T> 管理序列数据",
+      "units": [
+        "ch08-01-vectors-u1",
+        "ch08-01-vectors-u2",
+        "ch08-01-vectors-u3",
+        "ch08-01-vectors-u4"
+      ],
+      "anchors": [
+        "ch08-01-vectors#h2-1",
+        "ch08-01-vectors#h3-1",
+        "ch08-01-vectors#h3-2",
+        "ch08-01-vectors#h3-3",
+        "ch08-01-vectors#h3-4",
+        "ch08-01-vectors#h3-5",
+        "ch08-01-vectors#h3-6"
+      ],
+      "rationale": "这些单元覆盖同一批使用场景：开发者使用 Vec<T> 处理序列数据时，通常要依次面对创建与类型推断、作用域清理、读取遍历和异构选型，组成一条完整任务链。"
+    },
+    {
+      "skillId": "ch08-02-strings-s1",
+      "sourceObjects": [
+        "CH08-02-STRINGS-H2-1-CONCEPT-01",
+        "CH08-02-STRINGS-H3-1-CONCEPT-01",
+        "CH08-02-STRINGS-H3-1-CONCEPT-02",
+        "CH08-02-STRINGS-H3-2-CONCEPT-01",
+        "CH08-02-STRINGS-H3-2-CONCEPT-02",
+        "CH08-02-STRINGS-H3-3-CONCEPT-01",
+        "CH08-02-STRINGS-H4-1-CONCEPT-01",
+        "CH08-02-STRINGS-H4-1-CONCEPT-02",
+        "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-01",
+        "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-02",
+        "CH08-02-STRINGS-H3-4-ENGINEERINGRULE-01",
+        "CH08-02-STRINGS-H4-3-CONCEPT-01",
+        "CH08-02-STRINGS-H4-3-ENGINEERINGRULE-02",
+        "CH08-02-STRINGS-H3-5-ENGINEERINGRULE-01",
+        "CH08-02-STRINGS-H3-5-CONCEPT-02",
+        "CH08-02-STRINGS-H4-4-CONCEPT-01",
+        "CH08-02-STRINGS-H4-4-ENGINEERINGRULE-02",
+        "CH08-02-STRINGS-H3-6-HEURISTIC-01",
+        "CH08-02-STRINGS-H3-6-HEURISTIC-02",
+        "CH08-02-STRINGS-H3-7-ENGINEERINGRULE-01"
+      ],
+      "trigger": "当需要创建、修改、拼接 Rust 字符串，或需要理解其 UTF-8 字节表示、进行安全切片与 Unicode 字符/字形簇遍历时使用此内容。",
+      "chapterRefs": [
+        "ch08-02-strings"
+      ],
+      "promotionState": "candidate",
+      "name": "Rust String 处理",
+      "units": [
+        "ch08-02-strings-u1",
+        "ch08-02-strings-u2",
+        "ch08-02-strings-u3",
+        "ch08-02-strings-u4"
+      ],
+      "anchors": [
+        "ch08-02-strings#h2-1",
+        "ch08-02-strings#h3-1",
+        "ch08-02-strings#h3-2",
+        "ch08-02-strings#h3-3",
+        "ch08-02-strings#h4-1",
+        "ch08-02-strings#h4-2",
+        "ch08-02-strings#h3-4",
+        "ch08-02-strings#h4-3",
+        "ch08-02-strings#h3-5",
+        "ch08-02-strings#h4-4",
+        "ch08-02-strings#h3-6",
+        "ch08-02-strings#h3-7"
+      ],
+      "rationale": "这些单元覆盖本章 String 从类型与创建、更新与拼接，到 UTF-8 字节表示与切片、Unicode 字符与字形簇操作的完整问题链；面向同一批使用 String 处理 UTF-8 文本的开发任务。"
+    },
+    {
+      "skillId": "ch08-03-hash-maps-s1",
+      "sourceObjects": [
+        "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-02",
+        "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-02",
+        "CH08-03-HASH-MAPS-H3-3-CONCEPT-01",
+        "CH08-03-HASH-MAPS-H3-4-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H4-1-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H4-2-CONCEPT-01",
+        "CH08-03-HASH-MAPS-H4-2-ENGINEERINGRULE-02",
+        "CH08-03-HASH-MAPS-H4-3-CONCEPT-01"
+      ],
+      "trigger": "当需要在 Rust 中创建、填充、访问和更新 HashMap 键值对时。",
+      "chapterRefs": [
+        "ch08-03-hash-maps"
+      ],
+      "promotionState": "candidate",
+      "name": "HashMap 核心操作",
+      "units": [
+        "ch08-03-hash-maps-u1",
+        "ch08-03-hash-maps-u2",
+        "ch08-03-hash-maps-u3",
+        "ch08-03-hash-maps-u4"
+      ],
+      "anchors": [
+        "ch08-03-hash-maps#h3-1",
+        "ch08-03-hash-maps#h3-2",
+        "ch08-03-hash-maps#h3-3",
+        "ch08-03-hash-maps#h3-4",
+        "ch08-03-hash-maps#h4-1",
+        "ch08-03-hash-maps#h4-2",
+        "ch08-03-hash-maps#h4-3"
+      ],
+      "rationale": "这些单元共同覆盖 HashMap 的日常核心使用路径：导入构建、插入时的所有权、get 访问和键冲突更新，面向需要完成基本键值存储与更新任务的读者。"
+    },
+    {
+      "skillId": "ch08-03-hash-maps-s2",
+      "sourceObjects": [
+        "CH08-03-HASH-MAPS-H3-5-CONCEPT-01",
+        "CH08-03-HASH-MAPS-H3-5-HEURISTIC-02",
+        "CH08-03-HASH-MAPS-H2-2-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H2-2-HEURISTIC-02"
+      ],
+      "trigger": "当需要为 HashMap 自定义 hasher 以改善性能，或查看本章 Pig Latin 和众数练习提示时。",
+      "chapterRefs": [
+        "ch08-03-hash-maps"
+      ],
+      "promotionState": "candidate",
+      "name": "哈希函数与练习提示",
+      "units": [
+        "ch08-03-hash-maps-u5",
+        "ch08-03-hash-maps-u6",
+        "ch08-03-hash-maps-u7"
+      ],
+      "anchors": [
+        "ch08-03-hash-maps#h3-5",
+        "ch08-03-hash-maps#h2-2",
+        "ch08-03-hash-maps#h2-2"
+      ],
+      "rationale": "这些单元面向需要超出标准用法进行性能调优或完成本章练习的读者：自定义哈希函数解决默认 hasher 性能问题，Pig Latin 规则和众数提示是章节练习中给出的应用线索。"
+    },
+    {
       "skillId": "ch09-03-to-panic-or-not-to-panic-s1",
       "sourceObjects": [
         "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-HEURISTIC-01",
@@ -282,6 +435,143 @@
         "ch09-03-to-panic-or-not-to-panic#h3-4"
       ],
       "rationale": "这三个单元面向同一批使用场景：开发者面对可能失败或可能产生无效值的代码时，需要依据可恢复性、调用上下文和值来源，在 Result、unwrap/expect、panic! 及新类型验证之间做出选择，因此共同构成一个完整的错误处理决策框架。"
+    },
+    {
+      "skillId": "ch10-01-syntax-s1",
+      "sourceObjects": [
+        "CH10-01-SYNTAX-H3-1-ENGINEERINGRULE-01",
+        "CH10-01-SYNTAX-H3-1-CONCEPT-02",
+        "CH10-01-SYNTAX-H3-2-CONCEPT-01",
+        "CH10-01-SYNTAX-H3-2-ENGINEERINGRULE-02",
+        "CH10-01-SYNTAX-H3-3-CONCEPT-01",
+        "CH10-01-SYNTAX-H3-3-CONCEPT-02",
+        "CH10-01-SYNTAX-H3-4-ENGINEERINGRULE-01",
+        "CH10-01-SYNTAX-H3-4-ENGINEERINGRULE-02",
+        "CH10-01-SYNTAX-H3-5-ENGINEERINGRULE-01"
+      ],
+      "trigger": "当你需要编写、阅读或审阅 Rust 中的泛型函数、结构体、枚举或泛型方法，并确认其声明约束与运行时成本时，使用该候选。",
+      "chapterRefs": [
+        "ch10-01-syntax"
+      ],
+      "promotionState": "candidate",
+      "name": "Rust泛型语法与代价",
+      "units": [
+        "ch10-01-syntax-u1",
+        "ch10-01-syntax-u2",
+        "ch10-01-syntax-u3",
+        "ch10-01-syntax-u4",
+        "ch10-01-syntax-u5"
+      ],
+      "anchors": [
+        "ch10-01-syntax#h3-1",
+        "ch10-01-syntax#h3-2",
+        "ch10-01-syntax#h3-3",
+        "ch10-01-syntax#h3-4",
+        "ch10-01-syntax#h3-5"
+      ],
+      "rationale": "这些单元覆盖 Rust 泛型数据类型的声明语法、标准泛型类型、方法实现与性能特性，服务于同一批读写 Rust 泛型代码的任务。"
+    },
+    {
+      "skillId": "ch10-02-traits-s1",
+      "sourceObjects": [
+        "CH10-02-TRAITS-H2-1-CONCEPT-01",
+        "CH10-02-TRAITS-H3-1-CONCEPT-01",
+        "CH10-02-TRAITS-H3-1-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H3-2-ENGINEERINGRULE-01",
+        "CH10-02-TRAITS-H3-3-CONCEPT-01",
+        "CH10-02-TRAITS-H3-3-CONCEPT-02",
+        "CH10-02-TRAITS-H3-7-CONCEPT-01",
+        "CH10-02-TRAITS-H3-7-CONCEPT-02",
+        "CH10-02-TRAITS-H3-4-CONCEPT-01",
+        "CH10-02-TRAITS-H3-4-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H4-1-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H4-2-ENGINEERINGRULE-01",
+        "CH10-02-TRAITS-H4-3-CONCEPT-01",
+        "CH10-02-TRAITS-H3-5-CONCEPT-01",
+        "CH10-02-TRAITS-H3-5-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-01",
+        "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02"
+      ],
+      "trigger": "当需要理解如何在 Rust 中定义 trait、为类型实现 trait，并在函数签名和泛型代码中使用 trait bound 约束行为时使用。",
+      "chapterRefs": [
+        "ch10-02-traits"
+      ],
+      "promotionState": "candidate",
+      "name": "trait 共享行为与约束",
+      "units": [
+        "ch10-02-traits-u1",
+        "ch10-02-traits-u2",
+        "ch10-02-traits-u3",
+        "ch10-02-traits-u4"
+      ],
+      "anchors": [
+        "ch10-02-traits#h2-1",
+        "ch10-02-traits#h3-1",
+        "ch10-02-traits#h3-2",
+        "ch10-02-traits#h3-3",
+        "ch10-02-traits#h3-7",
+        "ch10-02-traits#h3-4",
+        "ch10-02-traits#h4-1",
+        "ch10-02-traits#h4-2",
+        "ch10-02-traits#h4-3",
+        "ch10-02-traits#h3-5",
+        "ch10-02-traits#h3-6"
+      ],
+      "rationale": "这些单元覆盖同一批使用场景：从定义共享行为、按规则实现 trait，到在函数参数、返回类型和泛型逻辑中施加 trait 约束。读者通常在同一个任务中需要连续掌握这些内容，以完成基于 trait 的抽象和泛型编程。"
+    },
+    {
+      "skillId": "ch10-03-lifetime-syntax-s1",
+      "sourceObjects": [
+        "CH10-03-LIFETIME-SYNTAX-H2-1-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H2-1-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-1-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-1-CONCEPT-02",
+        "CH10-03-LIFETIME-SYNTAX-H4-1-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H2-2-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-2-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-3-CONCEPT-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-3-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-4-CONCEPT-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-4-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-5-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-5-ANTIPATTERN-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-10-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-10-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-6-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-7-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-7-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-8-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-9-CONCEPT-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-9-HEURISTIC-02"
+      ],
+      "trigger": "在编写或调试 Rust 中涉及引用的函数、结构体或 impl 代码，需要理解借用检查器、补全生命周期标注、应用省略规则或判断是否该用 'static 时使用。",
+      "chapterRefs": [
+        "ch10-03-lifetime-syntax"
+      ],
+      "promotionState": "candidate",
+      "name": "生命周期标注与诊断",
+      "units": [
+        "ch10-03-lifetime-syntax-u1",
+        "ch10-03-lifetime-syntax-u2",
+        "ch10-03-lifetime-syntax-u3",
+        "ch10-03-lifetime-syntax-u4"
+      ],
+      "anchors": [
+        "ch10-03-lifetime-syntax#h2-1",
+        "ch10-03-lifetime-syntax#h3-1",
+        "ch10-03-lifetime-syntax#h4-1",
+        "ch10-03-lifetime-syntax#h2-2",
+        "ch10-03-lifetime-syntax#h3-2",
+        "ch10-03-lifetime-syntax#h3-3",
+        "ch10-03-lifetime-syntax#h3-4",
+        "ch10-03-lifetime-syntax#h3-5",
+        "ch10-03-lifetime-syntax#h3-10",
+        "ch10-03-lifetime-syntax#h3-6",
+        "ch10-03-lifetime-syntax#h3-7",
+        "ch10-03-lifetime-syntax#h3-8",
+        "ch10-03-lifetime-syntax#h3-9"
+      ],
+      "rationale": "这些单元共同服务于同一使用场景：处理 Rust 生命周期与引用有效性问题。读者需要先理解作用域和借用检查，再在函数、结构体和 impl 中正确标注生命周期，并了解省略规则与 'static 的边界，从而避免悬垂引用并通过编译。"
     },
     {
       "skillId": "ch12-03-improving-error-handling-and-modularity-s1",
@@ -339,6 +629,106 @@
       "rationale": "这些单元覆盖从 main 职责边界、参数解析与 Config 构造，到提取 run 并库 crate 化的连续重构流程，面向同一批整理二进制 crate 结构的任务。",
       "mergedFrom": [
         "ch12-03-improving-error-handling-and-modularity-s2"
+      ]
+    },
+    {
+      "skillId": "ch13-01-closures-s1",
+      "sourceObjects": [
+        "CH13-01-CLOSURES-H2-1-CONCEPT-01",
+        "CH13-01-CLOSURES-H4-2-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H3-2-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H3-1-DECISIONMODEL-01",
+        "CH13-01-CLOSURES-H3-1-ENGINEERINGRULE-02",
+        "CH13-01-CLOSURES-H4-1-ANTIPATTERN-01",
+        "CH13-01-CLOSURES-H4-2-ANTIPATTERN-02"
+      ],
+      "trigger": "当需要就地创建匿名函数、在条件分支中按需调用昂贵计算，并避免类型推断或重复调用问题时。",
+      "chapterRefs": [
+        "ch13-01-closures"
+      ],
+      "promotionState": "candidate",
+      "name": "闭包创建与调用控制",
+      "units": [
+        "ch13-01-closures-u1",
+        "ch13-01-closures-u2"
+      ],
+      "anchors": [
+        "ch13-01-closures#h2-1",
+        "ch13-01-closures#h4-2",
+        "ch13-01-closures#h3-2",
+        "ch13-01-closures#h3-1",
+        "ch13-01-closures#h4-1",
+        "ch13-01-closures#h4-2"
+      ],
+      "rationale": "这两个单元共同服务于编写并调用闭包的场景：一个提供闭包语法与类型锁定规则，另一个规定调用时机与反模式；开发者实际编写调用代码时需要同时掌握两者。"
+    },
+    {
+      "skillId": "ch13-01-closures-s2",
+      "sourceObjects": [
+        "CH13-01-CLOSURES-H3-3-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H3-5-CONCEPT-01",
+        "CH13-01-CLOSURES-H3-5-HEURISTIC-02",
+        "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-02"
+      ],
+      "trigger": "当需要把闭包保存进结构体或枚举、作为函数参数传递，或用缓存结构复用闭包结果时。",
+      "chapterRefs": [
+        "ch13-01-closures"
+      ],
+      "promotionState": "candidate",
+      "name": "闭包存储与缓存实现",
+      "units": [
+        "ch13-01-closures-u3",
+        "ch13-01-closures-u4"
+      ],
+      "anchors": [
+        "ch13-01-closures#h3-3",
+        "ch13-01-closures#h3-5",
+        "ch13-01-closures#h3-4"
+      ],
+      "rationale": "这两个单元都面向“把闭包当作可复用组件”的场景：一个处理泛型与 Fn trait bound 以存储或传递闭包，另一个处理基于泛型的缓存实现改进，二者共同支撑带类型的闭包抽象。"
+    },
+    {
+      "skillId": "ch13-02-iterators-s1",
+      "sourceObjects": [
+        "CH13-02-ITERATORS-H2-1-CONCEPT-01",
+        "CH13-02-ITERATORS-H3-1-CONCEPT-01",
+        "CH13-02-ITERATORS-H3-1-MENTALMODEL-02",
+        "CH13-02-ITERATORS-H3-2-CONCEPT-01",
+        "CH13-02-ITERATORS-H3-2-ENGINEERINGRULE-02",
+        "CH13-02-ITERATORS-H3-3-CONCEPT-01",
+        "CH13-02-ITERATORS-H3-3-ENGINEERINGRULE-02",
+        "CH13-02-ITERATORS-H3-4-CONCEPT-01",
+        "CH13-02-ITERATORS-H4-2-CONCEPT-02",
+        "CH13-02-ITERATORS-H3-5-ENGINEERINGRULE-01",
+        "CH13-02-ITERATORS-H4-1-CONCEPT-01",
+        "CH13-02-ITERATORS-H4-1-CASE-02",
+        "CH13-02-ITERATORS-H4-2-CONCEPT-01"
+      ],
+      "trigger": "当需要遍历、过滤、转换或聚合并避免手写循环时，用这些内容理解迭代器的惰性执行、next/消费所有权和适配器链。",
+      "chapterRefs": [
+        "ch13-02-iterators"
+      ],
+      "promotionState": "candidate",
+      "name": "使用标准迭代器处理序列",
+      "units": [
+        "ch13-02-iterators-u1",
+        "ch13-02-iterators-u2",
+        "ch13-02-iterators-u3"
+      ],
+      "anchors": [
+        "ch13-02-iterators#h2-1",
+        "ch13-02-iterators#h3-1",
+        "ch13-02-iterators#h3-2",
+        "ch13-02-iterators#h3-3",
+        "ch13-02-iterators#h3-4",
+        "ch13-02-iterators#h4-2",
+        "ch13-02-iterators#h3-5",
+        "ch13-02-iterators#h4-1"
+      ],
+      "rationale": "这两个单元同属“使用现成迭代器完成序列处理”的场景：先掌握 next 和消费适配器如何驱动迭代器，再掌握如何用适配器声明式地变换数据并触发执行。",
+      "mergedFrom": [
+        "ch13-02-iterators-s2"
       ]
     },
     {
@@ -409,8 +799,981 @@
     }
   ],
   "crossChapterDisposition": {
-    "status": "absent",
-    "note": "盘上没有 antipatterns.rust-book-cn.objects.json（先跑卡 06 的命令再回看本块）。"
+    "status": "present",
+    "declaredRunId": "run-fd491f2468f0",
+    "items": [
+      {
+        "objectId": "AP-SYNTH-T01-01",
+        "chapters": [
+          "ch04-01-what-is-ownership",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch16-02-message-passing"
+        ],
+        "chapterCount": 4,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 4 章（ch04-01-what-is-ownership, ch08-03-hash-maps, ch15-04-rc, ch16-02-message-passing）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T01-02",
+        "chapters": [
+          "ch04-02-references-and-borrowing",
+          "ch15-05-interior-mutability"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch04-02-references-and-borrowing, ch15-05-interior-mutability）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T01-03",
+        "chapters": [
+          "ch04-02-references-and-borrowing",
+          "ch15-05-interior-mutability"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch04-02-references-and-borrowing, ch15-05-interior-mutability）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T01-04",
+        "chapters": [
+          "ch04-02-references-and-borrowing",
+          "ch10-03-lifetime-syntax"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch04-02-references-and-borrowing, ch10-03-lifetime-syntax）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T01-05",
+        "chapters": [
+          "ch04-03-slices"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch04-03-slices）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T01-06",
+        "chapters": [
+          "ch10-03-lifetime-syntax"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch10-03-lifetime-syntax）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T01-07",
+        "chapters": [
+          "ch10-03-lifetime-syntax"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch10-03-lifetime-syntax）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T01-08",
+        "chapters": [
+          "ch15-04-rc",
+          "ch15-06-reference-cycles"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch15-04-rc, ch15-06-reference-cycles）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T02-01",
+        "chapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch12-03-improving-error-handling-and-modularity"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch02-00-guessing-game-tutorial, ch12-03-improving-error-handling-and-modularity）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T02-02",
+        "chapters": [
+          "ch09-02-recoverable-errors-with-result"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch09-02-recoverable-errors-with-result）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T02-03",
+        "chapters": [
+          "ch09-02-recoverable-errors-with-result"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch09-02-recoverable-errors-with-result）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T02-04",
+        "chapters": [
+          "ch09-02-recoverable-errors-with-result"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch09-02-recoverable-errors-with-result）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T02-05",
+        "chapters": [
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch09-03-to-panic-or-not-to-panic, ch12-03-improving-error-handling-and-modularity）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T02-06",
+        "chapters": [
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch09-03-to-panic-or-not-to-panic）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T02-07",
+        "chapters": [
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch12-03-improving-error-handling-and-modularity"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch09-01-unrecoverable-errors-with-panic, ch12-03-improving-error-handling-and-modularity）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T02-08",
+        "chapters": [
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch12-06-writing-to-stderr-instead-of-stdout）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T03-01",
+        "chapters": [
+          "ch10-01-syntax",
+          "ch10-02-traits"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch10-01-syntax, ch10-02-traits）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T03-02",
+        "chapters": [
+          "ch10-01-syntax"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch10-01-syntax）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T03-03",
+        "chapters": [
+          "ch19-03-advanced-traits"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-03-advanced-traits）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T03-04",
+        "chapters": [
+          "ch10-02-traits",
+          "ch17-02-trait-objects"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch10-02-traits, ch17-02-trait-objects）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T03-05",
+        "chapters": [
+          "ch17-02-trait-objects"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch17-02-trait-objects）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T03-06",
+        "chapters": [
+          "ch17-02-trait-objects"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch17-02-trait-objects）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T03-07",
+        "chapters": [
+          "ch19-03-advanced-traits"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-03-advanced-traits）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T03-08",
+        "chapters": [
+          "ch10-02-traits",
+          "ch19-03-advanced-traits"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch10-02-traits, ch19-03-advanced-traits）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T04-01",
+        "chapters": [
+          "ch05-02-example-structs"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch05-02-example-structs）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T04-02",
+        "chapters": [
+          "ch05-01-defining-structs"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch05-01-defining-structs）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T04-03",
+        "chapters": [
+          "ch06-01-defining-an-enum",
+          "ch06-02-match"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch06-01-defining-an-enum, ch06-02-match）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T04-04",
+        "chapters": [
+          "ch06-02-match",
+          "ch18-01-all-the-places-for-patterns"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch06-02-match, ch18-01-all-the-places-for-patterns）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T04-05",
+        "chapters": [
+          "ch06-03-if-let",
+          "ch18-01-all-the-places-for-patterns"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch06-03-if-let, ch18-01-all-the-places-for-patterns）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T04-06",
+        "chapters": [
+          "ch18-02-refutability"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch18-02-refutability）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T04-07",
+        "chapters": [
+          "ch18-03-pattern-syntax"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch18-03-pattern-syntax）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T04-08",
+        "chapters": [
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch09-03-to-panic-or-not-to-panic）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-01",
+        "chapters": [
+          "ch08-01-vectors"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-01-vectors）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-02",
+        "chapters": [
+          "ch08-01-vectors"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-01-vectors）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-03",
+        "chapters": [
+          "ch08-02-strings"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-02-strings）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-04",
+        "chapters": [
+          "ch08-02-strings"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-02-strings）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-05",
+        "chapters": [
+          "ch08-02-strings"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-02-strings）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-06",
+        "chapters": [
+          "ch08-03-hash-maps"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-03-hash-maps）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-07",
+        "chapters": [
+          "ch08-03-hash-maps"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-03-hash-maps）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T05-08",
+        "chapters": [
+          "ch08-03-hash-maps"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch08-03-hash-maps）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-01",
+        "chapters": [
+          "ch15-01-box"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-01-box）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-02",
+        "chapters": [
+          "ch15-02-deref"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-02-deref）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-03",
+        "chapters": [
+          "ch15-03-drop"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-03-drop）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-04",
+        "chapters": [
+          "ch15-04-rc"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-04-rc）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-05",
+        "chapters": [
+          "ch15-05-interior-mutability"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-05-interior-mutability）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-06",
+        "chapters": [
+          "ch15-05-interior-mutability"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-05-interior-mutability）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-07",
+        "chapters": [
+          "ch15-06-reference-cycles"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-06-reference-cycles）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T06-08",
+        "chapters": [
+          "ch16-03-shared-state"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch16-03-shared-state）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T07-01",
+        "chapters": [
+          "ch16-01-threads"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch16-01-threads）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T07-02",
+        "chapters": [
+          "ch16-01-threads"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch16-01-threads）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T07-03",
+        "chapters": [
+          "ch16-02-message-passing"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch16-02-message-passing）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T07-04",
+        "chapters": [
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch16-03-shared-state, ch16-04-extensible-concurrency-sync-and-send）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T07-05",
+        "chapters": [
+          "ch20-02-multithreaded"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch20-02-multithreaded）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T07-06",
+        "chapters": [
+          "ch20-02-multithreaded"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch20-02-multithreaded）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T07-07",
+        "chapters": [
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch20-03-graceful-shutdown-and-cleanup）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T07-08",
+        "chapters": [
+          "ch20-02-multithreaded"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch20-02-multithreaded）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-01",
+        "chapters": [
+          "ch11-02-running-tests"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch11-02-running-tests）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-02",
+        "chapters": [
+          "ch11-01-writing-tests"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch11-01-writing-tests）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-03",
+        "chapters": [
+          "ch11-01-writing-tests"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch11-01-writing-tests）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-04",
+        "chapters": [
+          "ch11-01-writing-tests"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch11-01-writing-tests）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-05",
+        "chapters": [
+          "ch11-03-test-organization"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch11-03-test-organization）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-06",
+        "chapters": [
+          "ch11-03-test-organization"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch11-03-test-organization）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-07",
+        "chapters": [
+          "ch14-02-publishing-to-crates-io"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch14-02-publishing-to-crates-io）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T08-08",
+        "chapters": [
+          "ch15-05-interior-mutability"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch15-05-interior-mutability）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T09-01",
+        "chapters": [
+          "ch03-05-control-flow",
+          "ch13-02-iterators"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch03-05-control-flow, ch13-02-iterators）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T09-02",
+        "chapters": [
+          "ch13-01-closures"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch13-01-closures）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T09-03",
+        "chapters": [
+          "ch13-01-closures"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch13-01-closures）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T09-04",
+        "chapters": [
+          "ch13-02-iterators"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch13-02-iterators）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T09-05",
+        "chapters": [
+          "ch13-03-improving-our-io-project"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch13-03-improving-our-io-project）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T09-06",
+        "chapters": [
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch13-03-improving-our-io-project, ch13-04-performance）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T09-07",
+        "chapters": [
+          "ch19-05-advanced-functions-and-closures"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-05-advanced-functions-and-closures）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T09-08",
+        "chapters": [
+          "ch16-01-threads"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch16-01-threads）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T10-01",
+        "chapters": [
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch07-04-bringing-paths-into-scope-with-the-use-keyword）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T10-02",
+        "chapters": [
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch07-04-bringing-paths-into-scope-with-the-use-keyword）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T10-03",
+        "chapters": [
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch07-03-paths-for-referring-to-an-item-in-the-module-tree）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T10-04",
+        "chapters": [
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch07-03-paths-for-referring-to-an-item-in-the-module-tree）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T10-05",
+        "chapters": [
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch14-02-publishing-to-crates-io"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（ch07-04-bringing-paths-into-scope-with-the-use-keyword, ch14-02-publishing-to-crates-io）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T10-06",
+        "chapters": [
+          "ch14-02-publishing-to-crates-io"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch14-02-publishing-to-crates-io）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T10-07",
+        "chapters": [
+          "ch14-02-publishing-to-crates-io"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch14-02-publishing-to-crates-io）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T10-08",
+        "chapters": [
+          "ch14-03-cargo-workspaces"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch14-03-cargo-workspaces）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T11-01",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-06-macros）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T11-02",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-06-macros）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T11-03",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-06-macros）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T11-04",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-06-macros）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T11-05",
+        "chapters": [
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "chapterCount": 2,
+        "decision": "independent-candidate-pending-gate2",
+        "basis": "出处跨 2 章（appendix-03-derivable-traits, ch05-02-example-structs）——不属于任何单章",
+        "unverifiedCondition": "「能被 ≥3 个独立场景触发」需要门禁二（环 5）才能验证；在此之前不发布"
+      },
+      {
+        "objectId": "AP-SYNTH-T11-06",
+        "chapters": [
+          "appendix-03-derivable-traits"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（appendix-03-derivable-traits）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T11-07",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-06-macros）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T11-08",
+        "chapters": [
+          "appendix-03-derivable-traits"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（appendix-03-derivable-traits）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T12-01",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-01-unsafe-rust）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T12-02",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-01-unsafe-rust）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T12-03",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-01-unsafe-rust）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T12-04",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-01-unsafe-rust）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T12-05",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-01-unsafe-rust）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T12-06",
+        "chapters": [
+          "ch19-04-advanced-types"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-04-advanced-types）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      },
+      {
+        "objectId": "AP-SYNTH-T12-07",
+        "chapters": [
+          "ch19-04-advanced-types"
+        ],
+        "chapterCount": 1,
+        "decision": "distribute-to-pitfalls",
+        "basis": "出处只落在一章（ch19-04-advanced-types）——按 ADR-007 约定分发进相关 skill 的「常见陷阱」段",
+        "unverifiedCondition": null
+      }
+    ]
   },
   "diagnostics": {
     "byFile": [
@@ -503,6 +1866,30 @@
         "unresolved": 0
       },
       {
+        "fileKey": "ch08-01-vectors",
+        "units": 4,
+        "skills": 1,
+        "objects": 11,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch08-02-strings",
+        "units": 4,
+        "skills": 1,
+        "objects": 20,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch08-03-hash-maps",
+        "units": 7,
+        "skills": 2,
+        "objects": 14,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
         "fileKey": "ch09-03-to-panic-or-not-to-panic",
         "units": 3,
         "skills": 1,
@@ -511,10 +1898,50 @@
         "unresolved": 0
       },
       {
+        "fileKey": "ch10-01-syntax",
+        "units": 5,
+        "skills": 1,
+        "objects": 9,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch10-02-traits",
+        "units": 4,
+        "skills": 1,
+        "objects": 17,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch10-03-lifetime-syntax",
+        "units": 4,
+        "skills": 1,
+        "objects": 21,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
         "fileKey": "ch12-03-improving-error-handling-and-modularity",
         "units": 5,
         "skills": 2,
         "objects": 21,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch13-01-closures",
+        "units": 4,
+        "skills": 2,
+        "objects": 12,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch13-02-iterators",
+        "units": 3,
+        "skills": 2,
+        "objects": 13,
         "unassigned": 0,
         "unresolved": 0
       },
@@ -543,18 +1970,18 @@
         "unresolved": 0
       }
     ],
-    "candidateCount": 14,
+    "candidateCount": 25,
     "unitSize": {
       "min": 1,
       "median": 3,
-      "max": 6,
-      "n": 40
+      "max": 9,
+      "n": 75
     },
     "unitsPerSkill": {
       "min": 1,
       "median": 3,
       "max": 5,
-      "n": 14
+      "n": 25
     },
     "reference": {
       "skillsPerChapter": 2.2,
@@ -565,9 +1992,9 @@
     }
   },
   "resplit": {
-    "appliedAt": "2026-10-14T10:23:39.432Z",
+    "appliedAt": "2026-10-14T17:53:10.267Z",
     "planFile": "pipeline/registry/resplit-plan.rust-book-cn.json",
-    "planSha256": "sha256:dfcd0cdb68fe199005daea3b0d5a82baad22336e1e75941aee1893002116964e",
+    "planSha256": "sha256:dfe5858ab14958bb9d4b269c1fa1d4deee21e7440e1c4d18f4289b052292c912",
     "rule": "在「strict 场景数 ≥2 且两读数都存」的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序。传递闭包不可用：共认领不是等价关系（第一源实测：87 稳定对的连通分量是 38/40 的巨型分量；本源的稳定边亦成链 ch06-01–06-02–06-03–18-02，规则把链机械剪为不共享候选的对）。",
     "merges": [
       {
@@ -655,102 +2082,79 @@
             "ch06-02-match-s1-sc2"
           ]
         }
+      },
+      {
+        "into": "ch13-02-iterators-s1",
+        "target": "ch13-02-iterators-s2",
+        "unitIds": [
+          "ch13-02-iterators-u1",
+          "ch13-02-iterators-u2",
+          "ch13-02-iterators-u3"
+        ],
+        "objectCount": 13,
+        "chapterRefs": [
+          "ch13-02-iterators"
+        ],
+        "basis": {
+          "stablePair": "ch13-02-iterators-s1|ch13-02-iterators-s2",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "ch13-02-iterators-s1-sc2",
+            "ch13-02-iterators-s2-sc3"
+          ],
+          "listScenarioIds": [
+            "ch13-02-iterators-s1-sc2",
+            "ch13-02-iterators-s2-sc3"
+          ]
+        }
       }
     ],
     "removed": [
       {
-        "skillId": "ch05-02-example-structs-s1",
-        "mergedInto": "ch05-03-method-syntax-s1",
+        "skillId": "ch13-02-iterators-s2",
+        "mergedInto": "ch13-02-iterators-s1",
         "basis": {
-          "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
+          "stablePair": "ch13-02-iterators-s1|ch13-02-iterators-s2",
           "strictScenarios": 2,
           "listScenarios": 2,
           "strictScenarioIds": [
-            "ch05-03-method-syntax-s1-sc1",
-            "ch05-03-method-syntax-s1-sc3"
+            "ch13-02-iterators-s1-sc2",
+            "ch13-02-iterators-s2-sc3"
           ],
           "listScenarioIds": [
-            "ch05-03-method-syntax-s1-sc1",
-            "ch05-03-method-syntax-s1-sc3"
+            "ch13-02-iterators-s1-sc2",
+            "ch13-02-iterators-s2-sc3"
           ]
         },
-        "reason": "波 2 稳定对（strict 2、list 2，两读数同场景集——本波最强边）。吸收者按规则「对象数→严格命中数→字典序」：ch05-03（8 对象）> ch05-02（6 对象）。（注意：吸收者是门禁一未过的那个，合并后吃进 ch05-02 的 AntiPattern 对象，陷阱段有来源——合并不是「让未过的蹭过」，是规则先行、判决随后。）"
-      },
-      {
-        "skillId": "ch06-03-if-let-s1",
-        "mergedInto": "ch06-02-match-s1",
-        "basis": {
-          "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
-          "strictScenarios": 2,
-          "listScenarios": 1,
-          "strictScenarioIds": [
-            "ch06-02-match-s1-sc1",
-            "ch06-02-match-s1-sc2"
-          ],
-          "listScenarioIds": [
-            "ch06-02-match-s1-sc2"
-          ]
-        },
-        "reason": "波 2 稳定对（strict 2、list 1；「两读数都存」指该边在两读数中均出现，list 侧计数不设阈值——第一源 chapter9-s2|afterword-s1 即 strict 2 / list 1 录取）。吸收者按规则：ch06-02（10 对象）> ch06-03（3 对象）。同一链条上的 06-01|06-02 与 06-03|18-02 为 strict=1，低于阈值，按规则不取——链被机械剪为不相交对。"
+        "reason": "波 3 唯一 strict≥2 稳定边（两读数同场景集）。同章两候选相互共认领（各 2 场景）。吸收者按规则：对象数同为 9 → 严格命中数同 → 字典序 s1。波 3 其余 8 条稳定边全为 strict=1，低于阈值不取；其中 ch05-01|ch05-03 与 ch06-01|ch06-02 是既有合并的残留弱边，规则机械不取。"
       }
     ],
     "thisRun": {
       "merges": [
         {
-          "into": "ch05-03-method-syntax-s1",
-          "target": "ch05-02-example-structs-s1",
+          "into": "ch13-02-iterators-s1",
+          "target": "ch13-02-iterators-s2",
           "unitIds": [
-            "ch05-03-method-syntax-u1",
-            "ch05-03-method-syntax-u2",
-            "ch05-03-method-syntax-u3",
-            "ch05-03-method-syntax-u4",
-            "ch05-02-example-structs-u1",
-            "ch05-02-example-structs-u2",
-            "ch05-02-example-structs-u3"
-          ],
-          "objectCount": 14,
-          "chapterRefs": [
-            "ch05-02-example-structs",
-            "ch05-03-method-syntax"
-          ],
-          "basis": {
-            "stablePair": "ch05-02-example-structs-s1|ch05-03-method-syntax-s1",
-            "strictScenarios": 2,
-            "listScenarios": 2,
-            "strictScenarioIds": [
-              "ch05-03-method-syntax-s1-sc1",
-              "ch05-03-method-syntax-s1-sc3"
-            ],
-            "listScenarioIds": [
-              "ch05-03-method-syntax-s1-sc1",
-              "ch05-03-method-syntax-s1-sc3"
-            ]
-          }
-        },
-        {
-          "into": "ch06-02-match-s1",
-          "target": "ch06-03-if-let-s1",
-          "unitIds": [
-            "ch06-02-match-u1",
-            "ch06-02-match-u2",
-            "ch06-02-match-u3",
-            "ch06-03-if-let-u1"
+            "ch13-02-iterators-u1",
+            "ch13-02-iterators-u2",
+            "ch13-02-iterators-u3"
           ],
           "objectCount": 13,
           "chapterRefs": [
-            "ch06-02-match",
-            "ch06-03-if-let"
+            "ch13-02-iterators"
           ],
           "basis": {
-            "stablePair": "ch06-02-match-s1|ch06-03-if-let-s1",
+            "stablePair": "ch13-02-iterators-s1|ch13-02-iterators-s2",
             "strictScenarios": 2,
-            "listScenarios": 1,
+            "listScenarios": 2,
             "strictScenarioIds": [
-              "ch06-02-match-s1-sc1",
-              "ch06-02-match-s1-sc2"
+              "ch13-02-iterators-s1-sc2",
+              "ch13-02-iterators-s2-sc3"
             ],
             "listScenarioIds": [
-              "ch06-02-match-s1-sc2"
+              "ch13-02-iterators-s1-sc2",
+              "ch13-02-iterators-s2-sc3"
             ]
           }
         }
@@ -759,6 +2163,14 @@
         {
           "into": "ch12-03-improving-error-handling-and-modularity-s1",
           "target": "ch12-03-improving-error-handling-and-modularity-s2"
+        },
+        {
+          "into": "ch05-03-method-syntax-s1",
+          "target": "ch05-02-example-structs-s1"
+        },
+        {
+          "into": "ch06-02-match-s1",
+          "target": "ch06-03-if-let-s1"
         }
       ]
     },

@@ -1,14 +1,14 @@
 {
   "schemaVersion": "gate2-stable/v1",
-  "createdAt": "2026-10-14T10:47:30.924Z",
+  "createdAt": "2026-10-14T18:24:34.189Z",
   "sources": {
     "list": "pipeline/registry/gate2-report.rust-book-cn.json",
     "strict": "pipeline/registry/gate2-report.strict.rust-book-cn.json"
   },
   "counts": {
-    "stable": 3,
-    "listOnly": 4,
-    "strictOnly": 2
+    "stable": 10,
+    "listOnly": 6,
+    "strictOnly": 1
   },
   "stable": [
     {
@@ -27,18 +27,94 @@
       ]
     },
     {
-      "pair": "ch04-02-references-and-borrowing-s1|ch17-03-oo-design-patterns-s1",
+      "pair": "ch04-02-references-and-borrowing-s1|ch05-03-method-syntax-s1",
       "candidates": [
         "ch04-02-references-and-borrowing-s1",
-        "ch17-03-oo-design-patterns-s1"
+        "ch05-03-method-syntax-s1"
       ],
       "strictScenarios": 1,
       "listScenarios": 1,
       "strictScenarioIds": [
-        "ch17-03-oo-design-patterns-s1-sc2"
+        "ch05-03-method-syntax-s1-sc2"
       ],
       "listScenarioIds": [
-        "ch17-03-oo-design-patterns-s1-sc2"
+        "ch05-03-method-syntax-s1-sc2"
+      ]
+    },
+    {
+      "pair": "ch04-02-references-and-borrowing-s1|ch08-01-vectors-s1",
+      "candidates": [
+        "ch04-02-references-and-borrowing-s1",
+        "ch08-01-vectors-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch08-01-vectors-s1-sc2"
+      ],
+      "listScenarioIds": [
+        "ch08-01-vectors-s1-sc2"
+      ]
+    },
+    {
+      "pair": "ch04-02-references-and-borrowing-s1|ch10-03-lifetime-syntax-s1",
+      "candidates": [
+        "ch04-02-references-and-borrowing-s1",
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch04-02-references-and-borrowing-s1-sc3"
+      ],
+      "listScenarioIds": [
+        "ch04-02-references-and-borrowing-s1-sc3"
+      ]
+    },
+    {
+      "pair": "ch04-03-slices-s1|ch08-02-strings-s1",
+      "candidates": [
+        "ch04-03-slices-s1",
+        "ch08-02-strings-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 2,
+      "strictScenarioIds": [
+        "ch08-02-strings-s1-sc2"
+      ],
+      "listScenarioIds": [
+        "ch04-03-slices-s1-sc1",
+        "ch08-02-strings-s1-sc2"
+      ]
+    },
+    {
+      "pair": "ch05-01-defining-structs-s1|ch10-03-lifetime-syntax-s1",
+      "candidates": [
+        "ch05-01-defining-structs-s1",
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch05-01-defining-structs-s1-sc3"
+      ],
+      "listScenarioIds": [
+        "ch05-01-defining-structs-s1-sc3"
+      ]
+    },
+    {
+      "pair": "ch05-03-method-syntax-s1|ch12-03-improving-error-handling-and-modularity-s1",
+      "candidates": [
+        "ch05-03-method-syntax-s1",
+        "ch12-03-improving-error-handling-and-modularity-s1"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch05-03-method-syntax-s1-sc3"
+      ],
+      "listScenarioIds": [
+        "ch05-03-method-syntax-s1-sc3"
       ]
     },
     {
@@ -55,47 +131,6 @@
       "listScenarioIds": [
         "ch06-02-match-s1-sc1"
       ]
-    }
-  ],
-  "listOnly": [
-    {
-      "pair": "ch02-00-guessing-game-tutorial-s1|ch06-02-match-s1",
-      "candidates": [
-        "ch02-00-guessing-game-tutorial-s1",
-        "ch06-02-match-s1"
-      ],
-      "strictScenarios": 0,
-      "listScenarios": 1,
-      "strictScenarioIds": [],
-      "listScenarioIds": [
-        "ch02-00-guessing-game-tutorial-s1-sc1"
-      ]
-    },
-    {
-      "pair": "ch05-03-method-syntax-s1|ch12-03-improving-error-handling-and-modularity-s1",
-      "candidates": [
-        "ch05-03-method-syntax-s1",
-        "ch12-03-improving-error-handling-and-modularity-s1"
-      ],
-      "strictScenarios": 0,
-      "listScenarios": 1,
-      "strictScenarioIds": [],
-      "listScenarioIds": [
-        "ch05-03-method-syntax-s1-sc3"
-      ]
-    },
-    {
-      "pair": "ch05-03-method-syntax-s1|ch17-03-oo-design-patterns-s1",
-      "candidates": [
-        "ch05-03-method-syntax-s1",
-        "ch17-03-oo-design-patterns-s1"
-      ],
-      "strictScenarios": 0,
-      "listScenarios": 1,
-      "strictScenarioIds": [],
-      "listScenarioIds": [
-        "ch17-03-oo-design-patterns-s1-sc2"
-      ]
     },
     {
       "pair": "ch06-02-match-s1|ch18-02-refutability-s1",
@@ -103,28 +138,112 @@
         "ch06-02-match-s1",
         "ch18-02-refutability-s1"
       ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch18-02-refutability-s1-sc1"
+      ],
+      "listScenarioIds": [
+        "ch18-02-refutability-s1-sc1"
+      ]
+    },
+    {
+      "pair": "ch08-03-hash-maps-s1|ch08-03-hash-maps-s2",
+      "candidates": [
+        "ch08-03-hash-maps-s1",
+        "ch08-03-hash-maps-s2"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "ch08-03-hash-maps-s2-sc3"
+      ],
+      "listScenarioIds": [
+        "ch08-03-hash-maps-s2-sc3"
+      ]
+    }
+  ],
+  "listOnly": [
+    {
+      "pair": "ch04-03-slices-s1|ch10-03-lifetime-syntax-s1",
+      "candidates": [
+        "ch04-03-slices-s1",
+        "ch10-03-lifetime-syntax-s1"
+      ],
       "strictScenarios": 0,
       "listScenarios": 1,
       "strictScenarioIds": [],
       "listScenarioIds": [
-        "ch06-02-match-s1-sc1"
+        "ch10-03-lifetime-syntax-s1-sc1"
+      ]
+    },
+    {
+      "pair": "ch05-03-method-syntax-s1|ch10-01-syntax-s1",
+      "candidates": [
+        "ch05-03-method-syntax-s1",
+        "ch10-01-syntax-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch10-01-syntax-s1-sc2"
+      ]
+    },
+    {
+      "pair": "ch06-01-defining-an-enum-s1|ch08-01-vectors-s1",
+      "candidates": [
+        "ch06-01-defining-an-enum-s1",
+        "ch08-01-vectors-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch08-01-vectors-s1-sc3"
+      ]
+    },
+    {
+      "pair": "ch08-03-hash-maps-s1|ch13-01-closures-s2",
+      "candidates": [
+        "ch08-03-hash-maps-s1",
+        "ch13-01-closures-s2"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch13-01-closures-s2-sc2"
+      ]
+    },
+    {
+      "pair": "ch08-03-hash-maps-s1|ch13-02-iterators-s1",
+      "candidates": [
+        "ch08-03-hash-maps-s1",
+        "ch13-02-iterators-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch08-03-hash-maps-s1-sc2"
+      ]
+    },
+    {
+      "pair": "ch10-01-syntax-s1|ch10-02-traits-s1",
+      "candidates": [
+        "ch10-01-syntax-s1",
+        "ch10-02-traits-s1"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "ch10-01-syntax-s1-sc1"
       ]
     }
   ],
   "strictOnly": [
-    {
-      "pair": "ch05-01-defining-structs-s1|ch05-03-method-syntax-s1",
-      "candidates": [
-        "ch05-01-defining-structs-s1",
-        "ch05-03-method-syntax-s1"
-      ],
-      "strictScenarios": 1,
-      "listScenarios": 0,
-      "strictScenarioIds": [
-        "ch05-03-method-syntax-s1-sc1"
-      ],
-      "listScenarioIds": []
-    },
     {
       "pair": "ch05-01-defining-structs-s1|ch09-03-to-panic-or-not-to-panic-s1",
       "candidates": [

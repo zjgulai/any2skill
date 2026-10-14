@@ -383,129 +383,426 @@
       ],
       "problems": [],
       "finishReason": "stop"
+    },
+    {
+      "skillId": "ch08-01-vectors-s1",
+      "name": "使用 Vec<T> 管理序列数据",
+      "inputHash": "sha256:514781a151e5cc17fa2c567c628ddc92180d0492462a4aced87a9d83fbe02448",
+      "scenarios": [
+        {
+          "scenarioId": "ch08-01-vectors-s1-sc1",
+          "text": "我需要在启动时读取配置文件里的多个端口号，先建一个空的 Vec，然后逐个插入，后面有些端口要根据环境变量加一个偏移量修改；我不确定空 Vec 要怎么写类型，也不知道修改时要不要显式声明可变，能帮我看看这段代码吗？",
+          "why": "因为用户需要创建空 vector 并逐步插入 i32，还涉及修改值时的 mut 标注，这正是该技能关于 Vec<T> 创建、类型推断和可变更新规则的应用。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-01-vectors-s1-sc2",
+          "text": "我有一组 i32 的测量值放在一个 Vec 里，想用 for 循环给每个元素加一个固定补偿值，但编译报错说不能对 &i32 使用 +=，我该怎么在循环里修改这些值？",
+          "why": "因为用户需要遍历 vector 的元素并修改其值，涉及可变引用和解引用运算符，技能中有明确的遍历和修改规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-01-vectors-s1-sc3",
+          "text": "我在实现一个配置项解析器，想把同一批配置值放进一个序列里，但这些值有的是整数、有的是字符串、有的是布尔，直接放会类型不匹配；我想知道 Rust 里有没有推荐的方式把这些不同类型放到一个连续存储里？",
+          "why": "因为用户需要在 vector 中存储多种类型，技能包含使用枚举将不同类型放入同一个 vector 的方案，并给出了相关决策建议。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch08-02-strings-s1",
+      "name": "Rust String 处理",
+      "inputHash": "sha256:a8744dcc11656b167050354e3b5bac51b26b5b93913f29d7dd3ad37ab7d35afa",
+      "scenarios": [
+        {
+          "scenarioId": "ch08-02-strings-s1-sc1",
+          "text": "我在拼一个日志字符串，先用 `let full = part1 + part2;` 报错说不能把两个 String 相加，改成 `part1 + &part2` 后 part1 又不能再用了；我想知道多段拼接时怎样写才能既保留原来的变量又不会太啰嗦。",
+          "why": "这涉及 `+` 运算符的所有权与 `&str` 转换规则，以及用 `format!` 进行多段拼接的建议。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-02-strings-s1-sc2",
+          "text": "我要给用户展示一段预览文本：从包含 emoji 或西里尔字母的昵称里取前 10 个字符。直接按字节切 `&s[0..10]` 可能运行时报错，我该怎么安全地得到这个前缀？",
+          "why": "这需要理解 String 的 UTF-8 字节边界、安全切片方式，以及按字符/字形簇遍历的差异。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-02-strings-s1-sc3",
+          "text": "我在统计用户昵称里有多少个可见字符（包括 emoji 和重音字母），但 `s.len()` 返回的是字节数，`s[0]` 也不能用；我该怎样逐个字符遍历并计数？",
+          "why": "这需要区分字节长度与 Unicode 标量值，并使用 `chars` 或字形簇 crate 进行遍历，而不是索引。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch08-03-hash-maps-s1",
+      "name": "HashMap 核心操作",
+      "inputHash": "sha256:16d1f7827b5b7870a676cb40711ef1fa59808170b6b14af909e8ec36ea7976d0",
+      "scenarios": [
+        {
+          "scenarioId": "ch08-03-hash-maps-s1-sc1",
+          "text": "我刚写了一个从用户 ID 到登录时间戳的映射，键和值都是 String，插进去之后还想接着用那个用户 ID 变量做判断，结果编译器说它已经被移动了；我应该怎么调整才能既保留映射又继续用这个 ID？",
+          "why": "这涉及在 Rust 中插入拥有所有权的 String 键值对后所有权被移动的规则，以及如何在需要继续使用原绑定时调整，正是该技能明确包含的内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-03-hash-maps-s1-sc2",
+          "text": "我有一段迭代器逻辑，想把一组 (名称, 数量) 对直接收集成一个按键名查找数量的映射，但编译器一直让我补类型标注；这里到底要怎么标注才能让它编译过？",
+          "why": "这需要 collect 构建 HashMap 时显式标注 HashMap<_, _> 类型，是该技能包含的 EngineeringRule。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-03-hash-maps-s1-sc3",
+          "text": "我在做词频统计，遍历每个词时要更新它对应的计数：如果这个词还没出现过就给它记 1，已经出现过就在原来的数上加 1；我现在先 get 再 insert 写得很啰嗦，有没有更直接的更新方式？",
+          "why": "这涉及 HashMap 的 entry API 和 or_insert 方法，用于在键不存在时插入默认值、存在时获取可变引用进行更新，正是该技能包含的核心操作。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch08-03-hash-maps-s2",
+      "name": "哈希函数与练习提示",
+      "inputHash": "sha256:baac3ac4b5c57fb042a5fab207701c2656c2144af08c7d7abc377b4d1cf07fe5",
+      "scenarios": [
+        {
+          "scenarioId": "ch08-03-hash-maps-s2-sc1",
+          "text": "压测发现某段用 HashMap 的代码 CPU 占用很高，定位到默认哈希计算太慢，我想在不改调用方代码的前提下换一个更快的哈希实现。",
+          "why": "这应通过自定义 hasher 替换 HashMap 默认哈希函数来改善性能。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-03-hash-maps-s2-sc2",
+          "text": "我要把一批英文句子转成 Pig Latin：辅音开头的单词把第一个辅音挪到末尾加 ay，元音开头加 hay，帮我检查这种处理规则和边界情况。",
+          "why": "这需要 Pig Latin 转换规则，技能包含相应规则与边界提示。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch08-03-hash-maps-s2-sc3",
+          "text": "我有一组从日志里解析出的状态码，想快速统计哪个值出现次数最多，用哈希 map 计数后取最高频次是不是最直接的做法？",
+          "why": "这属于计算一组数字的众数，技能覆盖用哈希 map 统计频次取最高值的做法。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch10-01-syntax-s1",
+      "name": "Rust泛型语法与代价",
+      "inputHash": "sha256:fe20a9718894638856bab4f7b8742753c1e7c7346bd9cc37940ed792e8583451",
+      "scenarios": [
+        {
+          "scenarioId": "ch10-01-syntax-s1-sc1",
+          "text": "我写了一个比较两个同类型值的函数，想返回较大的那个，但编译器一直提示需要加约束；这个函数的签名里类型参数应该放在哪，比较又该怎么声明才能编译通过？",
+          "why": "它涉及泛型函数中类型参数的声明位置以及用 PartialOrd 开启比较能力，正是该技能的规则和概念。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch10-01-syntax-s1-sc2",
+          "text": "我在给一个带占位类型参数的结构体补充方法，看到 impl 后面也要写尖括号，不太确定这里写的是什么；如果方法参数希望是另一个不同占位类型的实例，这样的签名是否合法？",
+          "why": "它涉及为泛型结构体实现方法时在 impl 后声明泛型，以及结构体泛型与方法签名泛型可以不同，是该技能的规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch10-01-syntax-s1-sc3",
+          "text": "我想把几个逻辑相同、只是类型不同的函数合并成一个通用实现，但又怕引入动态分派那样的运行时开销；这种泛型抽象到底会不会让程序变慢？",
+          "why": "它询问 Rust 泛型的运行时成本，技能明确说明泛型没有运行时开销，适用于这类决策。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch10-02-traits-s1",
+      "name": "trait 共享行为与约束",
+      "inputHash": "sha256:83c6fdd6aeb3693493930cfd3c94c9a2ea9250f9a8a87c39f5d84d52fb79c6fc",
+      "scenarios": [
+        {
+          "scenarioId": "ch10-02-traits-s1-sc1",
+          "text": "我在写一个通用的通知发送函数，入参既要能打印，又要能生成通知摘要；现在参数类型只写了 impl Display，调用生成摘要的方法时编译不通过，帮我看看签名该怎么调整。",
+          "why": "这需要参数同时满足 Display 和自定义摘要 trait，属于用 + 连接多个 trait bound 的场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch10-02-traits-s1-sc2",
+          "text": "我定义了一个描述缓存策略的接口，里面几个方法想先留空，就写成了带空大括号的方法体，结果编译器报错，正确的方法声明写法是什么？",
+          "why": "在 trait 中声明方法签名时后跟分号，而不是在大括号中提供实现。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch10-02-traits-s1-sc3",
+          "text": "我想让一个函数根据输入配置返回新闻文章或推文两种结构体之一，它们都实现了同一个摘要 trait，但用 impl 摘要作为返回值类型时编译失败，问题在哪里？",
+          "why": "使用 impl Trait 作为返回值类型只适用于返回单一类型，不能在不同分支返回不同具体类型。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch10-03-lifetime-syntax-s1",
+      "name": "生命周期标注与诊断",
+      "inputHash": "sha256:d94c0bb81aa0e0aa6ded4fc12442e1a477d79e861755cddecbb8642e42d53cdf",
+      "scenarios": [
+        {
+          "scenarioId": "ch10-03-lifetime-syntax-s1-sc1",
+          "text": "我在写一个比较两个字符串切片并返回较短者的函数，编译器报错说返回的引用需要声明生命周期参数，但我不确定参数和返回值之间该怎么关联。",
+          "why": "函数有多个输入引用并返回其中一个引用，需要为返回值添加泛型生命周期参数来标明输入和输出的关系，这属于该技能覆盖的生命周期参数规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch10-03-lifetime-syntax-s1-sc2",
+          "text": "我定义了一个结构体，其中一个字段保存对配置文件的引用，在实现方法时返回这个引用，编译器一直提示我要在结构体和 impl 上声明生命周期参数，但我不确定具体放哪里。",
+          "why": "结构体包含引用时必须在结构体名后声明泛型生命周期参数，并在 impl 中正确复述，该技能包含这些定义和实现所需的标注规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch10-03-lifetime-syntax-s1-sc3",
+          "text": "我的函数里返回了一个局部变量的引用，编译器建议直接把它标成 'static，但我觉得局部变量不可能活那么久，想确认是不是应该先修正这个悬垂引用问题。",
+          "why": "错误信息建议使用 'static 时通常应诊断是否存在悬垂引用，而不是直接指定 'static，该技能包含 'static 生命周期的启发式判断。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch13-01-closures-s1",
+      "name": "闭包创建与调用控制",
+      "inputHash": "sha256:0df1e49268bb8a13b1aec72fb62dd0255cf76203c785da76bf748cf4a5ac1e3b",
+      "scenarios": [
+        {
+          "scenarioId": "ch13-01-closures-s1-sc1",
+          "text": "我在一个 if 表达式里为了判断和返回同一个计算结果，对同一个闭包连续调用了两次，日志里看到它被执行了两遍，请帮我把这段逻辑改成只调用一次并复用结果。",
+          "why": "该场景涉及在 if 块中重复调用闭包导致多余执行，正是这个技能要消除的反模式。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-01-closures-s1-sc2",
+          "text": "当前函数一进来就执行了那个很耗时的价格计算，但后面有几个提前返回的分支根本用不到这个结果，我想把它改成只在真正需要结果的分支里才计算。",
+          "why": "该场景需要在部分分支不需要结果时按需延迟执行昂贵计算，而不是提前统一计算，属于这个技能覆盖的调用控制规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-01-closures-s1-sc3",
+          "text": "我先把一个闭包用 i32 参数调用了一次，后面代码又尝试用字符串参数调用同一个闭包，编译器报类型不匹配，请帮我确认是不是第一次调用就锁定了参数类型，并给出修正方式。",
+          "why": "该场景涉及闭包参数和返回值类型在第一次调用后被推断并锁定，正是这个技能要解释和处理的类型问题。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch13-01-closures-s2",
+      "name": "闭包存储与缓存实现",
+      "inputHash": "sha256:6aca264c63022dca451254e756cfa4152dd904e5bed5aa0ca6c3fcda2ef67738",
+      "scenarios": [
+        {
+          "scenarioId": "ch13-01-closures-s2-sc1",
+          "text": "我正在实现一个请求处理管线，想把过滤逻辑的闭包存进 `FilterStep` 结构体字段里，之后对每个事件反复调用同一个闭包。字段类型和 trait bound 应该怎么声明？",
+          "why": "这需要为结构体字段指定闭包类型并使用泛型和 trait bound，正是该技能覆盖的结构体存放闭包规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-01-closures-s2-sc2",
+          "text": "我的耗时计算包装器目前只保存最后一次调用的结果，新需求是同一实例要根据不同输入参数分别缓存结果，避免重复计算。我想把内部存单一值改成按输入参数查表。",
+          "why": "这需要把单一值缓存改为以输入参数为 key、调用结果为 value 的哈希 map 缓存，是该技能中的缓存实现规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-01-closures-s2-sc3",
+          "text": "我想把现有的计算缓存结构改成可以缓存任意闭包，比如调用方传入一个接收字符串切片并返回 `usize` 的计算逻辑，而不是只支持 `u32` 入参和返回值。",
+          "why": "这需要引入更多泛型参数来支持不同签名的闭包，而不是把缓存限制为只接受 `u32` 输入并返回 `u32`。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch13-02-iterators-s1",
+      "name": "使用标准迭代器处理序列",
+      "inputHash": "sha256:2892aaa9e89852081573232543d4caa740f02f50d66619e7e228ab219039ec58",
+      "scenarios": [
+        {
+          "scenarioId": "ch13-02-iterators-s1-sc1",
+          "text": "我有一组数字，先用迭代器算出了总和，之后还想用原始那个迭代器筛出大于 100 的元素继续处理，结果编译报错说值已被移走。我该怎么调整代码把这两步都做出来？",
+          "why": "它需要理解消费适配器会获取迭代器所有权，调用求和后原迭代器不能再被使用，这正是该技能覆盖的工程规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-02-iterators-s1-sc2",
+          "text": "我有一段处理配置项的代码，先调用 filter 排除无效项，再用 map 把剩下转换成小写，但运行后什么都没发生，也没有报错。我漏了哪一步才能让这条链真正执行？",
+          "why": "该技能解释了迭代器适配器是惰性的，链式调用后必须调用一个消费适配器方法才能产生结果，正好回应这个需求。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-02-iterators-s1-sc3",
+          "text": "我写了一个自定义的分页集合类型，想让调用方直接对它用 for 循环逐页读取，并且能自动获得标准库里那些默认的过滤、映射等方法。我最小需要为这个类型实现哪个方法？",
+          "why": "它涉及为 Rust 类型实现标准库 Iterator trait 的规则，只需要提供 next 方法即可获得所有默认实现，这是该技能的核心知识对象之一。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch13-02-iterators-s2",
+      "name": "实现自定义迭代器",
+      "inputHash": "sha256:7841d16a9ec52c97110b32952ea2ab1a45d3e9c024d8196b81d3eea9f4983f99",
+      "scenarios": [
+        {
+          "scenarioId": "ch13-02-iterators-s2-sc1",
+          "text": "我写了一个环形缓冲区 RingBuffer，现在希望业务代码能直接用 for item in buffer 遍历元素，不想每次手写游标循环。要让这个类型能被 for 消费，我应该补上哪个方法？",
+          "why": "让自定义集合支持 for 循环需要实现 Iterator trait 并定义 next，这是该技能的核心内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-02-iterators-s2-sc2",
+          "text": "我在做分页接口的客户端，PageStream 内部会一页一页请求并缓存结果。现在想把它封装成每次调用 next 返回一条记录，直到没有下一页。next 里应该怎么推进页码和缓存位置？",
+          "why": "这需要为有内部状态的分页状态机实现自定义 Iterator 的 next，属于该技能覆盖的状态迭代器场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch13-02-iterators-s2-sc3",
+          "text": "我按示例给 Counter 类型实现了 next，现在想确认：是不是只要 next 正确，标准库里的 map、filter、collect、sum 就都能直接用？以及为什么调用 sum 之后原来的迭代器变量就不能再用了？",
+          "why": "这涉及 Iterator trait 默认方法的复用规则，以及 sum 作为消费适配器获取所有权的问题，正是技能中的工程规则。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
     }
   ],
   "unrelated": {
-    "inputHash": "sha256:a3c779d3624956ff0c6f690b92d329c399f21c023482c4d687d3dec2e3bf7ecf",
+    "inputHash": "sha256:c0e0ae8ad60866a943482b93f59902305cc27f9e0a00a39296e73a8e7c7c39de",
     "scenarios": [
       {
         "scenarioId": "unrelated-sc1",
-        "text": "我需要你帮我把这份 Excel 销售数据按地区汇总，并生成一张月度趋势图。",
-        "why": "这是数据处理与可视化任务，不涉及清单中的任何 Rust 语言特性或主题。",
+        "text": "帮我起草一份给客户的英文邮件，说明项目延期两周并给出新的交付时间表。",
+        "why": "这是商务英文邮件写作，不涉及清单中任何 Rust 语言特性或编程实现。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc2",
-        "text": "请帮我配置 Nginx 反向代理，把 /api 路径的请求转发到后端服务。",
-        "why": "这是 Web 服务器运维配置任务，与 Rust 的借用、切片、结构体等技能无关。",
+        "text": "请根据这份销售数据做一份季度趋势分析，输出关键结论。",
+        "why": "这是业务数据分析与总结任务，不触发 Rust 的集合、迭代器或错误处理等编程主题。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc3",
-        "text": "我需要写一封正式的英文商务邮件，向客户说明项目延期原因和新的交付日期。",
-        "why": "这是商务写作任务，完全不涉及编程语言或清单中的 Rust 主题。",
+        "text": "帮我规划一次三人从上海到成都的四天出差行程，包括交通和住宿建议。",
+        "why": "这是差旅安排任务，不涉及 Rust 中的引用、生命周期、结构体等概念。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc4",
-        "text": "帮我设计一个 PostgreSQL 数据库表结构，用来存储用户、订单和商品信息，并考虑必要的索引。",
-        "why": "这是关系型数据库设计任务，与 Rust 语言具体特性无交集。",
+        "text": "写一份团队周会的会议纪要模板，包含议题、结论和待办事项。",
+        "why": "这是文档模板撰写，不涉及任何 Rust 语法规则或标准库使用。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc5",
-        "text": "我需要一个 Python 脚本，从多个 CSV 日志文件中统计每种错误码的出现次数。",
-        "why": "这是 Python 脚本任务，不属于清单中任何 Rust 编程主题。",
+        "text": "我要给新员工讲 Git 分支管理，请帮我准备一个简单的讲解提纲。",
+        "why": "这是 Git 工具培训，不触发清单中 Rust 特有的所有权、借用、trait 等技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc6",
-        "text": "请帮我排查 Kubernetes 集群里某个 Pod 反复重启的原因，并给出处理步骤。",
-        "why": "这是云原生环境故障排查任务，与清单中的 Rust 语言规则无关。",
+        "text": "帮我将这段产品简介从中文翻译成日语，保持语气友好。",
+        "why": "这是自然语言翻译任务，不涉及 Rust 的字符串 slice、String 或 Pig Latin 等编程转换。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc7",
-        "text": "我想为这张产品原型图制定一份用户测试计划，包含测试任务和成功标准。",
-        "why": "这是产品设计与用户研究任务，不涉及 Rust 编程语言特性。",
+        "text": "设计一个家庭小花园的布局，要求有休息区和耐阴植物。",
+        "why": "这是园艺设计任务，不涉及任何 Rust 编程构造或标准库。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc8",
-        "text": "帮我用 Terraform 编写一套 AWS 基础设施代码，包括 VPC、子网和 EC2 实例。",
-        "why": "这是基础设施即代码任务，属于云资源编排，与清单中的 Rust 主题没有关联。",
+        "text": "请根据我的体检报告指标，给出一周的健康饮食建议。",
+        "why": "这是健康饮食建议任务，不涉及 Rust 语言或编程实现。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc9",
-        "text": "请分析这段 JavaScript 代码在浏览器中出现内存泄漏的原因，并给出修复建议。",
-        "why": "这是前端 JavaScript 性能分析任务，与 Rust 的借用、模式匹配等技能无关。",
+        "text": "帮我检查这份租赁合同中关于提前退租的条款是否有风险。",
+        "why": "这是合同条款审阅，不触发清单中的 Rust 编程技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc10",
-        "text": "我需要起草一份团队周报，总结本周完成的功能、遇到的问题和下周计划。",
-        "why": "这是团队管理与文档撰写任务，不涉及清单中的任何编程语言主题。",
+        "text": "给公司公众号写一篇介绍新咖啡机的短文案，200字左右。",
+        "why": "这是营销文案写作，不涉及 Rust 技术主题或语法规则。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc11",
-        "text": "帮我配置 GitHub Actions 工作流，在每次推送时自动运行测试并构建 Docker 镜像。",
-        "why": "这是 CI/CD 配置任务，关注的是自动化流水线，不属于 Rust 语言特性范畴。",
+        "text": "帮我制定一个为期8周的半程马拉松训练计划，按周列出跑量。",
+        "why": "这是运动训练计划任务，不涉及 Rust 代码、类型系统或标准库。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc12",
-        "text": "我有一组时间序列销量数据，想用 ARIMA 模型预测未来一个月的销量，请指导我如何选择参数。",
-        "why": "这是统计建模与预测任务，与清单中 Rust 语言的具体主题无关。",
+        "text": "请用 Excel 公式帮我计算每个月的复利收益，假设年利率5%。",
+        "why": "这是表格公式计算，不涉及 Rust 中的 Vec、String、HashMap 等数据结构。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc13",
-        "text": "帮我优化这条 SQL 查询，它在千万级数据表上执行得很慢。",
-        "why": "这是数据库查询性能优化任务，不涉及 Rust 的引用、枚举或错误处理等技能。",
+        "text": "我准备在本地搭建一个家庭媒体服务器，请比较 Jellyfin 和 Plex 的优缺点。",
+        "why": "这是软件选型咨询，不涉及实现 Rust 代码或清单中的语法规则。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc14",
-        "text": "我需要一个 Bash 脚本，每天凌晨备份 /var/lib/mysql 目录并上传到 S3。",
-        "why": "这是 Shell 脚本与系统运维任务，与清单中的 Rust 编程主题没有交集。",
+        "text": "帮我写一份关于远程办公效率的员工调查问卷，10个问题。",
+        "why": "这是问卷调查设计任务，不触发 Rust 编程相关技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc15",
-        "text": "帮我把这段 Kotlin 代码从协程实现改成 RxJava 实现，保持原有功能不变。",
-        "why": "这是移动端 Kotlin 异步编程改造任务，不属于清单中的 Rust 语言技能。",
+        "text": "请解释一下什么是 HTTPS 证书链，以及如何查看浏览器中的证书信息。",
+        "why": "这是网络与安全概念解释，不涉及 Rust 语言实现或编程任务。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc16",
-        "text": "我需要为我们的 REST API 编写 OpenAPI 规范文档，包含认证方式和错误响应定义。",
-        "why": "这是 API 规范文档编写任务，与 Rust 的切片、结构体、模式匹配等技能无关。",
+        "text": "帮我整理一份适合周末露营的物品清单，分烹饪、睡眠、照明三类。",
+        "why": "这是户外活动清单整理，不涉及 Rust 技术主题。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc17",
-        "text": "请帮我设计一个基于角色的访问控制方案，区分管理员、编辑和普通用户的权限。",
-        "why": "这是系统权限设计任务，属于安全与架构领域，不涉及清单中的 Rust 语言特性。",
+        "text": "给我们的内部知识库写一个“如何申请报销”的操作步骤说明。",
+        "why": "这是内部流程文档编写，不涉及 Rust 语言特性或编程构造。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc18",
-        "text": "帮我分析这组 A/B 测试结果，判断新版页面转化率提升是否显著。",
-        "why": "这是统计假设检验任务，与 Rust 编程语言具体规则无关。",
+        "text": "我拍了一段3分钟的产品展示视频，请建议剪辑节奏和配乐风格。",
+        "why": "这是视频剪辑创意建议，不触发清单中的 Rust 技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc19",
-        "text": "我需要一个 Prometheus 告警规则，当服务 5xx 错误率超过 5% 持续 10 分钟时触发通知。",
-        "why": "这是监控告警配置任务，关注服务指标，不属于清单中的 Rust 技能范畴。",
+        "text": "请帮我设计一个简单的 SQL 查询，找出过去30天注册但未下单的用户。",
+        "why": "这是 SQL 数据查询任务，不涉及 Rust 的 Iterator trait、Vec 或错误处理等实现细节。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc20",
-        "text": "请帮我给一个开源项目写 README 的贡献指南，包括本地开发环境搭建和提交流程。",
-        "why": "这是开源项目文档撰写任务，不涉及清单中任何 Rust 语言特性的具体应用。",
+        "text": "帮我用 Python 写一个脚本，把文件夹里的图片按拍摄日期重命名。",
+        "why": "这是 Python 脚本任务，不涉及清单中 Rust 特有的语法、所有权、trait 或标准库 API。",
         "containsNameLeak": false
       }
     ],
@@ -513,7 +810,7 @@
     "finishReason": "stop"
   },
   "usage": {
-    "promptTokens": 16969,
-    "completionTokens": 40217
+    "promptTokens": 32158,
+    "completionTokens": 69072
   }
 }
