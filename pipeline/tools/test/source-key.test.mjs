@@ -12,6 +12,7 @@ import os from 'node:os'
 import path from 'node:path'
 
 import { DEFAULT_SOURCE_KEY, DEFAULT_SOURCE_ROOT, sourceBookRoot, sourceCodeRoot } from '../../tools/anchor-index.mjs'
+import { prepareChapterInputs } from '../../propose-clusters.mjs'
 
 const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..', '..')
 const CLI = path.join(REPO, 'pipeline', 'run.mjs')
@@ -47,6 +48,51 @@ describe('18 · 源键与源根', () => {
       )
       assert.equal(wrong.status, 4, '缺省源键下该路径应被拒')
       assert.match(wrong.stderr, /必须位于/)
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
+
+  it('环 3 输入按源过滤：别的源的文件被**可见地跳过**，真缺回执仍然拒绝', async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), 'any2skills-sourcefilter-'))
+    try {
+      const mk = async (key, fileKey, objId) => {
+        const dirRel = path.join('sources', key, 'book')
+        await mkdir(path.join(root, dirRel), { recursive: true })
+        await writeFile(path.join(root, dirRel, `${fileKey}.md`), `# ${fileKey}\n\n## 一节\n\n正文。\n`, 'utf8')
+        await writeFile(
+          path.join(root, 'pipeline', 'knowledge', `${fileKey}.objects.json`),
+          JSON.stringify([{ id: objId, objectType: 'Concept', sourceRefs: [] }]),
+        )
+        await writeFile(
+          path.join(root, 'pipeline', 'registry', `run-${fileKey}.receipt.json`),
+          JSON.stringify({
+            runId: `run-${fileKey}`,
+            createdAt: new Date().toISOString(),
+            source: { path: path.join(dirRel, `${fileKey}.md`) },
+            objectVerdicts: [{ objectId: objId, status: 'pass' }],
+          }),
+        )
+      }
+      await mkdir(path.join(root, 'pipeline', 'knowledge'), { recursive: true })
+      await mkdir(path.join(root, 'pipeline', 'registry'), { recursive: true })
+      await mk('srcA', 'alpha', 'A-1')
+      await mk('srcB', 'beta', 'B-1')
+      // 第三类：有对象文件、但**任何源都没有它的回执**——这才是「真缺」。
+      await writeFile(
+        path.join(root, 'pipeline', 'knowledge', 'gamma.objects.json'),
+        JSON.stringify([{ id: 'G-1', objectType: 'Concept', sourceRefs: [] }]),
+      )
+
+      const a = await prepareChapterInputs(root, { modelId: null, sourceKey: 'srcA' })
+      assert.deepEqual(a.inputs.map((x) => x.fileKey), ['alpha'])
+      assert.deepEqual(a.skippedOtherSource.map((x) => x.fileKey), ['beta'], '别的源 → 可见地跳过')
+      assert.deepEqual(a.missingReceipts.map((x) => x.fileKey), ['gamma'], '无任何回执 → 真缺，照旧拒绝')
+
+      const c = await prepareChapterInputs(root, { modelId: null, sourceKey: 'srcC' })
+      assert.equal(c.inputs.length, 0)
+      assert.deepEqual(c.skippedOtherSource.map((x) => x.fileKey).sort(), ['alpha', 'beta'], 'srcC 没有自己的文件，两文件都归别的源')
+      assert.deepEqual(c.missingReceipts.map((x) => x.fileKey), ['gamma'])
     } finally {
       await rm(root, { recursive: true, force: true })
     }

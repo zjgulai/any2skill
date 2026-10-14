@@ -114,12 +114,42 @@ export async function enumerateClusterInputs(repoRoot) {
 }
 
 /**
+ * 按 fileKey 在**全部源**里找一份回执（ticket 18 段③的源过滤）。
+ *
+ * 两个源的知识对象会共处同一个 `pipeline/knowledge/`（产物单源命名空间是本仓的既有假设，
+ * 见卡 18 未决）——枚举时不能只看「有没有回执」，还要看「回执属于哪个源」：
+ * 属于别的源 = 本次跳过并**记录下来**，不属于任何源 = 真缺回执，照旧拒绝。
+ */
+export async function findReceiptSourcePathByFileKey(repoRoot, fileKey) {
+  const dir = path.join(repoRoot, REGISTRY_REL)
+  let names = []
+  try {
+    names = await readdir(dir)
+  } catch {
+    return null
+  }
+  for (const n of names) {
+    if (!/^run-.*\.receipt\.json$/.test(n)) continue
+    try {
+      const j = JSON.parse(await readFile(path.join(dir, n), 'utf8'))
+      if (j.source && typeof j.source.path === 'string' && path.basename(j.source.path) === `${fileKey}.md`) {
+        return j.source.path
+      }
+    } catch {
+      // 坏回执不参与判定。
+    }
+  }
+  return null
+}
+
+/**
  * 每章的输入准备：读对象、跑门禁过滤、算复用键。**不发调用、不写盘**。
  * 缺回执的章进 `missingReceipts`——调用方在任何模型调用发生**之前**统一拒绝。
  */
 export async function prepareChapterInputs(repoRoot, { modelId, sourceKey = DEFAULT_SOURCE_KEY }) {
   const inputs = []
   const missingReceipts = []
+  const skippedOtherSource = []
   for (const { fileKey, fileName } of await enumerateClusterInputs(repoRoot)) {
     const objectsPathRel = path.join(KNOWLEDGE_REL, fileName)
     const raw = await readFile(path.join(repoRoot, objectsPathRel))
@@ -127,6 +157,11 @@ export async function prepareChapterInputs(repoRoot, { modelId, sourceKey = DEFA
     const sourceRel = path.join(sourceBookRoot(sourceKey), `${fileKey}.md`)
     const found = await findLatestReceipt(sourceRel, { repoRoot })
     if (!found) {
+      const otherSourcePath = await findReceiptSourcePathByFileKey(repoRoot, fileKey)
+      if (otherSourcePath !== null) {
+        skippedOtherSource.push({ fileKey, receiptSourcePath: otherSourcePath })
+        continue
+      }
       missingReceipts.push({ fileKey, sourceRel })
       continue
     }
@@ -155,7 +190,7 @@ export async function prepareChapterInputs(repoRoot, { modelId, sourceKey = DEFA
       sourceRel,
     })
   }
-  return { inputs, missingReceipts }
+  return { inputs, missingReceipts, skippedOtherSource }
 }
 
 /**
@@ -200,14 +235,24 @@ async function main(argv) {
 
   try {
     const modelId = flags.model ?? process.env.ANY2SKILLS_LLM_MODEL ?? null
-    let { inputs, missingReceipts } = await prepareChapterInputs(repoRoot, { modelId, sourceKey: flags.sourceKey })
+    let { inputs, missingReceipts, skippedOtherSource } = await prepareChapterInputs(repoRoot, { modelId, sourceKey: flags.sourceKey })
 
     if (flags.chapter) {
       inputs = inputs.filter((c) => c.fileKey === flags.chapter)
       missingReceipts = missingReceipts.filter((c) => c.fileKey === flags.chapter)
+      skippedOtherSource = skippedOtherSource.filter((c) => c.fileKey === flags.chapter)
       if (inputs.length === 0 && missingReceipts.length === 0) {
         throw new Error(`--chapter ${flags.chapter} 在知识平面里没有对应的对象文件`)
       }
+    }
+
+    if (skippedOtherSource.length > 0) {
+      process.stderr.write(
+        `本次源键 ${flags.sourceKey}：跳过 ${skippedOtherSource.length} 个属于**其他源**的文件（回执在别的 sources/ 根下）——\n` +
+          skippedOtherSource.slice(0, 5).map((x) => `  · ${x.fileKey}（回执来源 ${x.receiptSourcePath}）`).join('\n') +
+          (skippedOtherSource.length > 5 ? `\n  …共 ${skippedOtherSource.length} 个` : '') +
+          '\n',
+      )
     }
 
     if (missingReceipts.length > 0) {
