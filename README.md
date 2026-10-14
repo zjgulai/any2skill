@@ -21,6 +21,10 @@ Any content → executable Agent Skills. MVP pipeline.
 完成与 `benchmark/` 22 个原书 skill 的比对——**正向覆盖 22/22，数量差异完成专项归因**
 （发布门径 / 来源缺口 / 体积阈值，不诉诸「质量不够」），报告见
 [`docs/specs/02-benchmark-report.md`](docs/specs/02-benchmark-report.md)。
+**「any」已验证第一步**（[`卡 18`](docs/tickets/18-second-source-any.md)）：多源参数化后，
+第二信息源（《Rust 程序设计语言》中文，105 个 .md，节级粒度）**环 1–4 机制零隐藏假设地跑通**
+（513 锚点零解析失败、抽样门禁一 100% 通过、ownership 切片装配成功）；发布门径对该源
+待配套素材（陷阱抽取 / 代码镜像），非管线不适配。
 
 > ### 盘上已有 7 个已发布的 skill
 >
