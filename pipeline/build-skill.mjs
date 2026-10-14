@@ -477,7 +477,7 @@ async function main(argv) {
       if (flags.receipt) {
         throw new Error('簇模式下 --receipt 不受支持：回执由候选各章自动选取（多章候选没有单一回执）。')
       }
-      const prep = await loadClusterAssemblyInputs(repoRoot, clusterDef)
+      const prep = await loadClusterAssemblyInputs(repoRoot, clusterDef, { sourceKey: flags.sourceKey })
       const identityWarning = antipatternIdentityWarning(prep.apVerdicts, prep.antipatternsRunId)
       if (identityWarning) process.stderr.write(identityWarning)
       ctx = {

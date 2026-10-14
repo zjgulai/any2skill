@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "skill-candidates/v1",
+  "createdAt": "2026-10-14T02:43:27.370Z",
+  "clustersFile": "pipeline/knowledge/clusters.json",
+  "clustersSha256": "sha256:0d72f0065d36b1627e0bb2db13590d4abe7bf6127a2d5cafdc34ba20afa678f3",
+  "candidates": [
+    {
+      "skillId": "ch04-01-what-is-ownership-s1",
+      "sourceObjects": [
+        "CH04-01-WHAT-IS-OWNERSHIP-H2-1-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H2-1-ENGINEERINGRULE-02",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-1-ENGINEERINGRULE-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-2-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-2-ENGINEERINGRULE-02",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-3-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-3-ENGINEERINGRULE-02",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-02",
+        "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-02",
+        "CH04-01-WHAT-IS-OWNERSHIP-H4-2-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-6-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H4-3-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H4-3-ENGINEERINGRULE-02",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-5-CONCEPT-01",
+        "CH04-01-WHAT-IS-OWNERSHIP-H3-5-ENGINEERINGRULE-02"
+      ],
+      "trigger": "当需要理解 Rust 如何通过所有权、作用域、堆栈数据和移动/复制规则在编译期管理内存，或排查变量在赋值、函数传参后不可用等编译错误时使用。",
+      "chapterRefs": [
+        "ch04-01-what-is-ownership"
+      ],
+      "promotionState": "candidate",
+      "name": "Rust 所有权基础",
+      "units": [
+        "ch04-01-what-is-ownership-u1",
+        "ch04-01-what-is-ownership-u2",
+        "ch04-01-what-is-ownership-u3",
+        "ch04-01-what-is-ownership-u4",
+        "ch04-01-what-is-ownership-u5"
+      ],
+      "anchors": [
+        "ch04-01-what-is-ownership#h2-1",
+        "ch04-01-what-is-ownership#h3-1",
+        "ch04-01-what-is-ownership#h3-2",
+        "ch04-01-what-is-ownership#h3-3",
+        "ch04-01-what-is-ownership#h3-4",
+        "ch04-01-what-is-ownership#h4-1",
+        "ch04-01-what-is-ownership#h4-2",
+        "ch04-01-what-is-ownership#h3-6",
+        "ch04-01-what-is-ownership#h4-3",
+        "ch04-01-what-is-ownership#h3-5"
+      ],
+      "rationale": "这些单元从所有权核心与作用域、堆 String 与内存回收，到赋值移动与深拷贝、Copy trait，再到函数传参，构成一条完整的基础阅读路径，面向学习、复习和排查 Rust 所有权相关场景的同一批使用者。"
+    },
+    {
+      "skillId": "ch04-02-references-and-borrowing-s1",
+      "sourceObjects": [
+        "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02"
+      ],
+      "trigger": "当需要安全地让多个变量访问同一数据，或需要理解、编写、排查涉及引用、可变性、数据竞争与悬垂引用的 Rust 代码时，使用此候选。",
+      "chapterRefs": [
+        "ch04-02-references-and-borrowing"
+      ],
+      "promotionState": "candidate",
+      "name": "Rust 引用与借用规则",
+      "units": [
+        "ch04-02-references-and-borrowing-u1",
+        "ch04-02-references-and-borrowing-u2",
+        "ch04-02-references-and-borrowing-u3"
+      ],
+      "anchors": [
+        "ch04-02-references-and-borrowing#h2-1",
+        "ch04-02-references-and-borrowing#h3-1",
+        "ch04-02-references-and-borrowing#h3-3",
+        "ch04-02-references-and-borrowing#h3-2",
+        "ch04-02-references-and-borrowing#h3-3"
+      ],
+      "rationale": "这三个单元面向同一批使用场景：在实际 Rust 代码中使用引用与借用时，需要同时理解引用的基本语义、别名与可变性限制，以及悬垂引用防护，才能正确理解借用检查器并保证内存安全。"
+    },
+    {
+      "skillId": "ch04-03-slices-s1",
+      "sourceObjects": [
+        "CH04-03-SLICES-H2-1-ANTIPATTERN-01",
+        "CH04-03-SLICES-H3-1-CONCEPT-01",
+        "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+        "CH04-03-SLICES-H4-1-CONCEPT-01",
+        "CH04-03-SLICES-H4-2-ENGINEERINGRULE-01",
+        "CH04-03-SLICES-H3-2-CONCEPT-01"
+      ],
+      "trigger": "当需要理解为什么使用切片而不是手写多个索引，并掌握字符串切片、数组切片及相应 API 设计用法时，应读取这些内容单元。",
+      "chapterRefs": [
+        "ch04-03-slices"
+      ],
+      "promotionState": "candidate",
+      "name": "切片类型理解与应用",
+      "units": [
+        "ch04-03-slices-u1",
+        "ch04-03-slices-u2",
+        "ch04-03-slices-u3"
+      ],
+      "anchors": [
+        "ch04-03-slices#h2-1",
+        "ch04-03-slices#h3-1",
+        "ch04-03-slices#h4-1",
+        "ch04-03-slices#h4-2",
+        "ch04-03-slices#h3-2"
+      ],
+      "rationale": "这三个单元共同服务于同一批使用场景：读者从反模式出发理解切片设计动机，再掌握字符串切片的定义、边界、字面量和函数签名用法，最后将切片概念泛化到数组等其他集合，因此归为同一技能候选。"
+    }
+  ],
+  "crossChapterDisposition": {
+    "status": "absent",
+    "note": "盘上没有 antipatterns.objects.json（先跑卡 06 的命令再回看本块）。"
+  },
+  "diagnostics": {
+    "byFile": [
+      {
+        "fileKey": "ch04-00-understanding-ownership",
+        "units": 0,
+        "skills": 0,
+        "objects": 0,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch04-01-what-is-ownership",
+        "units": 5,
+        "skills": 1,
+        "objects": 17,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch04-02-references-and-borrowing",
+        "units": 3,
+        "skills": 1,
+        "objects": 8,
+        "unassigned": 0,
+        "unresolved": 0
+      },
+      {
+        "fileKey": "ch04-03-slices",
+        "units": 3,
+        "skills": 1,
+        "objects": 6,
+        "unassigned": 0,
+        "unresolved": 0
+      }
+    ],
+    "candidateCount": 3,
+    "unitSize": {
+      "min": 1,
+      "median": 3,
+      "max": 5,
+      "n": 11
+    },
+    "unitsPerSkill": {
+      "min": 3,
+      "median": 3,
+      "max": 5,
+      "n": 3
+    },
+    "reference": {
+      "skillsPerChapter": 2.2,
+      "scope": "原书 22 个 skill / 10 章（ADR-007 实测）",
+      "observedChapters": 0,
+      "observedSkills": 0,
+      "note": "仅诊断，不设目标（ADR-007：数量是结果不是配额；ADR-021：形状数字不是判据）"
+    }
+  }
+}

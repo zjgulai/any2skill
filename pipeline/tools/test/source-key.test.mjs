@@ -97,4 +97,41 @@ describe('18 · 源键与源根', () => {
       await rm(root, { recursive: true, force: true })
     }
   })
+
+  it('环 4 簇装配按源键取源（段③切片实测漏掉过这一处，补回归）', async () => {
+    const { loadClusterAssemblyInputs } = await import('../../build-skill.mjs')
+    const root = await mkdtemp(path.join(os.tmpdir(), 'any2skills-rings4-src-'))
+    try {
+      const dirRel = path.join('sources', 'srcA', 'book')
+      await mkdir(path.join(root, dirRel), { recursive: true })
+      await writeFile(path.join(root, dirRel, 'alpha.md'), '# 标题\n\n## 一节\n\n正文足够长。\n', 'utf8')
+      await mkdir(path.join(root, 'pipeline', 'knowledge'), { recursive: true })
+      await mkdir(path.join(root, 'pipeline', 'registry'), { recursive: true })
+      await writeFile(
+        path.join(root, 'pipeline', 'knowledge', 'alpha.objects.json'),
+        JSON.stringify([
+          { id: 'A-1', objectType: 'EngineeringRule', statement: '规则', appliesWhen: '场景', sourceRefs: [{ file: path.join(dirRel, 'alpha.md'), anchor: 'alpha#h2-1' }] },
+        ]),
+      )
+      await writeFile(
+        path.join(root, 'pipeline', 'registry', 'run-alpha.receipt.json'),
+        JSON.stringify({
+          runId: 'run-alpha',
+          createdAt: new Date().toISOString(),
+          source: { path: path.join(dirRel, 'alpha.md') },
+          objectVerdicts: [{ objectId: 'A-1', status: 'pass' }],
+        }),
+      )
+      const clusterDef = { skillId: 'alpha-s1', chapterRefs: ['alpha'], name: '甲', anchorIds: ['alpha#h2-1'], objectIds: ['A-1'], units: [] }
+      const ok = await loadClusterAssemblyInputs(root, clusterDef, { sourceKey: 'srcA' })
+      assert.equal(ok.kept.length, 1)
+      await assert.rejects(
+        () => loadClusterAssemblyInputs(root, clusterDef, { sourceKey: 'ai-agent-book-zh' }),
+        /ENOENT|缺门禁一回执|reject/i,
+        '源键不匹配必须失败而不是读到别的源',
+      )
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
 })

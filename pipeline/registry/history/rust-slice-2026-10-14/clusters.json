@@ -1,0 +1,431 @@
+{
+  "schemaVersion": "clusters/v1",
+  "createdAt": "2026-10-14T02:43:27.369Z",
+  "promptFingerprint": "prompt-a2e5c6043c57",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "input": {
+    "objectsFiles": [
+      {
+        "fileKey": "ch04-00-understanding-ownership",
+        "path": "pipeline/knowledge/ch04-00-understanding-ownership.objects.json",
+        "sha256": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "gateReceiptFile": "pipeline/registry/run-cc6028f54922.receipt.json",
+        "gateReceiptRunId": "run-cc6028f54922",
+        "objectsTotal": 0,
+        "gatePassed": 0,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch04-01-what-is-ownership",
+        "path": "pipeline/knowledge/ch04-01-what-is-ownership.objects.json",
+        "sha256": "sha256:149ccbd1f898e2c878ad38bce45c75643b15283b28060aca823f6ca975693bd2",
+        "gateReceiptFile": "pipeline/registry/run-3e1a67baa8f4.receipt.json",
+        "gateReceiptRunId": "run-3e1a67baa8f4",
+        "objectsTotal": 17,
+        "gatePassed": 17,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch04-02-references-and-borrowing",
+        "path": "pipeline/knowledge/ch04-02-references-and-borrowing.objects.json",
+        "sha256": "sha256:c5593184755013dfe90ab2540dc4e642003ebf9d21e85a02e4f0294487d8a2b9",
+        "gateReceiptFile": "pipeline/registry/run-ae495393d571.receipt.json",
+        "gateReceiptRunId": "run-ae495393d571",
+        "objectsTotal": 8,
+        "gatePassed": 8,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch04-03-slices",
+        "path": "pipeline/knowledge/ch04-03-slices.objects.json",
+        "sha256": "sha256:b741e7f5e86c32ac65ad0268d9067d354904854b5ce90db8dd454c940b570f5a",
+        "gateReceiptFile": "pipeline/registry/run-52a09274c6b1.receipt.json",
+        "gateReceiptRunId": "run-52a09274c6b1",
+        "objectsTotal": 6,
+        "gatePassed": 6,
+        "gateExcluded": []
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "fileKey": "ch04-00-understanding-ownership",
+      "inputHash": "sha256:3cf21b64b3935796d5967eb6a2b1ae0da0d61abf930ed49c1d0f2566e869163d",
+      "status": "proposed",
+      "createdAt": "2026-10-14T02:40:06.514Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [],
+      "skills": [],
+      "coverage": {
+        "gatePassed": 0,
+        "assigned": 0,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 583,
+        "completion_tokens": 166,
+        "total_tokens": 749,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 156
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 71
+      },
+      "finishReason": "stop",
+      "reasoningChars": 350,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch04-01-what-is-ownership",
+      "inputHash": "sha256:2f8a3ab8451c5438d8d4f5bdd48442683d6208be9dc0d5bc38ab17f78bf68315",
+      "status": "proposed",
+      "createdAt": "2026-10-14T02:40:11.081Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch04-01-what-is-ownership-u1",
+          "name": "所有权核心与作用域",
+          "objectIds": [
+            "CH04-01-WHAT-IS-OWNERSHIP-H2-1-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H2-1-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-1-ENGINEERINGRULE-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-2-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch04-01-what-is-ownership#h2-1",
+            "ch04-01-what-is-ownership#h3-1",
+            "ch04-01-what-is-ownership#h3-2"
+          ],
+          "rationale": "这些对象共同回答所有权系统是什么、值在栈/堆上的放置约束、唯一所有者规则，以及作用域如何决定变量的有效范围；它们是理解后续移动、复制和清理规则的前提。"
+        },
+        {
+          "unitId": "ch04-01-what-is-ownership-u2",
+          "name": "堆 String 与内存回收",
+          "objectIds": [
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-3-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-3-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch04-01-what-is-ownership#h3-3",
+            "ch04-01-what-is-ownership#h3-4"
+          ],
+          "rationale": "这些对象围绕堆上数据如何安全回收：String 是堆分配的例子，内存回收失败说明需要精确释放，drop 则描述 Rust 在作用域结束时的自动清理机制。"
+        },
+        {
+          "unitId": "ch04-01-what-is-ownership-u3",
+          "name": "赋值移动与深拷贝",
+          "objectIds": [
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-2-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-6-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch04-01-what-is-ownership#h4-1",
+            "ch04-01-what-is-ownership#h4-2",
+            "ch04-01-what-is-ownership#h3-6"
+          ],
+          "rationale": "这些对象解释赋值时数据如何转移：赋值移动后旧变量失效、Rust 不自动深拷贝、clone 显式深拷贝，以及所有权移动的总体模式；它们都围绕移动与深拷贝这一同一问题空间。"
+        },
+        {
+          "unitId": "ch04-01-what-is-ownership-u4",
+          "name": "Copy trait 规则",
+          "objectIds": [
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-3-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch04-01-what-is-ownership#h4-3"
+          ],
+          "rationale": "这两个对象共同规定什么样的类型在赋值后旧变量仍可用：Copy trait 适用于栈上类型，而 Drop 与 Copy 互斥；它们解决栈上值可复制而堆上值移动的规则边界。"
+        },
+        {
+          "unitId": "ch04-01-what-is-ownership-u5",
+          "name": "所有权与函数参数",
+          "objectIds": [
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-5-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-5-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch04-01-what-is-ownership#h3-5"
+          ],
+          "rationale": "两者说明函数传值在语义上类似赋值，会发生移动或复制，并指出在传值后继续使用已移动变量会触发编译错误；它们共同回答函数调用如何影响所有权。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch04-01-what-is-ownership-s1",
+          "name": "Rust 所有权基础",
+          "trigger": "当需要理解 Rust 如何通过所有权、作用域、堆栈数据和移动/复制规则在编译期管理内存，或排查变量在赋值、函数传参后不可用等编译错误时使用。",
+          "unitIds": [
+            "ch04-01-what-is-ownership-u1",
+            "ch04-01-what-is-ownership-u2",
+            "ch04-01-what-is-ownership-u3",
+            "ch04-01-what-is-ownership-u4",
+            "ch04-01-what-is-ownership-u5"
+          ],
+          "objectIds": [
+            "CH04-01-WHAT-IS-OWNERSHIP-H2-1-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H2-1-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-1-ENGINEERINGRULE-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-2-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-2-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-3-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-3-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-2-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-6-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-3-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H4-3-ENGINEERINGRULE-02",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-5-CONCEPT-01",
+            "CH04-01-WHAT-IS-OWNERSHIP-H3-5-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元从所有权核心与作用域、堆 String 与内存回收，到赋值移动与深拷贝、Copy trait，再到函数传参，构成一条完整的基础阅读路径，面向学习、复习和排查 Rust 所有权相关场景的同一批使用者。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 17,
+        "assigned": 17,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 7911,
+        "total_tokens": 9753,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 6931
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 1330
+      },
+      "finishReason": "stop",
+      "reasoningChars": 13343,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch04-02-references-and-borrowing",
+      "inputHash": "sha256:5b2a7feaa9ff49b87ece8120661a2de93fac778dff1e72b72e22c7a1074097c8",
+      "status": "proposed",
+      "createdAt": "2026-10-14T02:41:55.167Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch04-02-references-and-borrowing-u1",
+          "name": "引用与借用语义",
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch04-02-references-and-borrowing#h2-1"
+          ],
+          "rationale": "这两个对象共同定义引用和借用的基本概念：引用由 & 语法创建、指向值但不拥有它，因此停止使用时不会丢弃所指向的值；借用是创建引用的行为，用完必须归还。它们回答同一基础问题：引用是什么、借用是什么。"
+        },
+        {
+          "unitId": "ch04-02-references-and-borrowing-u2",
+          "name": "别名与可变性限制",
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch04-02-references-and-borrowing#h3-1",
+            "ch04-02-references-and-borrowing#h3-3"
+          ],
+          "rationale": "这些对象围绕同一规则空间：拥有不可变引用时不能拥有可变引用；Rust 不编译存在数据竞争的代码；同一时间要么只有一个可变引用，要么只有多个不可变引用。它们共同回答同一问题：程序中同时可以持有哪类引用，以及为什么有这种限制。"
+        },
+        {
+          "unitId": "ch04-02-references-and-borrowing-u3",
+          "name": "悬垂引用与有效性",
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch04-02-references-and-borrowing#h3-2",
+            "ch04-02-references-and-borrowing#h3-3"
+          ],
+          "rationale": "这些对象共同解释悬垂指针的定义、编译器如何保证数据不会在引用之前离开作用域，以及引用必须总是有效这一总规则。它们回答同一问题：引用如何避免指向已经失效的内存。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch04-02-references-and-borrowing-s1",
+          "name": "Rust 引用与借用规则",
+          "trigger": "当需要安全地让多个变量访问同一数据，或需要理解、编写、排查涉及引用、可变性、数据竞争与悬垂引用的 Rust 代码时，使用此候选。",
+          "unitIds": [
+            "ch04-02-references-and-borrowing-u1",
+            "ch04-02-references-and-borrowing-u2",
+            "ch04-02-references-and-borrowing-u3"
+          ],
+          "objectIds": [
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+            "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这三个单元面向同一批使用场景：在实际 Rust 代码中使用引用与借用时，需要同时理解引用的基本语义、别名与可变性限制，以及悬垂引用防护，才能正确理解借用检查器并保证内存安全。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 8,
+        "assigned": 8,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1081,
+        "completion_tokens": 2727,
+        "total_tokens": 3808,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2117
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 569
+      },
+      "finishReason": "stop",
+      "reasoningChars": 4231,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch04-03-slices",
+      "inputHash": "sha256:028b42ff4290dc4b2778ef93ba2e66ab6f6e5e3bb4333ca15cd3018f5f0a4c70",
+      "status": "proposed",
+      "createdAt": "2026-10-14T02:42:38.720Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch04-03-slices-u1",
+          "name": "切片要解决的反模式",
+          "objectIds": [
+            "CH04-03-SLICES-H2-1-ANTIPATTERN-01"
+          ],
+          "anchors": [
+            "ch04-03-slices#h2-1"
+          ],
+          "rationale": "该对象描述通过多个彼此无关的开始/结束索引维护数据范围的问题，这是切片要解决的同一问题空间：用切片内聚引用和长度，避免多个索引状态不同步。"
+        },
+        {
+          "unitId": "ch04-03-slices-u2",
+          "name": "字符串切片与用法",
+          "objectIds": [
+            "CH04-03-SLICES-H3-1-CONCEPT-01",
+            "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+            "CH04-03-SLICES-H4-1-CONCEPT-01",
+            "CH04-03-SLICES-H4-2-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch04-03-slices#h3-1",
+            "ch04-03-slices#h4-1",
+            "ch04-03-slices#h4-2"
+          ],
+          "rationale": "这些对象都在回答字符串切片的问题空间：字符串切片作为部分 String 的引用是什么、取范围时的 UTF-8 边界约束、字符串字面量为何是 &str，以及函数参数为何应优先使用 &str 以保证通用性。"
+        },
+        {
+          "unitId": "ch04-03-slices-u3",
+          "name": "数组等集合切片",
+          "objectIds": [
+            "CH04-03-SLICES-H3-2-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch04-03-slices#h3-2"
+          ],
+          "rationale": "该对象说明数组切片得到的 &[i32] 类型及其与字符串切片相同的工作原理，并指出可推广到其他所有集合，构成非字符串集合切片的问题空间。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch04-03-slices-s1",
+          "name": "切片类型理解与应用",
+          "trigger": "当需要理解为什么使用切片而不是手写多个索引，并掌握字符串切片、数组切片及相应 API 设计用法时，应读取这些内容单元。",
+          "unitIds": [
+            "ch04-03-slices-u1",
+            "ch04-03-slices-u2",
+            "ch04-03-slices-u3"
+          ],
+          "objectIds": [
+            "CH04-03-SLICES-H2-1-ANTIPATTERN-01",
+            "CH04-03-SLICES-H3-1-CONCEPT-01",
+            "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+            "CH04-03-SLICES-H4-1-CONCEPT-01",
+            "CH04-03-SLICES-H4-2-ENGINEERINGRULE-01",
+            "CH04-03-SLICES-H3-2-CONCEPT-01"
+          ],
+          "rationale": "这三个单元共同服务于同一批使用场景：读者从反模式出发理解切片设计动机，再掌握字符串切片的定义、边界、字面量和函数签名用法，最后将切片概念泛化到数组等其他集合，因此归为同一技能候选。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 6,
+        "assigned": 6,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1004,
+        "completion_tokens": 3127,
+        "total_tokens": 4131,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2641
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 492
+      },
+      "finishReason": "stop",
+      "reasoningChars": 5810,
+      "maxTokens": 24000
+    }
+  ],
+  "totals": {
+    "chapters": 4,
+    "units": 11,
+    "skills": 3,
+    "gatePassed": 31,
+    "unassigned": 0,
+    "unresolvedObjectIds": 0,
+    "duplicates": 0,
+    "unitsWithoutSkill": 0,
+    "usage": {
+      "proposed": 4,
+      "reused": 0,
+      "calls": 4,
+      "promptTokens": 4510,
+      "completionTokens": 13931
+    }
+  }
+}
