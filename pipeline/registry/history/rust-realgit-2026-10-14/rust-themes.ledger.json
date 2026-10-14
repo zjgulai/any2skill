@@ -1,0 +1,3310 @@
+{
+ "schemaVersion": "fs-ledger/v1",
+ "pid": 14013,
+ "argv": [
+  "/Users/lute/Project/any2skills/pipeline/propose-themes.mjs",
+  "--source-key",
+  "rust-book-cn",
+  "--model",
+  "deepseek-v4-pro",
+  "--base-url",
+  "https://api.deepseek.com"
+ ],
+ "cwd": "/Users/lute/Project/any2skills",
+ "startedAt": "2026-10-14T11:30:00.282Z",
+ "endedAt": "2026-10-14T11:34:35.113Z",
+ "recordCount": 658,
+ "truncated": false,
+ "records": [
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/propose-themes.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/propose-themes.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/propose-themes.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/propose-themes.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/propose-themes.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/theme-catalog.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/theme-catalog.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/theme-catalog.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/theme-proposer.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/theme-proposer.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/theme-proposer.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/model-json.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/model-json.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/model-json.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readdir",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/SUMMARY.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/SUMMARY.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/SUMMARY.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-00.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-00.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-00.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-01-keywords.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-01-keywords.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-01-keywords.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-02-operators.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-02-operators.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-02-operators.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-04-useful-development-tools.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-04-useful-development-tools.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-04-useful-development-tools.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-05-editions.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-05-editions.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-05-editions.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-06-translation.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-06-translation.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-06-translation.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-07-nightly-rust.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-07-nightly-rust.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/appendix-07-nightly-rust.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch00-00-introduction.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch00-00-introduction.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch00-00-introduction.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-00-getting-started.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-00-getting-started.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-00-getting-started.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-01-installation.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-01-installation.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-01-installation.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-02-hello-world.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-02-hello-world.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-02-hello-world.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-03-hello-cargo.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-03-hello-cargo.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch01-03-hello-cargo.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-00-common-programming-concepts.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-00-common-programming-concepts.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-00-common-programming-concepts.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-01-variables-and-mutability.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-01-variables-and-mutability.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-01-variables-and-mutability.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-02-data-types.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-02-data-types.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-02-data-types.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-03-how-functions-work.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-03-how-functions-work.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-03-how-functions-work.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-04-comments.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-04-comments.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-04-comments.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-05-control-flow.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-05-control-flow.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch03-05-control-flow.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-00-understanding-ownership.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-00-understanding-ownership.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-00-understanding-ownership.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-03-slices.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-03-slices.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch04-03-slices.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-00-structs.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-00-structs.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-00-structs.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-01-defining-structs.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-01-defining-structs.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-01-defining-structs.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-02-example-structs.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-02-example-structs.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-02-example-structs.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-03-method-syntax.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-03-method-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch05-03-method-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-00-enums.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-00-enums.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-00-enums.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-02-match.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-02-match.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-02-match.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-03-if-let.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-03-if-let.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch06-03-if-let.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-01-packages-and-crates.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-01-packages-and-crates.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-01-packages-and-crates.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-02-defining-modules-to-control-scope-and-privacy.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-02-defining-modules-to-control-scope-and-privacy.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-02-defining-modules-to-control-scope-and-privacy.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-05-separating-modules-into-different-files.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-05-separating-modules-into-different-files.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch07-05-separating-modules-into-different-files.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-00-common-collections.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-00-common-collections.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-00-common-collections.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-01-vectors.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-01-vectors.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-01-vectors.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-02-strings.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-02-strings.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-02-strings.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-03-hash-maps.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-03-hash-maps.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch08-03-hash-maps.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-00-error-handling.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-00-error-handling.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-00-error-handling.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-00-generics.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-00-generics.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-00-generics.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-01-syntax.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-01-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-01-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-02-traits.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-02-traits.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-02-traits.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-00-testing.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-00-testing.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-00-testing.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-01-writing-tests.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-01-writing-tests.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-01-writing-tests.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-02-running-tests.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-02-running-tests.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-02-running-tests.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-03-test-organization.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-03-test-organization.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch11-03-test-organization.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-00-an-io-project.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-00-an-io-project.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-00-an-io-project.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-01-accepting-command-line-arguments.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-01-accepting-command-line-arguments.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-01-accepting-command-line-arguments.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-02-reading-a-file.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-02-reading-a-file.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-02-reading-a-file.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-04-testing-the-librarys-functionality.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-04-testing-the-librarys-functionality.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-04-testing-the-librarys-functionality.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-05-working-with-environment-variables.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-05-working-with-environment-variables.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-05-working-with-environment-variables.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-00-functional-features.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-00-functional-features.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-00-functional-features.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-01-closures.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-01-closures.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-01-closures.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-02-iterators.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-02-iterators.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-02-iterators.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-04-performance.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-04-performance.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch13-04-performance.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-00-more-about-cargo.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-00-more-about-cargo.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-00-more-about-cargo.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-01-release-profiles.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-01-release-profiles.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-01-release-profiles.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-03-cargo-workspaces.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-03-cargo-workspaces.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-03-cargo-workspaces.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-04-installing-binaries.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-04-installing-binaries.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-04-installing-binaries.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-05-extending-cargo.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-05-extending-cargo.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch14-05-extending-cargo.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-00-smart-pointers.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-00-smart-pointers.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-00-smart-pointers.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-01-box.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-01-box.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-01-box.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-02-deref.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-02-deref.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-02-deref.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-03-drop.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-03-drop.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-03-drop.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-04-rc.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-04-rc.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-04-rc.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-00-concurrency.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-00-concurrency.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-00-concurrency.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-01-threads.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-01-threads.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-01-threads.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-02-message-passing.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-02-message-passing.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-02-message-passing.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-03-shared-state.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-03-shared-state.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-03-shared-state.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-04-extensible-concurrency-sync-and-send.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-04-extensible-concurrency-sync-and-send.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch16-04-extensible-concurrency-sync-and-send.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-00-oop.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-00-oop.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-00-oop.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-01-what-is-oo.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-01-what-is-oo.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-01-what-is-oo.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-02-trait-objects.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-02-trait-objects.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-02-trait-objects.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-00-patterns.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-00-patterns.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-00-patterns.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-02-refutability.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-02-refutability.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-02-refutability.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-00-advanced-features.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-00-advanced-features.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-00-advanced-features.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-04-advanced-types.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-04-advanced-types.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-04-advanced-types.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-05-advanced-functions-and-closures.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-05-advanced-functions-and-closures.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-05-advanced-functions-and-closures.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-06-macros.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-06-macros.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch19-06-macros.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-00-final-project-a-web-server.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-00-final-project-a-web-server.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-00-final-project-a-web-server.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-01-single-threaded.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-01-single-threaded.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-01-single-threaded.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-02-multithreaded.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-02-multithreaded.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-02-multithreaded.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/foreword.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/foreword.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/foreword.md",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/benchmark",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/title-page.md",
+   "mode": "meta"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/title-page.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/sources/rust-book-cn/book/title-page.md",
+   "mode": "read"
+  },
+  {
+   "op": "mkdir",
+   "path": "/Users/lute/Project/any2skills/pipeline/knowledge",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/Users/lute/Project/any2skills/pipeline/knowledge/anchor-catalog.rust-book-cn.json",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/Users/lute/Project/any2skills/pipeline/knowledge",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/Users/lute/Project/any2skills/pipeline/knowledge/themes.rust-book-cn.json",
+   "mode": "write"
+  }
+ ]
+}

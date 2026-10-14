@@ -19,14 +19,14 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT } from './tools/anchor-index.mjs'
-import { buildAnchorCatalog, writeAnchorCatalog, CATALOG_REL_PATH } from './tools/theme-catalog.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY, sourceBookRoot } from './tools/anchor-index.mjs'
+import { buildAnchorCatalog, writeAnchorCatalog, catalogRelPath } from './tools/theme-catalog.mjs'
 import {
   buildProposalSystemPrompt,
   buildProposalUserPrompt,
   proposeThemes,
   writeThemeManifest,
-  THEMES_REL_PATH,
+  themesRelPath,
 } from './tools/theme-proposer.mjs'
 import { resolveLlmConfig, LlmConfigError, normalizeReasoningEffort } from './tools/llm-client.mjs'
 
@@ -41,6 +41,7 @@ function parseArgs(argv) {
     provider: null,
     reasoningEffort: null,
     maxTokens: null,
+    sourceKey: DEFAULT_SOURCE_KEY,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -59,6 +60,7 @@ function parseArgs(argv) {
     else if (a === '--reasoning-effort') (flags.reasoningEffort = need(i, a)), (i += 1)
     else if (a === '--max-tokens') (flags.maxTokens = Number(need(i, a))), (i += 1)
     else if (a === '--repo-root') (flags.repoRoot = path.resolve(need(i, a))), (i += 1)
+    else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a.startsWith('--')) throw new Error(`未知参数：${a}`)
     else throw new Error(`未知位置参数：${a}（本命令不接受位置参数）`)
   }
@@ -77,8 +79,9 @@ async function main(argv) {
   const repoRoot = flags.repoRoot
 
   // ---- 第 1 步：建目录（确定性、零模型成本） ----
-  const catalog = await buildAnchorCatalog({ repoRoot })
-  const catalogAbs = await writeAnchorCatalog(catalog, { repoRoot })
+  // 目录按源取（卡 22）：缺省键行为逐字节不变；其他源锚到自己的 book 根与命名空间产物。
+  const catalog = await buildAnchorCatalog({ repoRoot, sourceRoot: sourceBookRoot(flags.sourceKey) })
+  const catalogAbs = await writeAnchorCatalog(catalog, { repoRoot, relPath: catalogRelPath(flags.sourceKey) })
 
   const system = buildProposalSystemPrompt()
   const user = buildProposalUserPrompt({ catalog })
@@ -139,7 +142,7 @@ async function main(argv) {
     createdAt: new Date().toISOString(),
     ...(Number.isFinite(flags.maxTokens) ? { maxTokens: flags.maxTokens } : {}),
   })
-  const manifestAbs = await writeThemeManifest(manifest, { repoRoot })
+  const manifestAbs = await writeThemeManifest(manifest, { repoRoot, relPath: themesRelPath(flags.sourceKey) })
 
   const multiChapter = manifest.themes.filter((t) => t.chapterKeys.length >= 2)
   const out = {

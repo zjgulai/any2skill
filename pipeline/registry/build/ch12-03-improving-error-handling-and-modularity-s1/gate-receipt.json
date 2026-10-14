@@ -6,16 +6,25 @@
   "clusterTitle": "模块化CLI重构",
   "objectsInCluster": 21,
   "objectsKept": 21,
-  "crossChapterAntipatternsInCluster": 0,
-  "crossChapterAntipatternsKept": 0,
-  "crossChapterExcluded": [],
+  "crossChapterAntipatternsInCluster": 3,
+  "crossChapterAntipatternsKept": 1,
+  "crossChapterExcluded": [
+    {
+      "id": "AP-SYNTH-T02-01",
+      "reasonCode": "JUDGE_INSUFFICIENT"
+    },
+    {
+      "id": "AP-SYNTH-T02-05",
+      "reasonCode": "JUDGE_NOT_SUPPORTED"
+    }
+  ],
   "sectionCounts": {
     "whenToUse": 12,
     "principles": 7,
     "patterns": 6,
-    "pitfalls": 3,
+    "pitfalls": 4,
     "code": 0,
-    "reading": 13
+    "reading": 14
   },
   "gaps": [
     {
@@ -30,9 +39,9 @@
       "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
       "section": "pitfalls",
       "heading": "## 常见陷阱",
-      "detail": "条目数 3 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "detail": "条目数 4 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
       "advisory": 6,
-      "actual": 3
+      "actual": 4
     },
     {
       "code": "SECTION_SOURCE_ABSENT",
@@ -111,13 +120,13 @@
     "passed": true,
     "reasonCodes": [],
     "failures": [],
-    "bytes": 8543,
+    "bytes": 8892,
     "sizeLimitBytes": 16568
   },
   "riskFlags": [
     {
       "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
-      "detail": "anti-pattern 覆盖不足：常见陷阱段 3 条，建议值 6 条。",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 4 条，建议值 6 条。",
       "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
     }
   ],
@@ -134,18 +143,18 @@
     "failures": [],
     "reasonCodes": [],
     "checks": {
-      "bytes": 8543,
+      "bytes": 8892,
       "sizeLimitBytes": 16568,
       "sectionItemCounts": {
         "## 何时使用": 12,
         "## 核心原则": 7,
         "## 实践模式": 6,
-        "## 常见陷阱": 3,
+        "## 常见陷阱": 4,
         "## 配套代码": 0,
-        "## 深度阅读": 13
+        "## 深度阅读": 14
       },
-      "sourceRefCount": 13
+      "sourceRefCount": 14
     },
-    "markdownHash": "sha256:3dc0308f1f3138036d730063f654a0c45a1f296eafb922d48cc927729b99e787"
+    "markdownHash": "sha256:d2064ff86a953bd9b3fab728dd3f65d8c458ad3a1b23a5ea2f7b5e850a7f57be"
   }
 }

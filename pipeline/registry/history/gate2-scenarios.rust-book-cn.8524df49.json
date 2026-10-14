@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "gate2-scenarios/v1",
+  "createdAt": "2026-10-14T07:02:12.796Z",
+  "promptFingerprint": "prompt-e3c3959885e0",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "candidates": [
+    {
+      "skillId": "ch12-03-improving-error-handling-and-modularity-s1",
+      "name": "模块化CLI重构",
+      "inputHash": "sha256:f00e15f6f0d55970533e20c08cd066c8aca2acab944be5fefbace0cac3cd7589",
+      "scenarios": [
+        {
+          "scenarioId": "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+          "text": "我这个命令行工具现在 main.rs 已经四百多行了，参数解析、文件打开和业务逻辑全混在一起，我想把它拆开，让逻辑能单独写测试，该怎么动手？",
+          "why": "这需要将二进制项目拆分为 main.rs 和 lib.rs，并把业务逻辑提取到可测试的 run 函数中，属于模块化重构的典型场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch12-03-improving-error-handling-and-modularity-s1-sc2",
+          "text": "现在参数解析有十几个 flag，还要映射成内部配置，我想把这段解析逻辑从 main 里抽出来，main 只拿现成的配置对象，有没有稳妥的拆法？",
+          "why": "这涉及提取参数解析器并将配置变量组织进结构体，通过 Config::new 返回配置实例，而不是让 main 继续负责参数与变量的映射。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch12-03-improving-error-handling-and-modularity-s1-sc3",
+          "text": "我已经把核心逻辑搬到 lib.rs 了，但 main 里还残留错误处理和配置组装，我想知道 main 保留哪些职责才算干净，避免以后又膨胀。",
+          "why": "这需要界定关注分离后 main 函数的职责范围：调用解析、设置其他配置、调用 run 并处理错误，正是该技能要提供的工程规则。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch02-00-guessing-game-tutorial-s1",
+      "name": "猜数字游戏实现",
+      "inputHash": "sha256:60522b8f0ff0cf650e6adfd3346e7572e845757b178cb386745f310ef3085642",
+      "scenarios": [
+        {
+          "scenarioId": "ch02-00-guessing-game-tutorial-s1-sc1",
+          "text": "我在准备一份 Rust 入门练习，想带学习者写一个程序：每次运行生成一个 1 到 100 的随机整数，让用户输入猜测，并提示大了、小了或猜中退出。请帮我把实现顺序和需要引入的依赖讲清楚。",
+          "why": "它涉及随机数生成依赖和输入与数字比较，正好需要该技能覆盖的规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch02-00-guessing-game-tutorial-s1-sc2",
+          "text": "同事给我看了一段 Rust 代码，里面用到了 rand 这个外部 crate，并且把用户输入解析成数字后才能和秘密数比较；我不太明白为什么标准库不直接给随机数、为什么不能拿字符串直接比，请帮我解释一下。",
+          "why": "这需要解释 rand crate 的用途以及 Rust 不允许字符串与数字直接比较的原因。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch02-00-guessing-game-tutorial-s1-sc3",
+          "text": "我在维护一个教学用的 Rust 示例，学生反馈说读取用户输入后和随机生成的秘密数比较时总是类型不匹配，编译报错。请告诉我正确的比较方式该怎么调整。",
+          "why": "这需要把输入 String 转成数字类型，再与秘密数字比较，属于该技能处理的核心规则。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch09-03-to-panic-or-not-to-panic-s1",
+      "name": "Rust错误处理决策",
+      "inputHash": "sha256:d6d6a2dd66d2310747a74809c94cfb282e6369086daca513f13d0808dc21b43b",
+      "scenarios": [
+        {
+          "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc1",
+          "text": "我审查到一段解析命令行传入 IP 地址的代码，它直接对 parse 结果调 unwrap，但输入来自用户，我该怎么判断这里是否应该改成错误传播？",
+          "why": "这需要判断用户输入 IP 地址解析失败时是返回 Result 还是允许 unwrap，正是该技能覆盖的决策。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc2",
+          "text": "我需要写一个从环境变量读取超时时间并解析成 Duration 的新函数，读取和解析都可能失败；现在拿不准是让它返回 Result 还是直接 panic 暴露配置错误。",
+          "why": "这需要决定可能失败的新函数默认返回 Result 还是用 panic，属于该技能对函数错误处理策略的判断。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc3",
+          "text": "我在多个处理订单数量的函数里都重复检查数值大于零，想把这个验证集中到一个新类型里，让函数签名只接收已校验的值，不知道这样是否合适。",
+          "why": "这需要判断是否能通过新类型封装验证来避免无效状态和重复检查，是该技能给出的类型封装建议。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch12-03-improving-error-handling-and-modularity-s2",
+      "name": "CLI错误处理设计",
+      "inputHash": "sha256:0e36e993a855eb0b8ad1bc58590f85c9469ef2bf73680e176339bf1afa2ecc85",
+      "scenarios": [
+        {
+          "scenarioId": "ch12-03-improving-error-handling-and-modularity-s2-sc1",
+          "text": "我写了一个接收两个位置参数的命令，但用户只传一个参数时程序会直接报 index out of bounds，你能帮我把参数解析改成先检查参数数量，不够时给出明确的使用说明并退出吗？",
+          "why": "它涉及在访问 slice 索引前检查长度并显式输出清晰错误，而不是把开发者的索引越界信息暴露给用户。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch12-03-improving-error-handling-and-modularity-s2-sc2",
+          "text": "我的 CLI 工具在配置解析失败时现在直接用 panic 崩溃，我想把 Config::new 改成返回 Result，并让 main 里只做配置和错误处理，真正的业务逻辑挪到一个单独函数里，出错时以非零状态码退出。",
+          "why": "它需要 Config::new 与 main 用 Result 沟通、提取 run 函数以及用 process::exit 统一退出码，属于该技能的核心规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch12-03-improving-error-handling-and-modularity-s2-sc3",
+          "text": "我正在重构一个命令行工具，里面文件读取和网络请求都可能失败，现在到处 expect 或者 panic，我想把这些错误向上传递，在 main 里统一处理并返回错误码，而不是在每个调用点都处理。",
+          "why": "它涉及用 ? 运算符和 Box<dyn Error> 让错误从可能失败的操作向上传播，并由调用者统一检测和退出。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch17-03-oo-design-patterns-s1",
+      "name": "Rust 状态模式实现与权衡",
+      "inputHash": "sha256:95460b1c5c2658ba224b4ca5fbc05714c8bb04fd84b7c65fa4611bd0b0846b31",
+      "scenarios": [
+        {
+          "scenarioId": "ch17-03-oo-design-patterns-s1-sc1",
+          "text": "我们的文章模块现在用一个统一结构体加状态字段来表示草稿、审核中和已发布，我想改成由编译器禁止在草稿上取正文，同时保留审核和发布的状态流转。请给出改造思路，并告诉我以后如果要在审核中之前插入一个“已驳回”状态，原有代码里哪些转换方法必须改。",
+          "why": "它要求比较经典状态模式与类型化状态编码，并评估插入新状态时的连锁修改，正是该技能的设计取舍内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch17-03-oo-design-patterns-s1-sc2",
+          "text": "我写的 Post 结构体把状态放在一个字段里，新建时必须是草稿；在 request_review 和 approve 中我想把旧状态从结构体里取出来换成新状态，但方法签名里有 &self 和 Box<Self> 的情况，编译器总报不能移动字段。帮我改写这些方法，让状态转移能编译通过。",
+          "why": "这需要把状态字段包成 Option 并用 take 移出旧状态、用 as_ref 在引用上下文中读取，是该技能里的关键实现规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch17-03-oo-design-patterns-s1-sc3",
+          "text": "我们的内容管理里，文章草稿读取正文必须返回空字符串，但任何状态都能追加文本；现在这些判断散在服务层。请把状态相关规则整理到状态对象里，给出初始化和状态迁移方法，别让 Post 自身去判断当前是什么状态。",
+          "why": "它要求把博文工作流规则放进状态对象而非 Post，并实现草案内容为空的业务约束，正应由该技能响应。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch18-02-refutability-s1",
+      "name": "判断模式可反驳性与语法位置",
+      "inputHash": "sha256:6263578a41b41c18862334e2be73828059b95c819bfe5c01a51f6a66ae40eb7d",
+      "scenarios": [
+        {
+          "scenarioId": "ch18-02-refutability-s1-sc1",
+          "text": "我准备给内部解析函数加上签名 `fn handle(Event::Click { x, y })`，但 `Event` 还有 Key 和 Resize 等变体；这个签名能不能直接这样写，还是必须改成 `match` 才能安全处理？",
+          "why": "这需要判断函数参数位置的模式是否不可反驳；解构枚举的单个变体是可反驳的，函数参数不接受这种写法。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch18-02-refutability-s1-sc2",
+          "text": "我在迁移旧代码时看到一行 `let Some(config) = load_config();`，当加载失败返回 `None` 时这行会发生什么？我想保留失败分支而不是让它直接退出。",
+          "why": "这需要判断 `let` 语句中 `Some(config)` 的可反驳性；该位置只接受不可反驳模式，`None` 会匹配失败，应该改写为 `if let` 或 `match`。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch18-02-refutability-s1-sc3",
+          "text": "我在处理一个总是存在的字段时写了 `if let (name, age) = person`，但编译器提示这个模式不会失败；这是不是意味着我应该直接改成普通 `let` 绑定？",
+          "why": "这需要判断 `if let` 位置是否只能接受可反驳模式；元组解构是不可反驳的，放在 `if let` 中不合适。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    }
+  ],
+  "unrelated": {
+    "inputHash": "sha256:3353ae90eca4f43c50d4b434bd27ac7e7f73e15bd99de672a464c4fede847ec3",
+    "scenarios": [
+      {
+        "scenarioId": "unrelated-sc1",
+        "text": "帮我整理下周项目例会的会议纪要，把决定事项和负责人按优先级列出来。",
+        "why": "这是文档整理与项目管理任务，不涉及 Rust 编程、CLI、错误处理或模式匹配。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc2",
+        "text": "我想把公司官网首页的大图批量压缩成 WebP 格式，同时尽量保持画质不变。",
+        "why": "这是图片资源优化任务，与清单中的 Rust 语言技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc3",
+        "text": "请帮我写一封给客户的英文邮件，说明本周交付延迟的原因并给出新的时间表。",
+        "why": "这是商务沟通写作，不涉及任何 Rust 编程主题。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc4",
+        "text": "我有一份两万行的销售记录表，请帮我按地区和季度汇总销售额并生成一张透视表。",
+        "why": "这是数据分析与表格处理，不涉及 Rust 游戏、CLI、错误处理或状态模式。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc5",
+        "text": "帮我设计一个 PostgreSQL 表结构，用来保存用户订单、订单明细和支付流水。",
+        "why": "这是数据库设计任务，不属于清单中的 Rust 语言实现技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc6",
+        "text": "为我们的移动端 App 设计一套深色模式配色方案，并给出主页面和底栏的色值。",
+        "why": "这是 UI/视觉设计，与 Rust 编程、CLI 重构或模式匹配无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc7",
+        "text": "请给我一段 Nginx 配置，用于对公开 API 做限流，并把 HTTP 请求重定向到 HTTPS。",
+        "why": "这是 Web 服务器配置与运维，不涉及清单中的 Rust 编程技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc8",
+        "text": "帮我制定一个适合初学者的两周健身计划，包括力量训练和有氧安排。",
+        "why": "这是健康生活规划，完全不在编程技能范围内。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc9",
+        "text": "我想在 Kubernetes 里配置一个 CronJob，每天凌晨把 MySQL 数据库备份到 S3。",
+        "why": "这是容器编排与备份任务，不涉及 Rust 语言特性或 CLI 错误处理。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc10",
+        "text": "帮我审查这段 Python 代码在并发请求下是否会出现共享状态竞争问题。",
+        "why": "这是针对 Python 的并发代码审查，不触发 Rust 的 Result 处理或状态模式实现技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc11",
+        "text": "请为我们的 SaaS 产品写一段中文落地页主标题和副标题，控制在 100 字以内。",
+        "why": "这是营销文案创作，不是 Rust 编程任务。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc12",
+        "text": "我想用 SQL 找出连续 30 天没有登录过的用户列表，请给出查询思路或示例。",
+        "why": "这是 SQL 检索问题，不涉及清单中的 Rust 编程技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc13",
+        "text": "帮我准备一个十分钟的技术分享大纲，主题是“如何降低代码重构带来的风险”。",
+        "why": "这是演讲准备和通用工程方法论，不涉及模块化 CLI 重构或 Rust 语言细节。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc14",
+        "text": "请为我们的 REST API 设计一套统一的错误响应 JSON 结构，并说明每个字段的用途。",
+        "why": "这是 API 接口设计，不涉及 CLI 错误处理或 Rust 的 Result/unwrap 决策。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc15",
+        "text": "帮我检查这封内部公告的中文语法、语气和标点是否合适。",
+        "why": "这是文本润色与沟通检查，与任何 Rust 编程技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc16",
+        "text": "我想把一批 Markdown 文档转成带页眉和目录的 PDF，请推荐一个工作流。",
+        "why": "这是文档格式转换与工具使用，不涉及清单中的 Rust 实现技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc17",
+        "text": "请根据这张销售漏斗数据，分析哪个阶段的转化率下降最明显，并给出可能原因。",
+        "why": "这是业务分析任务，不涉及编程语言特性或 CLI 设计。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc18",
+        "text": "帮我写一个 Dockerfile，用来构建包含 Node.js 和 Puppeteer 的镜像。",
+        "why": "这是容器镜像构建配置，与 Rust 游戏、错误处理或状态模式无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc19",
+        "text": "我想为团队制定一份代码评审清单，覆盖可读性、安全性、测试覆盖和性能。",
+        "why": "这是工程流程和规范制定，不是具体的 Rust 语言实现任务。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc20",
+        "text": "请告诉我如何在 Excel 里用公式从身份证号中提取出生日期和性别。",
+        "why": "这是办公软件使用问题，不涉及任何 Rust 编程技能。",
+        "containsNameLeak": false
+      }
+    ],
+    "problems": [],
+    "finishReason": "stop"
+  },
+  "usage": {
+    "promptTokens": 5876,
+    "completionTokens": 14262
+  }
+}

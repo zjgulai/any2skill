@@ -281,4 +281,14 @@ describe('18 · 源键与源根', () => {
       await rm(root, { recursive: true, force: true })
     }
   })
+
+  it('主题三件套按源命名空间（卡 22）：目录/清单缺省逐字不变、其他源加后缀', async () => {
+    const tc = await import('../../tools/theme-catalog.mjs')
+    const tp = await import('../../tools/theme-proposer.mjs')
+    const know = (...p) => path.join('pipeline', 'knowledge', ...p)
+    assert.equal(tc.catalogRelPath(), know('anchor-catalog.json'))
+    assert.equal(tc.catalogRelPath('rust-book-cn'), know('anchor-catalog.rust-book-cn.json'))
+    assert.equal(tp.themesRelPath(), know('themes.json'))
+    assert.equal(tp.themesRelPath('rust-book-cn'), know('themes.rust-book-cn.json'))
+  })
 })

@@ -1,0 +1,5699 @@
+{
+  "schemaVersion": "antipattern-receipt/v1",
+  "runId": "run-fd491f2468f0",
+  "producerRunId": "run-f587ec132e44",
+  "pipelineVersion": 8,
+  "createdAt": "2026-10-14T11:37:21.227Z",
+  "themes": {
+    "manifestPath": "pipeline/knowledge/themes.rust-book-cn.json",
+    "catalogHash": "sha256:cc1ae545c9270a2b29dde4a3c72ec5ac4c9a172319a2dfa4961e6838f4565a11",
+    "selected": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12"
+    ],
+    "total": 12
+  },
+  "promptFingerprint": "prompt-654165a7668c",
+  "model": {
+    "provider": null,
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "thisRun": {
+      "calls": 12,
+      "tokens": {
+        "input": 258779,
+        "output": 209855
+      },
+      "tokensDetail": {
+        "reasoning": 174441,
+        "cachedInput": 10752
+      },
+      "failedCalls": 0,
+      "retries": 0
+    },
+    "cumulative": {
+      "calls": 12,
+      "input": 258779,
+      "output": 209855,
+      "reasoning": 174441,
+      "cachedInput": 10752,
+      "usageUnknownThemes": []
+    },
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null
+  },
+  "judge": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 94,
+    "tokens": {
+      "input": 165864,
+      "output": 88329
+    },
+    "tokensDetail": {
+      "reasoning": 83655,
+      "cachedInput": 36096
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    }
+  },
+  "perTheme": [
+    {
+      "themeId": "T01",
+      "name": "所有权、借用与生命周期",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 11,
+      "chapters": [
+        "ch04-00-understanding-ownership",
+        "ch04-01-what-is-ownership",
+        "ch04-02-references-and-borrowing",
+        "ch04-03-slices",
+        "ch10-03-lifetime-syntax",
+        "ch08-02-strings",
+        "ch08-03-hash-maps",
+        "ch15-04-rc",
+        "ch15-05-interior-mutability",
+        "ch15-06-reference-cycles",
+        "ch16-02-message-passing"
+      ],
+      "inputBytes": 100360,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T01-01",
+        "AP-SYNTH-T01-02",
+        "AP-SYNTH-T01-03",
+        "AP-SYNTH-T01-04",
+        "AP-SYNTH-T01-05",
+        "AP-SYNTH-T01-06",
+        "AP-SYNTH-T01-07",
+        "AP-SYNTH-T01-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 25257,
+        "completion_tokens": 16992,
+        "total_tokens": 42249,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 13877
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 24361
+      },
+      "finishReason": "stop",
+      "reasoningChars": 26585,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T01-01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-01-what-is-ownership",
+            "ch08-03-hash-maps",
+            "ch16-02-message-passing",
+            "ch15-04-rc"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T01-02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch15-05-interior-mutability"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T01-03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch15-05-interior-mutability"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T01-04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch10-03-lifetime-syntax"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T01-05",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch04-03-slices"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T01-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch10-03-lifetime-syntax"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T01-07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch10-03-lifetime-syntax"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T01-08",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch15-06-reference-cycles",
+            "ch15-04-rc"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T02",
+      "name": "错误处理与Result",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 7,
+      "chapters": [
+        "ch02-00-guessing-game-tutorial",
+        "ch09-00-error-handling",
+        "ch09-01-unrecoverable-errors-with-panic",
+        "ch09-02-recoverable-errors-with-result",
+        "ch09-03-to-panic-or-not-to-panic",
+        "ch12-03-improving-error-handling-and-modularity",
+        "ch12-06-writing-to-stderr-instead-of-stdout"
+      ],
+      "inputBytes": 68525,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T02-01",
+        "AP-SYNTH-T02-02",
+        "AP-SYNTH-T02-03",
+        "AP-SYNTH-T02-04",
+        "AP-SYNTH-T02-05",
+        "AP-SYNTH-T02-06",
+        "AP-SYNTH-T02-07",
+        "AP-SYNTH-T02-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 18135,
+        "completion_tokens": 12238,
+        "total_tokens": 30373,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9812
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 17239
+      },
+      "finishReason": "stop",
+      "reasoningChars": 18699,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T02-01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch02-00-guessing-game-tutorial",
+            "ch12-03-improving-error-handling-and-modularity"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-05",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch09-03-to-panic-or-not-to-panic",
+            "ch12-03-improving-error-handling-and-modularity"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-03-to-panic-or-not-to-panic"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-07",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch12-03-improving-error-handling-and-modularity",
+            "ch09-01-unrecoverable-errors-with-panic"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T02-08",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch12-06-writing-to-stderr-instead-of-stdout"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T03",
+      "name": "泛型与trait共享行为",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 5,
+      "chapters": [
+        "ch10-00-generics",
+        "ch10-01-syntax",
+        "ch10-02-traits",
+        "ch17-02-trait-objects",
+        "ch19-03-advanced-traits"
+      ],
+      "inputBytes": 87059,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T03-01",
+        "AP-SYNTH-T03-02",
+        "AP-SYNTH-T03-03",
+        "AP-SYNTH-T03-04",
+        "AP-SYNTH-T03-05",
+        "AP-SYNTH-T03-06",
+        "AP-SYNTH-T03-07",
+        "AP-SYNTH-T03-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 22851,
+        "completion_tokens": 22564,
+        "total_tokens": 45415,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 19111
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 21955
+      },
+      "finishReason": "stop",
+      "reasoningChars": 39044,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T03-01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-01-syntax",
+            "ch10-02-traits"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T03-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch10-01-syntax"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T03-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-03-advanced-traits"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T03-04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-02-traits",
+            "ch17-02-trait-objects"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T03-05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch17-02-trait-objects"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T03-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch17-02-trait-objects"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T03-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-03-advanced-traits"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T03-08",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-02-traits",
+            "ch19-03-advanced-traits"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T04",
+      "name": "自定义类型与模式匹配",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 13,
+      "chapters": [
+        "ch05-00-structs",
+        "ch05-01-defining-structs",
+        "ch05-02-example-structs",
+        "ch05-03-method-syntax",
+        "ch06-00-enums",
+        "ch06-01-defining-an-enum",
+        "ch06-02-match",
+        "ch06-03-if-let",
+        "ch18-00-patterns",
+        "ch18-01-all-the-places-for-patterns",
+        "ch18-02-refutability",
+        "ch18-03-pattern-syntax",
+        "ch09-03-to-panic-or-not-to-panic"
+      ],
+      "inputBytes": 120089,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T04-01",
+        "AP-SYNTH-T04-02",
+        "AP-SYNTH-T04-03",
+        "AP-SYNTH-T04-04",
+        "AP-SYNTH-T04-05",
+        "AP-SYNTH-T04-06",
+        "AP-SYNTH-T04-07",
+        "AP-SYNTH-T04-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 31734,
+        "completion_tokens": 21210,
+        "total_tokens": 52944,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 18146
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 30838
+      },
+      "finishReason": "stop",
+      "reasoningChars": 34778,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T04-01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch05-02-example-structs"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T04-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch05-01-defining-structs"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T04-03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-01-defining-an-enum",
+            "ch06-02-match"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T04-04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-02-match",
+            "ch18-01-all-the-places-for-patterns"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T04-05",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-03-if-let",
+            "ch18-01-all-the-places-for-patterns"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T04-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch18-02-refutability"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T04-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch18-03-pattern-syntax"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T04-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-03-to-panic-or-not-to-panic"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T05",
+      "name": "集合与字符串",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 4,
+      "chapters": [
+        "ch08-00-common-collections",
+        "ch08-01-vectors",
+        "ch08-02-strings",
+        "ch08-03-hash-maps"
+      ],
+      "inputBytes": 45045,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T05-01",
+        "AP-SYNTH-T05-02",
+        "AP-SYNTH-T05-03",
+        "AP-SYNTH-T05-04",
+        "AP-SYNTH-T05-05",
+        "AP-SYNTH-T05-06",
+        "AP-SYNTH-T05-07",
+        "AP-SYNTH-T05-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 12425,
+        "completion_tokens": 16497,
+        "total_tokens": 28922,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 13929
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 11529
+      },
+      "finishReason": "stop",
+      "reasoningChars": 27392,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T05-01",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-01-vectors"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T05-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-01-vectors"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T05-03",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch08-02-strings"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T05-04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-02-strings"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T05-05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-02-strings"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T05-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T05-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T05-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T06",
+      "name": "智能指针与内部可变性",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 8,
+      "chapters": [
+        "ch15-00-smart-pointers",
+        "ch15-01-box",
+        "ch15-02-deref",
+        "ch15-03-drop",
+        "ch15-04-rc",
+        "ch15-05-interior-mutability",
+        "ch15-06-reference-cycles",
+        "ch16-03-shared-state"
+      ],
+      "inputBytes": 87923,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T06-01",
+        "AP-SYNTH-T06-02",
+        "AP-SYNTH-T06-03",
+        "AP-SYNTH-T06-04",
+        "AP-SYNTH-T06-05",
+        "AP-SYNTH-T06-06",
+        "AP-SYNTH-T06-07",
+        "AP-SYNTH-T06-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [
+        "ch15-06-reference-cycles#h1-1"
+      ],
+      "usage": {
+        "prompt_tokens": 24065,
+        "completion_tokens": 21645,
+        "total_tokens": 45710,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 18667
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 23169
+      },
+      "finishReason": "stop",
+      "reasoningChars": 36026,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T06-01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-01-box"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T06-02",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-02-deref"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T06-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch15-03-drop"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T06-04",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-04-rc"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T06-05",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T06-06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T06-07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-06-reference-cycles"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T06-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-03-shared-state"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T07",
+      "name": "并发与消息传递",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 8,
+      "chapters": [
+        "ch16-00-concurrency",
+        "ch16-01-threads",
+        "ch16-02-message-passing",
+        "ch16-03-shared-state",
+        "ch16-04-extensible-concurrency-sync-and-send",
+        "ch20-00-final-project-a-web-server",
+        "ch20-02-multithreaded",
+        "ch20-03-graceful-shutdown-and-cleanup"
+      ],
+      "inputBytes": 109112,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T07-01",
+        "AP-SYNTH-T07-02",
+        "AP-SYNTH-T07-03",
+        "AP-SYNTH-T07-04",
+        "AP-SYNTH-T07-05",
+        "AP-SYNTH-T07-06",
+        "AP-SYNTH-T07-07",
+        "AP-SYNTH-T07-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 27957,
+        "completion_tokens": 16065,
+        "total_tokens": 44022,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 12349
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 27061
+      },
+      "finishReason": "stop",
+      "reasoningChars": 23273,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T07-01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch16-01-threads"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T07-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-01-threads"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T07-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-02-message-passing"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T07-04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch16-03-shared-state",
+            "ch16-04-extensible-concurrency-sync-and-send"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T07-05",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T07-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T07-07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch20-03-graceful-shutdown-and-cleanup"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T07-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T08",
+      "name": "自动化测试与测试组织",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 10,
+      "chapters": [
+        "ch11-00-testing",
+        "ch11-01-writing-tests",
+        "ch11-02-running-tests",
+        "ch11-03-test-organization",
+        "ch12-04-testing-the-librarys-functionality",
+        "ch12-05-working-with-environment-variables",
+        "ch14-02-publishing-to-crates-io",
+        "ch15-05-interior-mutability",
+        "ch09-03-to-panic-or-not-to-panic",
+        "ch13-02-iterators"
+      ],
+      "inputBytes": 90525,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T08-01",
+        "AP-SYNTH-T08-02",
+        "AP-SYNTH-T08-03",
+        "AP-SYNTH-T08-04",
+        "AP-SYNTH-T08-05",
+        "AP-SYNTH-T08-06",
+        "AP-SYNTH-T08-07",
+        "AP-SYNTH-T08-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 23894,
+        "completion_tokens": 13008,
+        "total_tokens": 36902,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 10341
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 22998
+      },
+      "finishReason": "stop",
+      "reasoningChars": 21274,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T08-01",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-02-running-tests"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T08-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T08-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T08-04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T08-05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-03-test-organization"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T08-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-03-test-organization"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T08-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T08-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T09",
+      "name": "闭包与迭代器",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 8,
+      "chapters": [
+        "ch13-00-functional-features",
+        "ch13-01-closures",
+        "ch13-02-iterators",
+        "ch13-03-improving-our-io-project",
+        "ch13-04-performance",
+        "ch19-05-advanced-functions-and-closures",
+        "ch16-01-threads",
+        "ch03-05-control-flow"
+      ],
+      "inputBytes": 77932,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T09-01",
+        "AP-SYNTH-T09-02",
+        "AP-SYNTH-T09-03",
+        "AP-SYNTH-T09-04",
+        "AP-SYNTH-T09-05",
+        "AP-SYNTH-T09-06",
+        "AP-SYNTH-T09-07",
+        "AP-SYNTH-T09-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 20602,
+        "completion_tokens": 17726,
+        "total_tokens": 38328,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 14665
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 19706
+      },
+      "finishReason": "stop",
+      "reasoningChars": 27870,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T09-01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch03-05-control-flow",
+            "ch13-02-iterators"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T09-02",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-01-closures"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T09-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch13-01-closures"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T09-04",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-02-iterators"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T09-05",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-03-improving-our-io-project"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T09-06",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch13-03-improving-our-io-project",
+            "ch13-04-performance"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T09-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-05-advanced-functions-and-closures"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T09-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-01-threads"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T10",
+      "name": "Cargo包与模块系统",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 17,
+      "chapters": [
+        "ch01-03-hello-cargo",
+        "ch02-00-guessing-game-tutorial",
+        "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+        "ch07-01-packages-and-crates",
+        "ch07-02-defining-modules-to-control-scope-and-privacy",
+        "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+        "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+        "ch07-05-separating-modules-into-different-files",
+        "ch12-03-improving-error-handling-and-modularity",
+        "ch14-00-more-about-cargo",
+        "ch14-01-release-profiles",
+        "ch14-02-publishing-to-crates-io",
+        "ch14-03-cargo-workspaces",
+        "ch14-04-installing-binaries",
+        "ch14-05-extending-cargo",
+        "appendix-04-useful-development-tools",
+        "appendix-05-editions"
+      ],
+      "inputBytes": 112103,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T10-01",
+        "AP-SYNTH-T10-02",
+        "AP-SYNTH-T10-03",
+        "AP-SYNTH-T10-04",
+        "AP-SYNTH-T10-05",
+        "AP-SYNTH-T10-06",
+        "AP-SYNTH-T10-07",
+        "AP-SYNTH-T10-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 29911,
+        "completion_tokens": 19836,
+        "total_tokens": 49747,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 17058
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 29015
+      },
+      "finishReason": "stop",
+      "reasoningChars": 33634,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T10-01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T10-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T10-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T10-04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T10-05",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io",
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T10-06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T10-07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T10-08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-03-cargo-workspaces"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T11",
+      "name": "宏与元编程",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 3,
+      "chapters": [
+        "ch19-06-macros",
+        "appendix-03-derivable-traits",
+        "ch05-02-example-structs"
+      ],
+      "inputBytes": 41014,
+      "objectsProduced": 8,
+      "objectIds": [
+        "AP-SYNTH-T11-01",
+        "AP-SYNTH-T11-02",
+        "AP-SYNTH-T11-03",
+        "AP-SYNTH-T11-04",
+        "AP-SYNTH-T11-05",
+        "AP-SYNTH-T11-06",
+        "AP-SYNTH-T11-07",
+        "AP-SYNTH-T11-08"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 11287,
+        "completion_tokens": 18952,
+        "total_tokens": 30239,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15927
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 10391
+      },
+      "finishReason": "stop",
+      "reasoningChars": 32082,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T11-01",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-06-macros"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T11-02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-06-macros"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T11-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-06-macros"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T11-04",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-06-macros"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T11-05",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch05-02-example-structs",
+            "appendix-03-derivable-traits"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T11-06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "appendix-03-derivable-traits"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T11-07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-06-macros"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T11-08",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "appendix-03-derivable-traits"
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "T12",
+      "name": "不安全Rust与高级类型",
+      "outcome": "ok",
+      "reusedRaw": false,
+      "chapterCount": 2,
+      "chapters": [
+        "ch19-01-unsafe-rust",
+        "ch19-04-advanced-types"
+      ],
+      "inputBytes": 38656,
+      "objectsProduced": 7,
+      "objectIds": [
+        "AP-SYNTH-T12-01",
+        "AP-SYNTH-T12-02",
+        "AP-SYNTH-T12-03",
+        "AP-SYNTH-T12-04",
+        "AP-SYNTH-T12-05",
+        "AP-SYNTH-T12-06",
+        "AP-SYNTH-T12-07"
+      ],
+      "merges": 0,
+      "unresolvedAnchors": [],
+      "usage": {
+        "prompt_tokens": 10661,
+        "completion_tokens": 13122,
+        "total_tokens": 23783,
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 10559
+        },
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 9765
+      },
+      "finishReason": "stop",
+      "reasoningChars": 20141,
+      "marks": [
+        {
+          "id": "AP-SYNTH-T12-01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-02",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-05",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-04-advanced-types"
+          ]
+        },
+        {
+          "id": "AP-SYNTH-T12-07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-04-advanced-types"
+          ]
+        }
+      ]
+    }
+  ],
+  "themeFailures": [],
+  "merges": [],
+  "unresolvedAnchors": [
+    {
+      "themeId": "T06",
+      "anchor": "ch15-06-reference-cycles#h1-1"
+    }
+  ],
+  "marks": {
+    "codeMeaning": {
+      "CROSS_CHAPTER_SUPPORTED": "sourceRefs 覆盖 ≥2 个章节——跨章支撑成立",
+      "SINGLE_CHAPTER_ONLY": "sourceRefs 只覆盖 1 个章节——单章反模式（可能是合法的，但不得声称跨章）",
+      "CROSS_CHAPTER_CLAIM_UNSUPPORTED": "引用 ≥2 个锚点、去重后却只落在 1 个章节，且主题输入跨 ≥2 章——「抄取冒充综合」的检出点"
+    },
+    "distribution": {
+      "total": 76,
+      "multiChapter": 15,
+      "crossChapterRatio": {
+        "numerator": 15,
+        "denominator": 76,
+        "decimal": 0.1974
+      },
+      "chaptersCited": {
+        "ch04-01-what-is-ownership": 1,
+        "ch08-03-hash-maps": 3,
+        "ch16-02-message-passing": 2,
+        "ch15-04-rc": 3,
+        "ch04-02-references-and-borrowing": 3,
+        "ch15-05-interior-mutability": 4,
+        "ch10-03-lifetime-syntax": 3,
+        "ch04-03-slices": 1,
+        "ch15-06-reference-cycles": 2,
+        "ch09-02-recoverable-errors-with-result": 3,
+        "ch09-03-to-panic-or-not-to-panic": 1,
+        "ch12-03-improving-error-handling-and-modularity": 1,
+        "ch09-01-unrecoverable-errors-with-panic": 1,
+        "ch12-06-writing-to-stderr-instead-of-stdout": 1,
+        "ch10-01-syntax": 2,
+        "ch10-02-traits": 3,
+        "ch19-03-advanced-traits": 2,
+        "ch17-02-trait-objects": 2,
+        "ch05-02-example-structs": 2,
+        "ch05-01-defining-structs": 1,
+        "ch06-01-defining-an-enum": 1,
+        "ch06-02-match": 2,
+        "ch18-01-all-the-places-for-patterns": 2,
+        "ch06-03-if-let": 1,
+        "ch18-02-refutability": 1,
+        "ch18-03-pattern-syntax": 1,
+        "ch08-01-vectors": 2,
+        "ch08-02-strings": 1,
+        "ch15-01-box": 1,
+        "ch15-02-deref": 1,
+        "ch15-03-drop": 1,
+        "ch16-03-shared-state": 1,
+        "ch16-01-threads": 3,
+        "ch20-02-multithreaded": 3,
+        "ch20-03-graceful-shutdown-and-cleanup": 1,
+        "ch11-02-running-tests": 1,
+        "ch11-01-writing-tests": 3,
+        "ch11-03-test-organization": 2,
+        "ch03-05-control-flow": 1,
+        "ch13-02-iterators": 2,
+        "ch13-01-closures": 2,
+        "ch13-03-improving-our-io-project": 1,
+        "ch19-05-advanced-functions-and-closures": 1,
+        "ch07-04-bringing-paths-into-scope-with-the-use-keyword": 2,
+        "ch07-03-paths-for-referring-to-an-item-in-the-module-tree": 2,
+        "ch14-02-publishing-to-crates-io": 3,
+        "ch14-03-cargo-workspaces": 1,
+        "ch19-06-macros": 2,
+        "appendix-03-derivable-traits": 3,
+        "ch19-01-unsafe-rust": 3,
+        "ch19-04-advanced-types": 1
+      },
+      "byMark": {
+        "CROSS_CHAPTER_SUPPORTED": 15,
+        "SINGLE_CHAPTER_ONLY": 38,
+        "CROSS_CHAPTER_CLAIM_UNSUPPORTED": 23
+      },
+      "perObject": [
+        {
+          "id": "AP-SYNTH-T01-01",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-01-what-is-ownership",
+            "ch08-03-hash-maps",
+            "ch16-02-message-passing",
+            "ch15-04-rc"
+          ],
+          "sourceRefCount": 4,
+          "citedAnchorCount": 4,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-02",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-03",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-04",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch10-03-lifetime-syntax"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-05",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch04-03-slices"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-06",
+          "themeId": "T01",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch10-03-lifetime-syntax"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-07",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch10-03-lifetime-syntax"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-08",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch15-06-reference-cycles",
+            "ch15-04-rc"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-02",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-03",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-04",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-06",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-03-to-panic-or-not-to-panic"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-07",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch12-03-improving-error-handling-and-modularity",
+            "ch09-01-unrecoverable-errors-with-panic"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-08",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch12-06-writing-to-stderr-instead-of-stdout"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-01",
+          "themeId": "T03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-01-syntax",
+            "ch10-02-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-02",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch10-01-syntax"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-03",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-03-advanced-traits"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-04",
+          "themeId": "T03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-02-traits",
+            "ch17-02-trait-objects"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-06",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch17-02-trait-objects"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-08",
+          "themeId": "T03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-02-traits",
+            "ch19-03-advanced-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-01",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch05-02-example-structs"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-02",
+          "themeId": "T04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch05-01-defining-structs"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-03",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-01-defining-an-enum",
+            "ch06-02-match"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-04",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-02-match",
+            "ch18-01-all-the-places-for-patterns"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-05",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-03-if-let",
+            "ch18-01-all-the-places-for-patterns"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-06",
+          "themeId": "T04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch18-02-refutability"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-07",
+          "themeId": "T04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch18-03-pattern-syntax"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-01",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-01-vectors"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-02",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-01-vectors"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-03",
+          "themeId": "T05",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch08-02-strings"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-06",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-08",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-01",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-01-box"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-02",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-02-deref"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-03",
+          "themeId": "T06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch15-03-drop"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-04",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-04-rc"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-06",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-07",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-06-reference-cycles"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 1
+        },
+        {
+          "id": "AP-SYNTH-T06-08",
+          "themeId": "T06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-03-shared-state"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-01",
+          "themeId": "T07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch16-01-threads"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-02",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-01-threads"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-03",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-02-message-passing"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-05",
+          "themeId": "T07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-06",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-07",
+          "themeId": "T07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch20-03-graceful-shutdown-and-cleanup"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-08",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-01",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-02-running-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-02",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-03",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-04",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-05",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-03-test-organization"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-06",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-03-test-organization"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-08",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-01",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch03-05-control-flow",
+            "ch13-02-iterators"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-02",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-01-closures"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-03",
+          "themeId": "T09",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch13-01-closures"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-04",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-02-iterators"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-05",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-03-improving-our-io-project"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-07",
+          "themeId": "T09",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-05-advanced-functions-and-closures"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-08",
+          "themeId": "T09",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-01-threads"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-01",
+          "themeId": "T10",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-03",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-04",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-05",
+          "themeId": "T10",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io",
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-06",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-07",
+          "themeId": "T10",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-08",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-03-cargo-workspaces"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-03",
+          "themeId": "T11",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-06-macros"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-05",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch05-02-example-structs",
+            "appendix-03-derivable-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-06",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "appendix-03-derivable-traits"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-07",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-06-macros"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-08",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "appendix-03-derivable-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-01",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-02",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-03",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-07",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-04-advanced-types"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        }
+      ]
+    },
+    "distributionAll": {
+      "total": 95,
+      "multiChapter": 19,
+      "crossChapterRatio": {
+        "numerator": 19,
+        "denominator": 95,
+        "decimal": 0.2
+      },
+      "chaptersCited": {
+        "ch04-01-what-is-ownership": 1,
+        "ch08-03-hash-maps": 4,
+        "ch16-02-message-passing": 2,
+        "ch15-04-rc": 3,
+        "ch04-02-references-and-borrowing": 3,
+        "ch15-05-interior-mutability": 5,
+        "ch10-03-lifetime-syntax": 3,
+        "ch04-03-slices": 1,
+        "ch15-06-reference-cycles": 2,
+        "ch02-00-guessing-game-tutorial": 1,
+        "ch12-03-improving-error-handling-and-modularity": 3,
+        "ch09-02-recoverable-errors-with-result": 3,
+        "ch09-03-to-panic-or-not-to-panic": 3,
+        "ch09-01-unrecoverable-errors-with-panic": 1,
+        "ch12-06-writing-to-stderr-instead-of-stdout": 1,
+        "ch10-01-syntax": 2,
+        "ch10-02-traits": 3,
+        "ch19-03-advanced-traits": 3,
+        "ch17-02-trait-objects": 3,
+        "ch05-02-example-structs": 2,
+        "ch05-01-defining-structs": 1,
+        "ch06-01-defining-an-enum": 1,
+        "ch06-02-match": 2,
+        "ch18-01-all-the-places-for-patterns": 2,
+        "ch06-03-if-let": 1,
+        "ch18-02-refutability": 1,
+        "ch18-03-pattern-syntax": 1,
+        "ch08-01-vectors": 2,
+        "ch08-02-strings": 3,
+        "ch15-01-box": 1,
+        "ch15-02-deref": 1,
+        "ch15-03-drop": 1,
+        "ch16-03-shared-state": 2,
+        "ch16-01-threads": 3,
+        "ch16-04-extensible-concurrency-sync-and-send": 1,
+        "ch20-02-multithreaded": 3,
+        "ch20-03-graceful-shutdown-and-cleanup": 1,
+        "ch11-02-running-tests": 1,
+        "ch11-01-writing-tests": 3,
+        "ch11-03-test-organization": 2,
+        "ch14-02-publishing-to-crates-io": 4,
+        "ch03-05-control-flow": 1,
+        "ch13-02-iterators": 2,
+        "ch13-01-closures": 2,
+        "ch13-03-improving-our-io-project": 2,
+        "ch13-04-performance": 1,
+        "ch19-05-advanced-functions-and-closures": 1,
+        "ch07-04-bringing-paths-into-scope-with-the-use-keyword": 3,
+        "ch07-03-paths-for-referring-to-an-item-in-the-module-tree": 2,
+        "ch14-03-cargo-workspaces": 1,
+        "ch19-06-macros": 5,
+        "appendix-03-derivable-traits": 3,
+        "ch19-01-unsafe-rust": 5,
+        "ch19-04-advanced-types": 2
+      },
+      "byMark": {
+        "CROSS_CHAPTER_SUPPORTED": 19,
+        "SINGLE_CHAPTER_ONLY": 49,
+        "CROSS_CHAPTER_CLAIM_UNSUPPORTED": 27
+      },
+      "perObject": [
+        {
+          "id": "AP-SYNTH-T01-01",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-01-what-is-ownership",
+            "ch08-03-hash-maps",
+            "ch16-02-message-passing",
+            "ch15-04-rc"
+          ],
+          "sourceRefCount": 4,
+          "citedAnchorCount": 4,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-02",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-03",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-04",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch04-02-references-and-borrowing",
+            "ch10-03-lifetime-syntax"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-05",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch04-03-slices"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-06",
+          "themeId": "T01",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch10-03-lifetime-syntax"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-07",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch10-03-lifetime-syntax"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T01-08",
+          "themeId": "T01",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch15-06-reference-cycles",
+            "ch15-04-rc"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-01",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch02-00-guessing-game-tutorial",
+            "ch12-03-improving-error-handling-and-modularity"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-02",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-03",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-04",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-02-recoverable-errors-with-result"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-05",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch09-03-to-panic-or-not-to-panic",
+            "ch12-03-improving-error-handling-and-modularity"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-06",
+          "themeId": "T02",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-03-to-panic-or-not-to-panic"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-07",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch12-03-improving-error-handling-and-modularity",
+            "ch09-01-unrecoverable-errors-with-panic"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T02-08",
+          "themeId": "T02",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch12-06-writing-to-stderr-instead-of-stdout"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-01",
+          "themeId": "T03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-01-syntax",
+            "ch10-02-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-02",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch10-01-syntax"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-03",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-03-advanced-traits"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-04",
+          "themeId": "T03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-02-traits",
+            "ch17-02-trait-objects"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-05",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch17-02-trait-objects"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-06",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch17-02-trait-objects"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-07",
+          "themeId": "T03",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-03-advanced-traits"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T03-08",
+          "themeId": "T03",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch10-02-traits",
+            "ch19-03-advanced-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-01",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch05-02-example-structs"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-02",
+          "themeId": "T04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch05-01-defining-structs"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-03",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-01-defining-an-enum",
+            "ch06-02-match"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-04",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-02-match",
+            "ch18-01-all-the-places-for-patterns"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-05",
+          "themeId": "T04",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch06-03-if-let",
+            "ch18-01-all-the-places-for-patterns"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-06",
+          "themeId": "T04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch18-02-refutability"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-07",
+          "themeId": "T04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch18-03-pattern-syntax"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T04-08",
+          "themeId": "T04",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch09-03-to-panic-or-not-to-panic"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-01",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-01-vectors"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-02",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-01-vectors"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-03",
+          "themeId": "T05",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch08-02-strings"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-04",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-02-strings"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-05",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-02-strings"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-06",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-07",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T05-08",
+          "themeId": "T05",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch08-03-hash-maps"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-01",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-01-box"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-02",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-02-deref"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-03",
+          "themeId": "T06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch15-03-drop"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-04",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-04-rc"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-05",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-06",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T06-07",
+          "themeId": "T06",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch15-06-reference-cycles"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 1
+        },
+        {
+          "id": "AP-SYNTH-T06-08",
+          "themeId": "T06",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-03-shared-state"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-01",
+          "themeId": "T07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch16-01-threads"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-02",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-01-threads"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-03",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-02-message-passing"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-04",
+          "themeId": "T07",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch16-03-shared-state",
+            "ch16-04-extensible-concurrency-sync-and-send"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-05",
+          "themeId": "T07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-06",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-07",
+          "themeId": "T07",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch20-03-graceful-shutdown-and-cleanup"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T07-08",
+          "themeId": "T07",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch20-02-multithreaded"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-01",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-02-running-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-02",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-03",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-04",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-01-writing-tests"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-05",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-03-test-organization"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-06",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch11-03-test-organization"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-07",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T08-08",
+          "themeId": "T08",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch15-05-interior-mutability"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-01",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch03-05-control-flow",
+            "ch13-02-iterators"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-02",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-01-closures"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-03",
+          "themeId": "T09",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch13-01-closures"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-04",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-02-iterators"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-05",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch13-03-improving-our-io-project"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-06",
+          "themeId": "T09",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch13-03-improving-our-io-project",
+            "ch13-04-performance"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-07",
+          "themeId": "T09",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-05-advanced-functions-and-closures"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T09-08",
+          "themeId": "T09",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch16-01-threads"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-01",
+          "themeId": "T10",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-02",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-03",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-04",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-05",
+          "themeId": "T10",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io",
+            "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-06",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-07",
+          "themeId": "T10",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch14-02-publishing-to-crates-io"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T10-08",
+          "themeId": "T10",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch14-03-cargo-workspaces"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-01",
+          "themeId": "T11",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-06-macros"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-02",
+          "themeId": "T11",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-06-macros"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-03",
+          "themeId": "T11",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-06-macros"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-04",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-06-macros"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-05",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_SUPPORTED",
+          "chapters": [
+            "ch05-02-example-structs",
+            "appendix-03-derivable-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-06",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "appendix-03-derivable-traits"
+          ],
+          "sourceRefCount": 3,
+          "citedAnchorCount": 3,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-07",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-06-macros"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T11-08",
+          "themeId": "T11",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "appendix-03-derivable-traits"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-01",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-02",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-03",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-04",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-05",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-01-unsafe-rust"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-06",
+          "themeId": "T12",
+          "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+          "chapters": [
+            "ch19-04-advanced-types"
+          ],
+          "sourceRefCount": 2,
+          "citedAnchorCount": 2,
+          "unresolvedAnchorCount": 0
+        },
+        {
+          "id": "AP-SYNTH-T12-07",
+          "themeId": "T12",
+          "mark": "SINGLE_CHAPTER_ONLY",
+          "chapters": [
+            "ch19-04-advanced-types"
+          ],
+          "sourceRefCount": 1,
+          "citedAnchorCount": 1,
+          "unresolvedAnchorCount": 0
+        }
+      ]
+    },
+    "perObject": [
+      {
+        "id": "AP-SYNTH-T01-01",
+        "themeId": "T01",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch04-01-what-is-ownership",
+          "ch08-03-hash-maps",
+          "ch16-02-message-passing",
+          "ch15-04-rc"
+        ],
+        "sourceRefCount": 4,
+        "citedAnchorCount": 4,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T01-02",
+        "themeId": "T01",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch04-02-references-and-borrowing",
+          "ch15-05-interior-mutability"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T01-03",
+        "themeId": "T01",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch04-02-references-and-borrowing",
+          "ch15-05-interior-mutability"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T01-04",
+        "themeId": "T01",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch04-02-references-and-borrowing",
+          "ch10-03-lifetime-syntax"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T01-05",
+        "themeId": "T01",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch04-03-slices"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T01-06",
+        "themeId": "T01",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch10-03-lifetime-syntax"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T01-07",
+        "themeId": "T01",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch10-03-lifetime-syntax"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T01-08",
+        "themeId": "T01",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch15-06-reference-cycles",
+          "ch15-04-rc"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch04-00-understanding-ownership",
+          "ch04-01-what-is-ownership",
+          "ch04-02-references-and-borrowing",
+          "ch04-03-slices",
+          "ch10-03-lifetime-syntax",
+          "ch08-02-strings",
+          "ch08-03-hash-maps",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-02-message-passing"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-01",
+        "themeId": "T02",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch12-03-improving-error-handling-and-modularity"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T02-02",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch09-02-recoverable-errors-with-result"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-03",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch09-02-recoverable-errors-with-result"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-04",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch09-02-recoverable-errors-with-result"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-05",
+        "themeId": "T02",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      },
+      {
+        "id": "AP-SYNTH-T02-06",
+        "themeId": "T02",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-07",
+        "themeId": "T02",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch09-01-unrecoverable-errors-with-panic"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T02-08",
+        "themeId": "T02",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch02-00-guessing-game-tutorial",
+          "ch09-00-error-handling",
+          "ch09-01-unrecoverable-errors-with-panic",
+          "ch09-02-recoverable-errors-with-result",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch12-06-writing-to-stderr-instead-of-stdout"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T03-01",
+        "themeId": "T03",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch10-01-syntax",
+          "ch10-02-traits"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T03-02",
+        "themeId": "T03",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch10-01-syntax"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T03-03",
+        "themeId": "T03",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-03-advanced-traits"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T03-04",
+        "themeId": "T03",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch10-02-traits",
+          "ch17-02-trait-objects"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T03-05",
+        "themeId": "T03",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch17-02-trait-objects"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      },
+      {
+        "id": "AP-SYNTH-T03-06",
+        "themeId": "T03",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch17-02-trait-objects"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T03-07",
+        "themeId": "T03",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-03-advanced-traits"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T03-08",
+        "themeId": "T03",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch10-02-traits",
+          "ch19-03-advanced-traits"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch10-00-generics",
+          "ch10-01-syntax",
+          "ch10-02-traits",
+          "ch17-02-trait-objects",
+          "ch19-03-advanced-traits"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-01",
+        "themeId": "T04",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch05-02-example-structs"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-02",
+        "themeId": "T04",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch05-01-defining-structs"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-03",
+        "themeId": "T04",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch06-01-defining-an-enum",
+          "ch06-02-match"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-04",
+        "themeId": "T04",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch06-02-match",
+          "ch18-01-all-the-places-for-patterns"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-05",
+        "themeId": "T04",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch06-03-if-let",
+          "ch18-01-all-the-places-for-patterns"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-06",
+        "themeId": "T04",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch18-02-refutability"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-07",
+        "themeId": "T04",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch18-03-pattern-syntax"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T04-08",
+        "themeId": "T04",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch05-00-structs",
+          "ch05-01-defining-structs",
+          "ch05-02-example-structs",
+          "ch05-03-method-syntax",
+          "ch06-00-enums",
+          "ch06-01-defining-an-enum",
+          "ch06-02-match",
+          "ch06-03-if-let",
+          "ch18-00-patterns",
+          "ch18-01-all-the-places-for-patterns",
+          "ch18-02-refutability",
+          "ch18-03-pattern-syntax",
+          "ch09-03-to-panic-or-not-to-panic"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T05-01",
+        "themeId": "T05",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch08-01-vectors"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T05-02",
+        "themeId": "T05",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch08-01-vectors"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T05-03",
+        "themeId": "T05",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch08-02-strings"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T05-04",
+        "themeId": "T05",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch08-02-strings"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      },
+      {
+        "id": "AP-SYNTH-T05-05",
+        "themeId": "T05",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch08-02-strings"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T05-06",
+        "themeId": "T05",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch08-03-hash-maps"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T05-07",
+        "themeId": "T05",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch08-03-hash-maps"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T05-08",
+        "themeId": "T05",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch08-03-hash-maps"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch08-00-common-collections",
+          "ch08-01-vectors",
+          "ch08-02-strings",
+          "ch08-03-hash-maps"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T06-01",
+        "themeId": "T06",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch15-01-box"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T06-02",
+        "themeId": "T06",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch15-02-deref"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T06-03",
+        "themeId": "T06",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch15-03-drop"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T06-04",
+        "themeId": "T06",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch15-04-rc"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T06-05",
+        "themeId": "T06",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch15-05-interior-mutability"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "reject",
+        "reasonCode": "QUOTE_MISMATCH"
+      },
+      {
+        "id": "AP-SYNTH-T06-06",
+        "themeId": "T06",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch15-05-interior-mutability"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T06-07",
+        "themeId": "T06",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch15-06-reference-cycles"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 1,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T06-08",
+        "themeId": "T06",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch16-03-shared-state"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch15-00-smart-pointers",
+          "ch15-01-box",
+          "ch15-02-deref",
+          "ch15-03-drop",
+          "ch15-04-rc",
+          "ch15-05-interior-mutability",
+          "ch15-06-reference-cycles",
+          "ch16-03-shared-state"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T07-01",
+        "themeId": "T07",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch16-01-threads"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T07-02",
+        "themeId": "T07",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch16-01-threads"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T07-03",
+        "themeId": "T07",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch16-02-message-passing"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T07-04",
+        "themeId": "T07",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T07-05",
+        "themeId": "T07",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch20-02-multithreaded"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T07-06",
+        "themeId": "T07",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch20-02-multithreaded"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T07-07",
+        "themeId": "T07",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T07-08",
+        "themeId": "T07",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch20-02-multithreaded"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch16-00-concurrency",
+          "ch16-01-threads",
+          "ch16-02-message-passing",
+          "ch16-03-shared-state",
+          "ch16-04-extensible-concurrency-sync-and-send",
+          "ch20-00-final-project-a-web-server",
+          "ch20-02-multithreaded",
+          "ch20-03-graceful-shutdown-and-cleanup"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T08-01",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch11-02-running-tests"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T08-02",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch11-01-writing-tests"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T08-03",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch11-01-writing-tests"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T08-04",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch11-01-writing-tests"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T08-05",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch11-03-test-organization"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T08-06",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch11-03-test-organization"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T08-07",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch14-02-publishing-to-crates-io"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T08-08",
+        "themeId": "T08",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch15-05-interior-mutability"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch11-00-testing",
+          "ch11-01-writing-tests",
+          "ch11-02-running-tests",
+          "ch11-03-test-organization",
+          "ch12-04-testing-the-librarys-functionality",
+          "ch12-05-working-with-environment-variables",
+          "ch14-02-publishing-to-crates-io",
+          "ch15-05-interior-mutability",
+          "ch09-03-to-panic-or-not-to-panic",
+          "ch13-02-iterators"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T09-01",
+        "themeId": "T09",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch03-05-control-flow",
+          "ch13-02-iterators"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T09-02",
+        "themeId": "T09",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch13-01-closures"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T09-03",
+        "themeId": "T09",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch13-01-closures"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T09-04",
+        "themeId": "T09",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch13-02-iterators"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T09-05",
+        "themeId": "T09",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch13-03-improving-our-io-project"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T09-06",
+        "themeId": "T09",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T09-07",
+        "themeId": "T09",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-05-advanced-functions-and-closures"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T09-08",
+        "themeId": "T09",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch16-01-threads"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch13-00-functional-features",
+          "ch13-01-closures",
+          "ch13-02-iterators",
+          "ch13-03-improving-our-io-project",
+          "ch13-04-performance",
+          "ch19-05-advanced-functions-and-closures",
+          "ch16-01-threads",
+          "ch03-05-control-flow"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T10-01",
+        "themeId": "T10",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T10-02",
+        "themeId": "T10",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T10-03",
+        "themeId": "T10",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T10-04",
+        "themeId": "T10",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T10-05",
+        "themeId": "T10",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch14-02-publishing-to-crates-io",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T10-06",
+        "themeId": "T10",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch14-02-publishing-to-crates-io"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T10-07",
+        "themeId": "T10",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch14-02-publishing-to-crates-io"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T10-08",
+        "themeId": "T10",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch14-03-cargo-workspaces"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch01-03-hello-cargo",
+          "ch02-00-guessing-game-tutorial",
+          "ch07-00-managing-growing-projects-with-packages-crates-and-modules",
+          "ch07-01-packages-and-crates",
+          "ch07-02-defining-modules-to-control-scope-and-privacy",
+          "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+          "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+          "ch07-05-separating-modules-into-different-files",
+          "ch12-03-improving-error-handling-and-modularity",
+          "ch14-00-more-about-cargo",
+          "ch14-01-release-profiles",
+          "ch14-02-publishing-to-crates-io",
+          "ch14-03-cargo-workspaces",
+          "ch14-04-installing-binaries",
+          "ch14-05-extending-cargo",
+          "appendix-04-useful-development-tools",
+          "appendix-05-editions"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T11-01",
+        "themeId": "T11",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T11-02",
+        "themeId": "T11",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T11-03",
+        "themeId": "T11",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T11-04",
+        "themeId": "T11",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T11-05",
+        "themeId": "T11",
+        "mark": "CROSS_CHAPTER_SUPPORTED",
+        "chapters": [
+          "ch05-02-example-structs",
+          "appendix-03-derivable-traits"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T11-06",
+        "themeId": "T11",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "appendix-03-derivable-traits"
+        ],
+        "sourceRefCount": 3,
+        "citedAnchorCount": 3,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T11-07",
+        "themeId": "T11",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch19-06-macros"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T11-08",
+        "themeId": "T11",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "appendix-03-derivable-traits"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-06-macros",
+          "appendix-03-derivable-traits",
+          "ch05-02-example-structs"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-01",
+        "themeId": "T12",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-01-unsafe-rust",
+          "ch19-04-advanced-types"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-02",
+        "themeId": "T12",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-01-unsafe-rust",
+          "ch19-04-advanced-types"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-03",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-01-unsafe-rust",
+          "ch19-04-advanced-types"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      },
+      {
+        "id": "AP-SYNTH-T12-04",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-01-unsafe-rust",
+          "ch19-04-advanced-types"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T12-05",
+        "themeId": "T12",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch19-01-unsafe-rust"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-01-unsafe-rust",
+          "ch19-04-advanced-types"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T12-06",
+        "themeId": "T12",
+        "mark": "CROSS_CHAPTER_CLAIM_UNSUPPORTED",
+        "chapters": [
+          "ch19-04-advanced-types"
+        ],
+        "sourceRefCount": 2,
+        "citedAnchorCount": 2,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-01-unsafe-rust",
+          "ch19-04-advanced-types"
+        ],
+        "verdict": "reject",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      },
+      {
+        "id": "AP-SYNTH-T12-07",
+        "themeId": "T12",
+        "mark": "SINGLE_CHAPTER_ONLY",
+        "chapters": [
+          "ch19-04-advanced-types"
+        ],
+        "sourceRefCount": 1,
+        "citedAnchorCount": 1,
+        "unresolvedAnchorCount": 0,
+        "themeChapters": [
+          "ch19-01-unsafe-rust",
+          "ch19-04-advanced-types"
+        ],
+        "verdict": "pass",
+        "reasonCode": null
+      }
+    ]
+  },
+  "verification": {
+    "summary": {
+      "total": 95,
+      "passed": 76,
+      "rejected": 19,
+      "byReasonCode": {
+        "QUOTE_MISMATCH": 1,
+        "JUDGE_NOT_SUPPORTED": 4,
+        "JUDGE_INSUFFICIENT": 14
+      },
+      "judge": {
+        "enabled": true,
+        "all": false,
+        "calls": 94,
+        "verdicts": {
+          "supported": 76,
+          "insufficient": 14,
+          "unsupported": 4
+        },
+        "notCalled": 1
+      },
+      "crossTab": {
+        "deterministic-pass × supported": 76,
+        "deterministic-pass × insufficient": 14,
+        "deterministic-pass × unsupported": 4,
+        "deterministic-reject × not-called": 1
+      }
+    },
+    "reasonCodeOwners": {
+      "REFERENCE_MISSING": "第 2 层输出契约（对象必须携带 sourceRefs，无豁免）",
+      "IDENTIFIER_INVALID": "第 2 层输出契约（对象 id 生成规则）",
+      "SOURCE_VERSION_DRIFT": "重跑第 1 层或第 2 层（依赖的源版本已变更）",
+      "SCHEMA_INVALID": "第 2 层提示词 / 输出契约",
+      "REFERENCE_UNRESOLVED": "第 1 层锚点索引（或第 2 层引用了不存在的锚点）",
+      "QUOTE_MISSING": "第 2 层输出契约（对象必须携带逐字引文）",
+      "QUOTE_MISMATCH": "第 2 层（最可能是归纳时改写了原文；已排除纯排版差异）",
+      "JUDGE_NOT_SUPPORTED": "第 2 层输入组织方式（引文与主张无关或相矛盾——引文选错了）",
+      "JUDGE_INSUFFICIENT": "锚点切分（证据不足，锚点太小装不下主张）或第 2 层（主张写得比证据宽）"
+    },
+    "refQuoteCheck": {
+      "objectsWithRefQuotes": 95,
+      "totalRefQuotes": 150,
+      "acceptedByStrict": 142,
+      "acceptedByNormalization": 7,
+      "missed": 1
+    }
+  },
+  "counts": {
+    "themesRequested": 12,
+    "themesRun": 12,
+    "themesFailed": 0,
+    "objectsProduced": 95,
+    "passed": 76,
+    "rejected": 19
+  }
+}

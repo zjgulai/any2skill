@@ -1,0 +1,6192 @@
+{
+  "schemaVersion": "antipattern-verdicts/v2",
+  "runId": "run-fd491f2468f0",
+  "producerRunId": "run-f587ec132e44",
+  "judgeEnabled": true,
+  "judgePromptVersion": "judge-prompt/v2",
+  "judgePromptFingerprint": "judge-50ad9d57c1c8",
+  "pipelineVersion": 8,
+  "verdicts": [
+    {
+      "objectId": "AP-SYNTH-T01-01",
+      "objectType": "AntiPattern",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-1",
+        "lineStart": 109,
+        "lineEnd": 172
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+          "anchor": "ch04-01-what-is-ownership#h4-1",
+          "lineStart": 109,
+          "lineEnd": 172
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h3-2",
+          "lineStart": 43,
+          "lineEnd": 64
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-1",
+          "lineStart": 90,
+          "lineEnd": 132
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-1",
+          "lineStart": 13,
+          "lineEnd": 90
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch04-01-what-is-ownership#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch08-03-hash-maps#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "ch16-02-message-passing#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/3",
+          "anchor": "ch15-04-rc#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文覆盖了赋值、哈希 map、通道发送及拥有所有权的数据结构移动后继续使用原始绑定，并明确给出 E0382 及防止双重释放、无效变量和并发线程修改或丢弃导致数据不一致的理由。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T01-02",
+      "objectType": "AntiPattern",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h2-1",
+        "lineStart": 1,
+        "lineEnd": 58
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+          "anchor": "ch04-02-references-and-borrowing#h2-1",
+          "lineStart": 1,
+          "lineEnd": 58
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-2",
+          "lineStart": 32,
+          "lineEnd": 58
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch04-02-references-and-borrowing#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-05-interior-mutability#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "两段锚点分别覆盖了不可变引用修改内容和不可变变量创建可变引用两种情况，并都说明编译器会拒绝编译，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T01-03",
+      "objectType": "AntiPattern",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-1",
+        "lineStart": 59,
+        "lineEnd": 128
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+          "anchor": "ch04-02-references-and-borrowing#h3-1",
+          "lineStart": 59,
+          "lineEnd": 128
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-1",
+          "lineStart": 7,
+          "lineEnd": 31
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch04-02-references-and-borrowing#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-05-interior-mutability#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明同一时间对同一数据只能有一个可变引用、不能在持有不可变引用的同时创建可变引用，并指出这是为了在编译时避免数据竞争和未定义行为，编译器会拒绝此类代码。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T01-04",
+      "objectType": "AntiPattern",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-2",
+        "lineStart": 129,
+        "lineEnd": 170
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+          "anchor": "ch04-02-references-and-borrowing#h3-2",
+          "lineStart": 129,
+          "lineEnd": 170
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-5",
+          "lineStart": 248,
+          "lineEnd": 298
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch04-02-references-and-borrowing#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch10-03-lifetime-syntax#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点明确描述从函数返回内部创建值的引用会使引用悬垂且Rust不允许，佐证亦说明返回函数内部创建值的引用会成为悬垂引用且编译器拒绝编译，支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T01-05",
+      "objectType": "AntiPattern",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+        "anchor": "ch04-03-slices#h2-1",
+        "lineStart": 1,
+        "lineEnd": 66
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+          "anchor": "ch04-03-slices#h2-1",
+          "lineStart": 1,
+          "lineEnd": 66
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+          "anchor": "ch04-03-slices#h3-1",
+          "lineStart": 67,
+          "lineEnd": 151
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch04-03-slices#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch04-03-slices#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了返回独立usize索引而非绑定引用/slice，并说明该类索引与String状态无关，在clear后使用会产生逻辑bug且编译期不报错。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T01-06",
+      "objectType": "AntiPattern",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-9",
+        "lineStart": 448,
+        "lineEnd": 459
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-9",
+          "lineStart": 448,
+          "lineEnd": 459
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch10-03-lifetime-syntax#h3-9",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确建议在遇到悬垂引用或生命周期不匹配时不要指定 'static 生命周期，而应解决真正问题，并指出引用可能被不合理地要求存活整个程序期间。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T01-07",
+      "objectType": "AntiPattern",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-2",
+        "lineStart": 85,
+        "lineEnd": 139
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-2",
+          "lineStart": 85,
+          "lineEnd": 139
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-7",
+          "lineStart": 325,
+          "lineEnd": 406
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch10-03-lifetime-syntax#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch10-03-lifetime-syntax#h3-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了省略生命周期标注的 `fn longest(x: &str, y: &str) -> &str` 会导致 `missing lifetime specifier` 错误，并说明借用检查器无法确定返回值与输入引用之间的生命周期关系。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T01-08",
+      "objectType": "AntiPattern",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+        "anchor": "ch15-06-reference-cycles#h2-1",
+        "lineStart": 1,
+        "lineEnd": 4
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+          "anchor": "ch15-06-reference-cycles#h2-1",
+          "lineStart": 1,
+          "lineEnd": 4
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-2",
+          "lineStart": 91,
+          "lineEnd": 141
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-06-reference-cycles#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-04-rc#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点明确说明使用 Rc<T> 和 RefCell<T> 可以创建引用循环，造成内存泄漏，因为每一项的引用计数永远到不了0、值永远不会被丢弃。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-01",
+      "objectType": "AntiPattern",
+      "ordinal": 8,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文说明忽略 Result 会不处理可能错误并触发警告，但未明确说明程序可能在无效状态下继续运行。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+        "lineStart": 125,
+        "lineEnd": 158
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+          "lineStart": 125,
+          "lineEnd": 158
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+          "lineStart": 306,
+          "lineEnd": 350
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文说明忽略 Result 会不处理可能错误并触发警告，但未明确说明程序可能在无效状态下继续运行。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-02",
+      "objectType": "AntiPattern",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+        "anchor": "ch09-02-recoverable-errors-with-result#h3-1",
+        "lineStart": 92,
+        "lineEnd": 144
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-1",
+          "lineStart": 92,
+          "lineEnd": 144
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出示例9-4中的代码不管File::open失败原因都会panic!，并希望区分错误类型（如文件不存在时恢复），支撑了主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-03",
+      "objectType": "AntiPattern",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+        "anchor": "ch09-02-recoverable-errors-with-result#h3-2",
+        "lineStart": 145,
+        "lineEnd": 187
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-2",
+          "lineStart": 145,
+          "lineEnd": 187
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明多处使用 unwrap 时所有 unwrap 打印相同信息，需花更多时间分析来源，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-04",
+      "objectType": "AntiPattern",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+        "anchor": "ch09-02-recoverable-errors-with-result#h3-5",
+        "lineStart": 296,
+        "lineEnd": 345
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-5",
+          "lineStart": 296,
+          "lineEnd": 345
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示在返回 () 的 main 中使用 ? 会产生 E0277 编译错误，并说明 ? 只能用于返回 Result 或其他实现 Try 类型的函数，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-05",
+      "objectType": "AntiPattern",
+      "ordinal": 12,
+      "status": "reject",
+      "reasonCode": "JUDGE_NOT_SUPPORTED",
+      "failures": [
+        {
+          "code": "JUDGE_NOT_SUPPORTED",
+          "detail": "判定者判为 unsupported：锚点原文明确指出预期会出现的错误（如格式错误数据）应返回 Result 而不是 panic!，与主张要求使用 panic! 的方向相反。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+        "lineStart": 27,
+        "lineEnd": 42
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+          "lineStart": 27,
+          "lineEnd": 42
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+          "lineStart": 175,
+          "lineEnd": 206
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "unsupported",
+        "reasonCode": "JUDGE_NOT_SUPPORTED",
+        "reason": "锚点原文明确指出预期会出现的错误（如格式错误数据）应返回 Result 而不是 panic!，与主张要求使用 panic! 的方向相反。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-06",
+      "objectType": "AntiPattern",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+        "lineStart": 15,
+        "lineEnd": 26
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+          "lineStart": 15,
+          "lineEnd": 26
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点明确说明来自用户的输入有失败可能，必须以更健壮方式处理 Result，支撑对可能失败的动态输入不能直接 unwrap 并假定为 Ok 的主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-07",
+      "objectType": "AntiPattern",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+        "lineStart": 159,
+        "lineEnd": 174
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+          "lineStart": 159,
+          "lineEnd": 174
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md",
+          "anchor": "ch09-01-unrecoverable-errors-with-panic#h3-1",
+          "lineStart": 39,
+          "lineEnd": 133
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch09-01-unrecoverable-errors-with-panic#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文多处展示直接索引 vector 越界或无效索引会触发 panic 导致程序崩溃，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T02-08",
+      "objectType": "AntiPattern",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+        "anchor": "ch12-06-writing-to-stderr-instead-of-stdout#h3-1",
+        "lineStart": 7,
+        "lineEnd": 26
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+          "anchor": "ch12-06-writing-to-stderr-instead-of-stdout#h3-1",
+          "lineStart": 7,
+          "lineEnd": 26
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+          "anchor": "ch12-06-writing-to-stderr-instead-of-stdout#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch12-06-writing-to-stderr-instead-of-stdout#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch12-06-writing-to-stderr-instead-of-stdout#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当前代码用 println! 把错误信息打印到标准输出，重定向后错误写入文件、屏幕不可见，并指出应与正常输出分离到标准错误，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-01",
+      "objectType": "AntiPattern",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-01-syntax.md",
+        "anchor": "ch10-01-syntax#h3-1",
+        "lineStart": 5,
+        "lineEnd": 114
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-01-syntax.md",
+          "anchor": "ch10-01-syntax#h3-1",
+          "lineStart": 5,
+          "lineEnd": 114
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-6",
+          "lineStart": 290,
+          "lineEnd": 369
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch10-01-syntax#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch10-02-traits#h3-6",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文展示了未添加 trait bound 的泛型 `largest` 函数使用 `>` 比较，并给出完全相同的编译错误及原因，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#017",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-02",
+      "objectType": "AntiPattern",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-01-syntax.md",
+        "anchor": "ch10-01-syntax#h3-2",
+        "lineStart": 115,
+        "lineEnd": 188
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-01-syntax.md",
+          "anchor": "ch10-01-syntax#h3-2",
+          "lineStart": 115,
+          "lineEnd": 188
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch10-01-syntax#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明用单个泛型参数 T 定义的 Point<T> 字段 x 和 y 类型必须相同，传入不同类型会编译失败并产生类型不匹配错误，且需多个泛型参数才能表达字段独立类型。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#018",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-03",
+      "objectType": "AntiPattern",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+        "anchor": "ch19-03-advanced-traits#h3-3",
+        "lineStart": 139,
+        "lineEnd": 382
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+          "anchor": "ch19-03-advanced-traits#h3-3",
+          "lineStart": 139,
+          "lineEnd": 382
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-03-advanced-traits#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文示例19-19/19-20明确说明 Dog::baby_name 调用类型自身关联函数得到错误结果，而 Animal::baby_name 因无 self 参数无法推断实现导致编译错误，需完全限定语法消歧义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#019",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-04",
+      "objectType": "AntiPattern",
+      "ordinal": 19,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-5",
+        "lineStart": 246,
+        "lineEnd": 289
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-5",
+          "lineStart": 246,
+          "lineEnd": 289
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+          "anchor": "ch17-02-trait-objects#h3-1",
+          "lineStart": 11,
+          "lineEnd": 97
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch10-02-traits#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch17-02-trait-objects#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点明确说明 impl Trait 仅适用于返回单一类型，返回 NewsArticle 或 Tweet 两种类型的代码不能编译，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#020",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-05",
+      "objectType": "AntiPattern",
+      "ordinal": 20,
+      "status": "reject",
+      "reasonCode": "JUDGE_NOT_SUPPORTED",
+      "failures": [
+        {
+          "code": "JUDGE_NOT_SUPPORTED",
+          "detail": "判定者判为 unsupported：锚点原文明确说泛型一次只能替代一个具体类型、仅适合同质集合，而多种不同类型应用 trait 对象，主张却称在需要多种不同类型时使用泛型，方向相反。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-1",
+        "lineStart": 11,
+        "lineEnd": 97
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+          "anchor": "ch17-02-trait-objects#h3-1",
+          "lineStart": 11,
+          "lineEnd": 97
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch17-02-trait-objects#h3-1",
+          "strict": false,
+          "normalized": true,
+          "acceptedBy": "normalization",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "unsupported",
+        "reasonCode": "JUDGE_NOT_SUPPORTED",
+        "reason": "锚点原文明确说泛型一次只能替代一个具体类型、仅适合同质集合，而多种不同类型应用 trait 对象，主张却称在需要多种不同类型时使用泛型，方向相反。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#021",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-06",
+      "objectType": "AntiPattern",
+      "ordinal": 21,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-4",
+        "lineStart": 228,
+        "lineEnd": 273
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+          "anchor": "ch17-02-trait-objects#h3-4",
+          "lineStart": 228,
+          "lineEnd": 273
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch17-02-trait-objects#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确以 Vec<Box<dyn Clone>> 为例说明 Clone 因返回 Self 不对象安全，并给出相同编译错误及类型抹去原因，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#022",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-07",
+      "objectType": "AntiPattern",
+      "ordinal": 22,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文支撑必须声明父 trait 和错误信息，但未明确提及“即使所需 trait 已被具体类型实现”也仍须显式声明的这一更绝对情形。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+        "anchor": "ch19-03-advanced-traits#h3-4",
+        "lineStart": 383,
+        "lineEnd": 468
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+          "anchor": "ch19-03-advanced-traits#h3-4",
+          "lineStart": 383,
+          "lineEnd": 468
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-03-advanced-traits#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文支撑必须声明父 trait 和错误信息，但未明确提及“即使所需 trait 已被具体类型实现”也仍须显式声明的这一更绝对情形。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#023",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T03-08",
+      "objectType": "AntiPattern",
+      "ordinal": 23,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-2",
+        "lineStart": 31,
+        "lineEnd": 93
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-2",
+          "lineStart": 31,
+          "lineEnd": 93
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+          "anchor": "ch19-03-advanced-traits#h3-5",
+          "lineStart": 469,
+          "lineEnd": 510
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch10-02-traits#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch19-03-advanced-traits#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明不能为外部类型实现外部 trait（如为 Vec<T> 实现 Display）违反孤儿规则，并说明没有该规则会导致两个 crate 对相同类型实现相同 trait 造成冲突，完整支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#024",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-01",
+      "objectType": "AntiPattern",
+      "ordinal": 24,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+        "anchor": "ch05-02-example-structs#h3-1",
+        "lineStart": 31,
+        "lineEnd": 46
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h3-1",
+          "lineStart": 31,
+          "lineEnd": 46
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h2-1",
+          "lineStart": 1,
+          "lineEnd": 30
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h3-2",
+          "lineStart": 47,
+          "lineEnd": 64
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch05-02-example-structs#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch05-02-example-structs#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "ch05-02-example-structs#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出元组或分离变量表示相关数据且缺少字段名称，并说明必须记住索引且易混淆造成错误，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#025",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-02",
+      "objectType": "AntiPattern",
+      "ordinal": 25,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-4",
+        "lineStart": 89,
+        "lineEnd": 175
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-4",
+          "lineStart": 89,
+          "lineEnd": 175
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch05-01-defining-structs#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了在结构体中存储 &str 引用而不指定生命周期会触发编译器报错缺少生命周期标识符，并说明生命周期用于保证引用数据有效性一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#026",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-03",
+      "objectType": "AntiPattern",
+      "ordinal": 26,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+        "anchor": "ch06-01-defining-an-enum#h3-2",
+        "lineStart": 194,
+        "lineEnd": 266
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+          "anchor": "ch06-01-defining-an-enum#h3-2",
+          "lineStart": 194,
+          "lineEnd": 266
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch06-02-match.md",
+          "anchor": "ch06-02-match#h3-3",
+          "lineStart": 91,
+          "lineEnd": 106
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch06-01-defining-an-enum#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch06-02-match#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Rust 因 Option<T> 与 T 类型不同而拒绝直接运算，并要求显式处理 None 以避免假设值非空。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#027",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-04",
+      "objectType": "AntiPattern",
+      "ordinal": 27,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch06-02-match.md",
+        "anchor": "ch06-02-match#h3-3",
+        "lineStart": 91,
+        "lineEnd": 106
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch06-02-match.md",
+          "anchor": "ch06-02-match#h3-3",
+          "lineStart": 91,
+          "lineEnd": 106
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+          "anchor": "ch18-01-all-the-places-for-patterns#h3-1",
+          "lineStart": 5,
+          "lineEnd": 20
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch06-02-match#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch18-01-all-the-places-for-patterns#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 match 必须穷举，未覆盖所有可能值（如遗漏 None）时编译器会拒绝编译并指出被忘记的模式。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#028",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-05",
+      "objectType": "AntiPattern",
+      "ordinal": 28,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+        "anchor": "ch06-03-if-let#h2-1",
+        "lineStart": 1,
+        "lineEnd": 80
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+          "anchor": "ch06-03-if-let#h2-1",
+          "lineStart": 1,
+          "lineEnd": 80
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+          "anchor": "ch18-01-all-the-places-for-patterns#h3-2",
+          "lineStart": 21,
+          "lineEnd": 62
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch06-03-if-let#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch18-01-all-the-places-for-patterns#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文指出 if let 可替代 match 且会失去 match 的穷尽性检查，并明确省略 else 时编译器不会警告遗漏情况，可能留下未处理分支。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#029",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-06",
+      "objectType": "AntiPattern",
+      "ordinal": 29,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+        "anchor": "ch18-02-refutability#h2-1",
+        "lineStart": 1,
+        "lineEnd": 67
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+          "anchor": "ch18-02-refutability#h2-1",
+          "lineStart": 1,
+          "lineEnd": 67
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch18-02-refutability#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明`let`、函数参数和`for`循环只接受不可反驳模式，`if let`和`while let`只接受可反驳模式，并示例了前者不能编译及后者在`if let`中触发警告。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#030",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-07",
+      "objectType": "AntiPattern",
+      "ordinal": 30,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+        "anchor": "ch18-03-pattern-syntax#h4-7",
+        "lineStart": 369,
+        "lineEnd": 415
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+          "anchor": "ch18-03-pattern-syntax#h4-7",
+          "lineStart": 369,
+          "lineEnd": 415
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch18-03-pattern-syntax#h4-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出 `_name` 仍会将值绑定并可能获取所有权，导致原变量被移动后无法再次使用。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#031",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T04-08",
+      "objectType": "AntiPattern",
+      "ordinal": 31,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点明确支撑重复检查冗余和潜在影响性能、以及原始类型签名无法保证已验证，但未提及“可能遗漏”这一断言。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+        "lineStart": 43,
+        "lineEnd": 106
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+          "lineStart": 43,
+          "lineEnd": 106
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点明确支撑重复检查冗余和潜在影响性能、以及原始类型签名无法保证已验证，但未提及“可能遗漏”这一断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#032",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-01",
+      "objectType": "AntiPattern",
+      "ordinal": 32,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-4",
+        "lineStart": 61,
+        "lineEnd": 131
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+          "anchor": "ch08-01-vectors#h3-4",
+          "lineStart": 61,
+          "lineEnd": 131
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-01-vectors#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文的示例8-7明确展示了持有`&v[0]`时`push`会触发E0502编译错误，并解释若允许则重新分配内存会使该引用指向已释放内存。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#033",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-02",
+      "objectType": "AntiPattern",
+      "ordinal": 33,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-4",
+        "lineStart": 61,
+        "lineEnd": 131
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+          "anchor": "ch08-01-vectors#h3-4",
+          "lineStart": 61,
+          "lineEnd": 131
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-01-vectors#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出 `&v[index]` 索引语法在越界时会导致 panic，而非返回可恢复的缺失值，并提及用户输入可能越界的场景。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#034",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-03",
+      "objectType": "AntiPattern",
+      "ordinal": 34,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-4",
+        "lineStart": 157,
+        "lineEnd": 181
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-4",
+          "lineStart": 157,
+          "lineEnd": 181
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-3",
+          "lineStart": 182,
+          "lineEnd": 204
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-4",
+          "lineStart": 205,
+          "lineEnd": 230
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-02-strings#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch08-02-strings#h4-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "ch08-02-strings#h4-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Rust 的 String 不支持索引导致 s1[0] 无法编译，且字节索引不总对应有效 Unicode 标量值、String 也无法保证 O(1) 访问，完整支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#035",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-04",
+      "objectType": "AntiPattern",
+      "ordinal": 35,
+      "status": "reject",
+      "reasonCode": "JUDGE_NOT_SUPPORTED",
+      "failures": [
+        {
+          "code": "JUDGE_NOT_SUPPORTED",
+          "detail": "判定者判为 unsupported：锚点原文表明 `&hello[0..1]` 会在运行时 panic 并提示“不是字符边界”，说明 Rust 会检查字节边界，与主张所称“不检查范围是否落在字符边界上”相矛盾。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-5",
+        "lineStart": 231,
+        "lineEnd": 250
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-5",
+          "lineStart": 231,
+          "lineEnd": 250
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-02-strings#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "unsupported",
+        "reasonCode": "JUDGE_NOT_SUPPORTED",
+        "reason": "锚点原文表明 `&hello[0..1]` 会在运行时 panic 并提示“不是字符边界”，说明 Rust 会检查字节边界，与主张所称“不检查范围是否落在字符边界上”相矛盾。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#036",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-05",
+      "objectType": "AntiPattern",
+      "ordinal": 36,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文支撑了所有权移动和可读性差的危害，但未展示或明确提及‘拼接后还试图继续使用左侧的 String’这一具体模式。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-2",
+        "lineStart": 109,
+        "lineEnd": 156
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-2",
+          "lineStart": 109,
+          "lineEnd": 156
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-02-strings#h4-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文支撑了所有权移动和可读性差的危害，但未展示或明确提及‘拼接后还试图继续使用左侧的 String’这一具体模式。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#037",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-06",
+      "objectType": "AntiPattern",
+      "ordinal": 37,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-2",
+        "lineStart": 43,
+        "lineEnd": 64
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h3-2",
+          "lineStart": 43,
+          "lineEnd": 64
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-03-hash-maps#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 String 等拥有所有权的值插入 HashMap 后会被移动，原绑定不再有效且继续使用会出现编译错误。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#038",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-07",
+      "objectType": "AntiPattern",
+      "ordinal": 38,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文只说明entry比自己编写逻辑简明且与借用检查器结合更好，未明确断言手写逻辑容易产生借用问题，主张多出了这一具体后果。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h4-2",
+        "lineStart": 130,
+        "lineEnd": 151
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h4-2",
+          "lineStart": 130,
+          "lineEnd": 151
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-03-hash-maps#h4-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文只说明entry比自己编写逻辑简明且与借用检查器结合更好，未明确断言手写逻辑容易产生借用问题，主张多出了这一具体后果。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#039",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T05-08",
+      "objectType": "AntiPattern",
+      "ordinal": 39,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-1",
+        "lineStart": 9,
+        "lineEnd": 42
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h3-1",
+          "lineStart": 9,
+          "lineEnd": 42
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch08-03-hash-maps#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明使用 collect 构建 HashMap 时 HashMap<_, _> 类型标注是必要的，否则 Rust 无法推断目标类型，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#040",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-01",
+      "objectType": "AntiPattern",
+      "ordinal": 40,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-4",
+        "lineStart": 121,
+        "lineEnd": 165
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-4",
+          "lineStart": 121,
+          "lineEnd": 165
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h4-1",
+          "lineStart": 40,
+          "lineEnd": 99
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-3",
+          "lineStart": 100,
+          "lineEnd": 120
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-01-box#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-01-box#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "ch15-01-box#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出直接存放相同类型成员会导致编译器报错 recursive type `List` has infinite size 且 Rust 无法计算所需空间。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#041",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-02",
+      "objectType": "AntiPattern",
+      "ordinal": 41,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-02-deref.md",
+        "anchor": "ch15-02-deref#h3-3",
+        "lineStart": 64,
+        "lineEnd": 113
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-02-deref.md",
+          "anchor": "ch15-02-deref#h3-3",
+          "lineStart": 64,
+          "lineEnd": 113
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-02-deref.md",
+          "anchor": "ch15-02-deref#h3-4",
+          "lineStart": 114,
+          "lineEnd": 153
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-02-deref#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-02-deref#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文直接展示了未实现 Deref 的 MyBox<T> 解引用时报错 type `MyBox<{integer}>` cannot be dereferenced，并说明需实现 Deref trait，完全支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#042",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-03",
+      "objectType": "AntiPattern",
+      "ordinal": 42,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h4-1",
+        "lineStart": 47,
+        "lineEnd": 122
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+          "anchor": "ch15-03-drop#h4-1",
+          "lineStart": 47,
+          "lineEnd": 122
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-03-drop#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Rust 不允许显式调用实现 Drop trait 的值的 drop 方法，并指出编译错误 explicit destructor calls not allowed 及若允许会因自动再次 drop 导致 double free。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#043",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-04",
+      "objectType": "AntiPattern",
+      "ordinal": 43,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-1",
+        "lineStart": 13,
+        "lineEnd": 90
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-1",
+          "lineStart": 13,
+          "lineEnd": 90
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h2-1",
+          "lineStart": 1,
+          "lineEnd": 12
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-04-rc#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-04-rc#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文展示了用 Box<T> 让两个列表共享第三个列表时 a 被移动后再次使用，并产生 use of moved value 编译错误，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#044",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-05",
+      "objectType": "AntiPattern",
+      "ordinal": 44,
+      "status": "reject",
+      "reasonCode": "QUOTE_MISMATCH",
+      "failures": [
+        {
+          "code": "QUOTE_MISMATCH",
+          "at": "sourceRefs/0",
+          "detail": "sourceRefs/0（ch15-05-interior-mutability#h4-1）自带的引文未在该条出处自己的锚点区间内命中：\"不能修改 `MockMessenger` 来记录消息，因为 `send` 方法获取了 `self` 的不可变引用。我们也\"（已按 markdown-rendering+whitespace 归一化后仍不命中——即不止是排版差异）"
+        },
+        {
+          "code": "QUOTE_MISMATCH",
+          "detail": "引文未在所引锚点区间（6394 字符）内命中：\"不能修改 `MockMessenger` 来记录消息，因为 `send` 方法获取了 `self` 的不可变引用。我们也\"（已按 markdown-rendering+whitespace 归一化后仍不命中——即不止是排版差异）"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h4-1",
+        "lineStart": 59,
+        "lineEnd": 252
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h4-1",
+          "lineStart": 59,
+          "lineEnd": 252
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-2",
+          "lineStart": 32,
+          "lineEnd": 58
+        }
+      ],
+      "deterministic": {
+        "ok": false,
+        "reasonCode": "QUOTE_MISMATCH"
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": false,
+        "acceptedBy": null,
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-05-interior-mutability#h4-1",
+          "strict": false,
+          "normalized": false,
+          "acceptedBy": null,
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-05-interior-mutability#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "not-called",
+        "note": "已被确定性判据拒绝，未送判定者（ADR-010 决策 3：默认短路）"
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-06",
+      "objectType": "AntiPattern",
+      "ordinal": 45,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-3",
+        "lineStart": 253,
+        "lineEnd": 289
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-3",
+          "lineStart": 253,
+          "lineEnd": 289
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-1",
+          "lineStart": 7,
+          "lineEnd": 31
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-05-interior-mutability#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-05-interior-mutability#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文展示在同一作用域调用两次 borrow_mut 创建两个可变借用，并说明运行时 panic 出现 BorrowMutError 而编译时无错误。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#045",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-07",
+      "objectType": "AntiPattern",
+      "ordinal": 46,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+        "anchor": "ch15-06-reference-cycles#h3-1",
+        "lineStart": 5,
+        "lineEnd": 116
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+          "anchor": "ch15-06-reference-cycles#h3-1",
+          "lineStart": 5,
+          "lineEnd": 116
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+          "anchor": "ch15-06-reference-cycles#h3-2",
+          "lineStart": 117,
+          "lineEnd": 126
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-06-reference-cycles#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch15-06-reference-cycles#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文展示了用 RefCell<Rc<List>> 让 a、b 互相强引用形成循环，并明确说明内存永远不会被回收且打印会栈溢出，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#046",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T06-08",
+      "objectType": "AntiPattern",
+      "ordinal": 47,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h3-3",
+        "lineStart": 215,
+        "lineEnd": 222
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+          "anchor": "ch16-03-shared-state#h3-3",
+          "lineStart": 215,
+          "lineEnd": 222
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch16-03-shared-state#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Mutex<T> 可能因两个线程各持一个锁并等待另一资源而造成死锁、永远相互等待，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#047",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-01",
+      "objectType": "AntiPattern",
+      "ordinal": 48,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h4-1",
+        "lineStart": 70,
+        "lineEnd": 165
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h4-1",
+          "lineStart": 70,
+          "lineEnd": 165
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-1",
+          "lineStart": 25,
+          "lineEnd": 69
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch16-01-threads#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch16-01-threads#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明示例16-1中不保存JoinHandle且不调用join时，主线程结束会提前终止新线程，甚至可能完全不执行，且运行顺序和输出依赖调度无法保证，支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#048",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-02",
+      "objectType": "AntiPattern",
+      "ordinal": 49,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-2",
+        "lineStart": 166,
+        "lineEnd": 286
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-2",
+          "lineStart": 166,
+          "lineEnd": 286
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch16-01-threads#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了在不使用move时线程闭包借用主线程局部变量，主线程可能先drop该值导致新线程中引用无效的场景。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#049",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-03",
+      "objectType": "AntiPattern",
+      "ordinal": 50,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-1",
+        "lineStart": 90,
+        "lineEnd": 132
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-1",
+          "lineStart": 90,
+          "lineEnd": 132
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch16-02-message-passing#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出在通过 `send` 发送值后继续使用它会导致接收线程可能修改或丢弃该值，从而产生不一致或不存在的数据，足以支撑该主张的模式与危害描述。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#050",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-04",
+      "objectType": "AntiPattern",
+      "ordinal": 51,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点只明确说明Rc引用计数风险及RefCell借用检查非线程安全，未说明Cell<T>的运行时借用检查也非线程安全，不足以覆盖主张对Cell的断言。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h4-2",
+        "lineStart": 112,
+        "lineEnd": 168
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+          "anchor": "ch16-03-shared-state#h4-2",
+          "lineStart": 112,
+          "lineEnd": 168
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-04-extensible-concurrency-sync-and-send.md",
+          "anchor": "ch16-04-extensible-concurrency-sync-and-send#h3-1",
+          "lineStart": 7,
+          "lineEnd": 14
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-04-extensible-concurrency-sync-and-send.md",
+          "anchor": "ch16-04-extensible-concurrency-sync-and-send#h3-2",
+          "lineStart": 15,
+          "lineEnd": 20
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch16-03-shared-state#h4-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch16-04-extensible-concurrency-sync-and-send#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "ch16-04-extensible-concurrency-sync-and-send#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点只明确说明Rc引用计数风险及RefCell借用检查非线程安全，未说明Cell<T>的运行时借用检查也非线程安全，不足以覆盖主张对Cell的断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#051",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-05",
+      "objectType": "AntiPattern",
+      "ordinal": 52,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+        "anchor": "ch20-02-multithreaded#h4-1",
+        "lineStart": 64,
+        "lineEnd": 93
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h4-1",
+          "lineStart": 64,
+          "lineEnd": 93
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h3-2",
+          "lineStart": 50,
+          "lineEnd": 63
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch20-02-multithreaded#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch20-02-multithreaded#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了为每个流/请求调用 thread::spawn 且无限制创建线程，并说明这会在大量请求时耗尽资源导致崩溃或所有请求处理被终止。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#052",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-06",
+      "objectType": "AntiPattern",
+      "ordinal": 53,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+        "anchor": "ch20-02-multithreaded#h4-8",
+        "lineStart": 641,
+        "lineEnd": 796
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h4-8",
+          "lineStart": 641,
+          "lineEnd": 796
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch20-02-multithreaded#h4-8",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示 `while let Ok(job) = receiver.lock().unwrap().recv()` 代码并解释 `job()` 调用期间仍持有锁，导致其他 worker 不能接收任务，恰好支撑主张的两个断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#053",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-07",
+      "objectType": "AntiPattern",
+      "ordinal": 54,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+        "anchor": "ch20-03-graceful-shutdown-and-cleanup#h3-2",
+        "lineStart": 114,
+        "lineEnd": 457
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+          "anchor": "ch20-03-graceful-shutdown-and-cleanup#h3-2",
+          "lineStart": 114,
+          "lineEnd": 457
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+          "anchor": "ch20-03-graceful-shutdown-and-cleanup#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch20-03-graceful-shutdown-and-cleanup#h3-2",
+          "strict": false,
+          "normalized": true,
+          "acceptedBy": "normalization",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch20-03-graceful-shutdown-and-cleanup#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文分别支撑了两种场景及其危害：ctrl-c 会使正在处理请求的线程立即停止，且在同一循环中发终止消息后立即 join 会导致死锁。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#054",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T07-08",
+      "objectType": "AntiPattern",
+      "ordinal": 55,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+        "anchor": "ch20-02-multithreaded#h4-7",
+        "lineStart": 436,
+        "lineEnd": 640
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h4-7",
+          "lineStart": 436,
+          "lineEnd": 640
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch20-02-multithreaded#h4-7",
+          "strict": false,
+          "normalized": true,
+          "acceptedBy": "normalization",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了将 mpsc::Receiver 直接传给多个 Worker 会因单消费者和所有权移动导致编译错误，并说明不能简单克隆消费端，且共享修改接收端需要 Arc<Mutex<T>> 以避免竞争状态。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#055",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-01",
+      "objectType": "AntiPattern",
+      "ordinal": 56,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-1",
+        "lineStart": 7,
+        "lineEnd": 20
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-1",
+          "lineStart": 7,
+          "lineEnd": 20
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch11-02-running-tests#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明默认并行运行测试，测试不应相互依赖或依赖共享状态，并举例共享文件被其他测试修改会导致失败且并非代码错误，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#056",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-02",
+      "objectType": "AntiPattern",
+      "ordinal": 57,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-5",
+        "lineStart": 441,
+        "lineEnd": 607
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-5",
+          "lineStart": 441,
+          "lineEnd": 607
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch11-01-writing-tests#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文展示了只标注 #[should_panic] 不提供 expected 参数的测试，并明确说明这只会验证发生 panic、无法区分原因，非期望原因导致的 panic 也会通过，直接支撑主张及其危害。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#057",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-03",
+      "objectType": "AntiPattern",
+      "ordinal": 58,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-6",
+        "lineStart": 608,
+        "lineEnd": 641
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-6",
+          "lineStart": 608,
+          "lineEnd": 641
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch11-01-writing-tests#h3-6",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明不能对返回 Result 的测试使用 should_panic，并指出断言 Err 时不要使用问号运算符而应使用 assert!(value.is_err())，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#058",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-04",
+      "objectType": "AntiPattern",
+      "ordinal": 59,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-4",
+        "lineStart": 363,
+        "lineEnd": 440
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-4",
+          "lineStart": 363,
+          "lineEnd": 440
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch11-01-writing-tests#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明默认断言输出只告知失败和行号，自定义失败信息才能打印实际值，支撑该主张及其危害。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#059",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-05",
+      "objectType": "AntiPattern",
+      "ordinal": 60,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-03-test-organization.md",
+        "anchor": "ch11-03-test-organization#h4-4",
+        "lineStart": 136,
+        "lineEnd": 201
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-03-test-organization.md",
+          "anchor": "ch11-03-test-organization#h4-4",
+          "lineStart": 136,
+          "lineEnd": 201
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch11-03-test-organization#h4-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了在 tests 目录直接创建 common.rs 存放共享 setup 函数，并说明 Cargo 会把它当作单独的集成测试文件运行，输出多余的 running 0 tests 结果。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#060",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-06",
+      "objectType": "AntiPattern",
+      "ordinal": 61,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-03-test-organization.md",
+        "anchor": "ch11-03-test-organization#h4-5",
+        "lineStart": 202,
+        "lineEnd": 207
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-03-test-organization.md",
+          "anchor": "ch11-03-test-organization#h4-5",
+          "lineStart": 202,
+          "lineEnd": 207
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch11-03-test-organization#h4-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明仅含 src/main.rs 而无 src/lib.rs 时无法在 tests 目录用 use 导入函数，且二进制 crate 只意在单独运行，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#061",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-07",
+      "objectType": "AntiPattern",
+      "ordinal": 62,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文提到了写好文档后改动代码会导致示例不能工作且文档测试可捕获不同步，但未明确提及未运行文档测试这一行为。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+        "anchor": "ch14-02-publishing-to-crates-io#h4-2",
+        "lineStart": 51,
+        "lineEnd": 65
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h4-2",
+          "lineStart": 51,
+          "lineEnd": 65
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch14-02-publishing-to-crates-io#h4-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文提到了写好文档后改动代码会导致示例不能工作且文档测试可捕获不同步，但未明确提及未运行文档测试这一行为。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#062",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T08-08",
+      "objectType": "AntiPattern",
+      "ordinal": 63,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h4-1",
+        "lineStart": 59,
+        "lineEnd": 252
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h4-1",
+          "lineStart": 59,
+          "lineEnd": 252
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch15-05-interior-mutability#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文展示了在 `&self` 的 trait 方法中直接修改普通 `Vec` 字段会触发 E0596，并说明不能改用 `&mut self` 因为会不符合 `Messenger` trait 签名，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#063",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-01",
+      "objectType": "AntiPattern",
+      "ordinal": 64,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch03-05-control-flow.md",
+        "anchor": "ch03-05-control-flow#h4-6",
+        "lineStart": 198,
+        "lineEnd": 245
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch03-05-control-flow.md",
+          "anchor": "ch03-05-control-flow#h4-6",
+          "lineStart": 198,
+          "lineEnd": 245
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+          "anchor": "ch13-02-iterators#h2-1",
+          "lineStart": 1,
+          "lineEnd": 34
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch03-05-control-flow#h4-6",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch13-02-iterators#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文明确描述了使用while循环和显式索引遍历数组并手动维护边界，且说明索引或条件错误会导致panic及编译器增加每次迭代的边界检查使循环变慢，完全支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#064",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-02",
+      "objectType": "AntiPattern",
+      "ordinal": 65,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-1",
+        "lineStart": 5,
+        "lineEnd": 97
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h3-1",
+          "lineStart": 5,
+          "lineEnd": 97
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h4-1",
+          "lineStart": 98,
+          "lineEnd": 145
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h4-2",
+          "lineStart": 146,
+          "lineEnd": 214
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch13-01-closures#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch13-01-closures#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "ch13-01-closures#h4-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文分别描述了无条件提前计算导致所有路径等待、以及在不同分支重复调用昂贵函数/闭包导致等待成倍增加的问题，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#065",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-03",
+      "objectType": "AntiPattern",
+      "ordinal": 66,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-4",
+        "lineStart": 430,
+        "lineEnd": 463
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h3-4",
+          "lineStart": 430,
+          "lineEnd": 463
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch13-01-closures#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明该实现假设任何参数都返回相同值、只保存一个结果，且对不同参数调用仍返回第一个缓存值1，支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#066",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-04",
+      "objectType": "AntiPattern",
+      "ordinal": 67,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-3",
+        "lineStart": 102,
+        "lineEnd": 150
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+          "anchor": "ch13-02-iterators#h3-3",
+          "lineStart": 102,
+          "lineEnd": 150
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+          "anchor": "ch13-02-iterators#h2-1",
+          "lineStart": 1,
+          "lineEnd": 34
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch13-02-iterators#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch13-02-iterators#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明迭代器适配器是惰性的，必须调用消费适配器，否则闭包不会调用、代码无效并产生未使用警告，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#067",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-05",
+      "objectType": "AntiPattern",
+      "ordinal": 68,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+        "anchor": "ch13-03-improving-our-io-project#h3-1",
+        "lineStart": 5,
+        "lineEnd": 37
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h3-1",
+          "lineStart": 5,
+          "lineEnd": 37
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h4-1",
+          "lineStart": 38,
+          "lineEnd": 89
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h4-2",
+          "lineStart": 90,
+          "lineEnd": 130
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch13-03-improving-our-io-project#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch13-03-improving-our-io-project#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "ch13-03-improving-our-io-project#h4-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了将 env::args 收集为 Vec 并借用 slice 传入构造函数、用索引加 clone 提取 query 和 filename，并说明因构造函数不拥有 slice 才需克隆且存在低效 clone 调用。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#068",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-06",
+      "objectType": "AntiPattern",
+      "ordinal": 69,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文提到了底层循环可能更快的直觉并用性能测试说明迭代器是零成本抽象，但并未支撑“手写 for 循环一定比迭代器更快”以及“因此回避迭代器风格”这一更绝对的断言。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+        "anchor": "ch13-03-improving-our-io-project#h3-2",
+        "lineStart": 131,
+        "lineEnd": 172
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h3-2",
+          "lineStart": 131,
+          "lineEnd": 172
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-04-performance.md",
+          "anchor": "ch13-04-performance#h2-1",
+          "lineStart": 1,
+          "lineEnd": 46
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch13-03-improving-our-io-project#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch13-04-performance#h2-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文提到了底层循环可能更快的直觉并用性能测试说明迭代器是零成本抽象，但并未支撑“手写 for 循环一定比迭代器更快”以及“因此回避迭代器风格”这一更绝对的断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#069",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-07",
+      "objectType": "AntiPattern",
+      "ordinal": 70,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-05-advanced-functions-and-closures.md",
+        "anchor": "ch19-05-advanced-functions-and-closures#h3-2",
+        "lineStart": 75,
+        "lineEnd": 119
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-05-advanced-functions-and-closures.md",
+          "anchor": "ch19-05-advanced-functions-and-closures#h3-2",
+          "lineStart": 75,
+          "lineEnd": 119
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-05-advanced-functions-and-closures#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明直接写 `Fn(i32) -> i32` 返回闭包不能编译，且不允许使用函数指针 `fn` 作为返回类型，错误原因与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#070",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T09-08",
+      "objectType": "AntiPattern",
+      "ordinal": 71,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-2",
+        "lineStart": 166,
+        "lineEnd": 286
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-2",
+          "lineStart": 166,
+          "lineEnd": 286
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch16-01-threads#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明未使用 move 时闭包默认借用 v，且因新线程执行时长未知引用可能失效，并给出编译错误与 drop 后引用无效的场景，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#071",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-01",
+      "objectType": "AntiPattern",
+      "ordinal": 72,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+        "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-1",
+        "lineStart": 49,
+        "lineEnd": 113
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-1",
+          "lineStart": 49,
+          "lineEnd": 113
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-2",
+          "lineStart": 114,
+          "lineEnd": 138
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点明确指出同时use两个同名类型会使Rust无法判断使用哪个，与主张的冲突危害一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#072",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-02",
+      "objectType": "AntiPattern",
+      "ordinal": 73,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文只说明glob会使难以推导作用域中的名称和定义，未明确提及降低代码可读性和可维护性，不足以完全支撑该主张。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+        "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-6",
+        "lineStart": 249,
+        "lineEnd": 263
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-6",
+          "lineStart": 249,
+          "lineEnd": 263
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-6",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文只说明glob会使难以推导作用域中的名称和定义，未明确提及降低代码可读性和可维护性，不足以完全支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#073",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-03",
+      "objectType": "AntiPattern",
+      "ordinal": 74,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+        "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-1",
+        "lineStart": 46,
+        "lineEnd": 87
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-1",
+          "lineStart": 46,
+          "lineEnd": 87
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明仅给模块加 pub 不会使模块内容公有，内部函数仍为私有并产生编译错误，完全支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#074",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-04",
+      "objectType": "AntiPattern",
+      "ordinal": 75,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+        "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-3",
+        "lineStart": 104,
+        "lineEnd": 135
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-3",
+          "lineStart": 104,
+          "lineEnd": 135
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明：若带有私有字段的公有结构体没有提供公共关联函数，外部代码将无法创建实例，也无法设置私有字段。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#075",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-05",
+      "objectType": "AntiPattern",
+      "ordinal": 76,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+        "anchor": "ch14-02-publishing-to-crates-io#h3-2",
+        "lineStart": 96,
+        "lineEnd": 219
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-2",
+          "lineStart": 96,
+          "lineEnd": 219
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-3",
+          "lineStart": 139,
+          "lineEnd": 167
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明若不通过 pub use 重导出而按内部深层模块层级暴露，用户会难以发现类型并需书写冗长 use 路径，且可用简洁路径替代。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#076",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-06",
+      "objectType": "AntiPattern",
+      "ordinal": 77,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+        "anchor": "ch14-02-publishing-to-crates-io#h3-4",
+        "lineStart": 230,
+        "lineEnd": 289
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-4",
+          "lineStart": 230,
+          "lineEnd": 289
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在发布前若缺少description和license等元数据就运行cargo publish会先得到警告，并以missing or empty metadata fields: description, license报错导致失败。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#077",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-07",
+      "objectType": "AntiPattern",
+      "ordinal": 78,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+        "anchor": "ch14-02-publishing-to-crates-io#h3-5",
+        "lineStart": 290,
+        "lineEnd": 310
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-5",
+          "lineStart": 290,
+          "lineEnd": 310
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-7",
+          "lineStart": 317,
+          "lineEnd": 336
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明发布永久、版本与代码不可覆盖或删除，yank仅阻止新项目依赖且不删除代码或秘密，并要求泄露后立即重置秘密，完整支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#078",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T10-08",
+      "objectType": "AntiPattern",
+      "ordinal": 79,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch14-03-cargo-workspaces.md",
+        "anchor": "ch14-03-cargo-workspaces#h4-1",
+        "lineStart": 143,
+        "lineEnd": 180
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-03-cargo-workspaces.md",
+          "anchor": "ch14-03-cargo-workspaces#h4-1",
+          "lineStart": 143,
+          "lineEnd": 180
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch14-03-cargo-workspaces#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明即使 `rand` 已用于工作空间某处，其他 crate 若未在自己的 `Cargo.toml` 中声明该依赖就直接使用，会导致编译错误。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#079",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-01",
+      "objectType": "AntiPattern",
+      "ordinal": 80,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文说明了宏的附加能力和宏定义更复杂难读，但并未断言在不需要这些附加能力时应编写宏而不是函数，只覆盖了主张的一部分。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+        "anchor": "ch19-06-macros#h3-1",
+        "lineStart": 11,
+        "lineEnd": 22
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-1",
+          "lineStart": 11,
+          "lineEnd": 22
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-06-macros#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文说明了宏的附加能力和宏定义更复杂难读，但并未断言在不需要这些附加能力时应编写宏而不是函数，只覆盖了主张的一部分。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#080",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-02",
+      "objectType": "AntiPattern",
+      "ordinal": 81,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文只说明宏必须在调用前定义或引入作用域，未明确说明否则编译器找不到该宏并导致编译失败。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+        "anchor": "ch19-06-macros#h3-1",
+        "lineStart": 11,
+        "lineEnd": 22
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-1",
+          "lineStart": 11,
+          "lineEnd": 22
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-06-macros#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文只说明宏必须在调用前定义或引入作用域，未明确说明否则编译器找不到该宏并导致编译失败。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#081",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-03",
+      "objectType": "AntiPattern",
+      "ordinal": 82,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+        "anchor": "ch19-06-macros#h3-4",
+        "lineStart": 114,
+        "lineEnd": 314
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-4",
+          "lineStart": 114,
+          "lineEnd": 314
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-06-macros#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了在过程宏中用 unwrap 直接处理 syn::parse 的解析错误，并指出生产代码应改用 panic! 或 expect 提供更明确的错误信息，足以支撑主张中关于错误信息不明确的危害。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#082",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-04",
+      "objectType": "AntiPattern",
+      "ordinal": 83,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文仅说明过程宏必须定义在特殊 crate 类型中，未明确说明在普通库或二进制 crate 中直接定义会导致无法使用、编译或加载失败。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+        "anchor": "ch19-06-macros#h3-3",
+        "lineStart": 90,
+        "lineEnd": 113
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-3",
+          "lineStart": 90,
+          "lineEnd": 113
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-4",
+          "lineStart": 114,
+          "lineEnd": 314
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-06-macros#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch19-06-macros#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文仅说明过程宏必须定义在特殊 crate 类型中，未明确说明在普通库或二进制 crate 中直接定义会导致无法使用、编译或加载失败。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#083",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-05",
+      "objectType": "AntiPattern",
+      "ordinal": 84,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+        "anchor": "ch05-02-example-structs#h3-3",
+        "lineStart": 65,
+        "lineEnd": 155
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h3-3",
+          "lineStart": 65,
+          "lineEnd": 155
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h2-1",
+          "lineStart": 1,
+          "lineEnd": 20
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch05-02-example-structs#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "appendix-03-derivable-traits#h2-1",
+          "strict": false,
+          "normalized": true,
+          "acceptedBy": "normalization",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明结构体没有 Display 实现、直接用 {} 会编译失败，且附录 C 指出 Display 无法通过 derive 派生，故主张的每条断言均被支撑。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#084",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-06",
+      "objectType": "AntiPattern",
+      "ordinal": 85,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+        "anchor": "appendix-03-derivable-traits#h3-4",
+        "lineStart": 55,
+        "lineEnd": 72
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-4",
+          "lineStart": 55,
+          "lineEnd": 72
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-5",
+          "lineStart": 73,
+          "lineEnd": 78
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-6",
+          "lineStart": 79,
+          "lineEnd": 94
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "appendix-03-derivable-traits#h3-4",
+          "strict": false,
+          "normalized": true,
+          "acceptedBy": "normalization",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "appendix-03-derivable-traits#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/2",
+          "anchor": "appendix-03-derivable-traits#h3-6",
+          "strict": false,
+          "normalized": true,
+          "acceptedBy": "normalization",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文说明派生 Clone、Hash、Default 时类型的每一部分必须实现对应 trait，因此在含未实现该 trait 的字段的类型上直接 derive 会无法生成实现并导致编译失败。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#085",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-07",
+      "objectType": "AntiPattern",
+      "ordinal": 86,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+        "anchor": "ch19-06-macros#h3-6",
+        "lineStart": 335,
+        "lineEnd": 353
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-6",
+          "lineStart": 335,
+          "lineEnd": 353
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-2",
+          "lineStart": 23,
+          "lineEnd": 89
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-06-macros#h3-6",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch19-06-macros#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点明确说明解析SQL等复杂处理超出macro_rules!能力，佐证锚点明确说明macro_rules!存在奇怪之处并将会过时，足以支撑主张的两部分。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#086",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T11-08",
+      "objectType": "AntiPattern",
+      "ordinal": 87,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+        "anchor": "appendix-03-derivable-traits#h3-2",
+        "lineStart": 29,
+        "lineEnd": 40
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-2",
+          "lineStart": 29,
+          "lineEnd": 40
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-5",
+          "lineStart": 73,
+          "lineEnd": 78
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "appendix-03-derivable-traits#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "appendix-03-derivable-traits#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 HashMap 的 key 必须实现 Eq 和 Hash，未实现则无法作为 key 使用，支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#087",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-01",
+      "objectType": "AntiPattern",
+      "ordinal": 88,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+        "anchor": "ch19-01-unsafe-rust#h3-2",
+        "lineStart": 31,
+        "lineEnd": 89
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-2",
+          "lineStart": 31,
+          "lineEnd": 89
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h4-1",
+          "lineStart": 129,
+          "lineEnd": 237
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-01-unsafe-rust#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch19-01-unsafe-rust#h4-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在 unsafe 块外不能解引用裸指针，并指出把任意内存地址当作数据使用会导致未定义行为，且提及段错误、编译器优化和数据竞争风险。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#088",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-02",
+      "objectType": "AntiPattern",
+      "ordinal": 89,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+        "anchor": "ch19-01-unsafe-rust#h3-1",
+        "lineStart": 11,
+        "lineEnd": 30
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-1",
+          "lineStart": 11,
+          "lineEnd": 30
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-7",
+          "lineStart": 351,
+          "lineEnd": 363
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-01-unsafe-rust#h3-1",
+          "strict": false,
+          "normalized": true,
+          "acceptedBy": "normalization",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch19-01-unsafe-rust#h3-7",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确建议保持 unsafe 块小并封装为安全 API 以防止 unsafe 泄露到所有使用处，且说明编译器不能保证内存安全、显式标注有助于追踪错误源头。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#089",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-03",
+      "objectType": "AntiPattern",
+      "ordinal": 90,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+        "anchor": "ch19-01-unsafe-rust#h3-4",
+        "lineStart": 277,
+        "lineEnd": 326
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-4",
+          "lineStart": 277,
+          "lineEnd": 326
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-01-unsafe-rust#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出多线程访问可变静态变量可能导致数据竞争，并建议优先使用并发技术和线程安全智能指针来保证安全，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#090",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-04",
+      "objectType": "AntiPattern",
+      "ordinal": 91,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文只说明需要自己检查并通过 unsafe 表明，但并未断言未验证时实现会导致数据竞争或未定义行为，不足以支撑主张的危害部分。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+        "anchor": "ch19-01-unsafe-rust#h3-5",
+        "lineStart": 327,
+        "lineEnd": 346
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-5",
+          "lineStart": 327,
+          "lineEnd": 346
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-01-unsafe-rust#h3-5",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文只说明需要自己检查并通过 unsafe 表明，但并未断言未验证时实现会导致数据竞争或未定义行为，不足以支撑主张的危害部分。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#091",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-05",
+      "objectType": "AntiPattern",
+      "ordinal": 92,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文支持不安全函数需阅读契约及 extern 函数需开发者负责，但未明确说明违反 ABI 约定会导致未定义行为，这部分断言超出原文。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+        "anchor": "ch19-01-unsafe-rust#h3-3",
+        "lineStart": 90,
+        "lineEnd": 128
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-3",
+          "lineStart": 90,
+          "lineEnd": 128
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h4-2",
+          "lineStart": 238,
+          "lineEnd": 276
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-01-unsafe-rust#h3-3",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch19-01-unsafe-rust#h4-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文支持不安全函数需阅读契约及 extern 函数需开发者负责，但未明确说明违反 ABI 约定会导致未定义行为，这部分断言超出原文。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#092",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-06",
+      "objectType": "AntiPattern",
+      "ordinal": 93,
+      "status": "reject",
+      "reasonCode": "JUDGE_NOT_SUPPORTED",
+      "failures": [
+        {
+          "code": "JUDGE_NOT_SUPPORTED",
+          "detail": "判定者判为 unsupported：锚点原文明确说类型别名无法获得 newtype 模式提供的类型检查好处，并举例不同单位（Millimeters/Meters）应使用 newtype 来防止混淆，与主张中“使用 type 别名而非 newtype”的方向相反。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+        "anchor": "ch19-04-advanced-types#h3-2",
+        "lineStart": 15,
+        "lineEnd": 114
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+          "anchor": "ch19-04-advanced-types#h3-2",
+          "lineStart": 15,
+          "lineEnd": 114
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+          "anchor": "ch19-04-advanced-types#h3-1",
+          "lineStart": 7,
+          "lineEnd": 14
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-04-advanced-types#h3-2",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        },
+        {
+          "at": "sourceRefs/1",
+          "anchor": "ch19-04-advanced-types#h3-1",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "reject",
+        "verdict": "unsupported",
+        "reasonCode": "JUDGE_NOT_SUPPORTED",
+        "reason": "锚点原文明确说类型别名无法获得 newtype 模式提供的类型检查好处，并举例不同单位（Millimeters/Meters）应使用 newtype 来防止混淆，与主张中“使用 type 别名而非 newtype”的方向相反。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#093",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AP-SYNTH-T12-07",
+      "objectType": "AntiPattern",
+      "ordinal": 94,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+        "anchor": "ch19-04-advanced-types#h3-4",
+        "lineStart": 184,
+        "lineEnd": 241
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+          "anchor": "ch19-04-advanced-types#h3-4",
+          "lineStart": 184,
+          "lineEnd": 241
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [
+        {
+          "at": "sourceRefs/0",
+          "anchor": "ch19-04-advanced-types#h3-4",
+          "strict": true,
+          "normalized": true,
+          "acceptedBy": "strict",
+          "scope": "own-anchor-region"
+        }
+      ],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出不能创建 str 类型变量或参数、代码无法编译，且必须将动态大小类型置于指针之后，支撑主张及其 harm。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#094",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ]
+}

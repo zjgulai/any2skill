@@ -28,6 +28,7 @@ import { createHash } from 'node:crypto'
 
 import {
   DEFAULT_REPO_ROOT,
+  DEFAULT_SOURCE_KEY,
   DEFAULT_SOURCE_ROOT,
   assertAllowedSource,
   buildAnchorIndex,
@@ -38,6 +39,11 @@ export const CATALOG_SCHEMA_VERSION = 'anchor-catalog/v1'
 
 /** 目录的相对落盘路径。 */
 export const CATALOG_REL_PATH = path.join('pipeline', 'knowledge', 'anchor-catalog.json')
+/** 按源命名空间（卡 22）：缺省键逐字节不变；其他源加 `.<key>` 后缀。 */
+export const catalogRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? CATALOG_REL_PATH
+    : path.join('pipeline', 'knowledge', `anchor-catalog.${sourceKey}.json`)
 
 /**
  * 首行摘录的长度上限（字符）。
@@ -107,8 +113,9 @@ export async function buildAnchorCatalog(opts = {}) {
   for (const absPath of files) {
     // 路径守卫随第 1 层一同生效：目录是**从**内容源派生的，所以它必须走与索引同一条入口。
     // 少这一行，本模块就成了绕过 01 守卫的第二条读源路径（卡 09 要求隔离写在代码里，
-    // 不是「约定本模块只被合法调用方使用」）。
-    assertAllowedSource(absPath, { repoRoot })
+    // 不是「约定本模块只被合法调用方使用」）。守卫**按源放行**（卡 22）——否则第二源的
+    // 目录构建会被守卫自己挡在门外。
+    assertAllowedSource(absPath, { repoRoot, sourceRoot: opts.sourceRoot })
     const index = await buildAnchorIndex(absPath, { repoRoot })
     const raw = await readFile(absPath, 'utf8')
     const lines = normalizeSourceLines(raw)

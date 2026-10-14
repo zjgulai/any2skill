@@ -1,0 +1,3562 @@
+{
+  "schemaVersion": "knowledge-objects/v1",
+  "runId": "run-fd491f2468f0",
+  "objectType": "AntiPattern",
+  "idPrefix": "AP-SYNTH",
+  "source": "antipattern-synthesis",
+  "complete": true,
+  "objects": [
+    {
+      "id": "AP-SYNTH-T01-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+          "anchor": "ch04-01-what-is-ownership#h4-1",
+          "title": "变量与数据交互的方式（一）：移动",
+          "lineStart": 109,
+          "lineEnd": 172,
+          "contentHash": "sha256:3ca8b5d495140dbda43570ef3163178f7469726e4b468ce3826f7ba8782f3151",
+          "quote": "在 `let s2 = s1` 之后，Rust 认为 `s1` 不再有效，因此 Rust 不需要在 `s1` 离开作用域后清理任何东西。看看在 `s2` 被创建之后尝试使用 `s1` 会发生什么；这段代码不能运行："
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h3-2",
+          "title": "哈希 map 和所有权",
+          "lineStart": 43,
+          "lineEnd": 64,
+          "contentHash": "sha256:ab30fc69ffc9e1a22ad25a8a800e9f07e6c257ab6512443ccff8f03fd667ea02",
+          "quote": "当 `insert` 调用将 `field_name` 和 `field_value` 移动到哈希 map 中后，将不能使用这两个绑定。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-1",
+          "title": "通道与所有权转移",
+          "lineStart": 90,
+          "lineEnd": 132,
+          "contentHash": "sha256:045bd4b58b3cef5476ba521336ecb7561cb3664934645e8505241e672283ee0e",
+          "quote": "`send` 函数获取其参数的所有权并移动这个值归接收者所有。这可以防止在发送后再次意外地使用这个值；所有权系统检查一切是否合乎规则。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-1",
+          "title": "使用 `Rc<T>` 共享数据",
+          "lineStart": 13,
+          "lineEnd": 90,
+          "contentHash": "sha256:be2cca6cc28c7e523e17b3bdf7bacbbb5187eaa21a36607c561257b711194d8a",
+          "quote": "`Cons` 成员拥有其储存的数据，所以当创建 `b` 列表时，`a` 被移动进了 `b` 这样 `b` 就拥有了 `a`。接着当再次尝试使用 `a` 创建 `c` 时，这不被允许，因为 `a` 的所有权已经被移动。"
+        }
+      ],
+      "evidenceQuote": "在 `let s2 = s1` 之后，Rust 认为 `s1` 不再有效，因此 Rust 不需要在 `s1` 离开作用域后清理任何东西。看看在 `s2` 被创建之后尝试使用 `s1` 会发生什么；这段代码不能运行：",
+      "chapterRef": "ch04-01-what-is-ownership",
+      "pattern": "在值被移动（赋值给其他变量、插入哈希 map、发送到通道、移入拥有所有权的数据结构）之后，继续访问或使用原始绑定。",
+      "harm": "编译器会以 `use of moved value`（E0382）拒绝代码，防止潜在的双重释放、无效变量以及并发线程对已发送值的后续修改或丢弃导致的数据不一致。",
+      "corrective": "移动后不再使用原绑定；如果多个位置需要共享同一数据，在单线程场景改用 `Rc<T>` 的引用计数共享，并用 `Rc::clone` 增加计数，而不是将所有权移入单一所有者。",
+      "evidence": [
+        "赋值移动后 `s1` 不再有效，尝试使用会编译失败。",
+        "`insert` 移动键值后不能再使用原绑定。",
+        "`send` 获取参数所有权，防止发送后再次意外使用该值。",
+        "`Cons` 成员拥有数据，创建 `b` 时 `a` 被移动，之后再用 `a` 不被允许。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T01-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+          "anchor": "ch04-02-references-and-borrowing#h2-1",
+          "title": "引用与借用",
+          "lineStart": 1,
+          "lineEnd": 58,
+          "contentHash": "sha256:7c42767db5adc0f50a4575a1c38b095a5235cea5c107aa84e78fab21bab0d12b",
+          "quote": "正如变量在默认情况下是不可变的一样，引用也是不可变的。我们无法通过引用修改内容。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-2",
+          "title": "内部可变性：不可变值的可变借用",
+          "lineStart": 32,
+          "lineEnd": 58,
+          "contentHash": "sha256:aa68aad636ab96d2a9e7ab80aae4d32c7d38e4e79d8c85e1e719eef4ee9500a8",
+          "quote": "借用规则的一个推论是当有一个不可变值时，不能可变地借用它。"
+        }
+      ],
+      "evidenceQuote": "正如变量在默认情况下是不可变的一样，引用也是不可变的。我们无法通过引用修改内容。",
+      "chapterRef": "ch04-02-references-and-borrowing",
+      "pattern": "试图通过不可变引用修改其指向的内容，或在不可变变量上创建可变引用。",
+      "harm": "编译器拒绝编译，防止程序在不可变语义下意外改变数据。",
+      "corrective": "当确需修改值时，将变量声明为 `mut` 并使用 `&mut` 可变引用；若只想读取，则保持不可变引用。",
+      "evidence": [
+        "不可变引用默认不可变，无法通过引用修改内容。",
+        "不可变值不能被可变地借用，尝试会导致编译错误。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T01-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+          "anchor": "ch04-02-references-and-borrowing#h3-1",
+          "title": "可变引用",
+          "lineStart": 59,
+          "lineEnd": 128,
+          "contentHash": "sha256:9f8c97a1b424869fac9876339e83ca334704e8fe8e7866d36d841734357f812d",
+          "quote": "不过可变引用有一个很大的限制：在同一时间，只能有一个对某一特定数据的可变引用。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-1",
+          "title": "通过 `RefCell<T>` 在运行时检查借用规则",
+          "lineStart": 7,
+          "lineEnd": 31,
+          "contentHash": "sha256:3bc38f4b3408e17735961e8504b7ac0a7bd58458ac27f02b53e1b4a73d5e3c7a",
+          "quote": "在任意给定时刻，只能拥有一个可变引用或任意数量的不可变引用 **之一**（而不是两者）。"
+        }
+      ],
+      "evidenceQuote": "不过可变引用有一个很大的限制：在同一时间，只能有一个对某一特定数据的可变引用。",
+      "chapterRef": "ch04-02-references-and-borrowing",
+      "pattern": "在同一个作用域内同时持有对同一数据的多个可变引用，或在持有不可变引用的同时创建可变引用。",
+      "harm": "可能造成数据竞争或未定义行为，编译器以借用冲突错误拒绝代码，避免难以追踪的运行时并发/别名 bug。",
+      "corrective": "用大括号块将不同借用限制在不同作用域中，或让不可变引用的最后一次使用在可变引用创建之前结束（利用 NLL），保证同一时间只有一种借用存在。",
+      "evidence": [
+        "同一时间对某一数据只能有一个可变引用。",
+        "同一时刻只能拥有一个可变引用或任意数量的不可变引用之一，而不是两者。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T01-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+          "anchor": "ch04-02-references-and-borrowing#h3-2",
+          "title": "悬垂引用（Dangling References）",
+          "lineStart": 129,
+          "lineEnd": 170,
+          "contentHash": "sha256:e9fda8b0275851ea2448378c0e4562a02856f3a98ec946db3fa3c56032411988",
+          "quote": "因为 `s` 是在 `dangle` 函数内创建的，当 `dangle` 的代码执行完毕后，`s` 将被释放。不过我们尝试返回它的引用。这意味着这个引用会指向一个无效的 `String`，这可不对！Rust 不会允许我们这么做。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-5",
+          "title": "深入理解生命周期",
+          "lineStart": 248,
+          "lineEnd": 298,
+          "contentHash": "sha256:659e9a15194e1ca826b7fb23f8db6e32a561cf442ca7fe4b6bc15426d07bd4c0",
+          "quote": "如果返回的引用 **没有** 指向任何一个参数，那么唯一的可能就是它指向一个函数内部创建的值，它将会是一个悬垂引用，因为它将会在函数结束时离开作用域。"
+        }
+      ],
+      "evidenceQuote": "因为 `s` 是在 `dangle` 函数内创建的，当 `dangle` 的代码执行完毕后，`s` 将被释放。不过我们尝试返回它的引用。这意味着这个引用会指向一个无效的 `String`，这可不对！Rust 不会允许我们这么做。",
+      "chapterRef": "ch04-02-references-and-borrowing",
+      "pattern": "从函数返回指向函数内部创建值的引用，让调用方得到指向已释放内存的悬垂引用。",
+      "harm": "引用失效导致内存安全问题；编译器/借用检查器拒绝编译，防止悬垂引用。",
+      "corrective": "返回拥有所有权的数据类型（如 `String`），或让返回值生命周期与某个输入参数相关联，而不是返回局部变量的引用。",
+      "evidence": [
+        "返回函数内创建的 `String` 的引用会指向无效内存，Rust 不允许。",
+        "返回的引用不指向任何参数时只能指向函数内部创建的值，即悬垂引用。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T01-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+          "anchor": "ch04-03-slices#h2-1",
+          "title": "切片 Slice 类型",
+          "lineStart": 1,
+          "lineEnd": 66,
+          "contentHash": "sha256:70dc494fae8ce9c57bd3bedaf6c4277508c2f5f7078c6cd508836ea8dad799b6",
+          "quote": "我们返回了一个独立的 `usize`，不过它只在 `&String` 的上下文中才是一个有意义的数字。换句话说，因为它是一个与 `String` 相分离的值，无法保证将来它仍然有效。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+          "anchor": "ch04-03-slices#h3-1",
+          "title": "字符串 slice",
+          "lineStart": 67,
+          "lineEnd": 151,
+          "contentHash": "sha256:c5afe36cc4f7d684109b6d1e5b1450f8644d076f0869286b3b08acd6260e062f",
+          "quote": "slice 就不可能出现这种 bug 并让我们更早的知道出问题了。"
+        }
+      ],
+      "evidenceQuote": "我们返回了一个独立的 `usize`，不过它只在 `&String` 的上下文中才是一个有意义的数字。换句话说，因为它是一个与 `String` 相分离的值，无法保证将来它仍然有效。",
+      "chapterRef": "ch04-03-slices",
+      "pattern": "从集合/字符串中提取独立的数字索引（如 `usize`）作为查找结果的表示，而不是返回与底层数据绑定的引用或 slice。",
+      "harm": "索引与数据状态无关，在数据被修改（如 `clear`）后索引失效，造成逻辑 bug；这些 bug 通常不会立即暴露，编译器无法在编译期发现。",
+      "corrective": "返回字符串 slice（`&str`）或数组/集合 slice（`&[T]`），把结果的起始位置和长度与底层数据生命周期绑定，由编译器保证引用在修改/清空时失效。",
+      "evidence": [
+        "独立的 `usize` 与 `String` 相分离，无法保证将来仍然有效。",
+        "使用 slice 后可以避免这类索引失效的 bug，并在编译期更早发现问题。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T01-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-9",
+          "title": "静态生命周期",
+          "lineStart": 448,
+          "lineEnd": 459,
+          "contentHash": "sha256:236e9f47e7a8bda2733ac1dce1ce9c2ee0582308d928aafdbab3c0b67a23353a",
+          "quote": "你也许要考虑是否希望它存在得这么久，即使这是可能的。大部分情况，代码中的问题是尝试创建一个悬垂引用或者可用的生命周期不匹配，请解决这些问题而不是指定一个 `'static` 的生命周期。"
+        }
+      ],
+      "evidenceQuote": "你也许要考虑是否希望它存在得这么久，即使这是可能的。大部分情况，代码中的问题是尝试创建一个悬垂引用或者可用的生命周期不匹配，请解决这些问题而不是指定一个 `'static` 的生命周期。",
+      "chapterRef": "ch10-03-lifetime-syntax",
+      "pattern": "在遇到生命周期不匹配或悬垂引用错误时，通过给引用标注 `'static` 生命周期来让代码编译通过。",
+      "harm": "掩盖真正的悬垂引用或生命周期不匹配问题，可能不合理地要求引用存活整个程序期间，而不是修复错误。",
+      "corrective": "先确认该引用是否真的必须存活整个程序；否则应修复参数与返回值之间的生命周期关系，或返回拥有所有权的数据类型，而不是使用 `'static` 绕过错误。",
+      "evidence": [
+        "书中明确警告在指定 `'static` 之前思考，大部分情况问题在于悬垂引用或生命周期不匹配，应解决这些问题。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T01-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-2",
+          "title": "函数中的泛型生命周期",
+          "lineStart": 85,
+          "lineEnd": 139,
+          "contentHash": "sha256:01cc22c08df9c51cc754ea125bbe90a60baf8b33ce2d47f5a0b0ff8fb2a2e703",
+          "quote": "提示文本揭示了返回值需要一个泛型生命周期参数，因为 Rust 并不知道将要返回的引用是指向 `x` 或 `y`。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+          "anchor": "ch10-03-lifetime-syntax#h3-7",
+          "title": "生命周期省略（Lifetime Elision）",
+          "lineStart": 325,
+          "lineEnd": 406,
+          "contentHash": "sha256:09adae57261c9ccfe64560b098a90bc577b53c20bb0f13a62f34edac7faf0a9f",
+          "quote": "应用了三个规则之后编译器还没有计算出返回值类型的生命周期。这就是我们在尝试编译示例 10-21 中的代码时出现错误的原因：编译器使用所有已知的生命周期省略规则，仍不能计算出签名中所有引用的生命周期。"
+        }
+      ],
+      "evidenceQuote": "提示文本揭示了返回值需要一个泛型生命周期参数，因为 Rust 并不知道将要返回的引用是指向 `x` 或 `y`。",
+      "chapterRef": "ch10-03-lifetime-syntax",
+      "pattern": "在函数返回多个输入引用之一时，省略必要的生命周期标注（例如 `fn longest(x: &str, y: &str) -> &str`）。",
+      "harm": "编译器报错 `missing lifetime specifier`，因为借用检查器无法确定返回值与输入引用之间的生命周期关系，从而无法保证返回引用有效。",
+      "corrective": "添加泛型生命周期参数 `'a`，在函数签名中标注参数和返回值，如 `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str`，明确返回值与输入参数的关联。",
+      "evidence": [
+        "多个输入引用时，编译器需要生命周期参数来知道返回值指向哪个参数。",
+        "生命周期省略规则无法自动推断出多输入引用的返回生命周期，必须显式标注。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T01-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+          "anchor": "ch15-06-reference-cycles#h2-1",
+          "title": "引用循环与内存泄漏",
+          "lineStart": 1,
+          "lineEnd": 4,
+          "contentHash": "sha256:03da59b63c6f230a68eadb0e89c026a2002602707d19a38773d0c9acafc82f96",
+          "quote": "创建引用循环的可能性是存在的。这会造成内存泄漏，因为每一项的引用计数永远也到不了 0，其值也永远不会被丢弃。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-2",
+          "title": "克隆 `Rc<T>` 会增加引用计数",
+          "lineStart": 91,
+          "lineEnd": 141,
+          "contentHash": "sha256:f68a2372028e9ad3332d432e8cb8b125204ae2ea3de6ff4ecc403fa04f978fb6",
+          "quote": "这个函数叫做 `strong_count` 而不是 `count` 是因为 `Rc<T>` 也有 `weak_count`；在 [“避免引用循环：将 `Rc<T>` 变为 `Weak<T>`”](ch15-06-reference-cycles.html#preventing-reference-cycles-turning-an-rct-into-a-weakt) 部分会讲解 `weak_count` 的用途。"
+        }
+      ],
+      "evidenceQuote": "创建引用循环的可能性是存在的。这会造成内存泄漏，因为每一项的引用计数永远也到不了 0，其值也永远不会被丢弃。",
+      "chapterRef": "ch15-06-reference-cycles",
+      "pattern": "使用 `Rc<T>`（尤其与 `RefCell<T>` 结合）创建互相持有的循环引用，使引用计数始终大于零。",
+      "harm": "造成内存泄漏：即使所有外部引用都消失，循环内每个节点的引用计数永远不为 0，堆上值永远不会被丢弃。",
+      "corrective": "对于不拥有所有权的、可能形成循环的关系，使用 `Weak<T>` 弱引用代替强 `Rc<T>` 引用，以打破引用循环。",
+      "evidence": [
+        "创建引用循环会使得每一项的引用计数永远达不到 0，值永远不会被丢弃。",
+        "`Rc<T>` 有 `weak_count`，通过将 `Rc<T>` 变为 `Weak<T>` 可以避免引用循环。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+          "title": "使用 `Result` 类型来处理潜在的错误",
+          "lineStart": 125,
+          "lineEnd": 158,
+          "contentHash": "sha256:a7176b80724f46733a387bc075c08a7626862c2a26eef427b723d2a89f3b9d02",
+          "quote": "Rust 警告我们没有使用 `read_line` 的返回值 `Result`，这表明程序没有处理一个可能发生的错误。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+          "title": "从 `run` 函数中返回错误",
+          "lineStart": 306,
+          "lineEnd": 350,
+          "contentHash": "sha256:97641f130e7ca08e3dd51ea53415207bfe84938ce2a2394ca49765282f048623",
+          "quote": "Rust 提示我们的代码忽略了 `Result` 值，它可能表明这里存在一个错误。但我们却没有检查这里是否有一个错误，而编译器提醒我们这里应该有一些错误处理代码！"
+        }
+      ],
+      "evidenceQuote": "Rust 警告我们没有使用 `read_line` 的返回值 `Result`，这表明程序没有处理一个可能发生的错误。",
+      "chapterRef": "ch02-00-guessing-game-tutorial",
+      "pattern": "忽略返回的 Result 值，不处理可能发生的错误。",
+      "harm": "错误被静默忽略，程序可能在无效状态下继续运行，并触发编译器警告。",
+      "corrective": "必须处理 Result 返回值，例如使用 match 显式处理、使用 ? 传播错误，或根据场景决定恢复或退出。",
+      "evidence": [
+        "ch02 指出 Rust 警告未使用 Result 返回值说明没有处理可能错误；ch12 指出忽略 run 返回的 Result 会触发警告，且应检查错误。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-1",
+          "title": "匹配不同的错误",
+          "lineStart": 92,
+          "lineEnd": 144,
+          "contentHash": "sha256:592004d6cc4200b44894a80801703d057a30ee8abc124428201ee3695d27f2c4",
+          "quote": "示例 9-4 中的代码不管 `File::open` 是因为什么原因失败都会 `panic!`。我们真正希望的是对不同的错误原因采取不同的行为："
+        }
+      ],
+      "evidenceQuote": "示例 9-4 中的代码不管 `File::open` 是因为什么原因失败都会 `panic!`。我们真正希望的是对不同的错误原因采取不同的行为：",
+      "chapterRef": "ch09-02-recoverable-errors-with-result",
+      "pattern": "对所有错误都直接 panic!，不区分具体的错误类型。",
+      "harm": "可恢复的错误（如文件不存在）也被迫终止程序，无法采取恢复操作。",
+      "corrective": "匹配 error.kind() 或使用 Result 组合子，按错误类型分别处理，例如 NotFound 时创建文件。",
+      "evidence": [
+        "ch09-02 h3-1 明确指出示例 9-4 不管失败原因都 panic，而真正希望的是不同错误采取不同行为。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-2",
+          "title": "失败时 panic 的简写：`unwrap` 和 `expect`",
+          "lineStart": 145,
+          "lineEnd": 187,
+          "contentHash": "sha256:cb9b5a018a2ca4ea986f10ddca0bcd0bac8ac645b4491f3c100f152789bcec04",
+          "quote": "如果在多处使用 `unwrap`，则需要花更多的时间来分析到底是哪一个 `unwrap` 造成了 panic，因为所有的 `unwrap` 调用都打印相同的信息。"
+        }
+      ],
+      "evidenceQuote": "如果在多处使用 `unwrap`，则需要花更多的时间来分析到底是哪一个 `unwrap` 造成了 panic，因为所有的 `unwrap` 调用都打印相同的信息。",
+      "chapterRef": "ch09-02-recoverable-errors-with-result",
+      "pattern": "在多个位置使用 unwrap 而不提供自定义错误上下文。",
+      "harm": "panic 时所有 unwrap 打印相同信息，难以追踪错误来源。",
+      "corrective": "使用 expect 提供清晰的错误信息以表明意图并便于追踪 panic 根源。",
+      "evidence": [
+        "ch09-02 h3-2 说明多处 unwrap 会打印相同信息，增加分析成本；expect 提供好的错误信息更易追踪。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-02-recoverable-errors-with-result.md",
+          "anchor": "ch09-02-recoverable-errors-with-result#h3-5",
+          "title": "`?` 运算符可被用于返回 `Result` 的函数",
+          "lineStart": 296,
+          "lineEnd": 345,
+          "contentHash": "sha256:0f98589f07944bba89c6cba53dbaff4fabebbeb4f5a3233412f0d66f30512d80",
+          "quote": "错误指出只能在返回 `Result` 或者其它实现了 `std::ops::Try` 的类型的函数中使用 `?` 运算符。当你期望在不返回 `Result` 的函数中调用其他返回 `Result` 的函数时使用 `?` 的话，有两种方法修复这个问题。"
+        }
+      ],
+      "evidenceQuote": "错误指出只能在返回 `Result` 或者其它实现了 `std::ops::Try` 的类型的函数中使用 `?` 运算符。当你期望在不返回 `Result` 的函数中调用其他返回 `Result` 的函数时使用 `?` 的话，有两种方法修复这个问题。",
+      "chapterRef": "ch09-02-recoverable-errors-with-result",
+      "pattern": "在返回 () 或其他非 Result 类型的函数中使用 ? 运算符。",
+      "harm": "编译错误：? 运算符无法在返回 () 的函数中使用。",
+      "corrective": "将函数返回类型改为 Result<T, E> 或 Option<T>，或者改用 match 或 Result 方法处理错误。",
+      "evidence": [
+        "ch09-02 h3-5 展示了 main 函数返回 () 时使用 ? 导致编译错误，并给出修复方法。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+          "title": "错误处理指导原则",
+          "lineStart": 27,
+          "lineEnd": 42,
+          "contentHash": "sha256:5956004dd5868b5dbeaecb0e37939a983dc835ec6efad33178f5e20971f5ecdb",
+          "quote": "然而当错误预期会出现时，返回 `Result` 仍要比调用 `panic!` 更为合适。这样的例子包括解析器接收到格式错误的数据，或者 HTTP 请求返回了一个表明触发了限流的状态。在这些例子中，应该通过返回 `Result` 来表明失败预期是可能的，这样将有害状态向上传播，调用者就可以决定该如何处理这个问题。使用 `panic!` 来处理这些情况就不是最好的选择。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+          "title": "改善错误信息",
+          "lineStart": 175,
+          "lineEnd": 206,
+          "contentHash": "sha256:cb86baad5a72aa4a91be268f2008d8f83b5f97f31fd842c73276dc2441487e16",
+          "quote": "所以在这里使用示例 9-9 中的技术可能不是最好的；正如 [第 9 章][ch9-error-guidelines] 所讲到的一样，`panic!` 的调用更趋向于程序上的问题而不是使用上的问题。相反我们可以使用第 9 章学习的另一个技术 —— 返回一个可以表明成功或错误的 [`Result`][ch9-result]。"
+        }
+      ],
+      "evidenceQuote": "然而当错误预期会出现时，返回 `Result` 仍要比调用 `panic!` 更为合适。这样的例子包括解析器接收到格式错误的数据，或者 HTTP 请求返回了一个表明触发了限流的状态。在这些例子中，应该通过返回 `Result` 来表明失败预期是可能的，这样将有害状态向上传播，调用者就可以决定该如何处理这个问题。使用 `panic!` 来处理这些情况就不是最好的选择。",
+      "chapterRef": "ch09-03-to-panic-or-not-to-panic",
+      "pattern": "对预期会出现的可恢复错误（包括用户输入错误）使用 panic!，而不是返回 Result 交给调用者。",
+      "harm": "剥夺调用者恢复机会，迫使程序崩溃，并可能向用户暴露不必要的 panic 信息。",
+      "corrective": "返回 Result 来表明失败可能，让调用者决定如何处理，而不是代替调用者决定 panic。",
+      "evidence": [
+        "ch09-03 h3-3 明确指出预期错误应返回 Result，panic 不是最好选择；ch12-03 h4-1 指出 panic 更趋向程序问题而非使用问题，应返回 Result。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+          "title": "当我们比编译器知道更多的情况",
+          "lineStart": 15,
+          "lineEnd": 26,
+          "contentHash": "sha256:592acb589f5a88bcabab45a287c644935f17870a4ca953eba54e6b246de968b0",
+          "quote": "如果 IP 地址字符串来源于用户而不是硬编码进程序中的话，那么就 **确实** 有失败的可能性，这时就绝对需要我们以一种更健壮的方式处理 `Result` 了。"
+        }
+      ],
+      "evidenceQuote": "如果 IP 地址字符串来源于用户而不是硬编码进程序中的话，那么就 **确实** 有失败的可能性，这时就绝对需要我们以一种更健壮的方式处理 `Result` 了。",
+      "chapterRef": "ch09-03-to-panic-or-not-to-panic",
+      "pattern": "对可能失败的动态输入使用 unwrap，假定 Result 一定为 Ok。",
+      "harm": "输入无效时程序 panic，缺少对可恢复失败的处理。",
+      "corrective": "对来自用户或外部输入的数据使用 match 或其他 Result 处理方式，而不是 unwrap。",
+      "evidence": [
+        "ch09-03 h3-2 指出硬编码时可接受 unwrap，但来自用户的输入确实可能失败，必须更健壮处理。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+          "title": "修复错误处理",
+          "lineStart": 159,
+          "lineEnd": 174,
+          "contentHash": "sha256:867f3819702ed05f99c4e21a833ae44b2b921ece35f65977df0d966de5b6c61c",
+          "quote": "回忆一下之前提到过如果 `args` vector 包含少于 3 个项并尝试访问 vector 中索引 `1` 或索引 `2` 的值会造成程序 panic。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md",
+          "anchor": "ch09-01-unrecoverable-errors-with-panic#h3-1",
+          "title": "使用 `panic!` 的 backtrace",
+          "lineStart": 39,
+          "lineEnd": 133,
+          "contentHash": "sha256:e7d73efda1c4120410411d7a1693f42195ace61d86987a2145ee618f5baa4007",
+          "quote": "这种情况下 Rust 会 panic。`[]` 应当返回一个元素，但是如果传递了一个无效的索引，那么 Rust 在这里返回任何元素都不会是正确的。"
+        }
+      ],
+      "evidenceQuote": "回忆一下之前提到过如果 `args` vector 包含少于 3 个项并尝试访问 vector 中索引 `1` 或索引 `2` 的值会造成程序 panic。",
+      "chapterRef": "ch12-03-improving-error-handling-and-modularity",
+      "pattern": "直接索引集合元素而不先检查长度或边界。",
+      "harm": "索引无效时触发 panic，程序崩溃。",
+      "corrective": "在访问索引前确认索引在集合范围内，避免直接请求越界元素。",
+      "evidence": [
+        "ch12-03 h3-5 描述 args 过短时索引访问导致 panic；ch09-01 h3-1 说明无效索引使 Rust panic，无法返回正确元素。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T02-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+          "anchor": "ch12-06-writing-to-stderr-instead-of-stdout#h3-1",
+          "title": "检查错误应该写入何处",
+          "lineStart": 7,
+          "lineEnd": 26,
+          "contentHash": "sha256:cf55e9e7028b437445ad00fe45f6c9c6ae58c7fcb5d45f69efafbac745c7e0a7",
+          "quote": "是的，错误信息被打印到了标准输出中。像这样的错误信息被打印到标准错误中将会有用得多，将使得只有成功运行所产生的输出才会写入文件。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch12-06-writing-to-stderr-instead-of-stdout.md",
+          "anchor": "ch12-06-writing-to-stderr-instead-of-stdout#h2-1",
+          "title": "将错误信息输出到标准错误而不是标准输出",
+          "lineStart": 1,
+          "lineEnd": 6,
+          "contentHash": "sha256:19a653299b596b6ff7453f5886d78fec7830e8999a368b41f143c396e84564c0",
+          "quote": "但是 `println!` 函数只能够打印到标准输出，所以我们必须使用其他方法来打印到标准错误。"
+        }
+      ],
+      "evidenceQuote": "是的，错误信息被打印到了标准输出中。像这样的错误信息被打印到标准错误中将会有用得多，将使得只有成功运行所产生的输出才会写入文件。",
+      "chapterRef": "ch12-06-writing-to-stderr-instead-of-stdout",
+      "pattern": "使用 println! 将错误信息输出到标准输出而不是标准错误。",
+      "harm": "错误信息随标准输出被重定向到文件，用户无法在屏幕上看到错误，且错误与正常输出混淆。",
+      "corrective": "将错误信息写入标准错误流，而不是用 println! 输出到标准输出。",
+      "evidence": [
+        "ch12-06 h3-1 演示错误信息被写入 output.txt，指出应打印到 stderr 更有用；h2-1 指出 println! 只能打印到 stdout，必须用其他方法输出到 stderr。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-01-syntax.md",
+          "anchor": "ch10-01-syntax#h3-1",
+          "title": "在函数定义中使用泛型",
+          "lineStart": 5,
+          "lineEnd": 114,
+          "contentHash": "sha256:1c79786c346c67dab4ca2a2a9f23130fb7a328e2a4c99a27ab03cf4e64f63446",
+          "quote": "注释中提到了 `std::cmp::PartialOrd`，这是一个 *trait*。下一部分会讲到 trait。不过简单来说，这个错误表明 `largest` 的函数体不能适用于 `T` 的所有可能的类型。因为在函数体需要比较 `T` 类型的值，不过它只能用于我们知道如何排序的类型。为了开启比较功能，标准库中定义的 `std::cmp::PartialOrd` trait 可以实现类型的比较功能（查看附录 C 获取该 trait 的更多信息）。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-6",
+          "title": "使用 trait bounds 来修复 `largest` 函数",
+          "lineStart": 290,
+          "lineEnd": 369,
+          "contentHash": "sha256:96c1fe29ca097294f1f3ee01818d76387998da2a1ce1fcfd30edf55beea8388f",
+          "quote": "在 `largest` 函数体中我们想要使用大于运算符（`>`）比较两个 `T` 类型的值。这个运算符被定义为标准库中 trait `std::cmp::PartialOrd` 的一个默认方法。所以需要在 `T` 的 trait bound 中指定 `PartialOrd`，这样 `largest` 函数可以用于任何可以比较大小的类型的 slice。"
+        }
+      ],
+      "evidenceQuote": "注释中提到了 `std::cmp::PartialOrd`，这是一个 *trait*。下一部分会讲到 trait。不过简单来说，这个错误表明 `largest` 的函数体不能适用于 `T` 的所有可能的类型。因为在函数体需要比较 `T` 类型的值，不过它只能用于我们知道如何排序的类型。为了开启比较功能，标准库中定义的 `std::cmp::PartialOrd` trait 可以实现类型的比较功能（查看附录 C 获取该 trait 的更多信息）。",
+      "chapterRef": "ch10-01-syntax",
+      "pattern": "在泛型函数体中直接使用需要特定 trait 支持的操作（如 `>` 比较），却不给类型参数添加相应的 trait bound。",
+      "harm": "编译器会报错 `binary operation `>` cannot be applied to type `T``，函数无法编译，因为它不能保证所有 `T` 都能执行该操作。",
+      "corrective": "先明确函数体需要的 trait 行为，并为泛型参数添加对应 bound，例如 `fn largest<T: PartialOrd>(list: &[T]) -> T`；若需要移动值，再考虑 `Copy` 或返回引用。",
+      "evidence": [
+        "`largest` 的函数体需要比较 `T` 类型的值，但未限制 `T` 时不能用于所有类型。",
+        "添加 `PartialOrd` bound 后，函数才能用于任何可比较大小的类型。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-01-syntax.md",
+          "anchor": "ch10-01-syntax#h3-2",
+          "title": "结构体定义中的泛型",
+          "lineStart": 115,
+          "lineEnd": 188,
+          "contentHash": "sha256:bdf49b9627794dcc25ad26f0eaa8f5a7f62c3cb5e10935ae324ced267568c35b",
+          "quote": "注意 `Point<T>` 的定义中只使用了一个泛型类型，这个定义表明结构体 `Point<T>` 对于一些类型 `T` 是泛型的，而且字段 `x` 和 `y` **都是** 相同类型的，无论它具体是何类型。如果尝试创建一个有不同类型值的 `Point<T>` 的实例，像示例 10-7 中的代码就不能编译："
+        }
+      ],
+      "evidenceQuote": "注意 `Point<T>` 的定义中只使用了一个泛型类型，这个定义表明结构体 `Point<T>` 对于一些类型 `T` 是泛型的，而且字段 `x` 和 `y` **都是** 相同类型的，无论它具体是何类型。如果尝试创建一个有不同类型值的 `Point<T>` 的实例，像示例 10-7 中的代码就不能编译：",
+      "chapterRef": "ch10-01-syntax",
+      "pattern": "用单个泛型参数 `T` 定义结构体，却希望各字段能接受不同的具体类型。",
+      "harm": "实例化时所有字段都被绑定为同一个 `T`，传入不同类型会导致类型不匹配错误，无法表达两个字段独立类型。",
+      "corrective": "如果字段可以不同类型，应使用多个泛型参数，如 `struct Point<T, U> { x: T, y: U }`。",
+      "evidence": [
+        "`Point<T>` 中 `x` 和 `y` 都是相同类型。",
+        "用整型 `5` 和浮点 `4.0` 创建实例会得到 `expected integer, found floating-point number` 错误。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+          "anchor": "ch19-03-advanced-traits#h3-3",
+          "title": "完全限定语法与消歧义：调用相同名称的方法",
+          "lineStart": 139,
+          "lineEnd": 382,
+          "contentHash": "sha256:9dc0b03d30a5f1dee486c784a09738d19ee99f558fbe2e383b23db821dcbb838",
+          "quote": "因为 `Animal::baby_name` 是关联函数而不是方法，因此它没有 `self` 参数，Rust 无法计算出所需的是哪一个 `Animal::baby_name` 实现。"
+        }
+      ],
+      "evidenceQuote": "因为 `Animal::baby_name` 是关联函数而不是方法，因此它没有 `self` 参数，Rust 无法计算出所需的是哪一个 `Animal::baby_name` 实现。",
+      "chapterRef": "ch19-03-advanced-traits",
+      "pattern": "当类型自身与 trait 都有同名关联函数（或方法）时，调用这些名字而不使用消歧义语法。",
+      "harm": "`Type::name` 会静默调用类型自身的方法，可能得到错误结果；`Trait::name` 因缺少 `self` 参数而无法推断具体实现，导致编译错误。",
+      "corrective": "需要 trait 实现时使用完全限定语法，例如 `<Dog as Animal>::baby_name()`；对方法可用 `Trait::method(&value)` 明确指定 trait。",
+      "evidence": [
+        "`Dog::baby_name` 直接调用定义于 `Dog` 上的关联函数，打印出 `Spot`，并非预期的 `puppy`。",
+        "`Animal::baby_name()` 没有 `self` 参数，Rust 无法计算出所需实现，产生 `cannot resolve `_: Animal`` 错误。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-5",
+          "title": "返回实现了 trait 的类型",
+          "lineStart": 246,
+          "lineEnd": 289,
+          "contentHash": "sha256:9c56fe6f3040e17558c215cabad5b7dbe08126c5378db64e222b2738f2ba845e",
+          "quote": "不过这只适用于返回单一类型的情况。例如，这段代码的返回值类型指定为返回 `impl Summary`，但是返回了 `NewsArticle` 或 `Tweet` 就行不通："
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+          "anchor": "ch17-02-trait-objects#h3-1",
+          "title": "定义通用行为的 trait",
+          "lineStart": 11,
+          "lineEnd": 97,
+          "contentHash": "sha256:8ba26bdf57f222b9a16a528ed7cc0e71be125b02f857c105e2a063b053a5d493",
+          "quote": "这与定义使用了带有 trait bound 的泛型类型参数的结构体不同。泛型类型参数一次只能替代一个具体类型，而 trait 对象则允许在运行时替代多种具体类型。"
+        }
+      ],
+      "evidenceQuote": "不过这只适用于返回单一类型的情况。例如，这段代码的返回值类型指定为返回 `impl Summary`，但是返回了 `NewsArticle` 或 `Tweet` 就行不通：",
+      "chapterRef": "ch10-02-traits",
+      "pattern": "函数声明返回 `impl Trait` 后，在内部根据条件返回两个不同的具体类型。",
+      "harm": "`impl Trait` 只对应单一编译时类型，无法表达“既可能是 A 也可能是 B”，代码不能编译。",
+      "corrective": "若确实需要返回多种实现某 trait 的类型，使用 trait 对象，如 `fn returns_summarizable(switch: bool) -> Box<dyn Summary>`，并在分支中用 `Box::new(...)` 返回。",
+      "evidence": [
+        "原文明确 `impl Trait` 只适用于返回单一类型，返回 `NewsArticle` 或 `Tweet` 会因该限制无法编译。",
+        "trait 对象允许在运行时替代多种具体类型，适合需要多态返回的场景。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+          "anchor": "ch17-02-trait-objects#h3-1",
+          "title": "定义通用行为的 trait",
+          "lineStart": 11,
+          "lineEnd": 97,
+          "contentHash": "sha256:8ba26bdf57f222b9a16a528ed7cc0e71be125b02f857c105e2a063b053a5d493",
+          "quote": "这限制了 `Screen` 实例必须拥有一个全是 `Button` 类型或者全是 `TextField` 类型的组件列表。如果只需要同质（相同类型）集合，则倾向于使用泛型和 trait bound，因为其定义会在编译时采用具体类型进行单态化。另一方面，通过使用 trait 对象的方法，一个 `Screen` 实例可以存放一个既能包含 `Box<Button>`，也能包含 `Box<TextField>` 的 `Vec<T>`。"
+        }
+      ],
+      "evidenceQuote": "这限制了 `Screen` 实例必须拥有一个全是 `Button` 类型或者全是 `TextField` 类型的组件列表。如果只需要同质（相同类型）集合，则倾向于使用泛型和 trait bound，因为其定义会在编译时采用具体类型进行单态化。另一方面，通过使用 trait 对象的方法，一个 `Screen` 实例可以存放一个既能包含 `Box<Button>`，也能包含 `Box<TextField>` 的 `Vec<T>`。",
+      "chapterRef": "ch17-02-trait-objects",
+      "pattern": "在需要存放或处理多种不同具体类型时，使用带 trait bound 的泛型参数定义集合，如 `Screen<T: Draw> { components: Vec<T> }`。",
+      "harm": "每个 `Screen` 实例只能持有同一具体类型（全 `Button` 或全 `TextField`），无法混合不同类型，限制了运行时扩展能力。",
+      "corrective": "使用 trait 对象存储异质集合，如 `pub struct Screen { pub components: Vec<Box<dyn Draw>> }`。",
+      "evidence": [
+        "泛型实现限制实例必须拥有同一类型组件列表。",
+        "trait 对象版本可以同时存放 `Box<Button>` 和 `Box<TextField>`。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+          "anchor": "ch17-02-trait-objects#h3-4",
+          "title": "Trait 对象要求对象安全",
+          "lineStart": 228,
+          "lineEnd": 273,
+          "contentHash": "sha256:d337906413e39b1589b01c41d677231315a78ac1ace3a6b1260553c9bf97ee98",
+          "quote": "只有 **对象安全**（*object safe*）的 trait 才可以组成 trait 对象。围绕所有使得 trait 对象安全的属性存在一些复杂的规则，不过在实践中，只涉及到两条规则。如果一个 trait 中所有的方法有如下属性时，则该 trait 是对象安全的："
+        }
+      ],
+      "evidenceQuote": "只有 **对象安全**（*object safe*）的 trait 才可以组成 trait 对象。围绕所有使得 trait 对象安全的属性存在一些复杂的规则，不过在实践中，只涉及到两条规则。如果一个 trait 中所有的方法有如下属性时，则该 trait 是对象安全的：",
+      "chapterRef": "ch17-02-trait-objects",
+      "pattern": "将不满足对象安全规则的 trait（例如返回 `Self` 的 `Clone`）用作 trait 对象，如 `Vec<Box<dyn Clone>>`。",
+      "harm": "编译器报错 `the trait `std::clone::Clone` cannot be made into an object`，因为 trait 对象会抹去具体类型，无法处理方法返回 `Self` 或带泛型参数的方法。",
+      "corrective": "检查 trait 是否对象安全：所有方法的返回值类型不为 `Self` 且没有泛型类型参数；不满足时应改变设计，改用满足规则的自定义 trait。",
+      "evidence": [
+        "`Clone` 的 `clone` 返回 `Self`，因此不能组成 trait 对象。",
+        "尝试使用 `Box<dyn Clone>` 会得到 `Clone` cannot be made into an object 错误。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+          "anchor": "ch19-03-advanced-traits#h3-4",
+          "title": "父 trait 用于在另一个 trait 中使用某 trait 的功能",
+          "lineStart": 383,
+          "lineEnd": 468,
+          "contentHash": "sha256:1ad075e0ca9e940ed44e6ecacf426e59807c6aa53cfbe33648a19df52242a7a6",
+          "quote": "如果我们尝试使用 `to_string` 而不添加冒号（`:`）并在 trait 名称后面指定 `Display` trait，则会得到一个错误说在当前作用域中没有找到用于 `&Self` 类型的方法 `to_string`。"
+        }
+      ],
+      "evidenceQuote": "如果我们尝试使用 `to_string` 而不添加冒号（`:`）并在 trait 名称后面指定 `Display` trait，则会得到一个错误说在当前作用域中没有找到用于 `&Self` 类型的方法 `to_string`。",
+      "chapterRef": "ch19-03-advanced-traits",
+      "pattern": "在 trait 的方法实现中使用另一个 trait 提供的功能（如 `to_string`），却没有在 trait 定义中声明该 trait 为父 trait。",
+      "harm": "编译器找不到 `&Self` 的 `to_string` 方法；即使所需 trait 已被具体类型实现，也必须显式声明依赖，否则无法编译。",
+      "corrective": "在 trait 定义中声明父 trait，如 `trait OutlinePrint: fmt::Display`，并确保实现者同时实现父 trait。",
+      "evidence": [
+        "不使用 `: Display` 会得到在当前作用域中找不到 `to_string` 的错误。",
+        "在未实现 `Display` 的类型上实现 `OutlinePrint` 会得到 `Display` 是必须的而未被实现的错误。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T03-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-2",
+          "title": "为类型实现 trait",
+          "lineStart": 31,
+          "lineEnd": 93,
+          "contentHash": "sha256:5b44ddf9c31dbd5e2d69f2d54fcf14b0cafb59354f89f3750c1c06c0830c360d",
+          "quote": "但是不能为外部类型实现外部 trait。例如，不能在 `aggregator` crate 中为 `Vec<T>` 实现 `Display` trait。这是因为 `Display` 和 `Vec<T>` 都定义于标准库中，它们并不位于 `aggregator` crate 本地作用域中。这个限制是被称为 **相干性**（*coherence*） 的程序属性的一部分，或者更具体的说是 **孤儿规则**（*orphan rule*），其得名于不存在父类型。这条规则确保了其他人编写的代码不会破坏你代码，反之亦然。没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust 将无从得知应该使用哪一个实现。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+          "anchor": "ch19-03-advanced-traits#h3-5",
+          "title": "newtype 模式用于在外部类型上实现外部 trait",
+          "lineStart": 469,
+          "lineEnd": 510,
+          "contentHash": "sha256:093d9d7428f6dc7b557e8eadf23fa03ae30a8897b0b173126a7f74fb80228519",
+          "quote": "例如，如果想要在 `Vec<T>` 上实现 `Display`，而孤儿规则阻止我们直接这么做，因为 `Display` trait 和 `Vec<T>` 都定义于我们的 crate 之外。可以创建一个包含 `Vec<T>` 实例的 `Wrapper` 结构体，接着可以如示例 19-31 那样在 `Wrapper` 上实现 `Display` 并使用 `Vec<T>` 的值："
+        }
+      ],
+      "evidenceQuote": "但是不能为外部类型实现外部 trait。例如，不能在 `aggregator` crate 中为 `Vec<T>` 实现 `Display` trait。这是因为 `Display` 和 `Vec<T>` 都定义于标准库中，它们并不位于 `aggregator` crate 本地作用域中。这个限制是被称为 **相干性**（*coherence*） 的程序属性的一部分，或者更具体的说是 **孤儿规则**（*orphan rule*），其得名于不存在父类型。这条规则确保了其他人编写的代码不会破坏你代码，反之亦然。没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust 将无从得知应该使用哪一个实现。",
+      "chapterRef": "ch10-02-traits",
+      "pattern": "直接为自己的 crate 外部的类型实现外部的 trait，例如为 `Vec<T>` 实现 `Display`。",
+      "harm": "违反孤儿规则，代码不被允许；没有该规则会导致不同 crate 对同一类型实现同一 trait 造成冲突。",
+      "corrective": "使用 newtype 模式：创建本地 `Wrapper` 元组结构体封装外部类型，再为该本地类型实现外部 trait；若不希望暴露所有方法，可只实现需要的委托方法。",
+      "evidence": [
+        "孤儿规则只允许 trait 或类型至少一方位于当前 crate 本地时才能实现。",
+        "通过 `Wrapper` 封装 `Vec<String>` 后，即可在本地类型上实现 `Display`。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h3-1",
+          "title": "使用元组重构",
+          "lineStart": 31,
+          "lineEnd": 46,
+          "contentHash": "sha256:e74babbc4f9e6b835463280c2316b8bd6e7cc28da2f78d97390d456bb5d29749",
+          "quote": "在计算面积时将宽和高弄混倒无关紧要，不过当在屏幕上绘制长方形时就有问题了！我们必须牢记 `width` 的元组索引是 `0`，`height` 的元组索引是 `1`。如果其他人要使用这些代码，他们必须要搞清楚这一点，并也要牢记于心。我们没有在代码中表达数据的意义，所以很容易因为忘记或者混淆这些值而造成错误。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h2-1",
+          "title": "一个使用结构体的示例程序",
+          "lineStart": 1,
+          "lineEnd": 30,
+          "contentHash": "sha256:c33b44bce32a48142d6c958a1d75f68be01335f443821d609b5667610ea67eef",
+          "quote": "函数 `area` 本应该计算一个长方形的面积，不过函数却有两个参数。这两个参数是相关联的，不过程序本身却没有表现出这一点。将长度和宽度组合在一起将更易懂也更易处理。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h3-2",
+          "title": "使用结构体重构：赋予更多意义",
+          "lineStart": 47,
+          "lineEnd": 64,
+          "contentHash": "sha256:0bf1f6315bd8dd2aa6a0f51467b3e0450ec4195ad2743c8d5ad9cb63f4ee1d6d",
+          "quote": "我们使用结构体为数据命名来为其赋予意义。我们可以将我们正在使用的元组转换成一个有整体名称而且每个部分也有对应名字的数据类型，如示例 5-10 所示："
+        }
+      ],
+      "evidenceQuote": "在计算面积时将宽和高弄混倒无关紧要，不过当在屏幕上绘制长方形时就有问题了！我们必须牢记 `width` 的元组索引是 `0`，`height` 的元组索引是 `1`。如果其他人要使用这些代码，他们必须要搞清楚这一点，并也要牢记于心。我们没有在代码中表达数据的意义，所以很容易因为忘记或者混淆这些值而造成错误。",
+      "chapterRef": "ch05-02-example-structs",
+      "pattern": "用元组或互相分离的变量表示本质上相互关联的数据，而不给出字段名称。",
+      "harm": "代码没有表达数据意义，使用者必须记住索引与值的对应关系，容易混淆或忘记，从而产生错误。",
+      "corrective": "定义结构体，为整体和每个字段提供有意义的名称，让函数签名直接表达数据间关联。",
+      "evidence": [
+        "宽度和高度是相关联的，程序本身没有表现这一点",
+        "元组没有给出元素名称，所以必须记住 width 索引 0、height 索引 1",
+        "结构体为数据命名来赋予意义"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-4",
+          "title": "没有任何字段的类单元结构体",
+          "lineStart": 89,
+          "lineEnd": 175,
+          "contentHash": "sha256:c6f318a5763581bcc99ba1ce2dbb32001df20a88d0794d7a87c8013458bc8a5c",
+          "quote": "可以使结构体存储被其他对象拥有的数据的引用，不过这么做的话需要用上**生命周期**（*lifetime*），这是一个第 10 章会讨论的 Rust 功能。生命周期确保结构体引用的数据有效性跟结构体本身保持一致。如果你尝试在结构体中存储一个引用而不指定生命周期将是无效的，比如这样："
+        }
+      ],
+      "evidenceQuote": "可以使结构体存储被其他对象拥有的数据的引用，不过这么做的话需要用上**生命周期**（*lifetime*），这是一个第 10 章会讨论的 Rust 功能。生命周期确保结构体引用的数据有效性跟结构体本身保持一致。如果你尝试在结构体中存储一个引用而不指定生命周期将是无效的，比如这样：",
+      "chapterRef": "ch05-01-defining-structs",
+      "pattern": "在自定义结构体中直接使用 `&str` 等引用类型作字段，却不给结构体声明生命周期参数。",
+      "harm": "编译器因缺少生命周期标识符而报错，代码无法编译；引用的数据有效性也无法与结构体保持一致。",
+      "corrective": "在结构体上引入生命周期参数（如 `struct User<'a> { ... &'a str ... }`），或者直接使用拥有所有权的类型（如 `String`）存储数据。",
+      "evidence": [
+        "原文说存储引用而不指定生命周期将是无效的",
+        "编译器报错 E0106 missing lifetime specifier",
+        "第10章会讲到如何修复，现在使用 String 等拥有所有权的类型替代引用"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+          "anchor": "ch06-01-defining-an-enum#h3-2",
+          "title": "`Option` 枚举和其相对于空值的优势",
+          "lineStart": 194,
+          "lineEnd": 266,
+          "contentHash": "sha256:b399a7e3852bc5fd3faf07f992a8cd58d451f87a0c18769f7f545d3e097bd03f",
+          "quote": "简而言之，因为 `Option<T>` 和 `T`（这里 `T` 可以是任何类型）是不同的类型，编译器不允许像一个肯定有效的值那样使用 `Option<T>`。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch06-02-match.md",
+          "anchor": "ch06-02-match#h3-3",
+          "title": "匹配是穷尽的",
+          "lineStart": 91,
+          "lineEnd": 106,
+          "contentHash": "sha256:c413fb2d49b6deea91bcfd500e58d1a9cde7067f6cbf9fe9ff944810b7d80e17",
+          "quote": "Rust 知道我们没有覆盖所有可能的情况甚至知道哪些模式被忘记了！Rust 中的匹配是**穷举式的**（*exhaustive*）：必须穷举到最后的可能性来使代码有效。特别的在这个 `Option<T>` 的例子中，Rust 防止我们忘记明确的处理 `None` 的情况，这让我们免于假设拥有一个实际上为空的值，从而使之前提到的价值亿万的错误不可能发生。"
+        }
+      ],
+      "evidenceQuote": "简而言之，因为 `Option<T>` 和 `T`（这里 `T` 可以是任何类型）是不同的类型，编译器不允许像一个肯定有效的值那样使用 `Option<T>`。",
+      "chapterRef": "ch06-01-defining-an-enum",
+      "pattern": "把 `Option<T>` 当作普通的 `T` 使用，或假设它一定有值，不处理 `None` 分支。",
+      "harm": "可能把空值当成有效值进行运算，造成空值错误；Rust 会因 `Option<T>` 与 `T` 类型不同而拒绝直接运算，迫使显式处理缺失情况。",
+      "corrective": "先用 `match` 等结构显式处理 `Some(T)` 和 `None`，取出 `T` 后再进行普通运算。",
+      "evidence": [
+        "Option<T> 和 T 是不同的类型，编译器不允许把 Option<T> 当作肯定有效值使用",
+        "Rust 防止忘记处理 None，免于假设有值而犯错"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch06-02-match.md",
+          "anchor": "ch06-02-match#h3-3",
+          "title": "匹配是穷尽的",
+          "lineStart": 91,
+          "lineEnd": 106,
+          "contentHash": "sha256:c413fb2d49b6deea91bcfd500e58d1a9cde7067f6cbf9fe9ff944810b7d80e17",
+          "quote": "Rust 知道我们没有覆盖所有可能的情况甚至知道哪些模式被忘记了！Rust 中的匹配是**穷举式的**（*exhaustive*）：必须穷举到最后的可能性来使代码有效。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+          "anchor": "ch18-01-all-the-places-for-patterns#h3-1",
+          "title": "`match` 分支",
+          "lineStart": 5,
+          "lineEnd": 20,
+          "contentHash": "sha256:8e775cb9befd4d6265e8e87b483f128bb7445e35da9cff912d2edcad27899d0d",
+          "quote": "`match` 表达式必须是 **穷尽**（*exhaustive*）的，意为 `match` 表达式所有可能的值都必须被考虑到。"
+        }
+      ],
+      "evidenceQuote": "Rust 知道我们没有覆盖所有可能的情况甚至知道哪些模式被忘记了！Rust 中的匹配是**穷举式的**（*exhaustive*）：必须穷举到最后的可能性来使代码有效。",
+      "chapterRef": "ch06-02-match",
+      "pattern": "在 `match` 表达式中只列出部分模式，不覆盖所有可能的值。",
+      "harm": "编译器会拒绝编译并指出遗漏的模式；不穷尽意味着存在未处理的值。",
+      "corrective": "补齐所有枚举成员或可能值分支；对剩余值用捕获所有的通配模式兜底。",
+      "evidence": [
+        "Rust 知道哪些模式被忘记",
+        "match 表达式所有可能的值都必须被考虑到"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+          "anchor": "ch06-03-if-let#h2-1",
+          "title": "`if let` 简单控制流",
+          "lineStart": 1,
+          "lineEnd": 80,
+          "contentHash": "sha256:0c7152f4b8b374e14851dc8e1fc0dd5b57fddb3c633b3bb044104520b8097208",
+          "quote": "使用 `if let` 意味着编写更少代码，更少的缩进和更少的样板代码。然而，这样会失去 `match` 强制要求的穷尽性检查。`match` 和 `if let` 之间的选择依赖特定的环境以及增加简洁度和失去穷尽性检查的权衡取舍。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+          "anchor": "ch18-01-all-the-places-for-patterns#h3-2",
+          "title": "`if let` 条件表达式",
+          "lineStart": 21,
+          "lineEnd": 62,
+          "contentHash": "sha256:7a7afab42d1784353618dc85f381a1c27acecb67678db2932b30ba84de672332",
+          "quote": "`if let` 表达式的缺点在于其穷尽性没有为编译器所检查，而 `match` 表达式则检查了。如果去掉最后的 `else` 块而遗漏处理一些情况，编译器也不会警告这类可能的逻辑错误。"
+        }
+      ],
+      "evidenceQuote": "使用 `if let` 意味着编写更少代码，更少的缩进和更少的样板代码。然而，这样会失去 `match` 强制要求的穷尽性检查。`match` 和 `if let` 之间的选择依赖特定的环境以及增加简洁度和失去穷尽性检查的权衡取舍。",
+      "chapterRef": "ch06-03-if-let",
+      "pattern": "在逻辑上需要覆盖多种情况时使用 `if let` 并省略 `else`，以此替代 `match`。",
+      "harm": "失去 `match` 强制要求的穷尽性检查，编译器不会在遗漏情况下发出警告，可能留下未处理的逻辑分支。",
+      "corrective": "只有只关心一个模式并可以忽略其余值时使用 `if let`；需要穷尽检查或覆盖多个分支时使用 `match`，并为 `if let` 的其他情况添加 `else`。",
+      "evidence": [
+        "if let 更简洁但会失去 match 穷尽性检查",
+        "去掉最后 else 块会遗漏处理情况且编译器不警告"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+          "anchor": "ch18-02-refutability#h2-1",
+          "title": "Refutability（可反驳性）: 模式是否会匹配失效",
+          "lineStart": 1,
+          "lineEnd": 67,
+          "contentHash": "sha256:4c01937aca7647c34e2b1b3c21c8fe4cc4bef2e8affdc3f46dfcdfdc33f30572",
+          "quote": "函数参数、 `let` 语句和 `for` 循环只能接受不可反驳的模式，因为通过不匹配的值程序无法进行有意义的工作。`if let` 和 `while let` 表达式被限制为只能接受可反驳的模式，因为根据定义他们意在处理可能的失败：条件表达式的功能就是根据成功或失败执行不同的操作。"
+        }
+      ],
+      "evidenceQuote": "函数参数、 `let` 语句和 `for` 循环只能接受不可反驳的模式，因为通过不匹配的值程序无法进行有意义的工作。`if let` 和 `while let` 表达式被限制为只能接受可反驳的模式，因为根据定义他们意在处理可能的失败：条件表达式的功能就是根据成功或失败执行不同的操作。",
+      "chapterRef": "ch18-02-refutability",
+      "pattern": "在 `let`、函数参数或 `for` 循环中使用可能失败的可反驳模式，或者在 `if let`/`while let` 中使用总会匹配的不可反驳模式。",
+      "harm": "前者因无法处理不匹配的值而不能编译；后者条件永远为真、毫无意义并触发编译器警告。",
+      "corrective": "在 `let`、函数参数、`for` 中只使用能匹配任何值的不可反驳模式；把可反驳模式放到 `if let`/`while let` 中以处理失败可能。",
+      "evidence": [
+        "let/函数参数/for 只能接受不可反驳模式",
+        "if let/while let 只能接受可反驳模式",
+        "在错误位置使用会得到编译错误或警告"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+          "anchor": "ch18-03-pattern-syntax#h4-7",
+          "title": "通过在名字前以一个下划线开头来忽略未使用的变量",
+          "lineStart": 369,
+          "lineEnd": 415,
+          "contentHash": "sha256:663a00b14e61b9feea7a7b894644dca1aea7fd72c63ece9ca6d78604d7a49059",
+          "quote": "注意, 只使用 `_` 和使用以下划线开头的名称有些微妙的不同：比如 `_x` 仍会将值绑定到变量，而 `_` 则完全不会绑定。"
+        }
+      ],
+      "evidenceQuote": "注意, 只使用 `_` 和使用以下划线开头的名称有些微妙的不同：比如 `_x` 仍会将值绑定到变量，而 `_` 则完全不会绑定。",
+      "chapterRef": "ch18-03-pattern-syntax",
+      "pattern": "在模式中使用 `_name`（下划线开头的命名变量）来“忽略”一个值，以为它不会绑定。",
+      "harm": "`_name` 仍会把值绑定到变量，可能获取值的所有权，导致原变量被移动，之后无法再使用。",
+      "corrective": "要真正忽略且不绑定值，使用裸 `_` 模式；若想保留原值用于后续，不要让模式绑定它（如 `Some(_)` 而不是 `Some(_s)`）。",
+      "evidence": [
+        "_x 仍会将值绑定到变量，_ 则完全不会绑定",
+        "示例 Some(_s) 会移动 s，而 Some(_) 不会移动 s"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T04-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+          "title": "创建自定义类型进行有效性验证",
+          "lineStart": 43,
+          "lineEnd": 106,
+          "contentHash": "sha256:cb2742b1fa429026aedb39d665bb6bc143a3712a75ec191c2c0ce9695af6540e",
+          "quote": "然而，这并不是一个理想的解决方案：如果让程序仅仅处理 1 到 100 之间的值是一个绝对需要满足的要求，而且程序中的很多函数都有这样的要求，在每个函数中都有这样的检查将是非常冗余的（并可能潜在的影响性能）。"
+        }
+      ],
+      "evidenceQuote": "然而，这并不是一个理想的解决方案：如果让程序仅仅处理 1 到 100 之间的值是一个绝对需要满足的要求，而且程序中的很多函数都有这样的要求，在每个函数中都有这样的检查将是非常冗余的（并可能潜在的影响性能）。",
+      "chapterRef": "ch09-03-to-panic-or-not-to-panic",
+      "pattern": "在多个函数中反复进行范围或有效性检查，并把原始类型（如 `i32`）作为参数传递。",
+      "harm": "检查代码冗余，可能遗漏，并可能影响性能；函数签名不能向调用者保证值已经验证。",
+      "corrective": "创建自定义类型（如 `Guess`），在其构造函数中统一验证，失败时 `panic!`，之后函数签名使用该自定义类型而无需重复检查。",
+      "evidence": [
+        "每个函数中都有检查是非常冗余的（并可能潜在的影响性能）",
+        "可以创建一个新类型将验证放入创建实例的函数中"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+          "anchor": "ch08-01-vectors#h3-4",
+          "title": "读取 vector 的元素",
+          "lineStart": 61,
+          "lineEnd": 131,
+          "contentHash": "sha256:2755eb68df9e639a98bb2009e751c25917792ca7b1076d34c6d4569873dff585",
+          "quote": "一旦程序获取了一个有效的引用，借用检查器将会执行所有权和借用规则（第 4 章讲到）来确保 vector 内容的这个引用和任何其他引用保持有效。回忆一下不能在相同作用域中同时存在可变和不可变引用的规则。这个规则适用于示例 8-7，当我们获取了 vector 的第一个元素的不可变引用并尝试在 vector 末尾增加一个元素的时候，这是行不通的："
+        }
+      ],
+      "evidenceQuote": "一旦程序获取了一个有效的引用，借用检查器将会执行所有权和借用规则（第 4 章讲到）来确保 vector 内容的这个引用和任何其他引用保持有效。回忆一下不能在相同作用域中同时存在可变和不可变引用的规则。这个规则适用于示例 8-7，当我们获取了 vector 的第一个元素的不可变引用并尝试在 vector 末尾增加一个元素的时候，这是行不通的：",
+      "chapterRef": "ch08-01-vectors",
+      "pattern": "在持有 vector 元素的不可变引用（如 `&v[0]`）时，又向同一个 vector 末尾 `push` 新元素。",
+      "harm": "借用检查器会报错（E0502）拒绝编译；若允许这种操作，vector 重新分配内存时该引用可能指向已释放内存。",
+      "corrective": "先使用完引用（例如先打印它），让不可变借用结束，之后再修改 vector；或改用不持有引用的方式访问元素。",
+      "evidence": [
+        "示例 8-7 中先持有 `let first = &v[0];` 再 `v.push(6);` 导致 E0502。",
+        "原因：vector 在尾部增加新元素可能重新分配内存，使第一个元素的引用指向被释放的内存。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+          "anchor": "ch08-01-vectors#h3-4",
+          "title": "读取 vector 的元素",
+          "lineStart": 61,
+          "lineEnd": 131,
+          "contentHash": "sha256:2755eb68df9e639a98bb2009e751c25917792ca7b1076d34c6d4569873dff585",
+          "quote": "当运行这段代码，你会发现对于第一个 `[]` 方法，当引用一个不存在的元素时 Rust 会造成 panic。"
+        }
+      ],
+      "evidenceQuote": "当运行这段代码，你会发现对于第一个 `[]` 方法，当引用一个不存在的元素时 Rust 会造成 panic。",
+      "chapterRef": "ch08-01-vectors",
+      "pattern": "当索引可能超出范围（例如来自用户输入）时，直接用 `&v[index]` 访问 vector 元素。",
+      "harm": "一旦索引越界，程序会 panic 崩溃，而不是可恢复地处理缺失。",
+      "corrective": "使用 `v.get(index)` 获得 `Option<&T>`，在有值时处理 `Some`，无值时处理 `None`（例如提示用户重新输入）。",
+      "evidence": [
+        "示例 8-6 中 `&v[100]` 会 panic。",
+        "`get` 返回 `None`，适合越界访问可预期的场景。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-4",
+          "title": "索引字符串",
+          "lineStart": 157,
+          "lineEnd": 181,
+          "contentHash": "sha256:616606028c6826836fd00e26466ce32a52546b896422718addca7da203c79ddd",
+          "quote": "在很多语言中，通过索引来引用字符串中的单独字符是有效且常见的操作。然而在 Rust 中，如果你尝试使用索引语法访问 `String` 的一部分，会出现一个错误。考虑一下如示例 8-19 中所示的无效代码。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-3",
+          "title": "内部表现",
+          "lineStart": 182,
+          "lineEnd": 204,
+          "contentHash": "sha256:5bbeb99068ce69da5a425662404c467dfb119b948a30726715ab08e6dcdb257d",
+          "quote": "因此一个字符串字节值的索引并不总是对应一个有效的 Unicode 标量值。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-4",
+          "title": "字节、标量值和字形簇！天呐！",
+          "lineStart": 205,
+          "lineEnd": 230,
+          "contentHash": "sha256:bca4739cf38eaa5589b8b52b7e4c23d6f1532a3955e04abd6cfaa323472ca1e5",
+          "quote": "最后一个 Rust 不允许使用索引获取 `String` 字符的原因是，索引操作预期总是需要常数时间 (O(1))。但是对于 `String` 不可能保证这样的性能，因为 Rust 必须从开头到索引位置遍历来确定有多少有效的字符。"
+        }
+      ],
+      "evidenceQuote": "在很多语言中，通过索引来引用字符串中的单独字符是有效且常见的操作。然而在 Rust 中，如果你尝试使用索引语法访问 `String` 的一部分，会出现一个错误。考虑一下如示例 8-19 中所示的无效代码。",
+      "chapterRef": "ch08-02-strings",
+      "pattern": "把其他语言中用索引获取字符串字符的习惯直接搬到 Rust，写 `s1[0]` 访问 `String` 的单个字符。",
+      "harm": "`String` 不支持索引，代码无法编译；即使允许字节索引，返回的字节值也不一定对应有效 Unicode 标量值，也无法保证 O(1) 访问。",
+      "corrective": "根据需要显式选择：`chars()` 遍历 Unicode 标量值，`bytes()` 遍历字节；若确需切片，使用落在字符边界上的 range。",
+      "evidence": [
+        "`String` 未实现 `Index<{integer}>`，索引语法编译错误。",
+        "字节索引不总对应有效 Unicode 标量值。",
+        "索引操作不能满足 O(1)，因为需要遍历确定字符数。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-5",
+          "title": "字符串 slice",
+          "lineStart": 231,
+          "lineEnd": 250,
+          "contentHash": "sha256:6f2945d4ee7fda6e08fdfc276802f642fe297c1cbb4000181a392bced9a52f75",
+          "quote": "你应该小心谨慎的使用这个操作，因为这么做可能会使你的程序崩溃。"
+        }
+      ],
+      "evidenceQuote": "你应该小心谨慎的使用这个操作，因为这么做可能会使你的程序崩溃。",
+      "chapterRef": "ch08-02-strings",
+      "pattern": "对 UTF-8 字符串使用字节范围切片时，不检查范围是否落在字符边界上，例如 `&hello[0..1]`。",
+      "harm": "一旦范围切在某个字符（如 `З`）的中间，程序会在运行时 panic，导致崩溃。",
+      "corrective": "切片前确保起止索引位于字符边界；更推荐使用 `chars()` 遍历 Unicode 标量值，或使用提供字形簇操作的 crate。",
+      "evidence": [
+        "`&hello[0..1]` 会 panic：byte index 1 is not a char boundary。",
+        "该书提醒应小心谨慎使用该操作，否则可能崩溃。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-2",
+          "title": "使用 `+` 运算符或 `format!` 宏拼接字符串",
+          "lineStart": 109,
+          "lineEnd": 156,
+          "contentHash": "sha256:63819507c86301731951749bb80eb26a5c57e6c7eea3b4dd0388783d47ce1a18",
+          "quote": "在有这么多 `+` 和 `\"` 字符的情况下，很难理解具体发生了什么。对于更为复杂的字符串连接，可以使用 `format!` 宏："
+        }
+      ],
+      "evidenceQuote": "在有这么多 `+` 和 `\"` 字符的情况下，很难理解具体发生了什么。对于更为复杂的字符串连接，可以使用 `format!` 宏：",
+      "chapterRef": "ch08-02-strings",
+      "pattern": "用 `+` 运算符拼接多个 `String`，并且在拼接后还试图继续使用左侧的 `String`。",
+      "harm": "`+` 会获取左侧 `String` 的所有权，导致左侧变量移动后失效；多个 `+` 的表达式可读性差，容易误解实际行为。",
+      "corrective": "对复杂拼接使用 `format!` 宏，它返回 `String` 且不会获取任何参数的所有权。",
+      "evidence": [
+        "`add` 获取 `self` 的所有权，所以 `s1 + &s2` 后 `s1` 不再有效。",
+        "多个 `+` 拼接时难以理解，`format!` 更清晰且不获取参数所有权。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h3-2",
+          "title": "哈希 map 和所有权",
+          "lineStart": 43,
+          "lineEnd": 64,
+          "contentHash": "sha256:ab30fc69ffc9e1a22ad25a8a800e9f07e6c257ab6512443ccff8f03fd667ea02",
+          "quote": "当 `insert` 调用将 `field_name` 和 `field_value` 移动到哈希 map 中后，将不能使用这两个绑定。"
+        }
+      ],
+      "evidenceQuote": "当 `insert` 调用将 `field_name` 和 `field_value` 移动到哈希 map 中后，将不能使用这两个绑定。",
+      "chapterRef": "ch08-03-hash-maps",
+      "pattern": "把拥有所有权的值（如 `String`）作为键或值插入 `HashMap` 后，还继续使用原来的变量绑定。",
+      "harm": "原变量已被移动到哈希 map，继续使用会导致编译错误。",
+      "corrective": "如果插入后仍需要原值，可以插入克隆；或者插入引用，并确保引用的值在哈希 map 有效期间保持有效。",
+      "evidence": [
+        "示例 8-22 中 `field_name` 和 `field_value` 被移动进 map 后不再有效。",
+        "如果要保留可用性，可插入引用，但须保证引用生命周期不短于 map。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h4-2",
+          "title": "只在键没有对应值时插入",
+          "lineStart": 130,
+          "lineEnd": 151,
+          "contentHash": "sha256:6628c591630afa733d5f0e0266e5c784bd26849e85adfcbe8cbb4656b7e0f2c6",
+          "quote": "`Entry` 的 `or_insert` 方法在键对应的值存在时就返回这个值的可变引用，如果不存在则将参数作为新值插入并返回新值的可变引用。这比编写自己的逻辑要简明的多，另外也与借用检查器结合得更好。"
+        }
+      ],
+      "evidenceQuote": "`Entry` 的 `or_insert` 方法在键对应的值存在时就返回这个值的可变引用，如果不存在则将参数作为新值插入并返回新值的可变引用。这比编写自己的逻辑要简明的多，另外也与借用检查器结合得更好。",
+      "chapterRef": "ch08-03-hash-maps",
+      "pattern": "当需要在键不存在时插入值时，手写“检查键是否存在再插入/更新”的逻辑。",
+      "harm": "代码比 `entry` API 繁琐，并且与借用检查器结合得不好，容易产生借用问题。",
+      "corrective": "使用 `map.entry(key).or_insert(value)`：键存在时返回其值的可变引用，不存在时插入新值并返回新值的可变引用。",
+      "evidence": [
+        "`entry` API 专用于这类逻辑。",
+        "手写逻辑不如 `entry`/`or_insert` 简明，且与借用检查器结合得更好。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T05-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+          "anchor": "ch08-03-hash-maps#h3-1",
+          "title": "新建一个哈希 map",
+          "lineStart": 9,
+          "lineEnd": 42,
+          "contentHash": "sha256:24d172097128735f26d24645dd0a31fe13ae3e2066796bc6b26694c77b072c35",
+          "quote": "这里 `HashMap<_, _>` 类型标注是必要的，因为 `collect` 有可能当成多种不同的数据结构，而除非显式指定否则 Rust 无从得知你需要的类型。"
+        }
+      ],
+      "evidenceQuote": "这里 `HashMap<_, _>` 类型标注是必要的，因为 `collect` 有可能当成多种不同的数据结构，而除非显式指定否则 Rust 无从得知你需要的类型。",
+      "chapterRef": "ch08-03-hash-maps",
+      "pattern": "使用 `collect` 从元组迭代器构建 `HashMap` 时省略目标类型标注。",
+      "harm": "`collect` 可以收集成多种集合，编译器无法推断出 `HashMap`，导致编译错误。",
+      "corrective": "显式给出 `HashMap<_, _>` 类型标注；键和值的具体类型可用下划线占位，由迭代器推断。",
+      "evidence": [
+        "示例 8-21 中 `let scores: HashMap<_, _> = ...` 标注是必要的。",
+        "若不显式指定，Rust 无从得知 collect 的目标类型。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-4",
+          "title": "使用 `Box<T>` 给递归类型一个已知的大小",
+          "lineStart": 121,
+          "lineEnd": 165,
+          "contentHash": "sha256:fac77150da8ddd3454c0778a14cced7bf613902468f00f1f94822a74807cde7f",
+          "quote": "Rust 无法计算出要为定义为递归的类型分配多少空间，所以编译器给出了示例 15-4 中的错误。这个错误也包括了有用的建议："
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h4-1",
+          "title": "cons list 的更多内容",
+          "lineStart": 40,
+          "lineEnd": 99,
+          "contentHash": "sha256:74d4670d05a6135ecd24fcc9591602c665b7a9d681874afb5681842c87ed0f73",
+          "quote": "这个错误表明这个类型 “有无限的大小”。其原因是 `List` 的一个成员被定义为是递归的：它直接存放了另一个相同类型的值。这意味着 Rust 无法计算为了存放 `List` 值到底需要多少空间。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-3",
+          "title": "计算非递归类型的大小",
+          "lineStart": 100,
+          "lineEnd": 120,
+          "contentHash": "sha256:2026f1aa4432d67fd497f9348e78550585ed4c6a6b917e69d3880bab98081c38",
+          "quote": "与此相对当 Rust 编译器检查像示例 15-2 中的 `List` 这样的递归类型时会发生什么呢。编译器尝试计算出储存一个 `List` 枚举需要多少内存，并开始检查 `Cons` 成员，那么 `Cons` 需要的空间等于 `i32` 的大小加上 `List` 的大小。为了计算 `List` 需要多少内存，它检查其成员，从 `Cons` 成员开始。`Cons` 成员储存了一个 `i32` 值和一个 `List` 值，这样的计算将无限进行下去"
+        }
+      ],
+      "evidenceQuote": "Rust 无法计算出要为定义为递归的类型分配多少空间，所以编译器给出了示例 15-4 中的错误。这个错误也包括了有用的建议：",
+      "chapterRef": "ch15-01-box",
+      "pattern": "在定义递归类型（如 cons list）时直接存放相同类型的成员而不插入间接层。",
+      "harm": "编译器报错 recursive type `List` has infinite size，无法计算内存布局。",
+      "corrective": "在递归成员中插入 `Box<T>`（或 `Rc<T>`、引用）提供间接存储，使类型具有已知大小。",
+      "evidence": [
+        "示例 15-4 错误表明递归类型有无限大小",
+        "编译器按成员递归计算大小导致无限进行",
+        "使用 Box 插入间接层后类型大小可计算"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-02-deref.md",
+          "anchor": "ch15-02-deref#h3-3",
+          "title": "自定义智能指针",
+          "lineStart": 64,
+          "lineEnd": 113,
+          "contentHash": "sha256:0505f71895972bd3adbc92a91d721f2641f763f9c2a487355f6efe1a0c24fc4a",
+          "quote": "`MyBox<T>` 类型不能解引用，因为我们尚未在该类型实现这个功能。为了启用 `*` 运算符的解引用功能，需要实现 `Deref` trait。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-02-deref.md",
+          "anchor": "ch15-02-deref#h3-4",
+          "title": "通过实现 `Deref` trait 将某类型像引用一样处理",
+          "lineStart": 114,
+          "lineEnd": 153,
+          "contentHash": "sha256:2e0d8dbc67f5eb90eeafe965a2e74f0bb54523942c4273a05cb0b7460da7c734",
+          "quote": "没有 `Deref` trait 的话，编译器只会把 `&` 引用类型解引用。`deref` 方法向编译器提供了一种能力：能够获取任何实现了 `Deref` trait 的类型的值，并且可以通过调用这个类型的 `deref` 方法来获取一个解引用方法已知的 `&` 引用。"
+        }
+      ],
+      "evidenceQuote": "`MyBox<T>` 类型不能解引用，因为我们尚未在该类型实现这个功能。为了启用 `*` 运算符的解引用功能，需要实现 `Deref` trait。",
+      "chapterRef": "ch15-02-deref",
+      "pattern": "自定义智能指针类型（如 `MyBox<T>`）未实现 `Deref` trait 就尝试将其当作引用解引用。",
+      "harm": "编译器报错 type `MyBox<{integer}>` cannot be dereferenced。",
+      "corrective": "为自定义智能指针实现 `Deref` trait 的 `deref` 方法，返回内部数据的引用。",
+      "evidence": [
+        "示例 15-9 尝试解引用 MyBox 不能编译",
+        "实现 Deref 后 *y 可像引用一样工作"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+          "anchor": "ch15-03-drop#h4-1",
+          "title": "通过 `std::mem::drop` 提早丢弃值",
+          "lineStart": 47,
+          "lineEnd": 122,
+          "contentHash": "sha256:f2b009356d6c83f08087c462f2e0186bfba7e7887f980f92d420d6257c2e5a41",
+          "quote": "Rust 不允许我们显式调用 `drop` 因为 Rust 仍然会在 `main` 的结尾对值自动调用 `drop`，这会导致一个 **double free** 错误，因为 Rust 会尝试清理相同的值两次。"
+        }
+      ],
+      "evidenceQuote": "Rust 不允许我们显式调用 `drop` 因为 Rust 仍然会在 `main` 的结尾对值自动调用 `drop`，这会导致一个 **double free** 错误，因为 Rust 会尝试清理相同的值两次。",
+      "chapterRef": "ch15-03-drop",
+      "pattern": "显式调用实现 `Drop` trait 值的 `drop` 方法。",
+      "harm": "编译错误 explicit destructor calls not allowed；如果允许会导致 double free。",
+      "corrective": "使用 `std::mem::drop` 函数在需要时提早丢弃值。",
+      "evidence": [
+        "示例 15-15 显式调用 c.drop() 编译报错",
+        "Rust 禁止显式析构调用以避免重复清理"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-1",
+          "title": "使用 `Rc<T>` 共享数据",
+          "lineStart": 13,
+          "lineEnd": 90,
+          "contentHash": "sha256:be2cca6cc28c7e523e17b3bdf7bacbbb5187eaa21a36607c561257b711194d8a",
+          "quote": "`Cons` 成员拥有其储存的数据，所以当创建 `b` 列表时，`a` 被移动进了 `b` 这样 `b` 就拥有了 `a`。接着当再次尝试使用 `a` 创建 `c` 时，这不被允许，因为 `a` 的所有权已经被移动。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h2-1",
+          "title": "`Rc<T>` 引用计数智能指针",
+          "lineStart": 1,
+          "lineEnd": 12,
+          "contentHash": "sha256:6a3ace9a9a4d322bb87869cda8fbad86f5aa3c6853b515c0a858ff50be290650",
+          "quote": "大部分情况下所有权是非常明确的：可以准确地知道哪个变量拥有某个值。然而，有些情况单个值可能会有多个所有者。"
+        }
+      ],
+      "evidenceQuote": "`Cons` 成员拥有其储存的数据，所以当创建 `b` 列表时，`a` 被移动进了 `b` 这样 `b` 就拥有了 `a`。接着当再次尝试使用 `a` 创建 `c` 时，这不被允许，因为 `a` 的所有权已经被移动。",
+      "chapterRef": "ch15-04-rc",
+      "pattern": "使用 `Box<T>`（拥有单一所有权）让两个列表共享第三个列表的所有权，数据被移动后再次使用。",
+      "harm": "编译错误 use of moved value，无法实现多所有权。",
+      "corrective": "使用 `Rc<T>` 并调用 `Rc::clone` 增加引用计数以共享所有权。",
+      "evidence": [
+        "示例 15-17 用 Box 共享列表所有权导致移动后使用",
+        "Rc<T> 允许数据有多个所有者"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h4-1",
+          "title": "内部可变性的用例：mock 对象",
+          "lineStart": 59,
+          "lineEnd": 252,
+          "contentHash": "sha256:af9ab5282a8108e26ec3fcae12ba41131b7b12a4e18e05aceee8971cdbf011e3",
+          "quote": "不能修改 `MockMessenger` 来记录消息，因为 `send` 方法获取了 `self` 的不可变引用。我们也不能参考错误文本的建议使用 `&mut self` 替代，因为这样 `send` 的签名就不符合 `Messenger` trait 定义中的签名了。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-2",
+          "title": "内部可变性：不可变值的可变借用",
+          "lineStart": 32,
+          "lineEnd": 58,
+          "contentHash": "sha256:aa68aad636ab96d2a9e7ab80aae4d32c7d38e4e79d8c85e1e719eef4ee9500a8",
+          "quote": "借用规则的一个推论是当有一个不可变值时，不能可变地借用它。"
+        }
+      ],
+      "evidenceQuote": "不能修改 `MockMessenger` 来记录消息，因为 `send` 方法获取了 `self` 的不可变引用。我们也不能参考错误文本的建议使用 `&mut self` 替代，因为这样 `send` 的签名就不符合 `Messenger` trait 定义中的签名了。",
+      "chapterRef": "ch15-05-interior-mutability",
+      "pattern": "在不可变借用 `&self` 的方法中直接修改内部字段（如 `Vec::push`）。",
+      "harm": "编译错误 cannot borrow immutable field as mutable。",
+      "corrective": "使用 `RefCell<T>` 包装内部字段，通过 `borrow_mut` 方法在运行时获取可变借用。",
+      "evidence": [
+        "示例 15-21 在 send(&self) 中 push 导致编译错误",
+        "不可变值不能可变地借用"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-3",
+          "title": "`RefCell<T>` 在运行时记录借用",
+          "lineStart": 253,
+          "lineEnd": 289,
+          "contentHash": "sha256:97631ed6a20e0a15ba50bf06eff1b6107d1b36d41744a629add73ab989515973",
+          "quote": "这里为 `borrow_mut` 返回的 `RefMut` 智能指针创建了 `one_borrow` 变量。接着用相同的方式在变量 `two_borrow` 创建了另一个可变借用。这会在相同作用域中创建两个可变引用，这是不允许的。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h3-1",
+          "title": "通过 `RefCell<T>` 在运行时检查借用规则",
+          "lineStart": 7,
+          "lineEnd": 31,
+          "contentHash": "sha256:3bc38f4b3408e17735961e8504b7ac0a7bd58458ac27f02b53e1b4a73d5e3c7a",
+          "quote": "对于引用和 `Box<T>`，借用规则的不可变性作用于编译时。对于 `RefCell<T>`，这些不可变性作用于 **运行时**。对于引用，如果违反这些规则，会得到一个编译错误。而对于 `RefCell<T>`，如果违反这些规则程序会 panic 并退出。"
+        }
+      ],
+      "evidenceQuote": "这里为 `borrow_mut` 返回的 `RefMut` 智能指针创建了 `one_borrow` 变量。接着用相同的方式在变量 `two_borrow` 创建了另一个可变借用。这会在相同作用域中创建两个可变引用，这是不允许的。",
+      "chapterRef": "ch15-05-interior-mutability",
+      "pattern": "在相同作用域内通过 `RefCell<T>` 创建两个活跃的可变借用（调用两次 `borrow_mut`）。",
+      "harm": "程序运行时 panic，出现 `BorrowMutError` 而不是编译错误。",
+      "corrective": "遵守借用规则，同一时间只允许一个可变借用或多个不可变借用，用作用域控制活动借用生命周期。",
+      "evidence": [
+        "示例 15-23 双重 borrow_mut 导致运行时 panic",
+        "RefCell 运行期检查借用规则"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+          "anchor": "ch15-06-reference-cycles#h3-1",
+          "title": "制造引用循环",
+          "lineStart": 5,
+          "lineEnd": 116,
+          "contentHash": "sha256:bc5af082c0bbdad8ed44d88a0d94c5a48321b7225f0f48cf17fcadbc2bd2fa40",
+          "quote": "如果你有包含 `Rc<T>` 的 `RefCell<T>` 值或类似的嵌套结合了内部可变性和引用计数的类型，请务必小心确保你没有形成一个引用循环；你无法指望 Rust 帮你捕获它们。创建引用循环是一个程序上的逻辑 bug"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+          "anchor": "ch15-06-reference-cycles#h3-2",
+          "title": "避免引用循环：将 `Rc<T>` 变为 `Weak<T>`",
+          "lineStart": 117,
+          "lineEnd": 126,
+          "contentHash": "sha256:dd447c71dd594f76254b12dec2e83500408af5fc635d7bda1d723bf0e434a7f2",
+          "quote": "强引用代表如何共享 `Rc<T>` 实例的所有权，但弱引用并不属于所有权关系。他们不会造成引用循环，因为任何弱引用的循环会在其相关的强引用计数为 0 时被打断。"
+        }
+      ],
+      "evidenceQuote": "如果你有包含 `Rc<T>` 的 `RefCell<T>` 值或类似的嵌套结合了内部可变性和引用计数的类型，请务必小心确保你没有形成一个引用循环；你无法指望 Rust 帮你捕获它们。创建引用循环是一个程序上的逻辑 bug",
+      "chapterRef": "ch15-06-reference-cycles",
+      "pattern": "将 `Rc<T>` 与 `RefCell<T>` 嵌套组合，并让多个节点互相强引用（例如让 `a` 指向 `b`，`b` 又指向 `a`）。",
+      "harm": "引用计数永远不为 0，内存泄漏；打印或遍历此类结构时可能栈溢出。",
+      "corrective": "使用 `Weak<T>` 表达无所有权的关系，用 `Rc::downgrade` 打断强引用循环。",
+      "evidence": [
+        "示例 15-26 制造引用循环后 a、b 的 strong_count 均为 2 且不释放",
+        "弱引用不会造成循环"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T06-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+          "anchor": "ch16-03-shared-state#h3-3",
+          "title": "`RefCell<T>`/`Rc<T>` 与 `Mutex<T>`/`Arc<T>` 的相似性",
+          "lineStart": 215,
+          "lineEnd": 222,
+          "contentHash": "sha256:c142252d1fb1f03e333071816cf795c64654556e15a517b9b06edfe84ead9a54",
+          "quote": "`Mutex<T>` 也有造成 **死锁**（_deadlock_） 的风险。这发生于当一个操作需要锁住两个资源而两个线程各持一个锁，这会造成它们永远相互等待。"
+        }
+      ],
+      "evidenceQuote": "`Mutex<T>` 也有造成 **死锁**（_deadlock_） 的风险。这发生于当一个操作需要锁住两个资源而两个线程各持一个锁，这会造成它们永远相互等待。",
+      "chapterRef": "ch16-03-shared-state",
+      "pattern": "使用 `Mutex<T>` 时在多个线程中同时锁定多个资源，且各线程持有一个锁并等待另一个。",
+      "harm": "死锁，线程永远相互等待。",
+      "corrective": "避免同时持有多个锁，或者设计一致的锁顺序；研究并使用死锁规避策略。",
+      "evidence": [
+        "Mutex<T> 存在死锁风险",
+        "死锁发生于两个线程各持一锁互相等待"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h4-1",
+          "title": "使用 `join` 等待所有线程结束",
+          "lineStart": 70,
+          "lineEnd": 165,
+          "contentHash": "sha256:91a2399beb311588711e2f930521f2a1688619dec2d8a39770fd42549e17288d",
+          "quote": "由于主线程结束，示例 16-1 中的代码大部分时候不光会提早结束新建线程，甚至不能实际保证新建线程会被执行。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-1",
+          "title": "使用 `spawn` 创建新线程",
+          "lineStart": 25,
+          "lineEnd": 69,
+          "contentHash": "sha256:c750eab52bfd52033c2ea92174146cbb180e848f321d7b7c6207c5bbe3c614c6",
+          "quote": "注意这个函数编写的方式，当主线程结束时，新线程也会结束，而不管其是否执行完毕。"
+        }
+      ],
+      "evidenceQuote": "由于主线程结束，示例 16-1 中的代码大部分时候不光会提早结束新建线程，甚至不能实际保证新建线程会被执行。",
+      "chapterRef": "ch16-01-threads",
+      "pattern": "创建线程后不保存 `thread::spawn` 返回的 `JoinHandle`，也从不调用 `join` 等待线程完成。",
+      "harm": "主线程结束时新建线程会被提前终止，甚至可能完全没有被执行；线程是否运行和运行到哪里取决于调度，无法保证。",
+      "corrective": "将 `thread::spawn` 的返回值存入变量，并在合适位置调用 `join` 方法阻塞当前线程，直到该线程执行完毕。",
+      "evidence": [
+        "主线程结束时，新线程也会结束，而不管其是否执行完毕",
+        "由于主线程结束，示例 16-1 中的代码大部分时候不光会提早结束新建线程，甚至不能实际保证新建线程会被执行"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-2",
+          "title": "线程与 `move` 闭包",
+          "lineStart": 166,
+          "lineEnd": 286,
+          "contentHash": "sha256:cb1cb7d811da5f4ec02c0455f60f6823e833567b65d5b7a0d2817edd1f1af9b8",
+          "quote": "新建线程内部有一个 `v` 的引用，不过主线程立刻就使用第 15 章讨论的 `drop` 丢弃了 `v`。接着当新建线程开始执行，`v` 已不再有效，所以其引用也是无效的。噢，这太糟了！"
+        }
+      ],
+      "evidenceQuote": "新建线程内部有一个 `v` 的引用，不过主线程立刻就使用第 15 章讨论的 `drop` 丢弃了 `v`。接着当新建线程开始执行，`v` 已不再有效，所以其引用也是无效的。噢，这太糟了！",
+      "chapterRef": "ch16-01-threads",
+      "pattern": "在 `thread::spawn` 的闭包中借用主线程的局部变量，却不同时使用 `move` 取得其所有权。",
+      "harm": "新线程可能被调度到后台尚未执行，而主线程已经丢弃该值，使线程中的引用在执行时无效。",
+      "corrective": "对闭包使用 `move` 强制获取所用值的所有权，将值从主线程移动到新线程，避免借用失效。",
+      "evidence": [
+        "Rust 不知道这个新建线程会执行多久，所以无法知晓 `v` 的引用是否一直有效",
+        "加了 `move` 会把 `v` 移动进闭包，主线程不能再使用，违反所有权规则会被编译器拒绝"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-1",
+          "title": "通道与所有权转移",
+          "lineStart": 90,
+          "lineEnd": 132,
+          "contentHash": "sha256:045bd4b58b3cef5476ba521336ecb7561cb3664934645e8505241e672283ee0e",
+          "quote": "允许这么做是一个坏主意：一旦将值发送到另一个线程后，那个线程可能会在我们再次使用它之前就将其修改或者丢弃。其他线程对值可能的修改会由于不一致或不存在的数据而导致错误或意外的结果。"
+        }
+      ],
+      "evidenceQuote": "允许这么做是一个坏主意：一旦将值发送到另一个线程后，那个线程可能会在我们再次使用它之前就将其修改或者丢弃。其他线程对值可能的修改会由于不一致或不存在的数据而导致错误或意外的结果。",
+      "chapterRef": "ch16-02-message-passing",
+      "pattern": "通过通道 `send` 将值发送给另一个线程后，还在当前线程继续读取或使用该值。",
+      "harm": "接收线程可能先修改或丢弃该值，导致当前线程读到不一致或不存在的数据，产生错误或意外结果。",
+      "corrective": "接受 `send` 的所有权转移语义：发送后不再使用该值。如果确实需要保留，应在发送前克隆出独立副本。",
+      "evidence": [
+        "`send` 函数获取其参数的所有权并移动这个值归接收者所有",
+        "发送后再使用该值会触发编译时错误，防止并发错误"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+          "anchor": "ch16-03-shared-state#h4-2",
+          "title": "多线程和多所有权",
+          "lineStart": 112,
+          "lineEnd": 168,
+          "contentHash": "sha256:5c0c01ea1765a865630ed9bbb125033d3cda9d19d90b165615990c09a834b396",
+          "quote": "不幸的是，`Rc<T>` 并不能安全的在线程间共享。当 `Rc<T>` 管理引用计数时，它必须在每一个 `clone` 调用时增加计数，并在每一个克隆被丢弃时减少计数。`Rc<T>` 并没有使用任何并发原语，来确保改变计数的操作不会被其他线程打断。在计数出错时可能会导致诡异的 bug，比如可能会造成内存泄漏，或在使用结束之前就丢弃一个值。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-04-extensible-concurrency-sync-and-send.md",
+          "anchor": "ch16-04-extensible-concurrency-sync-and-send#h3-1",
+          "title": "通过 `Send` 允许在线程间转移所有权",
+          "lineStart": 7,
+          "lineEnd": 14,
+          "contentHash": "sha256:7af349583e3596e1112209f20a8413b8f85a78820498a0969907316a06e2c3c8",
+          "quote": "这是不能 `Send` 的，因为如果克隆了 `Rc<T>` 的值并尝试将克隆的所有权转移到另一个线程，这两个线程都可能同时更新引用计数。为此，`Rc<T>` 被实现为用于单线程场景"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch16-04-extensible-concurrency-sync-and-send.md",
+          "anchor": "ch16-04-extensible-concurrency-sync-and-send#h3-2",
+          "title": "`Sync` 允许多线程访问",
+          "lineStart": 15,
+          "lineEnd": 20,
+          "contentHash": "sha256:12965627a8f7ba98339b8fd3a37fcc3f200b299c7e2b2720b4742ebb000d3002",
+          "quote": "`RefCell<T>` 在运行时所进行的借用检查也不是线程安全的。`Mutex<T>` 是 `Sync` 的"
+        }
+      ],
+      "evidenceQuote": "不幸的是，`Rc<T>` 并不能安全的在线程间共享。当 `Rc<T>` 管理引用计数时，它必须在每一个 `clone` 调用时增加计数，并在每一个克隆被丢弃时减少计数。`Rc<T>` 并没有使用任何并发原语，来确保改变计数的操作不会被其他线程打断。在计数出错时可能会导致诡异的 bug，比如可能会造成内存泄漏，或在使用结束之前就丢弃一个值。",
+      "chapterRef": "ch16-03-shared-state",
+      "pattern": "试图用为单线程设计、不满足 `Send`/`Sync` 的智能指针（如 `Rc<T>`、`RefCell<T>` 或 `Cell<T>`）在线程间共享所有权或引用。",
+      "harm": "`Rc<T>` 的引用计数更新可能并发被打断，引发内存泄漏或过早丢弃；`RefCell<T>`/`Cell<T>` 的运行时借用检查不是线程安全的，可能破坏数据安全。",
+      "corrective": "使用线程安全类型：以 `Arc<T>` 进行原子引用计数共享，以 `Mutex<T>` 等同步类型保护数据；依赖编译器拒绝不安全的类型组合。",
+      "evidence": [
+        "用 `Rc<Mutex<i32>>` 在线程间共享会导致编译错误：cannot be sent between threads safely",
+        "`Rc<T>` 没有并发原语保护引用计数，计数出错可能导致内存泄漏或过早丢弃值",
+        "`RefCell<T>` 在运行时所进行的借用检查也不是线程安全的",
+        "`Arc<T>` 是线程安全替代，`Mutex<T>` 是 `Sync` 的"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h4-1",
+          "title": "为每一个请求分配线程的代码结构",
+          "lineStart": 64,
+          "lineEnd": 93,
+          "contentHash": "sha256:8dcaee22bd68b2dce2d6bb518a1efe0c3427b9c0d02a5c969f87f7e45c28e161",
+          "quote": "如果运行这段代码并在在浏览器中加载 */sleep*，接着在另两个浏览器标签页中加载 */*，确实会发现 */* 请求不必等待 */sleep* 结束。不过正如之前提到的，这最终会使系统崩溃因为我们无限制的创建新线程。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h3-2",
+          "title": "使用线程池改善吞吐量",
+          "lineStart": 50,
+          "lineEnd": 63,
+          "contentHash": "sha256:a41fa7d076c65e4214b4f492578bdc52750c4cd288cb1b80521a994278d5d195",
+          "quote": "如果程序为每一个接收的请求都新建一个线程，某人向服务器发起千万级的请求时会耗尽服务器的资源并导致所有请求的处理都被终止。"
+        }
+      ],
+      "evidenceQuote": "如果运行这段代码并在在浏览器中加载 */sleep*，接着在另两个浏览器标签页中加载 */*，确实会发现 */* 请求不必等待 */sleep* 结束。不过正如之前提到的，这最终会使系统崩溃因为我们无限制的创建新线程。",
+      "chapterRef": "ch20-02-multithreaded",
+      "pattern": "为每一个新连接或请求调用 `thread::spawn` 创建新线程，而没有任何数量限制。",
+      "harm": "大量请求时会创建无限线程，耗尽系统资源并导致服务崩溃或所有请求处理被终止。",
+      "corrective": "使用固定大小的线程池，预先分配有限数量的工作线程，并将任务排队交给池中线程执行。",
+      "evidence": [
+        "如果程序为每一个接收的请求都新建一个线程，千万级请求会耗尽资源",
+        "无限制创建新线程最终会使系统崩溃",
+        "线程池限制为较少的数量以防拒绝服务攻击"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h4-8",
+          "title": "实现 `execute` 方法",
+          "lineStart": 641,
+          "lineEnd": 796,
+          "contentHash": "sha256:4f266fd585b5309eb06ffd6391f07cc56cd5c4b9bbaf98d538239dfc094ab673",
+          "quote": "这段代码可以编译和运行，但是并不会产生所期望的线程行为：一个慢请求仍然会导致其他请求等待执行。其原因有些微妙：`Mutex` 结构体没有公有 `unlock` 方法，因为锁的所有权依赖 `lock` 方法返回的 `LockResult<MutexGuard<T>>` 中 `MutexGuard<T>` 的生命周期。这允许借用检查器在编译时确保绝不会在没有持有锁的情况下访问由 `Mutex` 守护的资源，不过如果没有认真的思考 `MutexGuard<T>` 的生命周期的话，也可能会导致比预期更久的持有锁。因为 `while` 表达式中的值在整个块一直处于作用域中，`job()` 调用的过程中其仍然持有锁，这意味着其他 worker 不能接收任务。"
+        }
+      ],
+      "evidenceQuote": "这段代码可以编译和运行，但是并不会产生所期望的线程行为：一个慢请求仍然会导致其他请求等待执行。其原因有些微妙：`Mutex` 结构体没有公有 `unlock` 方法，因为锁的所有权依赖 `lock` 方法返回的 `LockResult<MutexGuard<T>>` 中 `MutexGuard<T>` 的生命周期。这允许借用检查器在编译时确保绝不会在没有持有锁的情况下访问由 `Mutex` 守护的资源，不过如果没有认真的思考 `MutexGuard<T>` 的生命周期的话，也可能会导致比预期更久的持有锁。因为 `while` 表达式中的值在整个块一直处于作用域中，`job()` 调用的过程中其仍然持有锁，这意味着其他 worker 不能接收任务。",
+      "chapterRef": "ch20-02-multithreaded",
+      "pattern": "在 worker 循环里用 `while let Ok(job) = receiver.lock().unwrap().recv()` 获取任务，导致 `MutexGuard` 的生命周期覆盖整个循环体，执行 `job()` 时仍持有锁。",
+      "harm": "一个慢请求会在其执行期间阻塞其他 worker 获取任务，导致请求无法并发处理。",
+      "corrective": "改用 `loop`，在循环块内部先 `lock` 并 `recv` 取得任务，使 `MutexGuard` 在 `let job` 语句结束后立即被丢弃，锁只在 `recv` 调用期间持有。",
+      "evidence": [
+        "`while` 表达式中的值在整个块一直处于作用域中，`job()` 调用的过程中其仍然持有锁",
+        "使用 `loop` 并在循环块之内获取锁和任务，`lock` 返回的 `MutexGuard` 在 `let job` 语句结束之后立刻就被丢弃"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+          "anchor": "ch20-03-graceful-shutdown-and-cleanup#h3-2",
+          "title": "向线程发送信号使其停止接收任务",
+          "lineStart": 114,
+          "lineEnd": 457,
+          "contentHash": "sha256:5127a2ad52e67af03abc5b73ba137812ca562f24f904a7a71d9d6dbd6966574b",
+          "quote": "如果尝试在同一循环中发送消息并立即 join 线程，则无法保证当前迭代的 worker 是从通道收到终止消息的 worker。为了更好的理解为什么需要两个分开的循环，想象一下只有两个 worker 的场景。如果在一个单独的循环中遍历每个 worker，在第一次迭代中向通道发出终止消息并对第一个 worker 线程调用 `join`。如果此时第一个 worker 正忙于处理请求，那么第二个 worker 会收到终止消息并停止。我们会一直等待第一个 worker 结束，不过它永远也不会结束因为第二个线程接收了终止消息。死锁！"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch20-03-graceful-shutdown-and-cleanup.md",
+          "anchor": "ch20-03-graceful-shutdown-and-cleanup#h2-1",
+          "title": "优雅停机与清理",
+          "lineStart": 1,
+          "lineEnd": 6,
+          "contentHash": "sha256:6af409f00b12d1b3f1d7ed9f38c0bf6aa2832b627d7001284b2446b0450351e9",
+          "quote": "当使用不那么优雅的 <span class=\"keystroke\">ctrl-c</span> 终止主线程时，所有其他线程也会立刻停止，即便它们正处于处理请求的过程中。"
+        }
+      ],
+      "evidenceQuote": "如果尝试在同一循环中发送消息并立即 join 线程，则无法保证当前迭代的 worker 是从通道收到终止消息的 worker。为了更好的理解为什么需要两个分开的循环，想象一下只有两个 worker 的场景。如果在一个单独的循环中遍历每个 worker，在第一次迭代中向通道发出终止消息并对第一个 worker 线程调用 `join`。如果此时第一个 worker 正忙于处理请求，那么第二个 worker 会收到终止消息并停止。我们会一直等待第一个 worker 结束，不过它永远也不会结束因为第二个线程接收了终止消息。死锁！",
+      "chapterRef": "ch20-03-graceful-shutdown-and-cleanup",
+      "pattern": "关闭线程池时，要么直接用 ctrl-c 终止主线程而不等待线程，要么在单个循环中向每个 worker 发送终止消息后立即 `join` 该线程。",
+      "harm": "粗暴终止会立即杀死正在处理请求的线程；边发终止边 `join` 则可能死锁——第一个 worker 忙时，第二个 worker 收到终止消息停止，主线程永远等待第一个 worker。",
+      "corrective": "先在一个循环中向所有 worker 发送 `Terminate` 消息，再在另一个循环中 `join` 所有 worker，确保每个线程都先收到停止信号再等待结束。",
+      "evidence": [
+        "ctrl-c 终止主线程时所有其他线程也会立刻停止，即便它们正处于处理请求中",
+        "同一循环发终止并 join 无法保证当前 worker 收到终止消息",
+        "为了避免死锁，先向所有 worker 发出 Terminate 消息，再 join 所有线程"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T07-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+          "anchor": "ch20-02-multithreaded#h4-7",
+          "title": "使用通道向线程发送请求",
+          "lineStart": 436,
+          "lineEnd": 640,
+          "contentHash": "sha256:f1dfc306f615cdae8149195a17f10a27595ef06a32181412f447c4d3be23b41a",
+          "quote": "这段代码尝试将 `receiver` 传递给多个 `Worker` 实例。这是不行的，回忆第 16 章：Rust 所提供的通道实现是多 **生产者**，单 **消费者** 的。这意味着不能简单的克隆通道的消费端来解决问题。即便可以，那也不是我们希望使用的技术；我们希望通过在所有的 worker 中共享单一 `receiver`，在线程间分发任务。另外，从通道队列中取出任务涉及到修改 `receiver`，所以这些线程需要一个能安全的共享和修改 `receiver` 的方式，否则可能导致竞争状态（参考第 16 章）。"
+        }
+      ],
+      "evidenceQuote": "这段代码尝试将 `receiver` 传递给多个 `Worker` 实例。这是不行的，回忆第 16 章：Rust 所提供的通道实现是多 **生产者**，单 **消费者** 的。这意味着不能简单的克隆通道的消费端来解决问题。即便可以，那也不是我们希望使用的技术；我们希望通过在所有的 worker 中共享单一 `receiver`，在线程间分发任务。另外，从通道队列中取出任务涉及到修改 `receiver`，所以这些线程需要一个能安全的共享和修改 `receiver` 的方式，否则可能导致竞争状态（参考第 16 章）。",
+      "chapterRef": "ch20-02-multithreaded",
+      "pattern": "试图把 `mpsc::Receiver` 直接传给多个 `Worker`，或通过克隆消费端来实现多消费者。",
+      "harm": "`mpsc` 是单消费者，多个线程直接共享和修改接收端会导致编译错误或竞争状态。",
+      "corrective": "将 `Receiver` 包装在 `Arc<Mutex<Receiver>>` 中，让多个 worker 通过原子引用计数共享所有权，并用互斥锁保证一次只有一个 worker 接收任务。",
+      "evidence": [
+        "通道实现是多生产者、单消费者，不能简单克隆消费端",
+        "从通道队列取任务会修改 receiver，需要安全共享和修改方式，否则可能导致竞争状态",
+        "使用 `Arc` 和 `Mutex` 在 worker 间共享通道的接收端"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-1",
+          "title": "并行或连续的运行测试",
+          "lineStart": 7,
+          "lineEnd": 20,
+          "contentHash": "sha256:660ba112bdad60c73e48a6b6d9dea22b39db2189cada4f7fad49d8a6247727e8",
+          "quote": "因为测试是在同时运行的，你应该确保测试不能相互依赖，或依赖任何共享的状态，包括依赖共享的环境，比如当前工作目录或者环境变量。"
+        }
+      ],
+      "evidenceQuote": "因为测试是在同时运行的，你应该确保测试不能相互依赖，或依赖任何共享的状态，包括依赖共享的环境，比如当前工作目录或者环境变量。",
+      "chapterRef": "ch11-02-running-tests",
+      "pattern": "在默认并行运行测试时，让测试相互依赖或依赖共享状态（如共享文件、当前工作目录、环境变量）。",
+      "harm": "测试并行运行时相互干扰，可能因为其他测试修改了共享状态而偶发失败，让人误判为代码错误。",
+      "corrective": "确保测试不依赖共享可变状态；如果必须使用共享资源，让每个测试读写独立文件或资源，或用 cargo test -- --test-threads=1 串行运行。",
+      "evidence": [
+        "测试是在同时运行的，应该确保测试不能相互依赖或依赖共享状态。",
+        "一个解决方案是使每一个测试读写不同的文件；另一个解决方案是一次运行一个测试。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-5",
+          "title": "使用 `should_panic` 检查 panic",
+          "lineStart": 441,
+          "lineEnd": 607,
+          "contentHash": "sha256:8a9b673192863f300f185b19c74e52480ea1eed915f8ee6ffb31f77035887a26",
+          "quote": "然而 `should_panic` 测试结果可能会非常含糊不清，因为它只是告诉我们代码产生了 panic。`should_panic` 甚至在一些不是我们期望的原因而导致 panic 时也会通过。为了使 `should_panic` 测试结果更精确，我们可以给 `should_panic` 属性增加一个可选的 `expected` 参数。测试工具会确保错误信息中包含其提供的文本。"
+        }
+      ],
+      "evidenceQuote": "然而 `should_panic` 测试结果可能会非常含糊不清，因为它只是告诉我们代码产生了 panic。`should_panic` 甚至在一些不是我们期望的原因而导致 panic 时也会通过。为了使 `should_panic` 测试结果更精确，我们可以给 `should_panic` 属性增加一个可选的 `expected` 参数。测试工具会确保错误信息中包含其提供的文本。",
+      "chapterRef": "ch11-01-writing-tests",
+      "pattern": "编写 `should_panic` 测试时只标注 `#[should_panic]`，不提供 `expected` 参数。",
+      "harm": "测试只验证发生了 panic，无法区分 panic 的原因；不是期望原因导致的 panic 也会通过测试，造成虚假信心。",
+      "corrective": "为 `#[should_panic]` 添加 `expected` 参数，指定预期 panic 信息中的子串，让测试工具校验 panic 确实来自期望分支。",
+      "evidence": [
+        "`should_panic` 测试结果可能会非常含糊不清，因为它只是告诉我们代码产生了 panic。",
+        "`should_panic` 甚至在一些不是我们期望的原因而导致 panic 时也会通过。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-6",
+          "title": "将 `Result<T, E>` 用于测试",
+          "lineStart": 608,
+          "lineEnd": 641,
+          "contentHash": "sha256:edd4f0c619f0ea523734631d3be652f859c173967ed517b7c7dd73b53e9b3a8b",
+          "quote": "你不能在使用 `Result<T, E>` 的测试中使用 `#[should_panic]` 注解。要断言操作返回 `Err` 值，*不要*在 `Result<T, E>` 值上使用问号运算符。相反，请使用 `assert!(value.is_err())`。"
+        }
+      ],
+      "evidenceQuote": "你不能在使用 `Result<T, E>` 的测试中使用 `#[should_panic]` 注解。要断言操作返回 `Err` 值，*不要*在 `Result<T, E>` 值上使用问号运算符。相反，请使用 `assert!(value.is_err())`。",
+      "chapterRef": "ch11-01-writing-tests",
+      "pattern": "在返回 `Result<T, E>` 的测试中混用 `#[should_panic]`，或对 `Result` 值使用问号运算符来断言错误分支。",
+      "harm": "`should_panic` 不能用于返回 `Result` 的测试；使用问号会提前返回 `Err`，无法完成对错误值的断言。",
+      "corrective": "返回 `Result` 的测试应返回 `Ok(())` 或 `Err`；要断言操作返回 `Err` 值，使用 `assert!(value.is_err())`，不要用 `#[should_panic]` 或问号。",
+      "evidence": [
+        "你不能在使用 `Result<T, E>` 的测试中使用 `#[should_panic]` 注解。",
+        "要断言操作返回 `Err` 值，不要使用问号运算符，而应使用 `assert!(value.is_err())`。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-4",
+          "title": "自定义失败信息",
+          "lineStart": 363,
+          "lineEnd": 440,
+          "contentHash": "sha256:eb411f007714c456d2e6f6de7133653afd6d6702a0f8a3b5f3c91ab337410835",
+          "quote": "结果仅仅告诉了我们断言失败了和失败的行号。一个更有用的失败信息应该打印出 `greeting` 函数的值。"
+        }
+      ],
+      "evidenceQuote": "结果仅仅告诉了我们断言失败了和失败的行号。一个更有用的失败信息应该打印出 `greeting` 函数的值。",
+      "chapterRef": "ch11-01-writing-tests",
+      "pattern": "编写断言时不提供自定义失败信息，只依赖默认的 panic 输出。",
+      "harm": "测试失败时只能看到断言失败和行号，无法得知实际值或上下文，增加调试成本。",
+      "corrective": "在 `assert!`、`assert_eq!`、`assert_ne!` 宏的必需参数之后传递带占位符的格式字符串和相关值，说明断言的意义。",
+      "evidence": [
+        "默认失败信息只告诉断言失败和行号。",
+        "更有用的失败信息应该打印出实际函数值。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-03-test-organization.md",
+          "anchor": "ch11-03-test-organization#h4-4",
+          "title": "集成测试中的子模块",
+          "lineStart": 136,
+          "lineEnd": 201,
+          "contentHash": "sha256:f4f58658ff75abcebda368a741779dcaae95d376489879d774db775360b7934c",
+          "quote": "如果再次运行测试，将会在测试结果中看到一个新的对应 *common.rs* 文件的测试结果部分，即便这个文件并没有包含任何测试函数，也没有任何地方调用了 `setup` 函数"
+        }
+      ],
+      "evidenceQuote": "如果再次运行测试，将会在测试结果中看到一个新的对应 *common.rs* 文件的测试结果部分，即便这个文件并没有包含任何测试函数，也没有任何地方调用了 `setup` 函数",
+      "chapterRef": "ch11-03-test-organization",
+      "pattern": "在 `tests` 目录中直接创建 `common.rs` 来存放多个集成测试共享的帮助函数。",
+      "harm": "Cargo 会把 `common.rs` 当作一个单独的集成测试文件编译运行，输出多余的 `running 0 tests` 结果部分，即使它不包含测试。",
+      "corrective": "将共享辅助代码放到 `tests/common/mod.rs`，再把 `common` 作为模块导入到需要的集成测试文件中；`tests` 目录中的子目录不会被当作单独的 crate 或测试结果部分。",
+      "evidence": [
+        "直接创建 `tests/common.rs` 会让测试结果中出现额外的 `running 0 tests` 部分。",
+        "应创建 `tests/common/mod.rs`，这样测试输出中不会出现这一部分。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-03-test-organization.md",
+          "anchor": "ch11-03-test-organization#h4-5",
+          "title": "二进制 crate 的集成测试",
+          "lineStart": 202,
+          "lineEnd": 207,
+          "contentHash": "sha256:c220ec754c2c8508785d22be63333338a4062f8f99539b39f80ada6534b82774",
+          "quote": "如果项目是二进制 crate 并且只包含 *src/main.rs* 而没有 *src/lib.rs*，这样就不可能在 *tests* 目录创建集成测试并使用 `use` 语句导入 *src/main.rs* 中定义的函数。只有库 crate 才会向其他 crate 暴露了可供调用和使用的函数；二进制 crate 只意在单独运行。"
+        }
+      ],
+      "evidenceQuote": "如果项目是二进制 crate 并且只包含 *src/main.rs* 而没有 *src/lib.rs*，这样就不可能在 *tests* 目录创建集成测试并使用 `use` 语句导入 *src/main.rs* 中定义的函数。只有库 crate 才会向其他 crate 暴露了可供调用和使用的函数；二进制 crate 只意在单独运行。",
+      "chapterRef": "ch11-03-test-organization",
+      "pattern": "将项目核心逻辑只写在二进制 crate 的 `src/main.rs` 中，没有提供 `src/lib.rs`。",
+      "harm": "无法在 `tests` 目录中编写集成测试并用 `use` 导入函数，核心功能只能通过运行二进制手工验证，缺少集成测试覆盖。",
+      "corrective": "采用 `src/main.rs` 调用 `src/lib.rs` 的结构，把核心逻辑放在库 crate 中；集成测试通过 `use` 导入库 crate 来测试主要功能。",
+      "evidence": [
+        "只有库 crate 才会向其他 crate 暴露可供调用和使用的函数；二进制 crate 只意在单独运行。",
+        "通过 main.rs 调用 lib.rs 的结构，集成测试就可以测试库 crate 中的主要功能。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h4-2",
+          "title": "文档注释作为测试",
+          "lineStart": 51,
+          "lineEnd": 65,
+          "contentHash": "sha256:be20df1865eaf3eb2e7f1de7a892db87b1c10cc759ef068b03dd3f846d9c963b",
+          "quote": "没有什么比有例子的文档更好的了，但最糟糕的莫过于写完文档后改动了代码，而导致例子不能正常工作。"
+        }
+      ],
+      "evidenceQuote": "没有什么比有例子的文档更好的了，但最糟糕的莫过于写完文档后改动了代码，而导致例子不能正常工作。",
+      "chapterRef": "ch14-02-publishing-to-crates-io",
+      "pattern": "在文档注释中留下示例代码，但之后改动实现代码却不更新示例，也未运行文档测试。",
+      "harm": "文档示例无法运行，文档与代码不同步，误导库的使用者。",
+      "corrective": "把示例代码放进文档注释，并让 `cargo test` 运行文档测试；改动代码后运行文档测试，以便捕获例子与代码不再同步。",
+      "evidence": [
+        "最糟糕的莫过于写完文档后改动了代码，而导致例子不能正常工作。",
+        "文档测试会捕获到例子与代码不再同步。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T08-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+          "anchor": "ch15-05-interior-mutability#h4-1",
+          "title": "内部可变性的用例：mock 对象",
+          "lineStart": 59,
+          "lineEnd": 252,
+          "contentHash": "sha256:af9ab5282a8108e26ec3fcae12ba41131b7b12a4e18e05aceee8971cdbf011e3",
+          "quote": "不能修改 `MockMessenger` 来记录消息，因为 `send` 方法获取了 `self` 的不可变引用。我们也不能参考错误文本的建议使用 `&mut self` 替代，因为这样 `send` 的签名就不符合 `Messenger` trait 定义中的签名了（可以试着这么改，看看会出现什么错误信息）。"
+        }
+      ],
+      "evidenceQuote": "不能修改 `MockMessenger` 来记录消息，因为 `send` 方法获取了 `self` 的不可变引用。我们也不能参考错误文本的建议使用 `&mut self` 替代，因为这样 `send` 的签名就不符合 `Messenger` trait 定义中的签名了（可以试着这么改，看看会出现什么错误信息）。",
+      "chapterRef": "ch15-05-interior-mutability",
+      "pattern": "在 mock 对象中，当 trait 方法签名要求 `&self` 时，试图直接修改普通 `Vec` 等字段来记录调用，或把方法签名改成 `&mut self`。",
+      "harm": "产生借用检查错误（如 E0596），或改变 trait 实现签名导致不符合接口，mock 无法记录消息，测试无法断言行为。",
+      "corrective": "使用 `RefCell<T>` 包装需要修改的内部状态，在 `&self` 方法中通过 `borrow_mut` 修改、通过 `borrow` 读取，保持 trait 签名不变。",
+      "evidence": [
+        "直接修改 `self.sent_messages` 会产生 E0596 借用错误。",
+        "应通过 `RefCell` 储存 `sent_messages`，这样 `send` 能够在 `&self` 下修改并记录消息。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch03-05-control-flow.md",
+          "anchor": "ch03-05-control-flow#h4-6",
+          "title": "使用 `for` 遍历集合",
+          "lineStart": 198,
+          "lineEnd": 245,
+          "contentHash": "sha256:657f7f7cf4055f5cc17230a9e22c9b1bf798456c650c9b4f158bf780ef7ccbbc",
+          "quote": "但是这个过程很容易出错；如果索引值或测试条件不正确会导致程序 panic。例如，如果将 `a` 数组的定义更改为包含 4 个元素，但忘记将条件更新为`while index < 4`，则代码会出现 panic。这也使程序更慢，因为编译器增加了运行时代码来对每次循环进行条件检查，以确定在循环的每次迭代中索引是否在数组的边界内。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+          "anchor": "ch13-02-iterators#h2-1",
+          "title": "使用迭代器处理元素序列",
+          "lineStart": 1,
+          "lineEnd": 34,
+          "contentHash": "sha256:3a69a72bb0848cb90cdf82b63c3880f6931969a83ab35eed015cda91100a68bc",
+          "quote": "在标准库中没有提供迭代器的语言中，我们可能会使用一个从 0 开始的索引变量，使用这个变量索引 vector 中的值，并循环增加其值直到达到 vector 的元素数量。"
+        }
+      ],
+      "evidenceQuote": "但是这个过程很容易出错；如果索引值或测试条件不正确会导致程序 panic。例如，如果将 `a` 数组的定义更改为包含 4 个元素，但忘记将条件更新为`while index < 4`，则代码会出现 panic。这也使程序更慢，因为编译器增加了运行时代码来对每次循环进行条件检查，以确定在循环的每次迭代中索引是否在数组的边界内。",
+      "chapterRef": "ch03-05-control-flow",
+      "pattern": "使用 `while` 循环和显式索引变量遍历数组或集合，手动维护索引和边界条件。",
+      "harm": "索引值或测试条件错误会导致越界 panic；编译器在每次迭代增加运行时边界检查，使循环更慢。",
+      "corrective": "使用 `for` 循环或迭代器（`iter`、`into_iter`、`iter_mut`）让迭代器管理遍历逻辑。",
+      "evidence": [
+        "while 索引遍历如果索引值或条件不正确会导致 panic",
+        "编译器增加运行时代码进行每次循环的条件检查",
+        "迭代器处理遍历逻辑，减少重复代码并消除混乱"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h3-1",
+          "title": "使用闭包创建行为的抽象",
+          "lineStart": 5,
+          "lineEnd": 97,
+          "contentHash": "sha256:7d67a1b961a9ee486cda25c648f7ab7d2d3f41ca2e92b5f6aee24a02f02224f8",
+          "quote": "也就是说，我们不希望在完全无需其结果的情况调用函数，不过仍然希望只调用函数一次。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h4-1",
+          "title": "使用函数重构",
+          "lineStart": 98,
+          "lineEnd": 145,
+          "contentHash": "sha256:d459fe686ea9b267bf147a6c01ad586789e0d9d903f1ba74ee825225f5a96c31",
+          "quote": "不幸的是，现在所有的情况下都需要调用函数并等待结果，包括那个完全不需要这一结果的内部 `if` 块。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h4-2",
+          "title": "重构使用闭包储存代码",
+          "lineStart": 146,
+          "lineEnd": 214,
+          "contentHash": "sha256:151fc7dbf688f5384f52460131f5c85127802c39bc8d0ba77494bc875fecb38f",
+          "quote": "然而，我们又重新引入了示例 13-3 中的问题：仍然在第一个 `if` 块中调用了闭包两次，这调用了慢计算代码两次而使得用户需要多等待一倍的时间。"
+        }
+      ],
+      "evidenceQuote": "也就是说，我们不希望在完全无需其结果的情况调用函数，不过仍然希望只调用函数一次。",
+      "chapterRef": "ch13-01-closures",
+      "pattern": "将昂贵计算的结果无条件地提前计算，或在不同分支中重复调用昂贵计算函数/闭包。",
+      "harm": "不需要结果的路径也要等待，或需要的路径被重复计算，导致等待时间成倍增加。",
+      "corrective": "使用闭包惰性求值，并用类似 `Cacher` 的缓存结构在需要结果时最多执行一次。",
+      "evidence": [
+        "不应在完全无需结果时调用函数，只希望调用一次",
+        "提取到变量后所有情况都调用，包括不需要的内部 if 块",
+        "闭包版本仍在第一个 if 块中调用慢计算两次，用户多等待一倍时间"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+          "anchor": "ch13-01-closures#h3-4",
+          "title": "`Cacher` 实现的限制",
+          "lineStart": 430,
+          "lineEnd": 463,
+          "contentHash": "sha256:670866a9b05b097e0e890b1d6aa0666a3b95f59552dc30972de6c5cdd7989a2c",
+          "quote": "这里的问题是第一次使用 1 调用 `c.value`，`Cacher` 实例将 `Some(1)` 保存进 `self.value`。在这之后，无论传递什么值调用 `value`，它总是会返回 1。"
+        }
+      ],
+      "evidenceQuote": "这里的问题是第一次使用 1 调用 `c.value`，`Cacher` 实例将 `Some(1)` 保存进 `self.value`。在这之后，无论传递什么值调用 `value`，它总是会返回 1。",
+      "chapterRef": "ch13-01-closures",
+      "pattern": "实现缓存时只保存一个结果值，并假设相同参数每次都会返回相同值。",
+      "harm": "对不同参数调用 `value` 时仍然返回第一个缓存结果，导致错误行为。",
+      "corrective": "存放一个哈希 map，以传入参数作为 key 缓存对应闭包结果；并引入更多泛型参数以支持不同签名。",
+      "evidence": [
+        "第一个问题是 Cacher 实例假设任何 arg 参数值总是返回相同值",
+        "第一次用 1 调用后 self.value 保存 Some(1)，之后无论传什么都返回 1",
+        "建议用哈希 map 根据 arg 缓存"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+          "anchor": "ch13-02-iterators#h3-3",
+          "title": "产生其他迭代器的方法",
+          "lineStart": 102,
+          "lineEnd": 150,
+          "contentHash": "sha256:7a2c6f5a417d7d1e7da477a48e7e9e73ac784b058d7a9649bfee96e6a7f56312",
+          "quote": "示例 13-17 中的代码实际上并没有做任何事；所指定的闭包从未被调用过。警告提醒了我们为什么：迭代器适配器是惰性的，而这里我们需要消费迭代器。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+          "anchor": "ch13-02-iterators#h2-1",
+          "title": "使用迭代器处理元素序列",
+          "lineStart": 1,
+          "lineEnd": 34,
+          "contentHash": "sha256:3a69a72bb0848cb90cdf82b63c3880f6931969a83ab35eed015cda91100a68bc",
+          "quote": "在 Rust 中，迭代器是 **惰性的**（*lazy*），这意味着在调用方法使用迭代器之前它都不会有效果。"
+        }
+      ],
+      "evidenceQuote": "示例 13-17 中的代码实际上并没有做任何事；所指定的闭包从未被调用过。警告提醒了我们为什么：迭代器适配器是惰性的，而这里我们需要消费迭代器。",
+      "chapterRef": "ch13-02-iterators",
+      "pattern": "调用 `map`、`filter` 等迭代器适配器后不调用 `collect`、`sum` 等消费适配器，期望代码已经生效。",
+      "harm": "适配器闭包从未被调用，代码没有产生任何效果，只会得到未使用警告。",
+      "corrective": "在链末尾调用消费适配器（如 `collect`）来执行并收集结果。",
+      "evidence": [
+        "示例 13-17 调用 map 未消费，代码实际上没有做任何事",
+        "迭代器适配器是惰性的，必须消费",
+        "在 Rust 中迭代器是惰性的，调用方法使用前不会有效果"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h3-1",
+          "title": "使用迭代器并去掉 `clone`",
+          "lineStart": 5,
+          "lineEnd": 37,
+          "contentHash": "sha256:5f5501f3eb4dd27713e6601ea08a8bc8c7df7e12a0c88c7badbcf9708d3b08b8",
+          "quote": "起初这里需要 `clone` 的原因是参数 `args` 中有一个 `String` 元素的 slice，而 `new` 函数并不拥有 `args`。为了能够返回 `Config` 实例的所有权，我们需要克隆 `Config` 中字段 `query` 和 `filename` 的值，这样 `Config` 实例就能拥有这些值。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h4-1",
+          "title": "直接使用 `env::args` 返回的迭代器",
+          "lineStart": 38,
+          "lineEnd": 89,
+          "contentHash": "sha256:1529a70cccd71b28630592a87abb2e65560f2327568bceb1d64ed318914d3dbc",
+          "quote": "`env::args` 函数返回一个迭代器！不同于将迭代器的值收集到一个 vector 中接着传递一个 slice 给 `Config::new`，现在我们直接将 `env::args` 返回的迭代器的所有权传递给 `Config::new`。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h4-2",
+          "title": "使用 `Iterator` trait 代替索引",
+          "lineStart": 90,
+          "lineEnd": 130,
+          "contentHash": "sha256:bc579489877034e600bc59fa21bce5b4f6cfe630f11461d1293f4225e539b4a8",
+          "quote": "如果 `next` 返回 `Some`，使用 `match` 来提取其值。如果它返回 `None`，则意味着没有提供足够的参数并通过 `Err` 值提早返回。"
+        }
+      ],
+      "evidenceQuote": "起初这里需要 `clone` 的原因是参数 `args` 中有一个 `String` 元素的 slice，而 `new` 函数并不拥有 `args`。为了能够返回 `Config` 实例的所有权，我们需要克隆 `Config` 中字段 `query` 和 `filename` 的值，这样 `Config` 实例就能拥有这些值。",
+      "chapterRef": "ch13-03-improving-our-io-project",
+      "pattern": "将 `env::args` 收集到 `Vec`，通过 slice 借用传入构造函数，再用索引和 `clone` 提取参数。",
+      "harm": "因为构造函数不拥有 slice，必须克隆每个 `String` 字段，产生不必要的内存分配和低效。",
+      "corrective": "直接把 `env::args()` 返回的迭代器所有权传入函数，使用 `next` 移动 `String` 值，避免 clone。",
+      "evidence": [
+        "参数是 slice 且 new 不拥有 args，需要克隆 query 和 filename",
+        "env::args 返回迭代器，可以直接传递所有权，而不是收集到 vector 再传 slice",
+        "使用 next 提取值，不再使用借用的索引操作"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch13-03-improving-our-io-project.md",
+          "anchor": "ch13-03-improving-our-io-project#h3-2",
+          "title": "使用迭代器适配器来使代码更简明",
+          "lineStart": 131,
+          "lineEnd": 172,
+          "contentHash": "sha256:a371d45c40df63200f94060598074e216427c8ebf163cb3b6337bfd1bff3857d",
+          "quote": "不过这两种实现真的完全等同吗？直觉上的假设是更底层的循环会更快一些。让我们聊聊性能吧。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch13-04-performance.md",
+          "anchor": "ch13-04-performance#h2-1",
+          "title": "性能对比：循环 VS 迭代器",
+          "lineStart": 1,
+          "lineEnd": 46,
+          "contentHash": "sha256:b4ee6761755e176109dab9f63988e0dfbe2c5020d3261f91ece7b5d00d06de3e",
+          "quote": "结果迭代器版本还要稍微快一点！这里我们将不会查看性能测试的代码，我们的目的并不是为了证明他们是完全等同的，而是得出一个怎样比较这两种实现方式性能的基本思路。"
+        }
+      ],
+      "evidenceQuote": "不过这两种实现真的完全等同吗？直觉上的假设是更底层的循环会更快一些。让我们聊聊性能吧。",
+      "chapterRef": "ch13-03-improving-our-io-project",
+      "pattern": "认为手写 `for` 循环等底层实现一定比迭代器抽象更快，从而回避迭代器风格。",
+      "harm": "可能放弃更简明的代码；实际上迭代器是零成本抽象，没有被编译成更慢的底层代码。",
+      "corrective": "放心使用迭代器和闭包；如有性能疑问，通过基准测试比较，而不是凭直觉假设。",
+      "evidence": [
+        "直觉上假设更底层的循环会更快",
+        "性能测试结果迭代器版本稍微快一点",
+        "迭代器被编译成与手写底层代码大体一致性能代码，是零成本抽象"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-05-advanced-functions-and-closures.md",
+          "anchor": "ch19-05-advanced-functions-and-closures#h3-2",
+          "title": "返回闭包",
+          "lineStart": 75,
+          "lineEnd": 119,
+          "contentHash": "sha256:8dc65bf4e5332ee11563cb30d03978874262529c403aa5c93748df2c73cc13e0",
+          "quote": "闭包表现为 trait，这意味着不能直接返回闭包。对于大部分需要返回 trait 的情况，可以使用实现了期望返回的 trait 的具体类型来替代函数的返回值。但是这不能用于闭包，因为他们没有一个可返回的具体类型；例如不允许使用函数指针 `fn` 作为返回值类型。"
+        }
+      ],
+      "evidenceQuote": "闭包表现为 trait，这意味着不能直接返回闭包。对于大部分需要返回 trait 的情况，可以使用实现了期望返回的 trait 的具体类型来替代函数的返回值。但是这不能用于闭包，因为他们没有一个可返回的具体类型；例如不允许使用函数指针 `fn` 作为返回值类型。",
+      "chapterRef": "ch19-05-advanced-functions-and-closures",
+      "pattern": "在函数返回类型中直接写 `Fn(i32) -> i32` 返回闭包，或使用 `fn` 作为返回类型。",
+      "harm": "编译错误：`Fn` trait 不是 `Sized`，返回类型必须有编译时已知大小。",
+      "corrective": "返回 `Box<dyn Fn(i32) -> i32>` trait 对象来存储闭包。",
+      "evidence": [
+        "闭包表现为 trait，不能直接返回",
+        "闭包没有可返回的具体类型，不允许使用 fn 作为返回值类型",
+        "Rust 不知道需要多少空间存储闭包，可使用 trait 对象 Box<dyn Fn>"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T09-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-2",
+          "title": "线程与 `move` 闭包",
+          "lineStart": 166,
+          "lineEnd": 286,
+          "contentHash": "sha256:cb1cb7d811da5f4ec02c0455f60f6823e833567b65d5b7a0d2817edd1f1af9b8",
+          "quote": "Rust 会 **推断** 如何捕获 `v`，因为 `println!` 只需要 `v` 的引用，闭包尝试借用 `v`。然而这有一个问题：Rust 不知道这个新建线程会执行多久，所以无法知晓 `v` 的引用是否一直有效。"
+        }
+      ],
+      "evidenceQuote": "Rust 会 **推断** 如何捕获 `v`，因为 `println!` 只需要 `v` 的引用，闭包尝试借用 `v`。然而这有一个问题：Rust 不知道这个新建线程会执行多久，所以无法知晓 `v` 的引用是否一直有效。",
+      "chapterRef": "ch16-01-threads",
+      "pattern": "在 `thread::spawn` 闭包中直接使用主线程数据而没有使用 `move`，依赖编译器的默认借用捕获。",
+      "harm": "闭包只借用主线程数据，而新线程执行时长未知，引用可能在主线程 drop 后失效，导致编译错误或潜在悬垂。",
+      "corrective": "需要把数据所有权转移到新线程时，在闭包前加 `move` 关键字；注意 move 后主线程不能再使用该值。",
+      "evidence": [
+        "闭包尝试借用 v，Rust 不知道线程执行多久，无法知晓引用是否一直有效",
+        "如果主线程 drop v，引用可能无效",
+        "使用 move 强制闭包获取所有权，覆盖默认保守的借用"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-1",
+          "title": "创建惯用的 `use` 路径",
+          "lineStart": 49,
+          "lineEnd": 113,
+          "contentHash": "sha256:cfc1320241f594d3583ffe3e92172a68cdfb630c1d7307cbf44ad77ccc9b2474",
+          "quote": "如果我们是指定 `use std::fmt::Result` 和 `use std::io::Result`，我们将在同一作用域拥有了两个 `Result` 类型，当我们使用 `Result` 时，Rust 则不知道我们要用的是哪个。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-2",
+          "title": "使用 `as` 关键字提供新的名称",
+          "lineStart": 114,
+          "lineEnd": 138,
+          "contentHash": "sha256:ac41c36ee405e4b4a64174955a0c1890addbac53ba58f657449b615962ca189c",
+          "quote": "使用 `use` 将两个同名类型引入同一作用域这个问题还有另一个解决办法：在这个类型的路径后面，我们使用 `as` 指定一个新的本地名称或者别名。"
+        }
+      ],
+      "evidenceQuote": "如果我们是指定 `use std::fmt::Result` 和 `use std::io::Result`，我们将在同一作用域拥有了两个 `Result` 类型，当我们使用 `Result` 时，Rust 则不知道我们要用的是哪个。",
+      "chapterRef": "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+      "pattern": "当两个模块有同名类型时，直接使用完整路径 `use` 把它们同时导入同一作用域（如 `use std::fmt::Result;` 和 `use std::io::Result;`）。",
+      "harm": "造成两个 `Result` 名称在同一作用域冲突，Rust 无法判断 `Result` 指向哪一个，导致代码无法通过编译或使用错误。",
+      "corrective": "改为导入父模块（如 `use std::fmt; use std::io;` 并用 `fmt::Result`、`io::Result` 区分），或用 `as` 给其中一个起别名（如 `IoResult`）。",
+      "evidence": [
+        "两个同名类型通过完整路径 use 进入同一作用域时，Rust 不知道使用哪个；通过父模块限定或 as 别名可以解决冲突。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-6",
+          "title": "通过 glob 运算符将所有的公有定义引入作用域",
+          "lineStart": 249,
+          "lineEnd": 263,
+          "contentHash": "sha256:206aab8ecdd741b05f2c55a01b150b347569eceb853eb64334acd7305408e66a",
+          "quote": "使用 glob 运算符时请多加小心！Glob 会使得我们难以推导作用域中有什么名称和它们是在何处定义的。"
+        }
+      ],
+      "evidenceQuote": "使用 glob 运算符时请多加小心！Glob 会使得我们难以推导作用域中有什么名称和它们是在何处定义的。",
+      "chapterRef": "ch07-04-bringing-paths-into-scope-with-the-use-keyword",
+      "pattern": "在普通业务代码中使用 glob 运算符（如 `use std::collections::*;`）把路径下所有公有项一次性导入作用域。",
+      "harm": "难以推导作用域中到底有哪些名称以及它们是在何处定义的，降低代码可读性和可维护性。",
+      "corrective": "仅在测试模块或 prelude 模式等适合场景使用 glob；普通代码中显式引入所需项，或使用嵌套路径减少重复。",
+      "evidence": [
+        "使用 glob 运算符时请多加小心！Glob 会使得我们难以推导作用域中有什么名称和它们是在何处定义的。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-1",
+          "title": "使用 `pub` 关键字暴露路径",
+          "lineStart": 46,
+          "lineEnd": 87,
+          "contentHash": "sha256:7c9a032bf529d14a2cc7e2d02931aa412dfb68075fea355829a45dd5935523dd",
+          "quote": "但是 `hosting` 的 **内容**（*contents*） 仍然是私有的；这表明使模块公有并不使其内容也是公有的。模块上的 `pub` 关键字只允许其父模块引用它。"
+        }
+      ],
+      "evidenceQuote": "但是 `hosting` 的 **内容**（*contents*） 仍然是私有的；这表明使模块公有并不使其内容也是公有的。模块上的 `pub` 关键字只允许其父模块引用它。",
+      "chapterRef": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+      "pattern": "在暴露模块时，只给 `mod` 加上 `pub`，没有给模块内部需要公开的函数、结构体等项也加上 `pub`，误以为模块公有其内容就自动公有。",
+      "harm": "外部代码仍无法访问这些私有项，编译器会报私有性错误，导致希望公开的 API 无法使用。",
+      "corrective": "沿着需要公开的路径，先让每个模块加 `pub`，再对模块内部要公开的具体项逐个加 `pub`，使它们真正对外可见。",
+      "evidence": [
+        "模块上的 pub 关键字只允许其父模块引用它；使模块公有并不使其内容也是公有的。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+          "anchor": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree#h3-3",
+          "title": "创建公有的结构体和枚举",
+          "lineStart": 104,
+          "lineEnd": 135,
+          "contentHash": "sha256:a028d916a7e85247a8ae015b3214ad95a8ea4f2eef538f4e3f780bc8c6c3fc93",
+          "quote": "如果 `Breakfast` 没有这样的函数，我们将无法在 `eat_at_restaurant` 中创建 `Breakfast` 实例，因为我们不能在 `eat_at_restaurant` 中设置私有字段 `seasonal_fruit` 的值。"
+        }
+      ],
+      "evidenceQuote": "如果 `Breakfast` 没有这样的函数，我们将无法在 `eat_at_restaurant` 中创建 `Breakfast` 实例，因为我们不能在 `eat_at_restaurant` 中设置私有字段 `seasonal_fruit` 的值。",
+      "chapterRef": "ch07-03-paths-for-referring-to-an-item-in-the-module-tree",
+      "pattern": "将结构体设为 `pub` 后，保留字段为私有，且不提供公共构造函数或关联函数供外部创建实例。",
+      "harm": "外部代码无法创建该公有结构体的实例，也无法设置私有字段，使这个公有类型实际上不可用。",
+      "corrective": "为包含私有字段的结构体提供公共构造函数（例如 `summer` 关联函数），或按设计将需要公开的字段标记为 `pub`。",
+      "evidence": [
+        "具有私有字段的结构体需要提供公共关联函数来构造实例，否则外部无法创建实例，因为不能设置私有字段的值。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-2",
+          "title": "使用 `pub use` 导出合适的公有 API",
+          "lineStart": 96,
+          "lineEnd": 219,
+          "contentHash": "sha256:df132ad80468eb6a790e88b27e53787b031d09d8f2a49e1c3511c4f6b235b251",
+          "quote": "这是因为想要使用被定义在很深层级中的类型的人可能很难发现这些类型的存在。他们也可能会厌烦要使用 `use my_crate::some_module::another_module::UsefulType;` 而不是 `use my_crate::UsefulType;` 来使用类型。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+          "anchor": "ch07-04-bringing-paths-into-scope-with-the-use-keyword#h3-3",
+          "title": "使用 `pub use` 重导出名称",
+          "lineStart": 139,
+          "lineEnd": 167,
+          "contentHash": "sha256:f53fb0ec39f36f85c608e98c38c6c10dbb336de1b116130cf2f0e3db6d9c0f70",
+          "quote": "如果没有指定 `pub use`，`eat_at_restaurant` 函数可以在其作用域中调用 `hosting::add_to_waitlist`，但外部代码则不允许使用这个新路径。"
+        }
+      ],
+      "evidenceQuote": "这是因为想要使用被定义在很深层级中的类型的人可能很难发现这些类型的存在。他们也可能会厌烦要使用 `use my_crate::some_module::another_module::UsefulType;` 而不是 `use my_crate::UsefulType;` 来使用类型。",
+      "chapterRef": "ch14-02-publishing-to-crates-io",
+      "pattern": "将 crate 的公有 API 完全按照内部深层模块层级暴露，不通过 `pub use` 在顶层或合适层级重导出常用类型和函数。",
+      "harm": "用户必须发现并书写冗长的嵌套路径（如 `use my_crate::some_module::another_module::UsefulType;`），难以找到所需类型；外部代码也无法使用本可提供的简洁路径。",
+      "corrective": "在设计公有 API 时使用 `pub use` 重导出常用项，将内部结构与对外接口解耦，把项暴露在用户方便的位置。",
+      "evidence": [
+        "深层模块路径让用户难以发现类型并感到厌烦；不使用 pub use 时外部代码不能使用重导出路径。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-4",
+          "title": "发布新 crate 之前",
+          "lineStart": 230,
+          "lineEnd": 289,
+          "contentHash": "sha256:a41a849028bf668a73d2f13debb0beb1b2d4799445bbda71544c36b2b5571e52",
+          "quote": "这是因为我们缺少一些关键信息：关于该 crate 用途的描述和用户可能在何种条款下使用该 crate 的 license。"
+        }
+      ],
+      "evidenceQuote": "这是因为我们缺少一些关键信息：关于该 crate 用途的描述和用户可能在何种条款下使用该 crate 的 license。",
+      "chapterRef": "ch14-02-publishing-to-crates-io",
+      "pattern": "发布新 crate 之前，不在 `Cargo.toml` 的 `[package]` 部分填写描述（`description`）和许可证（`license`）等必要元数据就运行 `cargo publish`。",
+      "harm": "`cargo publish` 会先给出警告，并以 `missing or empty metadata fields: description, license` 报错，导致发布失败。",
+      "corrective": "发布前在 `Cargo.toml` 中补充 `description`、`license`（或 `license-file`）等必要元数据，并确保 crate 名称唯一，再运行 `cargo publish`。",
+      "evidence": [
+        "缺少 crate 用途描述和许可证信息会触发 cargo publish 的警告和错误，无法发布。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-5",
+          "title": "发布到 Crates.io",
+          "lineStart": 290,
+          "lineEnd": 310,
+          "contentHash": "sha256:28e9d629f9b53618b3b40287ff750431aabfb5adb5192c6dc629e33a9f4fc8b6",
+          "quote": "发布 crate 时请多加小心，因为发布是 **永久性的**（_permanent_）。对应版本不可能被覆盖，其代码也不可能被删除。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+          "anchor": "ch14-02-publishing-to-crates-io#h3-7",
+          "title": "使用 `cargo yank` 从 Crates.io 撤回版本",
+          "lineStart": 317,
+          "lineEnd": 336,
+          "contentHash": "sha256:62c8ce299ff12d953ce0b8773643649af2c66560bca3b65e64bd009767e4b411",
+          "quote": "撤回 **并没有** 删除任何代码。举例来说，撤回功能并不意在删除不小心上传的秘密信息。如果出现了这种情况，请立即重新设置这些秘密信息。"
+        }
+      ],
+      "evidenceQuote": "发布 crate 时请多加小心，因为发布是 **永久性的**（_permanent_）。对应版本不可能被覆盖，其代码也不可能被删除。",
+      "chapterRef": "ch14-02-publishing-to-crates-io",
+      "pattern": "轻率发布 crate 版本，或误以为 `cargo yank` 可以删除已发布版本/泄露的秘密，而不立即重置秘密。",
+      "harm": "已发布的版本和代码永久保留在 crates.io 上，无法覆盖或删除；`cargo yank` 只能阻止新项目依赖，不能删除代码或秘密，导致错误或泄露持续存在。",
+      "corrective": "发布前仔细审查版本内容，避免发布错误或敏感信息；如果秘密已泄露，立即重新生成秘密，而不是依赖 `cargo yank`；使用 `cargo yank` 仅用于阻止新项目依赖某个坏版本。",
+      "evidence": [
+        "发布是永久性的，版本不可能被覆盖或删除；撤回并不会删除任何代码，秘密泄露时需立即重新设置。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T10-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch14-03-cargo-workspaces.md",
+          "anchor": "ch14-03-cargo-workspaces#h4-1",
+          "title": "在工作空间中依赖外部 crate",
+          "lineStart": 143,
+          "lineEnd": 180,
+          "contentHash": "sha256:942f2bab60e17ac95217ea14b1cff0b5202c7d8845722f94889c26a53b44016e",
+          "quote": "即使 `rand` 被用于工作空间的某处，也不能在其他 crate 中使用它，除非也在他们的 *Cargo.toml* 中加入 `rand`。例如，如果在顶级的 `adder` crate 的 *adder/src/main.rs* 中增加 `use rand;`，会得到一个错误："
+        }
+      ],
+      "evidenceQuote": "即使 `rand` 被用于工作空间的某处，也不能在其他 crate 中使用它，除非也在他们的 *Cargo.toml* 中加入 `rand`。例如，如果在顶级的 `adder` crate 的 *adder/src/main.rs* 中增加 `use rand;`，会得到一个错误：",
+      "chapterRef": "ch14-03-cargo-workspaces",
+      "pattern": "在工作空间中，某个 crate 已依赖外部 crate（如 `rand`），其他 crate 没有在自己的 `Cargo.toml` 中声明该依赖，就直接在代码中使用它。",
+      "harm": "导致编译错误，即使该依赖已出现在工作空间其他位置，也不能自动被其他 crate 使用。",
+      "corrective": "每个需要使用外部 crate 的成员分别在自己的 `Cargo.toml` 中声明该依赖；工作空间共享 `Cargo.lock`，Cargo 会确保解析到相同版本而不会下载额外拷贝。",
+      "evidence": [
+        "未在 adder 的 Cargo.toml 中加入 rand 而使用 use rand 会得到错误；依赖必须显式声明在每个使用它的 crate 中。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-1",
+          "title": "宏和函数的区别",
+          "lineStart": 11,
+          "lineEnd": 22,
+          "contentHash": "sha256:67795111229498e997871199c970b4ffb47eb74d37f11035650822a8d4bc4a70",
+          "quote": "实现一个宏而不是一个函数的缺点是宏定义要比函数定义更复杂，因为你正在编写生成 Rust 代码的 Rust 代码。由于这样的间接性，宏定义通常要比函数定义更难阅读、理解以及维护。"
+        }
+      ],
+      "evidenceQuote": "实现一个宏而不是一个函数的缺点是宏定义要比函数定义更复杂，因为你正在编写生成 Rust 代码的 Rust 代码。由于这样的间接性，宏定义通常要比函数定义更难阅读、理解以及维护。",
+      "chapterRef": "ch19-06-macros",
+      "pattern": "在不需要宏附加能力（如接收可变数量/类型参数、在编译期实现 trait）时编写宏，而不是使用函数。",
+      "harm": "宏定义通常比函数定义更难阅读、理解以及维护。",
+      "corrective": "如果函数签名可以固定参数数量和类型，并且不要求编译时代码展开，优先使用函数；仅在函数无法满足需求时才编写宏。",
+      "evidence": [
+        "函数标签必须声明函数参数个数和类型，宏能够接受不同数量的参数。",
+        "宏可以在编译器翻译代码前展开，例如在给定类型上实现 trait，而函数不行。",
+        "实现一个宏而不是一个函数的缺点是宏定义要比函数定义更复杂。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-1",
+          "title": "宏和函数的区别",
+          "lineStart": 11,
+          "lineEnd": 22,
+          "contentHash": "sha256:67795111229498e997871199c970b4ffb47eb74d37f11035650822a8d4bc4a70",
+          "quote": "宏和函数的最后一个重要的区别是：在一个文件里调用宏 **之前** 必须定义它，或将其引入作用域，而函数则可以在任何地方定义和调用。"
+        }
+      ],
+      "evidenceQuote": "宏和函数的最后一个重要的区别是：在一个文件里调用宏 **之前** 必须定义它，或将其引入作用域，而函数则可以在任何地方定义和调用。",
+      "chapterRef": "ch19-06-macros",
+      "pattern": "像函数一样在调用之后才定义宏，或忘记将宏引入作用域。",
+      "harm": "编译器找不到该宏，导致编译失败。",
+      "corrective": "在文件调用宏之前使用 macro_rules! 定义它，或将定义宏的 crate/mod 引入作用域后再调用。",
+      "evidence": [
+        "在一个文件里调用宏之前必须定义它，或将其引入作用域。",
+        "函数则可以在任何地方定义和调用，宏不具备这种灵活性。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-4",
+          "title": "如何编写自定义 `derive` 宏",
+          "lineStart": 114,
+          "lineEnd": 314,
+          "contentHash": "sha256:ad568b3e070e4f5095ca74fb993834c84832cc3a9235f80d3f6d98a1d995a304",
+          "quote": "你可能也注意到了，当调用 `syn::parse` 函数失败时，我们用 `unwrap` 来使 `hello_macro_derive` 函数 panic。在错误时 panic 对过程宏来说是必须的，因为 `proc_macro_derive` 函数必须返回 `TokenStream` 而不是 `Result`，以此来符合过程宏的 API。这里选择用 `unwrap` 来简化了这个例子；在生产代码中，则应该通过 `panic!` 或 `expect` 来提供关于发生何种错误的更加明确的错误信息。"
+        }
+      ],
+      "evidenceQuote": "你可能也注意到了，当调用 `syn::parse` 函数失败时，我们用 `unwrap` 来使 `hello_macro_derive` 函数 panic。在错误时 panic 对过程宏来说是必须的，因为 `proc_macro_derive` 函数必须返回 `TokenStream` 而不是 `Result`，以此来符合过程宏的 API。这里选择用 `unwrap` 来简化了这个例子；在生产代码中，则应该通过 `panic!` 或 `expect` 来提供关于发生何种错误的更加明确的错误信息。",
+      "chapterRef": "ch19-06-macros",
+      "pattern": "在过程宏中用 unwrap 直接处理解析或转换错误。",
+      "harm": "生产环境中的错误信息不明确，用户难以定位是哪个输入或哪一步失败。",
+      "corrective": "在生产代码中用 panic! 或 expect 提供关于发生何种错误的明确信息，而不是用 unwrap。",
+      "evidence": [
+        "调用 syn::parse 失败时用 unwrap 让 hello_macro_derive panic。",
+        "过程宏 API 要求返回 TokenStream 而不是 Result，因此必须 panic。",
+        "生产代码中应该通过 panic! 或 expect 提供更明确的错误信息。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-3",
+          "title": "用于从属性生成代码的过程宏",
+          "lineStart": 90,
+          "lineEnd": 113,
+          "contentHash": "sha256:c344c1e70a2bf206a3da25b98032b40ce8d595d0d46568b5ff4ee35f54fd1ce3",
+          "quote": "创建过程宏时，其定义必须驻留在它们自己的具有特殊 crate 类型的 crate 中。这么做出于复杂的技术原因，将来我们希望能够消除这些限制。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-4",
+          "title": "如何编写自定义 `derive` 宏",
+          "lineStart": 114,
+          "lineEnd": 314,
+          "contentHash": "sha256:ad568b3e070e4f5095ca74fb993834c84832cc3a9235f80d3f6d98a1d995a304",
+          "quote": "在编写本部分时，过程式宏必须在其自己的 crate 内。该限制最终可能被取消。"
+        }
+      ],
+      "evidenceQuote": "创建过程宏时，其定义必须驻留在它们自己的具有特殊 crate 类型的 crate 中。这么做出于复杂的技术原因，将来我们希望能够消除这些限制。",
+      "chapterRef": "ch19-06-macros",
+      "pattern": "在普通库或二进制 crate 中直接定义过程宏。",
+      "harm": "这样的过程宏无法被使用，编译或加载时会失败。",
+      "corrective": "把过程宏定义放到独立的有特殊 crate 类型的 proc-macro crate 中，再作为依赖使用。",
+      "evidence": [
+        "创建过程宏时，其定义必须驻留在它们自己的具有特殊 crate 类型的 crate 中。",
+        "在编写本部分时，过程式宏必须在其自己的 crate 内。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+          "anchor": "ch05-02-example-structs#h3-3",
+          "title": "通过派生 trait 增加实用功能",
+          "lineStart": 65,
+          "lineEnd": 155,
+          "contentHash": "sha256:0aae63db92b0cc10d13ef62b64a4473f07007ed75decd21a6e5286eac8b1a6f5",
+          "quote": "`println!` 宏能处理很多类型的格式，不过，`{}` 默认告诉 `println!` 使用被称为 `Display` 的格式：意在提供给直接终端用户查看的输出。目前为止见过的基本类型都默认实现了 `Display`，因为它就是向用户展示 `1` 或其他任何基本类型的唯一方式。不过对于结构体，`println!` 应该用来输出的格式是不明确的，因为这有更多显示的可能性：是否需要逗号？需要打印出大括号吗？所有字段都应该显示吗？由于这种不确定性，Rust 不会尝试猜测我们的意图，所以结构体并没有提供一个 `Display` 实现。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h2-1",
+          "title": "附录 C：可派生的 trait",
+          "lineStart": 1,
+          "lineEnd": 20,
+          "contentHash": "sha256:24dcac7469ec66e4435a01991d71486c727802bdb5016ec9ad0867c20abe078d",
+          "quote": "标准库中定义的其它 trait 不能通过 `derive` 在类型上实现。这些 trait 不存在有意义的默认行为，所以由你负责以合理的方式实现它们。一个无法被派生的 trait 的例子是为终端用户处理格式化的 `Display` 。你应该时常考虑使用合适的方法来为终端用户显示一个类型。终端用户应该看到类型的什么部分？他们会找出相关部分吗？对他们来说最相关的数据格式是什么样的？Rust 编译器没有这样的洞察力，因此无法为你提供合适的默认行为。"
+        }
+      ],
+      "evidenceQuote": "`println!` 宏能处理很多类型的格式，不过，`{}` 默认告诉 `println!` 使用被称为 `Display` 的格式：意在提供给直接终端用户查看的输出。目前为止见过的基本类型都默认实现了 `Display`，因为它就是向用户展示 `1` 或其他任何基本类型的唯一方式。不过对于结构体，`println!` 应该用来输出的格式是不明确的，因为这有更多显示的可能性：是否需要逗号？需要打印出大括号吗？所有字段都应该显示吗？由于这种不确定性，Rust 不会尝试猜测我们的意图，所以结构体并没有提供一个 `Display` 实现。",
+      "chapterRef": "ch05-02-example-structs",
+      "pattern": "直接用 {} 打印自定义结构体，或期望通过 derive 获得 Display 实现。",
+      "harm": "编译失败；Rust 不会猜测结构体的显示格式，也不会为 Display 提供可派生的默认实现。",
+      "corrective": "调试时派生 Debug 并使用 {:?} 或 dbg!；给终端用户输出时手动实现 Display，并考虑用户需要看到哪些部分。",
+      "evidence": [
+        "{} 默认告诉 println! 使用 Display 格式，意在提供给直接终端用户查看的输出。",
+        "基本类型默认实现了 Display，但结构体并没有提供 Display 实现。",
+        "Rust 不会尝试猜测我们的意图，因为结构体输出格式不明确。",
+        "标准库中其它 trait 不能通过 derive 在类型上实现，Display 是一个无法被派生的 trait。",
+        "编译器没有洞察力，无法为终端用户格式化提供合适的默认行为。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-4",
+          "title": "复制值的 `Clone` 和 `Copy`",
+          "lineStart": 55,
+          "lineEnd": 72,
+          "contentHash": "sha256:cfe7508e1da34c9b069786b707985f620ab539dfba37e237acf23c5fb9bc0c84",
+          "quote": "派生 `Clone` 实现了 `clone` 方法，其为整个的类型实现时，在类型的每一部分上调用了 `clone` 方法。这意味着类型中所有字段或值也必须实现了 `Clone`，这样才能够派生 `Clone`。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-5",
+          "title": "固定大小的值到值映射的 `Hash`",
+          "lineStart": 73,
+          "lineEnd": 78,
+          "contentHash": "sha256:c8cebba48918bba89e5ff86454438c7c29266a06e72a80c07ce26b8a1a6fd006",
+          "quote": "派生 `Hash` 实现了 `hash` 方法。`hash` 方法的派生实现结合了在类型的每部分调用 `hash` 的结果，这意味着所有的字段或值也必须实现了 `Hash`，这样才能够派生 `Hash`。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-6",
+          "title": "默认值的 `Default`",
+          "lineStart": 79,
+          "lineEnd": 94,
+          "contentHash": "sha256:9787b93c7b6bcac0f31beba026f7109645cd2598427379474d44774a26dc78bb",
+          "quote": "派生 `Default` 实现了 `default` 函数。`default` 函数的派生实现调用了类型每部分的 `default` 函数，这意味着类型中所有的字段或值也必须实现了 `Default`，这样才能够派生 `Default`。"
+        }
+      ],
+      "evidenceQuote": "派生 `Clone` 实现了 `clone` 方法，其为整个的类型实现时，在类型的每一部分上调用了 `clone` 方法。这意味着类型中所有字段或值也必须实现了 `Clone`，这样才能够派生 `Clone`。",
+      "chapterRef": "appendix-03-derivable-traits",
+      "pattern": "在包含未实现某个 trait 的字段的类型上，直接 derive 该 trait（如 Clone、Hash、Default）。",
+      "harm": "编译器无法生成期望的实现，导致编译失败。",
+      "corrective": "先为所有字段实现或派生所需的 trait，或者放弃 derive，手动为外层类型实现该 trait。",
+      "evidence": [
+        "派生 Clone 时，类型中所有字段或值也必须实现了 Clone。",
+        "派生 Hash 时，所有字段或值也必须实现了 Hash。",
+        "派生 Default 时，所有字段或值也必须实现了 Default。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-6",
+          "title": "类函数宏",
+          "lineStart": 335,
+          "lineEnd": 353,
+          "contentHash": "sha256:070ef62c4db3b8c66c5a3d1f6768b7251ffd04e02bbb8c5d609f94eb9868798c",
+          "quote": "这个宏会解析其中的 SQL 语句并检查其是否是句法正确的，这是比 `macro_rules!` 可以做到的更为复杂的处理。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-06-macros.md",
+          "anchor": "ch19-06-macros#h3-2",
+          "title": "使用 `macro_rules!` 的声明宏用于通用元编程",
+          "lineStart": 23,
+          "lineEnd": 89,
+          "contentHash": "sha256:d9f324869b41e53f96204df47afa96a10701b32341b6658f9cae12490d529526",
+          "quote": "`macro_rules!` 中有一些奇怪的地方。在将来，会有第二种采用 `macro` 关键字的声明宏，其工作方式类似但修复了这些极端情况。在此之后，`macro_rules!` 实际上就过时（deprecated）了。"
+        }
+      ],
+      "evidenceQuote": "这个宏会解析其中的 SQL 语句并检查其是否是句法正确的，这是比 `macro_rules!` 可以做到的更为复杂的处理。",
+      "chapterRef": "ch19-06-macros",
+      "pattern": "用 macro_rules! 实现需要解析或校验复杂语法（如 SQL）的处理。",
+      "harm": "macro_rules! 的模式匹配能力不足以做复杂处理，且它本身存在奇怪之处并已被认为过时。",
+      "corrective": "对于复杂语法处理，改用过程宏（如类函数宏）获取 TokenStream 并用 Rust 代码操作 token。",
+      "evidence": [
+        "sql! 宏会解析 SQL 并检查句法正确性，这是比 macro_rules! 更复杂的处理。",
+        "macro_rules! 中有一些奇怪的地方。",
+        "第二种采用 macro 关键字的声明宏会修复这些极端情况，之后 macro_rules! 实际上就过时了。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T11-08",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-2",
+          "title": "等值比较的 `PartialEq` 和 `Eq`",
+          "lineStart": 29,
+          "lineEnd": 40,
+          "contentHash": "sha256:a754d3c7fdc50fd68fc3d8a2e9373cd1bc1ea6a46122c8355522dfbf69272ae6",
+          "quote": "例如，对于一个 `HashMap<K, V>` 中的 key 来说， `Eq` 是必须的，这样 `HashMap<K, V>` 就可以知道两个 key 是否一样了。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+          "anchor": "appendix-03-derivable-traits#h3-5",
+          "title": "固定大小的值到值映射的 `Hash`",
+          "lineStart": 73,
+          "lineEnd": 78,
+          "contentHash": "sha256:c8cebba48918bba89e5ff86454438c7c29266a06e72a80c07ce26b8a1a6fd006",
+          "quote": "例如，在 `HashMap<K, V>` 上存储数据，存放 key 的时候，`Hash` 是必须的。"
+        }
+      ],
+      "evidenceQuote": "例如，对于一个 `HashMap<K, V>` 中的 key 来说， `Eq` 是必须的，这样 `HashMap<K, V>` 就可以知道两个 key 是否一样了。",
+      "chapterRef": "appendix-03-derivable-traits",
+      "pattern": "把未实现 Eq 和 Hash 的自定义类型直接用作 HashMap 的 key。",
+      "harm": "无法被 HashMap 作为 key 使用，编译失败或无法正确查找。",
+      "corrective": "为 key 类型实现 Eq 和 Hash。",
+      "evidence": [
+        "对于 HashMap<K,V> 中的 key 来说，Eq 是必须的。",
+        "在 HashMap<K,V> 上存储数据，存放 key 的时候，Hash 是必须的。"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T12-01",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-2",
+          "title": "解引用裸指针",
+          "lineStart": 31,
+          "lineEnd": 89,
+          "contentHash": "sha256:301f71b0a8a42420b9caf61c97b9d482a98f9b15f20be4682f202352732193cd",
+          "quote": "记得我们说过可以在安全代码中创建裸指针，不过不能 **解引用** 裸指针和读取其指向的数据。现在我们要做的就是对裸指针使用解引用运算符 `*`，这需要一个 `unsafe` 块"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h4-1",
+          "title": "创建不安全代码的安全抽象",
+          "lineStart": 129,
+          "lineEnd": 237,
+          "contentHash": "sha256:7353a8960b6e4b9a4f8547c7a71aec57940ef43a21460becfbaba36871245339",
+          "quote": "我们并不拥有这个任意地址的内存，也不能保证这段代码创建的 slice 包含有效的 `i32` 值。试图使用臆测为有效的 `slice` 会导致未定义的行为。"
+        }
+      ],
+      "evidenceQuote": "记得我们说过可以在安全代码中创建裸指针，不过不能 **解引用** 裸指针和读取其指向的数据。现在我们要做的就是对裸指针使用解引用运算符 `*`，这需要一个 `unsafe` 块",
+      "chapterRef": "ch19-01-unsafe-rust",
+      "pattern": "在 `unsafe` 块之外解引用裸指针，或把任意内存地址当作有效数据来创建裸指针/slice 并解引用。",
+      "harm": "解引用无效地址会导致未定义行为：可能访问到未知数据、发生段错误、被编译器错误优化，或通过多个裸指针造成数据竞争。",
+      "corrective": "解引用裸指针必须放入 `unsafe` 块；只从已知有效的内存（例如从引用转换）创建裸指针；在构造 slice 前通过断言等方式保证指针和长度有效，并把这类不安全代码封装在安全抽象中。",
+      "evidence": [
+        "安全代码可以创建裸指针，但不能在 unsafe 块外解引用",
+        "创建指向任意地址的裸指针是可行的，但使用它会导致未定义行为",
+        "示例 19-7 从任意地址创建 slice，未拥有内存且无法保证其有效，试图使用会导致未定义的行为"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T12-02",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-1",
+          "title": "不安全的超能力",
+          "lineStart": 11,
+          "lineEnd": 30,
+          "contentHash": "sha256:cab69d398c2c3b6c4e2b01ae79dd70a758aefa179ed542ba25c12aa1ed14cb92",
+          "quote": "保持 `unsafe` 块尽可能小，如此当之后调查内存 bug 时就会感谢你自己了。为了尽可能隔离不安全代码，将不安全代码封装进一个安全的抽象并提供安全 API 是一个好主意"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-7",
+          "title": "何时使用不安全代码",
+          "lineStart": 351,
+          "lineEnd": 363,
+          "contentHash": "sha256:73039d046d667178db43e6ad37aa28979eadd0bc80888dcb16f59804b1f2b1a1",
+          "quote": "不过使得 `unsafe` 代码正确也实属不易，因为编译器不能帮助保证内存安全。当有理由使用 `unsafe` 代码时，是可以这么做的，通过使用显式的 `unsafe` 标注可以更容易地在错误发生时追踪问题的源头。"
+        }
+      ],
+      "evidenceQuote": "保持 `unsafe` 块尽可能小，如此当之后调查内存 bug 时就会感谢你自己了。为了尽可能隔离不安全代码，将不安全代码封装进一个安全的抽象并提供安全 API 是一个好主意",
+      "chapterRef": "ch19-01-unsafe-rust",
+      "pattern": "让 `unsafe` 代码直接暴露在调用方，或写在过大、未经封装的 `unsafe` 块中，而不是把它隔离为安全 API。",
+      "harm": "内存安全错误会散布到所有使用处，编译器无法帮助定位，故障源头更难追踪。",
+      "corrective": "把不安全代码封装进安全抽象并提供安全 API；保持 `unsafe` 块尽可能小，并显式标注 `unsafe`，这样内存 bug 只能出现在小块内。",
+      "evidence": [
+        "`unsafe` 块应尽可能小，以便调查内存 bug",
+        "应将不安全代码封装进安全抽象并提供安全 API，防止 unsafe 泄露",
+        "编译器不能帮助保证 unsafe 代码的内存安全，显式标注有助于追踪错误源头"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T12-03",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-4",
+          "title": "访问或修改可变静态变量",
+          "lineStart": 277,
+          "lineEnd": 326,
+          "contentHash": "sha256:4910f1246a2af427efb3f493c442cd408d7be9ae56ac788c7e2e95a0994bb669",
+          "quote": "拥有可以全局访问的可变数据，难以保证不存在数据竞争，这就是为何 Rust 认为可变静态变量是不安全的。任何可能的情况，请优先使用第 16 章讨论的并发技术和线程安全智能指针，这样编译器就能检测不同线程间的数据访问是否是安全的。"
+        }
+      ],
+      "evidenceQuote": "拥有可以全局访问的可变数据，难以保证不存在数据竞争，这就是为何 Rust 认为可变静态变量是不安全的。任何可能的情况，请优先使用第 16 章讨论的并发技术和线程安全智能指针，这样编译器就能检测不同线程间的数据访问是否是安全的。",
+      "chapterRef": "ch19-01-unsafe-rust",
+      "pattern": "在多线程或可能并发的环境中直接使用 `static mut` 可变静态变量，而不是采用同步机制。",
+      "harm": "全局可变数据难以保证不存在数据竞争，可能导致竞态条件。",
+      "corrective": "优先使用第 16 章的并发技术和线程安全智能指针（如 Mutex、RwLock、原子类型），让编译器检测跨线程数据访问是否安全。",
+      "evidence": [
+        "可变静态变量访问和修改都是不安全的",
+        "多线程访问可变全局变量可能造成数据竞争",
+        "编译器无法检查可变静态变量的数据访问，应使用并发技术与线程安全智能指针"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T12-04",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-5",
+          "title": "实现不安全 trait",
+          "lineStart": 327,
+          "lineEnd": 346,
+          "contentHash": "sha256:8aa4fccd35d1a0c1a383943efe4f138ae15da259475df3df202673c1883f15fb",
+          "quote": "Rust 不能验证我们的类型保证可以安全的跨线程发送或在多线程间访问，所以需要我们自己进行检查并通过 `unsafe` 表明。"
+        }
+      ],
+      "evidenceQuote": "Rust 不能验证我们的类型保证可以安全的跨线程发送或在多线程间访问，所以需要我们自己进行检查并通过 `unsafe` 表明。",
+      "chapterRef": "ch19-01-unsafe-rust",
+      "pattern": "在没有自己验证类型确实满足跨线程安全不变量时，就通过 `unsafe impl` 为类型实现 `Send`/`Sync` 等不安全 trait。",
+      "harm": "编译器不再检查，若类型实际不满足安全发送/访问条件，会导致跨线程数据竞争或未定义行为。",
+      "corrective": "实现不安全 trait 前手工检查类型的并发安全性，确认其不变量成立后再用 `unsafe impl` 承诺。",
+      "evidence": [
+        "当 trait 包含编译器无法验证的不变式时，实例实现必须标记 unsafe",
+        "若类型包含裸指针等非 Send/Sync 成员，需要自己检查是否能安全跨线程",
+        "Rust 不能验证保证，必须自己检查并通过 unsafe 表明"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T12-05",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h3-3",
+          "title": "调用不安全函数或方法",
+          "lineStart": 90,
+          "lineEnd": 128,
+          "contentHash": "sha256:fe564c1faf9325487ee1dcf49afcf3bf04f11ddb37aa0037b08f548697b56541",
+          "quote": "通过在 `unsafe` 块中调用不安全函数，表明我们已经阅读过此函数的文档并对其是否满足函数自身的契约负责。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-01-unsafe-rust.md",
+          "anchor": "ch19-01-unsafe-rust#h4-2",
+          "title": "使用 `extern` 函数调用外部代码",
+          "lineStart": 238,
+          "lineEnd": 276,
+          "contentHash": "sha256:827deeaf67e94cc6ac5a9a199fc56ae1abbefbb3d577d1f30fab1a6a8716126f",
+          "quote": "`extern` 块中声明的函数在 Rust 代码中总是不安全的。因为其他语言不会强制执行 Rust 的规则且 Rust 无法检查它们，所以确保其安全是开发者的责任"
+        }
+      ],
+      "evidenceQuote": "通过在 `unsafe` 块中调用不安全函数，表明我们已经阅读过此函数的文档并对其是否满足函数自身的契约负责。",
+      "chapterRef": "ch19-01-unsafe-rust",
+      "pattern": "调用不安全函数或 `extern` 外部函数时，不阅读函数契约/不确认前置条件，或试图在安全代码中直接调用。",
+      "harm": "违反函数的前置条件或 ABI 约定会导致未定义行为；外部语言不遵循 Rust 规则，编译器无法替你检查。",
+      "corrective": "在 `unsafe` 块内调用，并先阅读函数文档、确认调用满足契约；对 `extern` 函数尤其要由开发者负责保证其安全。",
+      "evidence": [
+        "调用不安全函数必须在 unsafe 块中",
+        "调用时表明已阅读文档并负责满足契约",
+        "extern 块中声明的函数总是不安全，其他语言不强制执行 Rust 规则，Rust 无法检查"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T12-06",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+          "anchor": "ch19-04-advanced-types#h3-2",
+          "title": "类型别名用来创建类型同义词",
+          "lineStart": 15,
+          "lineEnd": 114,
+          "contentHash": "sha256:b5249ad222fbbf78db38d940404a14561e5f37a6e219b35abb70fffdf2511bef",
+          "quote": "因为 `Kilometers` 是 `i32` 的别名，他们是同一类型，可以将 `i32` 与 `Kilometers` 相加，也可以将 `Kilometers` 传递给获取 `i32` 参数的函数。但通过这种手段无法获得上一部分讨论的 newtype 模式所提供的类型检查的好处。"
+        },
+        {
+          "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+          "anchor": "ch19-04-advanced-types#h3-1",
+          "title": "为了类型安全和抽象而使用 newtype 模式",
+          "lineStart": 7,
+          "lineEnd": 14,
+          "contentHash": "sha256:3ebe200e2ca5a9cc58c41650d86a43c8a28e8583379dc257ca7da54615896121",
+          "quote": "newtype 模式可以用于一些其他我们还未讨论的功能，包括静态的确保某值不被混淆，和用来表示一个值的单元。"
+        }
+      ],
+      "evidenceQuote": "因为 `Kilometers` 是 `i32` 的别名，他们是同一类型，可以将 `i32` 与 `Kilometers` 相加，也可以将 `Kilometers` 传递给获取 `i32` 参数的函数。但通过这种手段无法获得上一部分讨论的 newtype 模式所提供的类型检查的好处。",
+      "chapterRef": "ch19-04-advanced-types",
+      "pattern": "当类型代表不同单位或语义（如米、毫米、用户 ID）时，使用 `type` 别名而非 newtype 包装。",
+      "harm": "别名与底层类型完全等价，编译器不会阻止不同单位/语义的值互相混用，丢失类型安全。",
+      "corrective": "对需要静态区分、防止混淆的值，使用 newtype 结构体封装；`type` 别名只用于减少重复，不用于建立类型区分。",
+      "evidence": [
+        "`type Kilometers = i32` 是同一类型，不是新的单独类型",
+        "类型别名不能提供 newtype 模式的类型检查好处",
+        "newtype 可以静态确保某值不被混淆，并用来表示值的单元"
+      ]
+    },
+    {
+      "id": "AP-SYNTH-T12-07",
+      "objectType": "AntiPattern",
+      "revision": 1,
+      "status": "candidate",
+      "createdAt": "2026-10-14T11:37:21.227Z",
+      "evidenceGrade": "E2-derived",
+      "freshness": {
+        "state": "fresh",
+        "asOf": "2026-10-14T11:37:21.227Z"
+      },
+      "sourceRefs": [
+        {
+          "file": "sources/rust-book-cn/book/ch19-04-advanced-types.md",
+          "anchor": "ch19-04-advanced-types#h3-4",
+          "title": "动态大小类型和 `Sized` trait",
+          "lineStart": 184,
+          "lineEnd": 241,
+          "contentHash": "sha256:93f4c87a9f3c3fe9649b0dc8ec57d2a14bf5e292ebb236b87e865f1e9dccd4fc",
+          "quote": "因为直到运行时都不能知道其大小，也就意味着不能创建 `str` 类型的变量，也不能获取 `str` 类型的参数。考虑一下这些代码，他们不能工作"
+        }
+      ],
+      "evidenceQuote": "因为直到运行时都不能知道其大小，也就意味着不能创建 `str` 类型的变量，也不能获取 `str` 类型的参数。考虑一下这些代码，他们不能工作",
+      "chapterRef": "ch19-04-advanced-types",
+      "pattern": "直接使用动态大小类型（如 `str`、trait）作为变量类型或函数参数，而不是通过指针包装。",
+      "harm": "编译时不知道为这些类型分配多少空间，代码无法编译；也无法为动态长度数据分配固定大小的内存。",
+      "corrective": "将动态大小类型的值置于某种指针之后，如 `&str`、`Box<str>`、`&dyn Trait` 或 `Box<dyn Trait>`；泛型中如需要可放宽为 `?Sized` 并把参数改为 `&T`。",
+      "evidence": [
+        "`str` 是 DST，直到运行时才知道长度",
+        "不能创建 `str` 类型变量或获取 `str` 参数",
+        "必须将动态大小类型的值置于指针之后"
+      ]
+    }
+  ]
+}

@@ -11,9 +11,9 @@
   "gateReceipt": {
     "passed": true,
     "reasonCodes": [],
-    "bytes": 5363,
-    "markdownHash": "sha256:7803de1f42dac460b9487c3617685bbfb1060bf3f94ec5721e089483bd228777",
-    "checkedAt": "2026-10-14T10:47:40.979Z"
+    "bytes": 6227,
+    "markdownHash": "sha256:5f711a9eebff207150060fbacaadbb6fc0f714927deeaa6f8dd31352d831af0c",
+    "checkedAt": "2026-10-14T12:42:03.177Z"
   },
   "inputContract": null,
   "outputContract": null,
@@ -38,7 +38,10 @@
     "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
     "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01"
   ],
-  "crossChapterObjects": [],
+  "crossChapterObjects": [
+    "AP-SYNTH-T04-01",
+    "AP-SYNTH-T11-05"
+  ],
   "sourceRefs": [
     {
       "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
@@ -102,6 +105,13 @@
       "title": "多个 `impl` 块",
       "lineStart": 114,
       "lineEnd": 125
+    },
+    {
+      "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+      "anchor": "appendix-03-derivable-traits#h2-1",
+      "title": "附录 C：可派生的 trait",
+      "lineStart": 1,
+      "lineEnd": 20
     }
   ],
   "codeSource": {
@@ -111,16 +121,16 @@
   "evidenceGrade": "E2-derived",
   "freshness": {
     "state": "fresh",
-    "asOf": "2026-10-14T10:47:40.979Z"
+    "asOf": "2026-10-14T12:42:03.177Z"
   },
   "gaps": [
     {
       "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
       "section": "pitfalls",
       "heading": "## 常见陷阱",
-      "detail": "条目数 1 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "detail": "条目数 3 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
       "advisory": 6,
-      "actual": 1
+      "actual": 3
     },
     {
       "code": "SECTION_SOURCE_ABSENT",
@@ -199,14 +209,14 @@
     "whenToUse": 7,
     "principles": 6,
     "patterns": 6,
-    "pitfalls": 1,
+    "pitfalls": 3,
     "code": 0,
-    "reading": 9
+    "reading": 10
   },
   "riskFlags": [
     {
       "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
-      "detail": "anti-pattern 覆盖不足：常见陷阱段 1 条，建议值 6 条。",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 3 条，建议值 6 条。",
       "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
     }
   ],
@@ -227,7 +237,8 @@
     "anchorIndexHash": "sha256:0d26eb1e6e764967aefea131e582c49227036c45f12569111870bb10c1df603b",
     "anchorIndexHashes": {
       "sources/rust-book-cn/book/ch05-02-example-structs.md": "sha256:0d26eb1e6e764967aefea131e582c49227036c45f12569111870bb10c1df603b",
-      "sources/rust-book-cn/book/ch05-03-method-syntax.md": "sha256:0f835eb7fe56bbbac6c0ba7e47d771858ed10e7fff847c5087f10f57581fe2a6"
+      "sources/rust-book-cn/book/ch05-03-method-syntax.md": "sha256:0f835eb7fe56bbbac6c0ba7e47d771858ed10e7fff847c5087f10f57581fe2a6",
+      "sources/rust-book-cn/book/appendix-03-derivable-traits.md": "sha256:3d5593ffd5b8314aaa71f7fc188ed034d2d4d4186d28e03da59b8533a06e7c0a"
     },
     "objectsFile": "pipeline/knowledge/ch05-02-example-structs.objects.json + pipeline/knowledge/ch05-03-method-syntax.objects.json",
     "objectsFileSha256": "sha256:748f19e1f86a76fe5e7ab726bb70bf2dddb356a3dd5b962e26b90593b77ade1e",
@@ -235,14 +246,14 @@
     "objectsInCluster": 14,
     "objectsKept": 14,
     "objectsExcludedByGate": [],
-    "crossChapterTotal": 0,
-    "crossChapterInCluster": 0,
-    "crossChapterKept": 0,
+    "crossChapterTotal": 95,
+    "crossChapterInCluster": 2,
+    "crossChapterKept": 2,
     "crossChapterExcludedByGate": [],
-    "antipatternVerdictsFile": null,
-    "antipatternVerdictsRunId": null,
-    "antipatternVerdictsIdentityMatch": null,
-    "antipatternObjectsRunId": null,
+    "antipatternVerdictsFile": "pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-fd491f2468f0",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-fd491f2468f0",
     "gateReceiptFile": "pipeline/registry/run-b72c4b3fcf6b.receipt.json",
     "gateReceiptRunId": "run-b72c4b3fcf6b",
     "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",

@@ -27,17 +27,19 @@ Any content → executable Agent Skills. MVP pipeline.
 源条件骨架之后，`ch12-03-improving-error-handling-and-modularity-s1`（门禁三 **passed**）与
 `ch17-03-oo-design-patterns-s1`（门禁三 low-utility，如实记录）已入发布区——见 [`卡 20`](docs/tickets/20-second-source-first-publish.md)。
 
-> ### 盘上已有 12 个已发布的 skill
+> ### 盘上已有 16 个已发布的 skill
 >
-> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 12 个：
+> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 16 个：
 > `chapter4-tool-design-principles`（首个，卡 10/ADR-019）、`chapter4-single-tool-design`
 > （环 3 端到端首件，卡 11），卡 16「打通发布门径」放行的 6 个中的 5 个：
 > `chapter10-s3` / `chapter1-s1` / `chapter5-s3` / `chapter2-s3` / `chapter9-s2`
 > （其中三个带 `references/` 溢出文件——ADR-004 溢出阀的首批产物），以及第二源
-> （rust-book-cn）的 5 个：首发 2 个（卡 20）`ch12-03-improving-error-handling-and-modularity-s1` /
-> `ch17-03-oo-design-patterns-s1`，第二波 3 个（卡 21）`ch04-03-slices-s1` /
-> `ch05-01-defining-structs-s1` / `ch05-03-method-syntax-s1`。
-> 第二源的 5 个门禁三判定：**4 passed / 1 low-utility**（`ch17-03-…-s1`，如实记录）。
+> （rust-book-cn）的 **9 个**：首发 2 个（卡 20）、第二波 3 个（卡 21）、
+> 跨章合成解锁 4 个（卡 22：`ch04-02-references-and-borrowing-s1` /
+> `ch06-01-defining-an-enum-s1` / `ch06-02-match-s1` / `ch18-02-refutability-s1`
+> ——陷阱段来源＝本源跨章反模式合成池，ADR-016 机制的第二次全链显形）。
+> 第二源 9 个的门禁三判定（卡 22 全量重跑，诚实记录）：**2 passed / 7 low-utility / 0 确认退化**
+> ——low-utility 是「无改进也无退化（任务要么双过要么双败）」的如实标记，不拒绝。
 >
 > ⚠ **`chapter3-s1` 已被门禁三拒绝并下架**（`pipeline/registry/rejected/chapter3-s1/`，
 > 移动而非删除）：全量效用 A/B 检出**首个确认的 negative transfer**（任务 t2 复跑复现：

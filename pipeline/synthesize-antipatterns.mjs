@@ -31,7 +31,7 @@ import path from 'node:path'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT } from './tools/anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY } from './tools/anchor-index.mjs'
 import {
   ANTIPATTERN_MARKS,
   DEFAULT_MAX_PATTERNS_PER_THEME,
@@ -43,8 +43,9 @@ import {
   synthPromptFingerprint,
   synthesizeTheme,
 } from './tools/antipattern-synthesis.mjs'
-import { THEMES_REL_PATH } from './tools/theme-proposer.mjs'
-import { CATALOG_REL_PATH } from './tools/theme-catalog.mjs'
+import { themesRelPath } from './tools/theme-proposer.mjs'
+import { catalogRelPath } from './tools/theme-catalog.mjs'
+import { crossChapterObjectsFile } from './tools/cluster-proposer.mjs'
 import { verifyObjects, REASON_CODES, REASON_OWNER } from './tools/verifier.mjs'
 import { judgeObject, describeJudgeRoute, judgePromptFingerprint } from './tools/judge.mjs'
 import {
@@ -93,6 +94,7 @@ function parseArgs(argv) {
     maxTokens: null,
     maxPatterns: null,
     resume: true,
+    sourceKey: DEFAULT_SOURCE_KEY,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -115,6 +117,7 @@ function parseArgs(argv) {
     else if (a === '--max-tokens') (flags.maxTokens = Number(need(i, a))), (i += 1)
     else if (a === '--max-patterns') (flags.maxPatterns = Number(need(i, a))), (i += 1)
     else if (a === '--repo-root') (flags.repoRoot = path.resolve(need(i, a))), (i += 1)
+    else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a.startsWith('--')) throw new Error(`未知参数：${a}`)
     else throw new Error(`未知位置参数：${a}（本命令不接受位置参数）`)
   }
@@ -250,10 +253,13 @@ async function main(argv) {
   }
 
   const repoRoot = flags.repoRoot
-  const manifest = await readJson(path.join(repoRoot, THEMES_REL_PATH))
+  // 主题清单与目录按源命名空间（卡 22）：本源的缺失就是缺失，绝不回落到第一源的那份。
+  const themesRel = themesRelPath(flags.sourceKey)
+  const catalogRel = catalogRelPath(flags.sourceKey)
+  const manifest = await readJson(path.join(repoRoot, themesRel))
   let catalog = null
   try {
-    catalog = await readJson(path.join(repoRoot, CATALOG_REL_PATH))
+    catalog = await readJson(path.join(repoRoot, catalogRel))
   } catch {
     /* 目录缺失时退回主题清单里记录的目录快照（它够用来定位索引文件） */
   }
@@ -559,7 +565,7 @@ async function main(argv) {
     pipelineVersion: PIPELINE_VERSION,
     createdAt,
     themes: {
-      manifestPath: THEMES_REL_PATH,
+      manifestPath: themesRel,
       catalogHash: manifest.catalogHash,
       selected: selected.map((t) => t.id),
       total: manifest.themes.length,
@@ -645,7 +651,7 @@ async function main(argv) {
   const rawPath = path.join(repoRoot, 'pipeline', 'registry', `${rawRunId}.antipattern-raw.json`)
   const receiptPath = path.join(repoRoot, 'pipeline', 'registry', `${runId}.antipattern-receipt.json`)
   const verdictsPath = path.join(repoRoot, 'pipeline', 'registry', `${runId}.antipattern-verdicts.json`)
-  const objectsPath = path.join(repoRoot, 'pipeline', 'knowledge', 'antipatterns.objects.json')
+  const objectsPath = path.join(repoRoot, 'pipeline', 'knowledge', crossChapterObjectsFile(flags.sourceKey))
 
   // 旧产物先归档，再写新的。重复运行是**运行事件**，不该静默覆盖上一次的记录。
   // 身份拆开之后这条**不再是判据换代的主要防线**（换判据本来就换文件名了），

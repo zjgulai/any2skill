@@ -55,6 +55,11 @@ export const FROZEN_PATHS = Object.freeze([
   'pipeline/registry/gate2-stable.rust-book-cn.json',
   'pipeline/knowledge/gate3-tasks.rust-book-cn.json',
   'pipeline/registry/gate3-report.rust-book-cn.json',
+  // 第二源跨章合成三件套（卡 22）：已发布 rust skill 的陷阱段来源要可被 --verify 证明。
+  // 注：第一源的对应三件从未入冻结面（卡 14 的取舍）——此处只加本卡产物，不对称留在明处。
+  'pipeline/knowledge/anchor-catalog.rust-book-cn.json',
+  'pipeline/knowledge/themes.rust-book-cn.json',
+  'pipeline/knowledge/antipatterns.rust-book-cn.objects.json',
   // 三道门禁的最终报告（比对结论须引用它们的状态）
   'pipeline/registry/gate2-report.json',
   'pipeline/registry/gate2-report.strict.json',

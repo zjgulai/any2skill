@@ -1,0 +1,3834 @@
+{
+  "schemaVersion": "clusters/v1",
+  "createdAt": "2026-10-13T02:54:58.659Z",
+  "promptFingerprint": "prompt-a2e5c6043c57",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "input": {
+    "objectsFiles": [
+      {
+        "fileKey": "afterword",
+        "path": "pipeline/knowledge/afterword.objects.json",
+        "sha256": "sha256:83a2e4ff32e0a0efa0f6af49e31f26ca2c15a32aca276e4147610c943c9ecf6d",
+        "gateReceiptFile": "pipeline/registry/run-6e6a6dea9b51.receipt.json",
+        "gateReceiptRunId": "run-6e6a6dea9b51",
+        "objectsTotal": 5,
+        "gatePassed": 5,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "chapter1",
+        "path": "pipeline/knowledge/chapter1.objects.json",
+        "sha256": "sha256:d63a5044fb4b7fa983a14f8c5d1208f63b6d599a8bd73e1572521bc705ee8c59",
+        "gateReceiptFile": "pipeline/registry/run-f73a959172d0.receipt.json",
+        "gateReceiptRunId": "run-f73a959172d0",
+        "objectsTotal": 47,
+        "gatePassed": 45,
+        "gateExcluded": [
+          "CHAPTER1-H3-11-ENGINEERINGRULE-02",
+          "CHAPTER1-H2-3-ENGINEERINGRULE-02"
+        ]
+      },
+      {
+        "fileKey": "chapter10",
+        "path": "pipeline/knowledge/chapter10.objects.json",
+        "sha256": "sha256:bbe5d6cbc78ac1e33bf20c380f678aa74fc76efeec22c972a4821e2a67f864e4",
+        "gateReceiptFile": "pipeline/registry/run-87ad04bf522f.receipt.json",
+        "gateReceiptRunId": "run-87ad04bf522f",
+        "objectsTotal": 61,
+        "gatePassed": 61,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "chapter2",
+        "path": "pipeline/knowledge/chapter2.objects.json",
+        "sha256": "sha256:432ffaf9ca641e58c2055c4ab3dea5f3e8296faf8acb09d35f1ec1964023119a",
+        "gateReceiptFile": "pipeline/registry/run-8d6ad897d05c.receipt.json",
+        "gateReceiptRunId": "run-8d6ad897d05c",
+        "objectsTotal": 72,
+        "gatePassed": 70,
+        "gateExcluded": [
+          "CHAPTER2-H3-8-METRIC-02",
+          "CHAPTER2-H3-10-ENGINEERINGRULE-02"
+        ]
+      },
+      {
+        "fileKey": "chapter3",
+        "path": "pipeline/knowledge/chapter3.objects.json",
+        "sha256": "sha256:0631cd52edb22402a821bb7aa4a116c4b90505d0a06fbda52ddb48f4bdc39a6b",
+        "gateReceiptFile": "pipeline/registry/run-2173b6f94c6b.receipt.json",
+        "gateReceiptRunId": "run-2173b6f94c6b",
+        "objectsTotal": 52,
+        "gatePassed": 52,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "chapter4",
+        "path": "pipeline/knowledge/chapter4.objects.json",
+        "sha256": "sha256:3ce6fd51ff7c7af0c6d49cd37aa89946f9149dba5666dbc34377bb4eaf87ff17",
+        "gateReceiptFile": "pipeline/registry/run-ec4a90a91b01.receipt.json",
+        "gateReceiptRunId": "run-ec4a90a91b01",
+        "objectsTotal": 39,
+        "gatePassed": 39,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "chapter5",
+        "path": "pipeline/knowledge/chapter5.objects.json",
+        "sha256": "sha256:bcab8156e30c56e477ff8b9e8c189b6d32706f47e900e186d93596a62a2a4879",
+        "gateReceiptFile": "pipeline/registry/run-71c4837ce705.receipt.json",
+        "gateReceiptRunId": "run-71c4837ce705",
+        "objectsTotal": 37,
+        "gatePassed": 37,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "chapter6",
+        "path": "pipeline/knowledge/chapter6.objects.json",
+        "sha256": "sha256:0196ac3c7e6206436a712f2cda4223a42c89446b10e80ee9293693bc8354caed",
+        "gateReceiptFile": "pipeline/registry/run-719882b32c57.receipt.json",
+        "gateReceiptRunId": "run-719882b32c57",
+        "objectsTotal": 74,
+        "gatePassed": 70,
+        "gateExcluded": [
+          "CHAPTER6-H3-4-ANTIPATTERN-02",
+          "CHAPTER6-H3-6-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-9-ANTIPATTERN-02",
+          "CHAPTER6-H2-3-CONCEPT-01"
+        ]
+      },
+      {
+        "fileKey": "chapter7",
+        "path": "pipeline/knowledge/chapter7.objects.json",
+        "sha256": "sha256:400d7ae35ac1fe23d3383ea468a7c3c63901be9c18be14cbfb8f7b2891a3b6b9",
+        "gateReceiptFile": "pipeline/registry/run-6c82490ec0d9.receipt.json",
+        "gateReceiptRunId": "run-6c82490ec0d9",
+        "objectsTotal": 82,
+        "gatePassed": 80,
+        "gateExcluded": [
+          "CHAPTER7-H3-15-CONCEPT-02",
+          "CHAPTER7-H3-29-ANTIPATTERN-02"
+        ]
+      },
+      {
+        "fileKey": "chapter8",
+        "path": "pipeline/knowledge/chapter8.objects.json",
+        "sha256": "sha256:7fdedd43422d947888eb693864cedb94782b9115f38574b115efcdac835913d4",
+        "gateReceiptFile": "pipeline/registry/run-f440d6f02f0a.receipt.json",
+        "gateReceiptRunId": "run-f440d6f02f0a",
+        "objectsTotal": 75,
+        "gatePassed": 74,
+        "gateExcluded": [
+          "CHAPTER8-H3-18-CONCEPT-01"
+        ]
+      },
+      {
+        "fileKey": "chapter9",
+        "path": "pipeline/knowledge/chapter9.objects.json",
+        "sha256": "sha256:571380cd647e6544c34e96430bbfb4445a8e958180f9b4f5361875dc243bc7e4",
+        "gateReceiptFile": "pipeline/registry/run-d5d82988e66f.receipt.json",
+        "gateReceiptRunId": "run-d5d82988e66f",
+        "objectsTotal": 32,
+        "gatePassed": 32,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "introduction",
+        "path": "pipeline/knowledge/introduction.objects.json",
+        "sha256": "sha256:9c344b657335746c904f1cfaa70cca1e47e84e33d5baedfdc83f566b8dc561ee",
+        "gateReceiptFile": "pipeline/registry/run-b4f6bc9be539.receipt.json",
+        "gateReceiptRunId": "run-b4f6bc9be539",
+        "objectsTotal": 7,
+        "gatePassed": 7,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "reference-answers",
+        "path": "pipeline/knowledge/reference-answers.objects.json",
+        "sha256": "sha256:551cfb65879e5b4804f92cf2152cb056fd06655caa2dccf3b815cfb445e77680",
+        "gateReceiptFile": "pipeline/registry/run-771fa62e2be9.receipt.json",
+        "gateReceiptRunId": "run-771fa62e2be9",
+        "objectsTotal": 21,
+        "gatePassed": 21,
+        "gateExcluded": []
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "fileKey": "afterword",
+      "inputHash": "sha256:3bf0c1c2a51026d744d5ba0ef464163bacc5cb12a27488cadd2403447c6382aa",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:26:17.448Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "afterword-u1",
+          "name": "Agent 公式与知识假设",
+          "objectIds": [
+            "AFTERWORD-H1-1-CONCEPT-01",
+            "AFTERWORD-H2-1-CONCEPT-01",
+            "AFTERWORD-H2-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "afterword#h1-1",
+            "afterword#h2-1"
+          ],
+          "rationale": "这三个对象都回答“Agent 由什么构成、模型已有哪些知识、还需补哪些知识”的问题：公式给出 LLM、上下文、工具三要素，小世界假设解释模型出厂时可容纳的通用知识，大世界假设解释具体用户与公司知识必须在上岗后持续学习，共同构成 Agent 的知识来源与边界。"
+        },
+        {
+          "unitId": "afterword-u2",
+          "name": "模型与 Agent 演进飞轮",
+          "objectIds": [
+            "AFTERWORD-H2-2-CONCEPT-01"
+          ],
+          "anchors": [
+            "afterword#h2-2"
+          ],
+          "rationale": "该对象单独回答“模型与 Agent 如何通过 harness 补救、训练信号沉淀、内化约束并删除 harness 形成演进闭环”的问题，属于演进机制的问题空间，与知识假设和具体策略不同。"
+        },
+        {
+          "unitId": "afterword-u3",
+          "name": "应用层 harness 策略",
+          "objectIds": [
+            "AFTERWORD-H2-2-HEURISTIC-02"
+          ],
+          "anchors": [
+            "afterword#h2-2"
+          ],
+          "rationale": "该对象回答“在模型之上造应用时，短期应如何利用 harness 争取时间，并构筑数据、渠道、信任、网络效应与物理世界场景等护城河”的问题，属于应用落地策略的问题空间。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "afterword-s1",
+          "name": "后记核心框架与策略",
+          "trigger": "当读者需要概览后记中 Agent 的组成公式、小世界与大世界假设，以及利用 harness 推动模型演进并建立应用护城河的整体思路时，应使用该候选。",
+          "unitIds": [
+            "afterword-u1",
+            "afterword-u2",
+            "afterword-u3"
+          ],
+          "objectIds": [
+            "AFTERWORD-H1-1-CONCEPT-01",
+            "AFTERWORD-H2-1-CONCEPT-01",
+            "AFTERWORD-H2-1-CONCEPT-02",
+            "AFTERWORD-H2-2-CONCEPT-01",
+            "AFTERWORD-H2-2-HEURISTIC-02"
+          ],
+          "rationale": "这三个单元共同覆盖后记从理论公式与知识假设，到演进飞轮，再到应用层策略的完整论述，面向同一批需要把握后记核心框架和工程策略的场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 5,
+        "assigned": 5,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 940,
+        "completion_tokens": 1708,
+        "total_tokens": 2648,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1227
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 940
+      },
+      "finishReason": "stop",
+      "reasoningChars": 2271,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter1",
+      "inputHash": "sha256:6bcb2e477666268493d3afde872f5e9fd66aa253e0e1d38518c4c163fca6617b",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:26:42.579Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter1-u1",
+          "name": "Agent核心组成",
+          "objectIds": [
+            "CHAPTER1-H1-1-CONCEPT-01",
+            "CHAPTER1-H2-4-CONCEPT-01",
+            "CHAPTER1-H3-3-CONCEPT-01",
+            "CHAPTER1-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-11-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "chapter1#h1-1",
+            "chapter1#h2-4",
+            "chapter1#h3-3",
+            "chapter1#h3-11"
+          ],
+          "rationale": "这些对象共同回答“Agent 是什么、由哪些核心部分组成、LLM 在其中的角色，以及 Agent=LLM+上下文+工具 与 Agent=Model+Harness 之间如何理解”。"
+        },
+        {
+          "unitId": "chapter1-u2",
+          "name": "Harness运行治理层",
+          "objectIds": [
+            "CHAPTER1-H2-1-CONCEPT-01",
+            "CHAPTER1-H2-2-CONCEPT-01",
+            "CHAPTER1-H4-1-CONCEPT-01",
+            "CHAPTER1-H3-6-CONCEPT-02",
+            "CHAPTER1-H2-2-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter1#h2-1",
+            "chapter1#h2-2",
+            "chapter1#h4-1",
+            "chapter1#h3-6"
+          ],
+          "rationale": "这些对象都在界定 Harness 在 Agent 边界内作为模型之外的运行与治理层，并强调生产级系统把工程重心放在约束、验证与纠正上。"
+        },
+        {
+          "unitId": "chapter1-u3",
+          "name": "上下文与观察动作边界",
+          "objectIds": [
+            "CHAPTER1-H2-1-CONCEPT-02",
+            "CHAPTER1-H3-1-CONCEPT-01",
+            "CHAPTER1-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-4-CONCEPT-01",
+            "CHAPTER1-H3-6-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter1#h2-1",
+            "chapter1#h3-1",
+            "chapter1#h3-4",
+            "chapter1#h3-6"
+          ],
+          "rationale": "这些对象回答 Agent 能看到、保留哪些信息，观察与动作边界如何限制模型能力；上下文工程也属于对“模型能看到什么”的系统管理。"
+        },
+        {
+          "unitId": "chapter1-u4",
+          "name": "工具接口与代码执行安全",
+          "objectIds": [
+            "CHAPTER1-H3-2-ENGINEERINGRULE-01",
+            "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-7-CONCEPT-01",
+            "CHAPTER1-H3-7-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter1#h3-2",
+            "chapter1#h3-7"
+          ],
+          "rationale": "这些对象回答工具/代码执行如何设计才安全：沙盒隔离、通用与专用工具分工、从 Agent 视角设计接口以及防呆思路。"
+        },
+        {
+          "unitId": "chapter1-u5",
+          "name": "ReAct循环与轨迹",
+          "objectIds": [
+            "CHAPTER1-H3-5-CONCEPT-01",
+            "CHAPTER1-H3-5-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter1#h3-5"
+          ],
+          "rationale": "这两个对象共同描述 Agent 执行任务的核心循环：想→做→看，以及由此积累的轨迹。"
+        },
+        {
+          "unitId": "chapter1-u6",
+          "name": "模型选择与任务完成评估",
+          "objectIds": [
+            "CHAPTER1-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER1-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter1#h3-8",
+            "chapter1#h3-4"
+          ],
+          "rationale": "这些对象回答模型选型与 Agent 任务完成判定的问题：要选支持思考的模型、按真实任务测试能力，且不能把回答问题等同于完成任务。"
+        },
+        {
+          "unitId": "chapter1-u7",
+          "name": "编排工作流与自主性",
+          "objectIds": [
+            "CHAPTER1-H3-9-CONCEPT-01",
+            "CHAPTER1-H3-9-HEURISTIC-02",
+            "CHAPTER1-H4-3-CONCEPT-01",
+            "CHAPTER1-H4-3-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-4-CONCEPT-01",
+            "CHAPTER1-H4-4-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-5-CONCEPT-01",
+            "CHAPTER1-H4-5-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter1#h3-9",
+            "chapter1#h4-3",
+            "chapter1#h4-4",
+            "chapter1#h4-5"
+          ],
+          "rationale": "这些对象共同回答 Agent 的执行路径如何组织：是预定义工作流、自主循环还是两者混合，编排模式如何决定上下文流动与工具调度。"
+        },
+        {
+          "unitId": "chapter1-u8",
+          "name": "Codex Harness与框架选择",
+          "objectIds": [
+            "CHAPTER1-H4-6-CONCEPT-01",
+            "CHAPTER1-H4-6-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter1#h4-6"
+          ],
+          "rationale": "这两个对象回答具体框架/集成路径选择问题：Codex Harness 提供哪些集成方式，以及选择框架时更应关注抽象层是否精简。"
+        },
+        {
+          "unitId": "chapter1-u9",
+          "name": "跨任务更新机制",
+          "objectIds": [
+            "CHAPTER1-H4-2-CONCEPT-01",
+            "CHAPTER1-H4-2-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter1#h4-2"
+          ],
+          "rationale": "这两个对象回答如何让变化/能力跨越任务保留下来：通过更新外部产物（文档、Prompt、Skill、程序/Harness）或通过后训练更新参数。"
+        },
+        {
+          "unitId": "chapter1-u10",
+          "name": "护栏与人工干预",
+          "objectIds": [
+            "CHAPTER1-H3-10-CONCEPT-01",
+            "CHAPTER1-H3-10-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-7-ENGINEERINGRULE-01",
+            "CHAPTER1-H4-7-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-8-CONCEPT-01",
+            "CHAPTER1-H4-8-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER1-H2-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter1#h3-10",
+            "chapter1#h4-7",
+            "chapter1#h4-8",
+            "chapter1#h4-1",
+            "chapter1#h2-4"
+          ],
+          "rationale": "这些对象共同回答如何通过分层防线、代码与执行层护栏、高风险人工确认、人工干预和“安全从第一行代码开始”来保证 Agent 行为可控。"
+        },
+        {
+          "unitId": "chapter1-u11",
+          "name": "提议者审核者",
+          "objectIds": [
+            "CHAPTER1-H2-3-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter1#h2-3"
+          ],
+          "rationale": "该对象回答的是通过两个不共享上下文的角色分离产出与评判、以对抗自审不可靠的问题；它与其他治理机制不同，因此单独成单元以免丢失。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter1-s1",
+          "name": "Agent基础与边界设计",
+          "trigger": "当需要理解或讲解 Agent 的核心组成、运行层、上下文/工具边界，并在此基础上开始设计系统时。",
+          "unitIds": [
+            "chapter1-u1",
+            "chapter1-u2",
+            "chapter1-u3",
+            "chapter1-u4",
+            "chapter1-u5"
+          ],
+          "objectIds": [
+            "CHAPTER1-H1-1-CONCEPT-01",
+            "CHAPTER1-H2-4-CONCEPT-01",
+            "CHAPTER1-H3-3-CONCEPT-01",
+            "CHAPTER1-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-11-ENGINEERINGRULE-01",
+            "CHAPTER1-H2-1-CONCEPT-01",
+            "CHAPTER1-H2-2-CONCEPT-01",
+            "CHAPTER1-H4-1-CONCEPT-01",
+            "CHAPTER1-H3-6-CONCEPT-02",
+            "CHAPTER1-H2-2-HEURISTIC-02",
+            "CHAPTER1-H2-1-CONCEPT-02",
+            "CHAPTER1-H3-1-CONCEPT-01",
+            "CHAPTER1-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-4-CONCEPT-01",
+            "CHAPTER1-H3-6-CONCEPT-01",
+            "CHAPTER1-H3-2-ENGINEERINGRULE-01",
+            "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-7-CONCEPT-01",
+            "CHAPTER1-H3-7-CONCEPT-02",
+            "CHAPTER1-H3-5-CONCEPT-01",
+            "CHAPTER1-H3-5-CONCEPT-02"
+          ],
+          "rationale": "这些单元从核心定义到 Harness、上下文与工具边界、ReAct 循环，构成构建 Agent 前所需的基础问题空间。"
+        },
+        {
+          "skillId": "chapter1-s2",
+          "name": "执行路径与框架选择",
+          "trigger": "当需要为具体任务决定采用工作流、自主 Agent 还是混合模式，并据此选择支持思考的模型和合适的 Agent 框架时。",
+          "unitIds": [
+            "chapter1-u5",
+            "chapter1-u6",
+            "chapter1-u7",
+            "chapter1-u8"
+          ],
+          "objectIds": [
+            "CHAPTER1-H3-5-CONCEPT-01",
+            "CHAPTER1-H3-5-CONCEPT-02",
+            "CHAPTER1-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER1-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-9-CONCEPT-01",
+            "CHAPTER1-H3-9-HEURISTIC-02",
+            "CHAPTER1-H4-3-CONCEPT-01",
+            "CHAPTER1-H4-3-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-4-CONCEPT-01",
+            "CHAPTER1-H4-4-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-5-CONCEPT-01",
+            "CHAPTER1-H4-5-HEURISTIC-02",
+            "CHAPTER1-H4-6-CONCEPT-01",
+            "CHAPTER1-H4-6-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元共同面向执行路径设计与技术选型：从循环机制、模型能力评估，到编排模式、工作流与自主性，再到具体框架集成。"
+        },
+        {
+          "skillId": "chapter1-s3",
+          "name": "安全治理与高风险控制",
+          "trigger": "当需要为生产级 Agent 设计护栏、沙盒执行、人工确认和产物复核机制，以控制高风险操作和声誉/数据风险时。",
+          "unitIds": [
+            "chapter1-u2",
+            "chapter1-u4",
+            "chapter1-u10",
+            "chapter1-u11"
+          ],
+          "objectIds": [
+            "CHAPTER1-H2-1-CONCEPT-01",
+            "CHAPTER1-H2-2-CONCEPT-01",
+            "CHAPTER1-H4-1-CONCEPT-01",
+            "CHAPTER1-H3-6-CONCEPT-02",
+            "CHAPTER1-H2-2-HEURISTIC-02",
+            "CHAPTER1-H3-2-ENGINEERINGRULE-01",
+            "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-7-CONCEPT-01",
+            "CHAPTER1-H3-7-CONCEPT-02",
+            "CHAPTER1-H3-10-CONCEPT-01",
+            "CHAPTER1-H3-10-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-7-ENGINEERINGRULE-01",
+            "CHAPTER1-H4-7-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-8-CONCEPT-01",
+            "CHAPTER1-H4-8-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER1-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER1-H2-3-CONCEPT-01"
+          ],
+          "rationale": "这些单元均面向安全可控性问题：Harness 的约束验证纠正、工具/代码执行限制、分层护栏与人工干预，以及不共享上下文的审核验证。"
+        },
+        {
+          "skillId": "chapter1-s4",
+          "name": "评估验证与能力更新",
+          "trigger": "当需要复盘 Agent 是否真正完成任务、验证关键产物，并决定哪些经验或能力应通过外部产物或参数更新跨任务保留时。",
+          "unitIds": [
+            "chapter1-u6",
+            "chapter1-u9",
+            "chapter1-u11"
+          ],
+          "objectIds": [
+            "CHAPTER1-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER1-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER1-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER1-H4-2-CONCEPT-01",
+            "CHAPTER1-H4-2-CONCEPT-02",
+            "CHAPTER1-H2-3-CONCEPT-01"
+          ],
+          "rationale": "这些单元共同构成持续改进闭环：评估任务完成与模型适配，用提议者-审核者验证产物，再通过外部产物或参数更新沉淀能力。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 45,
+        "assigned": 45,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 3426,
+        "completion_tokens": 17160,
+        "total_tokens": 20586,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15311
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 2914
+      },
+      "finishReason": "stop",
+      "reasoningChars": 38089,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter10",
+      "inputHash": "sha256:0a8c9f54fd094b15e5be7f23b5ac073d31f416d5a9509265b588c12332fc5004",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:29:26.666Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter10-u1",
+          "name": "总论与采用判断",
+          "objectIds": [
+            "CHAPTER10-H1-1-CONCEPT-01",
+            "CHAPTER10-H1-1-CONCEPT-02",
+            "CHAPTER10-H2-2-CONCEPT-01",
+            "CHAPTER10-H2-2-CASE-02",
+            "CHAPTER10-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER10-H2-7-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter10#h1-1",
+            "chapter10#h2-2",
+            "chapter10#h2-7"
+          ],
+          "rationale": "这些对象共同回答“什么是多 Agent 协作、为什么能产生集体智能、何时值得采用”：从总论、新信息框架到采用第一判断标准，均围绕采用决策与有效性判断。"
+        },
+        {
+          "unitId": "chapter10-u2",
+          "name": "上下文模型与协作基础",
+          "objectIds": [
+            "CHAPTER10-H3-1-CONCEPT-01",
+            "CHAPTER10-H3-1-CONCEPT-02",
+            "CHAPTER10-H2-3-CONCEPT-01",
+            "CHAPTER10-H2-3-DECISIONMODEL-02",
+            "CHAPTER10-H2-4-CONCEPT-01",
+            "CHAPTER10-H2-4-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter10#h3-1",
+            "chapter10#h2-3",
+            "chapter10#h2-4"
+          ],
+          "rationale": "这些对象围绕多 Agent 协作的第一个分叉：共享还是不共享上下文。它们定义两种上下文，描述各自协作方式和所需的通信、控制机制。"
+        },
+        {
+          "unitId": "chapter10-u3",
+          "name": "协作拓扑与互操作",
+          "objectIds": [
+            "CHAPTER10-H3-2-CONCEPT-01",
+            "CHAPTER10-H3-2-CONCEPT-02",
+            "CHAPTER10-H3-6-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-6-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-7-CONCEPT-01",
+            "CHAPTER10-H3-7-DECISIONMODEL-02",
+            "CHAPTER10-H3-8-CONCEPT-01",
+            "CHAPTER10-H3-8-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter10#h3-2",
+            "chapter10#h3-6",
+            "chapter10#h3-7",
+            "chapter10#h3-8"
+          ],
+          "rationale": "这些对象都描述 Agent 之间的控制权、信息流和互操作结构，包括对等、管理者、去中心化拓扑，Graph 工程，Manager 规则以及跨信任边界的 A2A 协议。"
+        },
+        {
+          "unitId": "chapter10-u4",
+          "name": "通信与持久化机制",
+          "objectIds": [
+            "CHAPTER10-H3-3-CONCEPT-01",
+            "CHAPTER10-H3-3-CONCEPT-02",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-16-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "chapter10#h3-3",
+            "chapter10#h3-4",
+            "chapter10#h3-16"
+          ],
+          "rationale": "这些对象回答 Agent 如何交换信息、保存中间状态及持久化记忆：虚拟文件系统、Agent 专属工作区、消息总线与进度文件规则，以及文件式长期记忆的先读后写约束。"
+        },
+        {
+          "unitId": "chapter10-u5",
+          "name": "独立判断与验证 Loop",
+          "objectIds": [
+            "CHAPTER10-H3-5-ANTIPATTERN-01",
+            "CHAPTER10-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-10-CONCEPT-01",
+            "CHAPTER10-H3-10-HEURISTIC-02",
+            "CHAPTER10-H3-11-ANTIPATTERN-01",
+            "CHAPTER10-H3-11-CASE-02",
+            "CHAPTER10-H4-1-CONCEPT-01",
+            "CHAPTER10-H4-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter10#h3-5",
+            "chapter10#h3-10",
+            "chapter10#h3-11",
+            "chapter10#h4-1"
+          ],
+          "rationale": "这些对象都围绕如何避免同质化、错误级联和虚假独立性，并建立由验证器判定完成的 Loop 工程。它们共同回答“如何让多个 Agent 的判断真正可靠”。"
+        },
+        {
+          "unitId": "chapter10-u6",
+          "name": "对等协作模式",
+          "objectIds": [
+            "CHAPTER10-H4-2-CONCEPT-01",
+            "CHAPTER10-H4-2-ENGINEERINGRULE-02",
+            "CHAPTER10-H4-3-CONCEPT-01",
+            "CHAPTER10-H4-3-MENTALMODEL-02",
+            "CHAPTER10-H4-4-CONCEPT-01",
+            "CHAPTER10-H4-5-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter10#h4-2",
+            "chapter10#h4-3",
+            "chapter10#h4-4",
+            "chapter10#h4-5"
+          ],
+          "rationale": "这些对象描述多个对等 Agent 的具体协作方式：提议者-审核者、辩论、头脑风暴和专家小组，都是面向生成、评审、创意或决策的交互模式。"
+        },
+        {
+          "unitId": "chapter10-u7",
+          "name": "失败模式与治理",
+          "objectIds": [
+            "CHAPTER10-H2-5-CONCEPT-01",
+            "CHAPTER10-H2-5-CONCEPT-02",
+            "CHAPTER10-H3-9-CONCEPT-01",
+            "CHAPTER10-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-12-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-12-ANTIPATTERN-02",
+            "CHAPTER10-H3-13-ANTIPATTERN-01",
+            "CHAPTER10-H3-14-CONCEPT-01",
+            "CHAPTER10-H3-14-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter10#h2-5",
+            "chapter10#h3-9",
+            "chapter10#h3-12",
+            "chapter10#h3-13",
+            "chapter10#h3-14"
+          ],
+          "rationale": "这些对象回答多 Agent 系统会如何失效以及如何治理：新型失败模式、拜占庭故障、语义冲突、目标互斥、失控循环、理解债和认知投降。"
+        },
+        {
+          "unitId": "chapter10-u8",
+          "name": "涌现与虚拟社会",
+          "objectIds": [
+            "CHAPTER10-H2-6-CONCEPT-01",
+            "CHAPTER10-H2-6-CONCEPT-02",
+            "CHAPTER10-H3-15-CONCEPT-01",
+            "CHAPTER10-H3-15-CONCEPT-02",
+            "CHAPTER10-H3-16-CONCEPT-02",
+            "CHAPTER10-H3-17-CONCEPT-01",
+            "CHAPTER10-H3-17-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter10#h2-6",
+            "chapter10#h3-15",
+            "chapter10#h3-16",
+            "chapter10#h3-17"
+          ],
+          "rationale": "这些对象展示多 Agent 的宏观涌现与社会性现象：涌现行为、经济涌现，以及 Smallville、记忆流、生活奖励和 Moltbook 等虚拟社会实验。"
+        },
+        {
+          "unitId": "chapter10-u9",
+          "name": "经济竞争与策略博弈",
+          "objectIds": [
+            "CHAPTER10-H3-18-CONCEPT-01",
+            "CHAPTER10-H3-18-CONCEPT-02",
+            "CHAPTER10-H3-19-CONCEPT-01",
+            "CHAPTER10-H3-19-CONCEPT-02",
+            "CHAPTER10-H3-20-CONCEPT-01",
+            "CHAPTER10-H3-20-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter10#h3-18",
+            "chapter10#h3-19",
+            "chapter10#h3-20"
+          ],
+          "rationale": "这些对象都涉及 Agent 在市场化或博弈环境中的竞争与协调：Vending-Bench 单 Agent 与 Arena 多 Agent 基准、Pinchwork 与 RentAHuman 市场，以及策略博弈中的信息控制。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter10-s1",
+          "name": "架构设计多 Agent 系统",
+          "trigger": "当需要设计多 Agent 系统的整体结构时：决定是否采用多 Agent、选择共享或不共享上下文、确定控制权拓扑与通信机制。",
+          "unitIds": [
+            "chapter10-u1",
+            "chapter10-u2",
+            "chapter10-u3",
+            "chapter10-u4"
+          ],
+          "objectIds": [
+            "CHAPTER10-H1-1-CONCEPT-01",
+            "CHAPTER10-H1-1-CONCEPT-02",
+            "CHAPTER10-H2-2-CONCEPT-01",
+            "CHAPTER10-H2-2-CASE-02",
+            "CHAPTER10-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER10-H2-7-ANTIPATTERN-02",
+            "CHAPTER10-H3-1-CONCEPT-01",
+            "CHAPTER10-H3-1-CONCEPT-02",
+            "CHAPTER10-H2-3-CONCEPT-01",
+            "CHAPTER10-H2-3-DECISIONMODEL-02",
+            "CHAPTER10-H2-4-CONCEPT-01",
+            "CHAPTER10-H2-4-CONCEPT-02",
+            "CHAPTER10-H3-2-CONCEPT-01",
+            "CHAPTER10-H3-2-CONCEPT-02",
+            "CHAPTER10-H3-6-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-6-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-7-CONCEPT-01",
+            "CHAPTER10-H3-7-DECISIONMODEL-02",
+            "CHAPTER10-H3-8-CONCEPT-01",
+            "CHAPTER10-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-3-CONCEPT-01",
+            "CHAPTER10-H3-3-CONCEPT-02",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-16-ENGINEERINGRULE-01"
+          ],
+          "rationale": "这些单元覆盖多 Agent 系统设计的主要结构性决策：采用判断、上下文模型、拓扑与互操作、通信与持久化机制。"
+        },
+        {
+          "skillId": "chapter10-s2",
+          "name": "可靠性验证与失效治理",
+          "trigger": "当多 Agent 系统出现同质化判断、错误传播、目标冲突、循环失控或理解债，需要建立验证、权限与人工裁决机制时。",
+          "unitIds": [
+            "chapter10-u4",
+            "chapter10-u5",
+            "chapter10-u7"
+          ],
+          "objectIds": [
+            "CHAPTER10-H3-3-CONCEPT-01",
+            "CHAPTER10-H3-3-CONCEPT-02",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-16-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-5-ANTIPATTERN-01",
+            "CHAPTER10-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-10-CONCEPT-01",
+            "CHAPTER10-H3-10-HEURISTIC-02",
+            "CHAPTER10-H3-11-ANTIPATTERN-01",
+            "CHAPTER10-H3-11-CASE-02",
+            "CHAPTER10-H4-1-CONCEPT-01",
+            "CHAPTER10-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER10-H2-5-CONCEPT-01",
+            "CHAPTER10-H2-5-CONCEPT-02",
+            "CHAPTER10-H3-9-CONCEPT-01",
+            "CHAPTER10-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-12-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-12-ANTIPATTERN-02",
+            "CHAPTER10-H3-13-ANTIPATTERN-01",
+            "CHAPTER10-H3-14-CONCEPT-01",
+            "CHAPTER10-H3-14-CONCEPT-02"
+          ],
+          "rationale": "这些单元都处理多 Agent 运行中的可靠性问题：通信与持久化机制提供状态和一致性基础，独立判断与验证 Loop 提供防同质与交叉验证，失败模式与治理提供冲突、失控和人工裁决机制。"
+        },
+        {
+          "skillId": "chapter10-s3",
+          "name": "协作模式编排",
+          "trigger": "当需要用多个 Agent 完成创作、代码审查、决策或创意探索，需要选择提议者-审核者、辩论、头脑风暴或专家小组等交互模式时。",
+          "unitIds": [
+            "chapter10-u3",
+            "chapter10-u5",
+            "chapter10-u6"
+          ],
+          "objectIds": [
+            "CHAPTER10-H3-2-CONCEPT-01",
+            "CHAPTER10-H3-2-CONCEPT-02",
+            "CHAPTER10-H3-6-ENGINEERINGRULE-01",
+            "CHAPTER10-H3-6-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-7-CONCEPT-01",
+            "CHAPTER10-H3-7-DECISIONMODEL-02",
+            "CHAPTER10-H3-8-CONCEPT-01",
+            "CHAPTER10-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-5-ANTIPATTERN-01",
+            "CHAPTER10-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER10-H3-10-CONCEPT-01",
+            "CHAPTER10-H3-10-HEURISTIC-02",
+            "CHAPTER10-H3-11-ANTIPATTERN-01",
+            "CHAPTER10-H3-11-CASE-02",
+            "CHAPTER10-H4-1-CONCEPT-01",
+            "CHAPTER10-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER10-H4-2-CONCEPT-01",
+            "CHAPTER10-H4-2-ENGINEERINGRULE-02",
+            "CHAPTER10-H4-3-CONCEPT-01",
+            "CHAPTER10-H4-3-MENTALMODEL-02",
+            "CHAPTER10-H4-4-CONCEPT-01",
+            "CHAPTER10-H4-5-CONCEPT-01"
+          ],
+          "rationale": "这些单元共同服务于编排多个 Agent 完成具体任务：从选择控制权与信息流的拓扑，到建立独立验证循环，再到提议者-审核者、辩论、头脑风暴、专家小组等具体协作模式。"
+        },
+        {
+          "skillId": "chapter10-s4",
+          "name": "涌现与社会经济系统",
+          "trigger": "当要理解或构建展示涌现行为、虚拟社会、市场机制或竞争博弈的多 Agent 应用、模拟或基准，并需要从“多 Agent 为何可能产生集体智能”出发时。",
+          "unitIds": [
+            "chapter10-u1",
+            "chapter10-u8",
+            "chapter10-u9"
+          ],
+          "objectIds": [
+            "CHAPTER10-H1-1-CONCEPT-01",
+            "CHAPTER10-H1-1-CONCEPT-02",
+            "CHAPTER10-H2-2-CONCEPT-01",
+            "CHAPTER10-H2-2-CASE-02",
+            "CHAPTER10-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER10-H2-7-ANTIPATTERN-02",
+            "CHAPTER10-H2-6-CONCEPT-01",
+            "CHAPTER10-H2-6-CONCEPT-02",
+            "CHAPTER10-H3-15-CONCEPT-01",
+            "CHAPTER10-H3-15-CONCEPT-02",
+            "CHAPTER10-H3-16-CONCEPT-02",
+            "CHAPTER10-H3-17-CONCEPT-01",
+            "CHAPTER10-H3-17-CONCEPT-02",
+            "CHAPTER10-H3-18-CONCEPT-01",
+            "CHAPTER10-H3-18-CONCEPT-02",
+            "CHAPTER10-H3-19-CONCEPT-01",
+            "CHAPTER10-H3-19-CONCEPT-02",
+            "CHAPTER10-H3-20-CONCEPT-01",
+            "CHAPTER10-H3-20-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元共同关注宏观层面的集体智能、涌现行为以及社会经济系统：总论提供多 Agent 能否超越个体的判断背景，后两个单元给出具体社会、市场与博弈场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 61,
+        "assigned": 61,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 4012,
+        "completion_tokens": 14688,
+        "total_tokens": 18700,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 12644
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 3500
+      },
+      "finishReason": "stop",
+      "reasoningChars": 24863,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter2",
+      "inputHash": "sha256:1e4dfeca6dbdbc79d5d304955c57875a38c134749bde6b2419a9d4e3cc4284af",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:31:52.122Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter2-u1",
+          "name": "上下文工程总览",
+          "objectIds": [
+            "CHAPTER2-H1-1-CONCEPT-01",
+            "CHAPTER2-H2-1-CONCEPT-01",
+            "CHAPTER2-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER2-H2-8-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter2#h1-1",
+            "chapter2#h2-1",
+            "chapter2#h2-8"
+          ],
+          "rationale": "这些对象定义上下文是什么、上下文质量对任务完成的影响，并总结上下文工程主线；共同回答“上下文工程管什么”的总体问题。"
+        },
+        {
+          "unitId": "chapter2-u2",
+          "name": "消息结构与核心循环",
+          "objectIds": [
+            "CHAPTER2-H3-1-CONCEPT-01",
+            "CHAPTER2-H3-2-CONCEPT-01",
+            "CHAPTER2-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-3-CONCEPT-01",
+            "CHAPTER2-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-4-CONCEPT-01",
+            "CHAPTER2-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-6-CONCEPT-01",
+            "CHAPTER2-H3-6-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter2#h3-1",
+            "chapter2#h3-2",
+            "chapter2#h3-3",
+            "chapter2#h3-4",
+            "chapter2#h3-6"
+          ],
+          "rationale": "这些对象描述 API 消息角色、无状态调用、工具调用请求、Agent 核心循环和 Chat Template；共同回答“上下文在 API 层如何组织与驱动执行”。"
+        },
+        {
+          "unitId": "chapter2-u3",
+          "name": "稳定前缀与缓存",
+          "objectIds": [
+            "CHAPTER2-H3-5-CONCEPT-01",
+            "CHAPTER2-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER2-H2-3-ENGINEERINGRULE-01",
+            "CHAPTER2-H2-3-HEURISTIC-02",
+            "CHAPTER2-H3-7-CONCEPT-01",
+            "CHAPTER2-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-8-CONCEPT-01",
+            "CHAPTER2-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-10-CONCEPT-01",
+            "CHAPTER2-H3-17-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "chapter2#h3-5",
+            "chapter2#h2-3",
+            "chapter2#h3-7",
+            "chapter2#h3-8",
+            "chapter2#h3-9",
+            "chapter2#h3-10",
+            "chapter2#h3-17"
+          ],
+          "rationale": "这些对象围绕静态前缀、KV Cache、Prompt Cache 以及“只追加不改写”的缓存一致性规则；共同回答“如何保持前缀稳定以复用缓存并避免重算”。"
+        },
+        {
+          "unitId": "chapter2-u4",
+          "name": "提示词规则与结构",
+          "objectIds": [
+            "CHAPTER2-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-12-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-12-HEURISTIC-02",
+            "CHAPTER2-H3-13-CONCEPT-01",
+            "CHAPTER2-H3-13-CONCEPT-02",
+            "CHAPTER2-H3-14-CONCEPT-01",
+            "CHAPTER2-H3-14-ANTIPATTERN-02",
+            "CHAPTER2-H3-16-CONCEPT-01",
+            "CHAPTER2-H3-16-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-17-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter2#h2-4",
+            "chapter2#h3-12",
+            "chapter2#h3-13",
+            "chapter2#h3-14",
+            "chapter2#h3-16",
+            "chapter2#h3-17"
+          ],
+          "rationale": "这些对象关注系统提示词的编写质量：如何用新员工测试检验、强调要害约束、使用结构化标签与流程化组织，并保持 few-shot 示例稳定；共同回答“如何编排规则、结构与示例让模型稳定遵循”。"
+        },
+        {
+          "unitId": "chapter2-u5",
+          "name": "领域计费规则示例",
+          "objectIds": [
+            "CHAPTER2-H3-15-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-15-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter2#h3-15"
+          ],
+          "rationale": "这两个对象是具体业务计费规则，回答如何精确表达数值、条件与费用边界；它们不与通用提示工程原则合并，因为其问题空间仅限于该业务规则示例。"
+        },
+        {
+          "unitId": "chapter2-u6",
+          "name": "动态提示与 Skills",
+          "objectIds": [
+            "CHAPTER2-H2-5-ENGINEERINGRULE-01",
+            "CHAPTER2-H2-5-CONCEPT-02",
+            "CHAPTER2-H3-11-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-19-CONCEPT-01",
+            "CHAPTER2-H3-19-ANTIPATTERN-02",
+            "CHAPTER2-H3-20-HEURISTIC-01",
+            "CHAPTER2-H3-20-HEURISTIC-02",
+            "CHAPTER2-H3-21-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-21-ANTIPATTERN-02",
+            "CHAPTER2-H3-22-ANTIPATTERN-01"
+          ],
+          "anchors": [
+            "chapter2#h2-5",
+            "chapter2#h3-11",
+            "chapter2#h3-19",
+            "chapter2#h3-20",
+            "chapter2#h3-21",
+            "chapter2#h3-22"
+          ],
+          "rationale": "这些对象围绕动态提示词、按需加载、渐进式披露、Skill 元数据与编写、Harness 设计原则展开；共同回答“如何把规则和能力按需加载，而非全部塞进静态系统提示词”。"
+        },
+        {
+          "unitId": "chapter2-u7",
+          "name": "状态栏与侧信道",
+          "objectIds": [
+            "CHAPTER2-H3-11-CONCEPT-01",
+            "CHAPTER2-H2-6-CONCEPT-01",
+            "CHAPTER2-H3-23-MENTALMODEL-01",
+            "CHAPTER2-H3-23-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-24-CONCEPT-01",
+            "CHAPTER2-H3-24-CONCEPT-02",
+            "CHAPTER2-H3-25-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-25-CONCEPT-02",
+            "CHAPTER2-H3-26-DECISIONMODEL-01",
+            "CHAPTER2-H3-26-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter2#h3-11",
+            "chapter2#h2-6",
+            "chapter2#h3-23",
+            "chapter2#h3-24",
+            "chapter2#h3-25",
+            "chapter2#h3-26"
+          ],
+          "rationale": "这些对象描述 Agent 状态栏、上下文窗口缺少提炼层的局限、侧信道信息、环境观察摘要、状态栏在 API 末尾的注入方式及统计维护；共同回答“如何把运行时动态信息显式注入上下文并维护计数”。"
+        },
+        {
+          "unitId": "chapter2-u8",
+          "name": "压缩降噪与子 Agent 隔离",
+          "objectIds": [
+            "CHAPTER2-H3-27-ANTIPATTERN-01",
+            "CHAPTER2-H3-27-ANTIPATTERN-02",
+            "CHAPTER2-H3-28-CONCEPT-01",
+            "CHAPTER2-H3-28-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-29-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-29-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-30-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-30-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-31-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-31-ANTIPATTERN-02",
+            "CHAPTER2-H3-32-CONCEPT-01",
+            "CHAPTER2-H3-32-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter2#h3-27",
+            "chapter2#h3-28",
+            "chapter2#h3-29",
+            "chapter2#h3-30",
+            "chapter2#h3-31",
+            "chapter2#h3-32"
+          ],
+          "rationale": "这些对象关注上下文窗口压力下的腐化、提前收尾、原始信息堆积，以及压缩、噪声移除、关键信息保留和子 Agent 隔离；共同回答“如何压缩或降噪上下文，同时保住决策所需信息”。"
+        },
+        {
+          "unitId": "chapter2-u9",
+          "name": "提示注入防御",
+          "objectIds": [
+            "CHAPTER2-H3-18-CONCEPT-01",
+            "CHAPTER2-H3-18-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter2#h3-18"
+          ],
+          "rationale": "这两个对象共同回答提示注入威胁及其防护：识别通过外部内容混入的伪指令，并用明确标记包裹不可信内容。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter2-s1",
+          "name": "上下文框架与执行基础",
+          "trigger": "需要理解上下文工程总览、API 消息结构与 Agent 核心循环，或设计缓存友好的基础执行骨架时使用。",
+          "unitIds": [
+            "chapter2-u1",
+            "chapter2-u2",
+            "chapter2-u3"
+          ],
+          "objectIds": [
+            "CHAPTER2-H1-1-CONCEPT-01",
+            "CHAPTER2-H2-1-CONCEPT-01",
+            "CHAPTER2-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER2-H2-8-CONCEPT-01",
+            "CHAPTER2-H3-1-CONCEPT-01",
+            "CHAPTER2-H3-2-CONCEPT-01",
+            "CHAPTER2-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-3-CONCEPT-01",
+            "CHAPTER2-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-4-CONCEPT-01",
+            "CHAPTER2-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-6-CONCEPT-01",
+            "CHAPTER2-H3-6-ANTIPATTERN-02",
+            "CHAPTER2-H3-5-CONCEPT-01",
+            "CHAPTER2-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER2-H2-3-ENGINEERINGRULE-01",
+            "CHAPTER2-H2-3-HEURISTIC-02",
+            "CHAPTER2-H3-7-CONCEPT-01",
+            "CHAPTER2-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-8-CONCEPT-01",
+            "CHAPTER2-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-10-CONCEPT-01",
+            "CHAPTER2-H3-17-ENGINEERINGRULE-01"
+          ],
+          "rationale": "这些单元共同覆盖上下文工程的基础框架：总体定义、消息与工具调用骨架、核心循环，以及稳定前缀和缓存机制；面向需要搭建或理解 Agent 上下文执行基础架构的场景。"
+        },
+        {
+          "skillId": "chapter2-s2",
+          "name": "提示词与 Skills 编排",
+          "trigger": "需要编写、审查或重构系统提示词、具体业务规则、few-shot 示例，并设计按需加载的 Skill 体系时使用。",
+          "unitIds": [
+            "chapter2-u4",
+            "chapter2-u5",
+            "chapter2-u6"
+          ],
+          "objectIds": [
+            "CHAPTER2-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-12-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-12-HEURISTIC-02",
+            "CHAPTER2-H3-13-CONCEPT-01",
+            "CHAPTER2-H3-13-CONCEPT-02",
+            "CHAPTER2-H3-14-CONCEPT-01",
+            "CHAPTER2-H3-14-ANTIPATTERN-02",
+            "CHAPTER2-H3-16-CONCEPT-01",
+            "CHAPTER2-H3-16-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-17-ANTIPATTERN-02",
+            "CHAPTER2-H3-15-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-15-ENGINEERINGRULE-02",
+            "CHAPTER2-H2-5-ENGINEERINGRULE-01",
+            "CHAPTER2-H2-5-CONCEPT-02",
+            "CHAPTER2-H3-11-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-19-CONCEPT-01",
+            "CHAPTER2-H3-19-ANTIPATTERN-02",
+            "CHAPTER2-H3-20-HEURISTIC-01",
+            "CHAPTER2-H3-20-HEURISTIC-02",
+            "CHAPTER2-H3-21-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-21-ANTIPATTERN-02",
+            "CHAPTER2-H3-22-ANTIPATTERN-01"
+          ],
+          "rationale": "这些单元共同回答如何把静态知识与规则组织成模型能稳定遵循的提示词，并演进为动态提示词和 Skills；面向提示词设计与能力加载场景。"
+        },
+        {
+          "skillId": "chapter2-s3",
+          "name": "运行时上下文治理与安全",
+          "trigger": "需要维护长任务或多步 Agent 的运行时上下文质量，包括注入状态栏、压缩降噪、隔离子 Agent，并防御提示注入时使用。",
+          "unitIds": [
+            "chapter2-u7",
+            "chapter2-u8",
+            "chapter2-u9"
+          ],
+          "objectIds": [
+            "CHAPTER2-H3-11-CONCEPT-01",
+            "CHAPTER2-H2-6-CONCEPT-01",
+            "CHAPTER2-H3-23-MENTALMODEL-01",
+            "CHAPTER2-H3-23-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-24-CONCEPT-01",
+            "CHAPTER2-H3-24-CONCEPT-02",
+            "CHAPTER2-H3-25-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-25-CONCEPT-02",
+            "CHAPTER2-H3-26-DECISIONMODEL-01",
+            "CHAPTER2-H3-26-HEURISTIC-02",
+            "CHAPTER2-H3-27-ANTIPATTERN-01",
+            "CHAPTER2-H3-27-ANTIPATTERN-02",
+            "CHAPTER2-H3-28-CONCEPT-01",
+            "CHAPTER2-H3-28-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-29-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-29-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-30-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-30-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-31-ENGINEERINGRULE-01",
+            "CHAPTER2-H3-31-ANTIPATTERN-02",
+            "CHAPTER2-H3-32-CONCEPT-01",
+            "CHAPTER2-H3-32-ENGINEERINGRULE-02",
+            "CHAPTER2-H3-18-CONCEPT-01",
+            "CHAPTER2-H3-18-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元共同回答 Agent 运行起来之后如何管理上下文：状态栏与侧信道、压缩与降噪、子 Agent 隔离，以及提示注入防护；面向运行时治理与安全场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 70,
+        "assigned": 70,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 4684,
+        "completion_tokens": 17896,
+        "total_tokens": 22580,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15804
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 4172
+      },
+      "finishReason": "stop",
+      "reasoningChars": 35942,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter3",
+      "inputHash": "sha256:2424400630b7c6bba31c03cd465e06efa3ba30e5ab63600f5ed71e6a3ba553cb",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:34:45.062Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter3-u1",
+          "name": "记忆系统总览与层级",
+          "objectIds": [
+            "CHAPTER3-H1-1-CONCEPT-01",
+            "CHAPTER3-H2-1-CONCEPT-01",
+            "CHAPTER3-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-1-CONCEPT-01",
+            "CHAPTER3-H3-1-CONCEPT-02",
+            "CHAPTER3-H3-2-CONCEPT-01",
+            "CHAPTER3-H3-2-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter3#h1-1",
+            "chapter3#h2-1",
+            "chapter3#h3-1",
+            "chapter3#h3-2"
+          ],
+          "rationale": "这些对象共同定义知识库与用户记忆的顶层概念、提取规则、轨迹、长期记忆和三层记忆能力，回答记忆系统整体是什么、能力分几级的问题。"
+        },
+        {
+          "unitId": "chapter3-u2",
+          "name": "用户记忆表示",
+          "objectIds": [
+            "CHAPTER3-H3-3-ENGINEERINGRULE-01",
+            "CHAPTER3-H3-3-MENTALMODEL-02",
+            "CHAPTER3-H3-4-CONCEPT-01",
+            "CHAPTER3-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-5-CONCEPT-01",
+            "CHAPTER3-H3-5-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter3#h3-3",
+            "chapter3#h3-4",
+            "chapter3#h3-5"
+          ],
+          "rationale": "这些对象共同回答用户状态如何被表示、类型化和结构化，包括混合存储格式、实体建模、User as Code 以及情景与语义记忆的区分。"
+        },
+        {
+          "unitId": "chapter3-u3",
+          "name": "记忆管线与维护",
+          "objectIds": [
+            "CHAPTER3-H3-6-CONCEPT-01",
+            "CHAPTER3-H3-6-CONCEPT-02",
+            "CHAPTER3-H3-7-ANTIPATTERN-01",
+            "CHAPTER3-H3-7-CONCEPT-02",
+            "CHAPTER3-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER3-H3-8-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter3#h3-6",
+            "chapter3#h3-7",
+            "chapter3#h3-8"
+          ],
+          "rationale": "这些对象都涉及记忆的写入、整理与保护：Mem0 v3 与 Memobase 管线、累积式存储反模式、重要性评分、日志脱敏与 PII 检测，回答如何让长期记忆保持精炼、安全、可维护。"
+        },
+        {
+          "unitId": "chapter3-u4",
+          "name": "多模态记忆边界",
+          "objectIds": [
+            "CHAPTER3-H3-19-CONCEPT-01",
+            "CHAPTER3-H3-19-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter3#h3-19"
+          ],
+          "rationale": "这两个对象共同描述多模态记忆的概念与错误做法，单独成单元是因为它们超出了文本记忆机制，属于尚在前沿的边界场景。"
+        },
+        {
+          "unitId": "chapter3-u5",
+          "name": "RAG基础与分块问题",
+          "objectIds": [
+            "CHAPTER3-H2-2-CONCEPT-01",
+            "CHAPTER3-H3-9-ANTIPATTERN-01",
+            "CHAPTER3-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER3-H2-3-ANTIPATTERN-01",
+            "CHAPTER3-H2-3-CASE-02"
+          ],
+          "anchors": [
+            "chapter3#h2-2",
+            "chapter3#h3-9",
+            "chapter3#h2-3"
+          ],
+          "rationale": "这些对象都围绕 RAG 的输入准备：RAG 基本流程、固定大小分块反模式、分块切断上下文、原始文档不打磨直接入库的反模式及黑猫白猫案例，回答哪些原始内容不能直接进入检索。"
+        },
+        {
+          "unitId": "chapter3-u6",
+          "name": "向量化与语义相似度",
+          "objectIds": [
+            "CHAPTER3-H3-10-CONCEPT-01",
+            "CHAPTER3-H3-10-CONCEPT-02",
+            "CHAPTER3-H4-1-CONCEPT-01",
+            "CHAPTER3-H4-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter3#h3-10",
+            "chapter3#h4-1"
+          ],
+          "rationale": "这组对象回答如何把文本变成可比较的语义向量，从嵌入、余弦相似度到 Word2Vec 固定向量和上下文感知嵌入。"
+        },
+        {
+          "unitId": "chapter3-u7",
+          "name": "稀疏检索与混合重排",
+          "objectIds": [
+            "CHAPTER3-H3-11-CONCEPT-01",
+            "CHAPTER3-H4-2-CONCEPT-01",
+            "CHAPTER3-H4-2-CONCEPT-02",
+            "CHAPTER3-H3-12-CONCEPT-01",
+            "CHAPTER3-H3-12-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter3#h3-11",
+            "chapter3#h4-2",
+            "chapter3#h3-12"
+          ],
+          "rationale": "这组对象覆盖词袋、TF-IDF、倒排索引、神经重排序以及混合检索启发式规则，回答生产级检索如何结合多种信号排序。"
+        },
+        {
+          "unitId": "chapter3-u8",
+          "name": "智能体化与上下文感知检索",
+          "objectIds": [
+            "CHAPTER3-H3-16-CONCEPT-01",
+            "CHAPTER3-H3-16-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-17-CONCEPT-01",
+            "CHAPTER3-H3-17-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter3#h3-16",
+            "chapter3#h3-17"
+          ],
+          "rationale": "这四个对象都涉及如何让检索更动态、更依赖上下文：智能体化 RAG、副作用授权、上下文感知检索和传统分块缺陷，回答检索如何服务于智能体决策。"
+        },
+        {
+          "unitId": "chapter3-u9",
+          "name": "知识组织与结构化",
+          "objectIds": [
+            "CHAPTER3-H3-13-DECISIONMODEL-01",
+            "CHAPTER3-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-14-CONCEPT-01",
+            "CHAPTER3-H3-14-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter3#h3-13",
+            "chapter3#h3-14"
+          ],
+          "rationale": "这些对象共同回答知识应以何种结构保存和组织，包括自然语言加元数据与知识图谱协同、文件系统范式和写入时双向链接；其中 DecisionModel 与同节工程规则共同表达该存储决策。"
+        },
+        {
+          "unitId": "chapter3-u10",
+          "name": "写入更新与审核治理",
+          "objectIds": [
+            "CHAPTER3-H3-15-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-3-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-3-ENGINEERINGRULE-02",
+            "CHAPTER3-H4-4-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-4-ENGINEERINGRULE-02",
+            "CHAPTER3-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER3-H2-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter3#h3-15",
+            "chapter3#h4-3",
+            "chapter3#h4-4",
+            "chapter3#h2-4"
+          ],
+          "rationale": "这些工程规则都涉及知识写入、更新、审核与权限：增量加全量更新、生产环境禁止绕过审核、Proposer 与 Reviewer 必须是 Agent、权限过滤、整理 Agent 回原始数据、写入检查及提案段定位，回答怎样安全、可回滚地改变知识。"
+        },
+        {
+          "unitId": "chapter3-u11",
+          "name": "判决因子建模案例",
+          "objectIds": [
+            "CHAPTER3-H3-18-CONCEPT-01",
+            "CHAPTER3-H3-18-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter3#h3-18"
+          ],
+          "rationale": "这两个对象构成领域案例：用聚类发现判决因子重要性层次，以及分类字段用独立开关位编码；单独成单元是因为它是一个具体的数据建模示例，而不是通用记忆或知识库机制。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter3-s1",
+          "name": "用户记忆体系设计",
+          "trigger": "当需要为 Agent 设计或改进用户记忆、长期画像、个性化与脱敏机制时，读取这组单元。",
+          "unitIds": [
+            "chapter3-u1",
+            "chapter3-u2",
+            "chapter3-u3",
+            "chapter3-u4"
+          ],
+          "objectIds": [
+            "CHAPTER3-H1-1-CONCEPT-01",
+            "CHAPTER3-H2-1-CONCEPT-01",
+            "CHAPTER3-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-1-CONCEPT-01",
+            "CHAPTER3-H3-1-CONCEPT-02",
+            "CHAPTER3-H3-2-CONCEPT-01",
+            "CHAPTER3-H3-2-CONCEPT-02",
+            "CHAPTER3-H3-3-ENGINEERINGRULE-01",
+            "CHAPTER3-H3-3-MENTALMODEL-02",
+            "CHAPTER3-H3-4-CONCEPT-01",
+            "CHAPTER3-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-5-CONCEPT-01",
+            "CHAPTER3-H3-5-CONCEPT-02",
+            "CHAPTER3-H3-6-CONCEPT-01",
+            "CHAPTER3-H3-6-CONCEPT-02",
+            "CHAPTER3-H3-7-ANTIPATTERN-01",
+            "CHAPTER3-H3-7-CONCEPT-02",
+            "CHAPTER3-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER3-H3-8-CONCEPT-02",
+            "CHAPTER3-H3-19-CONCEPT-01",
+            "CHAPTER3-H3-19-ANTIPATTERN-02"
+          ],
+          "rationale": "这些单元都面向如何让 Agent 记住用户并维护这些记忆的设计场景，从能力层级、表示、管线到多模态边界。"
+        },
+        {
+          "skillId": "chapter3-s2",
+          "name": "RAG检索链路构建",
+          "trigger": "当需要构建或优化知识库检索、分块、向量化、混合排序和智能体化 RAG 检索工具时使用。",
+          "unitIds": [
+            "chapter3-u5",
+            "chapter3-u6",
+            "chapter3-u7",
+            "chapter3-u8"
+          ],
+          "objectIds": [
+            "CHAPTER3-H2-2-CONCEPT-01",
+            "CHAPTER3-H3-9-ANTIPATTERN-01",
+            "CHAPTER3-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER3-H2-3-ANTIPATTERN-01",
+            "CHAPTER3-H2-3-CASE-02",
+            "CHAPTER3-H3-10-CONCEPT-01",
+            "CHAPTER3-H3-10-CONCEPT-02",
+            "CHAPTER3-H4-1-CONCEPT-01",
+            "CHAPTER3-H4-1-CONCEPT-02",
+            "CHAPTER3-H3-11-CONCEPT-01",
+            "CHAPTER3-H4-2-CONCEPT-01",
+            "CHAPTER3-H4-2-CONCEPT-02",
+            "CHAPTER3-H3-12-CONCEPT-01",
+            "CHAPTER3-H3-12-HEURISTIC-02",
+            "CHAPTER3-H3-16-CONCEPT-01",
+            "CHAPTER3-H3-16-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-17-CONCEPT-01",
+            "CHAPTER3-H3-17-ANTIPATTERN-02"
+          ],
+          "rationale": "这些单元共同覆盖从原始文本准备、语义与稀疏检索到重排序和智能体调用的完整检索链路。"
+        },
+        {
+          "skillId": "chapter3-s3",
+          "name": "知识治理与领域建模",
+          "trigger": "当需要设计知识组织结构、写入审核、权限、更新机制，或参考领域数据建模案例时使用。",
+          "unitIds": [
+            "chapter3-u9",
+            "chapter3-u10",
+            "chapter3-u11"
+          ],
+          "objectIds": [
+            "CHAPTER3-H3-13-DECISIONMODEL-01",
+            "CHAPTER3-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-14-CONCEPT-01",
+            "CHAPTER3-H3-14-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-15-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-3-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-3-ENGINEERINGRULE-02",
+            "CHAPTER3-H4-4-ENGINEERINGRULE-01",
+            "CHAPTER3-H4-4-ENGINEERINGRULE-02",
+            "CHAPTER3-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER3-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER3-H3-18-CONCEPT-01",
+            "CHAPTER3-H3-18-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元面向知识的组织、治理和具体领域建模场景，强调可审计、可回滚和可解释的结构。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 52,
+        "assigned": 52,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 3673,
+        "completion_tokens": 17030,
+        "total_tokens": 20703,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15133
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 3161
+      },
+      "finishReason": "stop",
+      "reasoningChars": 36207,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter4",
+      "inputHash": "sha256:77667418a11538db796b099137daded6efc320933a9ee997ce27ad96dd773b96",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:37:27.677Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter4-u1",
+          "name": "工具定义与五类工具",
+          "objectIds": [
+            "CHAPTER4-H1-1-CONCEPT-01",
+            "CHAPTER4-H1-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter4#h1-1"
+          ],
+          "rationale": "两者共同界定工具在 Agent 中的角色与五类工具划分，是本章工具认知的基础问题空间。"
+        },
+        {
+          "unitId": "chapter4-u2",
+          "name": "工具设计原则与粒度",
+          "objectIds": [
+            "CHAPTER4-H2-1-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-2-ANTIPATTERN-02",
+            "CHAPTER4-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter4#h2-1",
+            "chapter4#h2-2",
+            "chapter4#h3-1"
+          ],
+          "rationale": "均围绕如何设计或约束工具：感知工具控制信息量、执行工具安全约束、工具对应目标而非底层 API、避免粒度过细并偏向整合。"
+        },
+        {
+          "unitId": "chapter4-u3",
+          "name": "工具描述与参数透明",
+          "objectIds": [
+            "CHAPTER4-H3-2-HEURISTIC-01",
+            "CHAPTER4-H3-2-HEURISTIC-02",
+            "CHAPTER4-H3-3-CONCEPT-01",
+            "CHAPTER4-H3-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter4#h3-2",
+            "chapter4#h3-3"
+          ],
+          "rationale": "聚焦工具描述与参数传递的可信性：反例边界、选错工具时先查描述、静默参数注入与参数透明。"
+        },
+        {
+          "unitId": "chapter4-u4",
+          "name": "MCP协议与提示注入",
+          "objectIds": [
+            "CHAPTER4-H2-3-CONCEPT-01",
+            "CHAPTER4-H2-3-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter4#h2-3"
+          ],
+          "rationale": "两者共同回答外部工具通信协议及其安全风险：MCP 开放标准，以及工具定义作为提示注入载体的威胁。"
+        },
+        {
+          "unitId": "chapter4-u5",
+          "name": "工具规模化与按需加载",
+          "objectIds": [
+            "CHAPTER4-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-4-ANTIPATTERN-02",
+            "CHAPTER4-H3-4-CONCEPT-01",
+            "CHAPTER4-H3-4-CONCEPT-02",
+            "CHAPTER4-H2-9-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter4#h2-4",
+            "chapter4#h3-4",
+            "chapter4#h2-9"
+          ],
+          "rationale": "均针对工具数量增长带来的选择困难与上下文负担：超百出错、平铺反模式、索引按需加载、层次化分类，以及工具爆炸反模式。"
+        },
+        {
+          "unitId": "chapter4-u6",
+          "name": "Skill与动态渐进披露",
+          "objectIds": [
+            "CHAPTER4-H3-1-CONCEPT-01",
+            "CHAPTER4-H3-5-CONCEPT-01",
+            "CHAPTER4-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER4-H3-6-CONCEPT-01",
+            "CHAPTER4-H3-6-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter4#h3-1",
+            "chapter4#h3-5",
+            "chapter4#h3-6"
+          ],
+          "rationale": "均围绕按需读取与降低预置 schema 成本：Skill 作为自然语言流程文档、MCP-Zero 动态发现、动态 schema 追加策略，以及 Skills 渐进式披露。"
+        },
+        {
+          "unitId": "chapter4-u7",
+          "name": "工具返回结构与上下文控制",
+          "objectIds": [
+            "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-5-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter4#h2-5"
+          ],
+          "rationale": "两者共同控制工具结果信息量：搜索返回结构化分页候选，而非全文倾倒；读取截断必须显式说明，防止静默信息丢失。"
+        },
+        {
+          "unitId": "chapter4-u8",
+          "name": "多模态感知与原生处理",
+          "objectIds": [
+            "CHAPTER4-H3-7-CONCEPT-01",
+            "CHAPTER4-H4-1-CONCEPT-01",
+            "CHAPTER4-H4-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter4#h3-7",
+            "chapter4#h4-1"
+          ],
+          "rationale": "均回答如何原生地理解多模态内容：多模态感知能力定义、统一语义空间、Vision Transformer 编码器。"
+        },
+        {
+          "unitId": "chapter4-u9",
+          "name": "非原生多模态路径与实验",
+          "objectIds": [
+            "CHAPTER4-H4-2-CONCEPT-01",
+            "CHAPTER4-H4-2-CONCEPT-02",
+            "CHAPTER4-H4-3-CONCEPT-01",
+            "CHAPTER4-H4-3-CASE-02"
+          ],
+          "anchors": [
+            "chapter4#h4-2",
+            "chapter4#h4-3"
+          ],
+          "rationale": "面向主模型不支持原生多模态时的替代方案：提取为文本及其信息损失、工具化多模态分析，以及三种技术范式对比实验。"
+        },
+        {
+          "unitId": "chapter4-u10",
+          "name": "执行安全与验证闭环",
+          "objectIds": [
+            "CHAPTER4-H2-6-CONCEPT-01",
+            "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-9-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter4#h2-6",
+            "chapter4#h2-9"
+          ],
+          "rationale": "均关注工具执行时的安全与验证：提议者-审核者范式、venv 非沙盒、执行-验证-反馈闭环。"
+        },
+        {
+          "unitId": "chapter4-u11",
+          "name": "子Agent与能力来源治理",
+          "objectIds": [
+            "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-8-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter4#h2-7",
+            "chapter4#h2-8"
+          ],
+          "rationale": "均属于子 Agent 与外部能力引入的治理：区分信息来源、及时终止子 Agent、审查 MCP/Skill Hub 能力、默认使用通用工具。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter4-s1",
+          "name": "单工具设计与审查",
+          "trigger": "设计、优化或审查单个工具时，需要从分类、粒度、描述边界、参数透明和返回结构角度做出判断。",
+          "unitIds": [
+            "chapter4-u1",
+            "chapter4-u2",
+            "chapter4-u3",
+            "chapter4-u7"
+          ],
+          "objectIds": [
+            "CHAPTER4-H1-1-CONCEPT-01",
+            "CHAPTER4-H1-1-CONCEPT-02",
+            "CHAPTER4-H2-1-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-2-ANTIPATTERN-02",
+            "CHAPTER4-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER4-H3-2-HEURISTIC-01",
+            "CHAPTER4-H3-2-HEURISTIC-02",
+            "CHAPTER4-H3-3-CONCEPT-01",
+            "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-5-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元共同回答“一个工具应如何被定义、描述并返回结果”，面向工具设计者和审查者的日常场景。"
+        },
+        {
+          "skillId": "chapter4-s2",
+          "name": "工具供应链与执行治理",
+          "trigger": "引入外部工具或能力、运行子 Agent、执行不可信操作时，需要审查提示注入风险、隔离权限并建立审核验证机制。",
+          "unitIds": [
+            "chapter4-u4",
+            "chapter4-u10",
+            "chapter4-u11"
+          ],
+          "objectIds": [
+            "CHAPTER4-H2-3-CONCEPT-01",
+            "CHAPTER4-H2-3-CONCEPT-02",
+            "CHAPTER4-H2-6-CONCEPT-01",
+            "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-9-CONCEPT-01",
+            "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+            "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-8-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元都涉及工具生态中的信任边界：MCP/提示注入、执行隔离与审核验证、子 Agent 与外部能力治理。"
+        },
+        {
+          "skillId": "chapter4-s3",
+          "name": "大规模工具组织与发现",
+          "trigger": "工具数量膨胀、上下文预算紧张时，需要按需加载、分类索引、动态发现并控制返回 token。",
+          "unitIds": [
+            "chapter4-u5",
+            "chapter4-u6",
+            "chapter4-u7"
+          ],
+          "objectIds": [
+            "CHAPTER4-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-4-ANTIPATTERN-02",
+            "CHAPTER4-H3-4-CONCEPT-01",
+            "CHAPTER4-H3-4-CONCEPT-02",
+            "CHAPTER4-H2-9-ANTIPATTERN-02",
+            "CHAPTER4-H3-1-CONCEPT-01",
+            "CHAPTER4-H3-5-CONCEPT-01",
+            "CHAPTER4-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER4-H3-6-CONCEPT-01",
+            "CHAPTER4-H3-6-HEURISTIC-02",
+            "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-5-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元针对工具规模化后选择困难与上下文爆炸，共同提供从静态索引、渐进披露到动态发现和结果分页的组织方案。"
+        },
+        {
+          "skillId": "chapter4-s4",
+          "name": "多模态感知与内容读取",
+          "trigger": "处理搜索结果、长文档、PDF、图片、音视频等多模态输入时，需要选择合适感知路线并控制信息量。",
+          "unitIds": [
+            "chapter4-u7",
+            "chapter4-u8",
+            "chapter4-u9"
+          ],
+          "objectIds": [
+            "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+            "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+            "CHAPTER4-H3-7-CONCEPT-01",
+            "CHAPTER4-H4-1-CONCEPT-01",
+            "CHAPTER4-H4-1-CONCEPT-02",
+            "CHAPTER4-H4-2-CONCEPT-01",
+            "CHAPTER4-H4-2-CONCEPT-02",
+            "CHAPTER4-H4-3-CONCEPT-01",
+            "CHAPTER4-H4-3-CASE-02"
+          ],
+          "rationale": "这些单元共同覆盖多模态感知能力与三类技术路线，并借助工具返回结构设计控制复杂内容读取时的信息量。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 39,
+        "assigned": 39,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 2927,
+        "completion_tokens": 13797,
+        "total_tokens": 16724,
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 12102
+        },
+        "prompt_cache_hit_tokens": 2816,
+        "prompt_cache_miss_tokens": 111
+      },
+      "finishReason": "stop",
+      "reasoningChars": 23037,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter5",
+      "inputHash": "sha256:f5373e0f35aca5167bbaf0ca6699ca6b4e59ecd5dd41b93cc10b56ecd1d6524e",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:39:50.255Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter5-u1",
+          "name": "通用 Agent 架构中枢",
+          "objectIds": [
+            "CHAPTER5-H1-1-CONCEPT-01",
+            "CHAPTER5-H1-1-CONCEPT-02",
+            "CHAPTER5-H3-2-CONCEPT-01",
+            "CHAPTER5-H3-2-MENTALMODEL-02"
+          ],
+          "anchors": [
+            "chapter5#h1-1",
+            "chapter5#h3-2"
+          ],
+          "rationale": "它们共同回答为什么通用 Agent 要以 Coding Agent 加文件系统为核心：通用 Agent 核心是 Coding Agent 与文件系统，文件系统是记忆/知识/能力中枢，代码提供严谨思考与客观对错标准，开放任务下代码生成作为元能力动态扩展能力边界。"
+        },
+        {
+          "unitId": "chapter5-u2",
+          "name": "元能力与代码生成总览",
+          "objectIds": [
+            "CHAPTER5-H2-2-CONCEPT-01",
+            "CHAPTER5-H2-2-CONCEPT-02",
+            "CHAPTER5-H3-1-CONCEPT-02",
+            "CHAPTER5-H2-3-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter5#h2-2",
+            "chapter5#h3-1",
+            "chapter5#h2-3"
+          ],
+          "rationale": "这些对象共同界定代码生成作为元能力的性质、特性与编程之外六个价值维度，回答为何代码生成是能创造新工具、新约束、新表达形态的通用问题解决手段。"
+        },
+        {
+          "unitId": "chapter5-u3",
+          "name": "基础工具与文件搜索编辑",
+          "objectIds": [
+            "CHAPTER5-H3-1-CONCEPT-01",
+            "CHAPTER5-H3-7-CONCEPT-01",
+            "CHAPTER5-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-8-CONCEPT-01",
+            "CHAPTER5-H3-8-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter5#h3-1",
+            "chapter5#h3-7",
+            "chapter5#h3-8"
+          ],
+          "rationale": "它们都围绕 Coding Agent 查找与修改文件的具体机制：七个核心工具、正则搜索、按语义单元分块、差异描述+Apply Model 编辑方案，以及 old string 唯一性规则。"
+        },
+        {
+          "unitId": "chapter5-u4",
+          "name": "代码执行安全",
+          "objectIds": [
+            "CHAPTER5-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-9-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter5#h3-9"
+          ],
+          "rationale": "两个对象都针对代码执行边界：沙盒默认断网并按需白名单放行，Shell 命令安全校验采用语义解析而非关键字黑名单，共同回答如何安全执行不可信代码。"
+        },
+        {
+          "unitId": "chapter5-u5",
+          "name": "项目上下文与完成规范",
+          "objectIds": [
+            "CHAPTER5-H3-3-CONCEPT-01",
+            "CHAPTER5-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-6-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter5#h3-3",
+            "chapter5#h3-4",
+            "chapter5#h3-6"
+          ],
+          "rationale": "这些对象共享如何把项目规则、完成标准和运行上下文注入或固化到 Agent 行为的问题空间：项目指令文件自动注入、测试通过作为完成标准、代码强制规则优于提示词建议、状态栏动态注入。"
+        },
+        {
+          "unitId": "chapter5-u6",
+          "name": "运行时可靠性与并行执行",
+          "objectIds": [
+            "CHAPTER5-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-5-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-6-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "chapter5#h3-4",
+            "chapter5#h3-5",
+            "chapter5#h3-6"
+          ],
+          "rationale": "它们都涉及 Agent 长时间运行中的可靠性、错误边界和低延迟：并行调用故障隔离、长连接活性信号、错误恢复循环、流式生成与并行执行。"
+        },
+        {
+          "unitId": "chapter5-u7",
+          "name": "代码化约束与业务规则",
+          "objectIds": [
+            "CHAPTER5-H3-10-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-11-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-11-ANTIPATTERN-02",
+            "CHAPTER5-H2-4-CONCEPT-01",
+            "CHAPTER5-H2-4-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter5#h3-10",
+            "chapter5#h3-11",
+            "chapter5#h2-4"
+          ],
+          "rationale": "这些对象共同回答如何用代码和约束求解器保证正确性、而不是依赖模型自觉：模型与脚手架权衡、服务端政策事实校验、政策事实作为模型参数的反模式、Artifact 模式与代码即规则。"
+        },
+        {
+          "unitId": "chapter5-u8",
+          "name": "代码生成多维应用与审核",
+          "objectIds": [
+            "CHAPTER5-H3-10-CONCEPT-01",
+            "CHAPTER5-H3-12-CONCEPT-01",
+            "CHAPTER5-H3-12-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-13-CONCEPT-01",
+            "CHAPTER5-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-14-CONCEPT-01",
+            "CHAPTER5-H3-14-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter5#h3-10",
+            "chapter5#h3-12",
+            "chapter5#h3-13",
+            "chapter5#h3-14"
+          ],
+          "rationale": "这些对象覆盖代码生成在思考工具、多媒体、系统适配、生成式 UI 等维度的具体应用，并强调生成结果需要渲染审核与权限安全控制，共同回答代码生成具体能做什么以及如何控制生成质量与安全。"
+        },
+        {
+          "unitId": "chapter5-u9",
+          "name": "Agent 自举与自我修复",
+          "objectIds": [
+            "CHAPTER5-H3-15-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-15-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter5#h3-15"
+          ],
+          "rationale": "两个对象都面向 Agent 改进与构建新 Agent 的场景：先用确定性检查覆盖高频问题再用 LLM 修复疑难，编写新 Agent 时基于高质量参考范例修改而非从零穷举规则。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter5-s1",
+          "name": "通用 Agent 架构设计",
+          "trigger": "当需要从整体上设计或评估一个通用 Coding Agent，确定它为何以 Coding 和文件系统为核心、需要哪些基础工具与执行边界时使用。",
+          "unitIds": [
+            "chapter5-u1",
+            "chapter5-u2",
+            "chapter5-u3",
+            "chapter5-u4"
+          ],
+          "objectIds": [
+            "CHAPTER5-H1-1-CONCEPT-01",
+            "CHAPTER5-H1-1-CONCEPT-02",
+            "CHAPTER5-H3-2-CONCEPT-01",
+            "CHAPTER5-H3-2-MENTALMODEL-02",
+            "CHAPTER5-H2-2-CONCEPT-01",
+            "CHAPTER5-H2-2-CONCEPT-02",
+            "CHAPTER5-H3-1-CONCEPT-02",
+            "CHAPTER5-H2-3-CONCEPT-01",
+            "CHAPTER5-H3-1-CONCEPT-01",
+            "CHAPTER5-H3-7-CONCEPT-01",
+            "CHAPTER5-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-8-CONCEPT-01",
+            "CHAPTER5-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-9-ENGINEERINGRULE-02"
+          ],
+          "rationale": "单元0给出架构中枢和开放/垂直取舍，单元1解释元能力与代码生成价值，单元2和单元3补足基础文件工具与执行安全，共同服务于架构设计/评审场景。"
+        },
+        {
+          "skillId": "chapter5-s2",
+          "name": "Agent 工程落地与可靠性",
+          "trigger": "当需要实现或运维一个 Coding Agent，配置工具、上下文注入、并发/故障恢复和安全执行时使用。",
+          "unitIds": [
+            "chapter5-u3",
+            "chapter5-u4",
+            "chapter5-u5",
+            "chapter5-u6"
+          ],
+          "objectIds": [
+            "CHAPTER5-H3-1-CONCEPT-01",
+            "CHAPTER5-H3-7-CONCEPT-01",
+            "CHAPTER5-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-8-CONCEPT-01",
+            "CHAPTER5-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-9-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-3-CONCEPT-01",
+            "CHAPTER5-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-6-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-5-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-6-ENGINEERINGRULE-01"
+          ],
+          "rationale": "单元2和单元3覆盖文件操作与执行安全，单元4覆盖项目规范和动态状态，单元5覆盖运行时可靠性与并行延迟，面向同一批工程落地和平台运维问题。"
+        },
+        {
+          "skillId": "chapter5-s3",
+          "name": "代码生成应用与规则正确性",
+          "trigger": "当需要用代码生成解决开放业务任务、保证规则正确性，并扩展到多媒体、UI、系统集成和 Agent 自改进时使用。",
+          "unitIds": [
+            "chapter5-u2",
+            "chapter5-u7",
+            "chapter5-u8",
+            "chapter5-u9"
+          ],
+          "objectIds": [
+            "CHAPTER5-H2-2-CONCEPT-01",
+            "CHAPTER5-H2-2-CONCEPT-02",
+            "CHAPTER5-H3-1-CONCEPT-02",
+            "CHAPTER5-H2-3-CONCEPT-01",
+            "CHAPTER5-H3-10-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-11-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-11-ANTIPATTERN-02",
+            "CHAPTER5-H2-4-CONCEPT-01",
+            "CHAPTER5-H2-4-CONCEPT-02",
+            "CHAPTER5-H3-10-CONCEPT-01",
+            "CHAPTER5-H3-12-CONCEPT-01",
+            "CHAPTER5-H3-12-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-13-CONCEPT-01",
+            "CHAPTER5-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-14-CONCEPT-01",
+            "CHAPTER5-H3-14-ENGINEERINGRULE-02",
+            "CHAPTER5-H3-15-ENGINEERINGRULE-01",
+            "CHAPTER5-H3-15-ENGINEERINGRULE-02"
+          ],
+          "rationale": "单元1提供元能力总览，单元6处理业务规则正确性，单元7覆盖多维应用与审核/安全，单元8覆盖自举与自我修复，共同服务于利用代码生成交付复杂任务的场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 37,
+        "assigned": 37,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 2954,
+        "completion_tokens": 14733,
+        "total_tokens": 17687,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 13095
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 2442
+      },
+      "finishReason": "stop",
+      "reasoningChars": 25342,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter6",
+      "inputHash": "sha256:14bbbfcbb81c93697fe5ace44b7f289900673f62237e6e062fd43838a60f8dfd",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:42:27.029Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter6-u1",
+          "name": "轮次到异步交互",
+          "objectIds": [
+            "CHAPTER6-H1-1-CONCEPT-01",
+            "CHAPTER6-H1-1-HEURISTIC-02",
+            "CHAPTER6-H2-1-CONCEPT-01",
+            "CHAPTER6-H3-1-CONCEPT-01",
+            "CHAPTER6-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-8-CONCEPT-01",
+            "CHAPTER6-H3-8-CONCEPT-02",
+            "CHAPTER6-H3-9-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "chapter6#h1-1",
+            "chapter6#h2-1",
+            "chapter6#h3-1",
+            "chapter6#h3-8",
+            "chapter6#h3-9"
+          ],
+          "rationale": "这些对象共同回答：Agent 的交互范式为什么以及如何从轮流、回合制走向异步，并通过重新定义观察/动作空间提升任务表现。"
+        },
+        {
+          "unitId": "chapter6-u2",
+          "name": "事件驱动架构",
+          "objectIds": [
+            "CHAPTER6-H3-2-CONCEPT-01",
+            "CHAPTER6-H3-2-HEURISTIC-02",
+            "CHAPTER6-H3-3-CONCEPT-01",
+            "CHAPTER6-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-6-HEURISTIC-02",
+            "CHAPTER6-H3-7-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-7-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter6#h3-2",
+            "chapter6#h3-3",
+            "chapter6#h3-4",
+            "chapter6#h3-6",
+            "chapter6#h3-7",
+            "chapter6#h2-7"
+          ],
+          "rationale": "这些对象围绕事件驱动 Agent 的统一事件建模、过滤与路由、工具启动与完成解耦、打断占位符，以及队列式事件处理容易只关注最后事件的问题。"
+        },
+        {
+          "unitId": "chapter6-u3",
+          "name": "语音级联感知",
+          "objectIds": [
+            "CHAPTER6-H2-3-HEURISTIC-02",
+            "CHAPTER6-H3-10-CONCEPT-01",
+            "CHAPTER6-H3-11-CONCEPT-01",
+            "CHAPTER6-H3-11-CONCEPT-02",
+            "CHAPTER6-H4-1-ANTIPATTERN-01",
+            "CHAPTER6-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-12-ANTIPATTERN-01",
+            "CHAPTER6-H3-12-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-15-CONCEPT-01",
+            "CHAPTER6-H3-15-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter6#h2-3",
+            "chapter6#h3-10",
+            "chapter6#h3-11",
+            "chapter6#h4-1",
+            "chapter6#h3-12",
+            "chapter6#h3-15"
+          ],
+          "rationale": "这些对象讨论语音交互中级联、轮次式和全双工范式的前半部分：级联流水线、流式感知局限、VAD 端点判断和非流畅语音信号问题。"
+        },
+        {
+          "unitId": "chapter6-u4",
+          "name": "全双工快慢架构",
+          "objectIds": [
+            "CHAPTER6-H3-13-CONCEPT-01",
+            "CHAPTER6-H3-13-CONCEPT-02",
+            "CHAPTER6-H3-14-CONCEPT-01",
+            "CHAPTER6-H4-2-CONCEPT-01",
+            "CHAPTER6-H4-3-MENTALMODEL-01",
+            "CHAPTER6-H4-4-CONCEPT-01",
+            "CHAPTER6-H4-4-CONCEPT-02",
+            "CHAPTER6-H4-5-MENTALMODEL-01",
+            "CHAPTER6-H4-5-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-6-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter6#h3-13",
+            "chapter6#h3-14",
+            "chapter6#h4-2",
+            "chapter6#h4-3",
+            "chapter6#h4-4",
+            "chapter6#h4-5",
+            "chapter6#h2-6"
+          ],
+          "rationale": "这些对象聚焦语音全双工交互、前台快思考与后台慢思考的分离、双脑架构与端到端两条轴线的权衡。"
+        },
+        {
+          "unitId": "chapter6-u5",
+          "name": "GUI操作与定位",
+          "objectIds": [
+            "CHAPTER6-H2-4-CONCEPT-01",
+            "CHAPTER6-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-16-CONCEPT-01",
+            "CHAPTER6-H3-16-CONCEPT-02",
+            "CHAPTER6-H3-17-CONCEPT-01",
+            "CHAPTER6-H3-17-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-18-CONCEPT-01",
+            "CHAPTER6-H3-18-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-19-ANTIPATTERN-01",
+            "CHAPTER6-H3-19-CONCEPT-02",
+            "CHAPTER6-H2-7-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter6#h2-4",
+            "chapter6#h2-1",
+            "chapter6#h3-16",
+            "chapter6#h3-17",
+            "chapter6#h3-18",
+            "chapter6#h3-19",
+            "chapter6#h2-7"
+          ],
+          "rationale": "这些对象回答 Computer Use 如何观察屏幕、调用 GUI 与命令执行工具、定位目标元素，并用世界模型和 Set-of-Mark 改进串行操作循环。"
+        },
+        {
+          "unitId": "chapter6-u6",
+          "name": "移动端与生态对抗",
+          "objectIds": [
+            "CHAPTER6-H3-20-CONCEPT-01",
+            "CHAPTER6-H3-20-CONCEPT-02",
+            "CHAPTER6-H3-5-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-5-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter6#h3-20",
+            "chapter6#h3-5"
+          ],
+          "rationale": "这些对象聚焦 Computer Use 在移动端动作空间的差异，以及虚拟身份隔离、住宅代理和平台封杀等真实执行环境中的对抗性障碍。"
+        },
+        {
+          "unitId": "chapter6-u7",
+          "name": "机器人闭环控制",
+          "objectIds": [
+            "CHAPTER6-H2-5-CONCEPT-01",
+            "CHAPTER6-H2-5-HEURISTIC-02",
+            "CHAPTER6-H3-21-CONCEPT-01",
+            "CHAPTER6-H3-21-MENTALMODEL-02",
+            "CHAPTER6-H3-22-CONCEPT-01",
+            "CHAPTER6-H3-22-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-23-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-23-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-6-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter6#h2-5",
+            "chapter6#h3-21",
+            "chapter6#h3-22",
+            "chapter6#h3-23",
+            "chapter6#h2-6"
+          ],
+          "rationale": "这些对象围绕机器人操作中的闭环能力、人机差距、分层控制、简单工具、重试与重规划，以及动作后必须由新观察判定完成。"
+        },
+        {
+          "unitId": "chapter6-u8",
+          "name": "机器人学习迁移",
+          "objectIds": [
+            "CHAPTER6-H3-24-CONCEPT-01",
+            "CHAPTER6-H3-24-HEURISTIC-02",
+            "CHAPTER6-H3-25-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-25-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-26-CONCEPT-01",
+            "CHAPTER6-H3-26-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-27-CONCEPT-01",
+            "CHAPTER6-H3-27-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter6#h3-24",
+            "chapter6#h3-25",
+            "chapter6#h3-26",
+            "chapter6#h3-27"
+          ],
+          "rationale": "这些对象讨论机器人操控策略学习中的 VLA、动作分块、行为克隆局限、世界模型预测候选动作，以及从仿真到真实机器人的迁移。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter6-s1",
+          "name": "事件驱动 Agent 架构",
+          "trigger": "当需要设计可被外部事件、定时器、工具异步结果打断并主动唤醒的 Agent 运行回路时使用。",
+          "unitIds": [
+            "chapter6-u1",
+            "chapter6-u2"
+          ],
+          "objectIds": [
+            "CHAPTER6-H1-1-CONCEPT-01",
+            "CHAPTER6-H1-1-HEURISTIC-02",
+            "CHAPTER6-H2-1-CONCEPT-01",
+            "CHAPTER6-H3-1-CONCEPT-01",
+            "CHAPTER6-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-8-CONCEPT-01",
+            "CHAPTER6-H3-8-CONCEPT-02",
+            "CHAPTER6-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-2-CONCEPT-01",
+            "CHAPTER6-H3-2-HEURISTIC-02",
+            "CHAPTER6-H3-3-CONCEPT-01",
+            "CHAPTER6-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-6-HEURISTIC-02",
+            "CHAPTER6-H3-7-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-7-ANTIPATTERN-02"
+          ],
+          "rationale": "这两个单元覆盖从轮次到异步的交互范式转变，以及事件流、事件路由、工具启动/完成解耦与打断处理，面向同一批搭建异步 Agent 基础设施的场景。"
+        },
+        {
+          "skillId": "chapter6-s2",
+          "name": "语音实时交互",
+          "trigger": "当需要构建低延迟、能边听边说、并能协调前台即时回应与后台深度推理的语音 Agent 时使用。",
+          "unitIds": [
+            "chapter6-u3",
+            "chapter6-u4"
+          ],
+          "objectIds": [
+            "CHAPTER6-H2-3-HEURISTIC-02",
+            "CHAPTER6-H3-10-CONCEPT-01",
+            "CHAPTER6-H3-11-CONCEPT-01",
+            "CHAPTER6-H3-11-CONCEPT-02",
+            "CHAPTER6-H4-1-ANTIPATTERN-01",
+            "CHAPTER6-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-12-ANTIPATTERN-01",
+            "CHAPTER6-H3-12-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-15-CONCEPT-01",
+            "CHAPTER6-H3-15-ANTIPATTERN-02",
+            "CHAPTER6-H3-13-CONCEPT-01",
+            "CHAPTER6-H3-13-CONCEPT-02",
+            "CHAPTER6-H3-14-CONCEPT-01",
+            "CHAPTER6-H4-2-CONCEPT-01",
+            "CHAPTER6-H4-3-MENTALMODEL-01",
+            "CHAPTER6-H4-4-CONCEPT-01",
+            "CHAPTER6-H4-4-CONCEPT-02",
+            "CHAPTER6-H4-5-MENTALMODEL-01",
+            "CHAPTER6-H4-5-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-6-CONCEPT-01"
+          ],
+          "rationale": "这两个单元覆盖级联语音流水线及其局限，以及全双工、快慢思考分离和双脑架构，面向语音对话系统设计。"
+        },
+        {
+          "skillId": "chapter6-s3",
+          "name": "Computer Use 智能体",
+          "trigger": "当需要让 AI 通过观察屏幕、操作鼠标键盘或移动端界面来完成软件操作任务时使用。",
+          "unitIds": [
+            "chapter6-u5",
+            "chapter6-u6"
+          ],
+          "objectIds": [
+            "CHAPTER6-H2-4-CONCEPT-01",
+            "CHAPTER6-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-16-CONCEPT-01",
+            "CHAPTER6-H3-16-CONCEPT-02",
+            "CHAPTER6-H3-17-CONCEPT-01",
+            "CHAPTER6-H3-17-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-18-CONCEPT-01",
+            "CHAPTER6-H3-18-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-19-ANTIPATTERN-01",
+            "CHAPTER6-H3-19-CONCEPT-02",
+            "CHAPTER6-H2-7-CONCEPT-01",
+            "CHAPTER6-H3-20-CONCEPT-01",
+            "CHAPTER6-H3-20-CONCEPT-02",
+            "CHAPTER6-H3-5-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-5-HEURISTIC-02"
+          ],
+          "rationale": "这些单元覆盖计算机操作动作/观察空间、GUI/命令工具、视觉定位，以及移动端和平台对抗，面向桌面和移动端 Computer Use 任务。"
+        },
+        {
+          "skillId": "chapter6-s4",
+          "name": "机器人操作智能体",
+          "trigger": "当需要构建在真实世界中通过视觉与动作闭环完成抓取、操控等物理任务的机器人系统时使用。",
+          "unitIds": [
+            "chapter6-u7",
+            "chapter6-u8"
+          ],
+          "objectIds": [
+            "CHAPTER6-H2-5-CONCEPT-01",
+            "CHAPTER6-H2-5-HEURISTIC-02",
+            "CHAPTER6-H3-21-CONCEPT-01",
+            "CHAPTER6-H3-21-MENTALMODEL-02",
+            "CHAPTER6-H3-22-CONCEPT-01",
+            "CHAPTER6-H3-22-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-23-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-23-ENGINEERINGRULE-02",
+            "CHAPTER6-H2-6-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-24-CONCEPT-01",
+            "CHAPTER6-H3-24-HEURISTIC-02",
+            "CHAPTER6-H3-25-ENGINEERINGRULE-01",
+            "CHAPTER6-H3-25-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-26-CONCEPT-01",
+            "CHAPTER6-H3-26-ENGINEERINGRULE-02",
+            "CHAPTER6-H3-27-CONCEPT-01",
+            "CHAPTER6-H3-27-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元覆盖机器人闭环控制、分层控制、重试重规划，以及 VLA、动作分块、世界模型和仿真到真实迁移，面向机器人操作学习与部署。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 70,
+        "assigned": 70,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 4753,
+        "completion_tokens": 15800,
+        "total_tokens": 20553,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 13792
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 4241
+      },
+      "finishReason": "stop",
+      "reasoningChars": 32741,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter7",
+      "inputHash": "sha256:0463b37bd51d72dab64348bcb6a28f014726ea41bc15b7ebc6175fc13e5873d2",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:45:01.453Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter7-u1",
+          "name": "评估对象与成功判定",
+          "objectIds": [
+            "CHAPTER7-H1-1-ENGINEERINGRULE-01",
+            "CHAPTER7-H1-1-DECISIONMODEL-02",
+            "CHAPTER7-H2-2-ENGINEERINGRULE-01",
+            "CHAPTER7-H2-5-CONCEPT-01",
+            "CHAPTER7-H2-5-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-11-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-11-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-15-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter7#h1-1",
+            "chapter7#h2-2",
+            "chapter7#h2-5",
+            "chapter7#h3-11",
+            "chapter7#h3-15"
+          ],
+          "rationale": "这些对象围绕评估到底评什么、怎样才算成功：先明确评估对象是模型与 Harness 组合体，再把成功条件拆成可核实的边界，优先采用确定性程序断言，并用端到端回归任务作为整体成功观察。第二章的决策模型无摘要但与该规则同处一章，作为评估决策的抽象对象处理。"
+        },
+        {
+          "unitId": "chapter7-u2",
+          "name": "模拟用户与任务环境",
+          "objectIds": [
+            "CHAPTER7-H2-1-CONCEPT-01",
+            "CHAPTER7-H3-1-CONCEPT-01",
+            "CHAPTER7-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-2-CONCEPT-01",
+            "CHAPTER7-H3-2-ANTIPATTERN-02",
+            "CHAPTER7-H3-5-CONCEPT-01",
+            "CHAPTER7-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-6-CONCEPT-01",
+            "CHAPTER7-H3-6-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-7-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter7#h2-1",
+            "chapter7#h3-1",
+            "chapter7#h3-2",
+            "chapter7#h3-5",
+            "chapter7#h3-6",
+            "chapter7#h3-7"
+          ],
+          "rationale": "这些对象都回答如何构建可重复的交互或工具执行环境：模拟用户需具备受限信息、双控工具与环境状态；工具型环境用执行验证代替人工标注；τ²-bench 是两个概念的落地实例，说明环境扮演者、任务来源与验证器组合。仅以最终状态奖励而不检查过程合规的反模式也在这里，因为它直接关系到环境状态与过程建模。"
+        },
+        {
+          "unitId": "chapter7-u3",
+          "name": "任务难度与基准生成",
+          "objectIds": [
+            "CHAPTER7-H3-3-CONCEPT-01",
+            "CHAPTER7-H3-3-METRIC-02",
+            "CHAPTER7-H3-4-METRIC-01",
+            "CHAPTER7-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-9-CONCEPT-02",
+            "CHAPTER7-H3-10-CONCEPT-01",
+            "CHAPTER7-H3-10-CONCEPT-02",
+            "CHAPTER7-H3-12-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter7#h3-3",
+            "chapter7#h3-4",
+            "chapter7#h3-9",
+            "chapter7#h3-10",
+            "chapter7#h3-12"
+          ],
+          "rationale": "这些对象围绕任务集怎么设计、难度如何衡量、基准从哪里来：用 Pass@k 与 Pass^k 区分能力上限与可靠成功率，技术奇观强调不能只看单次成功；GAIA、AndroidWorld、三级难度与评估集三来源提供任务生成与分布控制的例子；副作用操作规则说明在采样成功次数时需要沙盒或回滚而不是简单重试。"
+        },
+        {
+          "unitId": "chapter7-u4",
+          "name": "可核实评价与边界",
+          "objectIds": [
+            "CHAPTER7-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-13-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-14-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-14-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-12-CONCEPT-01"
+          ],
+          "anchors": [
+            "chapter7#h3-8",
+            "chapter7#h3-13",
+            "chapter7#h3-14",
+            "chapter7#h2-12"
+          ],
+          "rationale": "这些对象都关心评估器如何做出可复核、结构化、有边界的判断：机器只核实独立事实而非 Agent 自述；SWE-bench Verified 拆解 FAIL_TO_PASS 与 PASS_TO_PASS 命题；Rubric 将评价项变为可操作、加权且高风险一票否决；归因记录结构化保存证据；轨迹前缀边界评估通过边界集直接检查作用域与澄清，而不是只依赖端到端退化。"
+        },
+        {
+          "unitId": "chapter7-u5",
+          "name": "诊断与错误定位",
+          "objectIds": [
+            "CHAPTER7-H4-1-CONCEPT-01",
+            "CHAPTER7-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER7-H4-2-ENGINEERINGRULE-01",
+            "CHAPTER7-H4-2-ENGINEERINGRULE-02",
+            "CHAPTER7-H4-3-ENGINEERINGRULE-01",
+            "CHAPTER7-H4-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter7#h4-1",
+            "chapter7#h4-2",
+            "chapter7#h4-3"
+          ],
+          "rationale": "这些对象回答出现静默失败或工具与格式错误时如何定位根因：区分环境状态正确与信息告知错误，用事实锚点比对或前缀二分代替搜索报错；引号格式处理必须按作用域；old_string 定位失败要保存字节哈希、Unicode 序列和 token 序列沿链路找首个差异，并据此决定修链路还是转训练数据。它们都属于失败诊断的同一问题空间。"
+        },
+        {
+          "unitId": "chapter7-u6",
+          "name": "模型比较与选型",
+          "objectIds": [
+            "CHAPTER7-H2-6-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-20-DECISIONMODEL-01",
+            "CHAPTER7-H3-20-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-7-METRIC-01",
+            "CHAPTER7-H2-7-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-16-CONCEPT-01",
+            "CHAPTER7-H3-16-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter7#h2-6",
+            "chapter7#h3-20",
+            "chapter7#h2-7",
+            "chapter7#h3-16"
+          ],
+          "rationale": "这些对象围绕不同模型之间如何比较、差距是否可信、如何做选择：成功率标准误、Elo 与配对投票解决差异显著性；模型选择是多维权衡且需要动态持续；配对评判需处理位置偏差。它们共同回答模型选型与排名这一决策问题。"
+        },
+        {
+          "unitId": "chapter7-u7",
+          "name": "推理成本与行动策略",
+          "objectIds": [
+            "CHAPTER7-H3-17-CONCEPT-01",
+            "CHAPTER7-H3-17-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-18-CONCEPT-01",
+            "CHAPTER7-H3-18-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-19-CONCEPT-01",
+            "CHAPTER7-H3-19-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter7#h3-17",
+            "chapter7#h3-18",
+            "chapter7#h3-19"
+          ],
+          "rationale": "这些对象都涉及评估中与模型推理或执行过程相关的成本与策略：Prefill 与 Decode 决定延迟与思考时长，需在自建负载实测；行动阈值体现探索或快改策略差异，测 Harness 调节需单独分组；上下文累积效应说明 KV Cache 缺失时成本非线性增长，且多项优化不能线性相加。它们共同关注任务执行过程而非最终分数。"
+        },
+        {
+          "unitId": "chapter7-u8",
+          "name": "评测系统可靠性",
+          "objectIds": [
+            "CHAPTER7-H2-9-ENGINEERINGRULE-01",
+            "CHAPTER7-H2-9-ANTIPATTERN-02",
+            "CHAPTER7-H3-21-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-21-ANTIPATTERN-02",
+            "CHAPTER7-H3-22-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-22-CASE-02",
+            "CHAPTER7-H3-23-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-23-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-24-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "chapter7#h2-9",
+            "chapter7#h3-21",
+            "chapter7#h3-22",
+            "chapter7#h3-23",
+            "chapter7#h3-24"
+          ],
+          "rationale": "这些对象回答评测结果下降时先怀疑什么、如何可靠地读报告和做对照实验：先检查评测系统本身而非直接改 Agent；报告分析要定位失败在看、想、做、验的哪一段；多轮对照固定变量并交替运行；输入缺失时先查输入；子集结果不能外推为整体。它们共同维护评测结论的可信度。"
+        },
+        {
+          "unitId": "chapter7-u9",
+          "name": "内部评估基础设施",
+          "objectIds": [
+            "CHAPTER7-H2-10-CONCEPT-01",
+            "CHAPTER7-H3-25-CONCEPT-01",
+            "CHAPTER7-H3-25-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-26-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-26-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-27-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-27-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-28-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-28-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-29-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-30-CONCEPT-01",
+            "CHAPTER7-H3-30-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter7#h2-10",
+            "chapter7#h3-25",
+            "chapter7#h3-26",
+            "chapter7#h3-27",
+            "chapter7#h3-28",
+            "chapter7#h3-29",
+            "chapter7#h3-30"
+          ],
+          "rationale": "这些对象围绕如何把评估嵌入持续产品工程：内部评估基础设施、消融实验与特性开关使改动可隔离验证；机制指标与目标指标、护栏指标区分优化目标与副作用；编译开关、曝光统计、确定性渲染、回归测试与审计类型包装都是让评估可重复、可审计的工程约束。它们面向内部持续评估平台与实验治理。"
+        },
+        {
+          "unitId": "chapter7-u10",
+          "name": "可观测性与仿真",
+          "objectIds": [
+            "CHAPTER7-H2-8-CONCEPT-01",
+            "CHAPTER7-H2-8-CONCEPT-02",
+            "CHAPTER7-H2-11-CONCEPT-01",
+            "CHAPTER7-H2-11-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-31-CONCEPT-01",
+            "CHAPTER7-H3-31-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter7#h2-8",
+            "chapter7#h2-11",
+            "chapter7#h3-31"
+          ],
+          "rationale": "这些对象围绕如何通过日志、追踪和仿真环境观察与训练 Agent：可观测性通过 trace 与 span 推断系统内部；仿真环境提供自动打分、即时反馈和高频交互，并要求干净重置；领域随机化用适度随机缩小仿真与现实差距。它们共同处理评估与训练中的可见性与环境模拟问题。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter7-s1",
+          "name": "评估系统设计搭建",
+          "trigger": "当需要从零设计或改造一个 Agent 评估系统，涉及评估对象、任务环境、基准任务、验证器和可观测性时，使用该候选。",
+          "unitIds": [
+            "chapter7-u1",
+            "chapter7-u2",
+            "chapter7-u3",
+            "chapter7-u4",
+            "chapter7-u10"
+          ],
+          "objectIds": [
+            "CHAPTER7-H1-1-ENGINEERINGRULE-01",
+            "CHAPTER7-H1-1-DECISIONMODEL-02",
+            "CHAPTER7-H2-2-ENGINEERINGRULE-01",
+            "CHAPTER7-H2-5-CONCEPT-01",
+            "CHAPTER7-H2-5-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-11-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-11-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-15-CONCEPT-01",
+            "CHAPTER7-H2-1-CONCEPT-01",
+            "CHAPTER7-H3-1-CONCEPT-01",
+            "CHAPTER7-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-2-CONCEPT-01",
+            "CHAPTER7-H3-2-ANTIPATTERN-02",
+            "CHAPTER7-H3-5-CONCEPT-01",
+            "CHAPTER7-H3-5-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-6-CONCEPT-01",
+            "CHAPTER7-H3-6-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-7-CONCEPT-01",
+            "CHAPTER7-H3-3-CONCEPT-01",
+            "CHAPTER7-H3-3-METRIC-02",
+            "CHAPTER7-H3-4-METRIC-01",
+            "CHAPTER7-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-9-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-9-CONCEPT-02",
+            "CHAPTER7-H3-10-CONCEPT-01",
+            "CHAPTER7-H3-10-CONCEPT-02",
+            "CHAPTER7-H3-12-CONCEPT-01",
+            "CHAPTER7-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-13-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-14-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-14-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-12-CONCEPT-01",
+            "CHAPTER7-H2-8-CONCEPT-01",
+            "CHAPTER7-H2-8-CONCEPT-02",
+            "CHAPTER7-H2-11-CONCEPT-01",
+            "CHAPTER7-H2-11-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-31-CONCEPT-01",
+            "CHAPTER7-H3-31-HEURISTIC-02"
+          ],
+          "rationale": "这五个单元共同覆盖搭建评估系统所需的核心设计：先明确评估对象与成功判定，再构建模拟用户或工具环境，设计任务难度与基准，建立可核实评价与边界，并用可观测性与仿真基础设施支撑运行。它们面向如何建一个可信评估系统的同一批场景。"
+        },
+        {
+          "skillId": "chapter7-s2",
+          "name": "评估结果分析与诊断",
+          "trigger": "当需要解读评估分数、比较模型、定位失败根因或优化推理成本时，使用该候选。",
+          "unitIds": [
+            "chapter7-u4",
+            "chapter7-u5",
+            "chapter7-u6",
+            "chapter7-u7",
+            "chapter7-u8"
+          ],
+          "objectIds": [
+            "CHAPTER7-H3-8-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-8-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-13-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-14-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-14-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-12-CONCEPT-01",
+            "CHAPTER7-H4-1-CONCEPT-01",
+            "CHAPTER7-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER7-H4-2-ENGINEERINGRULE-01",
+            "CHAPTER7-H4-2-ENGINEERINGRULE-02",
+            "CHAPTER7-H4-3-ENGINEERINGRULE-01",
+            "CHAPTER7-H4-3-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-6-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-20-DECISIONMODEL-01",
+            "CHAPTER7-H3-20-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-7-METRIC-01",
+            "CHAPTER7-H2-7-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-16-CONCEPT-01",
+            "CHAPTER7-H3-16-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-17-CONCEPT-01",
+            "CHAPTER7-H3-17-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-18-CONCEPT-01",
+            "CHAPTER7-H3-18-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-19-CONCEPT-01",
+            "CHAPTER7-H3-19-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-9-ENGINEERINGRULE-01",
+            "CHAPTER7-H2-9-ANTIPATTERN-02",
+            "CHAPTER7-H3-21-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-21-ANTIPATTERN-02",
+            "CHAPTER7-H3-22-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-22-CASE-02",
+            "CHAPTER7-H3-23-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-23-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-24-ENGINEERINGRULE-01"
+          ],
+          "rationale": "这些单元都服务于已有评估结果之后怎么办：可核实评价帮助判断证据质量，诊断与错误定位处理失败案例，模型比较与选型解读差距是否可信，推理成本与行动策略解释执行差异，评测系统可靠性确保结论不是来自评测本身的问题。它们面向结果分析、模型选型与失败归因场景。"
+        },
+        {
+          "skillId": "chapter7-s3",
+          "name": "评估基础设施与持续实验",
+          "trigger": "当需要建设内部持续评估平台、运行受控实验、管理特性开关或仿真训练环境时，使用该候选。",
+          "unitIds": [
+            "chapter7-u8",
+            "chapter7-u9",
+            "chapter7-u10"
+          ],
+          "objectIds": [
+            "CHAPTER7-H2-9-ENGINEERINGRULE-01",
+            "CHAPTER7-H2-9-ANTIPATTERN-02",
+            "CHAPTER7-H3-21-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-21-ANTIPATTERN-02",
+            "CHAPTER7-H3-22-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-22-CASE-02",
+            "CHAPTER7-H3-23-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-23-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-24-ENGINEERINGRULE-01",
+            "CHAPTER7-H2-10-CONCEPT-01",
+            "CHAPTER7-H3-25-CONCEPT-01",
+            "CHAPTER7-H3-25-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-26-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-26-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-27-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-27-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-28-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-28-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-29-ENGINEERINGRULE-01",
+            "CHAPTER7-H3-30-CONCEPT-01",
+            "CHAPTER7-H3-30-ENGINEERINGRULE-02",
+            "CHAPTER7-H2-8-CONCEPT-01",
+            "CHAPTER7-H2-8-CONCEPT-02",
+            "CHAPTER7-H2-11-CONCEPT-01",
+            "CHAPTER7-H2-11-ENGINEERINGRULE-02",
+            "CHAPTER7-H3-31-CONCEPT-01",
+            "CHAPTER7-H3-31-HEURISTIC-02"
+          ],
+          "rationale": "这三个单元共同覆盖持续评估与实验工程：评测系统可靠性提供实验结论可信的基础，内部评估基础设施把评估嵌入产品决策与特性开关，可观测性与仿真支持训练和持续监控。它们面向平台建设与评估驱动迭代场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 80,
+        "assigned": 80,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 5113,
+        "completion_tokens": 13440,
+        "total_tokens": 18553,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 10859
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 4601
+      },
+      "finishReason": "stop",
+      "reasoningChars": 21334,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter8",
+      "inputHash": "sha256:c5be02cf837fef90fbef2d68cb7895bbef83649da22d9f8e63339c28b844a5ec",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:47:13.380Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter8-u1",
+          "name": "预训练与语言建模基础",
+          "objectIds": [
+            "CHAPTER8-H1-1-CONCEPT-01",
+            "CHAPTER8-H3-1-CONCEPT-01",
+            "CHAPTER8-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-3-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter8#h1-1",
+            "chapter8#h3-1",
+            "chapter8#h2-3"
+          ],
+          "rationale": "这些对象共同回答“预训练最底层的语言建模机制是什么”：下一词预测、输出概率分布、词元化，以及预训练作为能力地基的含义。"
+        },
+        {
+          "unitId": "chapter8-u2",
+          "name": "后训练四阶段定位",
+          "objectIds": [
+            "CHAPTER8-H1-1-CONCEPT-02",
+            "CHAPTER8-H2-1-CONCEPT-01",
+            "CHAPTER8-H2-1-CONCEPT-02",
+            "CHAPTER8-H2-16-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-16-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter8#h1-1",
+            "chapter8#h2-1",
+            "chapter8#h2-16"
+          ],
+          "rationale": "这些对象围绕同一问题空间：后训练各阶段分别承担什么角色、为何不能互相替代，以及 SFT 作为阶段在四环节中的定位。"
+        },
+        {
+          "unitId": "chapter8-u3",
+          "name": "Mid-training与知识补课",
+          "objectIds": [
+            "CHAPTER8-H3-2-CONCEPT-01",
+            "CHAPTER8-H3-2-ANTIPATTERN-02",
+            "CHAPTER8-H2-4-CONCEPT-01",
+            "CHAPTER8-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-8-CASE-01",
+            "CHAPTER8-H3-8-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter8#h3-2",
+            "chapter8#h2-4",
+            "chapter8#h3-8"
+          ],
+          "rationale": "这些对象共同回答“模型缺领域知识或语言能力时应在哪个阶段补”：Mid-training 的定义、数据分布收窄、通用数据保留，以及不能用少量问答 SFT 背事实。"
+        },
+        {
+          "unitId": "chapter8-u4",
+          "name": "SFT数据与格式固化",
+          "objectIds": [
+            "CHAPTER8-H3-3-CONCEPT-01",
+            "CHAPTER8-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-5-CONCEPT-01",
+            "CHAPTER8-H2-5-HEURISTIC-02",
+            "CHAPTER8-H2-6-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-6-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-7-DECISIONMODEL-02"
+          ],
+          "anchors": [
+            "chapter8#h3-3",
+            "chapter8#h2-5",
+            "chapter8#h2-6",
+            "chapter8#h2-7"
+          ],
+          "rationale": "这些对象共同回答“如何构造 SFT 数据并固化输出协议”：SFT 本质、LoRA 应用、拒绝采样、数据质量、训练/评估划分、失败轨迹处理，以及格式固化决策。CHAPTER8-H2-7-DECISIONMODEL-02 无摘要字段，但出处锚点与格式固化决策同属该问题空间。"
+        },
+        {
+          "unitId": "chapter8-u5",
+          "name": "RL基础与目标",
+          "objectIds": [
+            "CHAPTER8-H3-4-CONCEPT-01",
+            "CHAPTER8-H3-4-METRIC-02",
+            "CHAPTER8-H3-5-CONCEPT-01",
+            "CHAPTER8-H3-5-CONCEPT-02",
+            "CHAPTER8-H3-6-CONCEPT-01",
+            "CHAPTER8-H3-6-CONCEPT-02",
+            "CHAPTER8-H3-7-CONCEPT-01",
+            "CHAPTER8-H3-7-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter8#h3-4",
+            "chapter8#h3-5",
+            "chapter8#h3-6",
+            "chapter8#h3-7"
+          ],
+          "rationale": "这些对象共同回答“RL 作为学习框架的基本概念和优化目标是什么”：可学习性前提、SFT/RL 目标对比、强化学习定义、价值函数、MDP，以及思考 token 作为特殊动作。"
+        },
+        {
+          "unitId": "chapter8-u6",
+          "name": "策略梯度与On-policy",
+          "objectIds": [
+            "CHAPTER8-H2-8-CONCEPT-01",
+            "CHAPTER8-H2-8-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-9-CONCEPT-01",
+            "CHAPTER8-H2-9-CONCEPT-02",
+            "CHAPTER8-H3-9-CONCEPT-01",
+            "CHAPTER8-H3-9-HEURISTIC-02"
+          ],
+          "anchors": [
+            "chapter8#h2-8",
+            "chapter8#h2-9",
+            "chapter8#h3-9"
+          ],
+          "rationale": "这些对象共同回答“策略梯度训练具体如何发生”：rollout、相对优势、策略梯度机制、RL 需要 SFT 初始化，以及 On-policy 的偏好判断。"
+        },
+        {
+          "unitId": "chapter8-u7",
+          "name": "奖励设计与稀疏反馈",
+          "objectIds": [
+            "CHAPTER8-H3-15-CONCEPT-01",
+            "CHAPTER8-H3-15-CONCEPT-02",
+            "CHAPTER8-H3-16-CONCEPT-01",
+            "CHAPTER8-H3-16-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-17-CONCEPT-01",
+            "CHAPTER8-H3-17-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-18-ANTIPATTERN-02",
+            "CHAPTER8-H2-13-CONCEPT-01",
+            "CHAPTER8-H2-13-CONCEPT-02",
+            "CHAPTER8-H2-15-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter8#h3-15",
+            "chapter8#h3-16",
+            "chapter8#h3-17",
+            "chapter8#h3-18",
+            "chapter8#h2-13",
+            "chapter8#h2-15"
+          ],
+          "rationale": "这些对象共同回答“奖励信号从哪来、如何表示、为什么容易出问题”：可验证奖励、reward seeking、结果奖励、奖励表示形式、稀疏反馈、样本效率，以及奖励黑客。"
+        },
+        {
+          "unitId": "chapter8-u8",
+          "name": "环境工程与工具RL",
+          "objectIds": [
+            "CHAPTER8-H2-10-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-10-ANTIPATTERN-01",
+            "CHAPTER8-H3-11-CONCEPT-01",
+            "CHAPTER8-H3-11-ANTIPATTERN-02",
+            "CHAPTER8-H3-12-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-12-HEURISTIC-02",
+            "CHAPTER8-H3-13-CONCEPT-01",
+            "CHAPTER8-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-14-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-14-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter8#h2-10",
+            "chapter8#h3-10",
+            "chapter8#h3-11",
+            "chapter8#h3-12",
+            "chapter8#h3-13",
+            "chapter8#h3-14"
+          ],
+          "rationale": "这些对象共同回答“训练 Agent RL 时环境、仿真器、验证器和工具链路如何搭建”：环境工程前置、仿真与生产一致、用户模拟器、任务隔离、验证并行、信用分配、工具反馈屏蔽，以及 AWorld-train 实验链路。"
+        },
+        {
+          "unitId": "chapter8-u9",
+          "name": "On-Policy蒸馏与冷启动",
+          "objectIds": [
+            "CHAPTER8-H3-19-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-19-CASE-02",
+            "CHAPTER8-H3-20-CONCEPT-01",
+            "CHAPTER8-H3-20-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter8#h3-19",
+            "chapter8#h3-20"
+          ],
+          "rationale": "这些对象共同回答“当基础策略不足时如何冷启动并做 on-policy 蒸馏”：先 Mid-training 或离轨冷启动，再进入 OPSD；并展示时间感任务上不同 RL 与 OPSD 的比较及朴素 OPSD 的反模式。"
+        },
+        {
+          "unitId": "chapter8-u10",
+          "name": "训练诊断与实验纪律",
+          "objectIds": [
+            "CHAPTER8-H4-1-ENGINEERINGRULE-01",
+            "CHAPTER8-H4-1-ANTIPATTERN-02",
+            "CHAPTER8-H2-3-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-15-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-17-CONCEPT-01",
+            "CHAPTER8-H2-17-CONCEPT-02"
+          ],
+          "anchors": [
+            "chapter8#h4-1",
+            "chapter8#h2-3",
+            "chapter8#h2-15",
+            "chapter8#h2-17"
+          ],
+          "rationale": "这些对象共同回答“如何小成本地验证假设、监控训练并避免破坏数值或通用能力”：sampler/trainer log prob 监控、batch invariance、小规模预算下算法改进、小规模实验验证，以及灾难性遗忘和蒸馏模型能力层次。"
+        },
+        {
+          "unitId": "chapter8-u11",
+          "name": "评估数据到精确复制诊断",
+          "objectIds": [
+            "CHAPTER8-H2-14-CONCEPT-01",
+            "CHAPTER8-H3-21-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-21-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-22-CONCEPT-01",
+            "CHAPTER8-H3-22-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-23-CONCEPT-01",
+            "CHAPTER8-H3-23-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter8#h2-14",
+            "chapter8#h3-21",
+            "chapter8#h3-22",
+            "chapter8#h3-23"
+          ],
+          "rationale": "这些对象共同回答“如何把评估数据、验收测试和编辑失败转化为后训练诊断信号”：第七章评估集到训练用法的映射、隐藏验收测试、轨迹前缀保留集、作用域敏感最小编辑，以及精确复制能力的判定。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter8-s1",
+          "name": "后训练路径规划与数据准备",
+          "trigger": "当需要判断一个基础模型应先做 Mid-training、SFT 还是 RL，并准备对应训练数据时使用。",
+          "unitIds": [
+            "chapter8-u1",
+            "chapter8-u2",
+            "chapter8-u3",
+            "chapter8-u4"
+          ],
+          "objectIds": [
+            "CHAPTER8-H1-1-CONCEPT-01",
+            "CHAPTER8-H3-1-CONCEPT-01",
+            "CHAPTER8-H3-1-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-3-CONCEPT-02",
+            "CHAPTER8-H1-1-CONCEPT-02",
+            "CHAPTER8-H2-1-CONCEPT-01",
+            "CHAPTER8-H2-1-CONCEPT-02",
+            "CHAPTER8-H2-16-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-16-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-2-CONCEPT-01",
+            "CHAPTER8-H3-2-ANTIPATTERN-02",
+            "CHAPTER8-H2-4-CONCEPT-01",
+            "CHAPTER8-H2-4-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-8-CASE-01",
+            "CHAPTER8-H3-8-HEURISTIC-02",
+            "CHAPTER8-H3-3-CONCEPT-01",
+            "CHAPTER8-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-5-CONCEPT-01",
+            "CHAPTER8-H2-5-HEURISTIC-02",
+            "CHAPTER8-H2-6-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-6-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-7-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-7-DECISIONMODEL-02"
+          ],
+          "rationale": "这些单元共同面向“根据底座能力缺口选择后训练阶段并准备 SFT/Mid-training 数据”的场景，从基础机制、阶段定位到知识补课和数据构造形成连续决策链路。"
+        },
+        {
+          "skillId": "chapter8-s2",
+          "name": "RL训练与奖励环境搭建",
+          "trigger": "当需要搭建或调试强化学习训练链路，包括策略梯度、奖励、环境、On-policy 与冷启动时使用。",
+          "unitIds": [
+            "chapter8-u5",
+            "chapter8-u6",
+            "chapter8-u7",
+            "chapter8-u8",
+            "chapter8-u9"
+          ],
+          "objectIds": [
+            "CHAPTER8-H3-4-CONCEPT-01",
+            "CHAPTER8-H3-4-METRIC-02",
+            "CHAPTER8-H3-5-CONCEPT-01",
+            "CHAPTER8-H3-5-CONCEPT-02",
+            "CHAPTER8-H3-6-CONCEPT-01",
+            "CHAPTER8-H3-6-CONCEPT-02",
+            "CHAPTER8-H3-7-CONCEPT-01",
+            "CHAPTER8-H3-7-CONCEPT-02",
+            "CHAPTER8-H2-8-CONCEPT-01",
+            "CHAPTER8-H2-8-ENGINEERINGRULE-02",
+            "CHAPTER8-H2-9-CONCEPT-01",
+            "CHAPTER8-H2-9-CONCEPT-02",
+            "CHAPTER8-H3-9-CONCEPT-01",
+            "CHAPTER8-H3-9-HEURISTIC-02",
+            "CHAPTER8-H3-15-CONCEPT-01",
+            "CHAPTER8-H3-15-CONCEPT-02",
+            "CHAPTER8-H3-16-CONCEPT-01",
+            "CHAPTER8-H3-16-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-17-CONCEPT-01",
+            "CHAPTER8-H3-17-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-18-ANTIPATTERN-02",
+            "CHAPTER8-H2-13-CONCEPT-01",
+            "CHAPTER8-H2-13-CONCEPT-02",
+            "CHAPTER8-H2-15-ANTIPATTERN-02",
+            "CHAPTER8-H2-10-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-10-ANTIPATTERN-01",
+            "CHAPTER8-H3-11-CONCEPT-01",
+            "CHAPTER8-H3-11-ANTIPATTERN-02",
+            "CHAPTER8-H3-12-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-12-HEURISTIC-02",
+            "CHAPTER8-H3-13-CONCEPT-01",
+            "CHAPTER8-H3-13-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-14-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-14-CONCEPT-02",
+            "CHAPTER8-H3-19-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-19-CASE-02",
+            "CHAPTER8-H3-20-CONCEPT-01",
+            "CHAPTER8-H3-20-ANTIPATTERN-02"
+          ],
+          "rationale": "这些单元面向 RL 训练的全链路场景：从 RL 数学基础与策略梯度，到奖励设计和环境工程，再到 On-Policy 蒸馏与冷启动，共同解决如何让 RL 稳定学到有效策略。"
+        },
+        {
+          "skillId": "chapter8-s3",
+          "name": "训练诊断与评估数据利用",
+          "trigger": "当需要诊断训练数值问题、控制实验规模，或把评估数据与失败轨迹转化为后训练诊断和修复信号时使用。",
+          "unitIds": [
+            "chapter8-u10",
+            "chapter8-u11"
+          ],
+          "objectIds": [
+            "CHAPTER8-H4-1-ENGINEERINGRULE-01",
+            "CHAPTER8-H4-1-ANTIPATTERN-02",
+            "CHAPTER8-H2-3-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-15-ENGINEERINGRULE-01",
+            "CHAPTER8-H2-17-CONCEPT-01",
+            "CHAPTER8-H2-17-CONCEPT-02",
+            "CHAPTER8-H2-14-CONCEPT-01",
+            "CHAPTER8-H3-21-ENGINEERINGRULE-01",
+            "CHAPTER8-H3-21-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-22-CONCEPT-01",
+            "CHAPTER8-H3-22-ENGINEERINGRULE-02",
+            "CHAPTER8-H3-23-CONCEPT-01",
+            "CHAPTER8-H3-23-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元面向训练实验纪律和评估数据反哺后训练的场景：一方面监控数值与验证假设，另一方面从评估、验收和精确复制问题中提取可训练信号。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 74,
+        "assigned": 74,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 4939,
+        "completion_tokens": 13514,
+        "total_tokens": 18453,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 11137
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 4427
+      },
+      "finishReason": "stop",
+      "reasoningChars": 30563,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "chapter9",
+      "inputHash": "sha256:c277f220413b1a355c0812aae3e6128a17c087cbb704f48ec2d7cb470a918dfb",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:49:34.922Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "chapter9-u1",
+          "name": "轨迹与修改前提",
+          "objectIds": [
+            "CHAPTER9-H1-1-MENTALMODEL-01",
+            "CHAPTER9-H1-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h1-1"
+          ],
+          "rationale": "二者共同回答持续进化从何开始：轨迹与日志只是原料，不会自动产生学习；所有修改必须先形成待验证版本并通过验证后才能改变下一轮运行。"
+        },
+        {
+          "unitId": "chapter9-u2",
+          "name": "轨迹评价",
+          "objectIds": [
+            "CHAPTER9-H2-1-MENTALMODEL-01",
+            "CHAPTER9-H2-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h2-1"
+          ],
+          "rationale": "二者都围绕如何评价一条执行轨迹：一个定义结果、过程、质量三类验证问题，一个规定可用于后续学习的评价必须包含结论、证据位置、失败类型及低置信度拒评。"
+        },
+        {
+          "unitId": "chapter9-u3",
+          "name": "进化载体选择",
+          "objectIds": [
+            "CHAPTER9-H2-2-CONCEPT-01",
+            "CHAPTER9-H2-2-DECISIONMODEL-02",
+            "CHAPTER9-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER9-H3-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h2-2",
+            "chapter9#h3-4"
+          ],
+          "rationale": "这些对象都回答同一问题：学习信号确认后应写入何种载体。它们覆盖知识文档、提示词/Skill、程序、模型参数的选择，以及能力参数化和生产轨迹转化为 SFT、偏好或 RL 训练数据的判断。"
+        },
+        {
+          "unitId": "chapter9-u4",
+          "name": "行动经验提取",
+          "objectIds": [
+            "CHAPTER9-H3-1-CONCEPT-01",
+            "CHAPTER9-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h3-1"
+          ],
+          "rationale": "二者共同定义如何从行动轨迹中提炼可复用经验：先形成行动经验草案，但反思本身不是证据，必须得到环境结果、跨轨迹支持和正向迁移验证后才能进入正式经验文档。"
+        },
+        {
+          "unitId": "chapter9-u5",
+          "name": "提示词最小更新",
+          "objectIds": [
+            "CHAPTER9-H3-2-CONCEPT-01",
+            "CHAPTER9-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-5-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "chapter9#h3-2",
+            "chapter9#h3-5"
+          ],
+          "rationale": "这些对象都关注系统提示与记忆更新方式：用清楚的提醒写入提示词，修改应是带来源的最小 diff，并避免反复让模型重写整份 Prompt 或记忆。"
+        },
+        {
+          "unitId": "chapter9-u6",
+          "name": "业务策略更新护栏",
+          "objectIds": [
+            "CHAPTER9-H4-1-ENGINEERINGRULE-01",
+            "CHAPTER9-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER9-H4-2-MENTALMODEL-01",
+            "CHAPTER9-H4-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h4-1",
+            "chapter9#h4-2"
+          ],
+          "rationale": "这些对象来自业务策略提炼场景，共同回答从业务交互中提取并更新策略的约束：何时必须转人工、提炼产物须独立验证、需求澄清是带作用域的判断路径、抱怨反馈必须关联具体轨迹和结果。"
+        },
+        {
+          "unitId": "chapter9-u7",
+          "name": "工作流流程记忆",
+          "objectIds": [
+            "CHAPTER9-H3-3-PLAYBOOK-01",
+            "CHAPTER9-H3-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h3-3"
+          ],
+          "rationale": "二者都围绕从浏览器轨迹生成可验证工作流，并规定流程记忆必须同时具备动作前验证、动作后验证和独立回放验证。"
+        },
+        {
+          "unitId": "chapter9-u8",
+          "name": "可组合性",
+          "objectIds": [
+            "CHAPTER9-H4-3-ENGINEERINGRULE-01",
+            "CHAPTER9-H4-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h4-3"
+          ],
+          "rationale": "二者都关于自进化系统的结构能力边界：自我进化的上限取决于系统可组合性，且可组合性必须是可传递的。"
+        },
+        {
+          "unitId": "chapter9-u9",
+          "name": "自进化循环与发现树",
+          "objectIds": [
+            "CHAPTER9-H3-5-CONCEPT-01",
+            "CHAPTER9-H2-3-CONCEPT-01",
+            "CHAPTER9-H2-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h3-5",
+            "chapter9#h2-3"
+          ],
+          "rationale": "这些对象都描述利用已完成经验推动自进化：把发现过程保存为可回放模拟器，并通过选择新目标、验证代码、沉淀技能、组合旧技能来完成更难任务；自动课程、可执行技能和环境验证缺一不可。"
+        },
+        {
+          "unitId": "chapter9-u10",
+          "name": "可验证闭环边界",
+          "objectIds": [
+            "CHAPTER9-H3-6-CONCEPT-01",
+            "CHAPTER9-H3-6-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h3-6"
+          ],
+          "rationale": "二者共同界定可验证闭环的适用范围：编码、工具调用和业务状态变更等有快速反馈的任务更易成立，开放式任务评价信号慢且不唯一；失败实验、被拒提案和停止原因也应写入日志。"
+        },
+        {
+          "unitId": "chapter9-u11",
+          "name": "可信证据与修改边界",
+          "objectIds": [
+            "CHAPTER9-H3-7-ENGINEERINGRULE-01",
+            "CHAPTER9-H3-7-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h3-7"
+          ],
+          "rationale": "二者都涉及学习系统的信任与权限边界：原始网页、工具输出及其摘要不可作为指令或直接纳入长期能力；业务 Agent 可以修改 Prompt、Skill、知识库和工具，但不能修改验证器、测试用例、发布门槛、审计日志和稳定版本备份。"
+        },
+        {
+          "unitId": "chapter9-u12",
+          "name": "离线学习与增长治理",
+          "objectIds": [
+            "CHAPTER9-H3-8-PLAYBOOK-01",
+            "CHAPTER9-H3-8-ANTIPATTERN-02",
+            "CHAPTER9-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER9-H2-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "chapter9#h3-8",
+            "chapter9#h2-4"
+          ],
+          "rationale": "这些对象共同回答如何组织长期学习与记忆治理：通过睡眠学习周期离线整理，避免知识、Prompt 和工具无限增长，并把在线执行与离线学习分开，在外围建立可验证的学习系统。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "chapter9-s1",
+          "name": "轨迹经验提取",
+          "trigger": "需要从生产轨迹中评价任务完成质量，并提取可靠行动经验时。",
+          "unitIds": [
+            "chapter9-u1",
+            "chapter9-u2",
+            "chapter9-u4"
+          ],
+          "objectIds": [
+            "CHAPTER9-H1-1-MENTALMODEL-01",
+            "CHAPTER9-H1-1-ENGINEERINGRULE-02",
+            "CHAPTER9-H2-1-MENTALMODEL-01",
+            "CHAPTER9-H2-1-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-1-CONCEPT-01",
+            "CHAPTER9-H3-1-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元覆盖从轨迹原料、轨迹评价到行动经验提取的完整证据链，共同服务于从执行历史中提炼可复用经验。"
+        },
+        {
+          "skillId": "chapter9-s2",
+          "name": "学习载体与自进化更新",
+          "trigger": "需要决定学习信号改写到知识、提示词、程序或模型参数，并组织自进化循环时。",
+          "unitIds": [
+            "chapter9-u3",
+            "chapter9-u5",
+            "chapter9-u9"
+          ],
+          "objectIds": [
+            "CHAPTER9-H2-2-CONCEPT-01",
+            "CHAPTER9-H2-2-DECISIONMODEL-02",
+            "CHAPTER9-H3-4-ENGINEERINGRULE-01",
+            "CHAPTER9-H3-4-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-2-CONCEPT-01",
+            "CHAPTER9-H3-2-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-5-ANTIPATTERN-02",
+            "CHAPTER9-H3-5-CONCEPT-01",
+            "CHAPTER9-H2-3-CONCEPT-01",
+            "CHAPTER9-H2-3-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元分别回答学习信号应写入何种载体、提示词与记忆如何最小更新，以及发现树和技能库如何支撑持续进化。"
+        },
+        {
+          "skillId": "chapter9-s3",
+          "name": "可验证业务与流程提炼",
+          "trigger": "需要从业务反馈或浏览器轨迹提炼策略与工作流，并判断哪些任务能形成自动验证闭环时。",
+          "unitIds": [
+            "chapter9-u6",
+            "chapter9-u7",
+            "chapter9-u10"
+          ],
+          "objectIds": [
+            "CHAPTER9-H4-1-ENGINEERINGRULE-01",
+            "CHAPTER9-H4-1-ENGINEERINGRULE-02",
+            "CHAPTER9-H4-2-MENTALMODEL-01",
+            "CHAPTER9-H4-2-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-3-PLAYBOOK-01",
+            "CHAPTER9-H3-3-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-6-CONCEPT-01",
+            "CHAPTER9-H3-6-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元都关注把业务或流程经验变成可验证产物：策略更新需要独立验证和关联轨迹，工作流需要三重验证，同时要清楚可验证闭环的适用边界。"
+        },
+        {
+          "skillId": "chapter9-s4",
+          "name": "自进化系统治理",
+          "trigger": "需要为自进化系统设计可组合性、可信证据边界与离线学习治理时。",
+          "unitIds": [
+            "chapter9-u8",
+            "chapter9-u11",
+            "chapter9-u12"
+          ],
+          "objectIds": [
+            "CHAPTER9-H4-3-ENGINEERINGRULE-01",
+            "CHAPTER9-H4-3-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-7-ENGINEERINGRULE-01",
+            "CHAPTER9-H3-7-ENGINEERINGRULE-02",
+            "CHAPTER9-H3-8-PLAYBOOK-01",
+            "CHAPTER9-H3-8-ANTIPATTERN-02",
+            "CHAPTER9-H2-4-ENGINEERINGRULE-01",
+            "CHAPTER9-H2-4-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元共同描述持续进化系统的结构性约束：可组合性必须可传递，不可信证据不得进入长期能力且修改权限要受边界保护，离线学习与增长治理要分离。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 32,
+        "assigned": 32,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 2329,
+        "completion_tokens": 11330,
+        "total_tokens": 13659,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9538
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 1817
+      },
+      "finishReason": "stop",
+      "reasoningChars": 25065,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "introduction",
+      "inputHash": "sha256:bc45c044abab6efb81549a8cae1f081be90e73e041b1f1a6fefa98bb2a7136cb",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:51:41.452Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "introduction-u1",
+          "name": "Agent核心组成",
+          "objectIds": [
+            "INTRODUCTION-H1-1-CONCEPT-01",
+            "INTRODUCTION-H2-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "introduction#h1-1",
+            "introduction#h2-1"
+          ],
+          "rationale": "这两个对象都回答“Agent 是什么、由哪些部分组成”这一核心问题：一个从实现层说明 LLM、上下文与工具三者缺一不可，另一个以实现层、直觉层、学术层三层描述补充 Agent 核心公式，因此属于同一概念问题空间。"
+        },
+        {
+          "unitId": "introduction-u2",
+          "name": "全书结构与学习建议",
+          "objectIds": [
+            "INTRODUCTION-H2-1-CONCEPT-01",
+            "INTRODUCTION-H2-3-HEURISTIC-01",
+            "INTRODUCTION-H2-3-HEURISTIC-02"
+          ],
+          "anchors": [
+            "introduction#h2-1",
+            "introduction#h2-3"
+          ],
+          "rationale": "这些对象共同回答“本书如何组织、读者应如何开始学习”：一个说明全书章节结构，另两个针对前置知识不足给出阅读策略与补充读物建议，因此属于同一学习路径问题空间。"
+        },
+        {
+          "unitId": "introduction-u3",
+          "name": "系统评估机制",
+          "objectIds": [
+            "INTRODUCTION-H1-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "introduction#h1-1"
+          ],
+          "rationale": "该对象是独立工程规则，回答“构建 Agent 时如何建立质量保障”，与 Agent 定义、学习路径等不属于同一问题空间，因此单独成单元，确保对象不被遗漏。"
+        },
+        {
+          "unitId": "introduction-u4",
+          "name": "实验代码查找",
+          "objectIds": [
+            "INTRODUCTION-H2-2-PLAYBOOK-01"
+          ],
+          "anchors": [
+            "introduction#h2-2"
+          ],
+          "rationale": "该对象是独立的资源使用入口，回答“如何查找实验代码”，与其他对象不共享同一问题空间，因此单独成单元。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "introduction-s1",
+          "name": "引言入门与全局导航",
+          "trigger": "当你刚开始阅读本书引言，需要快速掌握 Agent 核心概念、全书结构、配套代码入口和前置知识建议时使用。",
+          "unitIds": [
+            "introduction-u1",
+            "introduction-u2",
+            "introduction-u3",
+            "introduction-u4"
+          ],
+          "objectIds": [
+            "INTRODUCTION-H1-1-CONCEPT-01",
+            "INTRODUCTION-H2-1-CONCEPT-02",
+            "INTRODUCTION-H2-1-CONCEPT-01",
+            "INTRODUCTION-H2-3-HEURISTIC-01",
+            "INTRODUCTION-H2-3-HEURISTIC-02",
+            "INTRODUCTION-H1-1-ENGINEERINGRULE-02",
+            "INTRODUCTION-H2-2-PLAYBOOK-01"
+          ],
+          "rationale": "这些单元共同来自引言，服务于“第一次打开本书并建立全局认知”的同一使用场景：既需要理解 Agent 组成，也需要知道全书结构、配套资源、评估机制和学习路径。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 7,
+        "assigned": 7,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 951,
+        "completion_tokens": 4734,
+        "total_tokens": 5685,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4229
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 439
+      },
+      "finishReason": "stop",
+      "reasoningChars": 12359,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "reference-answers",
+      "inputHash": "sha256:ad692820ae09411c9a04fed6fdbf965da1b830b486e0308d655ac2fe25d336e6",
+      "status": "proposed",
+      "createdAt": "2026-10-13T02:52:41.870Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "reference-answers-u1",
+          "name": "参考答案使用元规则",
+          "objectIds": [
+            "REFERENCE-ANSWERS-H1-1-HEURISTIC-01"
+          ],
+          "anchors": [
+            "reference-answers#h1-1"
+          ],
+          "rationale": "该对象规定读者应把参考答案视为仅供参考，并用 LLM 结合书稿继续讨论，属于本章答案的使用元规则；单独成单元以避免污染任何具体工程主题。"
+        },
+        {
+          "unitId": "reference-answers-u2",
+          "name": "工具与动作安全",
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+            "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "reference-answers#h2-1",
+            "reference-answers#h2-4",
+            "reference-answers#h2-6"
+          ],
+          "rationale": "这些对象都围绕工具调用和动作执行的风险控制：从工具+参数风险评级、同名工具遮蔽，到不可逆操作的事前审批、快/慢思考按可逆性分工，以及安全点密度与不可逆性的关系。"
+        },
+        {
+          "unitId": "reference-answers-u3",
+          "name": "上下文压缩与状态",
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "reference-answers#h2-1",
+            "reference-answers#h2-2"
+          ],
+          "rationale": "这些对象都解决上下文和记忆成本问题：缓存读取费用增长时不能每轮压缩早期轨迹、状态栏应由确定性代码维护、压缩时应采用有损压缩加无损索引并恢复来源。"
+        },
+        {
+          "unitId": "reference-answers-u4",
+          "name": "检索索引结构",
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-3-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-3-CONCEPT-02"
+          ],
+          "anchors": [
+            "reference-answers#h2-3"
+          ],
+          "rationale": "这两个对象都回答检索索引结构的能力边界：RAPTOR 适合跨层总览与细节钻取，GraphRAG 适合多跳关系推理和实体消歧，帮助选择检索方案。"
+        },
+        {
+          "unitId": "reference-answers-u5",
+          "name": "评估与基准防作弊",
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-8-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-8-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "reference-answers#h2-7",
+            "reference-answers#h2-8"
+          ],
+          "rationale": "这些对象都围绕评估和训练的数据完整性：静态题库需要参数化生成、Pass@k 与 Pass^k 的选择取决于失败是否可回滚、灾难性遗忘提示微调风险、评估数据必须复用环境而不复用题目。"
+        },
+        {
+          "unitId": "reference-answers-u6",
+          "name": "生成物与护栏",
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "reference-answers#h2-5",
+            "reference-answers#h2-9"
+          ],
+          "rationale": "这些对象都约束 Agent 的生成物和监控信号：日志格式变化时适应机制不能吞掉异常、UI 生成优先声明式协议或沙盒、生成代码修改必须隔离复现、护栏指标要有不可被平均分抵消的硬阈值。"
+        },
+        {
+          "unitId": "reference-answers-u7",
+          "name": "预算与角色切换",
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-10-HEURISTIC-02"
+          ],
+          "anchors": [
+            "reference-answers#h2-10"
+          ],
+          "rationale": "这两个对象都涉及运行期 Agent 控制：预算感知机制注入总预算和剩余预算来调节探索与利用；多 Agent 阶段切换时同时更换系统提示词与工具集，并用状态栏突出角色。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "reference-answers-s1",
+          "name": "运行安全与工具治理",
+          "trigger": "当需要构建或审查 Agent 的工具调用、不可逆操作、生成代码/UI、阶段切换和预算分配时，用它对照风险分级、隔离发布和硬阈值治理方案。",
+          "unitIds": [
+            "reference-answers-u2",
+            "reference-answers-u6",
+            "reference-answers-u7"
+          ],
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+            "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-10-HEURISTIC-02"
+          ],
+          "rationale": "这些单元面向同一批安全与运行时治理场景：工具与动作风险控制、生成物与护栏、预算与角色切换共同决定 Agent 在运行中如何被约束和发布。"
+        },
+        {
+          "skillId": "reference-answers-s2",
+          "name": "上下文检索与评估设计",
+          "trigger": "当需要设计上下文压缩与状态展示、选择检索索引结构，或搭建防作弊评估与训练数据策略时，用它权衡方案。",
+          "unitIds": [
+            "reference-answers-u3",
+            "reference-answers-u4",
+            "reference-answers-u5"
+          ],
+          "objectIds": [
+            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-3-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-3-CONCEPT-02",
+            "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-8-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-8-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元都面向记忆、检索和评估设计：上下文压缩与状态维护、RAPTOR/GraphRAG 能力边界、评估机制和训练数据隔离属于同一类系统设计决策。"
+        },
+        {
+          "skillId": "reference-answers-s3",
+          "name": "参考答案综合复习",
+          "trigger": "当读者复习本章思考题参考答案，希望按主题逐条对照书稿并展开讨论时，用它覆盖全部参考答案条目。",
+          "unitIds": [
+            "reference-answers-u1",
+            "reference-answers-u2",
+            "reference-answers-u3",
+            "reference-answers-u4",
+            "reference-answers-u5",
+            "reference-answers-u6",
+            "reference-answers-u7"
+          ],
+          "objectIds": [
+            "REFERENCE-ANSWERS-H1-1-HEURISTIC-01",
+            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+            "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-3-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-3-CONCEPT-02",
+            "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-8-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-8-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+            "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02",
+            "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
+            "REFERENCE-ANSWERS-H2-10-HEURISTIC-02"
+          ],
+          "rationale": "这些内容单元共同属于 reference-answers 这一章的参考答案，共享同一个阅读、核对和进一步讨论参考答案的使用场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 21,
+        "assigned": 21,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1972,
+        "completion_tokens": 11244,
+        "total_tokens": 13216,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9948
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 1460
+      },
+      "finishReason": "stop",
+      "reasoningChars": 26634,
+      "maxTokens": 24000
+    }
+  ],
+  "totals": {
+    "chapters": 13,
+    "units": 115,
+    "skills": 40,
+    "gatePassed": 593,
+    "unassigned": 0,
+    "unresolvedObjectIds": 0,
+    "duplicates": 0,
+    "unitsWithoutSkill": 0,
+    "usage": {
+      "proposed": 13,
+      "reused": 0,
+      "calls": 13,
+      "promptTokens": 42673,
+      "completionTokens": 167074
+    }
+  }
+}

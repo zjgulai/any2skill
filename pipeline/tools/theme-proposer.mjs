@@ -33,12 +33,17 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
 
-import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY } from './anchor-index.mjs'
 import { chatCompletion, createUsageLedger } from './llm-client.mjs'
 import { extractJsonPayload } from './model-json.mjs'
 
 export const THEME_MANIFEST_SCHEMA_VERSION = 'themes/v1'
 export const THEMES_REL_PATH = path.join('pipeline', 'knowledge', 'themes.json')
+/** 按源命名空间（卡 22）：缺省键逐字节不变；其他源加 `.<key>` 后缀。 */
+export const themesRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? THEMES_REL_PATH
+    : path.join('pipeline', 'knowledge', `themes.${sourceKey}.json`)
 
 /** 主题标识：`T` + 两位以上数字。对象标识会由它派生，故必须是纯 ASCII 片段。 */
 export const THEME_ID_PATTERN = /^T\d{2,}$/

@@ -11,9 +11,9 @@
   "gateReceipt": {
     "passed": true,
     "reasonCodes": [],
-    "bytes": 8543,
-    "markdownHash": "sha256:3dc0308f1f3138036d730063f654a0c45a1f296eafb922d48cc927729b99e787",
-    "checkedAt": "2026-10-14T07:29:31.359Z"
+    "bytes": 8892,
+    "markdownHash": "sha256:d2064ff86a953bd9b3fab728dd3f65d8c458ad3a1b23a5ea2f7b5e850a7f57be",
+    "checkedAt": "2026-10-14T12:42:03.246Z"
   },
   "inputContract": null,
   "outputContract": null,
@@ -45,7 +45,9 @@
     "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
     "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02"
   ],
-  "crossChapterObjects": [],
+  "crossChapterObjects": [
+    "AP-SYNTH-T02-07"
+  ],
   "sourceRefs": [
     {
       "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
@@ -137,6 +139,13 @@
       "title": "将代码拆分到库 crate",
       "lineStart": 376,
       "lineEnd": 448
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md",
+      "anchor": "ch09-01-unrecoverable-errors-with-panic#h3-1",
+      "title": "使用 `panic!` 的 backtrace",
+      "lineStart": 39,
+      "lineEnd": 133
     }
   ],
   "codeSource": {
@@ -146,7 +155,7 @@
   "evidenceGrade": "E2-derived",
   "freshness": {
     "state": "fresh",
-    "asOf": "2026-10-14T07:29:31.359Z"
+    "asOf": "2026-10-14T12:42:03.246Z"
   },
   "gaps": [
     {
@@ -161,9 +170,9 @@
       "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
       "section": "pitfalls",
       "heading": "## 常见陷阱",
-      "detail": "条目数 3 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "detail": "条目数 4 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
       "advisory": 6,
-      "actual": 3
+      "actual": 4
     },
     {
       "code": "SECTION_SOURCE_ABSENT",
@@ -242,14 +251,14 @@
     "whenToUse": 12,
     "principles": 7,
     "patterns": 6,
-    "pitfalls": 3,
+    "pitfalls": 4,
     "code": 0,
-    "reading": 13
+    "reading": 14
   },
   "riskFlags": [
     {
       "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
-      "detail": "anti-pattern 覆盖不足：常见陷阱段 3 条，建议值 6 条。",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 4 条，建议值 6 条。",
       "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
     }
   ],
@@ -270,7 +279,8 @@
     "sourceFile": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
     "anchorIndexHash": "sha256:806f98dfacede0237d4e7d72f06e299576cf2d71c5979fc22874d95f327395d7",
     "anchorIndexHashes": {
-      "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md": "sha256:806f98dfacede0237d4e7d72f06e299576cf2d71c5979fc22874d95f327395d7"
+      "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md": "sha256:806f98dfacede0237d4e7d72f06e299576cf2d71c5979fc22874d95f327395d7",
+      "sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md": "sha256:e0def55363eb20d503aea533d0ff1e42dd1dc6098e66f3e27582780b472b05cc"
     },
     "objectsFile": "pipeline/knowledge/ch12-03-improving-error-handling-and-modularity.objects.json",
     "objectsFileSha256": "sha256:b0db4c33a40ab40b0314406521fdbd980151752ad4a939da5e8d10adba1d1b35",
@@ -278,14 +288,23 @@
     "objectsInCluster": 21,
     "objectsKept": 21,
     "objectsExcludedByGate": [],
-    "crossChapterTotal": 0,
-    "crossChapterInCluster": 0,
-    "crossChapterKept": 0,
-    "crossChapterExcludedByGate": [],
-    "antipatternVerdictsFile": null,
-    "antipatternVerdictsRunId": null,
-    "antipatternVerdictsIdentityMatch": null,
-    "antipatternObjectsRunId": null,
+    "crossChapterTotal": 95,
+    "crossChapterInCluster": 3,
+    "crossChapterKept": 1,
+    "crossChapterExcludedByGate": [
+      {
+        "id": "AP-SYNTH-T02-01",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      },
+      {
+        "id": "AP-SYNTH-T02-05",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      }
+    ],
+    "antipatternVerdictsFile": "pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-fd491f2468f0",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-fd491f2468f0",
     "gateReceiptFile": "pipeline/registry/run-2dfa8eaaa9e4.receipt.json",
     "gateReceiptRunId": "run-2dfa8eaaa9e4",
     "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",

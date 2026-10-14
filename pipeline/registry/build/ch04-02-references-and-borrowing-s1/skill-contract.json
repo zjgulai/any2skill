@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "ch04-02-references-and-borrowing-s1",
+  "name": "ch04-02-references-and-borrowing-s1",
+  "description": "引用与借用规则：默认情况下引用是不可变的，无法通过引用修改其指向的内容；适用于当代码通过不可变引用尝试修改其指向的内容时、当某一数据的可变引用（如 r1）在其最后使用之前，尝试创建另一个指向相同数据的可变引用（如 r2）时、当你拥有一些数据的引用。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 4377,
+    "markdownHash": "sha256:1751d0e10f623096879178cbc801b3e4dd3c289f2ed7be8155fb35bf5d588ee8",
+    "checkedAt": "2026-10-14T12:42:03.320Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+    "CH04-02-REFERENCES-AND-BORROWING-H2-1-ENGINEERINGRULE-02",
+    "CH04-02-REFERENCES-AND-BORROWING-H3-1-CONCEPT-01",
+    "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+    "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+    "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+    "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01",
+    "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T01-02",
+    "AP-SYNTH-T01-03",
+    "AP-SYNTH-T01-04"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+      "anchor": "ch04-02-references-and-borrowing#h2-1",
+      "title": "引用与借用",
+      "lineStart": 1,
+      "lineEnd": 58
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+      "anchor": "ch04-02-references-and-borrowing#h3-1",
+      "title": "可变引用",
+      "lineStart": 59,
+      "lineEnd": 128
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+      "anchor": "ch04-02-references-and-borrowing#h3-2",
+      "title": "悬垂引用（Dangling References）",
+      "lineStart": 129,
+      "lineEnd": 170
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+      "anchor": "ch04-02-references-and-borrowing#h3-3",
+      "title": "引用的规则",
+      "lineStart": 171,
+      "lineEnd": 181
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h3-2",
+      "title": "内部可变性：不可变值的可变借用",
+      "lineStart": 32,
+      "lineEnd": 58
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h3-1",
+      "title": "通过 `RefCell<T>` 在运行时检查借用规则",
+      "lineStart": 7,
+      "lineEnd": 31
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+      "anchor": "ch10-03-lifetime-syntax#h3-5",
+      "title": "深入理解生命周期",
+      "lineStart": 248,
+      "lineEnd": 298
+    }
+  ],
+  "codeSource": {
+    "available": false,
+    "note": "> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。"
+  },
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-14T12:42:03.320Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 3 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 3
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 3
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 5,
+    "principles": 5,
+    "patterns": 3,
+    "pitfalls": 3,
+    "code": 0,
+    "reading": 7
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 3 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_SOURCE_ABSENT",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED"
+  ],
+  "provenance": {
+    "sourceFile": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+    "anchorIndexHash": "sha256:113caf47d6970586d7725c60ea25e7570dbc306619071f0dae10da6cf308f05f",
+    "anchorIndexHashes": {
+      "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md": "sha256:113caf47d6970586d7725c60ea25e7570dbc306619071f0dae10da6cf308f05f",
+      "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md": "sha256:2e9cade0054ac54074f8c68f248e086ff10ee8c04ac38535473f3152b3319916",
+      "sources/rust-book-cn/book/ch15-05-interior-mutability.md": "sha256:f5b5e67d5efa0ce6944cae99898883db9c07ef1e042339eea2588f427fe708da"
+    },
+    "objectsFile": "pipeline/knowledge/ch04-02-references-and-borrowing.objects.json",
+    "objectsFileSha256": "sha256:a4a784b20ee9befd388ebe1f5795facd351b683f8e100e8f7672ffcfcbb16712",
+    "objectsTotal": 8,
+    "objectsInCluster": 8,
+    "objectsKept": 8,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 95,
+    "crossChapterInCluster": 3,
+    "crossChapterKept": 3,
+    "crossChapterExcludedByGate": [],
+    "antipatternVerdictsFile": "pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-fd491f2468f0",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-fd491f2468f0",
+    "gateReceiptFile": "pipeline/registry/run-8dddd9797015.receipt.json",
+    "gateReceiptRunId": "run-8dddd9797015",
+    "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "clusterSkillId": "ch04-02-references-and-borrowing-s1",
+    "clusterUnits": [
+      "ch04-02-references-and-borrowing-u1",
+      "ch04-02-references-and-borrowing-u2",
+      "ch04-02-references-and-borrowing-u3"
+    ],
+    "clusterChapterRefs": [
+      "ch04-02-references-and-borrowing"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json"
+  }
+}

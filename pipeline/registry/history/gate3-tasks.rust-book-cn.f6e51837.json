@@ -1,0 +1,432 @@
+{
+  "schemaVersion": "gate3-tasks/v1",
+  "createdAt": "2026-10-14T07:29:45.961Z",
+  "promptFingerprint": "prompt-3fb81afa251c",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "skills": [
+    {
+      "slug": "ch12-03-improving-error-handling-and-modularity-s1",
+      "name": "ch12-03-improving-error-handling-and-modularity-s1",
+      "description": "模块化CLI重构：最好能将配置变量组织进一个结构，使它们的目的更明确；适用于随着 main 函数增长，需要引入更多变量到作用域时、在二进制项目完成关注分离过程后，界定 main 函数职责范围时、当二进制项目的 main 函数开始变得庞大，需要进行关注分离时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:3dc0308f1f3138036d730063f654a0c45a1f296eafb922d48cc927729b99e787",
+      "inputHash": "sha256:ae26488a5ae7f45677217a114fb46d1511fd7de262b352149d6abd805b4719fd",
+      "tasks": [
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t1",
+          "prompt": "请修改我的 Rust 程序，将 main 函数中解析命令行参数的逻辑提取到一个独立的 parse_config 函数中，并创建一个包含 query 和 filename 两个 String 字段的 Config 结构体，让 main 使用该结构体接收参数。",
+          "fixtures": {
+            "main.rs": "use std::env;\nuse std::fs;\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let query = &args[1];\n    let filename = &args[2];\n\n    let contents = fs::read_to_string(filename)\n        .expect(\"Something went wrong reading the file\");\n\n    println!(\"{}\", contents);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct Config"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "fn parse_config"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "let config = parse_config"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "config.query"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "config.filename"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "let query = &args[1]",
+                "let filename = &args[2]"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t2",
+          "prompt": "请修改我的 Rust 程序，将 Config::new 改为返回 Result 类型，在参数不足时返回错误而不是 panic!，并在 main 中处理这个错误，打印错误信息并退出程序。",
+          "fixtures": {
+            "main.rs": "use std::env;\n\nstruct Config {\n    query: String,\n    filename: String,\n}\n\nimpl Config {\n    fn new(args: &[String]) -> Config {\n        if args.len() < 3 {\n            panic!(\"not enough arguments\");\n        }\n        let query = args[1].clone();\n        let filename = args[2].clone();\n        Config { query, filename }\n    }\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = Config::new(&args);\n    println!(\"Searching for {}\", config.query);\n    println!(\"In file {}\", config.filename);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "panic!("
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "fn new",
+                "Result<Config"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "Err(\"not enough arguments\")"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "unwrap_or_else"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "process::exit"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t3",
+          "prompt": "请修改我的 Rust 程序，提取一个名为 run 的函数来存放目前 main 函数中不属于设置配置或处理错误的所有逻辑，run 应返回 Result<(), Box<dyn Error>>，并让 main 在调用 run 出错时退出程序。",
+          "fixtures": {
+            "main.rs": "use std::env;\nuse std::fs;\n\nstruct Config {\n    query: String,\n    filename: String,\n}\n\nimpl Config {\n    fn new(args: &[String]) -> Config {\n        if args.len() < 3 {\n            panic!(\"not enough arguments\");\n        }\n        let query = args[1].clone();\n        let filename = args[2].clone();\n        Config { query, filename }\n    }\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = Config::new(&args);\n\n    let contents = fs::read_to_string(&config.filename)\n        .expect(\"Something went wrong reading the file\");\n\n    for line in contents.lines() {\n        if line.contains(&config.query) {\n            println!(\"{}\", line);\n        }\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "fn run"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "Box<dyn Error>"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "if let Err(e) = run(config)"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "process::exit(1)"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t4",
+          "prompt": "请将我的 Rust 项目拆分为库和二进制，把配置结构体和 run 函数移入 lib.rs，使 main.rs 只负责参数解析、配置和调用 run，并处理错误。",
+          "fixtures": {
+            "Cargo.toml": "[package]\nname = \"minigrep\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\n",
+            "src/main.rs": "use std::env;\nuse std::fs;\nuse std::process;\nuse std::error::Error;\n\nstruct Config {\n    query: String,\n    filename: String,\n}\n\nimpl Config {\n    fn new(args: &[String]) -> Result<Config, &'static str> {\n        if args.len() < 3 {\n            return Err(\"not enough arguments\");\n        }\n        let query = args[1].clone();\n        let filename = args[2].clone();\n        Ok(Config { query, filename })\n    }\n}\n\nfn run(config: Config) -> Result<(), Box<dyn Error>> {\n    let contents = fs::read_to_string(&config.filename)?;\n    for line in contents.lines() {\n        if line.contains(&config.query) {\n            println!(\"{}\", line);\n        }\n    }\n    Ok(())\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = Config::new(&args).unwrap_or_else(|err| {\n        eprintln!(\"Problem parsing arguments: {}\", err);\n        process::exit(1);\n    });\n    if let Err(e) = run(config) {\n        eprintln!(\"Application error: {}\", e);\n        process::exit(1);\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "pub struct Config"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "pub fn run"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "pub fn new"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "minigrep::Config"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "struct Config",
+                "fn run"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t5",
+          "prompt": "请修改我的 Rust 程序，在访问命令行参数索引 1 和 2 之前添加长度检查，如果参数数量不够，给出明确的错误信息而不是默认的越界错误。",
+          "fixtures": {
+            "main.rs": "use std::env;\nuse std::fs;\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let query = &args[1];\n    let filename = &args[2];\n\n    let contents = fs::read_to_string(filename)\n        .expect(\"Something went wrong reading the file\");\n\n    println!(\"{}\", contents);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "args.len() < 3"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "not enough arguments"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t6",
+          "prompt": "请修复我的 Rust 程序中的所有权问题，parse_config 不应返回借用数据的 Config，而是使用 clone 将参数值复制到 Config 中，使其拥有自己的 String 数据。",
+          "fixtures": {
+            "main.rs": "use std::env;\n\nstruct Config {\n    query: &str,\n    filename: &str,\n}\n\nfn parse_config(args: &[String]) -> Config {\n    let query = &args[1];\n    let filename = &args[2];\n    Config { query, filename }\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = parse_config(&args);\n    println!(\"{} {}\", config.query, config.filename);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "query: String",
+                "filename: String"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                ".clone()"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "query: &str",
+                "filename: &str"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "slug": "ch17-03-oo-design-patterns-s1",
+      "name": "ch17-03-oo-design-patterns-s1",
+      "description": "Rust 状态模式实现与权衡：Post 的 `state` 字段是私有的，因而无法创建任何其他状态的 `Post` 实例；适用于外部代码试图创建不同状态的 `Post` 实例时、创建新的 `Post` 实例时、博文只有草案状态，且业务要求草案内容为空时。",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:0b3e4d2afc4fcaeccb69ea27f33c128b5cd27b6d39a2c6131c2c0096aa4a34fe",
+      "inputHash": "sha256:205f9e53a9a0dd1e7b9d63884a210803939520f35fd877c264fbe8b9afa27455",
+      "tasks": [
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t1",
+          "prompt": "请用 Rust 在 src/lib.rs 中实现一个发布博文工作流的状态模式。定义 Post 结构体，包含私有 state 字段（Option<Box<dyn State>>）和 content 字段；定义 State trait 及 Draft、PendingReview、Published 三个状态；新建 Post 时状态必须是 Draft；Draft 的 content 方法必须返回空字符串。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "struct Post",
+                "state: Option<Box<dyn State>>",
+                "trait State",
+                "struct Draft",
+                "struct PendingReview",
+                "struct Published",
+                "fn content<'a>(&self,",
+                "-> &'a str",
+                "\"\""
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t2",
+          "prompt": "请写一个 Rust 代码文件 typed.rs，用类型状态模式实现博文发布流程：用不同的类型表示 DraftPost、PendingReviewPost 和发布的 Post。DraftPost 必须通过 request_review 消费自己并返回 PendingReviewPost；PendingReviewPost 必须通过 approve 消费自己并返回发布的 Post；发布的 Post 提供 content 方法。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "typed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "typed.rs",
+              "patterns": [
+                "struct DraftPost",
+                "struct PendingReviewPost",
+                "impl DraftPost",
+                "fn request_review(self) -> PendingReviewPost",
+                "impl PendingReviewPost",
+                "fn approve(self) -> Post",
+                "impl Post",
+                "fn content(&self) -> &str"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t3",
+          "prompt": "请写一份 tradeoffs.md，总结在 Rust 中实现状态模式的两种做法：使用 trait 对象和 Option<Box<dyn State>> 的传统状态对象模式，以及把状态编码进不同类型并在转换时消费旧状态的模式。说明各自的优缺点，并重点解释类型状态模式如何让无效状态在编译期被发现。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "tradeoffs.md"
+            },
+            {
+              "type": "contains",
+              "path": "tradeoffs.md",
+              "patterns": [
+                "状态模式",
+                "编译期",
+                "类型系统",
+                "trait 对象",
+                "Option<Box<dyn State>>",
+                "状态转移",
+                "无效状态"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t4",
+          "prompt": "我在 src/lib.rs 中写了一个状态模式，但 state 字段类型是 Box<dyn State>，在 request_review 中直接移动了 state 导致编译错误。请修改 src/lib.rs，将 state 改为 Option<Box<dyn State>>，并在状态转移方法中调用 take 取出旧状态后设置新状态。保留原有状态结构和 trait。",
+          "fixtures": {
+            "src/lib.rs": "pub struct Post {\n    state: Box<dyn State>,\n    content: String,\n}\n\nimpl Post {\n    pub fn new() -> Post {\n        Post {\n            state: Box::new(Draft {}),\n            content: String::new(),\n        }\n    }\n\n    pub fn request_review(&mut self) {\n        self.state = self.state.request_review();\n    }\n\n    pub fn approve(&mut self) {\n        self.state = self.state.approve();\n    }\n}\n\ntrait State {\n    fn request_review(self: Box<Self>) -> Box<dyn State>;\n    fn approve(self: Box<Self>) -> Box<dyn State>;\n}\n\nstruct Draft {}\n\nimpl State for Draft {\n    fn request_review(self: Box<Self>) -> Box<dyn State> {\n        Box::new(PendingReview {})\n    }\n    fn approve(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n}\n\nstruct PendingReview {}\n\nimpl State for PendingReview {\n    fn request_review(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n    fn approve(self: Box<Self>) -> Box<dyn State> {\n        Box::new(Published {})\n    }\n}\n\nstruct Published {}\n\nimpl State for Published {\n    fn request_review(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n    fn approve(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "state: Option<Box<dyn State>>",
+                "self.state.take()"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t5",
+          "prompt": "请在 add_text.rs 中实现一个 Post 结构体，包含私有 state 字段（Option<Box<dyn State>>）和 content 字段。实现 pub fn add_text(&mut self, text: &str)，将 text 追加到 content 字段；该方法行为不依赖状态。同时提供 State trait 和 Draft 状态，保证代码可编译。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "add_text.rs"
+            },
+            {
+              "type": "contains",
+              "path": "add_text.rs",
+              "patterns": [
+                "struct Post",
+                "state: Option<Box<dyn State>>",
+                "pub fn add_text(&mut self, text: &str)",
+                "self.content.push_str(text)",
+                "trait State",
+                "struct Draft"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t6",
+          "prompt": "请在 status.rs 中实现一个 Post 结构体，包含私有 state 字段（Option<Box<dyn State>>）和 content 字段。定义 State trait，它有一个 status(&self) -> &str 方法。实现 Post::status 方法，返回当前状态名称；该方法必须在 &self 方法中使用 as_ref 获取 state 的引用，而不能移动 state。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "status.rs"
+            },
+            {
+              "type": "contains",
+              "path": "status.rs",
+              "patterns": [
+                "state: Option<Box<dyn State>>",
+                "fn status(&self) -> &str",
+                "self.state.as_ref()"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    }
+  ],
+  "usage": {
+    "promptTokens": 4977,
+    "completionTokens": 27082
+  }
+}

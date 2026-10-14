@@ -99,6 +99,9 @@ Config 是一个包含 query 和 filename 两个 String 字段的结构体，par
 - **使用 `panic!` 处理使用问题**
   - 后果：会向用户暴露不希望的额外信息，并且 `panic!` 更趋向于程序问题而非使用问题。
   - 纠正：返回 `Result` 以表明成功或错误。
+- **直接索引集合元素而不先检查长度或边界。**
+  - 后果：索引无效时触发 panic，程序崩溃。
+  - 纠正：在访问索引前确认索引在集合范围内，避免直接请求越界元素。
 
 ## 配套代码
 
@@ -119,3 +122,4 @@ Config 是一个包含 query 和 filename 两个 String 字段的结构体，par
 - `sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md` · `Config::new` 调用并处理错误（第 238–273 行）
 - `sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md` · 从 `run` 函数中返回错误（第 306–350 行）
 - `sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md` · 处理 `main` 中 `run` 返回的错误（第 351–375 行）
+- `sources/rust-book-cn/book/ch09-01-unrecoverable-errors-with-panic.md` · 使用 `panic!` 的 backtrace（第 39–133 行）
