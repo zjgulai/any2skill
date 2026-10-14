@@ -1,0 +1,799 @@
+{
+  "schemaVersion": "clusters/v1",
+  "createdAt": "2026-10-14T04:49:40.096Z",
+  "promptFingerprint": "prompt-a2e5c6043c57",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "input": {
+    "objectsFiles": [
+      {
+        "fileKey": "appendix-02-operators",
+        "path": "pipeline/knowledge/appendix-02-operators.objects.json",
+        "sha256": "sha256:0fd382a44ea22a3fa13ce1ded04efb417bfcc8a575655dcfc9e1fbdc7f0001db",
+        "gateReceiptFile": "pipeline/registry/run-bc233c910463.receipt.json",
+        "gateReceiptRunId": "run-bc233c910463",
+        "objectsTotal": 3,
+        "gatePassed": 0,
+        "gateExcluded": [
+          "APPENDIX-02-OPERATORS-H3-1-CONCEPT-01",
+          "APPENDIX-02-OPERATORS-H3-2-CONCEPT-01",
+          "APPENDIX-02-OPERATORS-H3-2-CONCEPT-02"
+        ]
+      },
+      {
+        "fileKey": "ch02-00-guessing-game-tutorial",
+        "path": "pipeline/knowledge/ch02-00-guessing-game-tutorial.objects.json",
+        "sha256": "sha256:ce71c9f075711b414a5bb4e2263231f0f2387cb6397f3427531553e5edb93480",
+        "gateReceiptFile": "pipeline/registry/run-94b99747e7b5.receipt.json",
+        "gateReceiptRunId": "run-94b99747e7b5",
+        "objectsTotal": 29,
+        "gatePassed": 3,
+        "gateExcluded": [
+          "CH02-00-GUESSING-GAME-TUTORIAL-H2-1-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H2-1-HEURISTIC-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H2-2-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-1-ENGINEERINGRULE-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-1-CONCEPT-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-2-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-2-ENGINEERINGRULE-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-3-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-3-CONCEPT-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-4-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-5-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H2-3-ENGINEERINGRULE-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-6-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-6-CONCEPT-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H4-1-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H4-1-CONCEPT-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H4-2-ENGINEERINGRULE-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H4-2-ENGINEERINGRULE-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-7-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-7-CONCEPT-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H2-4-ENGINEERINGRULE-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H2-5-CONCEPT-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H2-5-ANTIPATTERN-02",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-8-ENGINEERINGRULE-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-9-ENGINEERINGRULE-01",
+          "CH02-00-GUESSING-GAME-TUTORIAL-H3-9-CONCEPT-02"
+        ]
+      },
+      {
+        "fileKey": "ch04-01-what-is-ownership",
+        "path": "pipeline/knowledge/ch04-01-what-is-ownership.objects.json",
+        "sha256": "sha256:149ccbd1f898e2c878ad38bce45c75643b15283b28060aca823f6ca975693bd2",
+        "gateReceiptFile": "pipeline/registry/run-ebdaae71b302.receipt.json",
+        "gateReceiptRunId": "run-ebdaae71b302",
+        "objectsTotal": 17,
+        "gatePassed": 0,
+        "gateExcluded": [
+          "CH04-01-WHAT-IS-OWNERSHIP-H2-1-CONCEPT-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H2-1-ENGINEERINGRULE-02",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-1-ENGINEERINGRULE-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-2-CONCEPT-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-2-ENGINEERINGRULE-02",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-3-CONCEPT-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-3-ENGINEERINGRULE-02",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-02",
+          "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-02",
+          "CH04-01-WHAT-IS-OWNERSHIP-H4-2-CONCEPT-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H4-3-CONCEPT-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H4-3-ENGINEERINGRULE-02",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-5-CONCEPT-01",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-5-ENGINEERINGRULE-02",
+          "CH04-01-WHAT-IS-OWNERSHIP-H3-6-CONCEPT-01"
+        ]
+      },
+      {
+        "fileKey": "ch09-03-to-panic-or-not-to-panic",
+        "path": "pipeline/knowledge/ch09-03-to-panic-or-not-to-panic.objects.json",
+        "sha256": "sha256:27fc59c7045ce1d9768db98e352054bb7dc235944f5e02b78dd89e08d304b36b",
+        "gateReceiptFile": "pipeline/registry/run-77a9b295aca6.receipt.json",
+        "gateReceiptRunId": "run-77a9b295aca6",
+        "objectsTotal": 9,
+        "gatePassed": 9,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch12-03-improving-error-handling-and-modularity",
+        "path": "pipeline/knowledge/ch12-03-improving-error-handling-and-modularity.objects.json",
+        "sha256": "sha256:978adc4a39886c5c7cddab4f27a5d84ca3d899f6de92504cad5d323a18d7a67b",
+        "gateReceiptFile": "pipeline/registry/run-2dfa8eaaa9e4.receipt.json",
+        "gateReceiptRunId": "run-2dfa8eaaa9e4",
+        "objectsTotal": 21,
+        "gatePassed": 21,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch15-04-rc",
+        "path": "pipeline/knowledge/ch15-04-rc.objects.json",
+        "sha256": "sha256:ab474101a5bb2eade16f704dd156850a6bcd16091bea7cbe0c6389f03f42e32d",
+        "gateReceiptFile": "pipeline/registry/run-aa3bfa1287a1.receipt.json",
+        "gateReceiptRunId": "run-aa3bfa1287a1",
+        "objectsTotal": 6,
+        "gatePassed": 0,
+        "gateExcluded": [
+          "CH15-04-RC-H2-1-CONCEPT-01",
+          "CH15-04-RC-H2-1-ENGINEERINGRULE-02",
+          "CH15-04-RC-H3-1-CONCEPT-01",
+          "CH15-04-RC-H3-1-HEURISTIC-02",
+          "CH15-04-RC-H3-2-CONCEPT-01",
+          "CH15-04-RC-H3-2-ENGINEERINGRULE-02"
+        ]
+      },
+      {
+        "fileKey": "ch17-03-oo-design-patterns",
+        "path": "pipeline/knowledge/ch17-03-oo-design-patterns.objects.json",
+        "sha256": "sha256:d18fa5697645a3796429d38259dfacb24d8edad40a550bc68344b1d162b0112b",
+        "gateReceiptFile": "pipeline/registry/run-40c3700eb34c.receipt.json",
+        "gateReceiptRunId": "run-40c3700eb34c",
+        "objectsTotal": 15,
+        "gatePassed": 15,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch18-02-refutability",
+        "path": "pipeline/knowledge/ch18-02-refutability.objects.json",
+        "sha256": "sha256:b776b06c9d71f15acc64bdcca261e3c886366f1ecd7c23784aa6dde147ed349c",
+        "gateReceiptFile": "pipeline/registry/run-93a4997a8baf.receipt.json",
+        "gateReceiptRunId": "run-93a4997a8baf",
+        "objectsTotal": 2,
+        "gatePassed": 2,
+        "gateExcluded": []
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "fileKey": "appendix-02-operators",
+      "inputHash": "sha256:a0c9ce15ab60783197aea7ad3cde83df18a648b59dc185e2987cd70c162bf7ea",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:45:08.977Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [],
+      "skills": [],
+      "coverage": {
+        "gatePassed": 0,
+        "assigned": 0,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 585,
+        "completion_tokens": 164,
+        "total_tokens": 749,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 154
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 73
+      },
+      "finishReason": "stop",
+      "reasoningChars": 304,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch02-00-guessing-game-tutorial",
+      "inputHash": "sha256:2612ab01b7badb66495f1d321a68698c3fe6167563f5358c4f87c157b46b297a",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:45:11.933Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch02-00-guessing-game-tutorial-u1",
+          "name": "游戏程序定义",
+          "objectIds": [
+            "CH02-00-GUESSING-GAME-TUTORIAL-H1-1-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch02-00-guessing-game-tutorial#h1-1"
+          ],
+          "rationale": "该对象描述猜数字游戏的完整程序行为、输入输出和胜利条件，构成理解本章教程目标的问题空间；它与其他实现规则不属于同一判断依据，因此单独成单元。"
+        },
+        {
+          "unitId": "ch02-00-guessing-game-tutorial-u2",
+          "name": "Rust实现规则",
+          "objectIds": [
+            "CH02-00-GUESSING-GAME-TUTORIAL-H2-3-ENGINEERINGRULE-01",
+            "CH02-00-GUESSING-GAME-TUTORIAL-H2-4-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch02-00-guessing-game-tutorial#h2-3",
+            "ch02-00-guessing-game-tutorial#h2-4"
+          ],
+          "rationale": "这两个对象都是让 Rust 版猜数字游戏跑通时遇到的具体语言或库规则：随机数功能来自 rand crate，输入 String 必须先转为数字类型才能与秘密数字比较；它们共同回答实现层面的问题空间。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch02-00-guessing-game-tutorial-s1",
+          "name": "猜数字游戏实现",
+          "trigger": "当读者要编写、审查或解释 Rust 版猜数字游戏教程的完整流程时使用：先理解程序目标，再处理随机数与输入比较规则。",
+          "unitIds": [
+            "ch02-00-guessing-game-tutorial-u1",
+            "ch02-00-guessing-game-tutorial-u2"
+          ],
+          "objectIds": [
+            "CH02-00-GUESSING-GAME-TUTORIAL-H1-1-CONCEPT-01",
+            "CH02-00-GUESSING-GAME-TUTORIAL-H2-3-ENGINEERINGRULE-01",
+            "CH02-00-GUESSING-GAME-TUTORIAL-H2-4-ENGINEERINGRULE-01"
+          ],
+          "rationale": "这两个单元覆盖从程序目标到关键实现规则的内容，面向同一批使用场景：理解并实现该章所教的猜数字游戏。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 3,
+        "assigned": 3,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 832,
+        "completion_tokens": 1750,
+        "total_tokens": 2582,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1407
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 320
+      },
+      "finishReason": "stop",
+      "reasoningChars": 2662,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch04-01-what-is-ownership",
+      "inputHash": "sha256:58042b37a1ace4097a4df63a97a7fd16765e13f5d854fc53ff014bb0a1e56758",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:45:35.187Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [],
+      "skills": [],
+      "coverage": {
+        "gatePassed": 0,
+        "assigned": 0,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 585,
+        "completion_tokens": 247,
+        "total_tokens": 832,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 237
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 73
+      },
+      "finishReason": "stop",
+      "reasoningChars": 477,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch09-03-to-panic-or-not-to-panic",
+      "inputHash": "sha256:a7e73dbeaa984cff64761517e365f02f96030dd1826219be446923ef56889196",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:45:38.874Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch09-03-to-panic-or-not-to-panic-u1",
+          "name": "Result优先策略",
+          "objectIds": [
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-HEURISTIC-01",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-ANTIPATTERN-02",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-HEURISTIC-01"
+          ],
+          "anchors": [
+            "ch09-03-to-panic-or-not-to-panic#h2-1",
+            "ch09-03-to-panic-or-not-to-panic#h3-3"
+          ],
+          "rationale": "这些对象共同回答‘定义可能失败的函数时，默认应返回 Result 还是直接 panic!’这一核心问题：默认返回 Result，避免对可恢复错误滥用 panic!，并让调用者决定如何处理预期失败。"
+        },
+        {
+          "unitId": "ch09-03-to-panic-or-not-to-panic-u2",
+          "name": "unwrap/expect使用边界",
+          "objectIds": [
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-01",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-02",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-01",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch09-03-to-panic-or-not-to-panic#h3-1",
+            "ch09-03-to-panic-or-not-to-panic#h3-2"
+          ],
+          "rationale": "这些对象都围绕‘什么情况下可以使用 unwrap/expect，什么情况下不能’这一边界：测试、示例和原型中可接受；人工检查保证不会 Err 时可接受；但当值来自用户、存在失败可能时必须改用更健壮的 Result 处理。"
+        },
+        {
+          "unitId": "ch09-03-to-panic-or-not-to-panic-u3",
+          "name": "验证与新类型",
+          "objectIds": [
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-ENGINEERINGRULE-02",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-4-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch09-03-to-panic-or-not-to-panic#h3-3",
+            "ch09-03-to-panic-or-not-to-panic#h3-4"
+          ],
+          "rationale": "这两个对象都回答‘如何保证代码操作的值始终有效’这一同类问题：要么在操作前验证、无效时 panic!；要么通过新类型在构造时封装验证，使无效状态无法传播。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch09-03-to-panic-or-not-to-panic-s1",
+          "name": "Rust错误处理决策",
+          "trigger": "当编写或审查 Rust 代码，需要判断可能失败的操作应该返回 Result、何时允许 unwrap/expect、何时用 panic!，以及如何通过类型封装来避免无效状态时，应阅读本候选。",
+          "unitIds": [
+            "ch09-03-to-panic-or-not-to-panic-u1",
+            "ch09-03-to-panic-or-not-to-panic-u2",
+            "ch09-03-to-panic-or-not-to-panic-u3"
+          ],
+          "objectIds": [
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-HEURISTIC-01",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-ANTIPATTERN-02",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-HEURISTIC-01",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-01",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-02",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-01",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-02",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-ENGINEERINGRULE-02",
+            "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-4-ENGINEERINGRULE-01"
+          ],
+          "rationale": "这三个单元面向同一批使用场景：开发者面对可能失败或可能产生无效值的代码时，需要依据可恢复性、调用上下文和值来源，在 Result、unwrap/expect、panic! 及新类型验证之间做出选择，因此共同构成一个完整的错误处理决策框架。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 9,
+        "assigned": 9,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1318,
+        "completion_tokens": 4379,
+        "total_tokens": 5697,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3691
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 806
+      },
+      "finishReason": "stop",
+      "reasoningChars": 6851,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch12-03-improving-error-handling-and-modularity",
+      "inputHash": "sha256:015e70d8d1ec3ac89a4a6da3764e41838fe989e967c8f8e918f003df16d02596",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:46:29.618Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch12-03-improving-error-handling-and-modularity-u1",
+          "name": "main职责与关注分离",
+          "objectIds": [
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ANTIPATTERN-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch12-03-improving-error-handling-and-modularity#h2-1",
+            "ch12-03-improving-error-handling-and-modularity#h3-1"
+          ],
+          "rationale": "这些对象都在回答二进制项目中 main 函数的职责边界：反模式指出 main 承担过多任务，规则说明 main 应保留哪些责任，并给出拆分 main.rs 与 lib.rs 的指导。"
+        },
+        {
+          "unitId": "ch12-03-improving-error-handling-and-modularity-u2",
+          "name": "参数解析与Config构造",
+          "objectIds": [
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ENGINEERINGRULE-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-HEURISTIC-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-HEURISTIC-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-4-HEURISTIC-01"
+          ],
+          "anchors": [
+            "ch12-03-improving-error-handling-and-modularity#h2-1",
+            "ch12-03-improving-error-handling-and-modularity#h3-2",
+            "ch12-03-improving-error-handling-and-modularity#h3-3",
+            "ch12-03-improving-error-handling-and-modularity#h3-4"
+          ],
+          "rationale": "这些对象共同回答如何把命令行参数转换成类型化的 Config：组织配置变量到结构、提取参数解析器、构造 Config、接受早期 clone，以及用 new 关联函数创建实例。"
+        },
+        {
+          "unitId": "ch12-03-improving-error-handling-and-modularity-u3",
+          "name": "run提取与库crate化",
+          "objectIds": [
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02"
+          ],
+          "anchors": [
+            "ch12-03-improving-error-handling-and-modularity#h3-6",
+            "ch12-03-improving-error-handling-and-modularity#h3-7"
+          ],
+          "rationale": "这些对象回答在完成参数和配置提取后业务逻辑应放在哪里：提取 run 函数承载不属于配置与错误处理的逻辑，并引入库 crate 作为可测试逻辑的后续工作地点。"
+        },
+        {
+          "unitId": "ch12-03-improving-error-handling-and-modularity-u4",
+          "name": "错误暴露与参数校验",
+          "objectIds": [
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-5-ANTIPATTERN-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "ch12-03-improving-error-handling-and-modularity#h3-5",
+            "ch12-03-improving-error-handling-and-modularity#h4-1"
+          ],
+          "rationale": "这些对象共同处理用户可见错误与参数不足问题：避免向终端用户暴露 index out of bounds，访问 slice 前应检查长度，并避免用 panic! 处理使用问题。"
+        },
+        {
+          "unitId": "ch12-03-improving-error-handling-and-modularity-u5",
+          "name": "Result传播与退出处理",
+          "objectIds": [
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-2-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-HEURISTIC-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-5-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch12-03-improving-error-handling-and-modularity#h4-2",
+            "ch12-03-improving-error-handling-and-modularity#h4-3",
+            "ch12-03-improving-error-handling-and-modularity#h4-4",
+            "ch12-03-improving-error-handling-and-modularity#h4-5"
+          ],
+          "rationale": "这些对象回答如何用 Result 报告和传播可恢复错误并在 main 层退出：Config::new 返回 Result，使用 unwrap_or_else、process::exit、Box<dyn Error>、? 运算符，以及用 if let 检查 run 返回错误。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch12-03-improving-error-handling-and-modularity-s1",
+          "name": "模块化CLI重构",
+          "trigger": "当需要把臃肿的二进制 CLI 程序拆分为职责清晰的模块，并使业务逻辑可测试时，应使用这些单元。",
+          "unitIds": [
+            "ch12-03-improving-error-handling-and-modularity-u1",
+            "ch12-03-improving-error-handling-and-modularity-u2",
+            "ch12-03-improving-error-handling-and-modularity-u3"
+          ],
+          "objectIds": [
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ANTIPATTERN-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ENGINEERINGRULE-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-HEURISTIC-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-HEURISTIC-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-4-HEURISTIC-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02"
+          ],
+          "rationale": "这些单元覆盖从 main 职责边界、参数解析与 Config 构造，到提取 run 并库 crate 化的连续重构流程，面向同一批整理二进制 crate 结构的任务。"
+        },
+        {
+          "skillId": "ch12-03-improving-error-handling-and-modularity-s2",
+          "name": "CLI错误处理设计",
+          "trigger": "当需要为用户给出明确错误信息、用 Result 传播错误并统一进程退出码时，应使用这些单元。",
+          "unitIds": [
+            "ch12-03-improving-error-handling-and-modularity-u3",
+            "ch12-03-improving-error-handling-and-modularity-u4",
+            "ch12-03-improving-error-handling-and-modularity-u5"
+          ],
+          "objectIds": [
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-5-ANTIPATTERN-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ANTIPATTERN-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-2-ENGINEERINGRULE-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-CONCEPT-01",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-HEURISTIC-02",
+            "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-5-ENGINEERINGRULE-01"
+          ],
+          "rationale": "这些单元从承载业务逻辑的 run/库 crate 边界开始，进入参数校验与错误暴露，再到 Result 传播和退出处理，共同面向 CLI 程序错误处理设计的场景；unit 2 被复用是因为 run 的返回值是错误处理边界。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 21,
+        "assigned": 21,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 2567,
+        "completion_tokens": 11271,
+        "total_tokens": 13838,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9913
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 2055
+      },
+      "finishReason": "stop",
+      "reasoningChars": 22843,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch15-04-rc",
+      "inputHash": "sha256:1397f4b4ff1a4c5bd5f79a9df53a1f142a10cce292fd31ecea31d1bc6026e83f",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:48:14.395Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [],
+      "skills": [],
+      "coverage": {
+        "gatePassed": 0,
+        "assigned": 0,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 589,
+        "completion_tokens": 298,
+        "total_tokens": 887,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 288
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 77
+      },
+      "finishReason": "stop",
+      "reasoningChars": 557,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch17-03-oo-design-patterns",
+      "inputHash": "sha256:e61fd8c24b328a546ca4c3fde1b2ca3a4c76984a7515ccaedc50eb1e01e28bb7",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:48:19.099Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch17-03-oo-design-patterns-u1",
+          "name": "状态模式与初始状态",
+          "objectIds": [
+            "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch17-03-oo-design-patterns#h2-1",
+            "ch17-03-oo-design-patterns#h3-1"
+          ],
+          "rationale": "这些对象共同回答状态模式是什么，以及 Post 如何从私有 state 字段初始化为 Draft 状态。"
+        },
+        {
+          "unitId": "ch17-03-oo-design-patterns-u2",
+          "name": "内容方法与草案行为",
+          "objectIds": [
+            "CH17-03-OO-DESIGN-PATTERNS-H3-2-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-3-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch17-03-oo-design-patterns#h3-2",
+            "ch17-03-oo-design-patterns#h3-3"
+          ],
+          "rationale": "add_text 和草案 content 规则共同定义 Post 内容 API 的行为边界：一个与状态无关，一个规定草案状态下 content 必须为空。"
+        },
+        {
+          "unitId": "ch17-03-oo-design-patterns-u3",
+          "name": "状态转移所有权处理",
+          "objectIds": [
+            "CH17-03-OO-DESIGN-PATTERNS-H3-4-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch17-03-oo-design-patterns#h3-4",
+            "ch17-03-oo-design-patterns#h3-5"
+          ],
+          "rationale": "Box<Self> 接收者、Option::take 和 as_ref 都是 Rust 状态转移中处理 Box<State> 所有权的机制，回答如何安全地移出或借用旧状态。"
+        },
+        {
+          "unitId": "ch17-03-oo-design-patterns-u4",
+          "name": "状态对象职责与局限",
+          "objectIds": [
+            "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-6-ENGINEERINGRULE-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-6-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "ch17-03-oo-design-patterns#h3-5",
+            "ch17-03-oo-design-patterns#h3-6"
+          ],
+          "rationale": "工作流规则放在状态对象、插入新状态需修改已有状态，以及完全按 OO 定义实现状态模式的反模式，共同回答经典状态对象组织方式及其扩展代价。"
+        },
+        {
+          "unitId": "ch17-03-oo-design-patterns-u5",
+          "name": "类型编码状态",
+          "objectIds": [
+            "CH17-03-OO-DESIGN-PATTERNS-H4-1-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H4-1-ENGINEERINGRULE-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch17-03-oo-design-patterns#h4-1",
+            "ch17-03-oo-design-patterns#h4-2"
+          ],
+          "rationale": "将状态编码进不同类型、移除非法方法、以类型转换消费旧状态以及编译时无效状态不可能，都是类型化状态编码方案的核心机制。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch17-03-oo-design-patterns-s1",
+          "name": "Rust 状态模式实现与权衡",
+          "trigger": "当需要在 Rust 中实现状态驱动的博文工作流，并在经典 OO 状态模式与类型化状态编码之间做设计取舍时使用。",
+          "unitIds": [
+            "ch17-03-oo-design-patterns-u1",
+            "ch17-03-oo-design-patterns-u2",
+            "ch17-03-oo-design-patterns-u3",
+            "ch17-03-oo-design-patterns-u4",
+            "ch17-03-oo-design-patterns-u5"
+          ],
+          "objectIds": [
+            "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-2-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-3-ENGINEERINGRULE-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-4-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-6-ENGINEERINGRULE-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H3-6-ANTIPATTERN-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H4-1-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H4-1-ENGINEERINGRULE-02",
+            "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-01",
+            "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02"
+          ],
+          "rationale": "这些单元来自同一 Post 状态工作流示例，连续覆盖概念、初始化、内容行为、所有权机制、状态对象职责/局限和类型化替代方案，面向同一批 Rust 状态设计场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 15,
+        "assigned": 15,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1824,
+        "completion_tokens": 6938,
+        "total_tokens": 8762,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 6078
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 1312
+      },
+      "finishReason": "stop",
+      "reasoningChars": 14821,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch18-02-refutability",
+      "inputHash": "sha256:b80cccdbd8cb7983d03b67a583f92db267e2396680a90410f16e1fa8d132785b",
+      "status": "proposed",
+      "createdAt": "2026-10-14T04:49:24.015Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch18-02-refutability-u1",
+          "name": "可反驳性及使用位置",
+          "objectIds": [
+            "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
+            "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch18-02-refutability#h2-1"
+          ],
+          "rationale": "两个对象同属“模式是否可能匹配失败，以及在哪些语法结构中允许使用”的问题空间：一个定义可反驳模式，另一个规定不同语法结构对可反驳/不可反驳模式的约束。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch18-02-refutability-s1",
+          "name": "判断模式可反驳性与语法位置",
+          "trigger": "当需要判断某个模式在函数参数、let、for、if let 或 while let 等位置是否会被接受、是否会匹配失败时使用。",
+          "unitIds": [
+            "ch18-02-refutability-u1"
+          ],
+          "objectIds": [
+            "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
+            "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02"
+          ],
+          "rationale": "该单元同时提供可反驳模式的定义和不同语法位置的可反驳性限制，共同服务于同一任务：为具体语法位置选择或分析合适的模式。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 2,
+        "assigned": 2,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 725,
+        "completion_tokens": 1368,
+        "total_tokens": 2093,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1133
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 213
+      },
+      "finishReason": "stop",
+      "reasoningChars": 3292,
+      "maxTokens": 24000
+    }
+  ],
+  "totals": {
+    "chapters": 8,
+    "units": 16,
+    "skills": 6,
+    "gatePassed": 50,
+    "unassigned": 0,
+    "unresolvedObjectIds": 0,
+    "duplicates": 0,
+    "unitsWithoutSkill": 0,
+    "usage": {
+      "proposed": 8,
+      "reused": 0,
+      "calls": 8,
+      "promptTokens": 9025,
+      "completionTokens": 26415
+    }
+  }
+}

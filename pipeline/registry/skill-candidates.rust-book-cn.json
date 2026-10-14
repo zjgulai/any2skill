@@ -2,7 +2,7 @@
   "schemaVersion": "skill-candidates/v1",
   "createdAt": "2026-10-14T04:49:40.100Z",
   "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json",
-  "clustersSha256": "sha256:2c3efb6bc8346943324444124e29f1430e645e6b76dd9059393272ca9b8b2d5b",
+  "clustersSha256": "sha256:89adeb4df5f272e520232b6677e280eb778b7fb64d5e3433f8f88c2df24182b8",
   "candidates": [
     {
       "skillId": "ch02-00-guessing-game-tutorial-s1",
@@ -76,36 +76,6 @@
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-4-HEURISTIC-01",
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01",
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
-        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02"
-      ],
-      "trigger": "当需要把臃肿的二进制 CLI 程序拆分为职责清晰的模块，并使业务逻辑可测试时，应使用这些单元。",
-      "chapterRefs": [
-        "ch12-03-improving-error-handling-and-modularity"
-      ],
-      "promotionState": "candidate",
-      "name": "模块化CLI重构",
-      "units": [
-        "ch12-03-improving-error-handling-and-modularity-u1",
-        "ch12-03-improving-error-handling-and-modularity-u2",
-        "ch12-03-improving-error-handling-and-modularity-u3"
-      ],
-      "anchors": [
-        "ch12-03-improving-error-handling-and-modularity#h2-1",
-        "ch12-03-improving-error-handling-and-modularity#h3-1",
-        "ch12-03-improving-error-handling-and-modularity#h2-1",
-        "ch12-03-improving-error-handling-and-modularity#h3-2",
-        "ch12-03-improving-error-handling-and-modularity#h3-3",
-        "ch12-03-improving-error-handling-and-modularity#h3-4",
-        "ch12-03-improving-error-handling-and-modularity#h3-6",
-        "ch12-03-improving-error-handling-and-modularity#h3-7"
-      ],
-      "rationale": "这些单元覆盖从 main 职责边界、参数解析与 Config 构造，到提取 run 并库 crate 化的连续重构流程，面向同一批整理二进制 crate 结构的任务。"
-    },
-    {
-      "skillId": "ch12-03-improving-error-handling-and-modularity-s2",
-      "sourceObjects": [
-        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01",
-        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02",
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-5-ANTIPATTERN-01",
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ENGINEERINGRULE-01",
@@ -117,18 +87,25 @@
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-HEURISTIC-02",
         "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-5-ENGINEERINGRULE-01"
       ],
-      "trigger": "当需要为用户给出明确错误信息、用 Result 传播错误并统一进程退出码时，应使用这些单元。",
+      "trigger": "当需要把臃肿的二进制 CLI 程序拆分为职责清晰的模块，并使业务逻辑可测试时，应使用这些单元。",
       "chapterRefs": [
         "ch12-03-improving-error-handling-and-modularity"
       ],
       "promotionState": "candidate",
-      "name": "CLI错误处理设计",
+      "name": "模块化CLI重构",
       "units": [
+        "ch12-03-improving-error-handling-and-modularity-u1",
+        "ch12-03-improving-error-handling-and-modularity-u2",
         "ch12-03-improving-error-handling-and-modularity-u3",
         "ch12-03-improving-error-handling-and-modularity-u4",
         "ch12-03-improving-error-handling-and-modularity-u5"
       ],
       "anchors": [
+        "ch12-03-improving-error-handling-and-modularity#h2-1",
+        "ch12-03-improving-error-handling-and-modularity#h3-1",
+        "ch12-03-improving-error-handling-and-modularity#h3-2",
+        "ch12-03-improving-error-handling-and-modularity#h3-3",
+        "ch12-03-improving-error-handling-and-modularity#h3-4",
         "ch12-03-improving-error-handling-and-modularity#h3-6",
         "ch12-03-improving-error-handling-and-modularity#h3-7",
         "ch12-03-improving-error-handling-and-modularity#h3-5",
@@ -138,7 +115,10 @@
         "ch12-03-improving-error-handling-and-modularity#h4-4",
         "ch12-03-improving-error-handling-and-modularity#h4-5"
       ],
-      "rationale": "这些单元从承载业务逻辑的 run/库 crate 边界开始，进入参数校验与错误暴露，再到 Result 传播和退出处理，共同面向 CLI 程序错误处理设计的场景；unit 2 被复用是因为 run 的返回值是错误处理边界。"
+      "rationale": "这些单元覆盖从 main 职责边界、参数解析与 Config 构造，到提取 run 并库 crate 化的连续重构流程，面向同一批整理二进制 crate 结构的任务。",
+      "mergedFrom": [
+        "ch12-03-improving-error-handling-and-modularity-s2"
+      ]
     },
     {
       "skillId": "ch17-03-oo-design-patterns-s1",
@@ -449,5 +429,62 @@
       "observedSkills": 0,
       "note": "仅诊断，不设目标（ADR-007：数量是结果不是配额；ADR-021：形状数字不是判据）"
     }
+  },
+  "resplit": {
+    "appliedAt": "2026-10-14T07:29:14.121Z",
+    "planFile": "pipeline/registry/resplit-plan.rust-book-cn.json",
+    "planSha256": "sha256:5480f5ae9df8390c14e881ed2448cfd7d951cdeef9e1e824411ebf2c1836e935",
+    "rule": "只取「strict ≥2 且两读数都存」的稳定边（stable 集），rust 源恰 1 对、天然不相交；strictOnly 弱信号（ch09-03-s1|ch12-03-s2）不动——单读数出现的对在 ADR-026 的稳定口径下不构成合并依据。吸收者：两候选对象数同为 12，取字典序先者（s1 为两冲突场景的 intended 之一，且是被 s2 场景触发的接收方）。同一个通知的第一源对应实例（卡 13）可参照。",
+    "merges": [
+      {
+        "into": "ch12-03-improving-error-handling-and-modularity-s1",
+        "target": "ch12-03-improving-error-handling-and-modularity-s2",
+        "unitIds": [
+          "ch12-03-improving-error-handling-and-modularity-u1",
+          "ch12-03-improving-error-handling-and-modularity-u2",
+          "ch12-03-improving-error-handling-and-modularity-u3",
+          "ch12-03-improving-error-handling-and-modularity-u4",
+          "ch12-03-improving-error-handling-and-modularity-u5"
+        ],
+        "objectCount": 21,
+        "chapterRefs": [
+          "ch12-03-improving-error-handling-and-modularity"
+        ],
+        "basis": {
+          "stablePair": "ch12-03-improving-error-handling-and-modularity-s1|ch12-03-improving-error-handling-and-modularity-s2",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+          ],
+          "listScenarioIds": [
+            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+          ]
+        }
+      }
+    ],
+    "removed": [
+      {
+        "skillId": "ch12-03-improving-error-handling-and-modularity-s2",
+        "mergedInto": "ch12-03-improving-error-handling-and-modularity-s1",
+        "basis": {
+          "stablePair": "ch12-03-improving-error-handling-and-modularity-s1|ch12-03-improving-error-handling-and-modularity-s2",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+          ],
+          "listScenarioIds": [
+            "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+            "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+          ]
+        },
+        "reason": "两读数都存在的稳定共认领对（strict 2、list 2）——门禁二 list 与 strict 两份报告的动作清单都给出同一 merge（ADR-007：同一场景被 ≥2 个候选同时认领，粒度太碎）。"
+      }
+    ],
+    "note": "diagnostics 与 candidates 的聚类时点字段保持原样（本块是重切记录，不重算聚类诊断）。"
   }
 }

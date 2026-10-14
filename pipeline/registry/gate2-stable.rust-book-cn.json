@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "gate2-stable/v1",
+  "createdAt": "2026-10-14T07:28:03.467Z",
+  "sources": {
+    "list": "pipeline/registry/gate2-report.rust-book-cn.json",
+    "strict": "pipeline/registry/gate2-report.strict.rust-book-cn.json"
+  },
+  "counts": {
+    "stable": 1,
+    "listOnly": 0,
+    "strictOnly": 1
+  },
+  "stable": [
+    {
+      "pair": "ch12-03-improving-error-handling-and-modularity-s1|ch12-03-improving-error-handling-and-modularity-s2",
+      "candidates": [
+        "ch12-03-improving-error-handling-and-modularity-s1",
+        "ch12-03-improving-error-handling-and-modularity-s2"
+      ],
+      "strictScenarios": 2,
+      "listScenarios": 2,
+      "strictScenarioIds": [
+        "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+        "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+      ],
+      "listScenarioIds": [
+        "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+        "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+      ]
+    }
+  ],
+  "listOnly": [],
+  "strictOnly": [
+    {
+      "pair": "ch09-03-to-panic-or-not-to-panic-s1|ch12-03-improving-error-handling-and-modularity-s2",
+      "candidates": [
+        "ch09-03-to-panic-or-not-to-panic-s1",
+        "ch12-03-improving-error-handling-and-modularity-s2"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 0,
+      "strictScenarioIds": [
+        "ch09-03-to-panic-or-not-to-panic-s1-sc2"
+      ],
+      "listScenarioIds": []
+    }
+  ]
+}

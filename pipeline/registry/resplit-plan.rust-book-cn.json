@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "resplit-plan/v1",
+  "createdAt": "2026-10-14T07:40:00.000Z",
+  "approved": true,
+  "approvedAt": "2026-10-14T07:40:00.000Z",
+  "approvedBy": "用户（AskUserQuestion：「先合并再发布（推荐）」）",
+  "sources": {
+    "gate2ReportList": "pipeline/registry/gate2-report.rust-book-cn.json",
+    "gate2ReportStrict": "pipeline/registry/gate2-report.strict.rust-book-cn.json",
+    "stableFile": "pipeline/registry/gate2-stable.rust-book-cn.json",
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "candidatesFile": "pipeline/registry/skill-candidates.rust-book-cn.json"
+  },
+  "rule": "只取「strict ≥2 且两读数都存」的稳定边（stable 集），rust 源恰 1 对、天然不相交；strictOnly 弱信号（ch09-03-s1|ch12-03-s2）不动——单读数出现的对在 ADR-026 的稳定口径下不构成合并依据。吸收者：两候选对象数同为 12，取字典序先者（s1 为两冲突场景的 intended 之一，且是被 s2 场景触发的接收方）。同一个通知的第一源对应实例（卡 13）可参照。",
+  "pairs": [
+    {
+      "action": "merge",
+      "into": "ch12-03-improving-error-handling-and-modularity-s1",
+      "target": "ch12-03-improving-error-handling-and-modularity-s2",
+      "basis": {
+        "stablePair": "ch12-03-improving-error-handling-and-modularity-s1|ch12-03-improving-error-handling-and-modularity-s2",
+        "strictScenarios": 2,
+        "listScenarios": 2,
+        "strictScenarioIds": [
+          "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+          "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+        ],
+        "listScenarioIds": [
+          "ch12-03-improving-error-handling-and-modularity-s1-sc1",
+          "ch12-03-improving-error-handling-and-modularity-s2-sc2"
+        ]
+      },
+      "reason": "两读数都存在的稳定共认领对（strict 2、list 2）——门禁二 list 与 strict 两份报告的动作清单都给出同一 merge（ADR-007：同一场景被 ≥2 个候选同时认领，粒度太碎）。"
+    }
+  ]
+}

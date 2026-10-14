@@ -1,0 +1,157 @@
+{
+  "slug": "ch17-03-oo-design-patterns-s1",
+  "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+  "rootAnchor": "ch17-03-oo-design-patterns-s1",
+  "clusterAnchors": 9,
+  "clusterTitle": "Rust 状态模式实现与权衡",
+  "objectsInCluster": 15,
+  "objectsKept": 15,
+  "crossChapterAntipatternsInCluster": 0,
+  "crossChapterAntipatternsKept": 0,
+  "crossChapterExcluded": [],
+  "sectionCounts": {
+    "whenToUse": 8,
+    "principles": 8,
+    "patterns": 6,
+    "pitfalls": 1,
+    "code": 0,
+    "reading": 9
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 1 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 1
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 6
+    },
+    {
+      "code": "SECTION_ITEM_SUSPECT_NOT_TRIGGER",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目中包含「必须/不得/应当/应该」的 1 条可能不是触发条件，而是被写进 `appliesWhen` 的规则陈述（条件 + 要求 的复合句）。启发式，不导致门禁失败。",
+      "required": null,
+      "actual": 1,
+      "items": [
+        {
+          "from": "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
+          "text": "需要消费老状态并把它设置为新状态，且旧状态值必须被移出结构体时。"
+        }
+      ]
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "gate": {
+    "passed": true,
+    "reasonCodes": [],
+    "failures": [],
+    "bytes": 6719,
+    "sizeLimitBytes": 16568
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 1 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "overflow": null,
+  "references": [],
+  "artifacts": {
+    "staged": "pipeline/registry/build/ch17-03-oo-design-patterns-s1/SKILL.md",
+    "contract": "pipeline/registry/build/ch17-03-oo-design-patterns-s1/skill-contract.json",
+    "receipt": "pipeline/registry/build/ch17-03-oo-design-patterns-s1/gate-receipt.json",
+    "published": "skills/ch17-03-oo-design-patterns-s1/SKILL.md"
+  },
+  "verdict": {
+    "passed": true,
+    "failures": [],
+    "reasonCodes": [],
+    "checks": {
+      "bytes": 6719,
+      "sizeLimitBytes": 16568,
+      "sectionItemCounts": {
+        "## 何时使用": 8,
+        "## 核心原则": 8,
+        "## 实践模式": 6,
+        "## 常见陷阱": 1,
+        "## 配套代码": 0,
+        "## 深度阅读": 9
+      },
+      "sourceRefCount": 9
+    },
+    "markdownHash": "sha256:0b3e4d2afc4fcaeccb69ea27f33c128b5cd27b6d39a2c6131c2c0096aa4a34fe"
+  }
+}
