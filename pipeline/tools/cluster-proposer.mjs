@@ -57,7 +57,19 @@ export const candidatesRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
     ? CANDIDATES_REL_PATH
     : path.join('pipeline', 'registry', `skill-candidates.${sourceKey}.json`)
 /** 跨章综合产物。它不是「某章第 2 层的对象」，不进聚类输入（与 run-book 的反模式统计同一口径）。 */
-export const CROSS_CHAPTER_OBJECTS_FILE = 'antipatterns.objects.json'
+export const DEFAULT_CROSS_CHAPTER_OBJECTS_FILE = 'antipatterns.objects.json'
+/**
+ * 跨章综合产物**按源命名空间**（卡 19）：缺省键逐字节不变；其他源加 `.<key>` 后缀。
+ * 漏掉这处会让第二源的装配读到第一源的反模式池——陷阱段被注入**别人书的**教训，
+ * 且两份产物在文件层面看不出区别。
+ */
+export const crossChapterObjectsFile = (sourceKey = DEFAULT_SOURCE_KEY) =>
+  sourceKey === DEFAULT_SOURCE_KEY
+    ? DEFAULT_CROSS_CHAPTER_OBJECTS_FILE
+    : `antipatterns.${sourceKey}.objects.json`
+/** 供「其名字是不是跨章综合产物」的判定用（任何源）。 */
+export const isCrossChapterObjectsFile = (name) =>
+  name === DEFAULT_CROSS_CHAPTER_OBJECTS_FILE || /^antipatterns\..+\.objects\.json$/.test(name)
 
 /**
  * 输出上限（含推理 token）。取 24000 而不是最初的 16000：
@@ -80,10 +92,10 @@ export class ClusterProposalError extends Error {
   }
 }
 
-/** 聚类输入 = 逐章对象文件，**排除**跨章综合产物（它不是任何一章第 2 层的产出）。 */
+/** 聚类输入 = 逐章对象文件，**排除**跨章综合产物（任何源的；它不是任何一章第 2 层的产出）。 */
 export function listClusterInputFiles(fileNames) {
   return fileNames
-    .filter((n) => n.endsWith('.objects.json') && n !== CROSS_CHAPTER_OBJECTS_FILE)
+    .filter((n) => n.endsWith('.objects.json') && !isCrossChapterObjectsFile(n))
     .sort()
 }
 

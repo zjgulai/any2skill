@@ -51,7 +51,7 @@ import {
   writePartialClusters,
   writeSkillCandidates,
   listClusterInputFiles,
-  CROSS_CHAPTER_OBJECTS_FILE,
+  crossChapterObjectsFile,
 } from './tools/cluster-proposer.mjs'
 
 export const EXIT = Object.freeze({
@@ -427,10 +427,12 @@ async function main(argv) {
     const clustersAbs = await writeClusters(clustersDoc, repoRoot, { sourceKey: flags.sourceKey })
 
     // 跨章综合物：读不到就如实记 absent（与 run-book 同一口径），不按「没有」处理。
+    // 按源命名空间（卡 19）：本源的合成产物没有就是 absent——绝不回落到别的源的那份。
+    const apFile = crossChapterObjectsFile(flags.sourceKey)
     let dispositionBlock
     try {
-      const apRaw = JSON.parse(await readFile(path.join(repoRoot, KNOWLEDGE_REL, CROSS_CHAPTER_OBJECTS_FILE), 'utf8'))
-      const apObjects = unwrapObjectsFile(apRaw, CROSS_CHAPTER_OBJECTS_FILE)
+      const apRaw = JSON.parse(await readFile(path.join(repoRoot, KNOWLEDGE_REL, apFile), 'utf8'))
+      const apObjects = unwrapObjectsFile(apRaw, apFile)
       dispositionBlock = {
         status: 'present',
         declaredRunId: apRaw.runId ?? null,
@@ -438,7 +440,7 @@ async function main(argv) {
       }
     } catch (err) {
       if (err.code === 'ENOENT') {
-        dispositionBlock = { status: 'absent', note: `盘上没有 ${CROSS_CHAPTER_OBJECTS_FILE}（先跑卡 06 的命令再回看本块）。` }
+        dispositionBlock = { status: 'absent', note: `盘上没有 ${apFile}（先跑卡 06 的命令再回看本块）。` }
       } else {
         throw err
       }

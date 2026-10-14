@@ -51,7 +51,7 @@ import {
   unwrapObjectsFile,
 } from './tools/skill-builder.mjs'
 import { SKILL_REASON_CODES, verifySkill } from './tools/verify-skill.mjs'
-import { clustersRelPath } from './tools/cluster-proposer.mjs'
+import { clustersRelPath, crossChapterObjectsFile } from './tools/cluster-proposer.mjs'
 
 export const EXIT = Object.freeze({
   PASS: 0,
@@ -265,7 +265,7 @@ export async function loadClusterCandidate(repoRoot, skillId, { sourceKey = DEFA
  * 「发布出去的那份会怎样」，若两边各自过滤（比如一边忘掉门禁通过集），被测的就成了另一份
  * 东西——而两份在产物里长得一样。
  */
-export async function loadAssemblyInputs(repoRoot, { chapterKey, sourceRel }) {
+export async function loadAssemblyInputs(repoRoot, { chapterKey, sourceRel, sourceKey = DEFAULT_SOURCE_KEY }) {
   const rel = (p) => path.relative(repoRoot, p)
   const index = await buildAnchorIndex(path.join(repoRoot, sourceRel), { repoRoot })
   const objectsPath = path.join(repoRoot, 'pipeline', 'knowledge', `${chapterKey}.objects.json`)
@@ -274,7 +274,9 @@ export async function loadAssemblyInputs(repoRoot, { chapterKey, sourceRel }) {
     rel(objectsPath),
   )
 
-  const apPath = path.join(repoRoot, 'pipeline', 'knowledge', 'antipatterns.objects.json')
+  // 跨章反模式按源命名空间（卡 19）：本源的池没有就是空——绝不把别的源的反模式
+  // 注入本源的 skill（陷阱段会带上别人书的教训，而产物层面看不出区别）。
+  const apPath = path.join(repoRoot, 'pipeline', 'knowledge', crossChapterObjectsFile(sourceKey))
   let allAntipatterns = []
   let antipatternsRunId = null
   try {
@@ -361,7 +363,7 @@ export async function loadClusterAssemblyInputs(repoRoot, clusterDef, { sourceKe
   const missingReceipts = []
   for (const fileKey of clusterDef.chapterRefs) {
     const sourceRel = path.join(sourceBookRoot(sourceKey), `${fileKey}.md`)
-    const loaded = await loadAssemblyInputs(repoRoot, { chapterKey: fileKey, sourceRel })
+    const loaded = await loadAssemblyInputs(repoRoot, { chapterKey: fileKey, sourceRel, sourceKey })
     if (!loaded.found) {
       missingReceipts.push({ fileKey, sourceRel })
       continue
@@ -488,7 +490,7 @@ async function main(argv) {
         objectsFileLabel: prep.objectsLabel,
       }
     } else {
-      const loaded = await loadAssemblyInputs(repoRoot, { chapterKey, sourceRel })
+      const loaded = await loadAssemblyInputs(repoRoot, { chapterKey, sourceRel, sourceKey: flags.sourceKey })
       const found = flags.receipt
         ? { file: path.resolve(repoRoot, flags.receipt), receipt: JSON.parse(await readFile(path.resolve(repoRoot, flags.receipt), 'utf8')) }
         : loaded.found

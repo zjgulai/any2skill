@@ -50,7 +50,9 @@ import {
   sourceBookRoot,
 } from './tools/anchor-index.mjs'
 import { assertIsolation, loadLedger, mergeLedgers, summarizeLedger } from './tools/fs-ledger.mjs'
+import { crossChapterObjectsFile, isCrossChapterObjectsFile } from './tools/cluster-proposer.mjs'
 import { EXIT, PIPELINE_VERSION, RECEIPT_SCHEMA_VERSION, REGISTRY_DIR, CLI_FLAGS } from './run.mjs'
+import { findReceiptSourcePathByFileKey } from './propose-clusters.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const CLI = path.join(HERE, 'run.mjs')
@@ -136,8 +138,7 @@ export function judgeAppliedFor(flags, passthrough) {
 
 /* ──────────────────────────── 反模式分布 ──────────────────────────── */
 
-/** 跨章综合的落盘文件名（卡 06）。在 `collectAntipatterns` 里单独成块，不得混进逐章统计。 */
-const CROSS_CHAPTER_OBJECTS_FILE = 'antipatterns.objects.json'
+/** 跨章综合的落盘文件名（卡 06，按源命名空间见 `crossChapterObjectsFile`）。在 `collectAntipatterns` 里单独成块，不得混进逐章统计。 */
 
 /** `chapter4#h2-2` → `chapter4`；无 `#` 时退回文件基名。 */
 export function chapterOfRef(ref) {
@@ -420,7 +421,7 @@ export async function runBook(input) {
 
   // ---- 聚合 ----
   const totals = aggregateTotals(files)
-  const antipatterns = await collectAntipatterns(repoRoot)
+  const antipatterns = await collectAntipatterns(repoRoot, { sourceKey })
 
   // ---- 隔离 ----
   //
@@ -542,15 +543,21 @@ export function aggregateTotals(files) {
  *     它需要与下一块分开看的原因，否则「跨章占比 0%」会被误读成「书里没有跨章反模式」）；
  *   - `crossChapter`：跨章综合的对象集（卡 06 的命令产出）。
  */
-export async function collectAntipatterns(repoRoot) {
+export async function collectAntipatterns(repoRoot, { sourceKey = DEFAULT_SOURCE_KEY } = {}) {
   const knowledge = path.join(repoRoot, 'pipeline', 'knowledge')
+  const ownRoot = path.normalize(sourceBookRoot(sourceKey))
   const perFile = []
   for (const name of (await readdir(knowledge)).filter((f) => f.endsWith('.objects.json')).sort()) {
-    // `antipatterns.objects.json` 是**跨章综合**的产物（卡 06 的命令），不是「各章第 2 层提取」。
+    // `antipatterns*.objects.json`（任何源）是**跨章综合**的产物（卡 06 的命令），不是「各章第 2 层提取」。
     // 不排除它会把同一批对象报两次：`fromLayer2` 里混入合成对象后，「跨章恒为 0」的前提被破坏，
     // 且 `crossChapterIds` 会变成一串 AP-SYNTH id，读者会以为「章内」也能产出跨章对象。
     // 实测（2026-10-12 全书跑）：58 = 44 真·章内 + 14 合成；首跑回执的「章内 28」同病。
-    if (name === CROSS_CHAPTER_OBJECTS_FILE) continue
+    if (isCrossChapterObjectsFile(name)) continue
+    // 归属过滤（卡 19）：知识平面跨源共处，回执的 `source.path` 决定这个文件属于哪个源。
+    // 属于别的源 → 不进本源的分布表。没有回执 → 归属未知，照旧纳入（本块是诊断表，不是门禁）。
+    const fileKey = name.replace(/\.objects\.json$/, '')
+    const receiptSource = await findReceiptSourcePathByFileKey(repoRoot, fileKey)
+    if (receiptSource !== null && path.normalize(path.dirname(receiptSource)) !== ownRoot) continue
     const parsed = JSON.parse(await readFile(path.join(knowledge, name), 'utf8'))
     const objects = objectsOf(parsed)
     if (!objects.some((o) => o?.objectType === 'AntiPattern')) continue
@@ -558,9 +565,10 @@ export async function collectAntipatterns(repoRoot) {
   }
   const layer2Objects = perFile.flatMap((f) => f.objects)
 
-  let crossChapter = { status: 'absent', note: `盘上没有跨章综合的对象集（pipeline/knowledge/${CROSS_CHAPTER_OBJECTS_FILE}）；先跑卡 06 的命令再回看本块。` }
+  const apFile = crossChapterObjectsFile(sourceKey)
+  let crossChapter = { status: 'absent', note: `盘上没有跨章综合的对象集（pipeline/knowledge/${apFile}）；先跑卡 06 的命令再回看本块。` }
   try {
-    const parsed = JSON.parse(await readFile(path.join(knowledge, CROSS_CHAPTER_OBJECTS_FILE), 'utf8'))
+    const parsed = JSON.parse(await readFile(path.join(knowledge, apFile), 'utf8'))
     const objects = objectsOf(parsed)
     crossChapter = {
       status: 'present',

@@ -13,7 +13,15 @@ import path from 'node:path'
 
 import { DEFAULT_SOURCE_KEY, DEFAULT_SOURCE_ROOT, sourceBookRoot, sourceCodeRoot } from '../../tools/anchor-index.mjs'
 import { prepareChapterInputs } from '../../propose-clusters.mjs'
-import { candidatesRelPath, clustersPartialRelPath, clustersRelPath, writeClusters } from '../../tools/cluster-proposer.mjs'
+import {
+  candidatesRelPath,
+  clustersPartialRelPath,
+  clustersRelPath,
+  crossChapterObjectsFile,
+  isCrossChapterObjectsFile,
+  listClusterInputFiles,
+  writeClusters,
+} from '../../tools/cluster-proposer.mjs'
 
 const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..', '..')
 const CLI = path.join(REPO, 'pipeline', 'run.mjs')
@@ -34,6 +42,24 @@ describe('18 · 源键与源根', () => {
       await rm(root, { recursive: true, force: true })
     }
   })
+  it(' 跨章综合产物按源命名空间：缺省逐字不变、其他源加后缀、排除判定覆盖任何源', () => {
+    assert.equal(crossChapterObjectsFile(), 'antipatterns.objects.json')
+    assert.equal(crossChapterObjectsFile('rust-book-cn'), 'antipatterns.rust-book-cn.objects.json')
+    assert.ok(isCrossChapterObjectsFile('antipatterns.objects.json'))
+    assert.ok(isCrossChapterObjectsFile('antipatterns.rust-book-cn.objects.json'))
+    assert.ok(!isCrossChapterObjectsFile('chapter1.objects.json'))
+    assert.ok(!isCrossChapterObjectsFile('ch02-00-guessing-game-tutorial.objects.json'))
+    // 跨章产物（任何源）都不得进聚类输入；题名里带 antipatterns 的普通章不受影响
+    assert.deepEqual(
+      listClusterInputFiles([
+        'chapter1.objects.json',
+        'antipatterns.objects.json',
+        'antipatterns.rust-book-cn.objects.json',
+      ]),
+      ['chapter1.objects.json'],
+    )
+  })
+
   it(' 缺省键逐字等于既有常量；自定义键按约定拼路径', () => {
     assert.equal(DEFAULT_SOURCE_KEY, 'ai-agent-book-zh')
     assert.equal(DEFAULT_SOURCE_ROOT, path.join('sources', 'ai-agent-book-zh', 'book'))
@@ -139,13 +165,73 @@ describe('18 · 源键与源根', () => {
         }),
       )
       const clusterDef = { skillId: 'alpha-s1', chapterRefs: ['alpha'], name: '甲', anchorIds: ['alpha#h2-1'], objectIds: ['A-1'], units: [] }
+      // 第一源的跨章反模式池**在盘上**——源键不匹配时绝不能被读进第二源的装配
+      // （漏掉这处的失败方式：第二源 skill 的陷阱段被注入第一源的教训，产物层面看不出区别）。
+      await writeFile(
+        path.join(root, 'pipeline', 'knowledge', 'antipatterns.objects.json'),
+        JSON.stringify({
+          schemaVersion: 'objects/v1',
+          runId: 'run-ap-first',
+          objects: [
+            { id: 'AP-1', objectType: 'AntiPattern', pattern: '别人的教训', sourceRefs: [{ file: path.join(dirRel, 'alpha.md'), anchor: 'alpha#h2-1' }] },
+          ],
+        }),
+      )
       const ok = await loadClusterAssemblyInputs(root, clusterDef, { sourceKey: 'srcA' })
       assert.equal(ok.kept.length, 1)
+      assert.equal(ok.allAntipatterns.length, 0, '别的源的反模式池不得进本源的装配')
       await assert.rejects(
         () => loadClusterAssemblyInputs(root, clusterDef, { sourceKey: 'ai-agent-book-zh' }),
         /ENOENT|缺门禁一回执|reject/i,
         '源键不匹配必须失败而不是读到别的源',
       )
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
+
+  it('run-book 反模式分布按源归属过滤：别的源的章不进本源的分布表，跨章块读命名空间名', async () => {
+    const { collectAntipatterns } = await import('../../run-book.mjs')
+    const root = await mkdtemp(path.join(os.tmpdir(), 'any2skills-apattr-'))
+    try {
+      const knowledge = path.join(root, 'pipeline', 'knowledge')
+      const registry = path.join(root, 'pipeline', 'registry')
+      await mkdir(knowledge, { recursive: true })
+      await mkdir(registry, { recursive: true })
+      const ap = (id, file) => ({
+        id,
+        objectType: 'AntiPattern',
+        pattern: `反模式 ${id}`,
+        sourceRefs: [{ file, anchor: `${path.basename(file, '.md')}#h2-1` }],
+      })
+      for (const [key, fileKey] of [
+        ['srcA', 'alpha'],
+        ['srcB', 'beta'],
+      ]) {
+        const dirRel = path.join('sources', key, 'book')
+        await writeFile(
+          path.join(knowledge, `${fileKey}.objects.json`),
+          JSON.stringify([ap(`${key.toUpperCase()}-AP1`, path.join(dirRel, `${fileKey}.md`))]),
+        )
+        await writeFile(
+          path.join(registry, `run-${fileKey}.receipt.json`),
+          JSON.stringify({ runId: `run-${fileKey}`, createdAt: new Date().toISOString(), source: { path: path.join(dirRel, `${fileKey}.md`) }, objectVerdicts: [] }),
+        )
+      }
+      // 第一源的跨章合成产物在盘上：对 srcA 而言它既不算逐章、也不算 srcA 的跨章块
+      await writeFile(
+        path.join(knowledge, 'antipatterns.objects.json'),
+        JSON.stringify({ runId: 'run-ap-first', objects: [ap('AP-SYNTH-1', 'sources/ai-agent-book-zh/book/chapter1.md')] }),
+      )
+
+      const a = await collectAntipatterns(root, { sourceKey: 'srcA' })
+      assert.equal(a.fromLayer2.total, 1, '只有 srcA 自己的章进统计')
+      assert.deepEqual(a.perFile.map((f) => f.file), ['alpha.objects.json'])
+      assert.equal(a.crossChapter.status, 'absent')
+      assert.match(a.crossChapter.note, /antipatterns\.srcA\.objects\.json/)
+
+      const d = await collectAntipatterns(root)
+      assert.equal(d.fromLayer2.total, 0, '缺省源下 srcA/srcB 的章都被归属过滤排除')
     } finally {
       await rm(root, { recursive: true, force: true })
     }

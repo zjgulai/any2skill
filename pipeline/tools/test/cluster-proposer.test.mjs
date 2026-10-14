@@ -14,7 +14,7 @@ import os from 'node:os'
 import path from 'node:path'
 
 import {
-  CROSS_CHAPTER_OBJECTS_FILE,
+  DEFAULT_CROSS_CHAPTER_OBJECTS_FILE,
   ClusterProposalError,
   anchorsOfObject,
   buildClusterSystemPrompt,
@@ -296,7 +296,7 @@ describe('11 · 候选派生与跨章处置（先算结论，ADR-024 决策 3）
 describe('11 · 输出文件枚举与 partial 往返', () => {
   test('排除跨章综合产物、按名排序', () => {
     assert.deepEqual(
-      listClusterInputFiles(['b.objects.json', CROSS_CHAPTER_OBJECTS_FILE, 'a.objects.json', 'x.anchors.json']),
+      listClusterInputFiles(['b.objects.json', DEFAULT_CROSS_CHAPTER_OBJECTS_FILE, 'a.objects.json', 'x.anchors.json']),
       ['a.objects.json', 'b.objects.json'],
     )
   })
