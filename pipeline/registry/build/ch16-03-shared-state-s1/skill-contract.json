@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "ch16-03-shared-state-s1",
+  "name": "ch16-03-shared-state-s1",
+  "description": "共享状态并发：使用互斥器所保护的数据之前要先尝试获取锁；处理完被互斥器所保护的数据之后必须解锁数据，这样其他线程才能获取锁；适用于当线程需要访问互斥器所保护的共享数据时、访问或使用 `Mutex<T>` 内部数据时、当在循环中试图把同一个 `counter` 锁的所有权移动到多个线程时。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 4642,
+    "markdownHash": "sha256:7865dd60f9ec377ef8fc9c7a79987534fee85ead0887d33cbce00046e194658a",
+    "checkedAt": "2026-10-14T21:46:01.871Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CH16-03-SHARED-STATE-H2-1-CONCEPT-01",
+    "CH16-03-SHARED-STATE-H3-1-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H3-1-ANTIPATTERN-02",
+    "CH16-03-SHARED-STATE-H3-2-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H3-2-CONCEPT-02",
+    "CH16-03-SHARED-STATE-H4-1-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H4-2-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H4-3-CONCEPT-01",
+    "CH16-03-SHARED-STATE-H3-3-CONCEPT-01",
+    "CH16-03-SHARED-STATE-H3-3-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T06-08"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h2-1",
+      "title": "共享状态并发",
+      "lineStart": 1,
+      "lineEnd": 10
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h3-1",
+      "title": "互斥器一次只允许一个线程访问数据",
+      "lineStart": 11,
+      "lineEnd": 23
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h3-2",
+      "title": "`Mutex<T>`的 API",
+      "lineStart": 24,
+      "lineEnd": 56
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h4-1",
+      "title": "在线程间共享 `Mutex<T>`",
+      "lineStart": 57,
+      "lineEnd": 111
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h4-2",
+      "title": "多线程和多所有权",
+      "lineStart": 112,
+      "lineEnd": 168
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h4-3",
+      "title": "原子引用计数 `Arc<T>`",
+      "lineStart": 169,
+      "lineEnd": 214
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h3-3",
+      "title": "`RefCell<T>`/`Rc<T>` 与 `Mutex<T>`/`Arc<T>` 的相似性",
+      "lineStart": 215,
+      "lineEnd": 222
+    }
+  ],
+  "codeSource": {
+    "available": false,
+    "note": "> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。"
+  },
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-14T21:46:01.871Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 2 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 2
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 4
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 5,
+    "principles": 5,
+    "patterns": 4,
+    "pitfalls": 2,
+    "code": 0,
+    "reading": 7
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 2 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_SOURCE_ABSENT",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED"
+  ],
+  "provenance": {
+    "sourceFile": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+    "anchorIndexHash": "sha256:8e3cae7ded67ccc3f09f7d43ebb3c0643906296bcfa651a69ec7c53e25056034",
+    "anchorIndexHashes": {
+      "sources/rust-book-cn/book/ch16-03-shared-state.md": "sha256:8e3cae7ded67ccc3f09f7d43ebb3c0643906296bcfa651a69ec7c53e25056034"
+    },
+    "objectsFile": "pipeline/knowledge/ch16-03-shared-state.objects.json",
+    "objectsFileSha256": "sha256:6d2a0077049c73c97aade77ddf15895efaab3282c31061c1d640c8c68f9ff376",
+    "objectsTotal": 11,
+    "objectsInCluster": 10,
+    "objectsKept": 10,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 95,
+    "crossChapterInCluster": 2,
+    "crossChapterKept": 1,
+    "crossChapterExcludedByGate": [
+      {
+        "id": "AP-SYNTH-T07-04",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      }
+    ],
+    "antipatternVerdictsFile": "pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-fd491f2468f0",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-fd491f2468f0",
+    "gateReceiptFile": "pipeline/registry/run-5268d9407a67.receipt.json",
+    "gateReceiptRunId": "run-5268d9407a67",
+    "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "clusterSkillId": "ch16-03-shared-state-s1",
+    "clusterUnits": [
+      "ch16-03-shared-state-u1",
+      "ch16-03-shared-state-u2",
+      "ch16-03-shared-state-u3"
+    ],
+    "clusterChapterRefs": [
+      "ch16-03-shared-state"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json"
+  }
+}

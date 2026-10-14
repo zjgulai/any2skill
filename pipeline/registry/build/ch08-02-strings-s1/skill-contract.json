@@ -1,0 +1,307 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "ch08-02-strings-s1",
+  "name": "ch08-02-strings-s1",
+  "description": "Rust String 处理：在 Rust 字符串拼接中，`+` 运算符调用 `add` 函数，`add` 的 `s` 参数为 `&str`，因此只能将 `&str` 和 `String` 相加，不能将两个 `String` 值相加；`&String` 可通过解引用强制转换为 `&str`，所以 `s2` 在操作后仍然有效。`add` 获取 `self` 的所有权（因为 `self` 没有 `&`），导致 `s1` 的所有权被移动到 `add` 调用中，相加后不再有效；适用于当使用 `+` 运算符连接 `String` 值，或需要理解第一个字符串为何在相加后失效、第二个字符串为何仍有效时、当需要连接多个字符串，且 `+` 运算符组合显得笨重时、当尝试对 String 使用索引语法（例如 s1[0]）时。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 8708,
+    "markdownHash": "sha256:49c54887be69aa45628ad5ae6556dfc0352b96050be2206b1bb62d14e60f3f09",
+    "checkedAt": "2026-10-14T18:24:53.523Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CH08-02-STRINGS-H2-1-CONCEPT-01",
+    "CH08-02-STRINGS-H3-1-CONCEPT-01",
+    "CH08-02-STRINGS-H3-1-CONCEPT-02",
+    "CH08-02-STRINGS-H3-2-CONCEPT-01",
+    "CH08-02-STRINGS-H3-2-CONCEPT-02",
+    "CH08-02-STRINGS-H3-3-CONCEPT-01",
+    "CH08-02-STRINGS-H4-1-CONCEPT-01",
+    "CH08-02-STRINGS-H4-1-CONCEPT-02",
+    "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-01",
+    "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-02",
+    "CH08-02-STRINGS-H3-4-ENGINEERINGRULE-01",
+    "CH08-02-STRINGS-H4-3-CONCEPT-01",
+    "CH08-02-STRINGS-H4-3-ENGINEERINGRULE-02",
+    "CH08-02-STRINGS-H4-4-CONCEPT-01",
+    "CH08-02-STRINGS-H4-4-ENGINEERINGRULE-02",
+    "CH08-02-STRINGS-H3-5-ENGINEERINGRULE-01",
+    "CH08-02-STRINGS-H3-5-CONCEPT-02",
+    "CH08-02-STRINGS-H3-6-HEURISTIC-01",
+    "CH08-02-STRINGS-H3-6-HEURISTIC-02",
+    "CH08-02-STRINGS-H3-7-ENGINEERINGRULE-01"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T05-03"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h2-1",
+      "title": "使用字符串存储 UTF-8 编码的文本",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-1",
+      "title": "什么是字符串？",
+      "lineStart": 7,
+      "lineEnd": 14
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-2",
+      "title": "新建字符串",
+      "lineStart": 15,
+      "lineEnd": 69
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-3",
+      "title": "更新字符串",
+      "lineStart": 70,
+      "lineEnd": 73
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-1",
+      "title": "使用 `push_str` 和 `push` 附加字符串",
+      "lineStart": 74,
+      "lineEnd": 108
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-2",
+      "title": "使用 `+` 运算符或 `format!` 宏拼接字符串",
+      "lineStart": 109,
+      "lineEnd": 156
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-4",
+      "title": "索引字符串",
+      "lineStart": 157,
+      "lineEnd": 181
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-3",
+      "title": "内部表现",
+      "lineStart": 182,
+      "lineEnd": 204
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-4",
+      "title": "字节、标量值和字形簇！天呐！",
+      "lineStart": 205,
+      "lineEnd": 230
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-5",
+      "title": "字符串 slice",
+      "lineStart": 231,
+      "lineEnd": 250
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-6",
+      "title": "遍历字符串的方法",
+      "lineStart": 251,
+      "lineEnd": 295
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-7",
+      "title": "字符串并不简单",
+      "lineStart": 296,
+      "lineEnd": 301
+    }
+  ],
+  "codeSource": {
+    "available": false,
+    "note": "> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。"
+  },
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-14T18:24:53.523Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 9 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 9
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 1 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 1
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 11
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 9,
+    "principles": 7,
+    "patterns": 11,
+    "pitfalls": 1,
+    "code": 0,
+    "reading": 12
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 1 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_SOURCE_ABSENT",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED"
+  ],
+  "provenance": {
+    "sourceFile": "sources/rust-book-cn/book/ch08-02-strings.md",
+    "anchorIndexHash": "sha256:de01fd74ce800807a66452f302576215e13a57911c31ecdc4e828042a8adc0a3",
+    "anchorIndexHashes": {
+      "sources/rust-book-cn/book/ch08-02-strings.md": "sha256:de01fd74ce800807a66452f302576215e13a57911c31ecdc4e828042a8adc0a3"
+    },
+    "objectsFile": "pipeline/knowledge/ch08-02-strings.objects.json",
+    "objectsFileSha256": "sha256:04b6e0b33068fe76692a2cce3b396621c9c30a52ea65a3bd16d2bd5ba9a3befe",
+    "objectsTotal": 20,
+    "objectsInCluster": 20,
+    "objectsKept": 20,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 95,
+    "crossChapterInCluster": 3,
+    "crossChapterKept": 1,
+    "crossChapterExcludedByGate": [
+      {
+        "id": "AP-SYNTH-T05-04",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      },
+      {
+        "id": "AP-SYNTH-T05-05",
+        "reasonCode": "JUDGE_INSUFFICIENT"
+      }
+    ],
+    "antipatternVerdictsFile": "pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-fd491f2468f0",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-fd491f2468f0",
+    "gateReceiptFile": "pipeline/registry/run-e5641c125901.receipt.json",
+    "gateReceiptRunId": "run-e5641c125901",
+    "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "clusterSkillId": "ch08-02-strings-s1",
+    "clusterUnits": [
+      "ch08-02-strings-u1",
+      "ch08-02-strings-u2",
+      "ch08-02-strings-u3",
+      "ch08-02-strings-u4"
+    ],
+    "clusterChapterRefs": [
+      "ch08-02-strings"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json"
+  }
+}

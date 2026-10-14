@@ -522,24 +522,24 @@
     {
       "skillId": "ch10-02-traits-s1",
       "name": "trait 共享行为与约束",
-      "inputHash": "sha256:83c6fdd6aeb3693493930cfd3c94c9a2ea9250f9a8a87c39f5d84d52fb79c6fc",
+      "inputHash": "sha256:f8f0306510ea7b3679c299262c905218a4a3868917fa9b23b25aad6936331ca8",
       "scenarios": [
         {
           "scenarioId": "ch10-02-traits-s1-sc1",
-          "text": "我在写一个通用的通知发送函数，入参既要能打印，又要能生成通知摘要；现在参数类型只写了 impl Display，调用生成摘要的方法时编译不通过，帮我看看签名该怎么调整。",
-          "why": "这需要参数同时满足 Display 和自定义摘要 trait，属于用 + 连接多个 trait bound 的场景。",
+          "text": "我正在给通知模块做统一接口：邮件、短信和站内信都要有一个生成摘要的方法，其中一部分类型可以直接复用默认文案；发送函数想接收任意实现这个接口的类型并调用该方法，但不想为每种类型各写一份重载。",
+          "why": "这需要定义带默认实现的方法签名、为多个类型实现该接口，并在函数参数中使用 impl 形式的约束，正属于该技能覆盖范围。",
           "containsNameLeak": false
         },
         {
           "scenarioId": "ch10-02-traits-s1-sc2",
-          "text": "我定义了一个描述缓存策略的接口，里面几个方法想先留空，就写成了带空大括号的方法体，结果编译器报错，正确的方法声明写法是什么？",
-          "why": "在 trait 中声明方法签名时后跟分号，而不是在大括号中提供实现。",
+          "text": "我写了一个泛型函数，想在切片里找最大值，内部用 > 比较 T 类型的值，但编译一直报错说 T 没有实现相关能力；我想知道签名里该怎么加约束，既要能比较又要能复制，还想保持函数签名整洁。",
+          "why": "它涉及为泛型参数同时添加 PartialOrd 和 Copy 约束，并可以用 where 从句整理签名，属于该技能关于 trait bound 的知识。",
           "containsNameLeak": false
         },
         {
           "scenarioId": "ch10-02-traits-s1-sc3",
-          "text": "我想让一个函数根据输入配置返回新闻文章或推文两种结构体之一，它们都实现了同一个摘要 trait，但用 impl 摘要作为返回值类型时编译失败，问题在哪里？",
-          "why": "使用 impl Trait 作为返回值类型只适用于返回单一类型，不能在不同分支返回不同具体类型。",
+          "text": "我在做一个绘图库，用户会自己实现形状，我需要把不同类型的形状放进同一个容器里并统一调用它们的绘制方法；但我不能在库中穷举所有用户类型，也不想为每个具体类型写不同的调用逻辑。",
+          "why": "这需要 trait 对象和动态分发来在运行时对异质类型调用同一方法，并注意对象安全规则，正是该技能覆盖的高级场景。",
           "containsNameLeak": false
         }
       ],
@@ -680,129 +680,426 @@
       ],
       "problems": [],
       "finishReason": "stop"
+    },
+    {
+      "skillId": "ch11-01-writing-tests-s1",
+      "name": "编写 Rust 单元测试",
+      "inputHash": "sha256:a593d14bd4d1b58b2b922a6add9b1af788ebdf93247be90ec5307a94474e7fc6",
+      "scenarios": [
+        {
+          "scenarioId": "ch11-01-writing-tests-s1-sc1",
+          "text": "我刚给配置解析模块加了个 parse_config 函数，想为它补几个测试：给定合法输入时检查返回的结构体字段，给定非法输入时除了失败还要把原始输入内容打出来。",
+          "why": "它需要为 Rust 函数编写测试，并用 assert_eq 检查返回值、用自定义失败信息输出原始输入。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch11-01-writing-tests-s1-sc2",
+          "text": "我的 divide 函数除数为 0 时返回 Err(String)，我想写测试确认它确实返回 Err 而不是 panic，同时也验证正常相除的 Ok 分支结果。",
+          "why": "它涉及对返回 Result<T,E> 的测试，需要选择 is_err 断言而不是问号运算符，并验证 Ok 分支。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch11-01-writing-tests-s1-sc3",
+          "text": "我有个私有辅助函数 normalize_path 在模块里，想直接针对它写几个测试，但不确定测试模块里怎么引用它；输出路径格式可能随平台变化，我只想检查关键片段。",
+          "why": "它需要在内部 tests 模块中使用 use super::* 访问私有函数，并用 contains 做部分匹配断言。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch11-02-running-tests-s1",
+      "name": "控制测试运行方式",
+      "inputHash": "sha256:0467bb4a1b92a35c640330fca098250d1b48ebb98309a1cb74ae13b033b83d16",
+      "scenarios": [
+        {
+          "scenarioId": "ch11-02-running-tests-s1-sc1",
+          "text": "我有一个被标记成 ignored 的集成测试，因为依赖本地起好的 Redis。现在 Redis 已经在跑了，帮我只把这个被忽略的测试跑一遍，别跑其他测试。",
+          "why": "它涉及如何只运行被标记为 ignored 的测试，而不是默认排除它们。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch11-02-running-tests-s1-sc2",
+          "text": "有个单元测试通过了，但我加的 println! 调试日志一条都没显示。我想让通过的测试也把标准输出打出来，需要怎么跑？",
+          "why": "它涉及测试库默认截获通过测试输出的规则，以及 --show-output 参数的使用。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch11-02-running-tests-s1-sc3",
+          "text": "本地跑测试时多个用例老是偶发失败，我怀疑它们并行执行时互相影响。帮我把测试改成单线程串行跑一次，确认是不是并发问题。",
+          "why": "它涉及如何向测试二进制传递 --test-threads=1 来禁止并行运行。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch15-01-box-s1",
+      "name": "Box 基础与选型",
+      "inputHash": "sha256:6d97cd070402dda849a0564dd727ebda2e0d504fd8823a0f3ab4942129db4103",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-01-box-s1-sc1",
+          "text": "我在定义一个链表节点结构体，里面需要包含下一个节点的数据，但编译器说递归类型有无限大小。我该怎么让它能编译通过，同时保持所有权清晰？",
+          "why": "该场景需要理解 Box 允许在堆上间接存储数据，用指针打破递归类型的无限大小，并保持所有权语义，是 Box 基础选型的典型应用。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-01-box-s1-sc2",
+          "text": "我有一个很大的 [u8; 1024 * 1024] 数组作为局部变量，担心栈空间不够。把它放到堆上分配是否更好？如果我用智能指针包一层，离开作用域时它会自动释放吗？",
+          "why": "该场景涉及 Box 将数据从栈移到堆以避免栈溢出，以及离开作用域时自动释放堆数据的语义，需要 Box 基础与选型中的所有权和释放知识。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-01-box-s1-sc3",
+          "text": "我只需要在堆上存一个普通的整数，然后通过引用在几个地方共享，但不想引入引用计数的开销。最简单的做法是什么，会有额外性能损失吗？",
+          "why": "该场景需要判断当仅需间接存储和堆分配、不需要其他智能指针功能时，Box 是最简单且无额外性能损失的选项，属于 Box 选型权衡。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch15-01-box-s2",
+      "name": "递归类型与 cons list 修复",
+      "inputHash": "sha256:2b1d188d9716a68d1046cc21b7ddccb027f87ef56228d26b8e82da36cfda836f",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-01-box-s2-sc1",
+          "text": "我定义了一个枚举来表示列表，其中每个节点直接保存下一个节点；cargo check 报错说无法计算其大小，我需要一个最小的改动让它能编译。",
+          "why": "场景核心是递归类型直接嵌套导致的编译期大小错误，需要引入间接指针来修复，正是该技能覆盖的典型问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-01-box-s2-sc2",
+          "text": "我在做一个解释器的 AST，有个 enum 的某个变体会包含同类型的子节点，结果编译器报错说无限大小；我想知道为什么普通 enum 没这个问题，以及它到底怎么计算大小的。",
+          "why": "这需要解释递归类型的大小计算规则，以及 Box 如何打破无限展开，而不是普通的 Rust 语法或模式匹配问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-01-box-s2-sc3",
+          "text": "我已经把链表节点的尾指针改成 Box<Node> 能编译了，但现在代码里有些地方给单个计数字段也套了 Box；我想确认这是不是多余开销，以及 Box 本身除了堆分配还有没有额外成本。",
+          "why": "这涉及 Box<T> 的适用边界和普通值应优先栈上存储的启发，是该技能知识对象的一部分。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch15-02-deref-s1",
+      "name": "Deref解引用与强制转换",
+      "inputHash": "sha256:8a6f6a777348d7b9d4511eaac529775c85e8014f98417add0c0e83d35ef01927",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-02-deref-s1-sc1",
+          "text": "我写了个统计函数，入参是 `&i32`，在里面直接跟 `0` 比较时编译器一直报类型不匹配。帮我看下这里要怎么改才能正常比较。",
+          "why": "这涉及数字引用与数字比较时不能直接比较、必须手动解引用的规则。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-02-deref-s1-sc2",
+          "text": "我封装了一个 `struct Holder<T>(T);`，现在调用处写 `*holder` 取内部值，编译器提示类型不能做星号取值。请给我一个最小的标准 trait 实现，让这种包装类型能像引用一样取值。",
+          "why": "这是自定义智能指针类型启用 `*` 解引用的典型需求，需要实现标准库的 Deref trait。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-02-deref-s1-sc3",
+          "text": "我在重构接口时发现，一个接收 `&str` 的函数，调用方传 `&String` 也直接编译过了。帮我解释下这种参数位置自动转换的边界，尤其是 `&mut String` 到 `&mut str` 是否可行。",
+          "why": "这涉及函数传参时的隐式引用转换规则，需要解释 Deref 与 DerefMut 的强制转换条件。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch15-03-drop-s1",
+      "name": "Drop 清理机制",
+      "inputHash": "sha256:f787fbe6e217e73b579e35ee8d4f9515a6efc06f0c5c3c75e83321cf5171b30f",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-03-drop-s1-sc1",
+          "text": "我在一个长函数里打开文件后，读写很早就完成了，但文件句柄会一直活到函数末尾；我想在不额外加大括号的情况下尽早关闭文件，试过直接调用这个类型的 drop 方法却编译不过。",
+          "why": "这涉及 Rust 中不能显式调用 Drop trait 的 drop 方法，而应使用 std::mem::drop 来在作用域结束前强制清理文件资源。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-03-drop-s1-sc2",
+          "text": "循环里我拿到 MutexGuard 后只做一小步判断，但它会活到本轮迭代结束，导致其他线程被锁住的时间比实际需要更长；我不想为了提前释放锁而重构大量嵌套作用域。",
+          "why": "这是典型的需要在值离开作用域之前强制清理值，以尽早释放锁等同步资源，应由 Drop 清理机制技能解释正确做法。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-03-drop-s1-sc3",
+          "text": "我有一个 RAII 对象管理着网络连接，逻辑上已经用完连接了，但同一作用域后面还有很多无关代码；我希望它马上断开并让后续代码无法再误用这个变量，而不是靠包一层花括号。",
+          "why": "该场景需要理解如何主动提前丢弃一个实现了 Drop 的值，并让编译器在后续使用时报错，属于 Drop 清理机制与 std::mem::drop 的适用范围。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch15-05-interior-mutability-s1",
+      "name": "RefCell内部可变性实践",
+      "inputHash": "sha256:6e2b387c6b8ec1f7c83cbc03ab613ef1cbc057cac0ceda47b8d2db14c07eeca5",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc1",
+          "text": "我在给一个消息处理器实现某个 trait，它的 process 方法签名是 &self，但我需要在方法内部更新处理计数，不能改成 &mut self，该怎么组织内部状态？",
+          "why": "这涉及在 trait 方法保持 &self 签名时用 RefCell 修改内部字段的内部可变性模式，正是该技能要解决的核心场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc2",
+          "text": "我有一棵语法树，多个节点需要共享同一个可变的符号表，节点持有的是不可变引用，但解析过程中要插入符号，如何让多个所有者都能修改它？",
+          "why": "这对应多个所有者且需要修改值的场景，应使用 Rc<RefCell<T>> 组合，属于该技能涵盖的决策点。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc3",
+          "text": "我的单元测试里 mock 对象需要记录调用次数，但 mock 的方法签名是 &self，同时我在同一作用域连续 borrow_mut 两次后程序 panic 了，怎么避免这种运行时借用冲突？",
+          "why": "这涉及 RefCell 运行时借用规则和 mock 对象中修改内部状态，以及避免 borrow_mut 冲突的反模式，正是该技能要处理的问题。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch16-01-threads-s1",
+      "name": "Rust 多线程任务管理",
+      "inputHash": "sha256:1e391ac31e497ae19e44a3bc0374ec7a90c81c34e3066bb8692c6b302a25c485",
+      "scenarios": [
+        {
+          "scenarioId": "ch16-01-threads-s1-sc1",
+          "text": "我写了个程序并发计算多个文件的校验和，每个文件一个线程，但 main 经常在计算完之前就退出了，怎么让 main 等所有线程跑完再结束？",
+          "why": "该问题涉及创建多线程后控制线程结束，需要通过保存 JoinHandle 并调用 join 确保线程在 main 退出前完成。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch16-01-threads-s1-sc2",
+          "text": "我想把一个大数组切成几块交给不同的线程分别处理，但编译器报错说闭包借用了 main 里的数据，怎么把每块数据的所有权真正交给对应的线程？",
+          "why": "这需要在线程闭包中使用 move 关键字将数据所有权转移到新线程，属于安全转移线程所需数据的场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch16-01-threads-s1-sc3",
+          "text": "我的服务里会 spawn 几个后台线程写入日志，但日志顺序有时候乱，偶尔还会丢最后几条，是不是线程没跑完 main 就退了？该怎样保证它们执行完并顺序可控？",
+          "why": "该请求涉及多个线程并发运行且执行顺序影响输出，同时需要修复线程未完整执行的问题，符合该技能关于线程调度和 join 保证执行完成的知识。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch16-02-message-passing-s1",
+      "name": "线程间消息传递通道实现",
+      "inputHash": "sha256:d1544f4a4ee92c97ad69bac719c0f6682c670c6b32325d6b342ab5d17818d36a",
+      "scenarios": [
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc1",
+          "text": "我在写一个服务，需要让多个 worker 线程并行处理请求，然后把各自的结果汇总到一个主线程里做统计。每个 worker 都要能向同一个结果收集器发送数据，我该怎么组织这些线程和发送端？",
+          "why": "这需要创建多生产者单消费者通道，并在多个线程间传递发送端句柄，正好对应技能中克隆发送者和多个线程发送到同一接收端的内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc2",
+          "text": "我写了一段代码，把字符串通过通道发送给另一个线程后，还想在发送方继续使用这个字符串检查它是否包含某个子串，但编译器报错说值已被移动。我该怎么调整，才能既发送数据又不违反所有权规则？",
+          "why": "该技能解释了 send 函数获取参数所有权并移动值，用户需要理解这一规则并改为先克隆或发送后不再使用原值。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc3",
+          "text": "我有一个后台线程在接收多个任务消息，发送方可能随时断开，我希望接收循环能自动在所有发送者关闭时退出，并且不用每次都手动处理 recv 的错误。怎么写比较简洁？",
+          "why": "技能中提到接收端 rx 可以被当作迭代器使用，当通道关闭时迭代器结束，这能直接满足用户对简洁循环和自动退出的需求。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch16-03-shared-state-s1",
+      "name": "共享状态并发",
+      "inputHash": "sha256:03fe887003f0d85accc4cc8fcc6a06014465863b066cc237a85aafc087e3a5ff",
+      "scenarios": [
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc1",
+          "text": "我有个多线程统计任务，每个线程算完局部结果后要往同一个总数里累加，但把总数变量传进多个线程时编译器报错说它不能同时被多个线程借用，我该怎么组织这个共享的累加器？",
+          "why": "因为这是多个线程需要共享并修改同一份数据，应使用 Arc 与 Mutex 的组合来安全共享所有权并获取内部可变引用，而不是仅靠普通借用或 Rc。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc2",
+          "text": "我在服务里用互斥锁保护配置缓存，更新配置的代码经常在出错分支忘记解锁，导致其他请求线程被卡住；有没有办法让锁在离开作用域时自动释放，同时我还能直接修改缓存内容？",
+          "why": "因为需要正确使用 MutexGuard 的 Drop 自动解锁语义和 Mutex<T> 的内部可变性，而不是手动管理加锁/解锁。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc3",
+          "text": "两个后台任务一个先拿数据库连接池锁再拿文件写入锁，另一个反着拿，偶尔整个服务挂起且没有日志；我想知道如何安排多个锁的获取顺序来避免这种互相等待。",
+          "why": "因为该场景属于两个线程各持一个锁并等待对方资源的死锁风险，需要技能中的死锁规避策略来设计一致的加锁顺序。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "ch17-02-trait-objects-s1",
+      "name": "trait 对象使用与原理",
+      "inputHash": "sha256:922c3fd41260fd5ef1418b00864f526052e7798da4841789c705359f20f843ba",
+      "scenarios": [
+        {
+          "scenarioId": "ch17-02-trait-objects-s1-sc1",
+          "text": "我在做一个绘图库，想允许第三方插件注册自己的图元类型，自己只需要在渲染循环里对每个图元调用 draw，不用关心它具体怎么画。我应该怎么设计这个注册表和调用方式？",
+          "why": "这需要在编译时无法预知所有类型的情况下，把不同类型的值放入统一集合并调用同一个 trait 方法，正是该技能处理的可扩展库接口场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch17-02-trait-objects-s1-sc2",
+          "text": "我定义了一个带 `fn clone_impl(&self) -> Self` 的 trait，然后想把几个实现该 trait 的类型放进 `Vec<Box<dyn MyTrait>>`，编译器不让编译。对象安全到底哪里出了问题？",
+          "why": "涉及“只有对象安全的 trait 才能组成 trait 对象”以及返回 Self 导致不是对象安全的规则，属于该技能的原理部分。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "ch17-02-trait-objects-s1-sc3",
+          "text": "我有一批任务执行器，所有执行器类型相同，只需要存一个 `Vec<Executor>` 然后遍历执行；我在纠结是抽象一个 Executor trait 再用 dyn 还是直接给这个集合加泛型约束。哪种更合适？",
+          "why": "这对应“当组件集合只需要同质集合时使用泛型和 trait bound”的启发式，帮助用户在静态分发和动态分发之间选择，是该技能覆盖的决策场景。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
     }
   ],
   "unrelated": {
-    "inputHash": "sha256:c0e0ae8ad60866a943482b93f59902305cc27f9e0a00a39296e73a8e7c7c39de",
+    "inputHash": "sha256:3250704338d8d60dacc50c96aab1bbd1c0182520d6abded937e4145b1408f952",
     "scenarios": [
       {
         "scenarioId": "unrelated-sc1",
-        "text": "帮我起草一份给客户的英文邮件，说明项目延期两周并给出新的交付时间表。",
-        "why": "这是商务英文邮件写作，不涉及清单中任何 Rust 语言特性或编程实现。",
+        "text": "我需要用 Python 的 pandas 把销售 CSV 按月份汇总收入，并导出成 Excel 报表。",
+        "why": "这是 Python 数据处理任务，不涉及清单中的 Rust 语言特性、所有权或并发主题。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc2",
-        "text": "请根据这份销售数据做一份季度趋势分析，输出关键结论。",
-        "why": "这是业务数据分析与总结任务，不触发 Rust 的集合、迭代器或错误处理等编程主题。",
+        "text": "请帮我优化这条 SQL 查询，让订单报表的响应时间从 8 秒降到 1 秒以内。",
+        "why": "这是数据库查询优化，不涉及 Rust 的 Vec、String、HashMap 或测试等技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc3",
-        "text": "帮我规划一次三人从上海到成都的四天出差行程，包括交通和住宿建议。",
-        "why": "这是差旅安排任务，不涉及 Rust 中的引用、生命周期、结构体等概念。",
+        "text": "帮我修复移动端导航栏在 iOS Safari 上横向溢出的问题，保持菜单可点击。",
+        "why": "这是 CSS 响应式布局问题，不涉及任何 Rust 编程语言特性。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc4",
-        "text": "写一份团队周会的会议纪要模板，包含议题、结论和待办事项。",
-        "why": "这是文档模板撰写，不涉及任何 Rust 语法规则或标准库使用。",
+        "text": "我需要用 FastAPI 设计一个产品列表接口，支持按价格排序和分页返回。",
+        "why": "这是 Python Web API 设计，与清单中的 Rust 结构体、trait、生命周期等无关。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc5",
-        "text": "我要给新员工讲 Git 分支管理，请帮我准备一个简单的讲解提纲。",
-        "why": "这是 Git 工具培训，不触发清单中 Rust 特有的所有权、借用、trait 等技能。",
+        "text": "请帮我写一个 GitHub Actions 工作流，在推送时对前端项目运行 ESLint 并构建 Docker 镜像。",
+        "why": "这是 CI/CD 配置，不涉及 Rust 的 cargo test、闭包、迭代器或并发技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc6",
-        "text": "帮我将这段产品简介从中文翻译成日语，保持语气友好。",
-        "why": "这是自然语言翻译任务，不涉及 Rust 的字符串 slice、String 或 Pig Latin 等编程转换。",
+        "text": "帮我写一个正则表达式，从 Nginx 访问日志中提取客户端 IP、状态码和请求路径。",
+        "why": "这是日志解析正则，不涉及清单中的 Rust String、切片或 HashMap 等特性。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc7",
-        "text": "设计一个家庭小花园的布局，要求有休息区和耐阴植物。",
-        "why": "这是园艺设计任务，不涉及任何 Rust 编程构造或标准库。",
+        "text": "请帮我把这份用户需求整理成结构化 API 文档，并补充常见错误码说明。",
+        "why": "这是技术文档编写，不涉及任何 Rust 编程或并发技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc8",
-        "text": "请根据我的体检报告指标，给出一周的健康饮食建议。",
-        "why": "这是健康饮食建议任务，不涉及 Rust 语言或编程实现。",
+        "text": "帮我检查这个 JWT 校验流程有没有签名算法混淆或过期时间绕过的问题。",
+        "why": "这是 Web 安全审查，与 Rust 语言特性、测试和并发主题无关。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc9",
-        "text": "帮我检查这份租赁合同中关于提前退租的条款是否有风险。",
-        "why": "这是合同条款审阅，不触发清单中的 Rust 编程技能。",
+        "text": "我想用 Chart.js 画一个最近 30 天活跃用户数量的折线图，请给我示例代码。",
+        "why": "这是 JavaScript 数据可视化，不涉及清单中的 Rust 技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc10",
-        "text": "给公司公众号写一篇介绍新咖啡机的短文案，200字左右。",
-        "why": "这是营销文案写作，不涉及 Rust 技术主题或语法规则。",
+        "text": "请帮我用 scikit-learn 训练一个客户流失预测模型，并输出最重要的 5 个特征。",
+        "why": "这是机器学习模型训练，不涉及 Rust 的所有权、错误处理或模式匹配。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc11",
-        "text": "帮我制定一个为期8周的半程马拉松训练计划，按周列出跑量。",
-        "why": "这是运动训练计划任务，不涉及 Rust 代码、类型系统或标准库。",
+        "text": "帮我诊断为什么这个 WebSocket 连接每隔几分钟就会断开并自动重连。",
+        "why": "这是网络协议诊断，不是 Rust 线程、通道或状态模式等技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc12",
-        "text": "请用 Excel 公式帮我计算每个月的复利收益，假设年利率5%。",
-        "why": "这是表格公式计算，不涉及 Rust 中的 Vec、String、HashMap 等数据结构。",
+        "text": "我需要解决一个 Git 合并冲突，保留两个分支对同一份配置的不同修改。",
+        "why": "这是版本控制操作，与清单中的 Rust 编程语言技能无关。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc13",
-        "text": "我准备在本地搭建一个家庭媒体服务器，请比较 Jellyfin 和 Plex 的优缺点。",
-        "why": "这是软件选型咨询，不涉及实现 Rust 代码或清单中的语法规则。",
+        "text": "请帮我写一个 cron 表达式，让备份脚本在每周日凌晨 2 点执行。",
+        "why": "这是定时任务配置，不涉及 Rust 的测试、闭包或集合类型。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc14",
-        "text": "帮我写一份关于远程办公效率的员工调查问卷，10个问题。",
-        "why": "这是问卷调查设计任务，不触发 Rust 编程相关技能。",
+        "text": "帮我在 Excel 里用公式统计每个销售员本季度的达标率。",
+        "why": "这是电子表格公式，不是 Rust 语言或标准库相关技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc15",
-        "text": "请解释一下什么是 HTTPS 证书链，以及如何查看浏览器中的证书信息。",
-        "why": "这是网络与安全概念解释，不涉及 Rust 语言实现或编程任务。",
+        "text": "我想设计一个回合制战斗伤害公式，让防御力对伤害的影响递减但不会完全无效。",
+        "why": "这是游戏数值设计，不涉及清单中的猜数字、随机数或任何 Rust 特性。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc16",
-        "text": "帮我整理一份适合周末露营的物品清单，分烹饪、睡眠、照明三类。",
-        "why": "这是户外活动清单整理，不涉及 Rust 技术主题。",
+        "text": "请用 Kotlin 帮我写一个点击按钮切换深色和浅色主题的简单界面。",
+        "why": "这是 Android UI 开发，不涉及 Rust 语言、测试或并发主题。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc17",
-        "text": "给我们的内部知识库写一个“如何申请报销”的操作步骤说明。",
-        "why": "这是内部流程文档编写，不涉及 Rust 语言特性或编程构造。",
+        "text": "我需要配置 RabbitMQ 的死信队列，把处理失败的消息转移到待人工处理队列。",
+        "why": "这是消息队列中间件配置，不是 Rust 线程间通道或共享状态并发。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc18",
-        "text": "我拍了一段3分钟的产品展示视频，请建议剪辑节奏和配乐风格。",
-        "why": "这是视频剪辑创意建议，不触发清单中的 Rust 技能。",
+        "text": "帮我看一下这块 STM32 通过 I2C 读取传感器数据偶尔返回 0 的问题。",
+        "why": "这是嵌入式硬件通信调试，不涉及清单中的 Rust 抽象和标准库技能。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc19",
-        "text": "请帮我设计一个简单的 SQL 查询，找出过去30天注册但未下单的用户。",
-        "why": "这是 SQL 数据查询任务，不涉及 Rust 的 Iterator trait、Vec 或错误处理等实现细节。",
+        "text": "请帮我分析一个 React 页面首屏加载慢的原因，并给出按路由拆包的优化方案。",
+        "why": "这是前端性能优化，与 Rust 的 Vec、String、trait 等语言特性无关。",
         "containsNameLeak": false
       },
       {
         "scenarioId": "unrelated-sc20",
-        "text": "帮我用 Python 写一个脚本，把文件夹里的图片按拍摄日期重命名。",
-        "why": "这是 Python 脚本任务，不涉及清单中 Rust 特有的语法、所有权、trait 或标准库 API。",
+        "text": "帮我写一封给客户的进度更新邮件，说明本周已经完成的功能和下周计划。",
+        "why": "这是商务写作，不涉及任何 Rust 编程、测试或并发技能。",
         "containsNameLeak": false
       }
     ],
@@ -810,7 +1107,7 @@
     "finishReason": "stop"
   },
   "usage": {
-    "promptTokens": 32158,
-    "completionTokens": 69072
+    "promptTokens": 49167,
+    "completionTokens": 98264
   }
 }

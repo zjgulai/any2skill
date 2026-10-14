@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "ch10-02-traits-s1",
+  "name": "ch10-02-traits-s1",
+  "description": "trait 共享行为与约束：在 trait 中声明方法签名时，方法签名后跟分号，而不是在大括号中提供其实现；适用于在 trait 中声明方法签名时、当 trait 与要实现该 trait 的类型均定义于当前 crate 本地作用域之外时、调用参数使用 `impl` 关键字和 trait 名称的函数，并传入未实现该 trait 的类型时。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 13372,
+    "markdownHash": "sha256:1a6c4299780c10322df36e7dd4e9d6cd2a7855a16e88034b6b6607ff8494016c",
+    "checkedAt": "2026-10-14T21:46:01.943Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CH10-02-TRAITS-H2-1-CONCEPT-01",
+    "CH10-02-TRAITS-H3-1-CONCEPT-01",
+    "CH10-02-TRAITS-H3-1-ENGINEERINGRULE-02",
+    "CH10-02-TRAITS-H3-2-ENGINEERINGRULE-01",
+    "CH10-02-TRAITS-H3-3-CONCEPT-01",
+    "CH10-02-TRAITS-H3-3-CONCEPT-02",
+    "CH10-02-TRAITS-H3-4-CONCEPT-01",
+    "CH10-02-TRAITS-H3-4-ENGINEERINGRULE-02",
+    "CH10-02-TRAITS-H4-1-ENGINEERINGRULE-02",
+    "CH10-02-TRAITS-H4-2-ENGINEERINGRULE-01",
+    "CH10-02-TRAITS-H4-3-CONCEPT-01",
+    "CH10-02-TRAITS-H3-5-CONCEPT-01",
+    "CH10-02-TRAITS-H3-5-ENGINEERINGRULE-02",
+    "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-01",
+    "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02",
+    "CH10-02-TRAITS-H3-7-CONCEPT-01",
+    "CH10-02-TRAITS-H3-7-CONCEPT-02",
+    "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-01",
+    "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-02",
+    "CH17-02-TRAIT-OBJECTS-H3-1-CONCEPT-01",
+    "CH17-02-TRAIT-OBJECTS-H3-1-HEURISTIC-02",
+    "CH17-02-TRAIT-OBJECTS-H3-2-CONCEPT-01",
+    "CH17-02-TRAIT-OBJECTS-H3-2-ENGINEERINGRULE-02",
+    "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-01",
+    "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-02",
+    "CH17-02-TRAIT-OBJECTS-H3-4-ENGINEERINGRULE-01"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T03-01",
+    "AP-SYNTH-T03-04",
+    "AP-SYNTH-T03-06",
+    "AP-SYNTH-T03-08"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h2-1",
+      "title": "trait：定义共享的行为",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h3-1",
+      "title": "定义 trait",
+      "lineStart": 7,
+      "lineEnd": 30
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h3-2",
+      "title": "为类型实现 trait",
+      "lineStart": 31,
+      "lineEnd": 93
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h3-3",
+      "title": "默认实现",
+      "lineStart": 94,
+      "lineEnd": 170
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h3-4",
+      "title": "trait 作为参数",
+      "lineStart": 171,
+      "lineEnd": 184
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h4-1",
+      "title": "Trait Bound 语法",
+      "lineStart": 185,
+      "lineEnd": 210
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h4-2",
+      "title": "通过 `+` 指定多个 trait bound",
+      "lineStart": 211,
+      "lineEnd": 226
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h4-3",
+      "title": "通过 `where` 简化 trait bound",
+      "lineStart": 227,
+      "lineEnd": 245
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h3-5",
+      "title": "返回实现了 trait 的类型",
+      "lineStart": 246,
+      "lineEnd": 289
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h3-6",
+      "title": "使用 trait bounds 来修复 `largest` 函数",
+      "lineStart": 290,
+      "lineEnd": 369
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+      "anchor": "ch10-02-traits#h3-7",
+      "title": "使用 trait bound 有条件地实现方法",
+      "lineStart": 370,
+      "lineEnd": 428
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+      "anchor": "ch17-02-trait-objects#h2-1",
+      "title": "为使用不同类型的值而设计的 trait 对象",
+      "lineStart": 1,
+      "lineEnd": 10
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+      "anchor": "ch17-02-trait-objects#h3-1",
+      "title": "定义通用行为的 trait",
+      "lineStart": 11,
+      "lineEnd": 97
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+      "anchor": "ch17-02-trait-objects#h3-2",
+      "title": "实现 trait",
+      "lineStart": 98,
+      "lineEnd": 221
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+      "anchor": "ch17-02-trait-objects#h3-3",
+      "title": "trait 对象执行动态分发",
+      "lineStart": 222,
+      "lineEnd": 227
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+      "anchor": "ch17-02-trait-objects#h3-4",
+      "title": "Trait 对象要求对象安全",
+      "lineStart": 228,
+      "lineEnd": 273
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch10-01-syntax.md",
+      "anchor": "ch10-01-syntax#h3-1",
+      "title": "在函数定义中使用泛型",
+      "lineStart": 5,
+      "lineEnd": 114
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch19-03-advanced-traits.md",
+      "anchor": "ch19-03-advanced-traits#h3-5",
+      "title": "newtype 模式用于在外部类型上实现外部 trait",
+      "lineStart": 469,
+      "lineEnd": 510
+    }
+  ],
+  "codeSource": {
+    "available": false,
+    "note": "> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。"
+  },
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-14T21:46:01.943Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 11 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 11
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 4 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 4
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 15
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 11,
+    "principles": 10,
+    "patterns": 15,
+    "pitfalls": 4,
+    "code": 0,
+    "reading": 18
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 4 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_SOURCE_ABSENT",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED"
+  ],
+  "provenance": {
+    "sourceFile": "sources/rust-book-cn/book/ch10-02-traits.md",
+    "anchorIndexHash": "sha256:9f2092fcdbed3beba5231e86b090e0fcea7d5692cf93832c62facbd176a84e2a",
+    "anchorIndexHashes": {
+      "sources/rust-book-cn/book/ch10-02-traits.md": "sha256:9f2092fcdbed3beba5231e86b090e0fcea7d5692cf93832c62facbd176a84e2a",
+      "sources/rust-book-cn/book/ch17-02-trait-objects.md": "sha256:911a834b537a56d87a143df3abfb1347cc6dcd291e11362c3d49fee20051ccf1",
+      "sources/rust-book-cn/book/ch10-01-syntax.md": "sha256:e2f9b97ccc259ac64c927a3b421397d75fd8b3b1cdffeaed68f8772b18bf9ef5",
+      "sources/rust-book-cn/book/ch19-03-advanced-traits.md": "sha256:435743a59685c844fd735484bd6384eeb2aa2ae767c1b4cac5b759dd61e8834a"
+    },
+    "objectsFile": "pipeline/knowledge/ch10-02-traits.objects.json + pipeline/knowledge/ch17-02-trait-objects.objects.json",
+    "objectsFileSha256": "sha256:36c720d7db2f713fa7dca8a6415ab30b0e295909f9ac344109dfb0344f81a722",
+    "objectsTotal": 27,
+    "objectsInCluster": 26,
+    "objectsKept": 26,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 95,
+    "crossChapterInCluster": 5,
+    "crossChapterKept": 4,
+    "crossChapterExcludedByGate": [
+      {
+        "id": "AP-SYNTH-T03-05",
+        "reasonCode": "JUDGE_NOT_SUPPORTED"
+      }
+    ],
+    "antipatternVerdictsFile": "pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-fd491f2468f0",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-fd491f2468f0",
+    "gateReceiptFile": "pipeline/registry/run-b1b4ad10cbcb.receipt.json",
+    "gateReceiptRunId": "run-b1b4ad10cbcb",
+    "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "clusterSkillId": "ch10-02-traits-s1",
+    "clusterUnits": [
+      "ch10-02-traits-u1",
+      "ch10-02-traits-u2",
+      "ch10-02-traits-u3",
+      "ch10-02-traits-u4",
+      "ch17-02-trait-objects-u1",
+      "ch17-02-trait-objects-u2",
+      "ch17-02-trait-objects-u3",
+      "ch17-02-trait-objects-u4",
+      "ch17-02-trait-objects-u5"
+    ],
+    "clusterChapterRefs": [
+      "ch10-02-traits",
+      "ch17-02-trait-objects"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json"
+  }
+}

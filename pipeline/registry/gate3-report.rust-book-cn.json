@@ -1,6 +1,6 @@
 {
   "schemaVersion": "gate3-report/v1",
-  "createdAt": "2026-10-14T18:58:39.361Z",
+  "createdAt": "2026-10-14T22:16:29.366Z",
   "subset": null,
   "model": {
     "modelId": "deepseek-v4-pro"
@@ -4223,33 +4223,24 @@
       "riskFlags": [
         "PITFALL_COVERAGE_BELOW_ADVISORY"
       ],
-      "markdownSha256": "sha256:71532f7808993ef27b2a7adb8d8c8e131755ca24e12a8e003a78bcb10d8c34bd",
+      "markdownSha256": "sha256:1a6c4299780c10322df36e7dd4e9d6cd2a7855a16e88034b6b6607ff8494016c",
       "tasks": [
         {
           "taskId": "ch10-02-traits-s1-t1",
-          "prompt": "请创建 `summary.rs`，定义一个 `Summary` trait，其中声明 `fn summarize(&self) -> String;`（只写签名，不要实现）。再定义一个结构体 `NewsArticle`，包含一个 `title: String` 字段，并为它实现 `Summary`，在 `summarize` 方法中返回 `self.title.clone()`。",
+          "prompt": "请在工作目录创建 src/main.rs，定义一个 trait Summary，其中 summarize 方法只有方法签名没有实现（签名后跟分号），然后定义一个 NewsArticle 结构体，为 NewsArticle 实现 Summary，summarize 返回文章标题。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "summary.rs"
-            },
-            {
-              "type": "regex",
-              "path": "summary.rs",
-              "pattern": "trait\\s+Summary"
-            },
-            {
-              "type": "regex",
-              "path": "summary.rs",
-              "pattern": "fn\\s+summarize\\s*\\([^)]*\\)\\s*->\\s*String\\s*;"
+              "path": "src/main.rs"
             },
             {
               "type": "contains",
-              "path": "summary.rs",
+              "path": "src/main.rs",
               "patterns": [
-                "impl Summary for NewsArticle",
-                "self.title.clone()"
+                "trait Summary",
+                "fn summarize(&self) -> String;",
+                "impl Summary for NewsArticle"
               ]
             }
           ],
@@ -4258,25 +4249,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "summary.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "summary.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4288,25 +4267,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "summary.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "summary.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4317,34 +4284,22 @@
         },
         {
           "taskId": "ch10-02-traits-s1-t2",
-          "prompt": "请创建 `notify.rs`，定义一个 `Summary` trait（方法 `summarize` 使用签名即可）和一个结构体 `Tweet`（包含字段 `content: String`）。为 `Tweet` 实现 `Summary`，在 `summarize` 方法中返回 `self.content.clone()`。然后定义函数 `fn notify(item: impl Summary)`，在函数体中打印 `item.summarize()`。在 `main` 中创建 `let tweet = Tweet { content: String::from(\"hello\") };` 并调用 `notify(tweet);`。不要添加任何传入 `String`、`i32` 或其他未实现 `Summary` 类型的 `notify` 调用。",
+          "prompt": "请创建 src/main.rs，定义一个 Summary trait，其中 summarize_author 方法只有签名，而 summarize 方法有默认实现，调用 self.summarize_author() 并返回格式化的字符串。再定义一个 Tweet 结构体并实现 Summary，只实现 summarize_author。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "notify.rs"
-            },
-            {
-              "type": "regex",
-              "path": "notify.rs",
-              "pattern": "trait\\s+Summary"
+              "path": "src/main.rs"
             },
             {
               "type": "contains",
-              "path": "notify.rs",
+              "path": "src/main.rs",
               "patterns": [
-                "fn notify(item: impl Summary)",
-                "impl Summary for Tweet",
-                "self.content.clone()",
-                "notify(tweet)"
-              ]
-            },
-            {
-              "type": "not_contains",
-              "path": "notify.rs",
-              "patterns": [
-                "notify(String",
-                "notify(42"
+                "trait Summary",
+                "fn summarize_author(&self) -> String;",
+                "fn summarize(&self) -> String",
+                "self.summarize_author()",
+                "impl Summary for Tweet"
               ]
             }
           ],
@@ -4353,25 +4308,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "notify.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "notify.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "notify.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "notify.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4383,25 +4326,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "notify.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "notify.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "notify.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "notify.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4412,68 +4343,35 @@
         },
         {
           "taskId": "ch10-02-traits-s1-t3",
-          "prompt": "请创建 `wrapper.rs`，导入 `std::fmt`。使用 newtype 模式定义本地结构体 `VecDisplay(Vec<String>)`，并为它实现 `std::fmt::Display` trait。在 `Display::fmt` 中，用 `write!(f, \"{}\", self.0.join(\", \"))` 输出向量元素。不要为 `Vec<String>` 直接实现任何外部 trait（例如 `Display`）。",
+          "prompt": "请创建 src/main.rs，演示孤儿规则：不要直接为外部的 Vec<T> 实现标准库的 Display trait，而是定义一个本地包装类型 ListWrapper<T>(Vec<T>)，并为 ListWrapper<T> 实现 Display。文件中用注释说明直接 impl Display for Vec<T> 会违反孤儿规则。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "wrapper.rs"
-            },
-            {
-              "type": "regex",
-              "path": "wrapper.rs",
-              "pattern": "struct\\s+VecDisplay\\(Vec<String>\\)"
-            },
-            {
-              "type": "regex",
-              "path": "wrapper.rs",
-              "pattern": "impl\\s+(?:std::fmt::)?Display\\s+for\\s+VecDisplay"
+              "path": "src/main.rs"
             },
             {
               "type": "contains",
-              "path": "wrapper.rs",
+              "path": "src/main.rs",
               "patterns": [
-                "self.0.join(\", \")"
-              ]
-            },
-            {
-              "type": "not_contains",
-              "path": "wrapper.rs",
-              "patterns": [
-                "for Vec<String>"
+                "struct ListWrapper<T>(Vec<T>)",
+                "Display for ListWrapper",
+                "孤儿规则"
               ]
             }
           ],
           "without": {
-            "passed": false,
+            "passed": true,
             "checks": [
               {
                 "type": "file_exists",
-                "path": "wrapper.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "wrapper.rs",
-                "ok": false,
-                "detail": "未匹配：struct\\s+VecDisplay\\(Vec<String>\\)"
-              },
-              {
-                "type": "regex",
-                "path": "wrapper.rs",
-                "ok": false,
-                "detail": "未匹配：impl\\s+(?:std::fmt::)?Display\\s+for\\s+VecDisplay"
               },
               {
                 "type": "contains",
-                "path": "wrapper.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "wrapper.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4481,35 +4379,17 @@
             "invalidPaths": []
           },
           "with": {
-            "passed": false,
+            "passed": true,
             "checks": [
               {
                 "type": "file_exists",
-                "path": "wrapper.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "wrapper.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "wrapper.rs",
-                "ok": false,
-                "detail": "未匹配：impl\\s+(?:std::fmt::)?Display\\s+for\\s+VecDisplay"
               },
               {
                 "type": "contains",
-                "path": "wrapper.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "wrapper.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4520,27 +4400,20 @@
         },
         {
           "taskId": "ch10-02-traits-s1-t4",
-          "prompt": "请创建 `same_summary.rs`，定义一个 `Summary` trait（方法 `summarize` 使用签名即可）。然后编写函数 `fn announce_both<T: Summary>(a: &T, b: &T)`，在函数体中打印 `a.summarize()` 和 `b.summarize()`。不要使用 `impl Summary` 作为参数类型。",
+          "prompt": "请创建 src/main.rs，定义一个 Summary trait，为 Tweet 实现它。然后写一个 notify 函数，参数类型使用 impl Summary，函数体调用 item.summarize() 并打印。在 main 中用 Tweet 调用 notify，并添加注释说明如果传入 String 会编译失败，因为 String 没有实现 Summary。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "same_summary.rs"
+              "path": "src/main.rs"
             },
             {
               "type": "contains",
-              "path": "same_summary.rs",
+              "path": "src/main.rs",
               "patterns": [
-                "fn announce_both<T: Summary>(a: &T, b: &T)",
-                "a.summarize()",
-                "b.summarize()"
-              ]
-            },
-            {
-              "type": "not_contains",
-              "path": "same_summary.rs",
-              "patterns": [
-                "impl Summary"
+                "trait Summary",
+                "fn notify(item: impl Summary)",
+                "String 没有实现 Summary"
               ]
             }
           ],
@@ -4549,19 +4422,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "same_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "same_summary.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "same_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4573,19 +4440,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "same_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "same_summary.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "same_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4596,21 +4457,20 @@
         },
         {
           "taskId": "ch10-02-traits-s1-t5",
-          "prompt": "请创建 `display_summary.rs`，定义一个 `Summary` trait（方法 `summarize` 使用签名即可）。然后编写函数 `fn show_summary(item: impl Summary + Display)`，函数体先使用 `println!(\"{}\", item)` 打印该值，再打印 `item.summarize()`。需要导入 `std::fmt::Display`。",
+          "prompt": "请创建 src/main.rs，定义 Summary 和 Display 的使用场景：写一个函数 print_item，参数类型同时需要实现 Summary 和 Display，使用 impl Summary + Display 作为参数类型。函数体调用 item.summarize() 并用 println! 打印 item。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "display_summary.rs"
+              "path": "src/main.rs"
             },
             {
               "type": "contains",
-              "path": "display_summary.rs",
+              "path": "src/main.rs",
               "patterns": [
-                "use std::fmt::Display;",
-                "fn show_summary(item: impl Summary + Display)",
-                "println!(\"{}\", item)",
-                "item.summarize()"
+                "fn print_item(item: impl Summary + Display)",
+                "item.summarize()",
+                "println!"
               ]
             }
           ],
@@ -4619,13 +4479,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "display_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "display_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4637,13 +4497,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "display_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "display_summary.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4654,26 +4514,22 @@
         },
         {
           "taskId": "ch10-02-traits-s1-t6",
-          "prompt": "请创建 `largest.rs`，编写泛型函数 `fn largest<T: PartialOrd + Copy>(list: &[T]) -> T`，返回切片中最大的元素。函数体使用 `let mut largest = list[0];`，然后 `for i in 1..list.len()` 循环，内部用 `if list[i] > largest` 比较，并在更大时执行 `largest = list[i];`。最后返回 `largest`。",
+          "prompt": "请创建 src/main.rs，写一个函数 same_type，它接收两个参数并返回 bool，要求这两个参数的具体类型必须相同。使用同一个泛型 T 并施加 PartialEq 约束，而不是用 impl PartialEq 分开写。添加 main 调用演示。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "largest.rs"
-            },
-            {
-              "type": "regex",
-              "path": "largest.rs",
-              "pattern": "fn\\s+largest\\s*<T:\\s*PartialOrd\\s*\\+\\s*Copy>"
+              "path": "src/main.rs"
             },
             {
               "type": "contains",
-              "path": "largest.rs",
+              "path": "src/main.rs",
               "patterns": [
-                "let mut largest = list[0];",
-                "for i in 1..list.len()",
-                "if list[i] > largest",
-                "largest = list[i];"
+                "fn same_type",
+                "PartialEq",
+                "a: T",
+                "b: T",
+                "a == b"
               ]
             }
           ],
@@ -4682,19 +4538,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "largest.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "largest.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "largest.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4706,19 +4556,13 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "largest.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "regex",
-                "path": "largest.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "largest.rs",
+                "path": "src/main.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -4742,7 +4586,7 @@
           "confirmedDegradations": 0,
           "noiseDegradations": 0,
           "pendingReruns": 0,
-          "invalidTasks": 1
+          "invalidTasks": 0
         },
         "paired": [
           {
@@ -4759,9 +4603,9 @@
           },
           {
             "taskId": "ch10-02-traits-s1-t3",
-            "without": false,
-            "with": false,
-            "state": "invalid"
+            "without": true,
+            "with": true,
+            "state": "both-pass"
           },
           {
             "taskId": "ch10-02-traits-s1-t4",
@@ -5202,6 +5046,377 @@
           },
           {
             "taskId": "ch10-03-lifetime-syntax-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch11-02-running-tests-s1",
+      "name": "ch11-02-running-tests-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:8e62ca2a29ce6bec9d703aae0e0ffc9a9623c78f1eacf7952da7b9b6414c6b7d",
+      "tasks": [
+        {
+          "taskId": "ch11-02-running-tests-s1-t1",
+          "prompt": "请写一个名为 out.md 的文件，说明 cargo test 生成的测试二进制文件在默认情况下如何运行测试以及如何处理测试输出。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "contains",
+              "path": "out.md",
+              "patterns": [
+                "并行运行所有测试",
+                "截获输出"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "out.md",
+                "ok": false,
+                "detail": "缺少片段：并行运行所有测试 | 截获输出"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "out.md",
+                "ok": false,
+                "detail": "缺少片段：截获输出"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch11-02-running-tests-s1-t2",
+          "prompt": "请把能够让通过测试中打印的值显示出来的完整 cargo test 命令写入 show-output.md。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "contains",
+              "path": "show-output.md",
+              "patterns": [
+                "cargo test -- --show-output"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "show-output.md",
+                "ok": false,
+                "detail": "缺少片段：cargo test -- --show-output"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "show-output.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch11-02-running-tests-s1-t3",
+          "prompt": "请把让 cargo test 不使用并行机制、只用一个线程运行测试的完整命令写入 threads.md。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "contains",
+              "path": "threads.md",
+              "patterns": [
+                "cargo test -- --test-threads=1"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "threads.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "threads.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch11-02-running-tests-s1-t4",
+          "prompt": "请把只运行名称中包含 add 的测试、同时不会运行 one_hundred 这个测试的 cargo test 命令写入 filter.md，并说明原因。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "contains",
+              "path": "filter.md",
+              "patterns": [
+                "cargo test add"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "filter.md",
+              "patterns": [
+                "cargo test one_hundred",
+                "cargo test add one_hundred"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "filter.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "filter.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "filter.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "filter.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch11-02-running-tests-s1-t5",
+          "prompt": "请在 ignored_test.rs 中写一个被 #[ignore] 标记的 Rust 测试函数，然后在 commands.md 中给出只运行被忽略测试的完整命令。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "ignored_test.rs"
+            },
+            {
+              "type": "contains",
+              "path": "ignored_test.rs",
+              "patterns": [
+                "#[ignore]"
+              ]
+            },
+            {
+              "type": "file_exists",
+              "path": "commands.md"
+            },
+            {
+              "type": "contains",
+              "path": "commands.md",
+              "patterns": [
+                "cargo test -- --ignored"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "ignored_test.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "ignored_test.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "file_exists",
+                "path": "commands.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "commands.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "ignored_test.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "ignored_test.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "file_exists",
+                "path": "commands.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "commands.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch11-02-running-tests-s1-t6",
+          "prompt": "请把运行模块 math 中所有测试的 cargo test 命令写入 module.md，并解释模块名为何能作为过滤条件。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "contains",
+              "path": "module.md",
+              "patterns": [
+                "cargo test math"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "module.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "module.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch11-02-running-tests-s1",
+        "name": "ch11-02-running-tests-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "passed",
+        "reason": "有 skill 臂在 1 个任务上严格更优（ch11-02-running-tests-s1-t2），无确认退化",
+        "counts": {
+          "tasks": 6,
+          "improvements": 1,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 1
+        },
+        "paired": [
+          {
+            "taskId": "ch11-02-running-tests-s1-t1",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch11-02-running-tests-s1-t2",
+            "without": false,
+            "with": true,
+            "state": "improvement"
+          },
+          {
+            "taskId": "ch11-02-running-tests-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch11-02-running-tests-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch11-02-running-tests-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch11-02-running-tests-s1-t6",
             "without": true,
             "with": true,
             "state": "both-pass"
@@ -6618,371 +6833,35 @@
       }
     },
     {
-      "slug": "ch13-02-iterators-s1",
-      "name": "ch13-02-iterators-s1",
+      "slug": "ch15-01-box-s2",
+      "name": "ch15-01-box-s2",
       "riskFlags": [
         "PITFALL_COVERAGE_BELOW_ADVISORY"
       ],
-      "markdownSha256": "sha256:02a0da6c91762f63d6eb91e93034f13520e63fa08ffe6da1d7a8935bcb287323",
+      "markdownSha256": "sha256:5fc171de9107d8c9b1369da7f3b13decbc7ee6b60838be37fe5845bcd9f9ade8",
       "tasks": [
         {
-          "taskId": "ch13-02-iterators-s1-t1",
-          "prompt": "请在本目录创建 `sum_demo.rs`，编写一个完整的 Rust 程序：定义整数向量 `let v1 = vec![1, 2, 3];`，创建迭代器变量 `let v1_iter = v1.iter();`，计算总和 `let total: i32 = v1_iter.sum();`，并打印总和。注意：在调用 `sum` 之后不要再使用 `v1_iter`。",
-          "fixtures": {},
-          "checks": [
-            {
-              "type": "file_exists",
-              "path": "sum_demo.rs"
-            },
-            {
-              "type": "contains",
-              "path": "sum_demo.rs",
-              "patterns": [
-                "let v1_iter = v1.iter();",
-                "let total: i32 = v1_iter.sum();",
-                "println!"
-              ]
-            },
-            {
-              "type": "not_contains",
-              "path": "sum_demo.rs",
-              "patterns": [
-                "v1_iter.next",
-                "v1_iter.nth",
-                "v1_iter.map",
-                "v1_iter.filter",
-                "for x in v1_iter",
-                "v1_iter.collect",
-                "v1_iter.count"
-              ]
-            }
-          ],
-          "without": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "sum_demo.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "sum_demo.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "sum_demo.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "with": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "sum_demo.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "sum_demo.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "not_contains",
-                "path": "sum_demo.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "rerun": null
-        },
-        {
-          "taskId": "ch13-02-iterators-s1-t2",
-          "prompt": "请在本目录创建 `map_collect.rs`，编写一个完整的 Rust 程序：定义 `let nums = vec![1, 2, 3, 4, 5];`；然后使用 `let result: Vec<i32> = nums.iter().map(|x| x + 10).collect();` 得到每个元素加 10 的新向量；最后打印 `result`。",
-          "fixtures": {},
-          "checks": [
-            {
-              "type": "file_exists",
-              "path": "map_collect.rs"
-            },
-            {
-              "type": "contains",
-              "path": "map_collect.rs",
-              "patterns": [
-                "let nums = vec![1, 2, 3, 4, 5];",
-                "let result: Vec<i32> = nums.iter().map(|x| x + 10).collect();",
-                "println!"
-              ]
-            }
-          ],
-          "without": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "map_collect.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "map_collect.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "with": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "map_collect.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "map_collect.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "rerun": null
-        },
-        {
-          "taskId": "ch13-02-iterators-s1-t3",
-          "prompt": "请在本目录创建 `counter.rs`，实现一个 `Counter` 结构体，包含字段 `count: u32`。为 `Counter` 实现标准库 `Iterator` trait：`type Item = u32;`，`next` 方法每次返回 `self.count` 的值，然后将 `self.count` 加一；当 `self.count < 6` 时返回 `Some(值)`，否则返回 `None`。在 `main` 中创建 `Counter { count: 0 }`，直接调用两次 `next` 方法并打印这两个值。",
-          "fixtures": {},
-          "checks": [
-            {
-              "type": "file_exists",
-              "path": "counter.rs"
-            },
-            {
-              "type": "contains",
-              "path": "counter.rs",
-              "patterns": [
-                "struct Counter",
-                "impl Iterator for Counter",
-                "type Item = u32;",
-                "fn next(&mut self) -> Option<Self::Item>",
-                "if self.count < 6",
-                "self.count += 1",
-                "Counter { count: 0 }",
-                "counter.next()",
-                "println!"
-              ]
-            }
-          ],
-          "without": {
-            "passed": false,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "counter.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "counter.rs",
-                "ok": false,
-                "detail": "缺少片段：fn next(&mut self) -> Option<Self::Item>"
-              }
-            ],
-            "invalidPaths": []
-          },
-          "with": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "counter.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "counter.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "rerun": null
-        },
-        {
-          "taskId": "ch13-02-iterators-s1-t4",
-          "prompt": "请在本目录创建 `shoes_filter.rs`，定义 `Shoe` 结构体（字段 `size: u32` 和 `style: String`）。实现函数 `shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe>`：使用 `shoes.into_iter().filter(|s| s.size == shoe_size).collect()` 返回指定尺码的鞋子。在 `main` 中创建一组鞋，调用该函数过滤尺码为 10 的鞋并打印结果。",
-          "fixtures": {},
-          "checks": [
-            {
-              "type": "file_exists",
-              "path": "shoes_filter.rs"
-            },
-            {
-              "type": "contains",
-              "path": "shoes_filter.rs",
-              "patterns": [
-                "struct Shoe",
-                "size: u32",
-                "style: String",
-                "fn shoes_in_size",
-                "shoes.into_iter()",
-                ".filter(|s| s.size == shoe_size)",
-                ".collect()",
-                "println!"
-              ]
-            }
-          ],
-          "without": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "shoes_filter.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "shoes_filter.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "with": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "shoes_filter.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "shoes_filter.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "rerun": null
-        },
-        {
-          "taskId": "ch13-02-iterators-s1-t5",
-          "prompt": "请在本目录创建 `zip_pairs.rs`，定义两个向量 `let a = vec![1, 2, 3, 4, 5];` 和 `let b = vec![10, 20, 30, 40];`。使用 `a.iter().zip(b.iter())` 将它们配对，并通过 `collect::<Vec<_>>()` 收集到向量中，最后打印这个配对向量。利用 zip 的终止行为，结果应只有 4 对。",
-          "fixtures": {},
-          "checks": [
-            {
-              "type": "file_exists",
-              "path": "zip_pairs.rs"
-            },
-            {
-              "type": "contains",
-              "path": "zip_pairs.rs",
-              "patterns": [
-                "let a = vec![1, 2, 3, 4, 5];",
-                "let b = vec![10, 20, 30, 40];",
-                "a.iter().zip(b.iter())",
-                ".collect::<Vec<_>>()",
-                "println!"
-              ]
-            }
-          ],
-          "without": {
-            "passed": true,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "zip_pairs.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "zip_pairs.rs",
-                "ok": true,
-                "detail": ""
-              }
-            ],
-            "invalidPaths": []
-          },
-          "with": {
-            "passed": false,
-            "checks": [
-              {
-                "type": "file_exists",
-                "path": "zip_pairs.rs",
-                "ok": true,
-                "detail": ""
-              },
-              {
-                "type": "contains",
-                "path": "zip_pairs.rs",
-                "ok": false,
-                "detail": "缺少片段：.collect::<Vec<_>>()"
-              }
-            ],
-            "invalidPaths": []
-          },
-          "rerun": {
-            "without": {
-              "passed": true
-            },
-            "with": {
-              "passed": false
-            }
-          }
-        },
-        {
-          "taskId": "ch13-02-iterators-s1-t6",
-          "prompt": "当前目录已有一个 `legacy_loop.rs` 文件，它使用 while 循环和显式索引变量遍历数组。请创建新文件 `idiomatic_loop.rs`，编写一个功能等价的 Rust 程序：使用 `for` 循环遍历同一个数组（可以直接用 `for item in &arr` 或 `for item in arr.iter()`，但不要使用索引变量或边界检查），打印每个元素。",
+          "taskId": "ch15-01-box-s2-t1",
+          "prompt": "我写了一个 Rust 枚举，编译器报错说递归类型有无限大小。请帮我创建 fixed_list.rs，把 broken_list.rs 里的 List 枚举改成可以编译的版本，保持 cons list 行为。",
           "fixtures": {
-            "legacy_loop.rs": "fn main() {\n    let arr = [10, 20, 30, 40, 50];\n    let mut index = 0;\n    while index < 5 {\n        println!(\"{}\", arr[index]);\n        index += 1;\n    }\n}\n"
+            "broken_list.rs": "enum List {\n    Cons(i32, List),\n    Nil,\n}\nfn main() {}\n"
           },
           "checks": [
             {
               "type": "file_exists",
-              "path": "idiomatic_loop.rs"
+              "path": "fixed_list.rs"
             },
             {
               "type": "contains",
-              "path": "idiomatic_loop.rs",
+              "path": "fixed_list.rs",
               "patterns": [
-                "let arr = [10, 20, 30, 40, 50];",
-                "for ",
-                "println!"
+                "Box<List>"
               ]
             },
             {
-              "type": "not_contains",
-              "path": "idiomatic_loop.rs",
-              "patterns": [
-                "while ",
-                "index",
-                "arr[index]"
-              ]
+              "type": "regex",
+              "path": "fixed_list.rs",
+              "pattern": "enum\\s+List\\s*\\{[\\s\\S]*Cons\\(i32,\\s*Box<List>\\)[\\s\\S]*Nil"
             }
           ],
           "without": {
@@ -6990,19 +6869,19 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "idiomatic_loop.rs",
+                "path": "fixed_list.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "idiomatic_loop.rs",
+                "path": "fixed_list.rs",
                 "ok": true,
                 "detail": ""
               },
               {
-                "type": "not_contains",
-                "path": "idiomatic_loop.rs",
+                "type": "regex",
+                "path": "fixed_list.rs",
                 "ok": true,
                 "detail": ""
               }
@@ -7014,19 +6893,320 @@
             "checks": [
               {
                 "type": "file_exists",
-                "path": "idiomatic_loop.rs",
+                "path": "fixed_list.rs",
                 "ok": true,
                 "detail": ""
               },
               {
                 "type": "contains",
-                "path": "idiomatic_loop.rs",
+                "path": "fixed_list.rs",
                 "ok": true,
                 "detail": ""
               },
               {
-                "type": "not_contains",
-                "path": "idiomatic_loop.rs",
+                "type": "regex",
+                "path": "fixed_list.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-01-box-s2-t2",
+          "prompt": "请写一份 Markdown 文件 why_box.md，解释为什么 Rust 中的递归枚举（比如 List）直接存放同类型值会导致无限大小，以及 Box 如何通过间接存储解决这个问题。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "why_box.md"
+            },
+            {
+              "type": "contains",
+              "path": "why_box.md",
+              "patterns": [
+                "无限",
+                "Box",
+                "堆"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "why_box.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "why_box.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "why_box.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "why_box.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-01-box-s2-t3",
+          "prompt": "请写一个 Rust 文件 enum_size.rs，里面定义 Message 枚举（Quit、Move { x: i32, y: i32 }、Write(String)、ChangeColor(i32, i32, i32)），并用注释说明 Rust 为这个枚举值分配空间时取哪个变体以及为什么。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "enum_size.rs"
+            },
+            {
+              "type": "contains",
+              "path": "enum_size.rs",
+              "patterns": [
+                "Message",
+                "Write(String)",
+                "最大"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "enum_size.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "enum_size.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "enum_size.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "enum_size.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-01-box-s2-t4",
+          "prompt": "请写一个 Rust 程序 cons_list.rs，定义 List 枚举为 Cons(i32, Box<List>) 和 Nil，实现 len 方法返回列表长度，并在 main 中构造 Cons(1, Cons(2, Cons(3, Nil))) 然后打印长度。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "cons_list.rs"
+            },
+            {
+              "type": "contains",
+              "path": "cons_list.rs",
+              "patterns": [
+                "Box<List>",
+                "fn len",
+                "Cons(1, Cons(2, Cons(3, Nil)))"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "cons_list.rs",
+              "pattern": "enum\\s+List\\s*\\{[\\s\\S]*Cons\\(i32,\\s*Box<List>\\)[\\s\\S]*Nil"
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "cons_list.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "cons_list.rs",
+                "ok": false,
+                "detail": "缺少片段：Cons(1, Cons(2, Cons(3, Nil)))"
+              },
+              {
+                "type": "regex",
+                "path": "cons_list.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "cons_list.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "cons_list.rs",
+                "ok": false,
+                "detail": "缺少片段：Cons(1, Cons(2, Cons(3, Nil)))"
+              },
+              {
+                "type": "regex",
+                "path": "cons_list.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-01-box-s2-t5",
+          "prompt": "请写一个 Rust 程序 box_i32.rs，演示用 Box 在堆上存储一个 i32 值 5，并像访问栈上数据一样访问它再打印出来。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "box_i32.rs"
+            },
+            {
+              "type": "contains",
+              "path": "box_i32.rs",
+              "patterns": [
+                "Box::new(5)",
+                "println!"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "box_i32.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "box_i32.rs",
+                "ok": false,
+                "detail": "缺少片段：Box::new(5)"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "box_i32.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "box_i32.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-01-box-s2-t6",
+          "prompt": "请写一个 Markdown 文件 pitfalls.md，说明在定义递归类型时直接存放同类型值会触发什么编译器错误，并给出错误示例和修复后的示例（修复使用 Box）。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "pitfalls.md"
+            },
+            {
+              "type": "contains",
+              "path": "pitfalls.md",
+              "patterns": [
+                "Cons(i32, List)",
+                "Cons(i32, Box<List>)",
+                "无限"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "pitfalls.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "pitfalls.md",
+                "ok": false,
+                "detail": "缺少片段：Cons(i32, List) | Cons(i32, Box<List>)"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "pitfalls.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "pitfalls.md",
                 "ok": true,
                 "detail": ""
               }
@@ -7037,54 +7217,2345 @@
         }
       ],
       "verdict": {
-        "skillId": "ch13-02-iterators-s1",
-        "name": "ch13-02-iterators-s1",
+        "skillId": "ch15-01-box-s2",
+        "name": "ch15-01-box-s2",
         "riskFlags": [
           "PITFALL_COVERAGE_BELOW_ADVISORY"
         ],
-        "verdict": "rejected",
-        "reason": "negative transfer 复现：ch13-02-iterators-s1-t5（无 skill 通过、有 skill 失败，且复跑复现）——ADR-006：必须拒绝",
+        "verdict": "passed",
+        "reason": "有 skill 臂在 2 个任务上严格更优（ch15-01-box-s2-t5, ch15-01-box-s2-t6），无确认退化",
+        "counts": {
+          "tasks": 6,
+          "improvements": 2,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 1
+        },
+        "paired": [
+          {
+            "taskId": "ch15-01-box-s2-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-01-box-s2-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-01-box-s2-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-01-box-s2-t4",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch15-01-box-s2-t5",
+            "without": false,
+            "with": true,
+            "state": "improvement"
+          },
+          {
+            "taskId": "ch15-01-box-s2-t6",
+            "without": false,
+            "with": true,
+            "state": "improvement"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch15-03-drop-s1",
+      "name": "ch15-03-drop-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:cfadd37317baef5f7411c492c943dc745368292175c8c762248088482446e558",
+      "tasks": [
+        {
+          "taskId": "ch15-03-drop-s1-t1",
+          "prompt": "请在 out.rs 中写一个完整的 Rust 示例：定义一个名为 CustomSmartPointer 的结构体，为其实现 Drop trait，在 drop 方法中打印 CustomSmartPointer dropped!，并在 main 中创建该结构体的一个实例，让它在作用域结束时自动触发清理。文件必须包含 main 函数和 Drop trait 的实现。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "out.rs"
+            },
+            {
+              "type": "contains",
+              "path": "out.rs",
+              "patterns": [
+                "impl Drop for CustomSmartPointer",
+                "fn drop(&mut self)",
+                "CustomSmartPointer dropped!",
+                "fn main"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-03-drop-s1-t2",
+          "prompt": "请在 out.rs 中写一个完整的 Rust 程序，定义一个实现 Drop trait 的结构体，在 main 中创建一个名为 value 的该结构体实例，然后使用 std::mem::drop 在实例离开作用域之前强制清理它，并在 drop 方法中打印一条消息。代码中不要显式调用 value.drop() 方法。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "out.rs"
+            },
+            {
+              "type": "contains",
+              "path": "out.rs",
+              "patterns": [
+                "impl Drop for",
+                "std::mem::drop",
+                "fn drop(&mut self)",
+                "fn main"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "out.rs",
+              "patterns": [
+                "value.drop()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "out.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-03-drop-s1-t3",
+          "prompt": "在 broken.rs 中有一个 Rust 程序，因显式调用 drop 方法而无法编译。请基于它修复代码，使用 std::mem::drop 在离开作用域之前强制清理值，并将修复后的完整代码写入 fixed.rs。修复后的代码中不要出现 c.drop()。",
+          "fixtures": {
+            "broken.rs": "struct CustomSmartPointer;\nimpl Drop for CustomSmartPointer {\n    fn drop(&mut self) {}\n}\nfn main() {\n    let c = CustomSmartPointer;\n    c.drop();\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "std::mem::drop",
+                "impl Drop for CustomSmartPointer",
+                "fn drop(&mut self)"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "c.drop()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-03-drop-s1-t4",
+          "prompt": "请写一份中文说明文档到 out.md，解释 Rust 的 Drop 清理机制：Drop trait 会在值离开作用域时自动执行清理代码，因此无需手动清理资源；当需要提前释放时，应使用 std::mem::drop 函数，而不是显式调用 drop 方法；并说明显式调用 drop 方法会导致编译错误以及潜在的 double free 问题。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "out.md"
+            },
+            {
+              "type": "contains",
+              "path": "out.md",
+              "patterns": [
+                "Drop trait",
+                "离开作用域",
+                "std::mem::drop",
+                "double free"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-03-drop-s1-t5",
+          "prompt": "请生成一个 JSON 文件 out.json，内容为一个数组，包含两个对象。每个对象都有 scenario、mistake、consequence、correction 四个字段。第一个对象的 mistake 字段的值必须为 manual cleanup，第二个对象的 mistake 字段的值必须为 explicit drop call；第二个对象的 correction 字段应包含 std::mem::drop 这一函数名。分别描述对应的陷阱与纠正。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "out.json"
+            },
+            {
+              "type": "json_field",
+              "path": "out.json",
+              "pointer": "/0/mistake",
+              "equals": "manual cleanup"
+            },
+            {
+              "type": "json_field",
+              "path": "out.json",
+              "pointer": "/1/mistake",
+              "equals": "explicit drop call"
+            },
+            {
+              "type": "contains",
+              "path": "out.json",
+              "patterns": [
+                "std::mem::drop"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "out.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-03-drop-s1-t6",
+          "prompt": "请创建一个 Rust 项目：在 Cargo.toml 中设置包名为 drop_demo，并在 src/main.rs 中定义一个实现 Drop trait 的结构体 MyBox，使用 Box<T> 管理堆空间，在 main 中创建该结构体的一个实例，并使用 std::mem::drop 在实例离开作用域之前强制清理它。src/main.rs 必须包含 impl Drop for MyBox、std::mem::drop 和 Box< 这些代码要素。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "Cargo.toml"
+            },
+            {
+              "type": "file_exists",
+              "path": "src/main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "Cargo.toml",
+              "patterns": [
+                "name = \"drop_demo\""
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "src/main.rs",
+              "patterns": [
+                "impl Drop for MyBox",
+                "std::mem::drop",
+                "Box<",
+                "fn main"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "Cargo.toml",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "file_exists",
+                "path": "src/main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "Cargo.toml",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "src/main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "Cargo.toml",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "file_exists",
+                "path": "src/main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "Cargo.toml",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "src/main.rs",
+                "ok": false,
+                "detail": "缺少片段：impl Drop for MyBox"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": {
+            "without": {
+              "passed": false
+            },
+            "with": {
+              "passed": false
+            }
+          }
+        }
+      ],
+      "verdict": {
+        "skillId": "ch15-03-drop-s1",
+        "name": "ch15-03-drop-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进；1 个退化事件复跑后不复现（记噪声）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 1,
+          "pendingReruns": 0,
+          "invalidTasks": 0
+        },
+        "paired": [
+          {
+            "taskId": "ch15-03-drop-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-03-drop-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-03-drop-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-03-drop-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-03-drop-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-03-drop-s1-t6",
+            "without": true,
+            "with": false,
+            "state": "degradation-noise"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch15-05-interior-mutability-s1",
+      "name": "ch15-05-interior-mutability-s1",
+      "riskFlags": [],
+      "markdownSha256": "sha256:cb2e36fb3ea2370496d30c027157de6a5740eba0258930253f6ab007b724cd6b",
+      "tasks": [
+        {
+          "taskId": "ch15-05-interior-mutability-s1-t1",
+          "prompt": "请在当前目录创建 messenger.rs，编写一个 Rust 程序：定义 trait Messenger，其方法 send 的签名是 &self。实现结构体 MockMessenger，包含一个 sent_messages: RefCell<Vec<String>> 字段。为 MockMessenger 实现 Messenger trait，在 send 方法中把消息存入 sent_messages。再为 MockMessenger 添加一个方法 messages，返回 Vec<String>（克隆）。最后写一个测试函数，创建 MockMessenger，调用 send 两次，断言 messages 返回长度为 2 且包含这两条消息。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "messenger.rs"
+            },
+            {
+              "type": "contains",
+              "path": "messenger.rs",
+              "patterns": [
+                "trait Messenger",
+                "fn send(&self, msg: &str)",
+                "RefCell<Vec<String>>",
+                "self.sent_messages.borrow_mut().push(msg)",
+                "fn messages(&self) -> Vec<String>"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "messenger.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "messenger.rs",
+                "ok": false,
+                "detail": "缺少片段：self.sent_messages.borrow_mut().push(msg)"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "messenger.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "messenger.rs",
+                "ok": false,
+                "detail": "缺少片段：self.sent_messages.borrow_mut().push(msg)"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-05-interior-mutability-s1-t2",
+          "prompt": "请在当前目录创建 cache.rs，编写一个 Rust 程序：定义一个泛型结构体 Cache<T>，包含一个字段 data: RefCell<HashMap<String, T>>。实现方法 get_or_insert(&self, key: &str, init: impl FnOnce() -> T) -> &T，逻辑是：如果 data 中已有 key，返回对应的值；否则调用 init 生成值，插入 data，然后返回该值。注意方法签名必须为 &self，不能修改为 &mut self。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "cache.rs"
+            },
+            {
+              "type": "contains",
+              "path": "cache.rs",
+              "patterns": [
+                "struct Cache<T>",
+                "RefCell<HashMap<String, T>>",
+                "fn get_or_insert(&self, key: &str, init: impl FnOnce() -> T) -> &T",
+                "borrow_mut()",
+                "borrow()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "cache.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "cache.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "cache.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "cache.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-05-interior-mutability-s1-t3",
+          "prompt": "请在当前目录创建 shared_counter.rs，编写一个 Rust 程序：定义结构体 SharedCounter，包含一个字段 value: Rc<RefCell<i32>>。实现方法 increment(&self) 将内部值加 1；实现方法 get(&self) 返回当前值。编写一个测试：创建一个 SharedCounter，克隆其内部的 Rc 得到另一个所有者，然后分别通过两个所有者调用 increment，最后断言 get 返回 2。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "shared_counter.rs"
+            },
+            {
+              "type": "contains",
+              "path": "shared_counter.rs",
+              "patterns": [
+                "struct SharedCounter",
+                "Rc<RefCell<i32>>",
+                "fn increment(&self)",
+                "self.value.borrow_mut()",
+                "clone()",
+                "fn get(&self) -> i32"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "shared_counter.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "shared_counter.rs",
+                "ok": false,
+                "detail": "缺少片段：clone()"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "shared_counter.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "shared_counter.rs",
+                "ok": false,
+                "detail": "缺少片段：clone()"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-05-interior-mutability-s1-t4",
+          "prompt": "当前目录有一个 bad_code.rs，它定义了 Messenger trait 和 MessageRecorder 结构体，但 send 方法试图直接修改 &self 中的 Vec，无法通过编译。请创建 fixed_code.rs，修改 MessageRecorder 使其使用 RefCell 包装 messages，并保持 trait 签名不变。要求代码可以通过编译。",
+          "fixtures": {
+            "bad_code.rs": "trait Messenger {\n    fn send(&self, msg: &str);\n}\n\nstruct MessageRecorder {\n    messages: Vec<String>,\n}\n\nimpl Messenger for MessageRecorder {\n    fn send(&self, msg: &str) {\n        self.messages.push(msg.to_string());\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed_code.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed_code.rs",
+              "patterns": [
+                "RefCell<Vec<String>>",
+                "self.messages.borrow_mut().push(msg.to_string())",
+                "trait Messenger"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed_code.rs",
+              "patterns": [
+                "self.messages.push(msg.to_string());"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed_code.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed_code.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed_code.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed_code.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed_code.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed_code.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-05-interior-mutability-s1-t5",
+          "prompt": "请在当前目录创建 borrow_panic.rs，编写一个 Rust 程序：创建一个 RefCell<i32> 并初始化为 0。在同一个作用域内，对同一个 RefCell 连续调用两次 borrow_mut，并将第二个调用放入 std::panic::catch_unwind 中，捕获 panic 并打印一条消息说明发生了 BorrowMutError。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "borrow_panic.rs"
+            },
+            {
+              "type": "contains",
+              "path": "borrow_panic.rs",
+              "patterns": [
+                "RefCell<i32>",
+                "catch_unwind",
+                "println!"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "borrow_panic.rs",
+              "pattern": "(?s)borrow_mut\\(\\).*borrow_mut\\(\\)"
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "borrow_panic.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "borrow_panic.rs",
+                "ok": false,
+                "detail": "缺少片段：RefCell<i32>"
+              },
+              {
+                "type": "regex",
+                "path": "borrow_panic.rs",
+                "ok": false,
+                "detail": "检查自身出错（按该条失败处理）：Invalid regular expression: /(?s)borrow_mut\\(\\).*borrow_mut\\(\\)/: Invalid group"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "borrow_panic.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "borrow_panic.rs",
+                "ok": false,
+                "detail": "缺少片段：RefCell<i32>"
+              },
+              {
+                "type": "regex",
+                "path": "borrow_panic.rs",
+                "ok": false,
+                "detail": "检查自身出错（按该条失败处理）：Invalid regular expression: /(?s)borrow_mut\\(\\).*borrow_mut\\(\\)/: Invalid group"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch15-05-interior-mutability-s1-t6",
+          "prompt": "请在当前目录创建 mut_list.rs，编写一个 Rust 程序：定义一个枚举 List，包含两个变体：Cons(Rc<RefCell<List>>, RefCell<Rc<List>>) 和 Nil。为 List 实现方法 tail(&self) 返回 Option<&RefCell<Rc<List>>>，以及方法 set_tail(&self, new_tail: Rc<List>)。在 main 中构建一个两节点的列表，并修改第一个节点的尾节点指向一个新节点。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "mut_list.rs"
+            },
+            {
+              "type": "contains",
+              "path": "mut_list.rs",
+              "patterns": [
+                "enum List",
+                "Cons(Rc<RefCell<List>>, RefCell<Rc<List>>)",
+                "fn tail(&self)",
+                "fn set_tail(&self",
+                "borrow_mut()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "mut_list.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "mut_list.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "mut_list.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "mut_list.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch15-05-interior-mutability-s1",
+        "name": "ch15-05-interior-mutability-s1",
+        "riskFlags": [],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 3
+        },
+        "paired": [
+          {
+            "taskId": "ch15-05-interior-mutability-s1-t1",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch15-05-interior-mutability-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-05-interior-mutability-s1-t3",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch15-05-interior-mutability-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch15-05-interior-mutability-s1-t5",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch15-05-interior-mutability-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch16-01-threads-s1",
+      "name": "ch16-01-threads-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:db857686a6f80e3344bb070064245c1f2c3dbf6bf02126500865c8e06dea933a",
+      "tasks": [
+        {
+          "taskId": "ch16-01-threads-s1-t1",
+          "prompt": "请写一个完整的 Rust 程序文件 thread_demo.rs，使用标准库线程创建一个新线程，新线程打印 `hello from spawned thread`，主线程打印 `hello from main thread`，并保存 thread::spawn 的返回值、调用 join 方法确保新建线程在 main 退出前结束运行。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "thread_demo.rs"
+            },
+            {
+              "type": "contains",
+              "path": "thread_demo.rs",
+              "patterns": [
+                "thread::spawn",
+                "hello from spawned thread",
+                "hello from main thread",
+                ".join()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "thread_demo.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "thread_demo.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "thread_demo.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "thread_demo.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-01-threads-s1-t2",
+          "prompt": "请修复 broken_join.rs 中的问题：新建线程可能尚未执行或未执行完，main 就已经返回。请保存 thread::spawn 返回的 JoinHandle 并调用 join 等待线程结束，修复后文件仍为 broken_join.rs。",
+          "fixtures": {
+            "broken_join.rs": "use std::thread;\n\nfn main() {\n    thread::spawn(|| {\n        println!(\"worker finished\");\n    });\n    println!(\"main finished\");\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "broken_join.rs"
+            },
+            {
+              "type": "contains",
+              "path": "broken_join.rs",
+              "patterns": [
+                "= thread::spawn",
+                "join()",
+                "worker finished",
+                "main finished"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "broken_join.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "broken_join.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "broken_join.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "broken_join.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-01-threads-s1-t3",
+          "prompt": "请修复 move_demo.rs 中的编译错误：新线程闭包借用了主线程的 String，但主线程随后 drop 了该字符串。请在闭包前加上 move 关键字将字符串所有权移动到新线程，并删除主线程中 drop(message) 这一行。修复后文件仍为 move_demo.rs。",
+          "fixtures": {
+            "move_demo.rs": "use std::thread;\n\nfn main() {\n    let message = String::from(\"owned message\");\n    thread::spawn(|| {\n        println!(\"{}\", message);\n    });\n    drop(message);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "move_demo.rs"
+            },
+            {
+              "type": "contains",
+              "path": "move_demo.rs",
+              "patterns": [
+                "move ||",
+                "println!(\"{}\", message);",
+                "thread::spawn"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "move_demo.rs",
+              "patterns": [
+                "drop(message);"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "move_demo.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "move_demo.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "move_demo.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "move_demo.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "move_demo.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "move_demo.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-01-threads-s1-t4",
+          "prompt": "请写一个 Markdown 文件 thread_model.md，解释 Rust 标准库提供的线程模型是 1:1 模型，并说明为什么多个线程的实际执行顺序由操作系统调度决定、无法保证轮流运行；同时给出使用 JoinHandle 的 join 方法等待线程结束的示例代码片段。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "thread_model.md"
+            },
+            {
+              "type": "contains",
+              "path": "thread_model.md",
+              "patterns": [
+                "1:1",
+                "操作系统",
+                "JoinHandle",
+                ".join()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "thread_model.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "thread_model.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "thread_model.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "thread_model.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-01-threads-s1-t5",
+          "prompt": "请创建一个 Rust 程序文件 multi_thread.rs，使用标准库线程启动 3 个新线程，分别打印 `thread A done`、`thread B done`、`thread C done`。将每个 thread::spawn 返回的 JoinHandle 保存到一个 Vec 中，然后依次调用 join 等待所有线程结束。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "multi_thread.rs"
+            },
+            {
+              "type": "contains",
+              "path": "multi_thread.rs",
+              "patterns": [
+                "thread::spawn",
+                "Vec",
+                "join()",
+                "thread A done",
+                "thread B done",
+                "thread C done"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "multi_thread.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "multi_thread.rs",
+                "ok": false,
+                "detail": "缺少片段：Vec"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "multi_thread.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "multi_thread.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-01-threads-s1-t6",
+          "prompt": "请修复 combined_fix.rs 中的两个问题：新线程闭包借用了主线程的向量但没有使用 move，可能导致编译失败；同时 main 没有等待线程结束。请将向量所有权移动到新线程，保存 JoinHandle 并在 main 退出前调用 join。修复后文件仍为 combined_fix.rs。",
+          "fixtures": {
+            "combined_fix.rs": "use std::thread;\n\nfn main() {\n    let nums = vec![1, 2, 3];\n    thread::spawn(|| {\n        for n in &nums {\n            println!(\"{}\", n);\n        }\n    });\n    println!(\"main done\");\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "combined_fix.rs"
+            },
+            {
+              "type": "contains",
+              "path": "combined_fix.rs",
+              "patterns": [
+                "move ||",
+                "= thread::spawn",
+                "join()",
+                "for n in &nums",
+                "main done"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "combined_fix.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "combined_fix.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "combined_fix.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "combined_fix.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch16-01-threads-s1",
+        "name": "ch16-01-threads-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "passed",
+        "reason": "有 skill 臂在 1 个任务上严格更优（ch16-01-threads-s1-t5），无确认退化",
         "counts": {
           "tasks": 6,
           "improvements": 1,
-          "confirmedDegradations": 1,
+          "confirmedDegradations": 0,
           "noiseDegradations": 0,
           "pendingReruns": 0,
           "invalidTasks": 0
         },
         "paired": [
           {
-            "taskId": "ch13-02-iterators-s1-t1",
+            "taskId": "ch16-01-threads-s1-t1",
             "without": true,
             "with": true,
             "state": "both-pass"
           },
           {
-            "taskId": "ch13-02-iterators-s1-t2",
+            "taskId": "ch16-01-threads-s1-t2",
             "without": true,
             "with": true,
             "state": "both-pass"
           },
           {
-            "taskId": "ch13-02-iterators-s1-t3",
+            "taskId": "ch16-01-threads-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-01-threads-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-01-threads-s1-t5",
             "without": false,
             "with": true,
             "state": "improvement"
           },
           {
-            "taskId": "ch13-02-iterators-s1-t4",
+            "taskId": "ch16-01-threads-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch16-02-message-passing-s1",
+      "name": "ch16-02-message-passing-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:f4de57b4f00cfa657f644de2f07b30d89335edd47e8094bf1f29ff76d4103d97",
+      "tasks": [
+        {
+          "taskId": "ch16-02-message-passing-s1-t1",
+          "prompt": "请在当前目录创建 `main.rs`，使用 Rust 标准库 mpsc 通道：创建变量 `tx` 和 `rx`，发送三个字符串 \"hello\"、\"from\"、\"threads\"，然后用 `for received in rx` 循环接收并打印每个值。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "mpsc::channel",
+                "tx.send",
+                "for received in rx",
+                "println!"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-02-message-passing-s1-t2",
+          "prompt": "请编写 `ownership.md`，用 Rust 代码片段说明 mpsc 通道的 `send` 会取得值的所有权。文档必须包含一个错误示例：发送后继续使用值会导致编译错误 `use of moved value`；以及一个正确示例：发送前先 `clone`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "ownership.md"
+            },
+            {
+              "type": "contains",
+              "path": "ownership.md",
+              "patterns": [
+                "use of moved value",
+                "clone",
+                "send"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "ownership.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "ownership.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "ownership.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "ownership.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-02-message-passing-s1-t3",
+          "prompt": "请创建 `multi_producer.rs`，用 Rust 标准库 mpsc 实现：克隆发送端 `tx` 得到 `tx1` 和 `tx2`，启动两个线程分别用 `tx1` 发送 \"hello\"、用 `tx2` 发送 \"world\"，主线程接收两个值并打印，最后对两个线程调用 `join`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "multi_producer.rs"
+            },
+            {
+              "type": "contains",
+              "path": "multi_producer.rs",
+              "patterns": [
+                "tx.clone()",
+                "thread::spawn",
+                "tx1.send",
+                "tx2.send",
+                "join",
+                "rx.recv"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "multi_producer.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "multi_producer.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "multi_producer.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "multi_producer.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-02-message-passing-s1-t4",
+          "prompt": "请写 `waiting_receiver.rs`，实现：主线程创建 mpsc 通道得到 `tx`、`rx`，将 `tx` 移入子线程；子线程依次发送数字 1、2、3，每次发送之间 `sleep` 50 毫秒；主线程用 `for received in rx` 遍历 `rx` 并打印每个收到的数字，最后 join 子线程。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "waiting_receiver.rs"
+            },
+            {
+              "type": "contains",
+              "path": "waiting_receiver.rs",
+              "patterns": [
+                "mpsc::channel",
+                "thread::spawn",
+                "thread::sleep",
+                "tx.send",
+                "for received in rx",
+                "join",
+                "println!"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "waiting_receiver.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "waiting_receiver.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "waiting_receiver.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "waiting_receiver.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-02-message-passing-s1-t5",
+          "prompt": "请修复 `broken.rs` 中的所有权错误，将修复后的代码写入 `fixed.rs`。修复方式：发送到通道前克隆字符串，使发送后仍可打印原字符串。",
+          "fixtures": {
+            "broken.rs": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n    let val = String::from(\"hello\");\n    tx.send(val).unwrap();\n    println!(\"val is {}\", val);\n    let received = rx.recv().unwrap();\n    println!(\"received {}\", received);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "val.clone()",
+                "tx.send",
+                "println!"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "tx.send(val)"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-02-message-passing-s1-t6",
+          "prompt": "请写 `mpsc_summary.md`，用中文解释 Rust 标准库 mpsc 通道：mpsc 的含义、为什么可以有多个发送者但只能有一个接收者、`send` 的所有权转移规则、通道何时关闭，以及接收端如何作为迭代器使用。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "mpsc_summary.md"
+            },
+            {
+              "type": "contains",
+              "path": "mpsc_summary.md",
+              "patterns": [
+                "多个生产者",
+                "单个消费者",
+                "所有权转移",
+                "迭代器",
+                "关闭"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "mpsc_summary.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "mpsc_summary.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "mpsc_summary.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "mpsc_summary.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch16-02-message-passing-s1",
+        "name": "ch16-02-message-passing-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 0
+        },
+        "paired": [
+          {
+            "taskId": "ch16-02-message-passing-s1-t1",
             "without": true,
             "with": true,
             "state": "both-pass"
           },
           {
-            "taskId": "ch13-02-iterators-s1-t5",
+            "taskId": "ch16-02-message-passing-s1-t2",
             "without": true,
-            "with": false,
-            "state": "degradation-confirmed"
+            "with": true,
+            "state": "both-pass"
           },
           {
-            "taskId": "ch13-02-iterators-s1-t6",
+            "taskId": "ch16-02-message-passing-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-02-message-passing-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-02-message-passing-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-02-message-passing-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch16-03-shared-state-s1",
+      "name": "ch16-03-shared-state-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:7865dd60f9ec377ef8fc9c7a79987534fee85ead0887d33cbce00046e194658a",
+      "tasks": [
+        {
+          "taskId": "ch16-03-shared-state-s1-t1",
+          "prompt": "请写一个简短说明，解释为什么不能直接访问 `Mutex<i32>` 的内部 `i32` 值，并展示如何通过获取锁来访问它。将说明写入 `mutex_access.md`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "mutex_access.md"
+            },
+            {
+              "type": "contains",
+              "path": "mutex_access.md",
+              "patterns": [
+                "Mutex",
+                "lock",
+                "MutexGuard",
+                "Deref"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "mutex_access.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "mutex_access.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "mutex_access.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "mutex_access.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-03-shared-state-s1-t2",
+          "prompt": "请写一个完整的 Rust 程序，创建 5 个线程，每个线程将同一个共享计数器加 1，最后打印计数器的值。请使用互斥器保护计数器。将代码保存到 `counter.rs`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "counter.rs"
+            },
+            {
+              "type": "contains",
+              "path": "counter.rs",
+              "patterns": [
+                "Mutex",
+                "Arc",
+                "thread::spawn",
+                "lock()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "counter.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "counter.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "counter.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "counter.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-03-shared-state-s1-t3",
+          "prompt": "下面的 `main.rs` 使用了 `Rc<Mutex<i32>>` 在线程间共享，但 Rust 不允许这样做。请修改代码，使其能够在线程间安全共享并编译通过。将修改后的代码写入 `main.rs`。",
+          "fixtures": {
+            "main.rs": "use std::rc::Rc;\nuse std::sync::Mutex;\nuse std::thread;\n\nfn main() {\n    let counter = Rc::new(Mutex::new(0));\n    let mut handles = vec![];\n\n    for _ in 0..10 {\n        let counter = Rc::clone(&counter);\n        let handle = thread::spawn(move || {\n            let mut num = counter.lock().unwrap();\n            *num += 1;\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n\n    println!(\"Result: {}\", *counter.lock().unwrap());\n}"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "Rc<",
+                "std::rc::Rc"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "Arc<Mutex<i32>>",
+                "Arc::clone",
+                "lock()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "缺少片段：Arc<Mutex<i32>>"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "缺少片段：Arc<Mutex<i32>>"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-03-shared-state-s1-t4",
+          "prompt": "请写一个简短说明，解释两个线程各持有一个互斥锁并等待对方锁时会发生什么，以及如何避免这种问题。将说明写入 `deadlock.md`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "deadlock.md"
+            },
+            {
+              "type": "contains",
+              "path": "deadlock.md",
+              "patterns": [
+                "死锁",
+                "锁顺序",
+                "Mutex",
+                "同时"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "deadlock.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "deadlock.md",
+                "ok": false,
+                "detail": "缺少片段：Mutex | 同时"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "deadlock.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "deadlock.md",
+                "ok": false,
+                "detail": "缺少片段：Mutex"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-03-shared-state-s1-t5",
+          "prompt": "请写一个 Rust 程序，在一个循环中创建 10 个线程，每个线程对同一个 `Mutex<i32>` 计数器加 1。要求使用 `Arc` 和 `Arc::clone` 来避免所有权移动问题。将代码写入 `loop_threads.rs`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "loop_threads.rs"
+            },
+            {
+              "type": "contains",
+              "path": "loop_threads.rs",
+              "patterns": [
+                "Arc::clone",
+                "Mutex",
+                "for",
+                "thread::spawn",
+                "move"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "loop_threads.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "loop_threads.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "loop_threads.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "loop_threads.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch16-03-shared-state-s1-t6",
+          "prompt": "请简要解释 `Mutex<T>` 如何提供内部可变性，并类比 `RefCell<T>` 与 `Rc<T>` 的关系。将说明写入 `interior_mutability.md`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "interior_mutability.md"
+            },
+            {
+              "type": "contains",
+              "path": "interior_mutability.md",
+              "patterns": [
+                "Mutex",
+                "内部可变性",
+                "RefCell",
+                "Arc",
+                "可变引用"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "interior_mutability.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "interior_mutability.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "interior_mutability.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "interior_mutability.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch16-03-shared-state-s1",
+        "name": "ch16-03-shared-state-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 2
+        },
+        "paired": [
+          {
+            "taskId": "ch16-03-shared-state-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-03-shared-state-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-03-shared-state-s1-t3",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch16-03-shared-state-s1-t4",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch16-03-shared-state-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch16-03-shared-state-s1-t6",
             "without": true,
             "with": true,
             "state": "both-pass"
@@ -8283,12 +10754,12 @@
   ],
   "usage": {
     "taskGeneration": {
-      "promptTokens": 42637,
-      "completionTokens": 235415
+      "promptTokens": 58868,
+      "completionTokens": 289607
     },
     "execution": {
-      "promptTokens": 269878,
-      "completionTokens": 475884
+      "promptTokens": 366623,
+      "completionTokens": 671589
     }
   }
 }

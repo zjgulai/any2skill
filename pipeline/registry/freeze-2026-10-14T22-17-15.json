@@ -1,0 +1,768 @@
+{
+  "schemaVersion": "freeze/v1",
+  "createdAt": "2026-10-14T22:17:15.280Z",
+  "gitCommit": "310736f6db57e342b9ccdc532ed5908745ed6189",
+  "note": "产出冻结（ADR-001 的前置）：基准比对必须在逐文件哈希与这一刻一致的产出上进行。校验：node pipeline/freeze-outputs.mjs --verify <本文件>。",
+  "files": [
+    {
+      "path": "skills/ch04-02-references-and-borrowing-s1/SKILL.md",
+      "bytes": 4377,
+      "sha256": "sha256:1751d0e10f623096879178cbc801b3e4dd3c289f2ed7be8155fb35bf5d588ee8"
+    },
+    {
+      "path": "skills/ch04-03-slices-s1/SKILL.md",
+      "bytes": 3228,
+      "sha256": "sha256:ae7be10764dec2520cc8d159115e6402cee093f207a3607eb3a1d2d52a688880"
+    },
+    {
+      "path": "skills/ch05-01-defining-structs-s1/SKILL.md",
+      "bytes": 4965,
+      "sha256": "sha256:3eb383b10a2f186286e18345a091bbbbe3250911b143deb1ae7d1c2215983c65"
+    },
+    {
+      "path": "skills/ch05-03-method-syntax-s1/SKILL.md",
+      "bytes": 6227,
+      "sha256": "sha256:5f711a9eebff207150060fbacaadbb6fc0f714927deeaa6f8dd31352d831af0c"
+    },
+    {
+      "path": "skills/ch06-01-defining-an-enum-s1/SKILL.md",
+      "bytes": 2865,
+      "sha256": "sha256:e7cbbe94d903b61e051dac4f95c863199ea7f496657f17c59986dd2a485d35e8"
+    },
+    {
+      "path": "skills/ch06-02-match-s1/SKILL.md",
+      "bytes": 6761,
+      "sha256": "sha256:446edf3d3e4b7842005aeeb7f3ad90a30309e1e549ffe78aa3f67d4c4317ca2a"
+    },
+    {
+      "path": "skills/ch08-02-strings-s1/SKILL.md",
+      "bytes": 8708,
+      "sha256": "sha256:49c54887be69aa45628ad5ae6556dfc0352b96050be2206b1bb62d14e60f3f09"
+    },
+    {
+      "path": "skills/ch08-03-hash-maps-s1/SKILL.md",
+      "bytes": 6142,
+      "sha256": "sha256:b293172b8342c3f8829368a108942d6d725eb280a928bbf1a0932a51aa7fd4e4"
+    },
+    {
+      "path": "skills/ch10-01-syntax-s1/SKILL.md",
+      "bytes": 5067,
+      "sha256": "sha256:82b1d990fc05fa5fb4771e6ccf628cdd23c87daf65fb08ac56560b76bf56f94b"
+    },
+    {
+      "path": "skills/ch10-02-traits-s1/SKILL.md",
+      "bytes": 13372,
+      "sha256": "sha256:1a6c4299780c10322df36e7dd4e9d6cd2a7855a16e88034b6b6607ff8494016c"
+    },
+    {
+      "path": "skills/ch10-03-lifetime-syntax-s1/SKILL.md",
+      "bytes": 10390,
+      "sha256": "sha256:fd4d76a44d2ab59e2435857e0828cc72d13b8058f207560a4633310e854017b7"
+    },
+    {
+      "path": "skills/ch11-02-running-tests-s1/SKILL.md",
+      "bytes": 6224,
+      "sha256": "sha256:8e62ca2a29ce6bec9d703aae0e0ffc9a9623c78f1eacf7952da7b9b6414c6b7d"
+    },
+    {
+      "path": "skills/ch12-03-improving-error-handling-and-modularity-s1/SKILL.md",
+      "bytes": 8892,
+      "sha256": "sha256:d2064ff86a953bd9b3fab728dd3f65d8c458ad3a1b23a5ea2f7b5e850a7f57be"
+    },
+    {
+      "path": "skills/ch13-01-closures-s1/SKILL.md",
+      "bytes": 3426,
+      "sha256": "sha256:138bfddc2692e6e6112ebb36b869a50bce709ff174dd12f13c6012d407e434b5"
+    },
+    {
+      "path": "skills/ch13-01-closures-s2/SKILL.md",
+      "bytes": 3370,
+      "sha256": "sha256:88fcd79a54d42927df0193a0558ce7bb59d7a05df93653f5983d1a11e62c3586"
+    },
+    {
+      "path": "skills/ch15-01-box-s2/SKILL.md",
+      "bytes": 4522,
+      "sha256": "sha256:5fc171de9107d8c9b1369da7f3b13decbc7ee6b60838be37fe5845bcd9f9ade8"
+    },
+    {
+      "path": "skills/ch15-03-drop-s1/SKILL.md",
+      "bytes": 2367,
+      "sha256": "sha256:cfadd37317baef5f7411c492c943dc745368292175c8c762248088482446e558"
+    },
+    {
+      "path": "skills/ch15-05-interior-mutability-s1/SKILL.md",
+      "bytes": 6297,
+      "sha256": "sha256:cb2e36fb3ea2370496d30c027157de6a5740eba0258930253f6ab007b724cd6b"
+    },
+    {
+      "path": "skills/ch16-01-threads-s1/SKILL.md",
+      "bytes": 4798,
+      "sha256": "sha256:db857686a6f80e3344bb070064245c1f2c3dbf6bf02126500865c8e06dea933a"
+    },
+    {
+      "path": "skills/ch16-02-message-passing-s1/SKILL.md",
+      "bytes": 4551,
+      "sha256": "sha256:f4de57b4f00cfa657f644de2f07b30d89335edd47e8094bf1f29ff76d4103d97"
+    },
+    {
+      "path": "skills/ch16-03-shared-state-s1/SKILL.md",
+      "bytes": 4642,
+      "sha256": "sha256:7865dd60f9ec377ef8fc9c7a79987534fee85ead0887d33cbce00046e194658a"
+    },
+    {
+      "path": "skills/ch17-03-oo-design-patterns-s1/SKILL.md",
+      "bytes": 6719,
+      "sha256": "sha256:0b3e4d2afc4fcaeccb69ea27f33c128b5cd27b6d39a2c6131c2c0096aa4a34fe"
+    },
+    {
+      "path": "skills/ch18-02-refutability-s1/SKILL.md",
+      "bytes": 2109,
+      "sha256": "sha256:5124ea326708bbc49c3c9c1f05674ef4cf5426e62a80c4d020ee7e926863caa2"
+    },
+    {
+      "path": "skills/chapter1-s1/SKILL.md",
+      "bytes": 14579,
+      "sha256": "sha256:59e687353f7de5915cd283497640a08f60bd4237f1575dde0e2613d8645baaa8"
+    },
+    {
+      "path": "skills/chapter10-s3/SKILL.md",
+      "bytes": 15650,
+      "sha256": "sha256:a34aeaa6759bdb613396173c0135be20412cf48bf8f44766db573c21df851cb8"
+    },
+    {
+      "path": "skills/chapter2-s3/SKILL.md",
+      "bytes": 16328,
+      "sha256": "sha256:3d64e37d19d987a31fdf1565e3302f23ddcac12a75f1638df37929336851ee8c"
+    },
+    {
+      "path": "skills/chapter2-s3/references/practice-patterns.md",
+      "bytes": 3466,
+      "sha256": "sha256:a429698a261e9d954b231627c5a077f6d50e59cf352a26100abb89578d9f3428"
+    },
+    {
+      "path": "skills/chapter4-single-tool-design/SKILL.md",
+      "bytes": 9538,
+      "sha256": "sha256:f553481fbfabf3e9864abdf9d45c2967fefebf5b2f7bcbea865672a176c6a3fd"
+    },
+    {
+      "path": "skills/chapter4-tool-design-principles/SKILL.md",
+      "bytes": 5923,
+      "sha256": "sha256:6a6e0c923acc381bc991a97561b8db78f3c462a9a968123f7b344ebeeb9d20fc"
+    },
+    {
+      "path": "skills/chapter5-s3/SKILL.md",
+      "bytes": 14112,
+      "sha256": "sha256:275de6d36540ae43c9239dab3c2a6945cc48f79dc0c678f95820c1c60a769a23"
+    },
+    {
+      "path": "skills/chapter5-s3/references/practice-patterns.md",
+      "bytes": 4614,
+      "sha256": "sha256:bda15b9d99235381f461441eaaed1a79b076445d4ace309a5fcd4330d3d512d6"
+    },
+    {
+      "path": "skills/chapter9-s2/SKILL.md",
+      "bytes": 8713,
+      "sha256": "sha256:1870240d143f7fb992634d5770a9c359c9b7c86724cd3ceb48d0cc0bca2aa24b"
+    },
+    {
+      "path": "pipeline/registry/build/ch04-02-references-and-borrowing-s1/SKILL.md",
+      "bytes": 4377,
+      "sha256": "sha256:1751d0e10f623096879178cbc801b3e4dd3c289f2ed7be8155fb35bf5d588ee8"
+    },
+    {
+      "path": "pipeline/registry/build/ch04-02-references-and-borrowing-s1/gate-receipt.json",
+      "bytes": 5058,
+      "sha256": "sha256:9141994fce197ca39ec35b9a062a7293db75c86e49385a6f30b885253cd98589"
+    },
+    {
+      "path": "pipeline/registry/build/ch04-02-references-and-borrowing-s1/skill-contract.json",
+      "bytes": 9550,
+      "sha256": "sha256:b9c1c013e36cbf485d4b3a22d70a72ec161870b293e8c401dbe505c8f1aaff1c"
+    },
+    {
+      "path": "pipeline/registry/build/ch04-03-slices-s1/SKILL.md",
+      "bytes": 3228,
+      "sha256": "sha256:ae7be10764dec2520cc8d159115e6402cee093f207a3607eb3a1d2d52a688880"
+    },
+    {
+      "path": "pipeline/registry/build/ch04-03-slices-s1/gate-receipt.json",
+      "bytes": 5496,
+      "sha256": "sha256:749760c9af0c8203e647fea5fc0b4be8ea50ed52bd09c3fff0bbc63b2376ef7d"
+    },
+    {
+      "path": "pipeline/registry/build/ch04-03-slices-s1/skill-contract.json",
+      "bytes": 8684,
+      "sha256": "sha256:2342d5e10a3116d217f9d43da36d7c8dc6150efc942250426781a3ab01960e83"
+    },
+    {
+      "path": "pipeline/registry/build/ch05-01-defining-structs-s1/SKILL.md",
+      "bytes": 4965,
+      "sha256": "sha256:3eb383b10a2f186286e18345a091bbbbe3250911b143deb1ae7d1c2215983c65"
+    },
+    {
+      "path": "pipeline/registry/build/ch05-01-defining-structs-s1/gate-receipt.json",
+      "bytes": 5560,
+      "sha256": "sha256:d8a32ac906542204a88bb709a602c563304511a9b1ab9714ff030c8babb4a680"
+    },
+    {
+      "path": "pipeline/registry/build/ch05-01-defining-structs-s1/skill-contract.json",
+      "bytes": 9413,
+      "sha256": "sha256:eb133a97c1af65b2c3770a67f1ad12d8f97952d45912f947249c48ae30bc29bb"
+    },
+    {
+      "path": "pipeline/registry/build/ch05-03-method-syntax-s1/SKILL.md",
+      "bytes": 6227,
+      "sha256": "sha256:5f711a9eebff207150060fbacaadbb6fc0f714927deeaa6f8dd31352d831af0c"
+    },
+    {
+      "path": "pipeline/registry/build/ch05-03-method-syntax-s1/gate-receipt.json",
+      "bytes": 4997,
+      "sha256": "sha256:93546de84261cee1bda1960ba3121e94260fee58eece9c350dcad16577a20a56"
+    },
+    {
+      "path": "pipeline/registry/build/ch05-03-method-syntax-s1/skill-contract.json",
+      "bytes": 10521,
+      "sha256": "sha256:272f9e22955b5542f61bc026da43203c12f5bb89afc9f9d51f9d5d56adc0bbc7"
+    },
+    {
+      "path": "pipeline/registry/build/ch06-01-defining-an-enum-s1/SKILL.md",
+      "bytes": 2865,
+      "sha256": "sha256:e7cbbe94d903b61e051dac4f95c863199ea7f496657f17c59986dd2a485d35e8"
+    },
+    {
+      "path": "pipeline/registry/build/ch06-01-defining-an-enum-s1/gate-receipt.json",
+      "bytes": 5554,
+      "sha256": "sha256:3cc681160d08c44670c24303aa90ccd79d283e215d28a69e998e5b2085233954"
+    },
+    {
+      "path": "pipeline/registry/build/ch06-01-defining-an-enum-s1/skill-contract.json",
+      "bytes": 8765,
+      "sha256": "sha256:77dafc5701175ebe253f5730c9eb0af7f1cd62a50273cad9c855035f54dd03c1"
+    },
+    {
+      "path": "pipeline/registry/build/ch06-02-match-s1/SKILL.md",
+      "bytes": 6761,
+      "sha256": "sha256:446edf3d3e4b7842005aeeb7f3ad90a30309e1e549ffe78aa3f67d4c4317ca2a"
+    },
+    {
+      "path": "pipeline/registry/build/ch06-02-match-s1/gate-receipt.json",
+      "bytes": 4964,
+      "sha256": "sha256:b850f19000574082363c1d0e308ec7c419f9d5bdd807fcfb712632c8221a3af7"
+    },
+    {
+      "path": "pipeline/registry/build/ch06-02-match-s1/skill-contract.json",
+      "bytes": 10242,
+      "sha256": "sha256:9548201f57fa074e90ebab52e288c6ba476b852f17174f71d58a772149735f9c"
+    },
+    {
+      "path": "pipeline/registry/build/ch08-02-strings-s1/SKILL.md",
+      "bytes": 8708,
+      "sha256": "sha256:49c54887be69aa45628ad5ae6556dfc0352b96050be2206b1bb62d14e60f3f09"
+    },
+    {
+      "path": "pipeline/registry/build/ch08-02-strings-s1/gate-receipt.json",
+      "bytes": 5457,
+      "sha256": "sha256:38991fe6775814f6385ec1a767c76f34043779ad0f4fad82465f17fcf957f1ae"
+    },
+    {
+      "path": "pipeline/registry/build/ch08-02-strings-s1/skill-contract.json",
+      "bytes": 11175,
+      "sha256": "sha256:1df3d8eaf398d3d41169c79a93c1f848cbc11cbe9a29f68a683e89e5e92ff528"
+    },
+    {
+      "path": "pipeline/registry/build/ch08-03-hash-maps-s1/SKILL.md",
+      "bytes": 6142,
+      "sha256": "sha256:b293172b8342c3f8829368a108942d6d725eb280a928bbf1a0932a51aa7fd4e4"
+    },
+    {
+      "path": "pipeline/registry/build/ch08-03-hash-maps-s1/gate-receipt.json",
+      "bytes": 5059,
+      "sha256": "sha256:6e6505ed23ef70af64b40f810d17724c876d8b0120d720bcd2c791f6faee8c7b"
+    },
+    {
+      "path": "pipeline/registry/build/ch08-03-hash-maps-s1/skill-contract.json",
+      "bytes": 10025,
+      "sha256": "sha256:15f2791e5e1eb3b06872c69fc5ae0467e91467e638a36e5840bf5a8df39f1c99"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-01-syntax-s1/SKILL.md",
+      "bytes": 5067,
+      "sha256": "sha256:82b1d990fc05fa5fb4771e6ccf628cdd23c87daf65fb08ac56560b76bf56f94b"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-01-syntax-s1/gate-receipt.json",
+      "bytes": 4954,
+      "sha256": "sha256:fcafc672668f329d62bc284db711bb42bac4f651a755c23cca984438c3d6e9fc"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-01-syntax-s1/skill-contract.json",
+      "bytes": 8763,
+      "sha256": "sha256:4a8fed0f69802d24e4255e6e4aae59f0e9431c0829a0bd7975beef0bf132ece8"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-02-traits-s1/SKILL.md",
+      "bytes": 13372,
+      "sha256": "sha256:1a6c4299780c10322df36e7dd4e9d6cd2a7855a16e88034b6b6607ff8494016c"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-02-traits-s1/gate-receipt.json",
+      "bytes": 5383,
+      "sha256": "sha256:6b0e094e8ac5cf2e19f8ece5f7b4e04962ff725bc863ffc063398469400eff1d"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-02-traits-s1/skill-contract.json",
+      "bytes": 13086,
+      "sha256": "sha256:a7b4b47a69eedb5feaf107428fefc658bf4183ce9229c285b925b0c3739d1981"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-03-lifetime-syntax-s1/SKILL.md",
+      "bytes": 10390,
+      "sha256": "sha256:fd4d76a44d2ab59e2435857e0828cc72d13b8058f207560a4633310e854017b7"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-03-lifetime-syntax-s1/gate-receipt.json",
+      "bytes": 5346,
+      "sha256": "sha256:3cb75ea6b818d9c2e4832472802756bc6b64847c15ecfe626ce2b43716577e18"
+    },
+    {
+      "path": "pipeline/registry/build/ch10-03-lifetime-syntax-s1/skill-contract.json",
+      "bytes": 11795,
+      "sha256": "sha256:009e3ca247cd324177846c3df75abcc9c92b799d4352f519a062ab203bded806"
+    },
+    {
+      "path": "pipeline/registry/build/ch11-02-running-tests-s1/SKILL.md",
+      "bytes": 6224,
+      "sha256": "sha256:8e62ca2a29ce6bec9d703aae0e0ffc9a9623c78f1eacf7952da7b9b6414c6b7d"
+    },
+    {
+      "path": "pipeline/registry/build/ch11-02-running-tests-s1/gate-receipt.json",
+      "bytes": 5325,
+      "sha256": "sha256:39e0efc96ff250ad9a837c973ada1b908ef7c493f847072b05751661bf4ac82a"
+    },
+    {
+      "path": "pipeline/registry/build/ch11-02-running-tests-s1/skill-contract.json",
+      "bytes": 9643,
+      "sha256": "sha256:d55bb733de99b013c3f9566cea133880b294c72a2cecfeef7aaed03a9eb7f8fb"
+    },
+    {
+      "path": "pipeline/registry/build/ch12-03-improving-error-handling-and-modularity-s1/SKILL.md",
+      "bytes": 8892,
+      "sha256": "sha256:d2064ff86a953bd9b3fab728dd3f65d8c458ad3a1b23a5ea2f7b5e850a7f57be"
+    },
+    {
+      "path": "pipeline/registry/build/ch12-03-improving-error-handling-and-modularity-s1/gate-receipt.json",
+      "bytes": 5650,
+      "sha256": "sha256:5f412276999909b6103a592d99ed66240f6a8f1c527ad0aefa2566fa2cd29f2a"
+    },
+    {
+      "path": "pipeline/registry/build/ch12-03-improving-error-handling-and-modularity-s1/skill-contract.json",
+      "bytes": 13423,
+      "sha256": "sha256:ec936af5dd6781029166e1d63b13bad408bd445384e1acc80ec81c4562d7de10"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-01-closures-s1/SKILL.md",
+      "bytes": 3426,
+      "sha256": "sha256:138bfddc2692e6e6112ebb36b869a50bce709ff174dd12f13c6012d407e434b5"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-01-closures-s1/gate-receipt.json",
+      "bytes": 5512,
+      "sha256": "sha256:1d8e275df6561350bebb97ba3b2ac2478ef4645a46c5b7ad7546053e3ca324f7"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-01-closures-s1/skill-contract.json",
+      "bytes": 8861,
+      "sha256": "sha256:bce9dabbe9901c31909ef0c212bc684df4ee0c9c1ec1badfe0576b072a23ea82"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-01-closures-s2/SKILL.md",
+      "bytes": 3370,
+      "sha256": "sha256:88fcd79a54d42927df0193a0558ce7bb59d7a05df93653f5983d1a11e62c3586"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-01-closures-s2/gate-receipt.json",
+      "bytes": 5512,
+      "sha256": "sha256:501b5df2d1c4f1e405e4a2993220853dde9a4a835f179dc797401035c41b5345"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-01-closures-s2/skill-contract.json",
+      "bytes": 8437,
+      "sha256": "sha256:785ec81f65cda4af89a8fd99f156ad9190a4332afc1aa1c0d7d061a13aaace1b"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-02-iterators-s1/SKILL.md",
+      "bytes": 5708,
+      "sha256": "sha256:02a0da6c91762f63d6eb91e93034f13520e63fa08ffe6da1d7a8935bcb287323"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-02-iterators-s1/gate-receipt.json",
+      "bytes": 5526,
+      "sha256": "sha256:262bbb4f55b691c19cd42d65263f003c6f78ce4b67cb9a73851ba38eb17c2539"
+    },
+    {
+      "path": "pipeline/registry/build/ch13-02-iterators-s1/skill-contract.json",
+      "bytes": 10161,
+      "sha256": "sha256:8df0ba1be573d13b612e8e43c9d9d6d372d2b8a8d5e47f8a5cb2aa7c266b762d"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-01-box-s2/SKILL.md",
+      "bytes": 4522,
+      "sha256": "sha256:5fc171de9107d8c9b1369da7f3b13decbc7ee6b60838be37fe5845bcd9f9ade8"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-01-box-s2/gate-receipt.json",
+      "bytes": 5489,
+      "sha256": "sha256:720d4fab099943bc33a6ffdc12f44a14f5d219735fd3cfff4da80c830ad8520f"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-01-box-s2/skill-contract.json",
+      "bytes": 9192,
+      "sha256": "sha256:764fa9f95dd9e1409e4e27793c80af880fe2a61d669d7972527de775c694e0ca"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-03-drop-s1/SKILL.md",
+      "bytes": 2367,
+      "sha256": "sha256:cfadd37317baef5f7411c492c943dc745368292175c8c762248088482446e558"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-03-drop-s1/gate-receipt.json",
+      "bytes": 5478,
+      "sha256": "sha256:607122b094624508ccd7c0fb31370e6295803525b081d20b8f18080078c80655"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-03-drop-s1/skill-contract.json",
+      "bytes": 7875,
+      "sha256": "sha256:ee230e6dc158425f07e943460e3c2409157aa1cb304264608e79f48e720bc9b4"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-05-interior-mutability-s1/SKILL.md",
+      "bytes": 6297,
+      "sha256": "sha256:cb2e36fb3ea2370496d30c027157de6a5740eba0258930253f6ab007b724cd6b"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-05-interior-mutability-s1/gate-receipt.json",
+      "bytes": 4346,
+      "sha256": "sha256:4efe769a33b4b7e106400833d7861919133b0f57d26663bc848f0542b1583321"
+    },
+    {
+      "path": "pipeline/registry/build/ch15-05-interior-mutability-s1/skill-contract.json",
+      "bytes": 9050,
+      "sha256": "sha256:12c2d41c2d0669367b98fe096ea5cbcda99f4b5e41f0f051dbfd95620226f16a"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-01-threads-s1/SKILL.md",
+      "bytes": 4798,
+      "sha256": "sha256:db857686a6f80e3344bb070064245c1f2c3dbf6bf02126500865c8e06dea933a"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-01-threads-s1/gate-receipt.json",
+      "bytes": 5505,
+      "sha256": "sha256:e2ef693d6cfc8c1cac4d8c5518ae6bc8566aa335e0438810fd1a42e6180074c7"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-01-threads-s1/skill-contract.json",
+      "bytes": 8736,
+      "sha256": "sha256:a1a3aedb34313e8440ba1b1287d942fe5078761ccf50be05f45bd4c218fb48c6"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-02-message-passing-s1/SKILL.md",
+      "bytes": 4551,
+      "sha256": "sha256:f4de57b4f00cfa657f644de2f07b30d89335edd47e8094bf1f29ff76d4103d97"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-02-message-passing-s1/gate-receipt.json",
+      "bytes": 5560,
+      "sha256": "sha256:8f22e8309b5d2d998ea7441832c51853a41b868b88e123eee647e36e56cab4c6"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-02-message-passing-s1/skill-contract.json",
+      "bytes": 9808,
+      "sha256": "sha256:9e5c8e1650620454b4b4ee813bdadcae950e3b258bed457cc933f6457faa55cd"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-03-shared-state-s1/SKILL.md",
+      "bytes": 4642,
+      "sha256": "sha256:7865dd60f9ec377ef8fc9c7a79987534fee85ead0887d33cbce00046e194658a"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-03-shared-state-s1/gate-receipt.json",
+      "bytes": 5072,
+      "sha256": "sha256:40d512ae8356a6230abc6d35c889e205e7f9330748990c90f1f675395fa5d41f"
+    },
+    {
+      "path": "pipeline/registry/build/ch16-03-shared-state-s1/skill-contract.json",
+      "bytes": 9121,
+      "sha256": "sha256:c4ee337ecb30ce8f486406cd1a09513bee5608ac4715808e7f56dd854d54e6e5"
+    },
+    {
+      "path": "pipeline/registry/build/ch17-03-oo-design-patterns-s1/SKILL.md",
+      "bytes": 6719,
+      "sha256": "sha256:0b3e4d2afc4fcaeccb69ea27f33c128b5cd27b6d39a2c6131c2c0096aa4a34fe"
+    },
+    {
+      "path": "pipeline/registry/build/ch17-03-oo-design-patterns-s1/gate-receipt.json",
+      "bytes": 5663,
+      "sha256": "sha256:a38c77c23118cf41236dc935bdb93920da7b7e4a0af8af85abcc2d1f06ca38ee"
+    },
+    {
+      "path": "pipeline/registry/build/ch17-03-oo-design-patterns-s1/skill-contract.json",
+      "bytes": 10562,
+      "sha256": "sha256:1b72a4eca968068a5d408a23f744d0da38846a95d0973f74cff6e98736fde2e0"
+    },
+    {
+      "path": "pipeline/registry/build/ch18-02-refutability-s1/SKILL.md",
+      "bytes": 2109,
+      "sha256": "sha256:5124ea326708bbc49c3c9c1f05674ef4cf5426e62a80c4d020ee7e926863caa2"
+    },
+    {
+      "path": "pipeline/registry/build/ch18-02-refutability-s1/gate-receipt.json",
+      "bytes": 5548,
+      "sha256": "sha256:609dfb099e334655c48bb417d4eeb6050e26ab8985f0dd3cb6e1d07454f0372c"
+    },
+    {
+      "path": "pipeline/registry/build/ch18-02-refutability-s1/skill-contract.json",
+      "bytes": 7785,
+      "sha256": "sha256:887088dbbbf4815863c59fc971241845910fdaf46cb796ffb03a653809e646d9"
+    },
+    {
+      "path": "pipeline/registry/build/chapter1-s1/SKILL.md",
+      "bytes": 14579,
+      "sha256": "sha256:59e687353f7de5915cd283497640a08f60bd4237f1575dde0e2613d8645baaa8"
+    },
+    {
+      "path": "pipeline/registry/build/chapter1-s1/gate-receipt.json",
+      "bytes": 5316,
+      "sha256": "sha256:971f7a8096c41b790ecfea3bcca01d6ef96c5cb3fc0b673bc60fd11a9ad77bd4"
+    },
+    {
+      "path": "pipeline/registry/build/chapter1-s1/skill-contract.json",
+      "bytes": 12297,
+      "sha256": "sha256:1c5f7110a630c8012e7666fc0ed9b9d5816ade36a95e983a1ce72be54c5226be"
+    },
+    {
+      "path": "pipeline/registry/build/chapter10-s3/SKILL.md",
+      "bytes": 15650,
+      "sha256": "sha256:a34aeaa6759bdb613396173c0135be20412cf48bf8f44766db573c21df851cb8"
+    },
+    {
+      "path": "pipeline/registry/build/chapter10-s3/gate-receipt.json",
+      "bytes": 5226,
+      "sha256": "sha256:a120890d132887fb5edeeb995de31969d5d090b6f0cc6a5f2ba63cfc73eda4e7"
+    },
+    {
+      "path": "pipeline/registry/build/chapter10-s3/skill-contract.json",
+      "bytes": 12207,
+      "sha256": "sha256:bbc5d38d9f3421a35f8de359eedbf31dac77cea4c4502195b141d05398d9fb07"
+    },
+    {
+      "path": "pipeline/registry/build/chapter2-s3/SKILL.md",
+      "bytes": 16328,
+      "sha256": "sha256:3d64e37d19d987a31fdf1565e3302f23ddcac12a75f1638df37929336851ee8c"
+    },
+    {
+      "path": "pipeline/registry/build/chapter2-s3/gate-receipt.json",
+      "bytes": 4945,
+      "sha256": "sha256:475a534679292b0a56a6358bbb8ab0ee965f4981926ce62ef5abe3b29d336626"
+    },
+    {
+      "path": "pipeline/registry/build/chapter2-s3/references/practice-patterns.md",
+      "bytes": 3466,
+      "sha256": "sha256:a429698a261e9d954b231627c5a077f6d50e59cf352a26100abb89578d9f3428"
+    },
+    {
+      "path": "pipeline/registry/build/chapter2-s3/skill-contract.json",
+      "bytes": 13078,
+      "sha256": "sha256:27d201c84422aba0fa0e3b964f0eb25aeb849fcd4cb80ded965a3fcb32e58384"
+    },
+    {
+      "path": "pipeline/registry/build/chapter3-s1/SKILL.md",
+      "bytes": 13419,
+      "sha256": "sha256:7cdb29bac4a56eaabb0ee17e480cec41aa1d0f612bd39b63933f92cef0950191"
+    },
+    {
+      "path": "pipeline/registry/build/chapter3-s1/gate-receipt.json",
+      "bytes": 5541,
+      "sha256": "sha256:d8efe8f66552147f8f232c68f57c6fc50cf727c517a71266c042a9702a862852"
+    },
+    {
+      "path": "pipeline/registry/build/chapter3-s1/references/practice-patterns.md",
+      "bytes": 5660,
+      "sha256": "sha256:c384bc1a6cd7804575a77335d163cea19fe71393b5bb44972a0d07a00a044408"
+    },
+    {
+      "path": "pipeline/registry/build/chapter3-s1/skill-contract.json",
+      "bytes": 12155,
+      "sha256": "sha256:a2f5a0e98a2446a0f9a153c8927fe45f60ccc4e9608027f463ca72c5566dd7cb"
+    },
+    {
+      "path": "pipeline/registry/build/chapter4-single-tool-design/SKILL.md",
+      "bytes": 9538,
+      "sha256": "sha256:f553481fbfabf3e9864abdf9d45c2967fefebf5b2f7bcbea865672a176c6a3fd"
+    },
+    {
+      "path": "pipeline/registry/build/chapter4-single-tool-design/gate-receipt.json",
+      "bytes": 6075,
+      "sha256": "sha256:7f3d95c6e1d7238ea3975f7d56a8bddc412475a36f6022c84d0d662b373dcfef"
+    },
+    {
+      "path": "pipeline/registry/build/chapter4-single-tool-design/skill-contract.json",
+      "bytes": 10761,
+      "sha256": "sha256:f7967416b06c9a2d95f891f0ddaa8dafed964833b86accdb1418128b83d126b5"
+    },
+    {
+      "path": "pipeline/registry/build/chapter4-tool-design-principles/SKILL.md",
+      "bytes": 5923,
+      "sha256": "sha256:6a6e0c923acc381bc991a97561b8db78f3c462a9a968123f7b344ebeeb9d20fc"
+    },
+    {
+      "path": "pipeline/registry/build/chapter4-tool-design-principles/gate-receipt.json",
+      "bytes": 5589,
+      "sha256": "sha256:9054145f439e77f975c154aa58266cbe7987649e5c78a021eb7fee59f037abf2"
+    },
+    {
+      "path": "pipeline/registry/build/chapter4-tool-design-principles/skill-contract.json",
+      "bytes": 8424,
+      "sha256": "sha256:bf78235b8d8128ef0a34bd92435f5e0766b14a53c0ce98aa298a640ff455dda3"
+    },
+    {
+      "path": "pipeline/registry/build/chapter5-s3/SKILL.md",
+      "bytes": 14112,
+      "sha256": "sha256:275de6d36540ae43c9239dab3c2a6945cc48f79dc0c678f95820c1c60a769a23"
+    },
+    {
+      "path": "pipeline/registry/build/chapter5-s3/gate-receipt.json",
+      "bytes": 5553,
+      "sha256": "sha256:0b182769873228602fb773302a2e526d79d38a5f081c09d141b3482748d132af"
+    },
+    {
+      "path": "pipeline/registry/build/chapter5-s3/references/practice-patterns.md",
+      "bytes": 4614,
+      "sha256": "sha256:bda15b9d99235381f461441eaaed1a79b076445d4ace309a5fcd4330d3d512d6"
+    },
+    {
+      "path": "pipeline/registry/build/chapter5-s3/skill-contract.json",
+      "bytes": 12203,
+      "sha256": "sha256:276adbd0fb9f06dd4ea030131930a373fd9213d06ebea6bbdc638bc6ed361c18"
+    },
+    {
+      "path": "pipeline/registry/build/chapter9-s2/SKILL.md",
+      "bytes": 8713,
+      "sha256": "sha256:1870240d143f7fb992634d5770a9c359c9b7c86724cd3ceb48d0cc0bca2aa24b"
+    },
+    {
+      "path": "pipeline/registry/build/chapter9-s2/gate-receipt.json",
+      "bytes": 4899,
+      "sha256": "sha256:e6f18bde1f805e034fd4062bddd87804b4a4fec2a421af9f03e8050d64b523d9"
+    },
+    {
+      "path": "pipeline/registry/build/chapter9-s2/skill-contract.json",
+      "bytes": 8860,
+      "sha256": "sha256:54ca3e8da27c2c4249c6974cce8f165bd9bbe1d553daf27acc8910eb0a715f28"
+    },
+    {
+      "path": "pipeline/knowledge/clusters.json",
+      "bytes": 176015,
+      "sha256": "sha256:1997235a5f6f9c20dc0873e7704ea4d9251ccf898b730c58bb1e3b36544dfb7a"
+    },
+    {
+      "path": "pipeline/knowledge/gate2-scenarios.json",
+      "bytes": 83662,
+      "sha256": "sha256:a23fb5b0521b5a9db17cc1872cdd1f2c137f196d0115526fdf6033bda00dfbe2"
+    },
+    {
+      "path": "pipeline/knowledge/gate3-tasks.json",
+      "bytes": 74513,
+      "sha256": "sha256:575eac0d2069414450c8726b70b3c56e00a6a531673e98841c54c0548f30224e"
+    },
+    {
+      "path": "pipeline/registry/skill-candidates.json",
+      "bytes": 84047,
+      "sha256": "sha256:7429f7a0e1eebc7ef4565ebd45f281ad46ee233d2399d8e768a248583fb25fcf"
+    },
+    {
+      "path": "pipeline/registry/resplit-plan.json",
+      "bytes": 7983,
+      "sha256": "sha256:20c7ab34cf4f8afb2accd6bf58ad49d6d033ce5061eabb0ebb1fa8a947eb55e4"
+    },
+    {
+      "path": "pipeline/knowledge/clusters.rust-book-cn.json",
+      "bytes": 180291,
+      "sha256": "sha256:3a1332deb7091d6398a835a1ada6784f76d370da8ca9b3b46eeb3f1aa08d3af5"
+    },
+    {
+      "path": "pipeline/registry/skill-candidates.rust-book-cn.json",
+      "bytes": 105634,
+      "sha256": "sha256:176a86322e3f2220d7f2b42f4f8846801785a446357e2704daa1d8df1b2f1a5e"
+    },
+    {
+      "path": "pipeline/registry/resplit-plan.rust-book-cn.json",
+      "bytes": 7423,
+      "sha256": "sha256:54b6b545de3b34b1ffe3d6dc08e67333f918d12677e29b849d9381202266d46a"
+    },
+    {
+      "path": "pipeline/knowledge/gate2-scenarios.rust-book-cn.json",
+      "bytes": 71816,
+      "sha256": "sha256:202b949a1cad0a413d3f0ad30f3b427f2cfdc8bb001236905fdf10eb6397c531"
+    },
+    {
+      "path": "pipeline/registry/gate2-report.rust-book-cn.json",
+      "bytes": 76038,
+      "sha256": "sha256:68d233d1e4f83b6d9e24f9120179518ce29fd52c14271fdfe8e3e5ada6f49f53"
+    },
+    {
+      "path": "pipeline/registry/gate2-report.strict.rust-book-cn.json",
+      "bytes": 75445,
+      "sha256": "sha256:a912078e9804925fd0965a184334fe6388889b0e5654fd48e1d4f54be92e9c48"
+    },
+    {
+      "path": "pipeline/registry/gate2-stable.rust-book-cn.json",
+      "bytes": 8603,
+      "sha256": "sha256:2ef54108c0e129d627ecd4ee3542281692cf8790dcfab61b686a80846122b413"
+    },
+    {
+      "path": "pipeline/knowledge/gate3-tasks.rust-book-cn.json",
+      "bytes": 169462,
+      "sha256": "sha256:020a877a791f7a5ae0b3fa8cf70b58dde9837ccbf4e96d7a11339a4a42dde73d"
+    },
+    {
+      "path": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "bytes": 337507,
+      "sha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "path": "pipeline/knowledge/anchor-catalog.rust-book-cn.json",
+      "bytes": 295617,
+      "sha256": "sha256:8791804f1c80326df473ad3617960a63f20a4db66a0a0df97d15eb8dc4bb2cc7"
+    },
+    {
+      "path": "pipeline/knowledge/themes.rust-book-cn.json",
+      "bytes": 174251,
+      "sha256": "sha256:a14e38efb14eeac312c0f830bb242ab677e6dabc8006f2f8c8bdc9b2bd4d2360"
+    },
+    {
+      "path": "pipeline/knowledge/antipatterns.rust-book-cn.objects.json",
+      "bytes": 219134,
+      "sha256": "sha256:e8ebacd7469451324f4acd61049526c3a1bed088fb6bb5d85b69e59b3bdd5948"
+    },
+    {
+      "path": "pipeline/registry/gate2-report.json",
+      "bytes": 190546,
+      "sha256": "sha256:d02c63b100dd7d2e06af095c61659d4a38f5dbc047f050ce968d02ee0f8ea3b1"
+    },
+    {
+      "path": "pipeline/registry/gate2-report.strict.json",
+      "bytes": 98801,
+      "sha256": "sha256:d228909ab047371572c990fca9c8f3330a4ad38310bd0a05fb7f285da05abee9"
+    },
+    {
+      "path": "pipeline/registry/gate2-stable.json",
+      "bytes": 51021,
+      "sha256": "sha256:79109feb3500f3a5ec34fdb19dd3edff5345e9ef9861f3ccaaaa17989c89b046"
+    },
+    {
+      "path": "pipeline/registry/gate3-report.json",
+      "bytes": 153530,
+      "sha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    }
+  ]
+}

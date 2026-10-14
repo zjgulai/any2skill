@@ -1,0 +1,256 @@
+{
+  "schemaVersion": "skill-contract/v1",
+  "skillId": "ch11-02-running-tests-s1",
+  "name": "ch11-02-running-tests-s1",
+  "description": "控制测试运行方式：`cargo test` 生成的测试二进制文件的默认行为是并行运行所有测试，并截获测试运行过程中产生的输出，阻止它们显示出来；适用于未通过命令行参数改变 `cargo test` 的默认行为时、需要将一部分命令行参数传递给 `cargo test`，而将另一部分传递给生成的测试二进制文件时、运行多个测试时（Rust 默认并行运行）。",
+  "references": [],
+  "overflow": {
+    "applied": false
+  },
+  "promotionState": "assembled",
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 6224,
+    "markdownHash": "sha256:8e62ca2a29ce6bec9d703aae0e0ffc9a9623c78f1eacf7952da7b9b6414c6b7d",
+    "checkedAt": "2026-10-14T21:46:01.517Z"
+  },
+  "inputContract": null,
+  "outputContract": null,
+  "tools": [],
+  "steps": [],
+  "stopConditions": [],
+  "rollback": null,
+  "tests": [],
+  "sourceObjects": [
+    "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+    "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02",
+    "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T08-01"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h2-1",
+      "title": "控制测试如何运行",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-1",
+      "title": "并行或连续的运行测试",
+      "lineStart": 7,
+      "lineEnd": 20
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-2",
+      "title": "显示函数输出",
+      "lineStart": 21,
+      "lineEnd": 74
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-3",
+      "title": "通过指定名字来运行部分测试",
+      "lineStart": 75,
+      "lineEnd": 121
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h4-1",
+      "title": "运行单个测试",
+      "lineStart": 122,
+      "lineEnd": 140
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h4-2",
+      "title": "过滤运行多个测试",
+      "lineStart": 141,
+      "lineEnd": 158
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-4",
+      "title": "忽略某些测试",
+      "lineStart": 159,
+      "lineEnd": 207
+    }
+  ],
+  "codeSource": {
+    "available": false,
+    "note": "> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。"
+  },
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "2026-10-14T21:46:01.517Z"
+  },
+  "gaps": [
+    {
+      "code": "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+      "section": "whenToUse",
+      "heading": "## 何时使用",
+      "detail": "条目数 11 高于骨架的建议值（列表，5–8 条用户场景/触发条件）。建议值不是判据，本条只作记录。",
+      "advisory": 8,
+      "actual": 11
+    },
+    {
+      "code": "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+      "section": "pitfalls",
+      "heading": "## 常见陷阱",
+      "detail": "条目数 2 低于骨架的建议值（列表，6–8 条反模式）。**建议值不是判据**——原书那 6–8 条出自人工写作，自动提取达不到该量级（实测整章仅 5 条）。本项按 ADR-006 门禁三「AntiPattern 覆盖率低的 skill 属高风险」路由到功效抽样重点，不在门禁一处拒绝。",
+      "advisory": 6,
+      "actual": 2
+    },
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 1
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 11,
+    "principles": 11,
+    "patterns": 1,
+    "pitfalls": 2,
+    "code": 0,
+    "reading": 7
+  },
+  "riskFlags": [
+    {
+      "flag": "PITFALL_COVERAGE_BELOW_ADVISORY",
+      "detail": "anti-pattern 覆盖不足：常见陷阱段 2 条，建议值 6 条。",
+      "routing": "按 ADR-006 门禁三，本 skill 属高风险，抽样时优先覆盖。"
+    }
+  ],
+  "gapCodes": [
+    "SECTION_ITEM_COUNT_ABOVE_ADVISORY",
+    "SECTION_ITEM_COUNT_BELOW_ADVISORY",
+    "SECTION_SOURCE_ABSENT",
+    "SECTION_FIELD_SEMANTICS_MISMATCH",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED",
+    "CONTRACT_FIELD_UNSUPPORTED"
+  ],
+  "provenance": {
+    "sourceFile": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+    "anchorIndexHash": "sha256:cd688652da16ad8d7fdfc090d4f0a8b390073764e712782338c2e0240a701d15",
+    "anchorIndexHashes": {
+      "sources/rust-book-cn/book/ch11-02-running-tests.md": "sha256:cd688652da16ad8d7fdfc090d4f0a8b390073764e712782338c2e0240a701d15"
+    },
+    "objectsFile": "pipeline/knowledge/ch11-02-running-tests.objects.json",
+    "objectsFileSha256": "sha256:244b6ed964d0bbb5e05713e36163b166b99801e2fc7d42622aa961eec3c93846",
+    "objectsTotal": 13,
+    "objectsInCluster": 13,
+    "objectsKept": 13,
+    "objectsExcludedByGate": [],
+    "crossChapterTotal": 95,
+    "crossChapterInCluster": 1,
+    "crossChapterKept": 1,
+    "crossChapterExcludedByGate": [],
+    "antipatternVerdictsFile": "pipeline/registry/run-fd491f2468f0.antipattern-verdicts.json",
+    "antipatternVerdictsRunId": "run-fd491f2468f0",
+    "antipatternVerdictsIdentityMatch": true,
+    "antipatternObjectsRunId": "run-fd491f2468f0",
+    "gateReceiptFile": "pipeline/registry/run-820d88136b4b.receipt.json",
+    "gateReceiptRunId": "run-820d88136b4b",
+    "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+    "clusterSkillId": "ch11-02-running-tests-s1",
+    "clusterUnits": [
+      "ch11-02-running-tests-u1",
+      "ch11-02-running-tests-u2",
+      "ch11-02-running-tests-u3",
+      "ch11-02-running-tests-u4"
+    ],
+    "clusterChapterRefs": [
+      "ch11-02-running-tests"
+    ],
+    "clustersFile": "pipeline/knowledge/clusters.rust-book-cn.json"
+  }
+}

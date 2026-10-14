@@ -1,6 +1,6 @@
 {
   "schemaVersion": "clusters/v1",
-  "createdAt": "2026-10-14T17:10:28.072Z",
+  "createdAt": "2026-10-14T20:17:48.608Z",
   "promptFingerprint": "prompt-a2e5c6043c57",
   "model": {
     "modelId": "deepseek-v4-pro"
@@ -244,6 +244,26 @@
         "gateExcluded": []
       },
       {
+        "fileKey": "ch11-01-writing-tests",
+        "path": "pipeline/knowledge/ch11-01-writing-tests.objects.json",
+        "sha256": "sha256:25723dddd5405e8ab3e311bff78e93505ee2583fbd1ac6fb3f55dd8f1ad8e98d",
+        "gateReceiptFile": "pipeline/registry/run-1519c89cb84a.receipt.json",
+        "gateReceiptRunId": "run-1519c89cb84a",
+        "objectsTotal": 13,
+        "gatePassed": 13,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch11-02-running-tests",
+        "path": "pipeline/knowledge/ch11-02-running-tests.objects.json",
+        "sha256": "sha256:daadb2f8fa9e8015292be879b5af782c0e8c4d6c8a9662c30dca0b608892b130",
+        "gateReceiptFile": "pipeline/registry/run-820d88136b4b.receipt.json",
+        "gateReceiptRunId": "run-820d88136b4b",
+        "objectsTotal": 13,
+        "gatePassed": 13,
+        "gateExcluded": []
+      },
+      {
         "fileKey": "ch12-03-improving-error-handling-and-modularity",
         "path": "pipeline/knowledge/ch12-03-improving-error-handling-and-modularity.objects.json",
         "sha256": "sha256:978adc4a39886c5c7cddab4f27a5d84ca3d899f6de92504cad5d323a18d7a67b",
@@ -276,6 +296,38 @@
         "gateExcluded": []
       },
       {
+        "fileKey": "ch15-01-box",
+        "path": "pipeline/knowledge/ch15-01-box.objects.json",
+        "sha256": "sha256:3779ff629cb5639ec9cbe9e3d9eb116e5727a08e33f5d753d1f2cbc0e3444163",
+        "gateReceiptFile": "pipeline/registry/run-04d9fb85f467.receipt.json",
+        "gateReceiptRunId": "run-04d9fb85f467",
+        "objectsTotal": 10,
+        "gatePassed": 10,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch15-02-deref",
+        "path": "pipeline/knowledge/ch15-02-deref.objects.json",
+        "sha256": "sha256:c8a2969d8af3bc27ff2b2e18811e363803a49c93c86bbe3ecd7d1629ec8ab299",
+        "gateReceiptFile": "pipeline/registry/run-665e1376e272.receipt.json",
+        "gateReceiptRunId": "run-665e1376e272",
+        "objectsTotal": 11,
+        "gatePassed": 10,
+        "gateExcluded": [
+          "CH15-02-DEREF-H3-4-MENTALMODEL-02"
+        ]
+      },
+      {
+        "fileKey": "ch15-03-drop",
+        "path": "pipeline/knowledge/ch15-03-drop.objects.json",
+        "sha256": "sha256:b356e128eb8d4f7a184113d00326ab3ab535922bae4cdbf0625f42df0be0b098",
+        "gateReceiptFile": "pipeline/registry/run-5a5ef401e8f1.receipt.json",
+        "gateReceiptRunId": "run-5a5ef401e8f1",
+        "objectsTotal": 4,
+        "gatePassed": 4,
+        "gateExcluded": []
+      },
+      {
         "fileKey": "ch15-04-rc",
         "path": "pipeline/knowledge/ch15-04-rc.objects.json",
         "sha256": "sha256:ab474101a5bb2eade16f704dd156850a6bcd16091bea7cbe0c6389f03f42e32d",
@@ -291,6 +343,58 @@
           "CH15-04-RC-H3-2-CONCEPT-01",
           "CH15-04-RC-H3-2-ENGINEERINGRULE-02"
         ]
+      },
+      {
+        "fileKey": "ch15-05-interior-mutability",
+        "path": "pipeline/knowledge/ch15-05-interior-mutability.objects.json",
+        "sha256": "sha256:0cf14ae9c7e85dbc8e712b9d0f2763e7b4cf2ffb9d58175cd2b05891ce141af8",
+        "gateReceiptFile": "pipeline/registry/run-3d1699c32503.receipt.json",
+        "gateReceiptRunId": "run-3d1699c32503",
+        "objectsTotal": 11,
+        "gatePassed": 11,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch16-01-threads",
+        "path": "pipeline/knowledge/ch16-01-threads.objects.json",
+        "sha256": "sha256:6a8ca3cc5faa448e523dce047d0dffab2680c497973ef06e1a6a35cd1b6083ee",
+        "gateReceiptFile": "pipeline/registry/run-bc19ea3da9e2.receipt.json",
+        "gateReceiptRunId": "run-bc19ea3da9e2",
+        "objectsTotal": 8,
+        "gatePassed": 8,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch16-02-message-passing",
+        "path": "pipeline/knowledge/ch16-02-message-passing.objects.json",
+        "sha256": "sha256:f68bcd5850bd7f230d998a155a0a862132e764029fe3edd2c7e6d72606b604ee",
+        "gateReceiptFile": "pipeline/registry/run-695bbe2ed9a0.receipt.json",
+        "gateReceiptRunId": "run-695bbe2ed9a0",
+        "objectsTotal": 6,
+        "gatePassed": 6,
+        "gateExcluded": []
+      },
+      {
+        "fileKey": "ch16-03-shared-state",
+        "path": "pipeline/knowledge/ch16-03-shared-state.objects.json",
+        "sha256": "sha256:e5edafba66964178d31506e00efb43af3eabc92324cfd61b3269c05bd4ececed",
+        "gateReceiptFile": "pipeline/registry/run-5268d9407a67.receipt.json",
+        "gateReceiptRunId": "run-5268d9407a67",
+        "objectsTotal": 11,
+        "gatePassed": 10,
+        "gateExcluded": [
+          "CH16-03-SHARED-STATE-H4-3-ENGINEERINGRULE-02"
+        ]
+      },
+      {
+        "fileKey": "ch17-02-trait-objects",
+        "path": "pipeline/knowledge/ch17-02-trait-objects.objects.json",
+        "sha256": "sha256:7de056ad198b23bdd387b7ce91716ca093fa0733c8e0e5a3f46e3f1f39302b7e",
+        "gateReceiptFile": "pipeline/registry/run-eaac007eec0c.receipt.json",
+        "gateReceiptRunId": "run-eaac007eec0c",
+        "objectsTotal": 9,
+        "gatePassed": 9,
+        "gateExcluded": []
       },
       {
         "fileKey": "ch17-03-oo-design-patterns",
@@ -1939,7 +2043,12 @@
             "ch10-02-traits-u1",
             "ch10-02-traits-u2",
             "ch10-02-traits-u3",
-            "ch10-02-traits-u4"
+            "ch10-02-traits-u4",
+            "ch17-02-trait-objects-u1",
+            "ch17-02-trait-objects-u2",
+            "ch17-02-trait-objects-u3",
+            "ch17-02-trait-objects-u4",
+            "ch17-02-trait-objects-u5"
           ],
           "objectIds": [
             "CH10-02-TRAITS-H2-1-CONCEPT-01",
@@ -1958,9 +2067,40 @@
             "CH10-02-TRAITS-H3-5-CONCEPT-01",
             "CH10-02-TRAITS-H3-5-ENGINEERINGRULE-02",
             "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-01",
-            "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02"
+            "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02",
+            "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-02",
+            "CH17-02-TRAIT-OBJECTS-H3-1-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H3-1-HEURISTIC-02",
+            "CH17-02-TRAIT-OBJECTS-H3-2-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H3-2-ENGINEERINGRULE-02",
+            "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-02",
+            "CH17-02-TRAIT-OBJECTS-H3-4-ENGINEERINGRULE-01"
           ],
-          "rationale": "这些单元覆盖同一批使用场景：从定义共享行为、按规则实现 trait，到在函数参数、返回类型和泛型逻辑中施加 trait 约束。读者通常在同一个任务中需要连续掌握这些内容，以完成基于 trait 的抽象和泛型编程。"
+          "rationale": "这些单元覆盖同一批使用场景：从定义共享行为、按规则实现 trait，到在函数参数、返回类型和泛型逻辑中施加 trait 约束。读者通常在同一个任务中需要连续掌握这些内容，以完成基于 trait 的抽象和泛型编程。",
+          "chapterRefs": [
+            "ch10-02-traits",
+            "ch17-02-trait-objects"
+          ],
+          "mergedFrom": [
+            "ch17-02-trait-objects-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "ch10-02-traits-s1|ch17-02-trait-objects-s1",
+              "strictScenarios": 2,
+              "listScenarios": 2,
+              "strictScenarioIds": [
+                "ch10-02-traits-s1-sc3",
+                "ch17-02-trait-objects-s1-sc1"
+              ],
+              "listScenarioIds": [
+                "ch10-02-traits-s1-sc3",
+                "ch17-02-trait-objects-s1-sc1"
+              ]
+            }
+          ]
         }
       ],
       "coverage": {
@@ -1991,7 +2131,7 @@
     {
       "fileKey": "ch10-03-lifetime-syntax",
       "inputHash": "sha256:adff2da91662a4418b06f91ab5809b6be3f06d44721e11b8f06de7d32c0891e3",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T17:07:22.109Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -2126,6 +2266,254 @@
       },
       "finishReason": "stop",
       "reasoningChars": 17519,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch11-01-writing-tests",
+      "inputHash": "sha256:2a33d2219e2cf3782f1645624b83956fedef23f690f2af8ef7672bf824c70ab4",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:11:27.230Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch11-01-writing-tests-u1",
+          "name": "测试函数与失败判定",
+          "objectIds": [
+            "CH11-01-WRITING-TESTS-H2-1-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-01",
+            "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-01-writing-tests#h2-1",
+            "ch11-01-writing-tests#h3-1"
+          ],
+          "rationale": "这些对象都在回答同一个问题空间：Rust 测试函数是什么、如何用 #[test] 声明并通过 cargo test 运行，以及测试如何以 panic 作为基础失败信号。它们共同构成测试执行模型的基础判断依据。"
+        },
+        {
+          "unitId": "ch11-01-writing-tests-u2",
+          "name": "断言宏与失败信息",
+          "objectIds": [
+            "CH11-01-WRITING-TESTS-H3-2-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-01",
+            "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-02",
+            "CH11-01-WRITING-TESTS-H3-4-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-01-writing-tests#h3-2",
+            "ch11-01-writing-tests#h3-3",
+            "ch11-01-writing-tests#h3-4"
+          ],
+          "rationale": "这些对象都围绕 Rust 标准断言宏（assert!、assert_eq!、assert_ne!）的使用：何时通过/失败、需要哪些 trait、失败信息如何呈现、如何自定义失败信息，以及在输出不确定时如何选择部分匹配。它们共享“如何判断被测试代码结果是否正确”的问题。"
+        },
+        {
+          "unitId": "ch11-01-writing-tests-u3",
+          "name": "单元测试模块与导入",
+          "objectIds": [
+            "CH11-01-WRITING-TESTS-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-01-writing-tests#h3-2"
+          ],
+          "rationale": "该对象单独成单元，因为它回答的是单元测试模块如何组织、可见性规则及如何使用 use super::* 访问外部代码；这与“如何断言结果”或“如何声明测试函数”的问题不同，不宜混入其他单元。"
+        },
+        {
+          "unitId": "ch11-01-writing-tests-u4",
+          "name": "验证 panic 行为",
+          "objectIds": [
+            "CH11-01-WRITING-TESTS-H3-5-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-5-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "ch11-01-writing-tests#h3-5"
+          ],
+          "rationale": "这两个对象共同回答“如何验证代码在预期条件下会 panic”的问题：一个说明 should_panic 的机制，另一个指出它只检查 panic 是否发生而不检查原因的限制。"
+        },
+        {
+          "unitId": "ch11-01-writing-tests-u5",
+          "name": "Result 测试",
+          "objectIds": [
+            "CH11-01-WRITING-TESTS-H3-6-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-6-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-01-writing-tests#h3-6"
+          ],
+          "rationale": "这两个对象共同回答“如何用 Result<T,E> 作为测试函数返回值，并以 Err 表示失败”的问题；一个说明 Ok/Err 与问号运算符的总体规则，另一个给出不要对期望 Err 值使用问号运算符的具体规则。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch11-01-writing-tests-s1",
+          "name": "编写 Rust 单元测试",
+          "trigger": "当你需要为 Rust 代码编写、组织或运行单元测试，并选择合适的断言与失败验证方式时，使用这个技能。",
+          "unitIds": [
+            "ch11-01-writing-tests-u1",
+            "ch11-01-writing-tests-u2",
+            "ch11-01-writing-tests-u3",
+            "ch11-01-writing-tests-u4",
+            "ch11-01-writing-tests-u5"
+          ],
+          "objectIds": [
+            "CH11-01-WRITING-TESTS-H2-1-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-01",
+            "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-02",
+            "CH11-01-WRITING-TESTS-H3-2-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-01",
+            "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-02",
+            "CH11-01-WRITING-TESTS-H3-4-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-4-ENGINEERINGRULE-02",
+            "CH11-01-WRITING-TESTS-H3-2-ENGINEERINGRULE-02",
+            "CH11-01-WRITING-TESTS-H3-5-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-5-ANTIPATTERN-02",
+            "CH11-01-WRITING-TESTS-H3-6-CONCEPT-01",
+            "CH11-01-WRITING-TESTS-H3-6-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元面向同一批任务：读者需要在 Rust 代码库中编写和运行单元测试，从声明测试函数、组织模块、选择并撰写断言，到验证 panic 和 Result 失败路径。它们共同支持“使用 cargo test 编写可信测试”的完整场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 13,
+        "assigned": 13,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1657,
+        "completion_tokens": 6130,
+        "total_tokens": 7787,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5336
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 1145
+      },
+      "finishReason": "stop",
+      "reasoningChars": 10395,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch11-02-running-tests",
+      "inputHash": "sha256:3e612365d79c28cc599952b086ab0984097f31d9df5af48ff73e4dfd46299b7d",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:12:07.812Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch11-02-running-tests-u1",
+          "name": "并行与输出控制",
+          "objectIds": [
+            "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02",
+            "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+            "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-02-running-tests#h2-1",
+            "ch11-02-running-tests#h3-1",
+            "ch11-02-running-tests#h3-2"
+          ],
+          "rationale": "这些对象共同回答测试运行时的并发与输出可见性问题：默认并行和输出截获、如何限制线程数、通过测试的输出为何不显示以及如何显示。"
+        },
+        {
+          "unitId": "ch11-02-running-tests-u2",
+          "name": "按名称筛选测试",
+          "objectIds": [
+            "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02",
+            "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-02-running-tests#h3-3",
+            "ch11-02-running-tests#h4-1",
+            "ch11-02-running-tests#h4-2"
+          ],
+          "rationale": "这些对象都属于“如何选择运行哪些测试”的问题空间，包括传递单个测试名称、使用部分名称或模块名过滤，以及不能同时指定多个测试名称的限制。"
+        },
+        {
+          "unitId": "ch11-02-running-tests-u3",
+          "name": "忽略耗时的测试",
+          "objectIds": [
+            "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-02-running-tests#h3-4"
+          ],
+          "rationale": "这两个对象回答如何标记和单独运行被忽略的测试，属于忽略机制的问题空间，因此聚为一个单元。"
+        },
+        {
+          "unitId": "ch11-02-running-tests-u4",
+          "name": "命令行参数分隔",
+          "objectIds": [
+            "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch11-02-running-tests#h2-1"
+          ],
+          "rationale": "该对象单独说明 cargo test 参数与测试二进制参数必须用 `--` 分隔，其问题空间是命令行参数如何路由，不同于并行、输出、筛选或忽略，因此单独成单元以避免混淆。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch11-02-running-tests-s1",
+          "name": "控制测试运行方式",
+          "trigger": "当需要调整 cargo test 的运行方式，例如只跑部分测试、观察通过测试的输出、限制并发或处理被忽略的测试时，读取本候选。",
+          "unitIds": [
+            "ch11-02-running-tests-u1",
+            "ch11-02-running-tests-u2",
+            "ch11-02-running-tests-u3",
+            "ch11-02-running-tests-u4"
+          ],
+          "objectIds": [
+            "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02",
+            "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+            "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02",
+            "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02",
+            "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02",
+            "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+            "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02",
+            "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元都服务于同一批任务：Rust 开发者在运行测试阶段对并发、输出、筛选、忽略和参数传递进行控制，因此面向同一使用场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 13,
+        "assigned": 13,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1468,
+        "completion_tokens": 6161,
+        "total_tokens": 7629,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5459
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 956
+      },
+      "finishReason": "stop",
+      "reasoningChars": 10369,
       "maxTokens": 24000
     },
     {
@@ -2303,7 +2691,7 @@
     {
       "fileKey": "ch13-01-closures",
       "inputHash": "sha256:2918c8fa8ef27db2b60b08cd9b26f83306f72c61713d77834978c80b914cd044",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T17:08:36.194Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -2431,7 +2819,7 @@
     {
       "fileKey": "ch13-02-iterators",
       "inputHash": "sha256:e4db1c8d4d0f39394c2b34f20fbd7658ce09f8587012a898e623a01716de6715",
-      "status": "proposed",
+      "status": "reused",
       "createdAt": "2026-10-14T17:09:32.732Z",
       "modelId": "deepseek-v4-pro",
       "units": [
@@ -2560,6 +2948,319 @@
       "maxTokens": 24000
     },
     {
+      "fileKey": "ch15-01-box",
+      "inputHash": "sha256:85a90173e9decf703030c03de39d968ab4a8b5f3260f06268cc13bc2719fae22",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:12:50.073Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch15-01-box-u1",
+          "name": "Box 基础语义",
+          "objectIds": [
+            "CH15-01-BOX-H2-1-CONCEPT-01",
+            "CH15-01-BOX-H3-1-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch15-01-box#h2-1",
+            "ch15-01-box#h3-1"
+          ],
+          "rationale": "二者都在回答 Box<T> 是什么以及它如何持有堆上数据：一个给出总体定义，一个补充所有权、访问和离开作用域释放语义。"
+        },
+        {
+          "unitId": "ch15-01-box-u2",
+          "name": "Box 选用判断",
+          "objectIds": [
+            "CH15-01-BOX-H3-1-HEURISTIC-02",
+            "CH15-01-BOX-H3-4-HEURISTIC-02"
+          ],
+          "anchors": [
+            "ch15-01-box#h3-1",
+            "ch15-01-box#h3-4"
+          ],
+          "rationale": "二者都是使用 Box 的启发式判断：一个提醒普通小值默认用栈、避免单独使用 Box；另一个说明只需间接存储和堆分配时选择 Box，避免引入其它智能指针的特殊功能开销。"
+        },
+        {
+          "unitId": "ch15-01-box-u3",
+          "name": "递归类型与大小计算",
+          "objectIds": [
+            "CH15-01-BOX-H3-2-CONCEPT-01",
+            "CH15-01-BOX-H4-1-ENGINEERINGRULE-02",
+            "CH15-01-BOX-H3-3-ENGINEERINGRULE-01",
+            "CH15-01-BOX-H3-3-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch15-01-box#h3-2",
+            "ch15-01-box#h4-1",
+            "ch15-01-box#h3-3"
+          ],
+          "rationale": "这些对象围绕递归类型为何无法直接确定大小：定义递归类型、直接存放同类型值导致无限大小、编译器大小计算无限进行，以及非递归枚举大小取最大成员的规则作为对照。"
+        },
+        {
+          "unitId": "ch15-01-box-u4",
+          "name": "cons list 案例与反模式",
+          "objectIds": [
+            "CH15-01-BOX-H4-1-CONCEPT-01",
+            "CH15-01-BOX-H3-4-ANTIPATTERN-01"
+          ],
+          "anchors": [
+            "ch15-01-box#h4-1",
+            "ch15-01-box#h3-4"
+          ],
+          "rationale": "cons list 是递归类型需要用 Box 间接存储的典型示例，反模式则直接指出在递归类型中直接储存值而非指针的做法；二者共同回答实现递归结构时应避免什么、示例结构长什么样。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch15-01-box-s2",
+          "name": "递归类型与 cons list 修复",
+          "trigger": "当读者需要实现或诊断递归类型（特别是 cons list）的编译期大小错误，并理解如何用 Box 提供间接指针来解决问题时使用。",
+          "unitIds": [
+            "ch15-01-box-u3",
+            "ch15-01-box-u4",
+            "ch15-01-box-u1",
+            "ch15-01-box-u2"
+          ],
+          "objectIds": [
+            "CH15-01-BOX-H3-2-CONCEPT-01",
+            "CH15-01-BOX-H4-1-ENGINEERINGRULE-02",
+            "CH15-01-BOX-H3-3-ENGINEERINGRULE-01",
+            "CH15-01-BOX-H3-3-CONCEPT-02",
+            "CH15-01-BOX-H4-1-CONCEPT-01",
+            "CH15-01-BOX-H3-4-ANTIPATTERN-01",
+            "CH15-01-BOX-H2-1-CONCEPT-01",
+            "CH15-01-BOX-H3-1-CONCEPT-01",
+            "CH15-01-BOX-H3-1-HEURISTIC-02",
+            "CH15-01-BOX-H3-4-HEURISTIC-02"
+          ],
+          "rationale": "这两个单元都服务于处理递归类型及其大小问题的场景：需要识别无限大小计算、理解大小规则，并通过 cons list 示例和反模式避免直接存储值。",
+          "chapterRefs": [
+            "ch15-01-box"
+          ],
+          "mergedFrom": [
+            "ch15-01-box-s1"
+          ],
+          "mergeBasis": [
+            {
+              "stablePair": "ch15-01-box-s1|ch15-01-box-s2",
+              "strictScenarios": 2,
+              "listScenarios": 3,
+              "strictScenarioIds": [
+                "ch15-01-box-s1-sc1",
+                "ch15-01-box-s2-sc3"
+              ],
+              "listScenarioIds": [
+                "ch15-01-box-s1-sc1",
+                "ch15-01-box-s2-sc2",
+                "ch15-01-box-s2-sc3"
+              ]
+            }
+          ]
+        }
+      ],
+      "coverage": {
+        "gatePassed": 10,
+        "assigned": 10,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1304,
+        "completion_tokens": 6244,
+        "total_tokens": 7548,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5529
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 792
+      },
+      "finishReason": "stop",
+      "reasoningChars": 15775,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch15-02-deref",
+      "inputHash": "sha256:f33d1e0d049fb3b739d7b2ef24152f661d487dcd33b0c7270dd7676be3d194ec",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:13:35.035Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch15-02-deref-u1",
+          "name": "解引用与Deref基础",
+          "objectIds": [
+            "CH15-02-DEREF-H2-1-CONCEPT-01",
+            "CH15-02-DEREF-H3-1-CONCEPT-01",
+            "CH15-02-DEREF-H3-1-ENGINEERINGRULE-02",
+            "CH15-02-DEREF-H3-4-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch15-02-deref#h2-1",
+            "ch15-02-deref#h3-1",
+            "ch15-02-deref#h3-4"
+          ],
+          "rationale": "这些对象共同界定解引用操作和 Deref trait 的核心含义及基本使用约束，回答“什么是解引用、Deref 提供什么能力、deref 方法返回什么”。"
+        },
+        {
+          "unitId": "ch15-02-deref-u2",
+          "name": "Box与自定义智能指针",
+          "objectIds": [
+            "CH15-02-DEREF-H3-2-CONCEPT-01",
+            "CH15-02-DEREF-H3-3-CONCEPT-01",
+            "CH15-02-DEREF-H3-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch15-02-deref#h3-2",
+            "ch15-02-deref#h3-3"
+          ],
+          "rationale": "这些对象通过 Box<T> 和自定义 MyBox<T> 展示在智能指针类型上使用解引用运算符的机制，回答“如何让一个类型支持 * 运算符以及为什么需要实现 Deref”。"
+        },
+        {
+          "unitId": "ch15-02-deref-u3",
+          "name": "解引用强制转换",
+          "objectIds": [
+            "CH15-02-DEREF-H3-5-CONCEPT-01",
+            "CH15-02-DEREF-H3-6-ENGINEERINGRULE-01",
+            "CH15-02-DEREF-H3-6-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch15-02-deref#h3-5",
+            "ch15-02-deref#h3-6"
+          ],
+          "rationale": "这些对象集中讨论函数或方法传参时引用类型的隐式转换条件与限制，回答“什么时候会发生解引用强制转换、转换方向是什么、有哪些不可转换情况”。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch15-02-deref-s1",
+          "name": "Deref解引用与强制转换",
+          "trigger": "当需要理解或实现 Rust 中智能指针的 Deref 解引用，以及掌握函数传参时的隐式引用转换规则时使用本候选。",
+          "unitIds": [
+            "ch15-02-deref-u1",
+            "ch15-02-deref-u2",
+            "ch15-02-deref-u3"
+          ],
+          "objectIds": [
+            "CH15-02-DEREF-H2-1-CONCEPT-01",
+            "CH15-02-DEREF-H3-1-CONCEPT-01",
+            "CH15-02-DEREF-H3-1-ENGINEERINGRULE-02",
+            "CH15-02-DEREF-H3-4-CONCEPT-01",
+            "CH15-02-DEREF-H3-2-CONCEPT-01",
+            "CH15-02-DEREF-H3-3-CONCEPT-01",
+            "CH15-02-DEREF-H3-3-ENGINEERINGRULE-02",
+            "CH15-02-DEREF-H3-5-CONCEPT-01",
+            "CH15-02-DEREF-H3-6-ENGINEERINGRULE-01",
+            "CH15-02-DEREF-H3-6-ENGINEERINGRULE-02"
+          ],
+          "rationale": "三个单元分别覆盖 Deref/解引用基础、智能指针上的 Deref 实现、解引用强制转换，面向同一批需要读懂并正确应用本章 Deref 机制的读者和场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 10,
+        "assigned": 10,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1324,
+        "completion_tokens": 3610,
+        "total_tokens": 4934,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3058
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 812
+      },
+      "finishReason": "stop",
+      "reasoningChars": 5666,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch15-03-drop",
+      "inputHash": "sha256:7389d0e0c8ec34700b04e09a65c80e9d1850c74e1873d133ca590a64cdce361f",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:13:57.388Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch15-03-drop-u1",
+          "name": "Drop trait 基础",
+          "objectIds": [
+            "CH15-03-DROP-H2-1-CONCEPT-01",
+            "CH15-03-DROP-H2-1-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "ch15-03-drop#h2-1"
+          ],
+          "rationale": "这两个对象都围绕“Drop trait 是什么、它取代了怎样的手动清理模式”：CONCEPT-01 定义 Drop trait 在值离开作用域时执行清理代码的机制，ANTIPATTERN-02 描述其他语言中缺乏该机制时常见的手动清理负担，二者共同回答“为什么需要 Drop trait”。"
+        },
+        {
+          "unitId": "ch15-03-drop-u2",
+          "name": "提前强制丢弃",
+          "objectIds": [
+            "CH15-03-DROP-H4-1-ENGINEERINGRULE-01",
+            "CH15-03-DROP-H4-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch15-03-drop#h4-1"
+          ],
+          "rationale": "这两个对象都围绕“如何在值离开作用域前强制清理”：ENGINEERINGRULE-01 给出必须使用 std::mem::drop 而不能显式调用 drop 的规则，CONCEPT-02 定义 std::mem::drop 函数及其与 Drop trait 中 drop 方法的区别，二者共同回答“提前清理应调用什么”。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch15-03-drop-s1",
+          "name": "Drop 清理机制",
+          "trigger": "当开发者需要理解 Rust 值离开作用域时的自动资源清理语义，或在值生命周期结束前主动强制释放资源时，应使用本候选。",
+          "unitIds": [
+            "ch15-03-drop-u1",
+            "ch15-03-drop-u2"
+          ],
+          "objectIds": [
+            "CH15-03-DROP-H2-1-CONCEPT-01",
+            "CH15-03-DROP-H2-1-ANTIPATTERN-02",
+            "CH15-03-DROP-H4-1-ENGINEERINGRULE-01",
+            "CH15-03-DROP-H4-1-CONCEPT-02"
+          ],
+          "rationale": "这两个单元面向同一批资源清理使用场景：单元 1 提供 Drop trait 的自动清理背景及其替代的手动清理反模式，单元 2 提供作用域结束前强制清理的 API 与工程规则，二者共同覆盖从理解自动清理到执行提前清理的完整任务链。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 4,
+        "assigned": 4,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 850,
+        "completion_tokens": 1294,
+        "total_tokens": 2144,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 862
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 338
+      },
+      "finishReason": "stop",
+      "reasoningChars": 2054,
+      "maxTokens": 24000
+    },
+    {
       "fileKey": "ch15-04-rc",
       "inputHash": "sha256:1397f4b4ff1a4c5bd5f79a9df53a1f142a10cce292fd31ecea31d1bc6026e83f",
       "status": "reused",
@@ -2590,6 +3291,512 @@
       },
       "finishReason": "stop",
       "reasoningChars": 557,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch15-05-interior-mutability",
+      "inputHash": "sha256:2d296717d5b39ecdaed10eec1238a86bb337a246c0c1eb3356a8ea9f9a07a102",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:14:07.350Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch15-05-interior-mutability-u1",
+          "name": "内部可变性概念",
+          "objectIds": [
+            "CH15-05-INTERIOR-MUTABILITY-H2-1-CONCEPT-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-4-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch15-05-interior-mutability#h2-1",
+            "ch15-05-interior-mutability#h3-4"
+          ],
+          "rationale": "两个对象都定义内部可变性：一个从设计模式与 unsafe 封装安全 API 的角度说明允许在不可变引用下修改数据；另一个从运行时借用规则保护的角度说明表面不可变但内部可按需修改，因此同属“什么是内部可变性”的问题空间。"
+        },
+        {
+          "unitId": "ch15-05-interior-mutability-u2",
+          "name": "借用规则与反模式",
+          "objectIds": [
+            "CH15-05-INTERIOR-MUTABILITY-H3-2-ANTIPATTERN-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-2-ENGINEERINGRULE-02",
+            "CH15-05-INTERIOR-MUTABILITY-H3-3-ENGINEERINGRULE-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-3-ANTIPATTERN-02"
+          ],
+          "anchors": [
+            "ch15-05-interior-mutability#h3-2",
+            "ch15-05-interior-mutability#h3-3"
+          ],
+          "rationale": "这些对象同属 RefCell<T> 的借用检查机制：说明它并没有完全绕开借用规则，而是运行时检查；并给出同一时间只允许多个不可变借用或一个可变借用的规则，以及编译期不可变变量 &mut 和运行时重复 borrow_mut 两类冲突示例。"
+        },
+        {
+          "unitId": "ch15-05-interior-mutability-u3",
+          "name": "选择前提与限制",
+          "objectIds": [
+            "CH15-05-INTERIOR-MUTABILITY-H3-1-DECISIONMODEL-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch15-05-interior-mutability#h3-1"
+          ],
+          "rationale": "两者都用于判断 RefCell<T> 是否适用于当前场景：决策模型提供选择判断依据，单线程硬限制是应用前提；它们共同回答“何时不能或不应使用 RefCell”。"
+        },
+        {
+          "unitId": "ch15-05-interior-mutability-u4",
+          "name": "典型使用模式",
+          "objectIds": [
+            "CH15-05-INTERIOR-MUTABILITY-H4-1-ENGINEERINGRULE-01",
+            "CH15-05-INTERIOR-MUTABILITY-H4-1-CONCEPT-02",
+            "CH15-05-INTERIOR-MUTABILITY-H3-4-HEURISTIC-01"
+          ],
+          "anchors": [
+            "ch15-05-interior-mutability#h4-1",
+            "ch15-05-interior-mutability#h3-4"
+          ],
+          "rationale": "这些对象同属内部可变性的具体使用模式：trait 方法必须保持 &self 签名但需要修改内部字段、mock 对象记录测试过程，以及需要多个所有者且可变时组合 Rc<RefCell<T>>；它们都面向实际编程任务中的选择与应用。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch15-05-interior-mutability-s1",
+          "name": "RefCell内部可变性实践",
+          "trigger": "当需要理解、实现或审查 Rust 中的内部可变性代码，尤其是判断 RefCell 是否适合当前单线程/多所有者场景、避免运行时借用 panic，或在 trait 方法与 mock 对象中修改内部状态时使用。",
+          "unitIds": [
+            "ch15-05-interior-mutability-u1",
+            "ch15-05-interior-mutability-u2",
+            "ch15-05-interior-mutability-u3",
+            "ch15-05-interior-mutability-u4"
+          ],
+          "objectIds": [
+            "CH15-05-INTERIOR-MUTABILITY-H2-1-CONCEPT-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-4-CONCEPT-02",
+            "CH15-05-INTERIOR-MUTABILITY-H3-2-ANTIPATTERN-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-2-ENGINEERINGRULE-02",
+            "CH15-05-INTERIOR-MUTABILITY-H3-3-ENGINEERINGRULE-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-3-ANTIPATTERN-02",
+            "CH15-05-INTERIOR-MUTABILITY-H3-1-DECISIONMODEL-01",
+            "CH15-05-INTERIOR-MUTABILITY-H3-1-ENGINEERINGRULE-02",
+            "CH15-05-INTERIOR-MUTABILITY-H4-1-ENGINEERINGRULE-01",
+            "CH15-05-INTERIOR-MUTABILITY-H4-1-CONCEPT-02",
+            "CH15-05-INTERIOR-MUTABILITY-H3-4-HEURISTIC-01"
+          ],
+          "rationale": "这些单元整体覆盖 RefCell<T> 与内部可变性模式的同一批阅读和编程场景：从核心概念、借用规则与冲突、选择前提和限制到典型使用模式，读者必须同时掌握这些方面才能正确选择并安全使用 RefCell。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 11,
+        "assigned": 11,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1382,
+        "completion_tokens": 11306,
+        "total_tokens": 12688,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 10536
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 870
+      },
+      "finishReason": "stop",
+      "reasoningChars": 26228,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch16-01-threads",
+      "inputHash": "sha256:2287cb03902caa30cd4c7b4a769198877c4ccd065bf859a8f4d7e5da930c3c58",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:15:23.907Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch16-01-threads-u1",
+          "name": "线程概念与模型",
+          "objectIds": [
+            "CH16-01-THREADS-H2-1-CONCEPT-01",
+            "CH16-01-THREADS-H2-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch16-01-threads#h2-1"
+          ],
+          "rationale": "这两个对象回答同一问题：Rust 中的线程是什么，以及标准库采用的线程模型。它们共同构成理解后续线程创建与管理操作的背景。"
+        },
+        {
+          "unitId": "ch16-01-threads-u2",
+          "name": "线程创建与调度",
+          "objectIds": [
+            "CH16-01-THREADS-H3-1-CONCEPT-01",
+            "CH16-01-THREADS-H3-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch16-01-threads#h3-1"
+          ],
+          "rationale": "这两个对象围绕如何使用 thread::spawn 创建新线程，以及多线程执行顺序的不确定性，属于同一问题空间：如何启动线程并理解其运行时机。"
+        },
+        {
+          "unitId": "ch16-01-threads-u3",
+          "name": "等待线程结束",
+          "objectIds": [
+            "CH16-01-THREADS-H4-1-CONCEPT-01",
+            "CH16-01-THREADS-H4-1-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch16-01-threads#h4-1"
+          ],
+          "rationale": "这两个对象回答同一类问题：如何保存线程句柄并调用 join，以确保新线程在 main 退出前结束，属于线程生命周期管理。"
+        },
+        {
+          "unitId": "ch16-01-threads-u4",
+          "name": "move 与所有权转移",
+          "objectIds": [
+            "CH16-01-THREADS-H3-2-CONCEPT-01",
+            "CH16-01-THREADS-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch16-01-threads#h3-2"
+          ],
+          "rationale": "这两个对象都围绕在创建线程时如何通过 move 闭包转移环境值的所有权，解决线程跨线程使用数据时的借用与所有权问题。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch16-01-threads-s1",
+          "name": "Rust 多线程任务管理",
+          "trigger": "当你需要在 Rust 程序中创建多线程执行任务、控制线程结束并安全转移线程所需数据时，使用本候选。",
+          "unitIds": [
+            "ch16-01-threads-u1",
+            "ch16-01-threads-u2",
+            "ch16-01-threads-u3",
+            "ch16-01-threads-u4"
+          ],
+          "objectIds": [
+            "CH16-01-THREADS-H2-1-CONCEPT-01",
+            "CH16-01-THREADS-H2-1-ENGINEERINGRULE-02",
+            "CH16-01-THREADS-H3-1-CONCEPT-01",
+            "CH16-01-THREADS-H3-1-ENGINEERINGRULE-02",
+            "CH16-01-THREADS-H4-1-CONCEPT-01",
+            "CH16-01-THREADS-H4-1-ENGINEERINGRULE-02",
+            "CH16-01-THREADS-H3-2-CONCEPT-01",
+            "CH16-01-THREADS-H3-2-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这些单元依次覆盖理解线程模型、启动线程、等待线程结束和跨线程转移数据，面向同一批使用场景：在 Rust 中编写和管理多线程并发代码。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 8,
+        "assigned": 8,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1104,
+        "completion_tokens": 3606,
+        "total_tokens": 4710,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3062
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 592
+      },
+      "finishReason": "stop",
+      "reasoningChars": 5957,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch16-02-message-passing",
+      "inputHash": "sha256:7534a9851e574d0d22918ae86f919d5fab9ae79717d5e10de19f065a70f7f49a",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:15:48.098Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch16-02-message-passing-u1",
+          "name": "通道与 mpsc 概念",
+          "objectIds": [
+            "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-01",
+            "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-02",
+            "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch16-02-message-passing#h2-1",
+            "ch16-02-message-passing#h3-3"
+          ],
+          "rationale": "这些对象共同回答“通道和 mpsc 是什么”：对象一说明通道由发送者/接收者组成并在任一端被丢弃时关闭，后两个对象都说明 mpsc 允许一个通道有多个发送端、一个接收端。"
+        },
+        {
+          "unitId": "ch16-02-message-passing-u2",
+          "name": "克隆发送者实现多生产者",
+          "objectIds": [
+            "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch16-02-message-passing#h3-3"
+          ],
+          "rationale": "该对象单独回答“如何获得多个发送端”：通过 clone 发送端生成多个生产者句柄，是多生产者概念落到具体多线程连接的操作步骤。"
+        },
+        {
+          "unitId": "ch16-02-message-passing-u3",
+          "name": "发送与接收规则",
+          "objectIds": [
+            "CH16-02-MESSAGE-PASSING-H3-1-ENGINEERINGRULE-01",
+            "CH16-02-MESSAGE-PASSING-H3-2-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch16-02-message-passing#h3-1",
+            "ch16-02-message-passing#h3-2"
+          ],
+          "rationale": "这两个工程规则共同回答“如何使用通道收发消息”：send 移动值的所有权给接收者，rx 可作为迭代器并在通道关闭时结束。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch16-02-message-passing-s1",
+          "name": "线程间消息传递通道实现",
+          "trigger": "当开发者需要理解并编写 Rust 中通过 mpsc 通道在多个线程间传送数据的代码，包括创建多个发送者和接收消息时使用。",
+          "unitIds": [
+            "ch16-02-message-passing-u1",
+            "ch16-02-message-passing-u2",
+            "ch16-02-message-passing-u3"
+          ],
+          "objectIds": [
+            "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-01",
+            "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-02",
+            "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-01",
+            "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-02",
+            "CH16-02-MESSAGE-PASSING-H3-1-ENGINEERINGRULE-01",
+            "CH16-02-MESSAGE-PASSING-H3-2-ENGINEERINGRULE-01"
+          ],
+          "rationale": "这些单元覆盖从通道/mpsc 概念、克隆发送者创建多生产者到发送与接收的使用规则，是完成线程间消息传递任务所需的同一批场景。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 6,
+        "assigned": 6,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1063,
+        "completion_tokens": 5844,
+        "total_tokens": 6907,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5373
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 551
+      },
+      "finishReason": "stop",
+      "reasoningChars": 10152,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch16-03-shared-state",
+      "inputHash": "sha256:fc051b67566c1f0510ce08b421cb755e2e59a0937d191392b8b3026c0d76776f",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:16:32.121Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch16-03-shared-state-u1",
+          "name": "互斥器加锁与解锁",
+          "objectIds": [
+            "CH16-03-SHARED-STATE-H2-1-CONCEPT-01",
+            "CH16-03-SHARED-STATE-H3-1-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H3-1-ANTIPATTERN-02",
+            "CH16-03-SHARED-STATE-H3-2-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H3-2-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch16-03-shared-state#h2-1",
+            "ch16-03-shared-state#h3-1",
+            "ch16-03-shared-state#h3-2"
+          ],
+          "rationale": "这些对象共同回答“如何用互斥器安全访问共享内存”：包括共享内存并发的基本模型、使用受保护数据前必须获取锁、处理完必须解锁，以及 MutexGuard 离开作用域自动释放锁的机制与忘记解锁的反模式。"
+        },
+        {
+          "unitId": "ch16-03-shared-state-u2",
+          "name": "线程间共享所有权",
+          "objectIds": [
+            "CH16-03-SHARED-STATE-H4-1-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H4-2-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H4-3-CONCEPT-01"
+          ],
+          "anchors": [
+            "ch16-03-shared-state#h4-1",
+            "ch16-03-shared-state#h4-2",
+            "ch16-03-shared-state#h4-3"
+          ],
+          "rationale": "这些对象共同回答“如何把共享数据的所有权安全扩展到多个线程”：不能直接移动锁所有权，Rc<T> 不能在线程间共享，而 Arc<T> 提供线程安全的原子引用计数共享。"
+        },
+        {
+          "unitId": "ch16-03-shared-state-u3",
+          "name": "Mutex内部可变性与死锁",
+          "objectIds": [
+            "CH16-03-SHARED-STATE-H3-3-CONCEPT-01",
+            "CH16-03-SHARED-STATE-H3-3-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch16-03-shared-state#h3-3"
+          ],
+          "rationale": "这两个对象共同描述 Mutex<T> 的特性与陷阱：它通过不可变绑定提供内部可变性；但多个锁同时被不同线程持有时可能造成死锁。"
+        }
+      ],
+      "skills": [
+        {
+          "skillId": "ch16-03-shared-state-s1",
+          "name": "共享状态并发",
+          "trigger": "当需要在 Rust 多线程中共享并修改同一份数据，选择 Mutex、Arc 等同步原语并避免锁与所有权错误时使用。",
+          "unitIds": [
+            "ch16-03-shared-state-u1",
+            "ch16-03-shared-state-u2",
+            "ch16-03-shared-state-u3"
+          ],
+          "objectIds": [
+            "CH16-03-SHARED-STATE-H2-1-CONCEPT-01",
+            "CH16-03-SHARED-STATE-H3-1-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H3-1-ANTIPATTERN-02",
+            "CH16-03-SHARED-STATE-H3-2-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H3-2-CONCEPT-02",
+            "CH16-03-SHARED-STATE-H4-1-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H4-2-ENGINEERINGRULE-01",
+            "CH16-03-SHARED-STATE-H4-3-CONCEPT-01",
+            "CH16-03-SHARED-STATE-H3-3-CONCEPT-01",
+            "CH16-03-SHARED-STATE-H3-3-ENGINEERINGRULE-02"
+          ],
+          "rationale": "这三个单元都服务于同一场景：在并发环境中安全地共享可变状态。单元 0 给出互斥器访问纪律，单元 1 解决跨线程所有权问题，单元 2 说明 Mutex 的内部可变性及死锁风险，合在一起形成完整的共享状态并发实现路径。"
+        }
+      ],
+      "coverage": {
+        "gatePassed": 10,
+        "assigned": 10,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1241,
+        "completion_tokens": 4768,
+        "total_tokens": 6009,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4146
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 729
+      },
+      "finishReason": "stop",
+      "reasoningChars": 9264,
+      "maxTokens": 24000
+    },
+    {
+      "fileKey": "ch17-02-trait-objects",
+      "inputHash": "sha256:2a502083903c6538018843787fafaf3348c6b8e4410fda7738a9baf6288d5e2a",
+      "status": "proposed",
+      "createdAt": "2026-10-14T20:17:02.687Z",
+      "modelId": "deepseek-v4-pro",
+      "units": [
+        {
+          "unitId": "ch17-02-trait-objects-u1",
+          "name": "异构集合与枚举限制",
+          "objectIds": [
+            "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch17-02-trait-objects#h2-1"
+          ],
+          "rationale": "两个对象都在回答“如何让集合或库处理不同类型值”的问题：枚举适用于编译时可确定类型集合的场景，GUI 库场景则引出无法预知所有用户类型的需求，共同构成 trait 对象的动机。"
+        },
+        {
+          "unitId": "ch17-02-trait-objects-u2",
+          "name": "trait 对象与泛型选择",
+          "objectIds": [
+            "CH17-02-TRAIT-OBJECTS-H3-1-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H3-1-HEURISTIC-02"
+          ],
+          "anchors": [
+            "ch17-02-trait-objects#h3-1"
+          ],
+          "rationale": "这两个对象围绕如何定义 trait 对象以及何时应改用泛型与 trait bound，属于选择 dyn trait 与泛型边界的同一问题空间。"
+        },
+        {
+          "unitId": "ch17-02-trait-objects-u3",
+          "name": "鸭子类型与编译约束",
+          "objectIds": [
+            "CH17-02-TRAIT-OBJECTS-H3-2-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H3-2-ENGINEERINGRULE-02"
+          ],
+          "anchors": [
+            "ch17-02-trait-objects#h3-2"
+          ],
+          "rationale": "鸭子类型说明 trait 对象只关心值所暴露的行为而非具体类型，工程规则说明 Rust 在编译期强制要求该行为必须由 trait 实现提供，二者共同描述 trait 对象的类型约束。"
+        },
+        {
+          "unitId": "ch17-02-trait-objects-u4",
+          "name": "静态与动态分发",
+          "objectIds": [
+            "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-01",
+            "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-02"
+          ],
+          "anchors": [
+            "ch17-02-trait-objects#h3-3"
+          ],
+          "rationale": "两个概念对比泛型单态化产生的静态分发与 trait 对象产生的动态分发，属于方法调用在编译期还是运行时确定的同一执行模型问题空间。"
+        },
+        {
+          "unitId": "ch17-02-trait-objects-u5",
+          "name": "对象安全规则",
+          "objectIds": [
+            "CH17-02-TRAIT-OBJECTS-H3-4-ENGINEERINGRULE-01"
+          ],
+          "anchors": [
+            "ch17-02-trait-objects#h3-4"
+          ],
+          "rationale": "该对象单独说明只有对象安全的 trait 才能组成 trait 对象，并给出两条判断规则；这是关于 trait 对象可行性的独立约束，需单独成单元以免遗漏。"
+        }
+      ],
+      "skills": [],
+      "coverage": {
+        "gatePassed": 9,
+        "assigned": 9,
+        "unassigned": [],
+        "duplicates": [],
+        "unresolvedObjectIds": [],
+        "unitsWithoutSkill": []
+      },
+      "usage": {
+        "prompt_tokens": 1316,
+        "completion_tokens": 5546,
+        "total_tokens": 6862,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4846
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 804
+      },
+      "finishReason": "stop",
+      "reasoningChars": 16757,
       "maxTokens": 24000
     },
     {
@@ -2789,26 +3996,26 @@
     }
   ],
   "totals": {
-    "chapters": 24,
-    "units": 75,
-    "skills": 25,
-    "gatePassed": 223,
+    "chapters": 34,
+    "units": 112,
+    "skills": 36,
+    "gatePassed": 317,
     "unassigned": 0,
     "unresolvedObjectIds": 0,
     "duplicates": 0,
     "unitsWithoutSkill": 0,
     "usage": {
-      "proposed": 3,
-      "reused": 21,
-      "calls": 3,
-      "promptTokens": 5058,
-      "completionTokens": 21894
+      "proposed": 10,
+      "reused": 24,
+      "calls": 10,
+      "promptTokens": 12709,
+      "completionTokens": 54509
     }
   },
   "resplit": {
-    "appliedAt": "2026-10-14T17:53:10.267Z",
+    "appliedAt": "2026-10-14T21:06:07.777Z",
     "planFile": "pipeline/registry/resplit-plan.rust-book-cn.json",
-    "planSha256": "sha256:dfe5858ab14958bb9d4b269c1fa1d4deee21e7440e1c4d18f4289b052292c912",
+    "planSha256": "sha256:54b6b545de3b34b1ffe3d6dc08e67333f918d12677e29b849d9381202266d46a",
     "rule": "在「strict 场景数 ≥2 且两读数都存」的稳定边上做不相交最强配对；吸收者=对象数→严格命中数→字典序。传递闭包不可用：共认领不是等价关系（第一源实测：87 稳定对的连通分量是 38/40 的巨型分量；本源的稳定边亦成链 ch06-01–06-02–06-03–18-02，规则把链机械剪为不共享候选的对）。",
     "merges": [
       {
@@ -2922,53 +4129,168 @@
             "ch13-02-iterators-s2-sc3"
           ]
         }
+      },
+      {
+        "into": "ch10-02-traits-s1",
+        "target": "ch17-02-trait-objects-s1",
+        "unitIds": [
+          "ch10-02-traits-u1",
+          "ch10-02-traits-u2",
+          "ch10-02-traits-u3",
+          "ch10-02-traits-u4",
+          "ch17-02-trait-objects-u1",
+          "ch17-02-trait-objects-u2",
+          "ch17-02-trait-objects-u3",
+          "ch17-02-trait-objects-u4",
+          "ch17-02-trait-objects-u5"
+        ],
+        "objectCount": 26,
+        "chapterRefs": [
+          "ch10-02-traits",
+          "ch17-02-trait-objects"
+        ],
+        "basis": {
+          "stablePair": "ch10-02-traits-s1|ch17-02-trait-objects-s1",
+          "strictScenarios": 2,
+          "listScenarios": 2,
+          "strictScenarioIds": [
+            "ch10-02-traits-s1-sc3",
+            "ch17-02-trait-objects-s1-sc1"
+          ],
+          "listScenarioIds": [
+            "ch10-02-traits-s1-sc3",
+            "ch17-02-trait-objects-s1-sc1"
+          ]
+        }
+      },
+      {
+        "into": "ch15-01-box-s2",
+        "target": "ch15-01-box-s1",
+        "unitIds": [
+          "ch15-01-box-u3",
+          "ch15-01-box-u4",
+          "ch15-01-box-u1",
+          "ch15-01-box-u2"
+        ],
+        "objectCount": 10,
+        "chapterRefs": [
+          "ch15-01-box"
+        ],
+        "basis": {
+          "stablePair": "ch15-01-box-s1|ch15-01-box-s2",
+          "strictScenarios": 2,
+          "listScenarios": 3,
+          "strictScenarioIds": [
+            "ch15-01-box-s1-sc1",
+            "ch15-01-box-s2-sc3"
+          ],
+          "listScenarioIds": [
+            "ch15-01-box-s1-sc1",
+            "ch15-01-box-s2-sc2",
+            "ch15-01-box-s2-sc3"
+          ]
+        }
       }
     ],
     "removed": [
       {
-        "skillId": "ch13-02-iterators-s2",
-        "mergedInto": "ch13-02-iterators-s1",
+        "skillId": "ch17-02-trait-objects-s1",
+        "mergedInto": "ch10-02-traits-s1",
         "basis": {
-          "stablePair": "ch13-02-iterators-s1|ch13-02-iterators-s2",
+          "stablePair": "ch10-02-traits-s1|ch17-02-trait-objects-s1",
           "strictScenarios": 2,
           "listScenarios": 2,
           "strictScenarioIds": [
-            "ch13-02-iterators-s1-sc2",
-            "ch13-02-iterators-s2-sc3"
+            "ch10-02-traits-s1-sc3",
+            "ch17-02-trait-objects-s1-sc1"
           ],
           "listScenarioIds": [
-            "ch13-02-iterators-s1-sc2",
-            "ch13-02-iterators-s2-sc3"
+            "ch10-02-traits-s1-sc3",
+            "ch17-02-trait-objects-s1-sc1"
           ]
         },
-        "reason": "波 3 唯一 strict≥2 稳定边（两读数同场景集）。同章两候选相互共认领（各 2 场景）。吸收者按规则：对象数同为 9 → 严格命中数同 → 字典序 s1。波 3 其余 8 条稳定边全为 strict=1，低于阈值不取；其中 ch05-01|ch05-03 与 ch06-01|ch06-02 是既有合并的残留弱边，规则机械不取。"
+        "reason": "波 4 稳定对（strict 2/list 2），**跨章**（traits ↔ trait objects，T03 主题的跨章综合对象）——规则注释「跨章对按用户拍板一并执行」（卡 13）覆盖此情形。吸收者按规则：对象数 ch10-02（17）> ch17-02（9）。"
+      },
+      {
+        "skillId": "ch15-01-box-s1",
+        "mergedInto": "ch15-01-box-s2",
+        "basis": {
+          "stablePair": "ch15-01-box-s1|ch15-01-box-s2",
+          "strictScenarios": 2,
+          "listScenarios": 3,
+          "strictScenarioIds": [
+            "ch15-01-box-s1-sc1",
+            "ch15-01-box-s2-sc3"
+          ],
+          "listScenarioIds": [
+            "ch15-01-box-s1-sc1",
+            "ch15-01-box-s2-sc2",
+            "ch15-01-box-s2-sc3"
+          ]
+        },
+        "reason": "波 4 稳定对（strict 2/list 3）。同章两子簇相互共认领（该章被环 3 切成 u1u2 / u3u4 两个候选）。吸收者按规则：对象数 s2（6）> s1（4）。合并后吃进 s1 的对象集，原则/陷阱段来源完整（s1 单独会因「核心原则空」被门禁一拒——合并是规则先行、判决随后）。"
       }
     ],
     "thisRun": {
       "merges": [
         {
-          "into": "ch13-02-iterators-s1",
-          "target": "ch13-02-iterators-s2",
+          "into": "ch10-02-traits-s1",
+          "target": "ch17-02-trait-objects-s1",
           "unitIds": [
-            "ch13-02-iterators-u1",
-            "ch13-02-iterators-u2",
-            "ch13-02-iterators-u3"
+            "ch10-02-traits-u1",
+            "ch10-02-traits-u2",
+            "ch10-02-traits-u3",
+            "ch10-02-traits-u4",
+            "ch17-02-trait-objects-u1",
+            "ch17-02-trait-objects-u2",
+            "ch17-02-trait-objects-u3",
+            "ch17-02-trait-objects-u4",
+            "ch17-02-trait-objects-u5"
           ],
-          "objectCount": 13,
+          "objectCount": 26,
           "chapterRefs": [
-            "ch13-02-iterators"
+            "ch10-02-traits",
+            "ch17-02-trait-objects"
           ],
           "basis": {
-            "stablePair": "ch13-02-iterators-s1|ch13-02-iterators-s2",
+            "stablePair": "ch10-02-traits-s1|ch17-02-trait-objects-s1",
             "strictScenarios": 2,
             "listScenarios": 2,
             "strictScenarioIds": [
-              "ch13-02-iterators-s1-sc2",
-              "ch13-02-iterators-s2-sc3"
+              "ch10-02-traits-s1-sc3",
+              "ch17-02-trait-objects-s1-sc1"
             ],
             "listScenarioIds": [
-              "ch13-02-iterators-s1-sc2",
-              "ch13-02-iterators-s2-sc3"
+              "ch10-02-traits-s1-sc3",
+              "ch17-02-trait-objects-s1-sc1"
+            ]
+          }
+        },
+        {
+          "into": "ch15-01-box-s2",
+          "target": "ch15-01-box-s1",
+          "unitIds": [
+            "ch15-01-box-u3",
+            "ch15-01-box-u4",
+            "ch15-01-box-u1",
+            "ch15-01-box-u2"
+          ],
+          "objectCount": 10,
+          "chapterRefs": [
+            "ch15-01-box"
+          ],
+          "basis": {
+            "stablePair": "ch15-01-box-s1|ch15-01-box-s2",
+            "strictScenarios": 2,
+            "listScenarios": 3,
+            "strictScenarioIds": [
+              "ch15-01-box-s1-sc1",
+              "ch15-01-box-s2-sc3"
+            ],
+            "listScenarioIds": [
+              "ch15-01-box-s1-sc1",
+              "ch15-01-box-s2-sc2",
+              "ch15-01-box-s2-sc3"
             ]
           }
         }
@@ -2985,6 +4307,10 @@
         {
           "into": "ch06-02-match-s1",
           "target": "ch06-03-if-let-s1"
+        },
+        {
+          "into": "ch13-02-iterators-s1",
+          "target": "ch13-02-iterators-s2"
         }
       ]
     }

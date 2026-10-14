@@ -1,6 +1,6 @@
 {
   "schemaVersion": "gate2-report/v1",
-  "createdAt": "2026-10-14T18:22:41.770Z",
+  "createdAt": "2026-10-14T21:42:08.585Z",
   "subset": null,
   "model": {
     "modelId": "deepseek-v4-pro"
@@ -11,109 +11,145 @@
     "blind": "prompt-5d75797397c2"
   },
   "scenarioSetFile": "pipeline/knowledge/gate2-scenarios.rust-book-cn.json",
-  "scenarioSetSha256": "sha256:a2c51b0ec9cdb794abd27631ca772ce4e106697bc792579c22ea1a3deac5de2a",
-  "catalogSha256": "sha256:ad265331231895f157595d5aabf62b378a0d576d390b53903562e58c79367515",
+  "scenarioSetSha256": "sha256:81bc67861707c530ec2e6fe69fd5e7ad6449749ec475059563cd21403933bebf",
+  "catalogSha256": "sha256:be1f81a69edac53abe436c7ffd5bb5db7ed4dfc0c382ae0a8c24e80695e8b458",
   "codeMapping": [
     {
       "code": "k01",
-      "skillId": "ch02-00-guessing-game-tutorial-s1"
+      "skillId": "ch15-02-deref-s1"
     },
     {
       "code": "k02",
-      "skillId": "ch04-02-references-and-borrowing-s1"
-    },
-    {
-      "code": "k03",
-      "skillId": "ch10-02-traits-s1"
-    },
-    {
-      "code": "k04",
-      "skillId": "ch18-02-refutability-s1"
-    },
-    {
-      "code": "k05",
-      "skillId": "ch06-02-match-s1"
-    },
-    {
-      "code": "k06",
-      "skillId": "ch08-03-hash-maps-s1"
-    },
-    {
-      "code": "k07",
-      "skillId": "ch13-01-closures-s1"
-    },
-    {
-      "code": "k08",
-      "skillId": "ch05-03-method-syntax-s1"
-    },
-    {
-      "code": "k09",
-      "skillId": "ch09-03-to-panic-or-not-to-panic-s1"
-    },
-    {
-      "code": "k10",
-      "skillId": "ch13-01-closures-s2"
-    },
-    {
-      "code": "k11",
-      "skillId": "ch17-03-oo-design-patterns-s1"
-    },
-    {
-      "code": "k12",
-      "skillId": "ch05-01-defining-structs-s1"
-    },
-    {
-      "code": "k13",
-      "skillId": "ch12-03-improving-error-handling-and-modularity-s1"
-    },
-    {
-      "code": "k14",
-      "skillId": "ch04-03-slices-s1"
-    },
-    {
-      "code": "k15",
       "skillId": "ch10-01-syntax-s1"
     },
     {
-      "code": "k16",
+      "code": "k03",
+      "skillId": "ch13-01-closures-s2"
+    },
+    {
+      "code": "k04",
       "skillId": "ch08-03-hash-maps-s2"
     },
     {
-      "code": "k17",
-      "skillId": "ch06-01-defining-an-enum-s1"
+      "code": "k05",
+      "skillId": "ch11-01-writing-tests-s1"
     },
     {
-      "code": "k18",
-      "skillId": "ch08-01-vectors-s1"
+      "code": "k06",
+      "skillId": "ch13-01-closures-s1"
     },
     {
-      "code": "k19",
+      "code": "k07",
+      "skillId": "ch15-03-drop-s1"
+    },
+    {
+      "code": "k08",
+      "skillId": "ch04-02-references-and-borrowing-s1"
+    },
+    {
+      "code": "k09",
       "skillId": "ch10-03-lifetime-syntax-s1"
     },
     {
+      "code": "k10",
+      "skillId": "ch10-02-traits-s1"
+    },
+    {
+      "code": "k11",
+      "skillId": "ch11-02-running-tests-s1"
+    },
+    {
+      "code": "k12",
+      "skillId": "ch04-03-slices-s1"
+    },
+    {
+      "code": "k13",
+      "skillId": "ch15-01-box-s2"
+    },
+    {
+      "code": "k14",
+      "skillId": "ch15-05-interior-mutability-s1"
+    },
+    {
+      "code": "k15",
+      "skillId": "ch08-03-hash-maps-s1"
+    },
+    {
+      "code": "k16",
+      "skillId": "ch08-02-strings-s1"
+    },
+    {
+      "code": "k17",
+      "skillId": "ch16-03-shared-state-s1"
+    },
+    {
+      "code": "k18",
+      "skillId": "ch16-01-threads-s1"
+    },
+    {
+      "code": "k19",
+      "skillId": "ch08-01-vectors-s1"
+    },
+    {
       "code": "k20",
-      "skillId": "ch13-02-iterators-s1"
+      "skillId": "ch12-03-improving-error-handling-and-modularity-s1"
     },
     {
       "code": "k21",
-      "skillId": "ch08-02-strings-s1"
+      "skillId": "ch06-01-defining-an-enum-s1"
+    },
+    {
+      "code": "k22",
+      "skillId": "ch05-01-defining-structs-s1"
+    },
+    {
+      "code": "k23",
+      "skillId": "ch02-00-guessing-game-tutorial-s1"
+    },
+    {
+      "code": "k24",
+      "skillId": "ch06-02-match-s1"
+    },
+    {
+      "code": "k25",
+      "skillId": "ch16-02-message-passing-s1"
+    },
+    {
+      "code": "k26",
+      "skillId": "ch09-03-to-panic-or-not-to-panic-s1"
+    },
+    {
+      "code": "k27",
+      "skillId": "ch18-02-refutability-s1"
+    },
+    {
+      "code": "k28",
+      "skillId": "ch17-03-oo-design-patterns-s1"
+    },
+    {
+      "code": "k29",
+      "skillId": "ch05-03-method-syntax-s1"
+    },
+    {
+      "code": "k30",
+      "skillId": "ch13-02-iterators-s1"
     }
   ],
   "usage": {
     "generation": {
-      "promptTokens": 32158,
-      "completionTokens": 69072
+      "promptTokens": 49167,
+      "completionTokens": 98264
     },
     "blind": {
-      "promptTokens": 589554,
-      "completionTokens": 180877
+      "promptTokens": 1321313,
+      "completionTokens": 315226
     }
   },
   "perCandidate": [
     {
       "skillId": "ch02-00-guessing-game-tutorial-s1",
       "name": "猜数字游戏实现",
-      "code": "k01",
+      "code": "k23",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -155,7 +191,7 @@
     {
       "skillId": "ch04-02-references-and-borrowing-s1",
       "name": "引用与借用规则",
-      "code": "k02",
+      "code": "k08",
       "scenarioCount": 3,
       "hits": 2,
       "hitRate": 0.6667,
@@ -218,16 +254,28 @@
         {
           "scenarioId": "ch08-01-vectors-s1-sc2",
           "intended": "ch08-01-vectors-s1"
+        },
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc2",
+          "intended": "ch15-05-interior-mutability-s1"
+        },
+        {
+          "scenarioId": "ch16-01-threads-s1-sc2",
+          "intended": "ch16-01-threads-s1"
+        },
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc1",
+          "intended": "ch16-03-shared-state-s1"
         }
       ]
     },
     {
       "skillId": "ch04-03-slices-s1",
       "name": "Rust 切片类型使用",
-      "code": "k14",
+      "code": "k12",
       "scenarioCount": 3,
-      "hits": 3,
-      "hitRate": 1,
+      "hits": 2,
+      "hitRate": 0.6667,
       "promotionState": "trigger-conflict",
       "scenarios": [
         {
@@ -243,7 +291,8 @@
           "scenarioId": "ch04-03-slices-s1-sc2",
           "text": "我要写一个配置解析函数，调用方有时传 `String`，有时传字符串字面量，我不想为两种输入写两个版本，参数类型应该怎么声明？",
           "triggered": [
-            "ch04-03-slices-s1"
+            "ch04-03-slices-s1",
+            "ch08-02-strings-s1"
           ],
           "unknownCodes": [],
           "hit": true
@@ -252,16 +301,28 @@
           "scenarioId": "ch04-03-slices-s1-sc3",
           "text": "我在一个循环里先持有了 `items` 中某个元素的不可变引用，后面又需要修改 `items` 里的另一个元素，编译器一直报借用冲突，这种模式该怎么调整？",
           "triggered": [
-            "ch04-02-references-and-borrowing-s1",
-            "ch04-03-slices-s1"
+            "ch04-02-references-and-borrowing-s1"
           ],
           "unknownCodes": [],
-          "hit": true
+          "hit": false
         }
       ],
       "miss": false,
-      "missedScenariosClaimedBy": [],
+      "missedScenariosClaimedBy": [
+        {
+          "scenarioId": "ch04-03-slices-s1-sc3",
+          "triggered": [
+            "ch04-02-references-and-borrowing-s1"
+          ]
+        }
+      ],
       "coClaimedScenarios": [
+        {
+          "scenarioId": "ch04-03-slices-s1-sc2",
+          "others": [
+            "ch08-02-strings-s1"
+          ]
+        },
         {
           "scenarioId": "ch04-03-slices-s1-sc3",
           "others": [
@@ -279,7 +340,7 @@
     {
       "skillId": "ch05-01-defining-structs-s1",
       "name": "结构体定义与实例化",
-      "code": "k12",
+      "code": "k22",
       "scenarioCount": 3,
       "hits": 2,
       "hitRate": 0.6667,
@@ -330,17 +391,12 @@
           ]
         }
       ],
-      "claimsOtherScenarios": [
-        {
-          "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc3",
-          "intended": "ch09-03-to-panic-or-not-to-panic-s1"
-        }
-      ]
+      "claimsOtherScenarios": []
     },
     {
       "skillId": "ch05-03-method-syntax-s1",
       "name": "方法语法全流程",
-      "code": "k08",
+      "code": "k29",
       "scenarioCount": 3,
       "hits": 2,
       "hitRate": 0.6667,
@@ -398,12 +454,17 @@
           ]
         }
       ],
-      "claimsOtherScenarios": []
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "ch10-02-traits-s1-sc3",
+          "intended": "ch10-02-traits-s1"
+        }
+      ]
     },
     {
       "skillId": "ch06-01-defining-an-enum-s1",
       "name": "定义与使用枚举",
-      "code": "k17",
+      "code": "k21",
       "scenarioCount": 3,
       "hits": 2,
       "hitRate": 0.6667,
@@ -440,6 +501,10 @@
       "coClaimedScenarios": [],
       "claimsOtherScenarios": [
         {
+          "scenarioId": "ch18-02-refutability-s1-sc2",
+          "intended": "ch18-02-refutability-s1"
+        },
+        {
           "scenarioId": "ch06-02-match-s1-sc1",
           "intended": "ch06-02-match-s1"
         }
@@ -448,7 +513,7 @@
     {
       "skillId": "ch06-02-match-s1",
       "name": "match 控制流与穷举模式匹配",
-      "code": "k05",
+      "code": "k24",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -458,8 +523,8 @@
           "scenarioId": "ch06-02-match-s1-sc1",
           "text": "我在处理从缓存读到的可选用户 ID，想把 Some 里的值哈希后加入去重集合，None 就直接跳过，但不想写多层 if 判断。",
           "triggered": [
-            "ch06-02-match-s1",
-            "ch06-01-defining-an-enum-s1"
+            "ch06-01-defining-an-enum-s1",
+            "ch06-02-match-s1"
           ],
           "unknownCodes": [],
           "hit": true
@@ -493,17 +558,12 @@
           ]
         }
       ],
-      "claimsOtherScenarios": [
-        {
-          "scenarioId": "ch18-02-refutability-s1-sc1",
-          "intended": "ch18-02-refutability-s1"
-        }
-      ]
+      "claimsOtherScenarios": []
     },
     {
       "skillId": "ch08-01-vectors-s1",
       "name": "使用 Vec<T> 管理序列数据",
-      "code": "k18",
+      "code": "k19",
       "scenarioCount": 3,
       "hits": 2,
       "hitRate": 0.6667,
@@ -551,7 +611,7 @@
     {
       "skillId": "ch08-02-strings-s1",
       "name": "Rust String 处理",
-      "code": "k21",
+      "code": "k16",
       "scenarioCount": 3,
       "hits": 2,
       "hitRate": 0.6667,
@@ -602,12 +662,17 @@
           ]
         }
       ],
-      "claimsOtherScenarios": []
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "ch04-03-slices-s1-sc2",
+          "intended": "ch04-03-slices-s1"
+        }
+      ]
     },
     {
       "skillId": "ch08-03-hash-maps-s1",
       "name": "HashMap 核心操作",
-      "code": "k06",
+      "code": "k15",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -654,7 +719,7 @@
     {
       "skillId": "ch08-03-hash-maps-s2",
       "name": "哈希函数与练习提示",
-      "code": "k16",
+      "code": "k04",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -682,8 +747,8 @@
           "scenarioId": "ch08-03-hash-maps-s2-sc3",
           "text": "我有一组从日志里解析出的状态码，想快速统计哪个值出现次数最多，用哈希 map 计数后取最高频次是不是最直接的做法？",
           "triggered": [
-            "ch08-03-hash-maps-s1",
-            "ch08-03-hash-maps-s2"
+            "ch08-03-hash-maps-s2",
+            "ch08-03-hash-maps-s1"
           ],
           "unknownCodes": [],
           "hit": true
@@ -704,11 +769,11 @@
     {
       "skillId": "ch09-03-to-panic-or-not-to-panic-s1",
       "name": "Rust错误处理决策",
-      "code": "k09",
+      "code": "k26",
       "scenarioCount": 3,
       "hits": 2,
       "hitRate": 0.6667,
-      "promotionState": "trigger-conflict",
+      "promotionState": "trigger-passed",
       "scenarios": [
         {
           "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc1",
@@ -731,46 +796,31 @@
         {
           "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc3",
           "text": "我在多个处理订单数量的函数里都重复检查数值大于零，想把这个验证集中到一个新类型里，让函数签名只接收已校验的值，不知道这样是否合适。",
-          "triggered": [
-            "ch05-01-defining-structs-s1"
-          ],
+          "triggered": [],
           "unknownCodes": [],
           "hit": false
         }
       ],
       "miss": false,
-      "missedScenariosClaimedBy": [
-        {
-          "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc3",
-          "triggered": [
-            "ch05-01-defining-structs-s1"
-          ]
-        }
-      ],
-      "coClaimedScenarios": [
-        {
-          "scenarioId": "ch09-03-to-panic-or-not-to-panic-s1-sc3",
-          "others": [
-            "ch05-01-defining-structs-s1"
-          ]
-        }
-      ],
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
       "claimsOtherScenarios": []
     },
     {
       "skillId": "ch10-01-syntax-s1",
       "name": "Rust泛型语法与代价",
-      "code": "k15",
+      "code": "k02",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
-      "promotionState": "trigger-passed",
+      "promotionState": "trigger-conflict",
       "scenarios": [
         {
           "scenarioId": "ch10-01-syntax-s1-sc1",
           "text": "我写了一个比较两个同类型值的函数，想返回较大的那个，但编译器一直提示需要加约束；这个函数的签名里类型参数应该放在哪，比较又该怎么声明才能编译通过？",
           "triggered": [
-            "ch10-01-syntax-s1"
+            "ch10-01-syntax-s1",
+            "ch10-02-traits-s1"
           ],
           "unknownCodes": [],
           "hit": true
@@ -796,21 +846,28 @@
       ],
       "miss": false,
       "missedScenariosClaimedBy": [],
-      "coClaimedScenarios": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch10-01-syntax-s1-sc1",
+          "others": [
+            "ch10-02-traits-s1"
+          ]
+        }
+      ],
       "claimsOtherScenarios": []
     },
     {
       "skillId": "ch10-02-traits-s1",
       "name": "trait 共享行为与约束",
-      "code": "k03",
+      "code": "k10",
       "scenarioCount": 3,
-      "hits": 2,
-      "hitRate": 0.6667,
-      "promotionState": "trigger-passed",
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
       "scenarios": [
         {
           "scenarioId": "ch10-02-traits-s1-sc1",
-          "text": "我在写一个通用的通知发送函数，入参既要能打印，又要能生成通知摘要；现在参数类型只写了 impl Display，调用生成摘要的方法时编译不通过，帮我看看签名该怎么调整。",
+          "text": "我正在给通知模块做统一接口：邮件、短信和站内信都要有一个生成摘要的方法，其中一部分类型可以直接复用默认文案；发送函数想接收任意实现这个接口的类型并调用该方法，但不想为每种类型各写一份重载。",
           "triggered": [
             "ch10-02-traits-s1"
           ],
@@ -819,7 +876,7 @@
         },
         {
           "scenarioId": "ch10-02-traits-s1-sc2",
-          "text": "我定义了一个描述缓存策略的接口，里面几个方法想先留空，就写成了带空大括号的方法体，结果编译器报错，正确的方法声明写法是什么？",
+          "text": "我写了一个泛型函数，想在切片里找最大值，内部用 > 比较 T 类型的值，但编译一直报错说 T 没有实现相关能力；我想知道签名里该怎么加约束，既要能比较又要能复制，还想保持函数签名整洁。",
           "triggered": [
             "ch10-02-traits-s1"
           ],
@@ -828,21 +885,36 @@
         },
         {
           "scenarioId": "ch10-02-traits-s1-sc3",
-          "text": "我想让一个函数根据输入配置返回新闻文章或推文两种结构体之一，它们都实现了同一个摘要 trait，但用 impl 摘要作为返回值类型时编译失败，问题在哪里？",
-          "triggered": [],
+          "text": "我在做一个绘图库，用户会自己实现形状，我需要把不同类型的形状放进同一个容器里并统一调用它们的绘制方法；但我不能在库中穷举所有用户类型，也不想为每个具体类型写不同的调用逻辑。",
+          "triggered": [
+            "ch10-02-traits-s1",
+            "ch05-03-method-syntax-s1"
+          ],
           "unknownCodes": [],
-          "hit": false
+          "hit": true
         }
       ],
       "miss": false,
       "missedScenariosClaimedBy": [],
-      "coClaimedScenarios": [],
-      "claimsOtherScenarios": []
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch10-02-traits-s1-sc3",
+          "others": [
+            "ch05-03-method-syntax-s1"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "ch10-01-syntax-s1-sc1",
+          "intended": "ch10-01-syntax-s1"
+        }
+      ]
     },
     {
       "skillId": "ch10-03-lifetime-syntax-s1",
       "name": "生命周期标注与诊断",
-      "code": "k19",
+      "code": "k09",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -891,12 +963,96 @@
       ]
     },
     {
-      "skillId": "ch12-03-improving-error-handling-and-modularity-s1",
-      "name": "模块化CLI重构",
-      "code": "k13",
+      "skillId": "ch11-01-writing-tests-s1",
+      "name": "编写 Rust 单元测试",
+      "code": "k05",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "ch11-01-writing-tests-s1-sc1",
+          "text": "我刚给配置解析模块加了个 parse_config 函数，想为它补几个测试：给定合法输入时检查返回的结构体字段，给定非法输入时除了失败还要把原始输入内容打出来。",
+          "triggered": [
+            "ch11-01-writing-tests-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch11-01-writing-tests-s1-sc2",
+          "text": "我的 divide 函数除数为 0 时返回 Err(String)，我想写测试确认它确实返回 Err 而不是 panic，同时也验证正常相除的 Ok 分支结果。",
+          "triggered": [
+            "ch11-01-writing-tests-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch11-01-writing-tests-s1-sc3",
+          "text": "我有个私有辅助函数 normalize_path 在模块里，想直接针对它写几个测试，但不确定测试模块里怎么引用它；输出路径格式可能随平台变化，我只想检查关键片段。",
+          "triggered": [
+            "ch11-01-writing-tests-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "ch11-02-running-tests-s1",
+      "name": "控制测试运行方式",
+      "code": "k11",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "ch11-02-running-tests-s1-sc1",
+          "text": "我有一个被标记成 ignored 的集成测试，因为依赖本地起好的 Redis。现在 Redis 已经在跑了，帮我只把这个被忽略的测试跑一遍，别跑其他测试。",
+          "triggered": [
+            "ch11-02-running-tests-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch11-02-running-tests-s1-sc2",
+          "text": "有个单元测试通过了，但我加的 println! 调试日志一条都没显示。我想让通过的测试也把标准输出打出来，需要怎么跑？",
+          "triggered": [
+            "ch11-02-running-tests-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch11-02-running-tests-s1-sc3",
+          "text": "本地跑测试时多个用例老是偶发失败，我怀疑它们并行执行时互相影响。帮我把测试改成单线程串行跑一次，确认是不是并发问题。",
+          "triggered": [
+            "ch11-02-running-tests-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "ch12-03-improving-error-handling-and-modularity-s1",
+      "name": "模块化CLI重构",
+      "code": "k20",
+      "scenarioCount": 3,
+      "hits": 2,
+      "hitRate": 0.6667,
       "promotionState": "trigger-conflict",
       "scenarios": [
         {
@@ -920,11 +1076,9 @@
         {
           "scenarioId": "ch12-03-improving-error-handling-and-modularity-s1-sc3",
           "text": "我的 CLI 现在用 expect 和 panic! 处理各种错误，比如文件打不开或参数错误，我想改成让逻辑函数返回 Result，用 ? 把错误向上传播，最终由 main 检测 Err 并以非 0 状态码退出，不要崩溃输出一堆调试信息。",
-          "triggered": [
-            "ch12-03-improving-error-handling-and-modularity-s1"
-          ],
+          "triggered": [],
           "unknownCodes": [],
-          "hit": true
+          "hit": false
         }
       ],
       "miss": false,
@@ -940,7 +1094,7 @@
     {
       "skillId": "ch13-01-closures-s1",
       "name": "闭包创建与调用控制",
-      "code": "k07",
+      "code": "k06",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -982,7 +1136,7 @@
     {
       "skillId": "ch13-01-closures-s2",
       "name": "闭包存储与缓存实现",
-      "code": "k10",
+      "code": "k03",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -1024,7 +1178,7 @@
     {
       "skillId": "ch13-02-iterators-s1",
       "name": "使用标准迭代器处理序列",
-      "code": "k20",
+      "code": "k30",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -1064,13 +1218,362 @@
       "claimsOtherScenarios": []
     },
     {
-      "skillId": "ch17-03-oo-design-patterns-s1",
-      "name": "Rust 状态模式实现与权衡",
-      "code": "k11",
+      "skillId": "ch15-01-box-s2",
+      "name": "递归类型与 cons list 修复",
+      "code": "k13",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
       "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-01-box-s2-sc1",
+          "text": "我定义了一个枚举来表示列表，其中每个节点直接保存下一个节点；cargo check 报错说无法计算其大小，我需要一个最小的改动让它能编译。",
+          "triggered": [
+            "ch15-01-box-s2"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-01-box-s2-sc2",
+          "text": "我在做一个解释器的 AST，有个 enum 的某个变体会包含同类型的子节点，结果编译器报错说无限大小；我想知道为什么普通 enum 没这个问题，以及它到底怎么计算大小的。",
+          "triggered": [
+            "ch15-01-box-s2"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-01-box-s2-sc3",
+          "text": "我已经把链表节点的尾指针改成 Box<Node> 能编译了，但现在代码里有些地方给单个计数字段也套了 Box；我想确认这是不是多余开销，以及 Box 本身除了堆分配还有没有额外成本。",
+          "triggered": [
+            "ch15-01-box-s2"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "ch15-02-deref-s1",
+      "name": "Deref解引用与强制转换",
+      "code": "k01",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-02-deref-s1-sc1",
+          "text": "我写了个统计函数，入参是 `&i32`，在里面直接跟 `0` 比较时编译器一直报类型不匹配。帮我看下这里要怎么改才能正常比较。",
+          "triggered": [
+            "ch15-02-deref-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-02-deref-s1-sc2",
+          "text": "我封装了一个 `struct Holder<T>(T);`，现在调用处写 `*holder` 取内部值，编译器提示类型不能做星号取值。请给我一个最小的标准 trait 实现，让这种包装类型能像引用一样取值。",
+          "triggered": [
+            "ch15-02-deref-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-02-deref-s1-sc3",
+          "text": "我在重构接口时发现，一个接收 `&str` 的函数，调用方传 `&String` 也直接编译过了。帮我解释下这种参数位置自动转换的边界，尤其是 `&mut String` 到 `&mut str` 是否可行。",
+          "triggered": [
+            "ch15-02-deref-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "ch15-03-drop-s1",
+      "name": "Drop 清理机制",
+      "code": "k07",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-03-drop-s1-sc1",
+          "text": "我在一个长函数里打开文件后，读写很早就完成了，但文件句柄会一直活到函数末尾；我想在不额外加大括号的情况下尽早关闭文件，试过直接调用这个类型的 drop 方法却编译不过。",
+          "triggered": [
+            "ch15-03-drop-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-03-drop-s1-sc2",
+          "text": "循环里我拿到 MutexGuard 后只做一小步判断，但它会活到本轮迭代结束，导致其他线程被锁住的时间比实际需要更长；我不想为了提前释放锁而重构大量嵌套作用域。",
+          "triggered": [
+            "ch15-03-drop-s1",
+            "ch16-03-shared-state-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-03-drop-s1-sc3",
+          "text": "我有一个 RAII 对象管理着网络连接，逻辑上已经用完连接了，但同一作用域后面还有很多无关代码；我希望它马上断开并让后续代码无法再误用这个变量，而不是靠包一层花括号。",
+          "triggered": [
+            "ch15-03-drop-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch15-03-drop-s1-sc2",
+          "others": [
+            "ch16-03-shared-state-s1"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "ch15-05-interior-mutability-s1",
+      "name": "RefCell内部可变性实践",
+      "code": "k14",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc1",
+          "text": "我在给一个消息处理器实现某个 trait，它的 process 方法签名是 &self，但我需要在方法内部更新处理计数，不能改成 &mut self，该怎么组织内部状态？",
+          "triggered": [
+            "ch15-05-interior-mutability-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc2",
+          "text": "我有一棵语法树，多个节点需要共享同一个可变的符号表，节点持有的是不可变引用，但解析过程中要插入符号，如何让多个所有者都能修改它？",
+          "triggered": [
+            "ch15-05-interior-mutability-s1",
+            "ch04-02-references-and-borrowing-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc3",
+          "text": "我的单元测试里 mock 对象需要记录调用次数，但 mock 的方法签名是 &self，同时我在同一作用域连续 borrow_mut 两次后程序 panic 了，怎么避免这种运行时借用冲突？",
+          "triggered": [
+            "ch15-05-interior-mutability-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch15-05-interior-mutability-s1-sc2",
+          "others": [
+            "ch04-02-references-and-borrowing-s1"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "ch17-03-oo-design-patterns-s1-sc2",
+          "intended": "ch17-03-oo-design-patterns-s1"
+        }
+      ]
+    },
+    {
+      "skillId": "ch16-01-threads-s1",
+      "name": "Rust 多线程任务管理",
+      "code": "k18",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "ch16-01-threads-s1-sc1",
+          "text": "我写了个程序并发计算多个文件的校验和，每个文件一个线程，但 main 经常在计算完之前就退出了，怎么让 main 等所有线程跑完再结束？",
+          "triggered": [
+            "ch16-01-threads-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch16-01-threads-s1-sc2",
+          "text": "我想把一个大数组切成几块交给不同的线程分别处理，但编译器报错说闭包借用了 main 里的数据，怎么把每块数据的所有权真正交给对应的线程？",
+          "triggered": [
+            "ch04-02-references-and-borrowing-s1",
+            "ch16-01-threads-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch16-01-threads-s1-sc3",
+          "text": "我的服务里会 spawn 几个后台线程写入日志，但日志顺序有时候乱，偶尔还会丢最后几条，是不是线程没跑完 main 就退了？该怎样保证它们执行完并顺序可控？",
+          "triggered": [
+            "ch16-01-threads-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch16-01-threads-s1-sc2",
+          "others": [
+            "ch04-02-references-and-borrowing-s1"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc1",
+          "intended": "ch16-02-message-passing-s1"
+        }
+      ]
+    },
+    {
+      "skillId": "ch16-02-message-passing-s1",
+      "name": "线程间消息传递通道实现",
+      "code": "k25",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc1",
+          "text": "我在写一个服务，需要让多个 worker 线程并行处理请求，然后把各自的结果汇总到一个主线程里做统计。每个 worker 都要能向同一个结果收集器发送数据，我该怎么组织这些线程和发送端？",
+          "triggered": [
+            "ch16-01-threads-s1",
+            "ch16-02-message-passing-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc2",
+          "text": "我写了一段代码，把字符串通过通道发送给另一个线程后，还想在发送方继续使用这个字符串检查它是否包含某个子串，但编译器报错说值已被移动。我该怎么调整，才能既发送数据又不违反所有权规则？",
+          "triggered": [
+            "ch16-02-message-passing-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc3",
+          "text": "我有一个后台线程在接收多个任务消息，发送方可能随时断开，我希望接收循环能自动在所有发送者关闭时退出，并且不用每次都手动处理 recv 的错误。怎么写比较简洁？",
+          "triggered": [
+            "ch16-02-message-passing-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch16-02-message-passing-s1-sc1",
+          "others": [
+            "ch16-01-threads-s1"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "ch16-03-shared-state-s1",
+      "name": "共享状态并发",
+      "code": "k17",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc1",
+          "text": "我有个多线程统计任务，每个线程算完局部结果后要往同一个总数里累加，但把总数变量传进多个线程时编译器报错说它不能同时被多个线程借用，我该怎么组织这个共享的累加器？",
+          "triggered": [
+            "ch16-03-shared-state-s1",
+            "ch04-02-references-and-borrowing-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc2",
+          "text": "我在服务里用互斥锁保护配置缓存，更新配置的代码经常在出错分支忘记解锁，导致其他请求线程被卡住；有没有办法让锁在离开作用域时自动释放，同时我还能直接修改缓存内容？",
+          "triggered": [
+            "ch16-03-shared-state-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc3",
+          "text": "两个后台任务一个先拿数据库连接池锁再拿文件写入锁，另一个反着拿，偶尔整个服务挂起且没有日志；我想知道如何安排多个锁的获取顺序来避免这种互相等待。",
+          "triggered": [
+            "ch16-03-shared-state-s1"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch16-03-shared-state-s1-sc1",
+          "others": [
+            "ch04-02-references-and-borrowing-s1"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "ch15-03-drop-s1-sc2",
+          "intended": "ch15-03-drop-s1"
+        }
+      ]
+    },
+    {
+      "skillId": "ch17-03-oo-design-patterns-s1",
+      "name": "Rust 状态模式实现与权衡",
+      "code": "k28",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
       "scenarios": [
         {
           "scenarioId": "ch17-03-oo-design-patterns-s1-sc1",
@@ -1085,6 +1588,7 @@
           "scenarioId": "ch17-03-oo-design-patterns-s1-sc2",
           "text": "我写的 Post 结构体把状态放在一个字段里，新建时必须是草稿；在 request_review 和 approve 中我想把旧状态从结构体里取出来换成新状态，但方法签名里有 &self 和 Box<Self> 的情况，编译器总报不能移动字段。帮我改写这些方法，让状态转移能编译通过。",
           "triggered": [
+            "ch15-05-interior-mutability-s1",
             "ch17-03-oo-design-patterns-s1"
           ],
           "unknownCodes": [],
@@ -1102,13 +1606,20 @@
       ],
       "miss": false,
       "missedScenariosClaimedBy": [],
-      "coClaimedScenarios": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "ch17-03-oo-design-patterns-s1-sc2",
+          "others": [
+            "ch15-05-interior-mutability-s1"
+          ]
+        }
+      ],
       "claimsOtherScenarios": []
     },
     {
       "skillId": "ch18-02-refutability-s1",
       "name": "判断模式可反驳性与语法位置",
-      "code": "k04",
+      "code": "k27",
       "scenarioCount": 3,
       "hits": 3,
       "hitRate": 1,
@@ -1118,8 +1629,7 @@
           "scenarioId": "ch18-02-refutability-s1-sc1",
           "text": "我准备给内部解析函数加上签名 `fn handle(Event::Click { x, y })`，但 `Event` 还有 Key 和 Resize 等变体；这个签名能不能直接这样写，还是必须改成 `match` 才能安全处理？",
           "triggered": [
-            "ch18-02-refutability-s1",
-            "ch06-02-match-s1"
+            "ch18-02-refutability-s1"
           ],
           "unknownCodes": [],
           "hit": true
@@ -1128,7 +1638,8 @@
           "scenarioId": "ch18-02-refutability-s1-sc2",
           "text": "我在迁移旧代码时看到一行 `let Some(config) = load_config();`，当加载失败返回 `None` 时这行会发生什么？我想保留失败分支而不是让它直接退出。",
           "triggered": [
-            "ch18-02-refutability-s1"
+            "ch18-02-refutability-s1",
+            "ch06-01-defining-an-enum-s1"
           ],
           "unknownCodes": [],
           "hit": true
@@ -1147,9 +1658,9 @@
       "missedScenariosClaimedBy": [],
       "coClaimedScenarios": [
         {
-          "scenarioId": "ch18-02-refutability-s1-sc1",
+          "scenarioId": "ch18-02-refutability-s1-sc2",
           "others": [
-            "ch06-02-match-s1"
+            "ch06-01-defining-an-enum-s1"
           ]
         }
       ],
@@ -1159,140 +1670,140 @@
   "unrelated": [
     {
       "scenarioId": "unrelated-sc1",
-      "text": "帮我起草一份给客户的英文邮件，说明项目延期两周并给出新的交付时间表。",
+      "text": "我需要用 Python 的 pandas 把销售 CSV 按月份汇总收入，并导出成 Excel 报表。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc2",
-      "text": "请根据这份销售数据做一份季度趋势分析，输出关键结论。",
+      "text": "请帮我优化这条 SQL 查询，让订单报表的响应时间从 8 秒降到 1 秒以内。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc3",
-      "text": "帮我规划一次三人从上海到成都的四天出差行程，包括交通和住宿建议。",
+      "text": "帮我修复移动端导航栏在 iOS Safari 上横向溢出的问题，保持菜单可点击。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc4",
-      "text": "写一份团队周会的会议纪要模板，包含议题、结论和待办事项。",
+      "text": "我需要用 FastAPI 设计一个产品列表接口，支持按价格排序和分页返回。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc5",
-      "text": "我要给新员工讲 Git 分支管理，请帮我准备一个简单的讲解提纲。",
+      "text": "请帮我写一个 GitHub Actions 工作流，在推送时对前端项目运行 ESLint 并构建 Docker 镜像。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc6",
-      "text": "帮我将这段产品简介从中文翻译成日语，保持语气友好。",
+      "text": "帮我写一个正则表达式，从 Nginx 访问日志中提取客户端 IP、状态码和请求路径。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc7",
-      "text": "设计一个家庭小花园的布局，要求有休息区和耐阴植物。",
+      "text": "请帮我把这份用户需求整理成结构化 API 文档，并补充常见错误码说明。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc8",
-      "text": "请根据我的体检报告指标，给出一周的健康饮食建议。",
+      "text": "帮我检查这个 JWT 校验流程有没有签名算法混淆或过期时间绕过的问题。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc9",
-      "text": "帮我检查这份租赁合同中关于提前退租的条款是否有风险。",
+      "text": "我想用 Chart.js 画一个最近 30 天活跃用户数量的折线图，请给我示例代码。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc10",
-      "text": "给公司公众号写一篇介绍新咖啡机的短文案，200字左右。",
+      "text": "请帮我用 scikit-learn 训练一个客户流失预测模型，并输出最重要的 5 个特征。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc11",
-      "text": "帮我制定一个为期8周的半程马拉松训练计划，按周列出跑量。",
+      "text": "帮我诊断为什么这个 WebSocket 连接每隔几分钟就会断开并自动重连。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc12",
-      "text": "请用 Excel 公式帮我计算每个月的复利收益，假设年利率5%。",
+      "text": "我需要解决一个 Git 合并冲突，保留两个分支对同一份配置的不同修改。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc13",
-      "text": "我准备在本地搭建一个家庭媒体服务器，请比较 Jellyfin 和 Plex 的优缺点。",
+      "text": "请帮我写一个 cron 表达式，让备份脚本在每周日凌晨 2 点执行。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc14",
-      "text": "帮我写一份关于远程办公效率的员工调查问卷，10个问题。",
+      "text": "帮我在 Excel 里用公式统计每个销售员本季度的达标率。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc15",
-      "text": "请解释一下什么是 HTTPS 证书链，以及如何查看浏览器中的证书信息。",
+      "text": "我想设计一个回合制战斗伤害公式，让防御力对伤害的影响递减但不会完全无效。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc16",
-      "text": "帮我整理一份适合周末露营的物品清单，分烹饪、睡眠、照明三类。",
+      "text": "请用 Kotlin 帮我写一个点击按钮切换深色和浅色主题的简单界面。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc17",
-      "text": "给我们的内部知识库写一个“如何申请报销”的操作步骤说明。",
+      "text": "我需要配置 RabbitMQ 的死信队列，把处理失败的消息转移到待人工处理队列。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc18",
-      "text": "我拍了一段3分钟的产品展示视频，请建议剪辑节奏和配乐风格。",
+      "text": "帮我看一下这块 STM32 通过 I2C 读取传感器数据偶尔返回 0 的问题。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc19",
-      "text": "请帮我设计一个简单的 SQL 查询，找出过去30天注册但未下单的用户。",
+      "text": "请帮我分析一个 React 页面首屏加载慢的原因，并给出按路由拆包的优化方案。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
     },
     {
       "scenarioId": "unrelated-sc20",
-      "text": "帮我用 Python 写一个脚本，把文件夹里的图片按拍摄日期重命名。",
+      "text": "帮我写一封给客户的进度更新邮件，说明本周已经完成的功能和下周计划。",
       "triggered": [],
       "unknownCodes": [],
       "falseTrigger": false
@@ -1300,11 +1811,11 @@
   ],
   "conflictGroups": [
     {
-      "scenarioId": "ch04-03-slices-s1-sc3",
+      "scenarioId": "ch04-03-slices-s1-sc2",
       "intended": "ch04-03-slices-s1",
       "triggered": [
-        "ch04-02-references-and-borrowing-s1",
-        "ch04-03-slices-s1"
+        "ch04-03-slices-s1",
+        "ch08-02-strings-s1"
       ]
     },
     {
@@ -1319,8 +1830,8 @@
       "scenarioId": "ch06-02-match-s1-sc1",
       "intended": "ch06-02-match-s1",
       "triggered": [
-        "ch06-02-match-s1",
-        "ch06-01-defining-an-enum-s1"
+        "ch06-01-defining-an-enum-s1",
+        "ch06-02-match-s1"
       ]
     },
     {
@@ -1335,16 +1846,80 @@
       "scenarioId": "ch08-03-hash-maps-s2-sc3",
       "intended": "ch08-03-hash-maps-s2",
       "triggered": [
-        "ch08-03-hash-maps-s1",
-        "ch08-03-hash-maps-s2"
+        "ch08-03-hash-maps-s2",
+        "ch08-03-hash-maps-s1"
       ]
     },
     {
-      "scenarioId": "ch18-02-refutability-s1-sc1",
+      "scenarioId": "ch10-01-syntax-s1-sc1",
+      "intended": "ch10-01-syntax-s1",
+      "triggered": [
+        "ch10-01-syntax-s1",
+        "ch10-02-traits-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch10-02-traits-s1-sc3",
+      "intended": "ch10-02-traits-s1",
+      "triggered": [
+        "ch10-02-traits-s1",
+        "ch05-03-method-syntax-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch15-03-drop-s1-sc2",
+      "intended": "ch15-03-drop-s1",
+      "triggered": [
+        "ch15-03-drop-s1",
+        "ch16-03-shared-state-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch15-05-interior-mutability-s1-sc2",
+      "intended": "ch15-05-interior-mutability-s1",
+      "triggered": [
+        "ch15-05-interior-mutability-s1",
+        "ch04-02-references-and-borrowing-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch16-01-threads-s1-sc2",
+      "intended": "ch16-01-threads-s1",
+      "triggered": [
+        "ch04-02-references-and-borrowing-s1",
+        "ch16-01-threads-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch16-02-message-passing-s1-sc1",
+      "intended": "ch16-02-message-passing-s1",
+      "triggered": [
+        "ch16-01-threads-s1",
+        "ch16-02-message-passing-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch16-03-shared-state-s1-sc1",
+      "intended": "ch16-03-shared-state-s1",
+      "triggered": [
+        "ch16-03-shared-state-s1",
+        "ch04-02-references-and-borrowing-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch17-03-oo-design-patterns-s1-sc2",
+      "intended": "ch17-03-oo-design-patterns-s1",
+      "triggered": [
+        "ch15-05-interior-mutability-s1",
+        "ch17-03-oo-design-patterns-s1"
+      ]
+    },
+    {
+      "scenarioId": "ch18-02-refutability-s1-sc2",
       "intended": "ch18-02-refutability-s1",
       "triggered": [
         "ch18-02-refutability-s1",
-        "ch06-02-match-s1"
+        "ch06-01-defining-an-enum-s1"
       ]
     }
   ],
@@ -1352,16 +1927,16 @@
     {
       "kind": "merge",
       "candidates": [
-        "ch04-02-references-and-borrowing-s1",
-        "ch04-03-slices-s1"
+        "ch04-03-slices-s1",
+        "ch08-02-strings-s1"
       ],
       "names": [
-        "引用与借用规则",
-        "Rust 切片类型使用"
+        "Rust 切片类型使用",
+        "Rust String 处理"
       ],
-      "basis": "同一场景（ch04-03-slices-s1-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "basis": "同一场景（ch04-03-slices-s1-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
       "scenarios": [
-        "ch04-03-slices-s1-sc3"
+        "ch04-03-slices-s1-sc2"
       ]
     },
     {
@@ -1382,12 +1957,12 @@
     {
       "kind": "merge",
       "candidates": [
-        "ch06-02-match-s1",
-        "ch06-01-defining-an-enum-s1"
+        "ch06-01-defining-an-enum-s1",
+        "ch06-02-match-s1"
       ],
       "names": [
-        "match 控制流与穷举模式匹配",
-        "定义与使用枚举"
+        "定义与使用枚举",
+        "match 控制流与穷举模式匹配"
       ],
       "basis": "同一场景（ch06-02-match-s1-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
       "scenarios": [
@@ -1412,12 +1987,12 @@
     {
       "kind": "merge",
       "candidates": [
-        "ch08-03-hash-maps-s1",
-        "ch08-03-hash-maps-s2"
+        "ch08-03-hash-maps-s2",
+        "ch08-03-hash-maps-s1"
       ],
       "names": [
-        "HashMap 核心操作",
-        "哈希函数与练习提示"
+        "哈希函数与练习提示",
+        "HashMap 核心操作"
       ],
       "basis": "同一场景（ch08-03-hash-maps-s2-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
       "scenarios": [
@@ -1427,27 +2002,147 @@
     {
       "kind": "merge",
       "candidates": [
+        "ch10-01-syntax-s1",
+        "ch10-02-traits-s1"
+      ],
+      "names": [
+        "Rust泛型语法与代价",
+        "trait 共享行为与约束"
+      ],
+      "basis": "同一场景（ch10-01-syntax-s1-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch10-01-syntax-s1-sc1"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "ch10-02-traits-s1",
+        "ch05-03-method-syntax-s1"
+      ],
+      "names": [
+        "trait 共享行为与约束",
+        "方法语法全流程"
+      ],
+      "basis": "同一场景（ch10-02-traits-s1-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch10-02-traits-s1-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "ch15-03-drop-s1",
+        "ch16-03-shared-state-s1"
+      ],
+      "names": [
+        "Drop 清理机制",
+        "共享状态并发"
+      ],
+      "basis": "同一场景（ch15-03-drop-s1-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch15-03-drop-s1-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "ch15-05-interior-mutability-s1",
+        "ch04-02-references-and-borrowing-s1"
+      ],
+      "names": [
+        "RefCell内部可变性实践",
+        "引用与借用规则"
+      ],
+      "basis": "同一场景（ch15-05-interior-mutability-s1-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch15-05-interior-mutability-s1-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "ch04-02-references-and-borrowing-s1",
+        "ch16-01-threads-s1"
+      ],
+      "names": [
+        "引用与借用规则",
+        "Rust 多线程任务管理"
+      ],
+      "basis": "同一场景（ch16-01-threads-s1-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch16-01-threads-s1-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "ch16-01-threads-s1",
+        "ch16-02-message-passing-s1"
+      ],
+      "names": [
+        "Rust 多线程任务管理",
+        "线程间消息传递通道实现"
+      ],
+      "basis": "同一场景（ch16-02-message-passing-s1-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch16-02-message-passing-s1-sc1"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "ch16-03-shared-state-s1",
+        "ch04-02-references-and-borrowing-s1"
+      ],
+      "names": [
+        "共享状态并发",
+        "引用与借用规则"
+      ],
+      "basis": "同一场景（ch16-03-shared-state-s1-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch16-03-shared-state-s1-sc1"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "ch15-05-interior-mutability-s1",
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "names": [
+        "RefCell内部可变性实践",
+        "Rust 状态模式实现与权衡"
+      ],
+      "basis": "同一场景（ch17-03-oo-design-patterns-s1-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "ch17-03-oo-design-patterns-s1-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
         "ch18-02-refutability-s1",
-        "ch06-02-match-s1"
+        "ch06-01-defining-an-enum-s1"
       ],
       "names": [
         "判断模式可反驳性与语法位置",
-        "match 控制流与穷举模式匹配"
+        "定义与使用枚举"
       ],
-      "basis": "同一场景（ch18-02-refutability-s1-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "basis": "同一场景（ch18-02-refutability-s1-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
       "scenarios": [
-        "ch18-02-refutability-s1-sc1"
+        "ch18-02-refutability-s1-sc2"
       ]
     }
   ],
   "totals": {
-    "candidates": 21,
-    "scenarios": 63,
+    "candidates": 30,
+    "scenarios": 90,
     "unrelatedScenarios": 20,
-    "triggerPassed": 7,
-    "triggerConflict": 14,
+    "triggerPassed": 9,
+    "triggerConflict": 21,
     "triggerMiss": 0,
     "unrelatedFalseTriggers": 0,
-    "conflictGroups": 6
+    "conflictGroups": 14
   }
 }

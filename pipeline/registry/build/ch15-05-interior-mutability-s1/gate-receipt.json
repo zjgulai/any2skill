@@ -1,0 +1,134 @@
+{
+  "slug": "ch15-05-interior-mutability-s1",
+  "clusterSource": "pipeline/knowledge/clusters.rust-book-cn.json",
+  "rootAnchor": "ch15-05-interior-mutability-s1",
+  "clusterAnchors": 6,
+  "clusterTitle": "RefCell内部可变性实践",
+  "objectsInCluster": 11,
+  "objectsKept": 11,
+  "crossChapterAntipatternsInCluster": 5,
+  "crossChapterAntipatternsKept": 4,
+  "crossChapterExcluded": [
+    {
+      "id": "AP-SYNTH-T06-05",
+      "reasonCode": "QUOTE_MISMATCH"
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 5,
+    "principles": 4,
+    "patterns": 3,
+    "pitfalls": 6,
+    "code": 0,
+    "reading": 8
+  },
+  "gaps": [
+    {
+      "code": "SECTION_SOURCE_ABSENT",
+      "section": "code",
+      "heading": "## 配套代码",
+      "detail": "本段的来源是镜像的代码树（`sources/<源键>/code/`），信息源未提供可消费的目录形态。按源条件骨架（ADR-029），本段以**来源说明**代替空段——「空」与「无」必须长得不一样。",
+      "advisory": 1,
+      "actual": 0
+    },
+    {
+      "code": "SECTION_FIELD_SEMANTICS_MISMATCH",
+      "section": "patterns",
+      "heading": "## 实践模式",
+      "detail": "本段由 `Concept.definition` + `examples` 填充，装出来的是**术语定义**，而骨架要求的是**可操作的模式**（编号子节、含表格）。条目数达标不代表语义达标——这类缺口计数查不出来。",
+      "required": null,
+      "actual": 3
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.inputContract",
+      "heading": "契约字段 inputContract",
+      "detail": "输入契约。没有任何对象字段描述「这个 skill 要什么输入」。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.outputContract",
+      "heading": "契约字段 outputContract",
+      "detail": "输出契约。同上。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tools",
+      "heading": "契约字段 tools",
+      "detail": "工具清单。对象模型里没有工具/依赖类字段。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.steps",
+      "heading": "契约字段 steps",
+      "detail": "可执行步骤。步骤属「实践模式」段的语义，而该段当前由 Concept 定义填充。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.stopConditions",
+      "heading": "契约字段 stopConditions",
+      "detail": "停止条件。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.rollback",
+      "heading": "契约字段 rollback",
+      "detail": "回滚方式。没有对象字段承载。",
+      "required": null,
+      "actual": 0
+    },
+    {
+      "code": "CONTRACT_FIELD_UNSUPPORTED",
+      "section": "contract.tests",
+      "heading": "契约字段 tests",
+      "detail": "ADR-004 要求 ≥2。没有任何对象字段承载「这个 skill 怎么测」。",
+      "required": null,
+      "actual": 0
+    }
+  ],
+  "gate": {
+    "passed": true,
+    "reasonCodes": [],
+    "failures": [],
+    "bytes": 6297,
+    "sizeLimitBytes": 16568
+  },
+  "riskFlags": [],
+  "overflow": null,
+  "references": [],
+  "artifacts": {
+    "staged": "pipeline/registry/build/ch15-05-interior-mutability-s1/SKILL.md",
+    "contract": "pipeline/registry/build/ch15-05-interior-mutability-s1/skill-contract.json",
+    "receipt": "pipeline/registry/build/ch15-05-interior-mutability-s1/gate-receipt.json",
+    "published": "skills/ch15-05-interior-mutability-s1/SKILL.md"
+  },
+  "verdict": {
+    "passed": true,
+    "failures": [],
+    "reasonCodes": [],
+    "checks": {
+      "bytes": 6297,
+      "sizeLimitBytes": 16568,
+      "sectionItemCounts": {
+        "## 何时使用": 5,
+        "## 核心原则": 4,
+        "## 实践模式": 3,
+        "## 常见陷阱": 6,
+        "## 配套代码": 0,
+        "## 深度阅读": 8
+      },
+      "sourceRefCount": 8
+    },
+    "markdownHash": "sha256:cb2e36fb3ea2370496d30c027157de6a5740eba0258930253f6ab007b724cd6b"
+  }
+}
