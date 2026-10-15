@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "define-agent-boundaries-and-safeguards",
+  "name": "define-agent-boundaries-and-safeguards",
+  "title": "划清 Agent 边界并建立动作安全防线",
+  "description": "划清 Agent 的观察、动作与职责边界，并为动作建立可执行的安全防线：职责分层、沙盒与护栏分层、外部内容防注入、不可逆操作把关、政策事实服务端化与护栏双向评估。适用于设计或评审 Agent 系统的架构与安全边界、判断能力该放在模型提示还是上下文/工具层、以及上线前安全评审时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:a39f8750c25f507d067f69813b5b95c25248cddbeb5b2ca677b4e9fea0575e18"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter1-s1",
+      "chapter2-s3",
+      "chapter5-s3"
+    ],
+    "skillIds": [
+      "chapter1-s1",
+      "chapter2-s3",
+      "chapter5-s3"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/define-agent-boundaries-and-safeguards.json",
+    "sha256": "sha256:c541c22518b21baf0012fed3e4f77668636973d9c5c5972c20da2e39c1b97fd3"
+  },
+  "sourceObjects": [
+    "CHAPTER1-H1-1-CONCEPT-01",
+    "CHAPTER1-H2-1-CONCEPT-01",
+    "CHAPTER1-H2-1-CONCEPT-02",
+    "CHAPTER1-H3-1-CONCEPT-01",
+    "CHAPTER1-H3-1-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-3-CONCEPT-01",
+    "CHAPTER1-H3-3-ENGINEERINGRULE-02",
+    "CHAPTER1-H4-1-CONCEPT-01",
+    "CHAPTER1-H3-4-CONCEPT-01",
+    "CHAPTER1-H3-5-CONCEPT-01",
+    "CHAPTER1-H3-5-CONCEPT-02",
+    "CHAPTER1-H2-2-CONCEPT-01",
+    "CHAPTER1-H2-2-HEURISTIC-02",
+    "CHAPTER1-H3-6-CONCEPT-01",
+    "CHAPTER1-H3-6-CONCEPT-02",
+    "CHAPTER1-H3-11-ENGINEERINGRULE-01",
+    "CHAPTER1-H2-4-CONCEPT-01",
+    "CHAPTER1-H3-2-ENGINEERINGRULE-01",
+    "CHAPTER1-H4-1-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-10-CONCEPT-01",
+    "CHAPTER1-H3-10-ENGINEERINGRULE-02",
+    "CHAPTER1-H4-7-ENGINEERINGRULE-01",
+    "CHAPTER1-H4-7-ENGINEERINGRULE-02",
+    "CHAPTER1-H4-8-CONCEPT-01",
+    "CHAPTER1-H4-8-ENGINEERINGRULE-02",
+    "CHAPTER1-H2-4-ENGINEERINGRULE-02",
+    "CHAPTER2-H3-18-CONCEPT-01",
+    "CHAPTER2-H3-18-ENGINEERINGRULE-02",
+    "CHAPTER4-H2-3-CONCEPT-02",
+    "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+    "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+    "CHAPTER5-H3-11-ENGINEERINGRULE-01",
+    "CHAPTER5-H3-11-ANTIPATTERN-02",
+    "CHAPTER5-H3-14-ENGINEERINGRULE-02",
+    "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+    "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+    "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+    "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+    "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
+    "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+    "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T12-01",
+    "AP-SYNTH-T12-02",
+    "AP-SYNTH-T12-04"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h1-1",
+      "title": "AI Agent 入门",
+      "lineStart": 1,
+      "lineEnd": 10
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-1",
+      "title": "现代 Agent = LLM + 上下文 + 工具",
+      "lineStart": 11,
+      "lineEnd": 36
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-1",
+      "title": "观察空间与动作空间：模型与世界的接口",
+      "lineStart": 37,
+      "lineEnd": 60
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-2",
+      "title": "工具：Agent 的手脚",
+      "lineStart": 61,
+      "lineEnd": 108
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-3",
+      "title": "LLM：Agent 的大脑",
+      "lineStart": 109,
+      "lineEnd": 114
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h4-1",
+      "title": "模型即 Agent：当模型本身成为产品",
+      "lineStart": 115,
+      "lineEnd": 124
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-4",
+      "title": "上下文：Agent 的眼睛",
+      "lineStart": 137,
+      "lineEnd": 160
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-5",
+      "title": "ReAct 循环",
+      "lineStart": 161,
+      "lineEnd": 262
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-2",
+      "title": "Harness 工程：模型之外的竞争力",
+      "lineStart": 263,
+      "lineEnd": 320
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-6",
+      "title": "从提示工程到 Loop 工程：工程范式的演进",
+      "lineStart": 321,
+      "lineEnd": 340
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-11",
+      "title": "Harness 五要素与「构建」部分的对应",
+      "lineStart": 506,
+      "lineEnd": 524
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-4",
+      "title": "本章小结",
+      "lineStart": 539,
+      "lineEnd": 560
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-10",
+      "title": "护栏与安全性",
+      "lineStart": 466,
+      "lineEnd": 473
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h4-7",
+      "title": "护栏类型",
+      "lineStart": 474,
+      "lineEnd": 489
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h4-8",
+      "title": "人工干预",
+      "lineStart": 490,
+      "lineEnd": 505
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-18",
+      "title": "提示注入：上下文安全的核心威胁",
+      "lineStart": 730,
+      "lineEnd": 764
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-3",
+      "title": "工具生态：MCP 与 Skill Hub",
+      "lineStart": 100,
+      "lineEnd": 132
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-6",
+      "title": "执行工具",
+      "lineStart": 270,
+      "lineEnd": 381
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-8",
+      "title": "本章小结",
+      "lineStart": 429,
+      "lineEnd": 442
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-11",
+      "title": "代码作为业务规则的约束",
+      "lineStart": 406,
+      "lineEnd": 501
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-14",
+      "title": "代码作为生成式 UI",
+      "lineStart": 631,
+      "lineEnd": 727
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "anchor": "reference-answers#h2-1",
+      "title": "第一章 AI Agent 入门",
+      "lineStart": 5,
+      "lineEnd": 52
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "anchor": "reference-answers#h2-4",
+      "title": "第四章 工具",
+      "lineStart": 131,
+      "lineEnd": 148
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "anchor": "reference-answers#h2-6",
+      "title": "第六章 交互：观察与动作空间的扩展",
+      "lineStart": 190,
+      "lineEnd": 243
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "anchor": "reference-answers#h2-9",
+      "title": "第九章 Agent 的持续进化",
+      "lineStart": 338,
+      "lineEnd": 367
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-9",
+      "title": "Coding Agent 的安全",
+      "lineStart": 309,
+      "lineEnd": 350
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter9.md",
+      "anchor": "chapter9#h3-7",
+      "title": "持续进化的安全边界",
+      "lineStart": 342,
+      "lineEnd": 351
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 5,
+    "inputs": 4,
+    "steps": 8,
+    "outputs": 4,
+    "checks": 8,
+    "evidence": 58
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 12602,
+    "markdownHash": "sha256:73b845fb80afdecdaaf5f44f9e2bbc36118b515a794f057985c5c46a7db73f7b",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter1.md",
+    "objectsFiles": [
+      "pipeline/knowledge/chapter1.objects.json",
+      "pipeline/knowledge/chapter2.objects.json",
+      "pipeline/knowledge/chapter4.objects.json",
+      "pipeline/knowledge/chapter5.objects.json",
+      "pipeline/knowledge/reference-answers.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter1-s1/skill-contract.json",
+      "pipeline/registry/build/chapter2-s3/skill-contract.json",
+      "pipeline/registry/build/chapter5-s3/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/define-agent-boundaries-and-safeguards.json",
+    "generation": "task-suite"
+  }
+}

@@ -48,11 +48,12 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
     objectIndex = await loadObjectIndex(REPO)
   })
 
-  it('19 个成员、slug 唯一且合法；30 个旧 slug 全部被引用；rejected 绝不出现', () => {
+  it('17 个成员、slug 唯一且合法；30 个旧 slug 全部被引用；rejected 绝不出现', () => {
     assert.equal(suite.manifest.schemaVersion, TASK_SUITE_SCHEMA_VERSION)
     const slugs = suite.manifest.members.map((m) => m.slug)
-    assert.equal(slugs.length, 19)
-    assert.equal(new Set(slugs).size, 19)
+    // 17 = 重组首版 19 经评测合并（卡 27：两对合并，19→17，见清单 mergeNote）
+    assert.equal(slugs.length, 17)
+    assert.equal(new Set(slugs).size, 17)
     for (const s of slugs) assert.match(s, /^[a-z0-9]+(-[a-z0-9]+)+$/)
     const referenced = new Set(suite.manifest.members.flatMap((m) => m.legacySlugs))
     for (const l of [...FIRST, ...RUST]) assert.ok(referenced.has(l), `旧 slug 未被引用：${l}`)
@@ -94,7 +95,7 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
       for (const l of slugs) for (const a of (await contractOf(l)).crossChapterObjects ?? []) set.add(a)
       return set
     }
-    for (const [legacy, keys] of [[FIRST, ['design-agent-tools', 'secure-agent-actions', 'update-agent-instructions']], [RUST, suite.manifest.members.filter((m) => m.sourceKey === 'rust-book-cn').map((m) => m.slug)]]) {
+    for (const [legacy, keys] of [[FIRST, ['design-agent-tools', 'define-agent-boundaries-and-safeguards', 'update-agent-instructions']], [RUST, suite.manifest.members.filter((m) => m.sourceKey === 'rust-book-cn').map((m) => m.slug)]]) {
       const legacyUnion = await legacyApsOf(legacy)
       const newUnion = new Set()
       for (const m of suite.manifest.members.filter((x) => keys.includes(x.slug))) for (const a of m.crossChapterObjects ?? []) newUnion.add(a)
@@ -103,7 +104,7 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
     }
   })
 
-  it('每个 owned 对象可解析且过门禁一（含跨章池判定）——19 个成员逐个装载', async () => {
+  it('每个 owned 对象可解析且过门禁一（含跨章池判定）——17 个成员逐个装载', async () => {
     for (const member of suite.manifest.members) {
       const { objects, aps } = await loadMemberSources(REPO, member, objectIndex)
       assert.equal(objects.length, member.primaryObjects.length, `${member.slug} 装载数不符`)
@@ -113,7 +114,7 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
 })
 
 describe('26 · 工作流与渲染：完整性与确定性', () => {
-  it('19 份工作流字段齐全（含 rollback 处置与非空数组）', async () => {
+  it('17 份工作流字段齐全（含 rollback 处置与非空数组）', async () => {
     const suite = await loadSuiteManifest(REPO)
     for (const member of suite.manifest.members) {
       const { workflow } = await loadWorkflow(REPO, member)

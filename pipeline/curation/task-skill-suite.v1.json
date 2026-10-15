@@ -440,10 +440,12 @@
       "workflowFile": "pipeline/curation/workflows/implement-rust-state-pattern.json"
     },
     {
-      "slug": "define-agent-boundaries",
+      "slug": "define-agent-boundaries-and-safeguards",
       "sourceKey": "ai-agent-book-zh",
       "legacySlugs": [
-        "chapter1-s1"
+        "chapter1-s1",
+        "chapter2-s3",
+        "chapter5-s3"
       ],
       "primaryObjects": [
         "CHAPTER1-H1-1-CONCEPT-01",
@@ -463,20 +465,7 @@
         "CHAPTER1-H3-6-CONCEPT-01",
         "CHAPTER1-H3-6-CONCEPT-02",
         "CHAPTER1-H3-11-ENGINEERINGRULE-01",
-        "CHAPTER1-H2-4-CONCEPT-01"
-      ],
-      "crossChapterObjects": [],
-      "workflowFile": "pipeline/curation/workflows/define-agent-boundaries.json"
-    },
-    {
-      "slug": "secure-agent-actions",
-      "sourceKey": "ai-agent-book-zh",
-      "legacySlugs": [
-        "chapter1-s1",
-        "chapter2-s3",
-        "chapter5-s3"
-      ],
-      "primaryObjects": [
+        "CHAPTER1-H2-4-CONCEPT-01",
         "CHAPTER1-H3-2-ENGINEERINGRULE-01",
         "CHAPTER1-H4-1-ENGINEERINGRULE-02",
         "CHAPTER1-H3-10-CONCEPT-01",
@@ -507,7 +496,7 @@
         "AP-SYNTH-T12-02",
         "AP-SYNTH-T12-04"
       ],
-      "workflowFile": "pipeline/curation/workflows/secure-agent-actions.json"
+      "workflowFile": "pipeline/curation/workflows/define-agent-boundaries-and-safeguards.json"
     },
     {
       "slug": "manage-agent-context",
@@ -612,9 +601,10 @@
       "workflowFile": "pipeline/curation/workflows/validate-generated-artifacts.json"
     },
     {
-      "slug": "coordinate-agent-work",
+      "slug": "coordinate-agent-work-and-verification",
       "sourceKey": "ai-agent-book-zh",
       "legacySlugs": [
+        "chapter1-s1",
         "chapter10-s3",
         "chapter2-s3",
         "chapter5-s3"
@@ -655,21 +645,7 @@
         "CHAPTER10-H3-13-ANTIPATTERN-01",
         "CHAPTER10-H3-14-CONCEPT-01",
         "CHAPTER10-H3-14-CONCEPT-02",
-        "CHAPTER10-H3-16-ENGINEERINGRULE-01"
-      ],
-      "crossChapterObjects": [],
-      "workflowFile": "pipeline/curation/workflows/coordinate-agent-work.json"
-    },
-    {
-      "slug": "verify-agent-completion",
-      "sourceKey": "ai-agent-book-zh",
-      "legacySlugs": [
-        "chapter1-s1",
-        "chapter10-s3",
-        "chapter2-s3",
-        "chapter5-s3"
-      ],
-      "primaryObjects": [
+        "CHAPTER10-H3-16-ENGINEERINGRULE-01",
         "CHAPTER1-H2-3-CONCEPT-01",
         "CHAPTER4-H2-6-CONCEPT-01",
         "CHAPTER4-H2-9-CONCEPT-01",
@@ -681,7 +657,7 @@
         "CHAPTER10-H3-11-ANTIPATTERN-01"
       ],
       "crossChapterObjects": [],
-      "workflowFile": "pipeline/curation/workflows/verify-agent-completion.json"
+      "workflowFile": "pipeline/curation/workflows/coordinate-agent-work-and-verification.json"
     },
     {
       "slug": "update-agent-instructions",
@@ -711,5 +687,7 @@
       ],
       "workflowFile": "pipeline/curation/workflows/update-agent-instructions.json"
     }
-  ]
+  ],
+  "updatedAt": "2026-10-15",
+  "mergeNote": "评测合并（卡 27/ADR-032 决策四，用户拍板「两对都合，联名重写」）：define-agent-boundaries+secure-agent-actions → define-agent-boundaries-and-safeguards（strict 3/3 最强稳定边）；coordinate-agent-work+verify-agent-completion → coordinate-agent-work-and-verification（strict 2/1）。19 → 17 成员。"
 }
