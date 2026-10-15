@@ -45,8 +45,11 @@ ch16-03 共享状态、ch05-03 方法语法），用 **v2 任务生成提示词*
 ## 步骤
 
 1. [x] 形状分析与采样（上节）
-2. [ ] 写 v2 任务生成提示词（实验态，不动正式器）
-3. [ ] 3 个 low-utility × K=6 A/B（单 skill 模式；账本独立）
+2. [x] v2 提示词 + 探针脚本（`pipeline/experiments/probe-task-headroom.mjs`；
+   `generateTasksForSkill` 加实验专用 `systemPrompt` 覆盖参数，缺省不变）
+3. [ ] 3 个 low-utility × K=6 A/B（单 skill 模式；账本独立）——
+   **阻塞中：2026-10-15 深夜 API 整体退化**（任务生成连续两次「空内容、finish_reason=null」，
+   最小探活调用亦 >3 分钟无返回，非本仓问题）。恢复后续跑。
 4. [ ] 读结果 → H1/H2 判决 → 治理选项摆给用户拍板
 5. [ ] 按拍板落地（ADR + 卡记录 + 提交）
 

@@ -382,9 +382,12 @@ export async function generateTasksForSkill({
   ledger,
   maxTokens = DEFAULT_GATE3_MAX_TOKENS,
   temperature = DEFAULT_GATE3_TEMPERATURE,
+  // 实验专用覆盖（卡 25 头差探针）：缺省走 v1 提示词；传入时以传入者为准。
+  // 正式链路**不传**——v2 若转正要先立提示词版本（指纹会变，见 taskGenPromptFingerprint）。
+  systemPrompt = null,
 }) {
   const chatFn = chat ?? chatCompletion
-  const system = buildTaskGenSystemPrompt({ k })
+  const system = systemPrompt ?? buildTaskGenSystemPrompt({ k })
   const user = buildTaskGenUserPrompt({ skillName, skillDescription, skillMarkdown })
   const res = await chatFn(config, { system, user, maxTokens, temperature, fetchImpl, ledger })
   const parsed = parseJsonOrThrow(res.text, '任务生成')
