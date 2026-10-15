@@ -29,18 +29,18 @@ Any content → executable Agent Skills. MVP pipeline.
 （门禁三：2 passed / 7 low-utility / 0 确认退化）。全链结论与实测规律（陷阱门槛、准入≠效用、
 五处固定路径漏网）见 [`docs/specs/03-second-source-report.md`](docs/specs/03-second-source-report.md)。
 
-> ### 盘上已有 15 个已发布的 skill（岗位技能套件）
+> ### 盘上已有 17 个已发布的 skill（岗位技能套件）
 >
-> `find ./skills -name "SKILL.md"` → **15 个任务型技能**（6 个语言中立的 Agent 工程工作流 +
-> 9 个显式 Rust 实现工作流；初版 19 经评测合并与拒绝下架，见下），按工作阶段导航见
+> `find ./skills -name "SKILL.md"` → **17 个任务型技能**（6 个语言中立的 Agent 工程工作流 +
+> 11 个显式 Rust 实现工作流；初版 19 经评测合并 19→17、两例曾拒绝后修订复评返区，见下），按工作阶段导航见
 > [`docs/guides/agent-full-stack-skill-suite.md`](docs/guides/agent-full-stack-skill-suite.md)：
 > `define-agent-boundaries-and-safeguards` / `manage-agent-context` /
 > `design-agent-tools` / `validate-generated-artifacts` /
 > `coordinate-agent-work-and-verification` / `update-agent-instructions`（Agent 工程）；
-> `diagnose-rust-borrows` / `model-rust-domain-types` /
+> `diagnose-rust-borrows` / `model-rust-domain-types` / `match-rust-variants` /
 > `process-rust-text-and-hashmaps` / `design-rust-abstractions` / `compose-rust-closures` /
 > `manage-rust-memory-and-mutability` / `coordinate-rust-threads` / `structure-rust-cli` /
-> `run-rust-tests`（Rust 实现）。
+> `run-rust-tests` / `implement-rust-state-pattern`（Rust 实现）。
 >
 > **重组说明**（[`ADR-031`](docs/adr/ADR-031-task-skill-suite-reorganization.md)、
 > [`卡 26`](docs/tickets/26-task-skill-suite.md)）：30 个章节编号导出的旧发布物已**逐字节归档**至
@@ -50,15 +50,15 @@ Any content → executable Agent Skills. MVP pipeline.
 > 两个 ch4 重复技能在 `design-agent-tools` 中合并去重（零增量对象），边界决策全部落在
 > [`pipeline/curation/task-skill-suite.v1.json`](pipeline/curation/task-skill-suite.v1.json)。
 >
-> **评测结果**（[`卡 27`](docs/tickets/27-task-suite-assessment.md)、
+> **评测结果**（[`卡 27`](docs/tickets/27-task-suite-assessment.md)/
+> [`卡 28`](docs/tickets/28-revise-and-reassess.md)、
 > [`task-suite-assessment.v1.json`](pipeline/registry/task-suite-assessment.v1.json)）：
-> 门禁二两轮（19→17 合并，触发争抢 14→10、0 误触）+ 门禁三两源全量，
-> 最终 **6 passed / 9 low-utility / 2 rejected**（约 12% 负迁移率，与旧套件同量级）。
-> 亮点：`manage-agent-context` 与 `run-rust-tests` 各 4 个改进——**任务骨架的
-> 「执行步骤」段带来可测头差**。两个确认负迁移已下架
-> （`implement-rust-state-pattern`、`match-rust-variants`，REJECTION.md 全证据）；
-> low-utility 含义见 [ADR-030](docs/adr/ADR-030-low-utility-governance.md)（本测量设计下
-> 未测出增量；重测须有因）。旧套件的测量记录原样保留为历史证据。
+> 门禁二两轮（19→17 合并，争抢 14→10、0 误触）+ 门禁三两源全量 → 2 例确认负迁移；
+> **失效族修订（字面保真条款）+ 复评**后全部解除（两例转 low-utility、一例转 passed）——
+> 现行 **7 passed / 10 low-utility / 0 rejected**。亮点：`manage-agent-context`、
+> `run-rust-tests` 各 4 改进、`compose-rust-closures` 复评 +2——**任务骨架的「执行步骤」
+> 段与字面保真条款均带来可测增益**。low-utility 含义见
+> [ADR-030](docs/adr/ADR-030-low-utility-governance.md)。旧套件的测量记录原样保留为历史证据。
 >
 > ⚠ 两个被门禁三确认拒绝的旧技能保持隔离（`pipeline/registry/rejected/`）：`chapter3-s1`
 > 与 `ch13-02-iterators-s1`——内容不随重组复活。

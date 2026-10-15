@@ -308,7 +308,45 @@
     "design-agent-tools",
     "validate-generated-artifacts",
     "coordinate-agent-work-and-verification",
-    "update-agent-instructions"
+    "update-agent-instructions",
+    "match-rust-variants",
+    "implement-rust-state-pattern"
   ],
-  "disclosure": "15 个在售：6 passed / 9 low-utility；2 个确认负迁移下架（registry/rejected/）。low-utility = 本测量设计下未测出增量（ADR-030）。"
+  "disclosure": "17 个在售：第一源 6（4 passed/2 low-utility）+ rust 11 复评后（3 passed/8 low-utility）= 7 passed / 10 low-utility / 0 rejected。四例失效族中两例已修订复评去害；旧套件两例留存档。",
+  "reassessment": {
+    "card": "docs/tickets/28-revise-and-reassess.md",
+    "batchDate": "2026-10-16",
+    "scope": "字面保真条款修订 3 件（两被拒例 + 噪声最多同族件）；rust 全量重跑，未动正文者按身份复用",
+    "clause": "开工前抄录任务的字面要求清单；技能用于判断与结构，不用于改写任务指定的表面形式（步骤/检查/边界三处一致）",
+    "results": [
+      {
+        "slug": "implement-rust-state-pattern",
+        "before": "rejected（t6 确认退化）",
+        "after": "low-utility（0/0/2/0）",
+        "note": "原确认退化消失；噪声两处不复现"
+      },
+      {
+        "slug": "match-rust-variants",
+        "before": "rejected（t6 确认退化）",
+        "after": "low-utility（0/0/0/0）",
+        "note": "原确认退化消失；全双过"
+      },
+      {
+        "slug": "compose-rust-closures",
+        "before": "low-utility（2 噪声）",
+        "after": "passed（改进 2）",
+        "note": "条款同带增益"
+      }
+    ],
+    "batchTotals": {
+      "passed": 3,
+      "lowUtility": 8,
+      "rejected": 0
+    },
+    "conclusion": "条款在本族 3/3 去除危害（两例确认退化解除、一例转 passed）——失效族假设与修订方向均获验证；推广到其余 Rust 技法技能待下一轮（改正文即重测，按证据推进）。",
+    "report": {
+      "file": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "note": "旧批次已随覆盖归档 history"
+    }
+  }
 }

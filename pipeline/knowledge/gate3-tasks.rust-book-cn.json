@@ -4009,27 +4009,27 @@
       "name": "compose-rust-closures",
       "description": "正确使用 Rust 闭包：语法与类型推断、三种捕获方式（Fn/FnMut/FnOnce）、把闭包存进结构体、用闭包与 HashMap 实现带缓存的惰性求值。适用于惰性初始化、回调存储、记忆化缓存等场景。",
       "riskFlags": [],
-      "markdownSha256": "sha256:e4ca6a9b76491faf31cfe757880d297aee28bc6535943d182ed656d23abe3ca1",
-      "inputHash": "sha256:9d05feb00ebda37c924243f5f52e4ece4a6a3d45c5c4382c2cc8466c96b25030",
+      "markdownSha256": "sha256:b3a0767c9c87645e2ea55e7e3328ecc7e34e09cf358689f400621c2efde77877",
+      "inputHash": "sha256:a45bf719106c2138a25bdb12be1f1d044f3486a58a1e6dec214452dcf0d8cc21",
       "tasks": [
         {
           "taskId": "compose-rust-closures-t1",
-          "prompt": "请在 src/main.rs 中实现一个带缓存的结构体 Cacher，它保存一个 Fn(u32)->u32 闭包和一个 Option 缓存值。首次调用 value 方法时执行闭包并把结果缓存，之后对同一参数直接返回缓存值。写 main 演示两次调用同一参数时闭包只执行一次（可在闭包内打印以便观察）。",
+          "prompt": "请创建 `closure_basics.rs`，写一个 Rust 程序：定义闭包 `multiply`（接受两个 i32 参数，返回乘积）和闭包 `increment`（接受一个 i32，返回加一），参数与返回值类型不写标注。在 `main` 中调用 `multiply(6, 2)` 和 `increment(2)`，并分别打印结果。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "src/main.rs"
+              "path": "closure_basics.rs"
             },
             {
               "type": "contains",
-              "path": "src/main.rs",
+              "path": "closure_basics.rs",
               "patterns": [
-                "struct Cacher<T>",
-                "Fn(u32) -> u32",
-                "Option<u32>",
-                "self.value = Some",
-                "(self.calculation)(arg)"
+                "let multiply = |",
+                "let increment = |",
+                "multiply(6, 2)",
+                "increment(2)",
+                "println!"
               ]
             }
           ],
@@ -4037,23 +4037,23 @@
         },
         {
           "taskId": "compose-rust-closures-t2",
-          "prompt": "请在 src/main.rs 中用 HashMap 实现一个带键缓存的 Cacher。它应通过泛型同时支持调用键类型 K、返回值类型 V，以及闭包类型 T: Fn(K)->V；值存为 HashMap<K,V>。写 main 演示对两个不同键调用，并对同一键重复调用。",
+          "prompt": "请创建 `capture_modes.rs`，写一个 Rust 程序，演示三种闭包捕获方式：一个只读借用外部 String 并可以被多次调用的闭包（注释：`// Fn 只读借用`）、一个可变借用外部 String 并可以被多次调用的闭包（注释：`// FnMut 可变借用`）、一个消费外部 String 所有权且只能调用一次的闭包（注释：`// FnOnce 消费所有权`）。每个闭包请实际调用并打印。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "src/main.rs"
+              "path": "capture_modes.rs"
             },
             {
               "type": "contains",
-              "path": "src/main.rs",
+              "path": "capture_modes.rs",
               "patterns": [
-                "struct Cacher<T, K, V>",
-                "T: Fn(K) -> V",
-                "HashMap<K, V>",
-                "fn value(&mut self, arg: K) -> V",
-                ".get(&arg)",
-                ".insert(arg,"
+                "// Fn 只读借用",
+                "// FnMut 可变借用",
+                "// FnOnce 消费所有权",
+                "String::from",
+                "||",
+                "println!"
               ]
             }
           ],
@@ -4061,22 +4061,26 @@
         },
         {
           "taskId": "compose-rust-closures-t3",
-          "prompt": "请在 src/main.rs 中写三个闭包，分别演示三种捕获方式：只读捕获外部变量并可多次调用；可变捕获外部变量并可多次修改；移动捕获一个 String 并只能调用一次。每个闭包附近用注释标明 '捕获类型：Fn（只读）'、'捕获类型：FnMut（可变）'、'捕获类型：FnOnce（消费）'。",
+          "prompt": "请创建 `store_closure.rs`，实现一个泛型结构体 `Operation<T>`，它有一个字段 `func: T`，其中 `T` 满足 `Fn(i32) -> i32` 约束。为 `Operation<T>` 实现一个方法 `apply(&self, input: i32) -> i32`，调用 `(self.func)(input)` 并返回结果。在 `main` 中创建 `let square = |x| x * x;`，构造 `Operation { func: square }`，对 5 调用 `apply` 并打印结果。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "src/main.rs"
+              "path": "store_closure.rs"
             },
             {
               "type": "contains",
-              "path": "src/main.rs",
+              "path": "store_closure.rs",
               "patterns": [
-                "// 捕获类型：Fn（只读）",
-                "// 捕获类型：FnMut（可变）",
-                "// 捕获类型：FnOnce（消费）",
-                "move ||",
-                "count += 1"
+                "struct Operation<T>",
+                "func: T",
+                "Fn(i32) -> i32",
+                "fn apply(&self, input: i32) -> i32",
+                "(self.func)(input)",
+                "let square = |x| x * x;",
+                "Operation { func: square }",
+                "apply(5)",
+                "println!"
               ]
             }
           ],
@@ -4084,20 +4088,26 @@
         },
         {
           "taskId": "compose-rust-closures-t4",
-          "prompt": "请在 src/main.rs 中展示闭包类型推断和类型锁定：定义一个带参数类型标注的闭包 let first_type = |s: &str| s.len();，第一次调用传入字符串字面量 \"hello\"，之后用另一个字符串再次调用；在注释中说明第一次调用后类型已锁定为 &str -> usize；并注释掉一个传入整数的错误调用，确保代码可编译。",
+          "prompt": "请创建 `lazy_cacher.rs`，实现一个结构体 `Cacher<T>`，其中 `T: Fn() -> i32`。它有一个字段 `func: T` 和一个字段 `value: Option<i32>`。实现方法 `value(&mut self) -> i32`：如果 `value` 是 `None`，则调用 `(self.func)()` 并把结果存入 `value`；然后返回缓存结果。在 `main` 中创建一个 `std::cell::Cell<i32>` 变量 `c` 并初始化为 0，定义闭包 `let f = || { c.set(c.get() + 1); c.get() };`，用该闭包构造 `Cacher`，对同一个 cacher 连续调用 `value()` 两次，打印调用结果和最终计数。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "src/main.rs"
+              "path": "lazy_cacher.rs"
             },
             {
               "type": "contains",
-              "path": "src/main.rs",
+              "path": "lazy_cacher.rs",
               "patterns": [
-                "let first_type = |s: &str| s.len();",
-                "first_type(\"hello\")",
-                "// first_type(42);"
+                "struct Cacher<T>",
+                "value: Option<i32>",
+                "Fn() -> i32",
+                "fn value(&mut self) -> i32",
+                "if self.value.is_none()",
+                "Cell::new(0)",
+                "c.set(c.get() + 1)",
+                "(self.func)()",
+                "println!"
               ]
             }
           ],
@@ -4105,22 +4115,30 @@
         },
         {
           "taskId": "compose-rust-closures-t5",
-          "prompt": "请在 src/main.rs 中定义一个 Button 结构体，它把一个闭包保存为字段，该闭包类型参数满足 FnMut(i32)，实现 on_click 方法在每次点击时调用该闭包。然后在 main 中用变量 total 保存累计点击值，闭包每次执行 total += value，创建 Button 并点击两次后可看到累计值。",
+          "prompt": "请创建 `hash_cacher.rs`，实现一个缓存结构体 `Cacher<T, K, V>`，其中 `T: Fn(K) -> V`，`K` 满足 `std::hash::Hash + Eq + Clone`，`V` 满足 `Clone`。它有一个字段 `func: T` 和一个字段 `cache: std::collections::HashMap<K, V>`。实现方法 `value(&mut self, key: K) -> V`：如果 `key` 不在缓存中，则调用 `(self.func)(key.clone())` 并将结果存入缓存；然后返回对应缓存值的克隆。在 `main` 中用该缓存包裹一个把 `&str` 转为长度的闭包，先对 \"hello\" 调用两次，再对 \"world\" 调用一次，并打印结果。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "src/main.rs"
+              "path": "hash_cacher.rs"
             },
             {
               "type": "contains",
-              "path": "src/main.rs",
+              "path": "hash_cacher.rs",
               "patterns": [
-                "struct Button<T>",
-                "T: FnMut(i32)",
-                "fn on_click(&mut self, value: i32)",
-                "(self.callback)(value);",
-                "total += value;"
+                "struct Cacher<T, K, V>",
+                "cache: HashMap<K, V>",
+                "std::collections::HashMap",
+                "Fn(K) -> V",
+                "Hash + Eq + Clone",
+                "V: Clone",
+                "fn value(&mut self, key: K) -> V",
+                "contains_key",
+                "key.clone()",
+                "clone()",
+                "hello",
+                "world",
+                "println!"
               ]
             }
           ],
@@ -4128,23 +4146,25 @@
         },
         {
           "taskId": "compose-rust-closures-t6",
-          "prompt": "请在 src/main.rs 中实现一个函数 execute_when_needed，接受一个 Fn()->u32 闭包和一个 bool；当 bool 为 true 时返回 Some(闭包结果)，否则返回 None 并且不调用闭包。在 main 中定义一个打印信息的闭包，并用 true/false 分别调用该函数。",
+          "prompt": "请创建 `callback.rs`，实现一个泛型结构体 `Handler<T>`，其中 `T: FnMut()`。它有一个字段 `callback: T`，并实现方法 `handle(&mut self)`，内部调用 `(self.callback)()`。在 `main` 中创建一个 `Vec<i32>` 变量 `events`，定义一个闭包，每次调用向 `events` 尾部推入一个数字（例如先 push 1 再 push 2）；用该闭包构造 `Handler`，连续调用 `handle()` 两次，最后打印 `events`。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "src/main.rs"
+              "path": "callback.rs"
             },
             {
               "type": "contains",
-              "path": "src/main.rs",
+              "path": "callback.rs",
               "patterns": [
-                "fn execute_when_needed<F>(calc: F, needed: bool) -> Option<u32>",
-                "F: Fn() -> u32",
-                "if needed {",
-                "Some(calc())",
-                "else {",
-                "None"
+                "struct Handler<T>",
+                "callback: T",
+                "FnMut()",
+                "fn handle(&mut self)",
+                "(self.callback)()",
+                "let mut events = Vec::new();",
+                "events.push",
+                "println!"
               ]
             }
           ],
@@ -4768,12 +4788,12 @@
       "name": "implement-rust-state-pattern",
       "description": "用 Rust 惯用法实现状态模式：私有状态字段、Box<dyn State> 转移、Option 与 take 的所有权搬迁。适用于把发布流程、订单流、协议状态机等按状态封装，并权衡增加新状态的成本时。",
       "riskFlags": [],
-      "markdownSha256": "sha256:15eecde93ebbf98968295ee71a833467740a24e254988c20920765c6831043e0",
-      "inputHash": "sha256:653df91ab3d7420cb88cee0c92e155a2a4c376cbd410ea81ab62d528442f32cb",
+      "markdownSha256": "sha256:0df66ca5149563da24257d4939f17ef9270e4dd5c2971a3e3067c5bc785e7821",
+      "inputHash": "sha256:032000273164da1c453e4ab819ce90fa968c589ea8b02f18a579f7715d0ecddb",
       "tasks": [
         {
           "taskId": "implement-rust-state-pattern-t1",
-          "prompt": "请创建 `post.rs` 和 `tradeoffs.md`。在 `post.rs` 中实现博客发布状态机：`Post` 结构体有一个私有状态字段且类型为 `Option<Box<dyn State>>`，初始为 `Draft`；实现 `Draft`、`PendingReview`、`Published` 三个状态。`Post` 提供 `request_review(&mut self)` 和 `approve(&mut self)`，都返回 `Result<(), &'static str>`；其中 `Draft::request_review` 转移到 `PendingReview`，`PendingReview::approve` 转移到 `Published`，其他调用返回 `Err` 而不是静默忽略。`Post::content(&self)` 返回 `&str`，仅在 `Published` 状态返回正文，其他状态返回空字符串。转移状态时使用 `take()` 从私有状态字段中取出旧状态。`tradeoffs.md` 记录 trait 对象状态模式和枚举+match 路线在新增状态时需要修改哪些位置的取舍。",
+          "prompt": "请在这个空目录中创建文件 post.rs，实现一个 Rust 博文发布流程状态机。要求：状态为 Draft、PendingReview、Published；Post 结构体拥有私有字段 state，类型为 Option<Box<dyn State>>；Draft 和 PendingReview 的 content 方法返回空字符串，Published 返回实际内容；提供 request_review 和 approve 方法转移状态，转移时用 take 取得所有权；对外提供 content 方法时用 as_ref 读取。",
           "fixtures": {},
           "checks": [
             {
@@ -4781,38 +4801,25 @@
               "path": "post.rs"
             },
             {
-              "type": "file_exists",
-              "path": "tradeoffs.md"
-            },
-            {
               "type": "contains",
               "path": "post.rs",
               "patterns": [
+                "trait State",
+                "Box<dyn State>",
                 "Option<Box<dyn State>>",
+                "self.state.take()",
+                "self.state.as_ref()",
                 "fn request_review",
                 "fn approve",
-                "fn content",
-                "self.state.take()",
-                "Draft",
-                "PendingReview",
-                "Published",
-                "Result<(), &'static str>"
+                "fn content"
               ]
             },
             {
               "type": "not_contains",
               "path": "post.rs",
               "patterns": [
-                "pub state:"
-              ]
-            },
-            {
-              "type": "contains",
-              "path": "tradeoffs.md",
-              "patterns": [
-                "新增状态",
-                "枚举",
-                "trait 对象"
+                "pub state",
+                "enum State"
               ]
             }
           ],
@@ -4820,7 +4827,7 @@
         },
         {
           "taskId": "implement-rust-state-pattern-t2",
-          "prompt": "请创建 `order.rs` 和 `checks.md`。在 `order.rs` 中实现订单状态机：`Order` 持有 `customer: String`、`amount: u64` 和私有状态字段 `state: Option<Box<dyn OrderState>>`。状态 `Created`、`Paid`、`Shipped`、`Completed` 各自实现统一 trait；`pay`、`ship`、`complete` 方法都返回 `Result<(), &'static str>`，非法转换返回错误并保持当前状态。状态对象应能访问订单数据（例如 `Shipped` 记录 `tracking_number`）。状态转移时使用 `take()` 移出旧状态，并在只读查询 `state_name` 中使用 `as_ref`。`checks.md` 写清楚你如何验证没有同时借用和移动。",
+          "prompt": "请在这个空目录中创建文件 order.rs，实现一个订单状态机。状态为 PendingPayment、Paid、Shipped、Completed，每个状态可以携带自己的数据；方法 pay、ship、complete 触发状态转换，非法转换返回 Err（例如未支付就 ship）；状态字段私有，类型 Option<Box<dyn State>>，转移时用 take 取得所有权。",
           "fixtures": {},
           "checks": [
             {
@@ -4828,44 +4835,26 @@
               "path": "order.rs"
             },
             {
-              "type": "file_exists",
-              "path": "checks.md"
-            },
-            {
               "type": "contains",
               "path": "order.rs",
               "patterns": [
-                "struct Order",
-                "customer: String",
-                "amount: u64",
-                "state: Option<Box<dyn OrderState>>",
+                "trait State",
+                "Box<dyn State>",
+                "Option<Box<dyn State>>",
+                "self.state.take()",
+                "Result<",
+                "Err(",
                 "fn pay",
                 "fn ship",
-                "fn complete",
-                "Result<(), &'static str>",
-                "self.state.take()",
-                "fn as_ref",
-                "Created",
-                "Paid",
-                "Shipped",
-                "Completed"
+                "fn complete"
               ]
             },
             {
               "type": "not_contains",
               "path": "order.rs",
               "patterns": [
-                "pub state:"
-              ]
-            },
-            {
-              "type": "contains",
-              "path": "checks.md",
-              "patterns": [
-                "take",
-                "as_ref",
-                "借用",
-                "移动"
+                "pub state",
+                "enum State"
               ]
             }
           ],
@@ -4873,43 +4862,36 @@
         },
         {
           "taskId": "implement-rust-state-pattern-t3",
-          "prompt": "请创建 `connection.rs` 和 `tradeoffs.md`。用状态模式实现简化连接状态机：`Closed`、`Listen`、`SynReceived`、`Established`。`Connection` 的私有状态字段类型为 `Option<Box<dyn ConnectionState>>`。提供 `listen`、`receive_syn`、`send_ack` 方法，返回 `Result<(), &'static str>`；非法转换返回 `Err`。只读方法 `status(&self) -> &str` 使用 `as_ref` 返回当前状态名，不允许移动状态。转移时使用 `take()`。`tradeoffs.md` 对比 trait 对象状态模式和枚举+match 在“新增一个状态”时需要改动哪些文件、编译期保障和运行时成本。",
+          "prompt": "请在这个空目录中创建文件 tcp.rs，实现一个简化的 TCP 连接状态机。状态包括 Closed、Listen、SynSent、Established、FinWait、TimeWait；提供 connect、listen、close、send 方法，某些状态不允许某些操作（例如 Closed 状态 send 应返回错误）；状态字段私有，类型 Option<Box<dyn State>>，转移时用 take，只读访问用 as_ref。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "connection.rs"
-            },
-            {
-              "type": "file_exists",
-              "path": "tradeoffs.md"
+              "path": "tcp.rs"
             },
             {
               "type": "contains",
-              "path": "connection.rs",
+              "path": "tcp.rs",
               "patterns": [
-                "Option<Box<dyn ConnectionState>>",
-                "fn listen",
-                "fn receive_syn",
-                "fn send_ack",
-                "fn status",
-                "self.state.as_ref()",
+                "trait State",
+                "Box<dyn State>",
+                "Option<Box<dyn State>>",
                 "self.state.take()",
-                "Closed",
-                "Listen",
-                "SynReceived",
-                "Established",
-                "Result<(), &'static str>"
+                "self.state.as_ref()",
+                "Result<",
+                "Err(",
+                "fn connect",
+                "fn listen",
+                "fn close",
+                "fn send"
               ]
             },
             {
-              "type": "contains",
-              "path": "tradeoffs.md",
+              "type": "not_contains",
+              "path": "tcp.rs",
               "patterns": [
-                "新增状态",
-                "枚举",
-                "match",
-                "trait 对象"
+                "pub state",
+                "enum State"
               ]
             }
           ],
@@ -4917,37 +4899,23 @@
         },
         {
           "taskId": "implement-rust-state-pattern-t4",
-          "prompt": "请创建 `document.rs`。实现文档审批状态机：`Document` 有私有状态字段 `Option<Box<dyn DocumentState>>`，状态 `Draft`、`InReview`、`Approved`、`Rejected`。提供 `submit_review`、`approve`、`reject` 方法，返回 `Result<(), &'static str>`；非法转换返回错误。提供 `state_name(&self) -> &str`，内部使用 `as_ref` 读取状态。转移状态时用 `take()`。在文件底部用 `#[cfg(test)]` 编写单元测试：验证 `Draft` 直接调用 `approve` 返回错误且状态名仍为 `Draft`，验证正常流程到 `Approved`。",
+          "prompt": "请在这个空目录中创建文件 tradeoffs.md，写一份关于状态机实现的取舍记录。内容要对比两种路线：使用 trait 对象状态模式（Box<dyn State>）与使用枚举加 match 穷举状态。重点说明当需要在一个已有状态之间插入一个新状态时，两种方案分别要改动哪些代码或文件。请使用中文术语：trait 对象、枚举、match、新增状态、文件。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "document.rs"
+              "path": "tradeoffs.md"
             },
             {
               "type": "contains",
-              "path": "document.rs",
+              "path": "tradeoffs.md",
               "patterns": [
-                "Option<Box<dyn DocumentState>>",
-                "fn submit_review",
-                "fn approve",
-                "fn reject",
-                "fn state_name",
-                "self.state.as_ref()",
-                "self.state.take()",
-                "#[test]",
-                "assert",
-                "Draft",
-                "InReview",
-                "Approved",
-                "Rejected"
-              ]
-            },
-            {
-              "type": "not_contains",
-              "path": "document.rs",
-              "patterns": [
-                "pub state:"
+                "trait",
+                "Box<dyn State>",
+                "枚举",
+                "match",
+                "新增状态",
+                "文件"
               ]
             }
           ],
@@ -4955,39 +4923,31 @@
         },
         {
           "taskId": "implement-rust-state-pattern-t5",
-          "prompt": "请创建 `workflow.rs` 和 `changes.md`。先实现一个只有 `Created` 和 `Paid` 两个状态的工作流状态机：`Workflow` 有私有状态字段 `Option<Box<dyn WorkflowState>>`，`pay` 方法从 `Created` 转到 `Paid`，返回 `Result<(), &'static str>`，非法转换返回错误，状态转移使用 `take()`。然后在该代码中增加 `Cancelled` 状态：`Created` 可以直接取消，`Paid` 不能取消。`changes.md` 列出为了插入 `Cancelled` 状态必须修改哪些已有状态代码（明确哪个状态的哪个方法需要增加什么转换）。",
+          "prompt": "请在这个空目录中创建文件 typestate_post.rs，实现一个类型状态版本的博文发布流程。使用三个不同的类型：DraftPost、PendingReviewPost、PublishedPost。DraftPost 只有 request_review(self) -> PendingReviewPost；PendingReviewPost 只有 approve(self) -> PublishedPost；PublishedPost 有 content(&self) -> &str 返回实际内容。不允许创建跳过状态的 Post。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "workflow.rs"
-            },
-            {
-              "type": "file_exists",
-              "path": "changes.md"
+              "path": "typestate_post.rs"
             },
             {
               "type": "contains",
-              "path": "workflow.rs",
+              "path": "typestate_post.rs",
               "patterns": [
-                "Option<Box<dyn WorkflowState>>",
-                "fn pay",
-                "fn cancel",
-                "self.state.take()",
-                "Created",
-                "Paid",
-                "Cancelled",
-                "Result<(), &'static str>"
+                "struct DraftPost",
+                "struct PendingReviewPost",
+                "struct PublishedPost",
+                "fn request_review(self) -> PendingReviewPost",
+                "fn approve(self) -> PublishedPost",
+                "fn content(&self) -> &str"
               ]
             },
             {
-              "type": "contains",
-              "path": "changes.md",
+              "type": "not_contains",
+              "path": "typestate_post.rs",
               "patterns": [
-                "Created",
-                "Paid",
-                "Cancelled",
-                "修改"
+                "Box<dyn State>",
+                "enum State"
               ]
             }
           ],
@@ -4995,48 +4955,33 @@
         },
         {
           "taskId": "implement-rust-state-pattern-t6",
-          "prompt": "请创建 `trait_state.rs`、`enum_state.rs` 和 `comparison.md`。实现红绿灯状态机 `Red -> Green -> Yellow -> Red`，转换方法 `next(&mut self) -> Result<(), &'static str>` 不允许跳过状态。`trait_state.rs` 使用 `Box<dyn State>` 和 `Option`+`take` 实现；`enum_state.rs` 使用枚举和 `match` 实现。`comparison.md` 对比如果新增 `FlashingYellow` 状态，两种实现各需要修改哪些代码位置。",
+          "prompt": "请在这个空目录中创建文件 door.rs，实现一个电梯门状态机。状态为 Open、Closed、Opening、Closing。提供 open 和 close 方法，当门已经打开时调用 open 返回错误，当门已经关闭时调用 close 返回错误。状态字段私有，类型 Option<Box<dyn State>>，转移时用 take 取得所有权。",
           "fixtures": {},
           "checks": [
             {
               "type": "file_exists",
-              "path": "trait_state.rs"
-            },
-            {
-              "type": "file_exists",
-              "path": "enum_state.rs"
-            },
-            {
-              "type": "file_exists",
-              "path": "comparison.md"
+              "path": "door.rs"
             },
             {
               "type": "contains",
-              "path": "trait_state.rs",
+              "path": "door.rs",
               "patterns": [
-                "Box<dyn",
-                "Option<",
-                "take()",
-                "fn next"
+                "trait State",
+                "Box<dyn State>",
+                "Option<Box<dyn State>>",
+                "self.state.take()",
+                "Result<",
+                "Err(",
+                "fn open",
+                "fn close"
               ]
             },
             {
-              "type": "contains",
-              "path": "enum_state.rs",
+              "type": "not_contains",
+              "path": "door.rs",
               "patterns": [
-                "enum State",
-                "match",
-                "fn next"
-              ]
-            },
-            {
-              "type": "contains",
-              "path": "comparison.md",
-              "patterns": [
-                "FlashingYellow",
-                "trait",
-                "enum",
-                "match"
+                "pub state",
+                "enum State"
               ]
             }
           ],
@@ -5238,27 +5183,38 @@
       "name": "match-rust-variants",
       "description": "用 Rust 的 match 与 if let 处理枚举变体：穷举匹配、通配分支顺序、绑定规则与可反驳/不可反驳模式的位置约束。适用于写命令解析、状态分发、只关心单个变体的解构，以及排查模式位置相关的编译错误时。",
       "riskFlags": [],
-      "markdownSha256": "sha256:b321f611b833ae2e405778d79484ecc82a504dedf0d37a654f75c0faeb3d757d",
-      "inputHash": "sha256:718980dfa99ad87aa6037c48ac4d78a8953a660dfd14319a846a9961adc523a2",
+      "markdownSha256": "sha256:788772ca2c5cd9eebc109b6cc555ab6dd3095bda2bee22a8835d87c1d5c0c53c",
+      "inputHash": "sha256:28985a9800eaa643bd8a55141a82d6f181df54c8eda5572cf757d9150097b98d",
       "tasks": [
         {
           "taskId": "match-rust-variants-t1",
-          "prompt": "在 out.rs 中定义枚举 `TrafficLight { Red, Yellow, Green }` 和函数 `color_name(light: &TrafficLight) -> &'static str`。使用 match 返回 \"stop\"、\"caution\"、\"go\"。要求列出所有变体，不要使用通配分支。",
+          "prompt": "请创建一个 Rust 文件 `traffic_light.rs`，定义枚举 `TrafficLight`，变体为 Red、Yellow、Green。然后实现一个函数 `fn duration(light: &TrafficLight) -> u32`，使用 `match` 穷举所有三个变体：Red 返回 60，Yellow 返回 5，Green 返回 30。不要使用 `if let` 或通配分支。",
           "fixtures": {},
           "checks": [
             {
+              "type": "file_exists",
+              "path": "traffic_light.rs"
+            },
+            {
               "type": "contains",
-              "path": "out.rs",
+              "path": "traffic_light.rs",
               "patterns": [
-                "Red => \"stop\"",
-                "Yellow => \"caution\"",
-                "Green => \"go\""
+                "enum TrafficLight",
+                "Red",
+                "Yellow",
+                "Green",
+                "fn duration",
+                "match light",
+                "=> 60",
+                "=> 5",
+                "=> 30"
               ]
             },
             {
               "type": "not_contains",
-              "path": "out.rs",
+              "path": "traffic_light.rs",
               "patterns": [
+                "if let",
                 "_ =>"
               ]
             }
@@ -5267,83 +5223,26 @@
         },
         {
           "taskId": "match-rust-variants-t2",
-          "prompt": "在 out.rs 中定义枚举 `Direction { North, South, East, West }` 和函数 `is_horizontal(dir: Direction) -> bool`。使用 match 表达式：East 和 West 返回 true，其他方向用通配分支返回 false。通配分支必须放在最后。每个 match 分支写在一行内，不要添加注释。",
+          "prompt": "请写一个 Rust 文件 `get_name.rs`，定义一个函数 `fn get_name(maybe_name: Option<String>) -> String`。当 `maybe_name` 是 `Some` 时返回里面的字符串；当是 `None` 时返回 `\"unknown\"`。必须使用 `if let`，不要使用 `match`。",
           "fixtures": {},
           "checks": [
             {
+              "type": "file_exists",
+              "path": "get_name.rs"
+            },
+            {
               "type": "contains",
-              "path": "out.rs",
+              "path": "get_name.rs",
               "patterns": [
-                "East => true",
-                "West => true",
-                "_ => false"
+                "fn get_name",
+                "Option<String>",
+                "if let Some",
+                "\"unknown\""
               ]
             },
             {
               "type": "not_contains",
-              "path": "out.rs",
-              "patterns": [
-                "North =>",
-                "South =>"
-              ]
-            },
-            {
-              "type": "regex",
-              "path": "out.rs",
-              "pattern": "East[\\s\\S]*West[\\s\\S]*_\\s*=>"
-            }
-          ],
-          "containsNameLeak": false
-        },
-        {
-          "taskId": "match-rust-variants-t3",
-          "prompt": "在 out.rs 中定义枚举 `Event { Start, Move { x: i32, y: i32, z: i32 }, Stop }` 和函数 `event_label(event: &Event) -> &'static str`。使用 match，返回 \"start\"、\"move\"、\"stop\"。对 Move 变体，只绑定 x 和 y，用 `..` 忽略 z。每个分支写在一行内。",
-          "fixtures": {},
-          "checks": [
-            {
-              "type": "contains",
-              "path": "out.rs",
-              "patterns": [
-                "Start => \"start\"",
-                "Stop => \"stop\""
-              ]
-            },
-            {
-              "type": "regex",
-              "path": "out.rs",
-              "pattern": "Move\\s*\\{\\s*x\\s*,\\s*y\\s*,\\s*\\.\\.\\s*\\}\\s*=>"
-            },
-            {
-              "type": "not_contains",
-              "path": "out.rs",
-              "patterns": [
-                "Move { x, y, z"
-              ]
-            }
-          ],
-          "containsNameLeak": false
-        },
-        {
-          "taskId": "match-rust-variants-t4",
-          "prompt": "在 out.rs 中定义枚举 `Message { Quit, Write(String), ChangeColor(i32, i32, i32) }` 和函数 `is_write(msg: &Message) -> bool`。使用 if let 判断消息是否为 Write 变体；是则返回 true，否则返回 false。不要使用 match。每个 if let 写在一行内。",
-          "fixtures": {},
-          "checks": [
-            {
-              "type": "regex",
-              "path": "out.rs",
-              "pattern": "if\\s+let\\s+Message::Write\\(_\\)\\s*=\\s*msg"
-            },
-            {
-              "type": "contains",
-              "path": "out.rs",
-              "patterns": [
-                "true",
-                "false"
-              ]
-            },
-            {
-              "type": "not_contains",
-              "path": "out.rs",
+              "path": "get_name.rs",
               "patterns": [
                 "match"
               ]
@@ -5352,28 +5251,98 @@
           "containsNameLeak": false
         },
         {
-          "taskId": "match-rust-variants-t5",
-          "prompt": "在 out.rs 中定义结构体 `Point { x: i32 }` 和函数 `get_x(opt: Option<Point>) -> Option<i32>`。使用 if let 解构 Option 的 Some(point)，返回 Some(point.x)；其他情况返回 None。不要用 let 直接解构 Some。添加一行中文注释说明 let 只能接受不可反驳模式。每个分支写在一行内。",
+          "taskId": "match-rust-variants-t3",
+          "prompt": "请写 `message_describe.rs`，定义枚举 `Message`，包含 `Quit`、`Move { x: i32, y: i32 }`、`Write(String)`。实现 `fn describe(msg: &Message) -> String`，使用 `match` 穷举：`Quit` 返回 `\"quits\"`；`Move` 绑定并使用 `x`、`y` 返回 `format!(\"move to {},{}\", x, y)`；`Write` 绑定字符串并返回 `format!(\"write: {}\", s)`。显式绑定带数据的字段。",
           "fixtures": {},
           "checks": [
             {
-              "type": "not_contains",
-              "path": "out.rs",
+              "type": "file_exists",
+              "path": "message_describe.rs"
+            },
+            {
+              "type": "contains",
+              "path": "message_describe.rs",
               "patterns": [
-                "let Some(point) = opt;"
+                "enum Message",
+                "Quit",
+                "Move { x: i32, y: i32 }",
+                "Write(String)",
+                "fn describe",
+                "match msg",
+                "format!(\"move to {},{}\", x, y)",
+                "format!(\"write: {}\", s)",
+                "\"quits\""
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "message_describe.rs",
+              "patterns": [
+                "_ =>"
+              ]
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "match-rust-variants-t4",
+          "prompt": "请写 `fruit_price.rs`，定义枚举 `Fruit`：`Apple`、`Banana`、`Cherry`。实现 `fn price(fruit: &Fruit) -> u32`，使用 `match`：Apple 返回 3，Banana 返回 5，Cherry 返回 8，最后使用 `_ => 0` 作为通配分支。通配分支必须放在最后，并且不绑定数据。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fruit_price.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fruit_price.rs",
+              "patterns": [
+                "enum Fruit",
+                "Apple",
+                "Banana",
+                "Cherry",
+                "fn price",
+                "match fruit",
+                "=> 3",
+                "=> 5",
+                "=> 8",
+                "_ => 0"
               ]
             },
             {
               "type": "regex",
-              "path": "out.rs",
-              "pattern": "if\\s+let\\s+Some\\(point\\)\\s*=\\s*opt"
+              "path": "fruit_price.rs",
+              "pattern": "Apple\\s*=>\\s*3\\s*,[\\s\\S]*?Banana\\s*=>\\s*5\\s*,[\\s\\S]*?Cherry\\s*=>\\s*8\\s*,[\\s\\S]*?_\\s*=>\\s*0"
+            }
+          ],
+          "containsNameLeak": false
+        },
+        {
+          "taskId": "match-rust-variants-t5",
+          "prompt": "我有个 Rust 文件 `broken.rs`，其中在 `let` 语句里使用了可反驳模式，无法编译。请阅读 `broken.rs`，把修复后的代码写入 `fixed.rs`：当 `maybe` 是 `Some(value)` 时打印这个值（使用 `println!(\"{}\", value)`），当是 `None` 时打印 `println!(\"no value\")`。要求使用 `if let`，不要使用 `match`。",
+          "fixtures": {
+            "broken.rs": "fn main() {\n    let maybe: Option<i32> = Some(5);\n    let Some(value) = maybe;\n    println!(\"{}\", value);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
             },
             {
               "type": "contains",
-              "path": "out.rs",
+              "path": "fixed.rs",
               "patterns": [
-                "不可反驳模式",
-                "None"
+                "fn main",
+                "if let Some(value) = maybe",
+                "println!(\"{}\", value)",
+                "println!(\"no value\")"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "match"
               ]
             }
           ],
@@ -5381,35 +5350,31 @@
         },
         {
           "taskId": "match-rust-variants-t6",
-          "prompt": "在 out.rs 中定义枚举 `Command { Quit, Help, Run(String), List }` 和两个函数。`execute(command: &Command)` 用 match 打印：Quit -> 'Bye'，Help -> 'Usage: ...'，Run(program) -> 'running {program}'，List 用通配分支打印 'not implemented'，通配分支放最后。`run_if_present(command: &Command)` 只对 Run 变体执行打印，用 if let 实现。每个 match 和 if let 分支写在一行内，不要添加注释。",
+          "prompt": "请写 `get_port.rs`，定义函数 `fn get_port(config: Option<u16>) -> u16`。使用 `let else` 解构 `Some(port)` 并返回它；如果是 `None`，用 `let Some(port) = config else { return 0; };` 的写法返回 0。不要使用 `match` 或 `if let`。",
           "fixtures": {},
           "checks": [
             {
+              "type": "file_exists",
+              "path": "get_port.rs"
+            },
+            {
               "type": "contains",
-              "path": "out.rs",
+              "path": "get_port.rs",
               "patterns": [
-                "Quit => println!(\"Bye\")",
-                "Help => println!(\"Usage: ...\")",
-                "Run(program) => println!(\"running {program}\")",
-                "_ => println!(\"not implemented\")"
+                "fn get_port",
+                "Option<u16>",
+                "let Some(port) = config else",
+                "return 0",
+                "port"
               ]
             },
             {
               "type": "not_contains",
-              "path": "out.rs",
+              "path": "get_port.rs",
               "patterns": [
-                "List =>"
+                "match",
+                "if let"
               ]
-            },
-            {
-              "type": "regex",
-              "path": "out.rs",
-              "pattern": "Quit[\\s\\S]*Help[\\s\\S]*Run[\\s\\S]*_\\s*=>"
-            },
-            {
-              "type": "regex",
-              "path": "out.rs",
-              "pattern": "if\\s+let\\s+Command::Run\\(program\\)\\s*=\\s*command"
             }
           ],
           "containsNameLeak": false
@@ -6151,7 +6116,7 @@
     }
   ],
   "usage": {
-    "promptTokens": 88455,
-    "completionTokens": 406260
+    "promptTokens": 95110,
+    "completionTokens": 436694
   }
 }

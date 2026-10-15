@@ -48,13 +48,14 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
     objectIndex = await loadObjectIndex(REPO)
   })
 
-  it('15 个成员（+2 rejected 记录）、slug 唯一且合法；30 个旧 slug 全部被引用；rejected 绝不出现', () => {
+  it('17 个成员（卡 28 复评中）、slug 唯一且合法；30 个旧 slug 全部被引用；rejected 绝不出现', () => {
     assert.equal(suite.manifest.schemaVersion, TASK_SUITE_SCHEMA_VERSION)
     const slugs = suite.manifest.members.map((m) => m.slug)
-    // 15 = 19 首版 − 2 对合并（19→17）+ 2 个评测拒绝下架（17→15，见清单 mergeNote/assessmentNote）
-    assert.equal(slugs.length, 15)
-    assert.equal(new Set(slugs).size, 15)
-    assert.equal((suite.manifest.rejected ?? []).length, 2, '两个确认负迁移的记录在 rejected 段')
+    // 卡 28 复评中：两个被拒例修订后回到 members（17），rejected 段清零；
+    // 复评若仍拒，则翻回 15/2——测试随事实更新，不因历史而僵化。
+    assert.equal(slugs.length, 17)
+    assert.equal(new Set(slugs).size, 17)
+    assert.equal((suite.manifest.rejected ?? []).length, 0, '卡 28：两被拒例已修订回区复评')
     for (const s of slugs) assert.match(s, /^[a-z0-9]+(-[a-z0-9]+)+$/)
     const referenced = new Set([...suite.manifest.members, ...(suite.manifest.rejected ?? [])].flatMap((m) => m.legacySlugs))
     for (const l of [...FIRST, ...RUST]) assert.ok(referenced.has(l), `旧 slug 未被引用：${l}`)
@@ -119,7 +120,7 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
 })
 
 describe('26 · 工作流与渲染：完整性与确定性', () => {
-  it('15 份工作流字段齐全（含 rollback 处置与非空数组）', async () => {
+  it('17 份工作流字段齐全（含 rollback 处置与非空数组）', async () => {
     const suite = await loadSuiteManifest(REPO)
     for (const member of suite.manifest.members) {
       const { workflow } = await loadWorkflow(REPO, member)

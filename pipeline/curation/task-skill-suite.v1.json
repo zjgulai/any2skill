@@ -628,16 +628,14 @@
         "AP-SYNTH-T12-05"
       ],
       "workflowFile": "pipeline/curation/workflows/update-agent-instructions.json"
-    }
-  ],
-  "updatedAt": "2026-10-16",
-  "mergeNote": "评测合并（卡 27/ADR-032 决策四，用户拍板「两对都合，联名重写」）：define-agent-boundaries+secure-agent-actions → define-agent-boundaries-and-safeguards（strict 3/3 最强稳定边）；coordinate-agent-work+verify-agent-completion → coordinate-agent-work-and-verification（strict 2/1）。19 → 17 成员。",
-  "rejected": [
+    },
     {
       "slug": "match-rust-variants",
-      "rejectedAt": "2026-10-16",
-      "reason": "negative-transfer-confirmed",
-      "evidenceFile": "pipeline/registry/rejected/match-rust-variants/REJECTION.md",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch06-02-match-s1",
+        "ch18-02-refutability-s1"
+      ],
       "primaryObjects": [
         "CH06-02-MATCH-H2-1-CONCEPT-01",
         "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
@@ -661,17 +659,16 @@
         "AP-SYNTH-T04-05",
         "AP-SYNTH-T04-06"
       ],
-      "legacySlugs": [
-        "ch06-02-match-s1",
-        "ch18-02-refutability-s1"
-      ],
-      "sourceKey": "rust-book-cn"
+      "workflowFile": "pipeline/curation/workflows/match-rust-variants.json",
+      "revisedAt": "2026-10-16",
+      "revisionNote": "字面保真条款（卡 28）；复评批次=修订后首跑"
     },
     {
       "slug": "implement-rust-state-pattern",
-      "rejectedAt": "2026-10-16",
-      "reason": "negative-transfer-confirmed",
-      "evidenceFile": "pipeline/registry/rejected/implement-rust-state-pattern/REJECTION.md",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch17-03-oo-design-patterns-s1"
+      ],
       "primaryObjects": [
         "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
         "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
@@ -690,11 +687,13 @@
         "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02"
       ],
       "crossChapterObjects": [],
-      "legacySlugs": [
-        "ch17-03-oo-design-patterns-s1"
-      ],
-      "sourceKey": "rust-book-cn"
+      "workflowFile": "pipeline/curation/workflows/implement-rust-state-pattern.json",
+      "revisedAt": "2026-10-16",
+      "revisionNote": "字面保真条款（卡 28）；复评批次=修订后首跑"
     }
   ],
-  "assessmentNote": "评测（卡 27/ADR-032）：gate2 两轮 + gate3 两源全量。最终 15 个在售（6 passed / 9 low-utility）；2 个确认负迁移下架（implement-rust-state-pattern、match-rust-variants）——所有权记录保留在 rejected 段，保并集可验。"
+  "updatedAt": "2026-10-16",
+  "mergeNote": "评测合并（卡 27/ADR-032 决策四，用户拍板「两对都合，联名重写」）：define-agent-boundaries+secure-agent-actions → define-agent-boundaries-and-safeguards（strict 3/3 最强稳定边）；coordinate-agent-work+verify-agent-completion → coordinate-agent-work-and-verification（strict 2/1）。19 → 17 成员。",
+  "rejected": [],
+  "assessmentNote": "评测（卡 27/ADR-032）：gate2 两轮 + gate3 两源全量。最终 15 个在售（6 passed / 9 low-utility）；2 个确认负迁移下架（implement-rust-state-pattern、match-rust-variants）——所有权记录保留在 rejected 段，保并集可验。 卡 28：两被拒例修订字面保真条款后移回 members 复评；compose-rust-closures 同步修订。"
 }
