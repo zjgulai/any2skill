@@ -1,0 +1,1339 @@
+{
+ "schemaVersion": "fs-ledger/v1",
+ "pid": 46592,
+ "argv": [
+  "/Users/lute/Project/any2skills/pipeline/experiments/probe-task-headroom.mjs",
+  "--skill",
+  "ch05-03-method-syntax-s1",
+  "--source-key",
+  "rust-book-cn",
+  "--model",
+  "deepseek-v4-pro",
+  "--base-url",
+  "https://api.deepseek.com",
+  "--api-key-env",
+  "DEEPSEEK_API_KEY"
+ ],
+ "cwd": "/Users/lute/Project/any2skills",
+ "startedAt": "2026-10-15T06:41:40.841Z",
+ "endedAt": "2026-10-15T06:48:45.669Z",
+ "recordCount": 263,
+ "truncated": false,
+ "records": [
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/experiments/probe-task-headroom.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/experiments/probe-task-headroom.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/experiments/probe-task-headroom.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/experiments/probe-task-headroom.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/experiments/probe-task-headroom.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/verify-skill.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/verify-skill.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/verify-skill.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/skill-builder.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/skill-builder.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/skill-builder.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/gate3-utility-ab.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/gate3-utility-ab.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/gate3-utility-ab.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/anchor-index.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/llm-client.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "realpathSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/model-json.mjs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/model-json.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "openSync",
+   "path": "/Users/lute/Project/any2skills/pipeline/tools/model-json.mjs",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/skills/ch05-03-method-syntax-s1/SKILL.md",
+   "mode": "read"
+  },
+  {
+   "op": "readFile",
+   "path": "/Users/lute/Project/any2skills/pipeline/registry/build/ch05-03-method-syntax-s1/skill-contract.json",
+   "mode": "read"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-without-6aI8b0",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t1-with-l0pmez",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-without-Npscio",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t2-with-TGAgXc",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-without-yBohwh",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t3-with-IX3OAV",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-without-Wdq3l8",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t4-with-rdoNVA",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-without-3oL9I5",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t5-with-jTGH8Z",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-without-HiRKCj",
+   "mode": "write"
+  },
+  {
+   "op": "mkdtemp",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-",
+   "mode": "write"
+  },
+  {
+   "op": "mkdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV",
+   "mode": "write"
+  },
+  {
+   "op": "writeFile",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "existsSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "statSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "readFileSync",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "read"
+  },
+  {
+   "op": "rm",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV",
+   "mode": "write"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV",
+   "mode": "meta"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV",
+   "mode": "meta"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV",
+   "mode": "write"
+  },
+  {
+   "op": "readdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV",
+   "mode": "read"
+  },
+  {
+   "op": "lstat",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "meta"
+  },
+  {
+   "op": "unlink",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV/main.rs",
+   "mode": "write"
+  },
+  {
+   "op": "rmdir",
+   "path": "/var/folders/lg/rbyr0yt54pq7z5dhlthlqjc00000gn/T/any2skills-gate3-t6-with-WRNwQV",
+   "mode": "write"
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+生成任务 6 个（v2 提示词；problems=0）
+  invalid     无=败 有=败 | 请写一个完整的 Rust 程序（保存为 main.rs）。程序创建 5 个线程，每个线程对同一个共享计数器加 1，然后等待所有线程结束，最后
+  both-pass   无=过 有=过 | 请写一个 Rust 程序（保存为 main.rs）。创建一个共享的 Vec<i32>，变量名为 shared_vec。在锁内使用 `guar
+  both-pass   无=过 有=过 | 下面的 main.rs 试图在线程间共享一个引用计数的互斥数据，但使用了无法在线程间安全共享的类型。请修正代码，保存为 main.rs（可以
+  invalid     无=败 有=败 | 请写一个 Rust 程序（保存为 main.rs）。定义两个账户，每个账户是一个余额 Mutex<i32>，并带一个 u32 编号。实现一个
+  both-pass   无=过 有=过 | 请写一个 Rust 程序（保存为 main.rs）。创建一个共享计数器，变量名为 counter，注意不要使用 mut 声明 counter
+  invalid     无=败 有=败 | 请写一个 Rust 程序（保存为 main.rs）。模拟一个共享麦克风，使用 Mutex<()> 表示麦克风，变量名为 mic。创建两个线程
+探针合计：{"invalid":3,"both-pass":3}
+→ 本样本下 v2 仍未推出改进（偏 H1 方向，需更多样本再定论）

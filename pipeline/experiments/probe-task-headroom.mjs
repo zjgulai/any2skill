@@ -57,7 +57,7 @@ export function buildTaskGenSystemPromptV2({ k }) {
 
 function parseArgs(argv) {
   const args = argv.slice(2)
-  const flags = { repoRoot: DEFAULT_REPO_ROOT, sourceKey: DEFAULT_SOURCE_KEY, skill: null, model: null, baseUrl: null, maxTokens: null }
+  const flags = { repoRoot: DEFAULT_REPO_ROOT, sourceKey: DEFAULT_SOURCE_KEY, skill: null, model: null, baseUrl: null, maxTokens: null, apiKeyEnv: null }
   const need = (i, name) => {
     const v = args[i + 1]
     if (v === undefined || v.startsWith('--')) throw new Error(`${name} 缺少取值`)
@@ -71,6 +71,7 @@ function parseArgs(argv) {
     else if (a === '--base-url') (flags.baseUrl = need(i, a)), (i += 1)
     else if (a === '--repo-root') (flags.repoRoot = path.resolve(need(i, a))), (i += 1)
     else if (a === '--max-tokens') (flags.maxTokens = Number(need(i, a))), (i += 1)
+    else if (a === '--api-key-env') (flags.apiKeyEnv = need(i, a)), (i += 1)
     else throw new Error(`未知参数：${a}`)
   }
   if (!flags.skill) throw new Error('必须给 --skill <slug>')
@@ -87,11 +88,18 @@ async function main(argv) {
 
   let config
   try {
+    // --api-key-env <名>：从已有环境变量取键（实验脚本用；正式链路仍走 llm-client 的既有解析）。
+    let apiKey = null
+    if (flags.apiKeyEnv) {
+      apiKey = process.env[flags.apiKeyEnv]
+      if (!apiKey) throw new Error(`环境变量 ${flags.apiKeyEnv} 未设置或为空`)
+    }
     config = await resolveLlmConfig({
       env: process.env,
       overrides: {
         ...(flags.model ? { modelId: flags.model } : {}),
         ...(flags.baseUrl ? { baseUrl: flags.baseUrl } : {}),
+        ...(apiKey ? { apiKey } : {}),
       },
     })
   } catch (err) {
