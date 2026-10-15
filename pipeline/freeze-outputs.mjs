@@ -65,6 +65,7 @@ export const FROZEN_PATHS = Object.freeze([
   'pipeline/curation/**',
   'pipeline/registry/task-suite-lineage.v1.json',
   'pipeline/registry/task-suite-status.v1.json',
+  'pipeline/registry/task-suite-assessment.v1.json',
   'pipeline/registry/legacy-published/**',
   // 三道门禁的最终报告（比对结论须引用它们的状态）
   'pipeline/registry/gate2-report.json',

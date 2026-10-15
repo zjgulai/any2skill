@@ -68,7 +68,8 @@ async function hashDir(abs) {
 
 export async function planMigration(repoRoot = DEFAULT_REPO_ROOT) {
   const suite = await loadSuiteManifest(repoRoot)
-  const legacy = [...new Set(suite.manifest.members.flatMap((m) => m.legacySlugs))].sort()
+  // 旧 slug 清单含 rejected 段的 legacy（卡 27：被拒成员从 members 移除，但其 legacy 输入仍在归档面）
+  const legacy = [...new Set([...suite.manifest.members, ...(suite.manifest.rejected ?? [])].flatMap((m) => m.legacySlugs))].sort()
   const newSlugs = suite.manifest.members.map((m) => m.slug)
 
   const skillsDir = path.join(repoRoot, 'skills')

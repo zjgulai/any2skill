@@ -106,38 +106,6 @@
       "workflowFile": "pipeline/curation/workflows/model-rust-domain-types.json"
     },
     {
-      "slug": "match-rust-variants",
-      "sourceKey": "rust-book-cn",
-      "legacySlugs": [
-        "ch06-02-match-s1",
-        "ch18-02-refutability-s1"
-      ],
-      "primaryObjects": [
-        "CH06-02-MATCH-H2-1-CONCEPT-01",
-        "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
-        "CH06-02-MATCH-H3-1-CONCEPT-01",
-        "CH06-02-MATCH-H3-1-CONCEPT-02",
-        "CH06-02-MATCH-H3-2-CONCEPT-01",
-        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-01",
-        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-02",
-        "CH06-02-MATCH-H3-3-ENGINEERINGRULE-01",
-        "CH06-02-MATCH-H3-4-ENGINEERINGRULE-01",
-        "CH06-02-MATCH-H3-4-CONCEPT-02",
-        "CH06-03-IF-LET-H2-1-CONCEPT-01",
-        "CH06-03-IF-LET-H2-1-HEURISTIC-02",
-        "CH06-03-IF-LET-H2-2-HEURISTIC-01",
-        "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
-        "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02"
-      ],
-      "crossChapterObjects": [
-        "AP-SYNTH-T04-03",
-        "AP-SYNTH-T04-04",
-        "AP-SYNTH-T04-05",
-        "AP-SYNTH-T04-06"
-      ],
-      "workflowFile": "pipeline/curation/workflows/match-rust-variants.json"
-    },
-    {
       "slug": "process-rust-text-and-hashmaps",
       "sourceKey": "rust-book-cn",
       "legacySlugs": [
@@ -414,32 +382,6 @@
       "workflowFile": "pipeline/curation/workflows/run-rust-tests.json"
     },
     {
-      "slug": "implement-rust-state-pattern",
-      "sourceKey": "rust-book-cn",
-      "legacySlugs": [
-        "ch17-03-oo-design-patterns-s1"
-      ],
-      "primaryObjects": [
-        "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-02",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-2-CONCEPT-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-3-ENGINEERINGRULE-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-4-CONCEPT-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-02",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-6-ENGINEERINGRULE-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H3-6-ANTIPATTERN-02",
-        "CH17-03-OO-DESIGN-PATTERNS-H4-1-CONCEPT-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H4-1-ENGINEERINGRULE-02",
-        "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-01",
-        "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02"
-      ],
-      "crossChapterObjects": [],
-      "workflowFile": "pipeline/curation/workflows/implement-rust-state-pattern.json"
-    },
-    {
       "slug": "define-agent-boundaries-and-safeguards",
       "sourceKey": "ai-agent-book-zh",
       "legacySlugs": [
@@ -688,6 +630,71 @@
       "workflowFile": "pipeline/curation/workflows/update-agent-instructions.json"
     }
   ],
-  "updatedAt": "2026-10-15",
-  "mergeNote": "评测合并（卡 27/ADR-032 决策四，用户拍板「两对都合，联名重写」）：define-agent-boundaries+secure-agent-actions → define-agent-boundaries-and-safeguards（strict 3/3 最强稳定边）；coordinate-agent-work+verify-agent-completion → coordinate-agent-work-and-verification（strict 2/1）。19 → 17 成员。"
+  "updatedAt": "2026-10-16",
+  "mergeNote": "评测合并（卡 27/ADR-032 决策四，用户拍板「两对都合，联名重写」）：define-agent-boundaries+secure-agent-actions → define-agent-boundaries-and-safeguards（strict 3/3 最强稳定边）；coordinate-agent-work+verify-agent-completion → coordinate-agent-work-and-verification（strict 2/1）。19 → 17 成员。",
+  "rejected": [
+    {
+      "slug": "match-rust-variants",
+      "rejectedAt": "2026-10-16",
+      "reason": "negative-transfer-confirmed",
+      "evidenceFile": "pipeline/registry/rejected/match-rust-variants/REJECTION.md",
+      "primaryObjects": [
+        "CH06-02-MATCH-H2-1-CONCEPT-01",
+        "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
+        "CH06-02-MATCH-H3-1-CONCEPT-01",
+        "CH06-02-MATCH-H3-1-CONCEPT-02",
+        "CH06-02-MATCH-H3-2-CONCEPT-01",
+        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-02",
+        "CH06-02-MATCH-H3-3-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H3-4-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H3-4-CONCEPT-02",
+        "CH06-03-IF-LET-H2-1-CONCEPT-01",
+        "CH06-03-IF-LET-H2-1-HEURISTIC-02",
+        "CH06-03-IF-LET-H2-2-HEURISTIC-01",
+        "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
+        "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T04-03",
+        "AP-SYNTH-T04-04",
+        "AP-SYNTH-T04-05",
+        "AP-SYNTH-T04-06"
+      ],
+      "legacySlugs": [
+        "ch06-02-match-s1",
+        "ch18-02-refutability-s1"
+      ],
+      "sourceKey": "rust-book-cn"
+    },
+    {
+      "slug": "implement-rust-state-pattern",
+      "rejectedAt": "2026-10-16",
+      "reason": "negative-transfer-confirmed",
+      "evidenceFile": "pipeline/registry/rejected/implement-rust-state-pattern/REJECTION.md",
+      "primaryObjects": [
+        "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-2-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-3-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-4-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-6-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-6-ANTIPATTERN-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-1-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-1-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02"
+      ],
+      "crossChapterObjects": [],
+      "legacySlugs": [
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "sourceKey": "rust-book-cn"
+    }
+  ],
+  "assessmentNote": "评测（卡 27/ADR-032）：gate2 两轮 + gate3 两源全量。最终 15 个在售（6 passed / 9 low-utility）；2 个确认负迁移下架（implement-rust-state-pattern、match-rust-variants）——所有权记录保留在 rejected 段，保并集可验。"
 }

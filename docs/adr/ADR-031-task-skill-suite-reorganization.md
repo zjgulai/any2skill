@@ -63,6 +63,24 @@
 这是**预期**且由 lineage 的归档哈希接管可证性。新冻结（250 文件）覆盖新发布面、curation
 清单/工作流、lineage/status 与归档面。
 
+## 追加记录（2026-10-16，卡 27/ADR-032 评测产出）
+
+**本 ADR 正文一字未动，此处记录评测对套件边界的修订。**
+
+1. **19 → 17（评测合并，用户拍板「两对都合，联名重写」）**：
+   `define-agent-boundaries-and-safeguards` ← define + secure（strict 3/3 最强稳定边）；
+   `coordinate-agent-work-and-verification` ← coordinate + verify（strict 2/1）。
+   被并者逐字节归档 `legacy-published/task-suite-v1-premerge/`；两合并体的标题/描述
+   按并集重写（编辑层修订，所有权来自机械配对）。
+2. **17 → 15（两个确认负迁移下架）**：`implement-rust-state-pattern`、
+   `match-rust-variants`（各 t6 复跑复现，ADR-006）→ `registry/rejected/`，
+   所有权记录移入清单 `rejected` 段（并集/不相交校验覆盖全量，测试已更新）。
+3. **最终发布面 15 个**：6 passed / 9 low-utility。触发面收敛数据与两源判定见
+   `pipeline/registry/task-suite-assessment.v1.json` 与
+   [`卡 27`](../tickets/27-task-suite-assessment.md)。
+4. 「技能词汇覆盖任务字面」失效族在四个拒绝例上复现——修订方向记录在首个
+   REJECTION.md（必读），修订与复评另立卡。
+
 ## 被否决的方案
 
 | 方案 | 否决理由 |

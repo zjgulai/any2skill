@@ -118,8 +118,8 @@
       "markdownSha256": "sha256:0dce5491dadcd753243d323c7474d79b0b2835ef75bc79ecb2f4ac7bc19c2452"
     }
   ],
-  "triggerAssessment": "unassessed-after-recomposition",
-  "utilityAssessment": "unassessed-after-recomposition",
+  "triggerAssessment": "assessed-2026-10-15（gate2 套件目录模式两轮，reports 见 assessment 文件）",
+  "utilityAssessment": "assessed-2026-10-15/16（gate3 两源全量：6 passed / 9 low-utility / 2 rejected）",
   "note": "重组使历史上全部门禁二/三证据不再与本套件的名称/描述/正文对应——按 ADR-030 的重测协议与 ADR-031 的证据边界：**不聚合、不继承**旧的 passed/low-utility 判定。付费重测须由用户显式发起；发起前本套件是「结构合规、效用未评」状态，披露载体为本文件与 README。",
   "historicalEvidence": {
     "tiersFile": "pipeline/registry/tiers.json",
@@ -137,5 +137,7 @@
   "rejectedKept": [
     "chapter3-s1",
     "ch13-02-iterators-s1"
-  ]
+  ],
+  "assessmentFile": "pipeline/registry/task-suite-assessment.v1.json",
+  "amendments": "卡 27/ADR-032：19→17（评测合并，mergeArchive）+ 17→15（2 个确认负迁移下架，registry/rejected/）。structuralGateDetail 为迁移时点的 19 成员记录（历史）。"
 }

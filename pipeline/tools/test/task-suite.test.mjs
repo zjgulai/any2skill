@@ -48,14 +48,15 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
     objectIndex = await loadObjectIndex(REPO)
   })
 
-  it('17 个成员、slug 唯一且合法；30 个旧 slug 全部被引用；rejected 绝不出现', () => {
+  it('15 个成员（+2 rejected 记录）、slug 唯一且合法；30 个旧 slug 全部被引用；rejected 绝不出现', () => {
     assert.equal(suite.manifest.schemaVersion, TASK_SUITE_SCHEMA_VERSION)
     const slugs = suite.manifest.members.map((m) => m.slug)
-    // 17 = 重组首版 19 经评测合并（卡 27：两对合并，19→17，见清单 mergeNote）
-    assert.equal(slugs.length, 17)
-    assert.equal(new Set(slugs).size, 17)
+    // 15 = 19 首版 − 2 对合并（19→17）+ 2 个评测拒绝下架（17→15，见清单 mergeNote/assessmentNote）
+    assert.equal(slugs.length, 15)
+    assert.equal(new Set(slugs).size, 15)
+    assert.equal((suite.manifest.rejected ?? []).length, 2, '两个确认负迁移的记录在 rejected 段')
     for (const s of slugs) assert.match(s, /^[a-z0-9]+(-[a-z0-9]+)+$/)
-    const referenced = new Set(suite.manifest.members.flatMap((m) => m.legacySlugs))
+    const referenced = new Set([...suite.manifest.members, ...(suite.manifest.rejected ?? [])].flatMap((m) => m.legacySlugs))
     for (const l of [...FIRST, ...RUST]) assert.ok(referenced.has(l), `旧 slug 未被引用：${l}`)
     assert.equal(referenced.size, 30)
     const raw = JSON.stringify(suite.manifest)
@@ -68,8 +69,10 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
       for (const l of slugs) for (const o of (await contractOf(l)).sourceObjects ?? []) set.add(o)
       return set
     }
-    const firstMembers = suite.manifest.members.filter((m) => m.sourceKey === 'ai-agent-book-zh')
-    const rustMembers = suite.manifest.members.filter((m) => m.sourceKey === 'rust-book-cn')
+    // rejected 段（卡 27）：所有权记录保留——并集与不相交对「在售 ∪ 已拒」全量成立。
+    const allOwnership = [...suite.manifest.members, ...(suite.manifest.rejected ?? [])]
+    const firstMembers = allOwnership.filter((m) => m.sourceKey === 'ai-agent-book-zh')
+    const rustMembers = allOwnership.filter((m) => m.sourceKey === 'rust-book-cn')
 
     for (const [members, legacy] of [[firstMembers, FIRST], [rustMembers, RUST]]) {
       const seen = new Map()
@@ -95,16 +98,18 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
       for (const l of slugs) for (const a of (await contractOf(l)).crossChapterObjects ?? []) set.add(a)
       return set
     }
-    for (const [legacy, keys] of [[FIRST, ['design-agent-tools', 'define-agent-boundaries-and-safeguards', 'update-agent-instructions']], [RUST, suite.manifest.members.filter((m) => m.sourceKey === 'rust-book-cn').map((m) => m.slug)]]) {
+    const rustSlugs = [...suite.manifest.members, ...(suite.manifest.rejected ?? [])].filter((m) => m.sourceKey === 'rust-book-cn').map((m) => m.slug)
+    for (const [legacy, keys] of [[FIRST, ['design-agent-tools', 'define-agent-boundaries-and-safeguards', 'update-agent-instructions']], [RUST, rustSlugs]]) {
       const legacyUnion = await legacyApsOf(legacy)
       const newUnion = new Set()
-      for (const m of suite.manifest.members.filter((x) => keys.includes(x.slug))) for (const a of m.crossChapterObjects ?? []) newUnion.add(a)
+      const scope = [...suite.manifest.members, ...(suite.manifest.rejected ?? [])]
+      for (const m of scope.filter((x) => keys.includes(x.slug))) for (const a of m.crossChapterObjects ?? []) newUnion.add(a)
       const missing = [...legacyUnion].filter((x) => !newUnion.has(x))
       assert.deepEqual(missing, [], '旧 AP 未被认领')
     }
   })
 
-  it('每个 owned 对象可解析且过门禁一（含跨章池判定）——17 个成员逐个装载', async () => {
+  it('每个 owned 对象可解析且过门禁一（含跨章池判定）——15 个成员逐个装载', async () => {
     for (const member of suite.manifest.members) {
       const { objects, aps } = await loadMemberSources(REPO, member, objectIndex)
       assert.equal(objects.length, member.primaryObjects.length, `${member.slug} 装载数不符`)
@@ -114,7 +119,7 @@ describe('26 · 任务套件清单：覆盖与不相交', () => {
 })
 
 describe('26 · 工作流与渲染：完整性与确定性', () => {
-  it('17 份工作流字段齐全（含 rollback 处置与非空数组）', async () => {
+  it('15 份工作流字段齐全（含 rollback 处置与非空数组）', async () => {
     const suite = await loadSuiteManifest(REPO)
     for (const member of suite.manifest.members) {
       const { workflow } = await loadWorkflow(REPO, member)

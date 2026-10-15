@@ -1,0 +1,4537 @@
+{
+  "schemaVersion": "gate3-report/v1",
+  "createdAt": "2026-10-14T13:30:41.335Z",
+  "subset": null,
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "promptFingerprints": {
+    "taskGen": "prompt-3fb81afa251c",
+    "execution": "prompt-ea201921adca"
+  },
+  "tasksFile": "pipeline/knowledge/gate3-tasks.rust-book-cn.json",
+  "note": "自包含任务测的是**方向上的效用差异**（有/无 skill），不是真实场景的绝对表现；判定规则见 ADR-027 决策 3。",
+  "skills": [
+    {
+      "slug": "ch04-02-references-and-borrowing-s1",
+      "name": "ch04-02-references-and-borrowing-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:1751d0e10f623096879178cbc801b3e4dd3c289f2ed7be8155fb35bf5d588ee8",
+      "tasks": [
+        {
+          "taskId": "ch04-02-references-and-borrowing-s1-t1",
+          "prompt": "请把 Rust 引用与借用的三条核心规则写成一个 `rules.md` 文件：在任意给定时间，要么只能有一个可变引用，要么只能有多个不可变引用；其次，引用必须总是有效的；第三，不能在同一时间多次将同一数据作为可变变量借用。每条规则单独一行。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "rules.md"
+            },
+            {
+              "type": "contains",
+              "path": "rules.md",
+              "patterns": [
+                "只能有一个可变引用，要么只能有多个不可变引用",
+                "引用必须总是有效的",
+                "不能在同一时间多次将同一数据作为可变变量借用"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "rules.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "rules.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "rules.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "rules.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-02-references-and-borrowing-s1-t2",
+          "prompt": "在 `main.rs` 中有通过不可变引用修改字符串的错误代码，请修正代码，使用可变引用来追加 `\" world\"`，并将修正后的完整 Rust 程序写入 `fixed.rs`。",
+          "fixtures": {
+            "main.rs": "fn main() {\n    let s = String::from(\"hello\");\n    let r = &s;\n    r.push_str(\" world\");\n    println!(\"{}\", r);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "let mut s",
+                "&mut s",
+                "push_str(\" world\")"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "let r = &s;"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-02-references-and-borrowing-s1-t3",
+          "prompt": "请查看 `main.rs`，解释为什么它无法编译（借用冲突），并在解释中包含短语“不能在同一时间多次将同一数据作为可变变量借用”；同时给出至少一种修正方式（例如用大括号块限制作用域），写入 `explanation.md`。",
+          "fixtures": {
+            "main.rs": "fn main() {\n    let mut s = String::from(\"hello\");\n    let r1 = &mut s;\n    let r2 = &mut s;\n    println!(\"{}, {}\", r1, r2);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "explanation.md"
+            },
+            {
+              "type": "contains",
+              "path": "explanation.md",
+              "patterns": [
+                "不能在同一时间多次将同一数据作为可变变量借用",
+                "大括号"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "explanation.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "explanation.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "explanation.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "explanation.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-02-references-and-borrowing-s1-t4",
+          "prompt": "`main.rs` 中的函数返回了局部变量的引用导致悬垂引用，请修正 `dangle` 函数，使其返回拥有所有权的 `String`，并把完整代码写入 `fixed.rs`。",
+          "fixtures": {
+            "main.rs": "fn main() {\n    let s = dangle();\n    println!(\"{}\", s);\n}\n\nfn dangle() -> &String {\n    let s = String::from(\"hello\");\n    &s\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "fn dangle() -> String",
+                "String::from(\"hello\")"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "-> &String"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-02-references-and-borrowing-s1-t5",
+          "prompt": "`main.rs` 中不可变引用 `r1` 和可变引用 `r2` 同时活跃导致编译错误，请调整代码顺序，使 `r1` 的最后一次使用发生在创建 `r2` 之前，然后把修正后的完整代码写入 `fixed.rs`。",
+          "fixtures": {
+            "main.rs": "fn main() {\n    let mut s = String::from(\"hello\");\n    let r1 = &s;\n    let r2 = &mut s;\n    println!(\"{}\", r1);\n    r2.push_str(\" world\");\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "let r1 = &s;",
+                "let r2 = &mut s;",
+                "println!(\"{}\", r1);",
+                "push_str(\" world\")"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "fixed.rs",
+              "pattern": "let r1 = &s;[\\s\\S]*println!\\(\\\"{}\\\", r1\\);[\\s\\S]*let r2 = &mut s;"
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-02-references-and-borrowing-s1-t6",
+          "prompt": "请写一个完整的 Rust 程序 `main.rs`，定义一个函数 `append_world(s: &mut String)`，它会向传入的字符串追加 `\" world\"`；在 `main` 中创建一个可变 `String`，调用该函数，并打印结果。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "fn append_world(s: &mut String)",
+                "s.push_str(\" world\")"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "let mut",
+                "append_world(&mut",
+                "println!"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch04-02-references-and-borrowing-s1",
+        "name": "ch04-02-references-and-borrowing-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 0
+        },
+        "paired": [
+          {
+            "taskId": "ch04-02-references-and-borrowing-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-02-references-and-borrowing-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-02-references-and-borrowing-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-02-references-and-borrowing-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-02-references-and-borrowing-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-02-references-and-borrowing-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch04-03-slices-s1",
+      "name": "ch04-03-slices-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:ae7be10764dec2520cc8d159115e6402cee093f207a3607eb3a1d2d52a688880",
+      "tasks": [
+        {
+          "taskId": "ch04-03-slices-s1-t1",
+          "prompt": "请编写一个 Rust 源文件 first_word.rs，实现函数 first_word：它接收 &str 参数并返回第一个空格前内容的 &str 切片。请通过把字符串转换为字节数组来查找第一个空格，不要返回数字索引。文件里只写函数和必要的注释。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "first_word.rs"
+            },
+            {
+              "type": "contains",
+              "path": "first_word.rs",
+              "patterns": [
+                "fn first_word(s: &str) -> &str",
+                "bytes",
+                "b' '",
+                "&s["
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "first_word.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "first_word.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "first_word.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "first_word.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-03-slices-s1-t2",
+          "prompt": "请写一份 Markdown 说明文档 utf8_slice.md，解释为什么在 Rust 中对含多字节 UTF-8 字符的字符串用字节范围切片可能 panic；并给出一个使用 chars() 的安全替代示例。文档中请包含 UTF-8、字符边界、panic 等关键词。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "utf8_slice.md"
+            },
+            {
+              "type": "contains",
+              "path": "utf8_slice.md",
+              "patterns": [
+                "UTF-8",
+                "字符边界",
+                "panic",
+                "chars()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "utf8_slice.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "utf8_slice.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "utf8_slice.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "utf8_slice.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-03-slices-s1-t3",
+          "prompt": "请编写 Rust 源文件 borrow_conflict.rs，在 main 中创建一个 String s，先通过 let word = &s[..]; 获取 s 的不可变引用，然后调用 s.clear(); 清空字符串，最后用 println! 打印 word。请保留这段会触发编译错误的原因注释，注释中要包含“不可变引用”和“可变引用”。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "borrow_conflict.rs"
+            },
+            {
+              "type": "contains",
+              "path": "borrow_conflict.rs",
+              "patterns": [
+                "let word = &s[..]",
+                "s.clear()",
+                "println!",
+                "不可变引用",
+                "可变引用"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "borrow_conflict.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "borrow_conflict.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "borrow_conflict.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "borrow_conflict.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-03-slices-s1-t4",
+          "prompt": "请编写 Rust 源文件 array_slice.rs，在 main 中创建数组 a = [1, 2, 3, 4, 5]，然后创建 let slice = &a[1..3];，并用注释说明这个 slice 的类型是 &[i32]。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "array_slice.rs"
+            },
+            {
+              "type": "contains",
+              "path": "array_slice.rs",
+              "patterns": [
+                "let a = [1, 2, 3, 4, 5]",
+                "let slice = &a[1..3]",
+                "&[i32]"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "array_slice.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "array_slice.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "array_slice.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "array_slice.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-03-slices-s1-t5",
+          "prompt": "请编写 Rust 源文件 str_param.rs，定义函数 print_me(s: &str) 打印参数；在 main 中先用字符串字面量调用它，再用 let s = String::from(\"hi\"); 创建 String 并以切片形式传入调用它。注释中说明字符串字面量的类型是 &str。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "str_param.rs"
+            },
+            {
+              "type": "contains",
+              "path": "str_param.rs",
+              "patterns": [
+                "fn print_me(s: &str)",
+                "print_me(\"",
+                "String::from",
+                "print_me(&s)",
+                "字符串字面量的类型是 &str"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "str_param.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "str_param.rs",
+                "ok": false,
+                "detail": "缺少片段：print_me(&s)"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "str_param.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "str_param.rs",
+                "ok": false,
+                "detail": "缺少片段：print_me(&s)"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch04-03-slices-s1-t6",
+          "prompt": "请修改当前目录下的 first_word_bad.rs：现在 first_word 返回数字索引，这可能导致后续 s.clear() 后索引失效。请将 first_word 改成返回 &str 切片，并调整 main 让它直接打印第一个单词。保持函数名不变。",
+          "fixtures": {
+            "first_word_bad.rs": "fn first_word(s: &str) -> usize {\n    let bytes = s.as_bytes();\n    for (i, &item) in bytes.iter().enumerate() {\n        if item == b' ' {\n            return i;\n        }\n    }\n    s.len()\n}\nfn main() {\n    let s = String::from(\"hello world\");\n    let i = first_word(&s);\n    println!(\"{}\", i);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "first_word_bad.rs"
+            },
+            {
+              "type": "contains",
+              "path": "first_word_bad.rs",
+              "patterns": [
+                "fn first_word(s: &str) -> &str",
+                "&s["
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "first_word_bad.rs",
+              "patterns": [
+                "fn first_word(s: &str) -> usize",
+                "return i;"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "first_word_bad.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "first_word_bad.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "first_word_bad.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "first_word_bad.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "first_word_bad.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "first_word_bad.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch04-03-slices-s1",
+        "name": "ch04-03-slices-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 1
+        },
+        "paired": [
+          {
+            "taskId": "ch04-03-slices-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-03-slices-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-03-slices-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-03-slices-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch04-03-slices-s1-t5",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch04-03-slices-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch05-01-defining-structs-s1",
+      "name": "ch05-01-defining-structs-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:3eb383b10a2f186286e18345a091bbbbe3250911b143deb1ae7d1c2215983c65",
+      "tasks": [
+        {
+          "taskId": "ch05-01-defining-structs-s1-t1",
+          "prompt": "请写一个 Rust 程序，定义一个名为 User 的结构体，包含四个字段：username、email、active、sign_in_count。在 main 函数中创建 user1，然后使用结构体更新语法创建 user2，给 email 和 username 赋予新值，其余字段从 user1 获取。注意 `..user1` 必须放在最后。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "regex",
+              "path": "main.rs",
+              "pattern": "\\.\\.user1\\s*\\}"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct User",
+                "let user1",
+                "let user2",
+                "fn main"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-01-defining-structs-s1-t2",
+          "prompt": "请写一个 Rust 程序，定义 User 结构体，创建 user1，然后先使用结构体更新语法创建 user2，其中 email 和 username 给新的 String 值，只使用 user1 的 active 和 sign_in_count。接着使用结构体更新语法创建 user3，使用 `..user1` 指定其余字段从 user1 获取。再生成一个 answer.json 文件，包含两个布尔值：\"only_copy_fields_source_usable\" 和 \"string_fields_moved_source_usable\"，分别描述创建 user2 后 user1 是否仍可使用，以及创建 user3 后 user1 是否仍可使用。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "file_exists",
+              "path": "answer.json"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct User",
+                "..user1",
+                "fn main"
+              ]
+            },
+            {
+              "type": "json_field",
+              "path": "answer.json",
+              "pointer": "/only_copy_fields_source_usable",
+              "equals": true
+            },
+            {
+              "type": "json_field",
+              "path": "answer.json",
+              "pointer": "/string_fields_moved_source_usable",
+              "equals": false
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "file_exists",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "file_exists",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "json_field",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": {
+            "without": {
+              "passed": false
+            },
+            "with": {
+              "passed": true
+            }
+          }
+        },
+        {
+          "taskId": "ch05-01-defining-structs-s1-t3",
+          "prompt": "请写一个 Rust 程序，定义两个元组结构体 Color 和 Point，每个都有三个 i32 字段。再定义一个函数 print_color，参数类型为 Color。在 main 函数中尝试把 Point 传给 print_color（这行代码请注释掉，以便程序能编译）。然后生成一个 answer.json 文件，包含布尔值 \"can_pass_point_to_color_fn\"，表示 Point 是否能直接传给 print_color。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "file_exists",
+              "path": "answer.json"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct Color(i32, i32, i32)",
+                "struct Point(i32, i32, i32)",
+                "fn print_color",
+                "fn main"
+              ]
+            },
+            {
+              "type": "json_field",
+              "path": "answer.json",
+              "pointer": "/can_pass_point_to_color_fn",
+              "equals": false
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "file_exists",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "file_exists",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "answer.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-01-defining-structs-s1-t4",
+          "prompt": "请写一个 Rust 程序，定义 User 结构体，然后写一个函数 build_user，接收参数 email 和 username，返回 User。在函数体中使用字段初始化简写语法来初始化 email 和 username 字段，不要使用 email: email 或 username: username 的重复写法。在 main 函数中调用 build_user 演示。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct User",
+                "fn build_user",
+                "email,",
+                "username,",
+                "fn main"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "email: email",
+                "username: username"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": {
+            "without": {
+              "passed": true
+            },
+            "with": {
+              "passed": true
+            }
+          }
+        },
+        {
+          "taskId": "ch05-01-defining-structs-s1-t5",
+          "prompt": "请写一个可编译的 Rust 程序，定义一个包含生命周期参数的结构体 User，其中有一个字段 name 是 &str 类型。在 main 函数中创建 User 的实例并打印它的 name。请使用正确的生命周期标注。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct User<'a>",
+                "name: &'a str",
+                "fn main",
+                "let user"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "文件不存在：main.rs"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-01-defining-structs-s1-t6",
+          "prompt": "请写一个 Rust 程序，定义一个没有任何字段的结构体 AlwaysEqual，然后在 main 函数中创建它的一个实例。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "regex",
+              "path": "main.rs",
+              "pattern": "let\\s+[A-Za-z_][A-Za-z0-9_]*\\s*=\\s*AlwaysEqual\\s*;"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct AlwaysEqual;",
+                "fn main"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch05-01-defining-structs-s1",
+        "name": "ch05-01-defining-structs-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "passed",
+        "reason": "有 skill 臂在 1 个任务上严格更优（ch05-01-defining-structs-s1-t1），无确认退化",
+        "counts": {
+          "tasks": 6,
+          "improvements": 1,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 2,
+          "pendingReruns": 0,
+          "invalidTasks": 1
+        },
+        "paired": [
+          {
+            "taskId": "ch05-01-defining-structs-s1-t1",
+            "without": false,
+            "with": true,
+            "state": "improvement"
+          },
+          {
+            "taskId": "ch05-01-defining-structs-s1-t2",
+            "without": true,
+            "with": false,
+            "state": "degradation-noise"
+          },
+          {
+            "taskId": "ch05-01-defining-structs-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch05-01-defining-structs-s1-t4",
+            "without": true,
+            "with": false,
+            "state": "degradation-noise"
+          },
+          {
+            "taskId": "ch05-01-defining-structs-s1-t5",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch05-01-defining-structs-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch05-03-method-syntax-s1",
+      "name": "ch05-03-method-syntax-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:5f711a9eebff207150060fbacaadbb6fc0f714927deeaa6f8dd31352d831af0c",
+      "tasks": [
+        {
+          "taskId": "ch05-03-method-syntax-s1-t1",
+          "prompt": "请写一个可编译的 Rust 程序文件 main.rs：定义名为 Rectangle 的结构体，包含 u32 类型的 width 和 height 字段；为它实现 area 方法（第一个参数是 &self）返回面积；在 main 中创建宽 30、高 50 的 Rectangle 实例并打印其面积。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct Rectangle",
+                "width: u32",
+                "height: u32",
+                "fn area(&self) -> u32",
+                "self.width * self.height",
+                "println!"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-03-method-syntax-s1-t2",
+          "prompt": "请写一个 Rust 程序文件 main.rs：定义 Rectangle 结构体并派生 Debug；实现 can_hold 方法，该方法接收另一个 Rectangle 的不可变借用，判断 self 的宽和高是否都大于等于另一个矩形的宽和高；在 main 中创建 rect1(30,50) 和 rect2(10,20)，调用 rect1.can_hold(&rect2) 打印布尔结果，并在调用后打印 rect2 的调试信息以证明 rect2 仍可用。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "#[derive(Debug)]",
+                "struct Rectangle",
+                "fn can_hold(&self, other: &Rectangle) -> bool",
+                "self.width >= other.width",
+                "self.height >= other.height"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "main.rs",
+              "pattern": "rect1\\.can_hold\\(&rect2\\)[\\s\\S]*println![\\s\\S]*\\{:?\\}[\\s\\S]*rect2"
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "未匹配：rect1\\.can_hold\\(&rect2\\)[\\s\\S]*println![\\s\\S]*\\{:?\\}[\\s\\S]*rect2"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": false,
+                "detail": "未匹配：rect1\\.can_hold\\(&rect2\\)[\\s\\S]*println![\\s\\S]*\\{:?\\}[\\s\\S]*rect2"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-03-method-syntax-s1-t3",
+          "prompt": "请写一个 Rust 程序文件 main.rs：定义 Rectangle 结构体（字段 width、height，u32）并派生 Debug；在 impl 块中定义一个关联函数 square(size: u32)，返回 Self 类型的正方形 Rectangle（宽高都等于 size）。在 main 中调用 Rectangle::square(30) 创建正方形，然后打印它的调试信息。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct Rectangle",
+                "#[derive(Debug)]",
+                "fn square(size: u32) -> Self",
+                "Rectangle::square(30)",
+                "println!",
+                "{:?}",
+                "width: size",
+                "height: size"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-03-method-syntax-s1-t4",
+          "prompt": "请写一个 Rust 程序文件 main.rs：定义 Rectangle 结构体；将其 area 方法放在第一个 impl Rectangle 块中，将 can_hold 方法放在第二个 impl Rectangle 块中，不要合并到同一个 impl 块。main 中创建 rect1(30,50) 和 rect2(10,20)，用 rect1.can_hold(&rect2) 打印结果。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "regex",
+              "path": "main.rs",
+              "pattern": "impl Rectangle[\\s\\S]*impl Rectangle"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "fn area(&self) -> u32",
+                "fn can_hold(&self, other: &Rectangle) -> bool",
+                "rect1.can_hold(&rect2)"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-03-method-syntax-s1-t5",
+          "prompt": "请写一个 Rust 程序文件 debug_print.rs：定义 Rectangle 结构体（width、height，u32），派生 Debug trait；在 main 中创建 rect1 并用 println! 宏和 {:?} 格式指示符打印其调试信息。不要使用 {} 来打印整个结构体。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "debug_print.rs"
+            },
+            {
+              "type": "contains",
+              "path": "debug_print.rs",
+              "patterns": [
+                "#[derive(Debug)]",
+                "struct Rectangle",
+                "{:?}",
+                "println!"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "debug_print.rs",
+              "patterns": [
+                "println!(\"{}\", rect1)"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "debug_print.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "debug_print.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "debug_print.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "debug_print.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "debug_print.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "debug_print.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch05-03-method-syntax-s1-t6",
+          "prompt": "请写一个 Rust 程序文件 shape.rs：定义枚举 Shape，包含 Rectangle { width: u32, height: u32 } 和 Circle { radius: u32 } 两个变体；为 Shape 实现 area 方法（第一个参数是 &self），使用 match self 分别计算矩形和圆形面积（圆形面积使用 3 * radius * radius 近似，返回 u32）；在 main 中创建两个实例并打印它们的面积。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "shape.rs"
+            },
+            {
+              "type": "contains",
+              "path": "shape.rs",
+              "patterns": [
+                "enum Shape",
+                "Rectangle { width: u32, height: u32 }",
+                "Circle { radius: u32 }",
+                "fn area(&self) -> u32",
+                "match self",
+                "println!"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "shape.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "shape.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "shape.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "shape.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch05-03-method-syntax-s1",
+        "name": "ch05-03-method-syntax-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 1
+        },
+        "paired": [
+          {
+            "taskId": "ch05-03-method-syntax-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch05-03-method-syntax-s1-t2",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch05-03-method-syntax-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch05-03-method-syntax-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch05-03-method-syntax-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch05-03-method-syntax-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch06-01-defining-an-enum-s1",
+      "name": "ch06-01-defining-an-enum-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:e7cbbe94d903b61e051dac4f95c863199ea7f496657f17c59986dd2a485d35e8",
+      "tasks": [
+        {
+          "taskId": "ch06-01-defining-an-enum-s1-t1",
+          "prompt": "请在当前目录创建 `ip_addr.rs`，定义一个 Rust 枚举 `IpAddr`，包含两个成员：`V4(u8, u8, u8, u8)` 和 `V6(String)`；然后在 `main` 函数里写两行示例：`let home = IpAddr::V4(127, 0, 0, 1);` 和 `let loopback = IpAddr::V6(String::from(\"::1\"));`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "ip_addr.rs"
+            },
+            {
+              "type": "contains",
+              "path": "ip_addr.rs",
+              "patterns": [
+                "enum IpAddr",
+                "V4(u8, u8, u8, u8)",
+                "V6(String)",
+                "fn main",
+                "let home = IpAddr::V4(127, 0, 0, 1);",
+                "let loopback = IpAddr::V6(String::from(\"::1\"));"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "ip_addr.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "ip_addr.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "ip_addr.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "ip_addr.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-01-defining-an-enum-s1-t2",
+          "prompt": "我在当前目录放了 `message_template.rs`，请阅读其中的注释，并在当前目录创建 `message.rs`，按注释要求定义 `Message` 枚举并创建示例 `let m1 = Message::Write(String::from(\"hello\"));`。",
+          "fixtures": {
+            "message_template.rs": "// 请根据以下要求创建 message.rs\n// 定义枚举 Message，成员：Quit、Move { x: i32, y: i32 }、Write(String)、ChangeColor(i32, i32, i32)\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "message.rs"
+            },
+            {
+              "type": "contains",
+              "path": "message.rs",
+              "patterns": [
+                "enum Message",
+                "Quit",
+                "Move { x: i32, y: i32 }",
+                "Write(String)",
+                "ChangeColor(i32, i32, i32)",
+                "let m1 = Message::Write(String::from(\"hello\"));"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "message.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "message.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "message.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "message.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-01-defining-an-enum-s1-t3",
+          "prompt": "请创建 `option_add.rs`，定义函数 `fn add_one(x: Option<i32>) -> Option<i32>`；必须用 `match`：`Some(n)` 返回 `Some(n + 1)`，`None` 返回 `None`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "option_add.rs"
+            },
+            {
+              "type": "contains",
+              "path": "option_add.rs",
+              "patterns": [
+                "fn add_one(x: Option<i32>) -> Option<i32>",
+                "match x",
+                "Some(n)",
+                "Some(n + 1)",
+                "None => None"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "option_add.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "option_add.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "option_add.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "option_add.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-01-defining-an-enum-s1-t4",
+          "prompt": "请创建 `safe_len.rs`，定义 `fn text_len(text: String) -> usize`，直接调用 `text.len()`；再定义 `fn maybe_text_len(text: Option<String>) -> usize`，使用 `match`：`Some(s)` 返回 `s.len()`，`None` 返回 `0`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "safe_len.rs"
+            },
+            {
+              "type": "contains",
+              "path": "safe_len.rs",
+              "patterns": [
+                "fn text_len(text: String) -> usize",
+                "text.len()",
+                "fn maybe_text_len(text: Option<String>) -> usize",
+                "match text",
+                "Some(s)",
+                "s.len()",
+                "None => 0"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "safe_len.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "safe_len.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "safe_len.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "safe_len.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-01-defining-an-enum-s1-t5",
+          "prompt": "请创建 `option_rule.md`，说明当 `x` 是 `Option<i32>` 时不能直接计算 `x + 1`，必须先转换为 `i32`。文档中必须包含以下代码片段（可以用代码块）：`let x: Option<i32> = Some(1);`、`let y = x + 1;`、`let y = match x { Some(n) => n + 1, None => 0 };`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "option_rule.md"
+            },
+            {
+              "type": "contains",
+              "path": "option_rule.md",
+              "patterns": [
+                "Option<i32>",
+                "let x: Option<i32> = Some(1);",
+                "let y = x + 1;",
+                "let y = match x { Some(n) => n + 1, None => 0 };"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "option_rule.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "option_rule.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "option_rule.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "option_rule.md",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-01-defining-an-enum-s1-t6",
+          "prompt": "请创建 `option_facts.json`，写入一个对象，包含：`non_option_is_safe` 为 `true`；`option_t_must_handle_none` 为 `true`；`direct_add_option_is_allowed` 为 `false`；`match_demo` 为字符串 `\"match x { Some(n) => n + 1, None => 0 }\"`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "option_facts.json"
+            },
+            {
+              "type": "json_field",
+              "path": "option_facts.json",
+              "pointer": "/non_option_is_safe",
+              "equals": true
+            },
+            {
+              "type": "json_field",
+              "path": "option_facts.json",
+              "pointer": "/option_t_must_handle_none",
+              "equals": true
+            },
+            {
+              "type": "json_field",
+              "path": "option_facts.json",
+              "pointer": "/direct_add_option_is_allowed",
+              "equals": false
+            },
+            {
+              "type": "json_field",
+              "path": "option_facts.json",
+              "pointer": "/match_demo",
+              "equals": "match x { Some(n) => n + 1, None => 0 }"
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "option_facts.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch06-01-defining-an-enum-s1",
+        "name": "ch06-01-defining-an-enum-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 0
+        },
+        "paired": [
+          {
+            "taskId": "ch06-01-defining-an-enum-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-01-defining-an-enum-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-01-defining-an-enum-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-01-defining-an-enum-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-01-defining-an-enum-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-01-defining-an-enum-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch06-02-match-s1",
+      "name": "ch06-02-match-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:446edf3d3e4b7842005aeeb7f3ad90a30309e1e549ffe78aa3f67d4c4317ca2a",
+      "tasks": [
+        {
+          "taskId": "ch06-02-match-s1-t1",
+          "prompt": "请在 `main.rs` 中写一个 Rust 程序，定义枚举 `Coin` 包含 `Penny`、`Nickel`、`Dime`、`Quarter`，并实现函数 `value_in_cents(coin: Coin) -> u32`。使用 `match`：`Coin::Penny` 分支返回 `1`，`Coin::Nickel` 分支返回 `5`，`Coin::Dime` 分支返回 `10`，`Coin::Quarter` 分支返回 `25`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "main.rs"
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "enum Coin",
+                "fn value_in_cents",
+                "Coin::Penny => 1",
+                "Coin::Nickel => 5",
+                "Coin::Dime => 10",
+                "Coin::Quarter => 25"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-02-match-s1-t2",
+          "prompt": "请在 `plus_one.rs` 中写一个 Rust 函数 `plus_one(x: Option<i32>) -> Option<i32>`，使用 `match` 处理：`Some(i)` 分支写为 `Some(i) => Some(i + 1)`，`None` 分支写为 `None => None`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "plus_one.rs"
+            },
+            {
+              "type": "contains",
+              "path": "plus_one.rs",
+              "patterns": [
+                "fn plus_one",
+                "Option<i32>",
+                "Some(i) => Some(i + 1)",
+                "None => None"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "plus_one.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "plus_one.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "plus_one.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "plus_one.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-02-match-s1-t3",
+          "prompt": "请在 `quarter_state.rs` 中写一个 Rust 程序，定义枚举 `UsState` 至少包含 `Alabama` 和 `Alaska`，定义枚举 `Coin` 包含 `Penny` 和 `Quarter(UsState)`，并写函数 `print_quarter_state(coin: Coin)`。使用 `match`：`Coin::Quarter(state)` 分支打印 `State quarter from {state}!`（其中 `{state}` 使用绑定变量），`Coin::Penny` 分支不做任何事。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "quarter_state.rs"
+            },
+            {
+              "type": "contains",
+              "path": "quarter_state.rs",
+              "patterns": [
+                "enum UsState",
+                "Alabama",
+                "Alaska",
+                "enum Coin",
+                "Quarter(UsState)",
+                "fn print_quarter_state",
+                "Coin::Quarter(state)",
+                "println!",
+                "State quarter from",
+                "Coin::Penny"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "quarter_state.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "quarter_state.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "quarter_state.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "quarter_state.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-02-match-s1-t4",
+          "prompt": "请在 `dice_roll.rs` 中写一个 Rust 函数 `roll_message(value: u8) -> String`，使用 `match`：当 `value` 为 `3` 时返回字符串 `three`，当 `value` 为 `7` 时返回字符串 `seven`，其余任何值都返回字符串 `roll again`，并且用于兜底其余值的模式必须是 `_`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "dice_roll.rs"
+            },
+            {
+              "type": "contains",
+              "path": "dice_roll.rs",
+              "patterns": [
+                "fn roll_message",
+                "3 =>",
+                "7 =>",
+                "_ =>",
+                "\"three\"",
+                "\"seven\"",
+                "\"roll again\""
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "dice_roll.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "dice_roll.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "dice_roll.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "dice_roll.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-02-match-s1-t5",
+          "prompt": "请在 `if_let_example.rs` 中写一个 Rust 程序，定义一个变量 `config_max = Some(3u8)`，然后用 `if let` 模式 `Some(max)` 来匹配该变量，并在分支中打印 `The maximum is configured to be {max}`。这段代码不要使用 `match`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "if_let_example.rs"
+            },
+            {
+              "type": "contains",
+              "path": "if_let_example.rs",
+              "patterns": [
+                "if let",
+                "Some(max)",
+                "println!",
+                "The maximum is configured to be"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "if_let_example.rs",
+              "patterns": [
+                "match"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "if_let_example.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "if_let_example.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "if_let_example.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "if_let_example.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "if_let_example.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "if_let_example.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch06-02-match-s1-t6",
+          "prompt": "请在 `bool_match.rs` 中写一个 Rust 函数 `describe_bool(value: bool) -> String`，使用 `match` 处理布尔值：`true` 返回字符串 `yes`，`false` 返回字符串 `no`，必须覆盖全部布尔值。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "bool_match.rs"
+            },
+            {
+              "type": "contains",
+              "path": "bool_match.rs",
+              "patterns": [
+                "fn describe_bool",
+                "match value",
+                "true =>",
+                "false =>",
+                "\"yes\"",
+                "\"no\""
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "bool_match.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "bool_match.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "bool_match.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "bool_match.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch06-02-match-s1",
+        "name": "ch06-02-match-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 0
+        },
+        "paired": [
+          {
+            "taskId": "ch06-02-match-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-02-match-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-02-match-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-02-match-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-02-match-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch06-02-match-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch12-03-improving-error-handling-and-modularity-s1",
+      "name": "ch12-03-improving-error-handling-and-modularity-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:d2064ff86a953bd9b3fab728dd3f65d8c458ad3a1b23a5ea2f7b5e850a7f57be",
+      "tasks": [
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t1",
+          "prompt": "当前目录下有 main.rs，请把其中的命令行参数解析逻辑提取到独立的 parse_config 函数，并让该函数返回一个包含 query 和 filename 两个 String 字段的 Config 结构体。修改后的完整代码仍保存到 main.rs。",
+          "fixtures": {
+            "main.rs": "use std::env;\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let query = &args[1];\n    let filename = &args[2];\n    println!(\"Searching for {}\", query);\n    println!(\"In file {}\", filename);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "struct Config",
+                "fn parse_config",
+                "query: String",
+                "filename: String",
+                "config.query",
+                "config.filename"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t2",
+          "prompt": "请修改当前目录下的 main.rs：将 Config 的构造改为返回 Result<Config, &'static str>，参数不足时返回错误字符串 \"not enough arguments\"；在 main 中用 unwrap_or_else 处理错误，打印错误信息并退出。不要使用 panic!。",
+          "fixtures": {
+            "main.rs": "use std::env;\n\nstruct Config {\n    query: String,\n    filename: String,\n}\n\nimpl Config {\n    fn new(args: &[String]) -> Config {\n        if args.len() < 3 {\n            panic!(\"not enough arguments\");\n        }\n        let query = args[1].clone();\n        let filename = args[2].clone();\n        Config { query, filename }\n    }\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = Config::new(&args);\n    println!(\"Searching for {}\", config.query);\n    println!(\"In file {}\", config.filename);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "Result<Config, &'static str>",
+                "Err(\"not enough arguments\")",
+                "Ok(Config",
+                "unwrap_or_else",
+                "process::exit(1)"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "panic!"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t3",
+          "prompt": "当前目录下的 main.rs 中 main 函数包含了读取文件和打印匹配行的逻辑。请把这些逻辑提取到一个 run 函数中，run 接收 Config 并返回 Result<(), Box<dyn Error>>；在 main 中用 if let Err(e) = run(config) 处理错误，出错时调用 process::exit(1)。修改后的完整代码仍保存到 main.rs。",
+          "fixtures": {
+            "main.rs": "use std::env;\nuse std::fs;\n\nstruct Config {\n    query: String,\n    filename: String,\n}\n\nimpl Config {\n    fn new(args: &[String]) -> Result<Config, &'static str> {\n        if args.len() < 3 {\n            return Err(\"not enough arguments\");\n        }\n        let query = args[1].clone();\n        let filename = args[2].clone();\n        Ok(Config { query, filename })\n    }\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = Config::new(&args).unwrap_or_else(|err| {\n        eprintln!(\"Problem parsing arguments: {}\", err);\n        std::process::exit(1);\n    });\n\n    let contents = fs::read_to_string(&config.filename)\n        .expect(\"Something went wrong reading the file\");\n\n    for line in contents.lines() {\n        if line.contains(&config.query) {\n            println!(\"{}\", line);\n        }\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "fn run(config: Config) -> Result<(), Box<dyn Error>>",
+                "if let Err(e) = run(config)",
+                "process::exit(1)",
+                "read_to_string(&config.filename)?"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "expect("
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t4",
+          "prompt": "当前目录下有 main.rs，其中包含了配置解析、Config 结构体和读取文件的全部逻辑。请把这些逻辑拆分到 lib.rs 中，把 Config 结构体、new 方法和 run 函数标记为 pub；重写 main.rs，只保留参数获取、调用 Config::new 和 run、处理错误，并通过 mod lib; 引入库模块。保存 lib.rs 和 main.rs。",
+          "fixtures": {
+            "main.rs": "use std::env;\nuse std::fs;\n\nstruct Config {\n    query: String,\n    filename: String,\n}\n\nimpl Config {\n    fn new(args: &[String]) -> Result<Config, &'static str> {\n        if args.len() < 3 {\n            return Err(\"not enough arguments\");\n        }\n        let query = args[1].clone();\n        let filename = args[2].clone();\n        Ok(Config { query, filename })\n    }\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = Config::new(&args).unwrap_or_else(|err| {\n        eprintln!(\"Problem parsing arguments: {}\", err);\n        std::process::exit(1);\n    });\n\n    let contents = fs::read_to_string(&config.filename)\n        .expect(\"Something went wrong reading the file\");\n\n    for line in contents.lines() {\n        if line.contains(&config.query) {\n            println!(\"{}\", line);\n        }\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "lib.rs",
+              "patterns": [
+                "pub struct Config",
+                "pub fn new",
+                "pub fn run",
+                "Result<(), Box<dyn Error>>"
+              ]
+            },
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "mod lib;",
+                "Config::new",
+                "if let Err",
+                "process::exit(1)"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "fs::read_to_string"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "lib.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "lib.rs",
+                "ok": false,
+                "detail": "缺少片段：Result<(), Box<dyn Error>>"
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "lib.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "lib.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t5",
+          "prompt": "当前目录下的 main.rs 直接通过 args[1] 和 args[2] 访问命令行参数，参数不足时会暴露 index out of bounds 给用户。请修改 main.rs，在访问索引之前先检查参数数量，参数不足时打印明确的错误信息 \"not enough arguments\" 并退出，避免默认的 index out of bounds。",
+          "fixtures": {
+            "main.rs": "use std::env;\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let query = &args[1];\n    let filename = &args[2];\n    println!(\"Searching for {}\", query);\n    println!(\"In file {}\", filename);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "args.len()",
+                "not enough arguments",
+                "process::exit(1)"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t6",
+          "prompt": "当前目录下的 main.rs 已经在 run 函数中实现了核心逻辑，但 main 中对 run 的错误处理使用了 unwrap_or_else。请改为用 if let Err(e) = run(config) 检查错误，出错时打印错误并调用 process::exit(1)。修改后的完整代码仍保存到 main.rs。",
+          "fixtures": {
+            "main.rs": "use std::env;\nuse std::error::Error;\nuse std::fs;\n\nstruct Config {\n    query: String,\n    filename: String,\n}\n\nimpl Config {\n    fn new(args: &[String]) -> Result<Config, &'static str> {\n        if args.len() < 3 {\n            return Err(\"not enough arguments\");\n        }\n        let query = args[1].clone();\n        let filename = args[2].clone();\n        Ok(Config { query, filename })\n    }\n}\n\nfn run(config: Config) -> Result<(), Box<dyn Error>> {\n    let contents = fs::read_to_string(&config.filename)?;\n    for line in contents.lines() {\n        if line.contains(&config.query) {\n            println!(\"{}\", line);\n        }\n    }\n    Ok(())\n}\n\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    let config = Config::new(&args).unwrap_or_else(|err| {\n        eprintln!(\"Problem parsing arguments: {}\", err);\n        std::process::exit(1);\n    });\n\n    run(config).unwrap_or_else(|err| {\n        eprintln!(\"Application error: {}\", err);\n        std::process::exit(1);\n    });\n}\n"
+          },
+          "checks": [
+            {
+              "type": "contains",
+              "path": "main.rs",
+              "patterns": [
+                "if let Err(e) = run(config)",
+                "process::exit(1)"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "main.rs",
+              "patterns": [
+                "run(config).unwrap_or_else"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "main.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch12-03-improving-error-handling-and-modularity-s1",
+        "name": "ch12-03-improving-error-handling-and-modularity-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "passed",
+        "reason": "有 skill 臂在 1 个任务上严格更优（ch12-03-improving-error-handling-and-modularity-s1-t4），无确认退化",
+        "counts": {
+          "tasks": 6,
+          "improvements": 1,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 0
+        },
+        "paired": [
+          {
+            "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t4",
+            "without": false,
+            "with": true,
+            "state": "improvement"
+          },
+          {
+            "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch12-03-improving-error-handling-and-modularity-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch17-03-oo-design-patterns-s1",
+      "name": "ch17-03-oo-design-patterns-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:0b3e4d2afc4fcaeccb69ea27f33c128b5cd27b6d39a2c6131c2c0096aa4a34fe",
+      "tasks": [
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t1",
+          "prompt": "请用 Rust 在 src/lib.rs 中实现一个发布博文工作流的状态模式。定义 Post 结构体，包含私有 state 字段（Option<Box<dyn State>>）和 content 字段；定义 State trait 及 Draft、PendingReview、Published 三个状态；新建 Post 时状态必须是 Draft；Draft 的 content 方法必须返回空字符串。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "struct Post",
+                "state: Option<Box<dyn State>>",
+                "trait State",
+                "struct Draft",
+                "struct PendingReview",
+                "struct Published",
+                "fn content<'a>(&self,",
+                "-> &'a str",
+                "\"\""
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t2",
+          "prompt": "请写一个 Rust 代码文件 typed.rs，用类型状态模式实现博文发布流程：用不同的类型表示 DraftPost、PendingReviewPost 和发布的 Post。DraftPost 必须通过 request_review 消费自己并返回 PendingReviewPost；PendingReviewPost 必须通过 approve 消费自己并返回发布的 Post；发布的 Post 提供 content 方法。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "typed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "typed.rs",
+              "patterns": [
+                "struct DraftPost",
+                "struct PendingReviewPost",
+                "impl DraftPost",
+                "fn request_review(self) -> PendingReviewPost",
+                "impl PendingReviewPost",
+                "fn approve(self) -> Post",
+                "impl Post",
+                "fn content(&self) -> &str"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "typed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "typed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "typed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "typed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t3",
+          "prompt": "请写一份 tradeoffs.md，总结在 Rust 中实现状态模式的两种做法：使用 trait 对象和 Option<Box<dyn State>> 的传统状态对象模式，以及把状态编码进不同类型并在转换时消费旧状态的模式。说明各自的优缺点，并重点解释类型状态模式如何让无效状态在编译期被发现。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "tradeoffs.md"
+            },
+            {
+              "type": "contains",
+              "path": "tradeoffs.md",
+              "patterns": [
+                "状态模式",
+                "编译期",
+                "类型系统",
+                "trait 对象",
+                "Option<Box<dyn State>>",
+                "状态转移",
+                "无效状态"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "tradeoffs.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "tradeoffs.md",
+                "ok": false,
+                "detail": "缺少片段：类型系统 | 状态转移"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "tradeoffs.md",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "tradeoffs.md",
+                "ok": false,
+                "detail": "缺少片段：状态转移"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t4",
+          "prompt": "我在 src/lib.rs 中写了一个状态模式，但 state 字段类型是 Box<dyn State>，在 request_review 中直接移动了 state 导致编译错误。请修改 src/lib.rs，将 state 改为 Option<Box<dyn State>>，并在状态转移方法中调用 take 取出旧状态后设置新状态。保留原有状态结构和 trait。",
+          "fixtures": {
+            "src/lib.rs": "pub struct Post {\n    state: Box<dyn State>,\n    content: String,\n}\n\nimpl Post {\n    pub fn new() -> Post {\n        Post {\n            state: Box::new(Draft {}),\n            content: String::new(),\n        }\n    }\n\n    pub fn request_review(&mut self) {\n        self.state = self.state.request_review();\n    }\n\n    pub fn approve(&mut self) {\n        self.state = self.state.approve();\n    }\n}\n\ntrait State {\n    fn request_review(self: Box<Self>) -> Box<dyn State>;\n    fn approve(self: Box<Self>) -> Box<dyn State>;\n}\n\nstruct Draft {}\n\nimpl State for Draft {\n    fn request_review(self: Box<Self>) -> Box<dyn State> {\n        Box::new(PendingReview {})\n    }\n    fn approve(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n}\n\nstruct PendingReview {}\n\nimpl State for PendingReview {\n    fn request_review(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n    fn approve(self: Box<Self>) -> Box<dyn State> {\n        Box::new(Published {})\n    }\n}\n\nstruct Published {}\n\nimpl State for Published {\n    fn request_review(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n    fn approve(self: Box<Self>) -> Box<dyn State> {\n        self\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "src/lib.rs"
+            },
+            {
+              "type": "contains",
+              "path": "src/lib.rs",
+              "patterns": [
+                "state: Option<Box<dyn State>>",
+                "self.state.take()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "src/lib.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t5",
+          "prompt": "请在 add_text.rs 中实现一个 Post 结构体，包含私有 state 字段（Option<Box<dyn State>>）和 content 字段。实现 pub fn add_text(&mut self, text: &str)，将 text 追加到 content 字段；该方法行为不依赖状态。同时提供 State trait 和 Draft 状态，保证代码可编译。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "add_text.rs"
+            },
+            {
+              "type": "contains",
+              "path": "add_text.rs",
+              "patterns": [
+                "struct Post",
+                "state: Option<Box<dyn State>>",
+                "pub fn add_text(&mut self, text: &str)",
+                "self.content.push_str(text)",
+                "trait State",
+                "struct Draft"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "add_text.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "add_text.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "add_text.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "add_text.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch17-03-oo-design-patterns-s1-t6",
+          "prompt": "请在 status.rs 中实现一个 Post 结构体，包含私有 state 字段（Option<Box<dyn State>>）和 content 字段。定义 State trait，它有一个 status(&self) -> &str 方法。实现 Post::status 方法，返回当前状态名称；该方法必须在 &self 方法中使用 as_ref 获取 state 的引用，而不能移动 state。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "status.rs"
+            },
+            {
+              "type": "contains",
+              "path": "status.rs",
+              "patterns": [
+                "state: Option<Box<dyn State>>",
+                "fn status(&self) -> &str",
+                "self.state.as_ref()"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "status.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "status.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "status.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "status.rs",
+                "ok": false,
+                "detail": "缺少片段：self.state.as_ref()"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": {
+            "without": {
+              "passed": false
+            },
+            "with": {
+              "passed": true
+            }
+          }
+        }
+      ],
+      "verdict": {
+        "skillId": "ch17-03-oo-design-patterns-s1",
+        "name": "ch17-03-oo-design-patterns-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进；1 个退化事件复跑后不复现（记噪声）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 1,
+          "pendingReruns": 0,
+          "invalidTasks": 1
+        },
+        "paired": [
+          {
+            "taskId": "ch17-03-oo-design-patterns-s1-t1",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch17-03-oo-design-patterns-s1-t2",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch17-03-oo-design-patterns-s1-t3",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch17-03-oo-design-patterns-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch17-03-oo-design-patterns-s1-t5",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch17-03-oo-design-patterns-s1-t6",
+            "without": true,
+            "with": false,
+            "state": "degradation-noise"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ch18-02-refutability-s1",
+      "name": "ch18-02-refutability-s1",
+      "riskFlags": [
+        "PITFALL_COVERAGE_BELOW_ADVISORY"
+      ],
+      "markdownSha256": "sha256:5124ea326708bbc49c3c9c1f05674ef4cf5426e62a80c4d020ee7e926863caa2",
+      "tasks": [
+        {
+          "taskId": "ch18-02-refutability-s1-t1",
+          "prompt": "我有一段 Rust 代码，编译器报错说在 `let` 语句中使用了可反驳模式。代码在 `input.rs`，请帮我修正它，要求改用 `if let` 来处理 `None` 的情况，并把完整修正后的代码写入 `fixed.rs`。",
+          "fixtures": {
+            "input.rs": "fn main() {\n    let maybe_value: Option<i32> = Some(5);\n    let Some(x) = maybe_value;\n    println!(\"{}\", x);\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "if let Some(x) = maybe_value",
+                "else"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "let Some(x) = maybe_value"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": false,
+                "detail": "出现了禁止片段：let Some(x) = maybe_value"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": false,
+                "detail": "缺少片段：else"
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": false,
+                "detail": "出现了禁止片段：let Some(x) = maybe_value"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch18-02-refutability-s1-t2",
+          "prompt": "请修正 `input.rs` 中的 Rust 代码：函数参数 `Some(x)` 是可反驳模式，不能用于函数参数。请把参数改为 `x: Option<i32>`，并在函数体内用 `match` 处理 `Some` 和 `None`，`Some` 分支打印值，`None` 分支打印 `\"No value\"`。把修正后的完整代码写入 `fixed.rs`。",
+          "fixtures": {
+            "input.rs": "fn describe(Some(x): Option<i32>) {\n    println!(\"Value is {}\", x);\n}\n\nfn main() {\n    describe(Some(42));\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "fn describe(x: Option<i32>)",
+                "Some(x) => println!(\"{}\", x)",
+                "None => println!(\"No value\")"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "fn describe(Some(x): Option<i32>)"
+              ]
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": false,
+                "detail": "缺少片段：Some(x) => println!(\"{}\", x)"
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": false,
+                "detail": "缺少片段：Some(x) => println!(\"{}\", x)"
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch18-02-refutability-s1-t3",
+          "prompt": "我的 Rust 代码里 `if let x = 5` 触发了编译器警告，因为 `x` 是不可反驳模式。请把它改成等价的普通 `let` 绑定写法，并写入 `fixed.rs`。原始代码在 `input.rs`。",
+          "fixtures": {
+            "input.rs": "fn main() {\n    if let x = 5 {\n        println!(\"{}\", x);\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "let x = 5;"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "if let x = 5"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch18-02-refutability-s1-t4",
+          "prompt": "请修正 `input.rs` 中的 `for` 循环：不能用可反驳模式 `Some(x)`。请改为使用 `flatten()` 遍历 `Option` 中的值并打印，写入 `fixed.rs`。",
+          "fixtures": {
+            "input.rs": "fn main() {\n    let values = vec![Some(1), None, Some(3)];\n    for Some(x) in values {\n        println!(\"{}\", x);\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "flatten()",
+                "for x in"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "for Some(x) in values"
+              ]
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch18-02-refutability-s1-t5",
+          "prompt": "请修正 `input.rs` 中的 `while let x = some_bool`：`x` 是不可反驳模式，会产生警告。请改为使用 `loop` 加 `break` 的等价写法，打印一次后退出，写入 `fixed.rs`。",
+          "fixtures": {
+            "input.rs": "fn main() {\n    let mut some_bool = true;\n    while let x = some_bool {\n        println!(\"{}\", x);\n        some_bool = false;\n    }\n}\n"
+          },
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "fixed.rs"
+            },
+            {
+              "type": "contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "loop {",
+                "break;"
+              ]
+            },
+            {
+              "type": "not_contains",
+              "path": "fixed.rs",
+              "patterns": [
+                "while let x = some_bool"
+              ]
+            },
+            {
+              "type": "regex",
+              "path": "fixed.rs",
+              "pattern": "let x = some_bool;\\s*println!\\(\\\"\\{\\}\\\", x\\);\\s*break;"
+            }
+          ],
+          "without": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "fixed.rs",
+                "ok": false,
+                "detail": "未匹配：let x = some_bool;\\s*println!\\(\\\"\\{\\}\\\", x\\);\\s*break;"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": false,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "not_contains",
+                "path": "fixed.rs",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "regex",
+                "path": "fixed.rs",
+                "ok": false,
+                "detail": "未匹配：let x = some_bool;\\s*println!\\(\\\"\\{\\}\\\", x\\);\\s*break;"
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        },
+        {
+          "taskId": "ch18-02-refutability-s1-t6",
+          "prompt": "请对以下 Rust 模式判断其可反驳性，并说明它适合用于函数参数/let/for 还是 if let/while let。将结果写入 `patterns.json`，格式为 `{\"patterns\":[{\"pattern\":\"...\",\"refutable\":true/false,\"position\":\"...\"}]}`。模式列表：`Some(x)`、`x`、`(a, b)`、`None`、`Ok(v)`、`Err(e)`、`Point { x, y }`、`Some(5)`。position 请用 `\"let/for/function parameter\"` 或 `\"if let/while let\"`。",
+          "fixtures": {},
+          "checks": [
+            {
+              "type": "file_exists",
+              "path": "patterns.json"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/0/pattern",
+              "equals": "Some(x)"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/0/refutable",
+              "equals": true
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/0/position",
+              "equals": "if let/while let"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/1/pattern",
+              "equals": "x"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/1/refutable",
+              "equals": false
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/1/position",
+              "equals": "let/for/function parameter"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/2/pattern",
+              "equals": "(a, b)"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/2/refutable",
+              "equals": false
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/3/pattern",
+              "equals": "None"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/3/refutable",
+              "equals": true
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/4/pattern",
+              "equals": "Ok(v)"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/4/refutable",
+              "equals": true
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/7/pattern",
+              "equals": "Some(5)"
+            },
+            {
+              "type": "json_field",
+              "path": "patterns.json",
+              "pointer": "/patterns/7/refutable",
+              "equals": true
+            }
+          ],
+          "without": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "with": {
+            "passed": true,
+            "checks": [
+              {
+                "type": "file_exists",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "type": "json_field",
+                "path": "patterns.json",
+                "ok": true,
+                "detail": ""
+              }
+            ],
+            "invalidPaths": []
+          },
+          "rerun": null
+        }
+      ],
+      "verdict": {
+        "skillId": "ch18-02-refutability-s1",
+        "name": "ch18-02-refutability-s1",
+        "riskFlags": [
+          "PITFALL_COVERAGE_BELOW_ADVISORY"
+        ],
+        "verdict": "low-utility",
+        "reason": "无确认退化也无改进（任务要么双过要么双败）——ADR-006：标记低效用（不拒绝，但降级）",
+        "counts": {
+          "tasks": 6,
+          "improvements": 0,
+          "confirmedDegradations": 0,
+          "noiseDegradations": 0,
+          "pendingReruns": 0,
+          "invalidTasks": 3
+        },
+        "paired": [
+          {
+            "taskId": "ch18-02-refutability-s1-t1",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch18-02-refutability-s1-t2",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch18-02-refutability-s1-t3",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch18-02-refutability-s1-t4",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          },
+          {
+            "taskId": "ch18-02-refutability-s1-t5",
+            "without": false,
+            "with": false,
+            "state": "invalid"
+          },
+          {
+            "taskId": "ch18-02-refutability-s1-t6",
+            "without": true,
+            "with": true,
+            "state": "both-pass"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "taskGeneration": {
+      "promptTokens": 24742,
+      "completionTokens": 152526
+    },
+    "execution": {
+      "promptTokens": 158746,
+      "completionTokens": 305207
+    }
+  }
+}

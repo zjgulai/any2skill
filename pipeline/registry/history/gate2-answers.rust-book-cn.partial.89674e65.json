@@ -1,0 +1,833 @@
+{
+  "schemaVersion": "gate2-report/v1-answers",
+  "promptFingerprint": "prompt-dd2052ba0a13",
+  "scenarios": {
+    "ch12-03-improving-error-handling-and-modularity-s1-sc1": {
+      "inputHash": "sha256:c52758d172f23dd37b42985830df0298897869c3dbe687d1b816b95578542f2e",
+      "skillIds": [
+        "ch12-03-improving-error-handling-and-modularity-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch12-03-improving-error-handling-and-modularity-s1-sc2": {
+      "inputHash": "sha256:2bb65d248dd9cfb6a246df2901c8523a024f3475d2febaf2384c7d01c8c1585d",
+      "skillIds": [
+        "ch12-03-improving-error-handling-and-modularity-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch12-03-improving-error-handling-and-modularity-s1-sc3": {
+      "inputHash": "sha256:4fb76f0ed18ac3de65a1d2e5bf25a490f79ded7006f02459cfc14c98da01a101",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc1": {
+      "inputHash": "sha256:95abac216da693cc4524afc741ea088a5499e6d5c171f9d43addaa23f359f14d",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc2": {
+      "inputHash": "sha256:5e6b40ca70f359a2d15705349702212d84650c834f31fc789e689361f97012b9",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc3": {
+      "inputHash": "sha256:e53a65421204bf8142dc823832fc0c5e8c82888eae38f090c9f3bc2e4aab0bd1",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc4": {
+      "inputHash": "sha256:37623f30c5523c711008c83a29e9cf974016ea148bdabb085a6d7e6133801cc3",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc5": {
+      "inputHash": "sha256:8340a795d22ab9931d04b7a6c8b1ec26ddb22f53343a2a6f8f133218675e71a3",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc6": {
+      "inputHash": "sha256:1e20031846c4726eed2b849cc4ebbba0e307ceba49eee32dc7f984ee68ef59ac",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc7": {
+      "inputHash": "sha256:e11bb44175136de59a157ad709f48d1c2289ff98baf9b0a567badd10731e2eef",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc8": {
+      "inputHash": "sha256:8c18c5097f1b6c7d45d682a8be3223abc5d055b6cf9981436d03d8500a7a3d9b",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc9": {
+      "inputHash": "sha256:1e77f4e5a838fdef992c4d66554c74f53bf3f8570c32a8047ce2cf59310e1988",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc10": {
+      "inputHash": "sha256:9eb2bc0aa363c97d7a8ffd7a290d78d1b6ca2ed8ab2aca22b972c5206c6d87bc",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc11": {
+      "inputHash": "sha256:d85e8318600fa7c0dfa1dc5a30b8d286db4d8cc807f2f361097d215e71e0649e",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc12": {
+      "inputHash": "sha256:7f0652aea26b3cbb7bdd212585267dd73b88028b23a70eb5c5258d3115537415",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc13": {
+      "inputHash": "sha256:8c7367f9c4069fc4c4619a6eba11ea73ffca63e62a542470613e5163e7786c15",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc14": {
+      "inputHash": "sha256:ffa85077ac0f4195ee8d6d659f87982b38ec5748268a143d4fcd8246edb778d0",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc15": {
+      "inputHash": "sha256:d88e4acdd4419b16112158ff9e32ce1c10f0e60d8dbbeed9b32e36c243113229",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc16": {
+      "inputHash": "sha256:04d2154f78b072c76a746fe2415311c4d43630bbeef5e0e7c6039482b5b0fbd2",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc17": {
+      "inputHash": "sha256:9e4f000269233b8cec5583c83aab5a3578c72e0aa18730f01ddff1077444f3b8",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc18": {
+      "inputHash": "sha256:4908b1dd8fe76dd364aa3c637e0f99f2bfcad8c4063e20d5941931e5529f08d7",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc19": {
+      "inputHash": "sha256:3bdbbc3434024b06ed1de019f9efb73546d6c6018b565aba3315eb0f352873bf",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "unrelated-sc20": {
+      "inputHash": "sha256:4371b77c067a2454c572e082a3642d8421b5eb0da9df057e0d8574f3d9b609a7",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch02-00-guessing-game-tutorial-s1-sc1": {
+      "inputHash": "sha256:29b35fd6df13077468bd00a2d06643207f62cc343128e9ce67885a463f0551f4",
+      "skillIds": [
+        "ch02-00-guessing-game-tutorial-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch02-00-guessing-game-tutorial-s1-sc2": {
+      "inputHash": "sha256:729f5ef1ea87d9357467d50b809066b03aceead82aa02b787aea7be2eee62817",
+      "skillIds": [
+        "ch02-00-guessing-game-tutorial-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch02-00-guessing-game-tutorial-s1-sc3": {
+      "inputHash": "sha256:e0c557618e60b4947827b92bea4b2970b4f95203aafe231e7fc99888b92d8d2b",
+      "skillIds": [
+        "ch02-00-guessing-game-tutorial-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch09-03-to-panic-or-not-to-panic-s1-sc1": {
+      "inputHash": "sha256:71d9e50dcf7e73b7236d4b25fd30d565dd3a94609ea65a562bb8ca6042efe768",
+      "skillIds": [
+        "ch09-03-to-panic-or-not-to-panic-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch09-03-to-panic-or-not-to-panic-s1-sc2": {
+      "inputHash": "sha256:50f0f5c623f713a486487ad5823aff61193286d6a855576667980c3469286c31",
+      "skillIds": [
+        "ch09-03-to-panic-or-not-to-panic-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch09-03-to-panic-or-not-to-panic-s1-sc3": {
+      "inputHash": "sha256:ec82d42d2c618e68cac30134ee0533ca7599dd458498ee372604e339fbe868d0",
+      "skillIds": [
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch12-03-improving-error-handling-and-modularity-s2-sc1": {
+      "inputHash": "sha256:45aaea7e9174c8f7d2c442b5db04ee9d4382fd21888d567f6581c55d71d2fa8b",
+      "skillIds": [
+        "ch12-03-improving-error-handling-and-modularity-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch12-03-improving-error-handling-and-modularity-s2-sc2": {
+      "inputHash": "sha256:5a59b5505023bf3656b6974164d7bced087d7e4404000755865dd438f4b26ddf",
+      "skillIds": [
+        "ch12-03-improving-error-handling-and-modularity-s1",
+        "ch12-03-improving-error-handling-and-modularity-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch12-03-improving-error-handling-and-modularity-s2-sc3": {
+      "inputHash": "sha256:56c01fdfab5d346ae319dc8ee8af469ed5bec6c57ccc29e4ea439e93a8ced445",
+      "skillIds": [
+        "ch12-03-improving-error-handling-and-modularity-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch17-03-oo-design-patterns-s1-sc1": {
+      "inputHash": "sha256:73ac02a27e6aba12dd46d7ae7ef186e2ea375b7bcdb6bfd9d046efe32ce6a15a",
+      "skillIds": [
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch17-03-oo-design-patterns-s1-sc2": {
+      "inputHash": "sha256:d75672476c5e95aa304893b8542dce950fdbbfdd749d00e4ec0462f6c85e402f",
+      "skillIds": [
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch17-03-oo-design-patterns-s1-sc3": {
+      "inputHash": "sha256:51dc5eccb5ce40bcec5781cd72d75dd14fe780101b03bee893488d788aab391e",
+      "skillIds": [
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch18-02-refutability-s1-sc1": {
+      "inputHash": "sha256:66b3a7d363e8f0ae58072a753e11f6a280c9bc06f7bf67c9653f85ebb2351d1a",
+      "skillIds": [
+        "ch18-02-refutability-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch18-02-refutability-s1-sc2": {
+      "inputHash": "sha256:2577344c9a2f6bf7d0e1e688829ee07645764de33eeba1e64c6563998fa0c993",
+      "skillIds": [
+        "ch18-02-refutability-s1",
+        "ch06-02-match-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch18-02-refutability-s1-sc3": {
+      "inputHash": "sha256:a23f206ba367115d5f11e020455787b9d22c5fa17d3dfefbb2f40bcb710c002c",
+      "skillIds": [
+        "ch18-02-refutability-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch04-02-references-and-borrowing-s1-sc1": {
+      "inputHash": "sha256:862316e96b80fe5880056ad3aa7df6588d354f888b1b242f2765542a2b54082e",
+      "skillIds": [
+        "ch04-02-references-and-borrowing-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch04-02-references-and-borrowing-s1-sc2": {
+      "inputHash": "sha256:09fda84803773dfdf8a937593bfe84529940c21a90bc3f78a6a0ca97be6d7ffb",
+      "skillIds": [
+        "ch04-02-references-and-borrowing-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch04-02-references-and-borrowing-s1-sc3": {
+      "inputHash": "sha256:2535fb4b1c697d5bf52bef43e815f5993499b6000f6a8b2917109905cd34dc83",
+      "skillIds": [
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch04-03-slices-s1-sc1": {
+      "inputHash": "sha256:d23309267704cc9f9924453ab5d7ddcf779703b160b43d74eb499871eafee71a",
+      "skillIds": [
+        "ch04-03-slices-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch04-03-slices-s1-sc2": {
+      "inputHash": "sha256:ab73c1ae2d1788ec205997a10b5ce8a89ea71cf37abd9b2c0cc8613beab7a8b7",
+      "skillIds": [
+        "ch04-03-slices-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch04-03-slices-s1-sc3": {
+      "inputHash": "sha256:61606aea16d48bdd3453e6cc79dd23ff7a187939663eee0336c852f972f29f49",
+      "skillIds": [
+        "ch04-03-slices-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-01-defining-structs-s1-sc1": {
+      "inputHash": "sha256:c9470a130e49a348e98139ac0504f868b5aa727c5a44fb5fb54fec3592775ed9",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-01-defining-structs-s1-sc2": {
+      "inputHash": "sha256:a318c9bf8c79a0f1b8ab8489b84a16741ed338db011ca37c9b847596fc8d259c",
+      "skillIds": [
+        "ch05-01-defining-structs-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-01-defining-structs-s1-sc3": {
+      "inputHash": "sha256:331e6cd27ea70f676010e35fdd67ecf5fb7acae1561af7e38ac08d0a02f8949c",
+      "skillIds": [
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-02-example-structs-s1-sc1": {
+      "inputHash": "sha256:8ade72e6332792f8d9855d4d27acda6dd59b9285cf95b44ca02d670a520fa48c",
+      "skillIds": [
+        "ch05-02-example-structs-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-02-example-structs-s1-sc2": {
+      "inputHash": "sha256:cfac6a5d7e90122a34aec7924e1bb57bb2c5aaad1b93fa0fde76ccd665737587",
+      "skillIds": [
+        "ch05-02-example-structs-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-02-example-structs-s1-sc3": {
+      "inputHash": "sha256:154c776c9c4040ab1415ec20a28c831cf0328576e006999889e07657ca08bdee",
+      "skillIds": [
+        "ch05-02-example-structs-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-03-method-syntax-s1-sc1": {
+      "inputHash": "sha256:f05a4c5f00b201c99176bb8a65eeb4c02e1e691d85595d1b772d5b8653cf3f60",
+      "skillIds": [
+        "ch05-01-defining-structs-s1",
+        "ch05-03-method-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-03-method-syntax-s1-sc2": {
+      "inputHash": "sha256:a4df0cb5756330ef3c1c41ae7590e4b4bbfe3d9ea56d6ee58685b84446502443",
+      "skillIds": [
+        "ch05-03-method-syntax-s1",
+        "ch04-02-references-and-borrowing-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch05-03-method-syntax-s1-sc3": {
+      "inputHash": "sha256:b47dc66744e0c581d136249aab7090fc018f4db16f11176ec3287776336c2bd7",
+      "skillIds": [
+        "ch12-03-improving-error-handling-and-modularity-s1",
+        "ch05-03-method-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-01-defining-an-enum-s1-sc1": {
+      "inputHash": "sha256:b448864c57defd0f163c881c3010c5acd01c59da8b947e3e90a4435fb58c8cf8",
+      "skillIds": [
+        "ch06-01-defining-an-enum-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-01-defining-an-enum-s1-sc2": {
+      "inputHash": "sha256:bac6950a270ce5aea1a2f90a5f65d747c83063e0011110dba536c6f3565e6964",
+      "skillIds": [
+        "ch06-01-defining-an-enum-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-01-defining-an-enum-s1-sc3": {
+      "inputHash": "sha256:85d3cbfc8e0b656c5e60de8ae2f0c72ff928e91d0cd74575c95070a2b3d3406d",
+      "skillIds": [
+        "ch06-01-defining-an-enum-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-02-match-s1-sc1": {
+      "inputHash": "sha256:e68a6df78d2656f74d7ce8372ab5cbbc3d3a3553d1537712c38ac21b4b597fc8",
+      "skillIds": [
+        "ch06-01-defining-an-enum-s1",
+        "ch06-02-match-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-02-match-s1-sc2": {
+      "inputHash": "sha256:dd57d6aca85211e44154e229c3b63a9feaa208431eef3a961050c1194647baea",
+      "skillIds": [
+        "ch06-02-match-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-02-match-s1-sc3": {
+      "inputHash": "sha256:a92ca03692c469bd75a99894e2891db40a6dd298fab9e67cfef6d01338af76b6",
+      "skillIds": [
+        "ch06-02-match-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-03-if-let-s1-sc1": {
+      "inputHash": "sha256:74027513eb53888fb187511e79d26de3e015590fc16aeae3f97ff25fcf00e468",
+      "skillIds": [
+        "ch06-03-if-let-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-03-if-let-s1-sc2": {
+      "inputHash": "sha256:c80a785810aa66f6c4e14c079954d00295b189e47501f57fa9e475f8c1e4e5db",
+      "skillIds": [
+        "ch06-03-if-let-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch06-03-if-let-s1-sc3": {
+      "inputHash": "sha256:8dbbb2e783e136817bf89f6153f3e69312e79f9cd154d351e130335d0b965e3b",
+      "skillIds": [
+        "ch06-03-if-let-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-01-vectors-s1-sc1": {
+      "inputHash": "sha256:6273bab57719708161ee982de9f890fe05b1316d2f7ba60a07997c315a3d293b",
+      "skillIds": [
+        "ch08-01-vectors-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-01-vectors-s1-sc2": {
+      "inputHash": "sha256:9e4d6a40bb81a110fdf80bb8ca87c6678095cffd58036f42f727d14aa620bed1",
+      "skillIds": [
+        "ch08-01-vectors-s1",
+        "ch04-02-references-and-borrowing-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-01-vectors-s1-sc3": {
+      "inputHash": "sha256:e685eac314d144c0f73dfe6d59aeac3fe420377becdf4cc4ee53c93edadd3fb9",
+      "skillIds": [
+        "ch08-01-vectors-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-02-strings-s1-sc1": {
+      "inputHash": "sha256:cd0fdc1076dd2195331273679f5e6efa0b39f5217013b52e0b70663d4e8c4aac",
+      "skillIds": [
+        "ch08-02-strings-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-02-strings-s1-sc2": {
+      "inputHash": "sha256:f99c889d1adb783496e94d8c9224ddfe34eed7feb612ffbdb6c25d4c2c49640f",
+      "skillIds": [
+        "ch04-03-slices-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-02-strings-s1-sc3": {
+      "inputHash": "sha256:55fac2abf65cc894b36caf66d378c0900906917b0d5d5178998c185b28190ef7",
+      "skillIds": [
+        "ch08-02-strings-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-03-hash-maps-s1-sc1": {
+      "inputHash": "sha256:8804c6e24eba314f475da86b933deade7a92102241d6fd282f20b4c0fb7dd5b7",
+      "skillIds": [
+        "ch08-03-hash-maps-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-03-hash-maps-s1-sc2": {
+      "inputHash": "sha256:537ad5b620b5373921c7a542890aa7a0c3b0688b2ab6177595f0f8d6b5180576",
+      "skillIds": [
+        "ch08-03-hash-maps-s1",
+        "ch13-02-iterators-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-03-hash-maps-s1-sc3": {
+      "inputHash": "sha256:e460cab6aa77d3c4e16e5ce82d349eb3fb19cf440c2bbeb15cdb57c1879c3ea9",
+      "skillIds": [
+        "ch08-03-hash-maps-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-03-hash-maps-s2-sc1": {
+      "inputHash": "sha256:8847d1fca6cd870543ca9bd98469ae21de9581029d12fbc225ec115156955399",
+      "skillIds": [
+        "ch08-03-hash-maps-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-03-hash-maps-s2-sc2": {
+      "inputHash": "sha256:91fcb461575919b6934370397f53b794e2e34067da571a9e8bd71a66cd79f0d3",
+      "skillIds": [
+        "ch08-03-hash-maps-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch08-03-hash-maps-s2-sc3": {
+      "inputHash": "sha256:6fa237e718c99b9f2ff2924daf3957f039c4a443a9efacb54ef719071c8ab670",
+      "skillIds": [
+        "ch08-03-hash-maps-s1",
+        "ch08-03-hash-maps-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-01-syntax-s1-sc1": {
+      "inputHash": "sha256:b8ee675ccd461d1a0cb07b3b4121854e20f5c261d8d3da055371d2bbabd57cfe",
+      "skillIds": [
+        "ch10-02-traits-s1",
+        "ch10-01-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-01-syntax-s1-sc2": {
+      "inputHash": "sha256:4425f0c382992dd108eee7838e787296f4a700e396115be96315d246fa58699e",
+      "skillIds": [
+        "ch10-01-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-01-syntax-s1-sc3": {
+      "inputHash": "sha256:dec08aa3746a803672153c2ee57393918b7f260f61c6b79c32932674da412f49",
+      "skillIds": [
+        "ch10-01-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-02-traits-s1-sc1": {
+      "inputHash": "sha256:4e602ea4f0867decfe92e66f16c284dc12f2b9255e292c2437c6fe215a9c668f",
+      "skillIds": [
+        "ch10-02-traits-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-02-traits-s1-sc2": {
+      "inputHash": "sha256:7f8cc5b2e64c3584006a0a318daaf1da612fdbbb4d0127e3247c842963ea25d1",
+      "skillIds": [
+        "ch10-02-traits-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-02-traits-s1-sc3": {
+      "inputHash": "sha256:932b42fda9682183ad134cd3a416ebf39d6e82d99f40617e75b15d259221770c",
+      "skillIds": [],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-03-lifetime-syntax-s1-sc1": {
+      "inputHash": "sha256:b3040de946a669c0343941cc1780994375693db8cfececd77cddec01d6c60fa4",
+      "skillIds": [
+        "ch04-03-slices-s1",
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-03-lifetime-syntax-s1-sc2": {
+      "inputHash": "sha256:0a0df23da632e42e6581176e111a3c10350d452c86e434c1344db138098cac78",
+      "skillIds": [
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch10-03-lifetime-syntax-s1-sc3": {
+      "inputHash": "sha256:001d45f35265828b72c0cd3097cc4ff5deae92204d7c7a1883ea1a2d07174d27",
+      "skillIds": [
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-01-closures-s1-sc1": {
+      "inputHash": "sha256:70decb11ee6f00b083c92d865d1d7a48475d93517c5c13e10f70950fd369265d",
+      "skillIds": [
+        "ch13-01-closures-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-01-closures-s1-sc2": {
+      "inputHash": "sha256:8bf54e5da58ed8842f5c1d5b4ec77dc438d4daee63f0503d250dc8ab4103582e",
+      "skillIds": [
+        "ch13-01-closures-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-01-closures-s1-sc3": {
+      "inputHash": "sha256:0ea1ec41c99f8dc589051092b7f15d8cc6e663e6d47904ef658253aa60e4bb3b",
+      "skillIds": [
+        "ch13-01-closures-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-01-closures-s2-sc1": {
+      "inputHash": "sha256:20deebb4739cd38f6060ebbc64a1a2f7618d1b26b4ab0925ea462f5e8f83617f",
+      "skillIds": [
+        "ch13-01-closures-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-01-closures-s2-sc2": {
+      "inputHash": "sha256:977226b77350a60ee3a8fbe1451e9bfdab854c1fbb32929809b25f24d5b61fc5",
+      "skillIds": [
+        "ch08-03-hash-maps-s1",
+        "ch13-01-closures-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-01-closures-s2-sc3": {
+      "inputHash": "sha256:6aba8636129e215308e4d47604938d4c8bd01cd4a8344bf6b7d315bd6c7beb4c",
+      "skillIds": [
+        "ch13-01-closures-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-02-iterators-s1-sc1": {
+      "inputHash": "sha256:ec92188bbc0dcc8b1a6d5de1fe22870c8dca282850ca4547f2eccc7577f71d20",
+      "skillIds": [
+        "ch13-02-iterators-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-02-iterators-s1-sc2": {
+      "inputHash": "sha256:49e35190292e4a40fa0679f8c0b46858e5488bf858611a8a46b8fa08cf01b476",
+      "skillIds": [
+        "ch13-02-iterators-s2",
+        "ch13-02-iterators-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-02-iterators-s1-sc3": {
+      "inputHash": "sha256:b94085c91a430edaaf818c17a22056b3be13242f2be35c6223d0276d5dc3f837",
+      "skillIds": [
+        "ch13-02-iterators-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-02-iterators-s2-sc1": {
+      "inputHash": "sha256:dc483f392f7b66cc5921d2cb838fa7d8af008f93cdf32f1c058ef7dd059aebd2",
+      "skillIds": [
+        "ch13-02-iterators-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-02-iterators-s2-sc2": {
+      "inputHash": "sha256:87757b6e7b1043a6fcda3ca5ae43ae023d4884273c535cf26b0f42e5dbadd850",
+      "skillIds": [
+        "ch13-02-iterators-s2"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    },
+    "ch13-02-iterators-s2-sc3": {
+      "inputHash": "sha256:1e4148b76fcccadbd301a88e0fcfcaa06d717f9fb283b4f7bc4d0ab46fcf2e99",
+      "skillIds": [
+        "ch13-02-iterators-s2",
+        "ch13-02-iterators-s1"
+      ],
+      "unknownCodes": [],
+      "overMax": null,
+      "finishReason": "stop"
+    }
+  },
+  "usage": {
+    "promptTokens": 394312,
+    "completionTokens": 235641
+  }
+}

@@ -1,0 +1,708 @@
+{
+  "schemaVersion": "gate2-scenarios/v1",
+  "createdAt": "2026-10-15T11:38:31.588Z",
+  "promptFingerprint": "prompt-e3c3959885e0",
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "candidates": [
+    {
+      "skillId": "diagnose-rust-borrows",
+      "name": "诊断 Rust 借用、切片与生命周期错误",
+      "inputHash": "sha256:5fdc07a0c90352e06572bfd21b12be84473526ed73453d2fc38a2aff4e22bd08",
+      "scenarios": [
+        {
+          "scenarioId": "diagnose-rust-borrows-sc1",
+          "text": "我这个函数先对同一个 HashMap 值取了可变引用做插入，随后在同一作用域又取了另一个可变引用做删除，编译器报 E0499。我改成先做完插入再删除还是不能过，请帮我定位是哪里违反了借用规则。",
+          "why": "该问题属于同一数据的多个可变借用冲突，需要诊断借用规则并调整借用作用域或重构。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "diagnose-rust-borrows-sc2",
+          "text": "我写了一个工具函数，接收两个 &str，想返回二者中较长的那一个，编译器报 E0106 说缺少生命周期标注。我试了加上 'static 但报错说返回引用不能比参数活得久，请帮我判断返回引用应该与哪个参数关联。",
+          "why": "需要为函数返回引用建立与输入参数的生命周期关系，而不是简单使用 'static，这需要生命周期标注诊断。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "diagnose-rust-borrows-sc3",
+          "text": "这段解析代码从网络报文里按字节偏移切子串，编译器报 E0502，因为它认为我同时持有原始缓冲区的可变引用；我还担心遇到多字节字符会在非 UTF-8 边界上 panic，请帮我一起检查切片位置和借用问题。",
+          "why": "涉及字符串切片 UTF-8 边界和借用冲突，需要同时检查切片索引与借用规则，是技能涵盖的切片与借用诊断。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "model-rust-domain-types",
+      "name": "用结构体、方法与枚举建模 Rust 领域类型",
+      "inputHash": "sha256:cbf0ea926c966dcacfb5ab7eb10d3e67a1163623c66d1f857acc022b0bc8fbe3",
+      "scenarios": [
+        {
+          "scenarioId": "model-rust-domain-types-sc1",
+          "text": "我正在从 CLI 参数和配置文件构造服务配置，想把 host、port、retry 这些相关字段放在一个类型里，并在基于默认值覆盖部分字段时不逐个重复赋值。",
+          "why": "这需要结构体定义与结构体更新语法来组合相关配置，并基于默认实例只覆盖部分字段。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "model-rust-domain-types-sc2",
+          "text": "我要表示支付流程的多种状态，其中待支付和已关闭没有额外数据，已支付需要保存支付时间和流水号，不想再用字符串加可空字段来凑。",
+          "why": "这需要枚举成员携带不同类型和数量的数据，并用 Option 消除空值，而不是用散落的字符串状态和可空字段。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "model-rust-domain-types-sc3",
+          "text": "我在写矩形布局计算，想提供根据宽高创建矩形的构造器和判断能否容纳另一个矩形的方法，调用方在判断之后还要继续使用被比较的矩形。",
+          "why": "这需要关联函数、方法以及不可变借用参数来组织行为，并保留调用方对传入实例的所有权。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "match-rust-variants",
+      "name": "用模式匹配处理 Rust 变体与可反驳模式",
+      "inputHash": "sha256:a59264cad2e6093671b375779de8b4a97290c76d3670df7fb282b0dd5b31003f",
+      "scenarios": [
+        {
+          "scenarioId": "match-rust-variants-sc1",
+          "text": "我在解析一个配置文件，每个配置项是一个枚举，不同变体要执行不同的初始化逻辑。现在我需要根据变体分发，但编译器一直提示有分支没覆盖到，能帮我理清怎么写出完整的匹配吗？",
+          "why": "它需要针对 Rust 枚举写出穷举的分发逻辑，并解决漏分支问题，对应技能中 match 穷举性、通配分支顺序和绑定规则的知识。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "match-rust-variants-sc2",
+          "text": "我有一段代码只需要处理网络请求结果里的成功情况，错误情况直接忽略，现在用 match 写了两行分支，感觉有点啰嗦，有没有更简洁的写法？",
+          "why": "它属于只关心单个枚举变体解构的场景，应根据技能中 if let 的适用条件和启发式来简化表达，而不是继续使用冗长的 match。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "match-rust-variants-sc3",
+          "text": "编译的时候报错说 let 语句不能使用可能匹配失败的模式，我代码里写了 let Some(value) = config.get(\"key\")，但 config.get 返回的是 Option，应该怎么改才符合 Rust 的规则？",
+          "why": "它涉及可反驳模式与不可反驳模式在 let 语句中的位置约束，需要利用该技能中关于模式位置限制的知识，调整为 if let 或 match 等合法写法。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "process-rust-text-and-hashmaps",
+      "name": "安全处理 Rust 文本与键值集合",
+      "inputHash": "sha256:bc71047a38ed3cc2919faae73e8ed306491d7e4d87ef9dce5e7de6e061f4bf9c",
+      "scenarios": [
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc1",
+          "text": "我要从一批用户输入的评论里截取前 120 个字节作为列表摘要，但有些评论带 emoji 或中文，直接按字节切片在运行时会 panic；帮我改成能落在字符边界的安全截断，截断后不要出现半个字符。",
+          "why": "它涉及 UTF-8 字节边界与字符串 slice 的 panic 问题，需要安全按字节范围截取。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc2",
+          "text": "我在统计服务日志里每个 error code 的出现次数，现在用 HashMap 先 contains_key 再 insert 或 get_mut 更新，代码又长又容易出现重复键逻辑；帮我改成用 entry API 一次性处理“不存在时插入 0，然后递增”。",
+          "why": "它涉及 HashMap 的插入/查询/更新策略，以及用 entry 和 or_insert 处理键不存在时初始化，避免手动判断。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc3",
+          "text": "我拿到几个返回 String 的函数结果，想和一个常量前缀拼成一条完整消息；但用 + 拼接时第一个 String 被移动了，后面还要继续用它，而且两个 String 相加会报错；帮我改成不夺取参数所有权的拼接写法，比如用 format! 或 push_str。",
+          "why": "它涉及 String 拼接的所有权规则、+ 运算符的限制以及 format! / push_str 的选择。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "design-rust-abstractions",
+      "name": "用泛型、trait 与 trait object 设计抽象",
+      "inputHash": "sha256:d9545221a1c036daa14b473e4651c541470705250c1ba87192bf45d5583fb789",
+      "scenarios": [
+        {
+          "scenarioId": "design-rust-abstractions-sc1",
+          "text": "我写了三个几乎一样的函数，分别对 `Vec<i32>`、`Vec<f64>` 和 `Vec<i64>` 求最大值；我想合并成一个泛型版本，但用 `T` 和 `>` 比较一直编译不过，需要知道该加哪些 trait 约束。",
+          "why": "该请求的核心是消除重复逻辑并使用泛型；同时编译错误涉及为 `>` 比较补充 `PartialOrd`/`Copy` 等 trait bound，属于该技能的泛型与 trait bound 范畴。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "design-rust-abstractions-sc2",
+          "text": "我在做内容聚合模块，`NewsArticle` 和 `Tweet` 要生成各自的摘要，但字段不同。我想定义一个统一的摘要接口，让两个类型各自实现，并让一个函数接收任何实现了该接口的类型；最好还能提供默认摘要格式，只让少数类型覆盖。",
+          "why": "该请求需要定义共享行为契约、提供 trait 默认实现，并用 `impl Trait` 参数接收不同类型的实现，属于该技能中 trait 抽象与默认实现的能力。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "design-rust-abstractions-sc3",
+          "text": "我在写一个可扩展的绘图库，现在内置了圆形、矩形，但用户以后可以注册自己的形状。我想把不同类型的形状放进一个集合并统一调用 `draw`，同时需要确认：如果 `draw` 方法返回 `Self` 或带泛型参数，为什么就不能放进 `Vec<Box<dyn Draw>>`？",
+          "why": "该请求涉及异构集合中通过 `dyn` 进行动态分发，以及判断 trait 是否对象安全，属于该技能中动态分发的部分。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "compose-rust-closures",
+      "name": "创建、约束并缓存 Rust 闭包",
+      "inputHash": "sha256:95e9d1ee088e465b9db6167a5f33960c24baef9db7e7fc06aa712584938584e3",
+      "scenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc1",
+          "text": "我的服务启动时并不总会用到某份配置文件，但一旦用到某个键就需要解析；同一个键在后续请求里还会被反复读取。我不想启动时全量解析，也不想对同一个键重复解析，想改成第一次读取时执行解析并缓存结果。",
+          "why": "这需要把解析逻辑封装为按需执行的闭包，并用 HashMap 按输入键缓存返回值，实现记忆化缓存和惰性求值。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc2",
+          "text": "我要给查询结果集加一个调用方传入的行级映射函数，并把它保存在执行器结构体里，渲染每行时调用。这个函数可能只读外部状态，也可能需要修改捕获的统计计数器，我不确定字段该怎么写泛型约束和 trait bound。",
+          "why": "这需要将闭包存储到结构体，并通过泛型和 Fn/FnMut trait bound 约束闭包类型，正是该技能覆盖的闭包存储与约束场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc3",
+          "text": "我在写一个小型任务队列，提交任务时传一段逻辑，队列会把它发到工作线程执行。现在编译器提示闭包借用了调用者栈上的临时数据导致生命周期不够，我想让它在定义时把数据 move 进去，并确认这个闭包应该实现 FnOnce 还是 FnMut。",
+          "why": "这需要理解闭包三种环境捕获方式以及用 move 获取所有权，并根据调用方式选择 FnOnce/FnMut 系列 trait，属于该技能的捕获与约束场景。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "manage-rust-memory-and-mutability",
+      "name": "管理 Rust 内存布局、析构与内部可变性",
+      "inputHash": "sha256:6abcad9f333c2e3044b534fb8c2189c99d1bb7297abde34df2762f85a0aebce0",
+      "scenarios": [
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc1",
+          "text": "我在写一个表达式树，`enum Expr { Num(i64), Add(Expr, Expr) }` 一直报 E0072，说类型有无限大小，我该怎么调整这个定义才能编译？",
+          "why": "这是递归类型直接包含自身导致无限大小错误，应该用 Box 做堆间接来修复。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc2",
+          "text": "我的日志文件句柄实现了 Drop，但我想在某个检查点之前就确保它已经 flush 并关闭，直接写 `handle.drop()` 编译不过，正确的提前释放方式是什么？",
+          "why": "这涉及 Drop trait 的析构时序和提前释放，应该使用 std::mem::drop 而不是直接调用 drop 方法。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc3",
+          "text": "我在实现一个统计结构的 trait 方法 `record(&self, msg)`，需要更新内部计数器，但 trait 要求保持 `&self` 签名，不能改成 `&mut self`，我该怎么在不可变引用下修改状态？",
+          "why": "这是 &self 方法需要修改字段的场景，应使用 RefCell 获得内部可变性。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "coordinate-rust-threads",
+      "name": "用线程、通道与 Arc<Mutex> 协调并发",
+      "inputHash": "sha256:a8e15536b680593657ed6f9a9fddd1cc017da628328f3853f56235fe0ec36239",
+      "scenarios": [
+        {
+          "scenarioId": "coordinate-rust-threads-sc1",
+          "text": "我有一批独立的文件哈希计算任务，想同时跑起来，等所有任务结束后把每个文件的哈希按原顺序收进一个 Vec 返回；现在担心主线程先退出或者结果丢失。",
+          "why": "这涉及并行任务的 spawn/join 生命周期管理和结果收集，正是并发编排要解决的问题。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "coordinate-rust-threads-sc2",
+          "text": "我要让两个后台线程分别扫描不同目录，把发现的问题文件路径发给同一个消费者做统一处理；想知道怎么把同一个发送端安全地传给多个线程还不出现所有权冲突。",
+          "why": "这需要多生产者单消费者通道以及克隆发送端，而不是普通的多线程任务管理。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "coordinate-rust-threads-sc3",
+          "text": "我在多个线程里更新同一个共享计数器，直接把 Rc<Mutex<Counter>> 搬进线程编译报 Rc 不能跨线程；另外还想避免两个线程各持一个锁互相卡死。",
+          "why": "这涉及 Rc 跨线程报错的排查、改用可共享状态以及死锁防护，是该技能的核心覆盖点。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "structure-rust-cli",
+      "name": "拆分 Rust CLI 并传递 Result 错误",
+      "inputHash": "sha256:2741960ce63f90f81d68dafc77d8f756dbc734fc3bde3fbff008f857df8ba933",
+      "scenarios": [
+        {
+          "scenarioId": "structure-rust-cli-sc1",
+          "text": "我想给现在这个命令行工具加单元测试，但所有参数解析和文件读取逻辑都堆在 main 里，根本没法直接调用那些内部步骤；请帮我把可测试的部分移到 lib，main 只保留启动入口。",
+          "why": "它要求拆分二进制项目的 main 与 lib，把逻辑暴露为可测试 API，正是该技能针对难以测试的单文件 CLI 的重构范围。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "structure-rust-cli-sc2",
+          "text": "现在 main 里同时负责搜集参数、设置默认值和执行业务逻辑，参数一多就越来越乱；请帮我把这些配置项聚合成一个 Config，并用返回 Result 的方式处理缺参等错误，而不是直接 panic。",
+          "why": "它涉及 Config 聚合参数、提取解析函数以及用 Result 替代 panic，是该技能在参数处理与错误建模上的核心手法。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "structure-rust-cli-sc3",
+          "text": "用户少传参数时，我的工具会输出一长串 panic 和 index out of bounds 信息，完全没有可读提示；请改成把可能失败的操作返回 Result，在 main 里输出简短错误信息并返回非零退出码。",
+          "why": "它要求用 Result 传播错误、在 main 中检查 Err 并调用 process::exit 返回退出码，正是该技能处理用户可见错误的部分。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "run-rust-tests",
+      "name": "筛选、串行并观察 Rust 测试",
+      "inputHash": "sha256:b90a68981a359fd68ebebbec4886ca0906573a2d983679509825dc8ddd8ac436",
+      "scenarios": [
+        {
+          "scenarioId": "run-rust-tests-sc1",
+          "text": "auth 模块里有几个测试挂了，我想只跑这个模块下面的用例，别把整个项目的测试都跑一遍，好快点看到是哪个断言失败了。",
+          "why": "需要按模块名筛选 cargo test 的测试子集，而不是运行全部测试。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "run-rust-tests-sc2",
+          "text": "我的集成测试会同时读写同一个临时目录，经常随机失败，我想让它们不要并行执行，按顺序跑一遍确认是不是竞争问题。",
+          "why": "需要限制测试二进制文件的并行线程数（--test-threads=1）来消除共享状态竞争。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "run-rust-tests-sc3",
+          "text": "有个测试通过了，但我在里面加的 println! 调试日志在终端里没显示出来，我想看到这些输出确认中间过程。",
+          "why": "需要显示被默认截获的通过测试输出（例如 --show-output），属于输出可见性问题。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "implement-rust-state-pattern",
+      "name": "用所有权安全地实现 Rust 状态模式",
+      "inputHash": "sha256:e965c0bfe6913a0323c58160b92234acf7805f79c342651d95e45d221b8372e1",
+      "scenarios": [
+        {
+          "scenarioId": "implement-rust-state-pattern-sc1",
+          "text": "我正在重构博客发布流程，现在 Post 里放了一个状态枚举，发布、审核、驳回的逻辑都散在各处 match。请帮我把草稿、审核中、已发布这些状态分别封装起来，让每个状态自己决定如何转移到下一个状态，并统一由 Post 持有当前状态。",
+          "why": "它要求把带状态的发布流程建模为由 Post 持有、状态对象负责转移规则的状态机，并处理状态字段的所有权封装，正是该技能覆盖的内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc2",
+          "text": "我们订单模块现在用一个 status 字符串标记状态，导致支付前就可能调用发货。我想把草稿订单、已支付订单、已发货订单做成不同的类型，状态转换方法获取当前订单的所有权并返回下一状态类型，让跳过支付状态的调用在编译期直接失败。",
+          "why": "这需要将状态编码进不同类型，并通过消费旧实例完成状态转移，以实现编译时无效状态不可能，是该技能的核心方法之一。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc3",
+          "text": "我在实现连接协议状态机时，有些查询方法是 &self 但要读取当前状态，而收到关闭信号时又需要把旧状态换成新状态，总是遇到不能从借用字段里移动状态的编译错误。请帮我调整状态字段的存放方式，让读取只借引用，切换时能把旧状态所有权拿出来。",
+          "why": "这涉及在协议状态机中处理 Option 字段上的引用读取与所有权取出，符合该技能对 take/as_ref 所有权搬迁的工程规则。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "define-agent-boundaries",
+      "name": "定义 Agent 观察、动作与职责边界",
+      "inputHash": "sha256:7520d17a6953cc10a24f6d738d346037d35cf320d0cd8bca778c9428107972e8",
+      "scenarios": [
+        {
+          "scenarioId": "define-agent-boundaries-sc1",
+          "text": "我在设计一个内部运维助手，准备接入工单、日志和发布平台；请帮我先确定它每一步必须看到哪些字段、哪些查询必须走工具、哪些变更操作只允许在预演模式下执行。",
+          "why": "这不是普通工具选型，而是要先划清观察输入和动作接口，并把高风险操作约束到专用工具层。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "define-agent-boundaries-sc2",
+          "text": "我们现有的编码助手经常在回复里直接建议改数据库或改配置，但它根本没有对应工具，只能靠嘴说；我想梳理它当前实际能拿到和能执行的所有接口，并把这些约束落到系统里。",
+          "why": "这是典型的动作边界缺失问题，需要明确没有通过动作接口允许的操作不能被执行，并用 Harness 层做验证和纠正。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "define-agent-boundaries-sc3",
+          "text": "我要让 Agent 自动总结一个仓库结构并选择构建命令，但拿不准代码结构摘要应该在构造上下文时注入，还是做成一个检索工具让模型调用；构建命令又该用通用 shell 还是专用工具。",
+          "why": "这需要判断能力应放在模型提示、上下文构造还是工具层，正是该技能处理的职责分层问题。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "secure-agent-actions",
+      "name": "为 Agent 动作建立可执行安全边界",
+      "inputHash": "sha256:7868a68a7b25207e9378ea1b773f0d9a95b3773a4a580b154ed0c5167a43c668",
+      "scenarios": [
+        {
+          "scenarioId": "secure-agent-actions-sc1",
+          "text": "我们下周要上线一个会读取工单、自动给客户回复并能在后台改订单状态的 Agent。现在我在做上线前检查，请帮我按动作的风险把自动执行、需要人工审批和必须阻断的边界列清楚，并指出当前这套规则可能被绕过的路径。",
+          "why": "它要求对 Agent 动作做风险分级、人工干预与绕过排查，覆盖护栏分层和双向评估，属于该技能的核心评审场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc2",
+          "text": "我接了一个第三方 MCP 工具集给我们的 Agent 用，它会先读网页再决定调用哪些工具。请帮我审查这些工具描述和参数里有没有可能夹带伪指令，并设计外部网页内容进入上下文前的隔离和校验方式。",
+          "why": "该请求涉及工具引入审查、工具描述投毒/提示注入以及外部内容标记隔离，这些正是该技能的知识要点。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc3",
+          "text": "我们在做一个能帮用户改签机票、申请退款的 Agent，现在模型会自己上报舱位、保险状态和当前时间，我很担心它被网页里的一句话带偏后直接执行退款。请帮我规定哪些事实必须由服务端查询、哪些退款/改签动作需要人工确认。",
+          "why": "它需要把政策事实服务端化、对不可逆操作加事前人工审批，属于该技能针对高风险操作和服务端事实校验的典型应用。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "manage-agent-context",
+      "name": "压缩上下文并维持运行状态",
+      "inputHash": "sha256:3a3a0679a2d0d206ca0eb1567a2e395fc7dcd45f7924a311bf38c3f4961a3a04",
+      "scenarios": [
+        {
+          "scenarioId": "manage-agent-context-sc1",
+          "text": "我们的 agent 在跑长调研任务时，经常在上下文还很充裕时就开始重复问已经确认过的供应商，或者漏掉中间拿到的报价。帮我设计一个在对话末尾注入任务进度和环境摘要的机制，让结论由代码维护，不要靠它自己从原始记录里现算。",
+          "why": "这正对应上下文腐化和状态栏注入：模型缺乏主动提炼层，需要框架侧持续维护结构化元信息并把关键结论显式注入到上下文末尾。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "manage-agent-context-sc2",
+          "text": "我在给一个多工具调用 agent 框架做上下文压缩，现在每次压缩后缓存前缀都会变，成本反而更高。我想知道应该在什么阈值触发、只压缩哪些 tool results、怎么标记已压缩内容，并保证时间和公司名这些关键信息不丢。",
+          "why": "这涉及压缩时机与手段、缓存前缀稳定性以及关键信息保全，是该技能中上下文压缩管线设计的核心内容。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "manage-agent-context-sc3",
+          "text": "我的 agent 处理长任务时，只要看到 token 快接近窗口限制就会提前收尾，哪怕还有几步没执行。帮我加一种每步注入总预算和剩余预算、按剩余比例调整探索与利用权重的提示策略，避免它过早放弃。",
+          "why": "这是预算感知机制的直接场景：通过动态注入剩余预算来抑制模型在窗口耗尽前提前收尾的行为。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "design-agent-tools",
+      "name": "设计可选、透明、可分页的 Agent 工具",
+      "inputHash": "sha256:7f49cb3dea5900ff9e12758d27a33f3ec508e1a8a24c0f188cbc9fa3c9b36a88",
+      "scenarios": [
+        {
+          "scenarioId": "design-agent-tools-sc1",
+          "text": "我要给现在的客服 Agent 新增一个内部知识库检索工具，目前拿不准返回结果应该做成条目列表加摘要，还是把匹配到的文档正文都拼进去。帮我把这个工具的返回结构和每次返回量定一下，避免一次检索就把上下文撑爆。",
+          "why": "这涉及搜索工具的结构化返回与默认限量设计，正是该技能中搜索/读取类工具接口设计规则的应用场景。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "design-agent-tools-sc2",
+          "text": "线上 Agent 最近总是把“查一下这个订单的物流状态”调用成“创建退款单”工具，模型版本没变过。帮我重新看一下这两个工具的命名、描述和入参说明，把容易混淆的边界写清楚。",
+          "why": "Agent 频繁选错工具应优先检查工具描述，该技能明确包含诊断工具选择错误时如何用反例和边界条件优化描述。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "design-agent-tools-sc3",
+          "text": "我们准备接入一个外部 MCP 服务来让 Agent 操作 Git 仓库，但安全团队担心它可能在我们不知情时给命令追加参数，或者把长输出截断后不告诉我们。帮我出一份针对这类工具接口的评审清单，重点看它有没有隐式改输入输出。",
+          "why": "该技能覆盖静默参数注入、输入输出透明和截断显式标记等工程规则，适用于评审第三方 MCP 服务或技能包的引入。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "validate-generated-artifacts",
+      "name": "渲染、验证并安全交付生成产物",
+      "inputHash": "sha256:e7f5c5844e8b87834b60782a36ffc539ac38c5cb1e36144b6e2ef5d2acd506f3",
+      "scenarios": [
+        {
+          "scenarioId": "validate-generated-artifacts-sc1",
+          "text": "我让模型生成了一份内部周报网页，里面有几张图表和表格。你帮我在真实浏览器里跑一遍，截图给我看有没有白屏、错位或者控制台报错，确认能正常展示再给我。",
+          "why": "这需要把生成的 HTML 产物放到真实浏览器中渲染并审核，而不是只检查代码文本，属于该技能渲染验证的核心职责。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "validate-generated-artifacts-sc2",
+          "text": "我让模型写了一个客户分群 SQL，准备放到例行报表里。你先帮我在测试库实际执行一下，核对结果是不是符合业务逻辑，特别是漏斗那一段别再漏条件，确认没问题我再发布。",
+          "why": "SQL 是需要在数据库里真实执行的数据产物，需要由该技能进行确定性检查和执行验证，避免错误 SQL 进入交付流程。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "validate-generated-artifacts-sc3",
+          "text": "我让 Agent 给销售人员生成了一个移动端报价表单，我要求前端只拿界面描述 JSON 用受信组件渲染，不直接跑任意 HTML。你帮我在交付前验证这个表单在目标组件里渲染和交互是否正常。",
+          "why": "这涉及声明式 UI 协议优先、受信组件渲染和安全交付的前端产物，正是该技能覆盖的生成式 UI 验证与安全交付场景。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "coordinate-agent-work",
+      "name": "编排多 Agent 协作与冲突处理",
+      "inputHash": "sha256:f70fda9ad23de160c6ad84c25ea24500148283e6187e5155479fb778212d22ec",
+      "scenarios": [
+        {
+          "scenarioId": "coordinate-agent-work-sc1",
+          "text": "我现在要让 6 个 Agent 分头分析同一批线上事故日志并各自给出结论，再由一个汇总 Agent 合并。帮我定一下它们之间的通信方式、进度怎么暴露，以及汇总时如果结论互相矛盾按什么规则裁决。",
+          "why": "它同时涉及多 Agent 协作拓扑、通信机制、进度文件约定和冲突裁决规则，需要该技能来整体设计。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "coordinate-agent-work-sc2",
+          "text": "我们有一条多 Agent 代码评审流水线，最近发现一个 Agent 的误判会被后续 Agent 不断强化，最后产出的问题清单看起来很有道理，但原始日志并不支持。帮我设计独立复核、交叉验证以及熔断后人工介入的位置。",
+          "why": "这是典型的多 Agent 错误级联放大与拜占庭式错误，需要交叉验证、失败模式巡检和人工裁决机制。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "coordinate-agent-work-sc3",
+          "text": "我要让多个 Agent 共同维护一套跨文件配置，可能出现 A 改了端口、B 改了服务发现规则这种文件层面不冲突但逻辑上互相矛盾的情况。帮我设计资源所有权、冲突检测方式和可重复执行的结算机制。",
+          "why": "它涉及跨文件语义冲突、资源所有权边界、运行时冲突暂停与 settle_once 幂等保护，属于多 Agent 冲突处理范畴。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "verify-agent-completion",
+      "name": "用独立证据判定任务完成",
+      "inputHash": "sha256:d479c8a929fc3322f43531954a186b77f12c3771c77893bbfe5c87b049111ab6",
+      "scenarios": [
+        {
+          "scenarioId": "verify-agent-completion-sc1",
+          "text": "我让 Agent 自动修复后端报错，它每次自己在本地跑个测试就宣称完成了，我想把“可以停”这个判断改成由一个只能看代码变更和 CI 日志、看不到它生成过程的检查步骤来做，该怎么设计？",
+          "why": "这需要设计提议者-审核者分离的验证机制，避免模型自批完成，属于完成判定与独立证据通道的设计。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc2",
+          "text": "我们让 Agent 边改代码边写测试，再由同一个模型基于相同上下文评审核质量，结果经常出现改得差但审核全通过，我想加一道检查，确认这些审核意见之间是否真的相互独立。",
+          "why": "这涉及证据独立性抽检和 AntiPattern 识别，防止同一模型相似上下文生成的多个审核意见被误认为独立证据。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc3",
+          "text": "我要在发布流水线里加一个最终验证环节，让验证 Agent 根据构建产物和第三方测试报告来判断是否满足上线条件，但它不能改测试用例、采集脚本或通过线，这个约束该怎么落地？",
+          "why": "这需要定义审核者约束与独立证据采集器，确保验证者只做判定而不能修改发布门槛。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "update-agent-instructions",
+      "name": "从失败轨迹生成可回滚指令补丁",
+      "inputHash": "sha256:4bcd59937db706974e32b2ecdb7ead6e61499bd1107f64850af2dcacca7203af",
+      "scenarios": [
+        {
+          "scenarioId": "update-agent-instructions-sc1",
+          "text": "那个整理会议纪要的助手已经连续一周把待办事项归到错误的人名下，我导出了最近 20 条失败样例，请把这些样例压缩成一条简短的补充规则，只追加到现有提示词里，不要改动原有内容，并且告诉我怎么回滚。",
+          "why": "这个请求需要从失败轨迹中提取经验，并生成可回滚的最小 diff 增量修订，而不是重新生成整个提示词。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "update-agent-instructions-sc2",
+          "text": "最近客服 Agent 在报价时总忽略大客户折扣，我们有几十条链路日志，我想把“优先检查合同折扣”这条经验固化下来，但拿不准是写进团队手册、更新技能说明，还是改成服务代码里的默认策略，帮我判断并给出具体落点。",
+          "why": "用户需要根据经验的表示性质选择载体，并审查写入路径，这正是该技能的核心决策能力。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "update-agent-instructions-sc3",
+          "text": "我们的代码审查 Agent 对 Python 项目反复建议用已弃用的 asyncio 写法，我有几次错误建议的截图和日志，帮我把“遇到 async 时先查当前版本推荐写法”整理成一条带来源的注意事项，追加到审查技能说明里，不要整篇重写。",
+          "why": "该请求需要把生产失败轨迹转化为带来源的最小增量修订，追加到现有文档中，而不是整份重写。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "define-agent-boundaries-and-safeguards",
+      "name": "划清 Agent 边界并建立动作安全防线",
+      "inputHash": "sha256:53a37323ba7a4f07370cfe75fa28d96fdd503c7798bc64fc1a73021bac591df1",
+      "scenarios": [
+        {
+          "scenarioId": "define-agent-boundaries-and-safeguards-sc1",
+          "text": "我在做一个客服 Agent，它能查知识库也能直接改工单状态。帮我理一下哪些数据必须通过受控接口进上下文，哪些修改操作要收到固定工具里并加人工确认，别让模型自己随意组合。",
+          "why": "这涉及观察空间与动作空间边界，以及高风险操作需人工确认，应由该技能回应而不是单纯的工具开发指导。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "define-agent-boundaries-and-safeguards-sc2",
+          "text": "我们有个助手会读取外部网页并做总结，最近发现它可能被网页里的内容带偏去调用工具。帮我设计外部内容进入上下文时的隔离方式，并在工具执行前加一道独立校验，确保网页中的“指令”不会被当成系统指令。",
+          "why": "这是提示注入防护和执行层护栏复核问题，属于该技能的安全边界设计范围。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "define-agent-boundaries-and-safeguards-sc3",
+          "text": "我要上线一个能自动发邮件和对外转账的财务 Agent，上线前想做一次安全评审。帮我按“工具+参数”的可逆性和影响面做风险分级，列出哪些必须走慢速审批，并给出护栏测试要覆盖的硬指标。",
+          "why": "涉及不可逆操作把关、工具风险评级和护栏双向评估，是该技能的上线前安全评审内容。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    },
+    {
+      "skillId": "coordinate-agent-work-and-verification",
+      "name": "编排多 Agent 协作、冲突与完成验证",
+      "inputHash": "sha256:352a217fcd7a39e9a5a37d92e1ad2ace833f30c51f94b7257a6b0c7e5c5c0fd3",
+      "scenarios": [
+        {
+          "scenarioId": "coordinate-agent-work-and-verification-sc1",
+          "text": "我准备让代码生成、测试补全和修复三个 agent 并行改同一个仓库，需要确定它们之间怎么通信、每个 agent 的中间产物放哪里、以及同时改文件时冲突如何处理。",
+          "why": "它涉及多 Agent 协作拓扑、通信机制、工作区隔离和写入冲突防护，正是该技能的设计范围。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "coordinate-agent-work-and-verification-sc2",
+          "text": "现在有一个四个 agent 的评审链，A 的初判被 B、C 逐层转述后已经偏到离谱，而且循环里还不停创建子任务；请帮我定位这种级联和停不下来的问题，并加一道只对照原始证据的复核环节。",
+          "why": "这是多 Agent 协作失败模式中的错误级联放大、循环失控，需要交叉验证和独立复核机制。",
+          "containsNameLeak": false
+        },
+        {
+          "scenarioId": "coordinate-agent-work-and-verification-sc3",
+          "text": "我的编码 agent 每次都说‘已完成，测试通过’，但测试也是它自己生成的；请帮我设计一个完成判定流程，让一个独立角色用不同上下文核对产物，不能让模型自己批准结束。",
+          "why": "它对应模型不能自批完成的问题，需要独立的完成验证机制和提议者—审核者分离。",
+          "containsNameLeak": false
+        }
+      ],
+      "problems": [],
+      "finishReason": "stop"
+    }
+  ],
+  "unrelated": {
+    "inputHash": "sha256:93e4e2d2c42ab7f23d116088b87e3b7166b0448e34d8d5638400afcd87a56197",
+    "scenarios": [
+      {
+        "scenarioId": "unrelated-sc1",
+        "text": "我想规划一周的低卡路里饮食，每天控制在1800千卡以内，请帮我安排早中晚三餐和加餐食谱。",
+        "why": "日常营养规划不属于Rust编程或Agent系统设计等技能主题。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc2",
+        "text": "我下周去东京自由行5天，喜欢安静的小巷和咖啡馆，请帮我安排一份涵盖交通、景点和预算的行程。",
+        "why": "旅行行程规划与列出的编程、Agent架构技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc3",
+        "text": "我想在三个月内把西班牙语从A2提升到B1，请帮我制定每天30分钟的学习计划，包括听力和口语练习。",
+        "why": "语言学习计划属于教育领域，不在任何列出技能范围内。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc4",
+        "text": "我家后院朝北、土壤偏黏，想种些耐阴好打理的多年生植物，请推荐几种并说明间距和浇水频率。",
+        "why": "园艺植物选择与养护建议和软件工程、Agent系统无交集。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc5",
+        "text": "我要为朋友婚礼制作一份10首歌的仪式播放列表，风格要温馨不要太吵，请帮我选曲并排序。",
+        "why": "婚礼音乐策划是活动安排，不涉及清单中任何技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc6",
+        "text": "我最近在考虑两种基金定投策略，请帮我比较定期定额和按估值分档投入在历史数据上的回撤和收益差异。",
+        "why": "投资策略分析属于金融领域，与Rust语言特性或Agent设计无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc7",
+        "text": "我需要给自由职业合同加一条保密条款，保护客户名单和报价信息，请帮我拟一段中文条款草稿。",
+        "why": "法律条款撰写不涉及编程、Agent系统或其他清单技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc8",
+        "text": "我最近早上起床腰酸，久坐后更明显，请给我一些坐姿调整和拉伸建议，并告诉我何时该去看医生。",
+        "why": "健康与人体工学建议是医疗保健领域，不属于任何列出技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc9",
+        "text": "我用佳能R6拍夜景人像总出现背景过暗或人脸噪点，请给我一组参数设置和补光建议。",
+        "why": "摄影参数与布光建议属于摄影技巧，与Rust和Agent系统技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc10",
+        "text": "我在准备第一场半程马拉松，目前每周跑三次共20公里，请帮我制定一个8周训练计划，避免受伤。",
+        "why": "跑步训练计划属于运动训练领域，不涉及清单中的任何技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc11",
+        "text": "我在写一篇关于明朝海禁政策对沿海贸易影响的文章，请帮我按时间线整理事件脉络和主要争议点。",
+        "why": "历史研究整理是人文写作任务，与Rust编程、Agent系统设计无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc12",
+        "text": "我想把18平米的客厅改造成兼具书房功能的区域，预算2万，请给我一个家具布局和灯光方案。",
+        "why": "室内空间设计属于家居装修，与清单中的编程和Agent技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc13",
+        "text": "我在复习数论，请帮我证明：对任意正整数 n，n^5 - n 能被 30 整除，给出清晰的同余或归纳证明。",
+        "why": "数论证明是数学问题，不落入清单中任何软件或Agent技能边界。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc14",
+        "text": "我有一份CSV销售数据，想用pandas按季度汇总各区域销售额并生成折线图，请给我一段Python脚本思路。",
+        "why": "虽然涉及编程，但它属于Python数据分析，与Rust专用技能和Agent系统主题无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc15",
+        "text": "我有一段30分钟旅行录像，想剪成3分钟快节奏vlog，请帮我设计分镜脚本和转场节奏。",
+        "why": "视频剪辑与叙事设计是多媒体创作，不属于清单中任何技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc16",
+        "text": "我刚领养了一只2个月大的拉布拉多，晚上总叫、白天咬东西，请给我一些幼犬训练和作息安排建议。",
+        "why": "宠物行为训练是生活建议，不涉及Rust或Agent系统技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc17",
+        "text": "我要应聘产品经理岗位，请帮我梳理常见案例分析面试题，并给出回答框架。",
+        "why": "求职面试准备属于职业发展，与清单中的编程、Agent架构技能无关。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc18",
+        "text": "我在玩《博德之门3》第三章卡在某个战斗，请帮我分析队伍配置和战术思路，但不要剧透剧情。",
+        "why": "游戏战术分析是娱乐领域，与列出的技能没有交集。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc19",
+        "text": "我在设计一个关于城市热岛效应的地理课调研，需要学生用手机记录不同下垫面的温度，请帮我设计数据记录表和统计方法。",
+        "why": "教育科研数据收集设计属于地理教学，不属于Rust或Agent系统技能。",
+        "containsNameLeak": false
+      },
+      {
+        "scenarioId": "unrelated-sc20",
+        "text": "我在写一个短篇科幻小说，主角能听见植物之间的化学信号，请帮我扩展世界观设定和冲突。",
+        "why": "科幻文学创作是创意写作，与清单中的技术技能无关。",
+        "containsNameLeak": false
+      }
+    ],
+    "problems": [],
+    "finishReason": "stop"
+  },
+  "usage": {
+    "promptTokens": 31125,
+    "completionTokens": 46247
+  }
+}

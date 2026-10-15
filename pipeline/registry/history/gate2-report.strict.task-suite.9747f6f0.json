@@ -1,0 +1,1588 @@
+{
+  "schemaVersion": "gate2-report/v1",
+  "createdAt": "2026-10-15T12:19:52.938Z",
+  "subset": null,
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "blindMode": "strict",
+  "promptFingerprints": {
+    "scenarioGen": "prompt-e3c3959885e0",
+    "blind": "prompt-5d75797397c2"
+  },
+  "scenarioSetFile": "pipeline/knowledge/gate2-scenarios.task-suite.json",
+  "scenarioSetSha256": "sha256:6afb0085545075597931ea9dbd00b441d6eb383627d8c96e4217646d0a015ade",
+  "catalogSha256": "sha256:f79fbe654e2057f558af2fbe387b466d5fcf5e04b3621ca25aaa1f69c22efbdd",
+  "codeMapping": [
+    {
+      "code": "k01",
+      "skillId": "coordinate-agent-work"
+    },
+    {
+      "code": "k02",
+      "skillId": "structure-rust-cli"
+    },
+    {
+      "code": "k03",
+      "skillId": "validate-generated-artifacts"
+    },
+    {
+      "code": "k04",
+      "skillId": "model-rust-domain-types"
+    },
+    {
+      "code": "k05",
+      "skillId": "run-rust-tests"
+    },
+    {
+      "code": "k06",
+      "skillId": "manage-agent-context"
+    },
+    {
+      "code": "k07",
+      "skillId": "coordinate-rust-threads"
+    },
+    {
+      "code": "k08",
+      "skillId": "design-agent-tools"
+    },
+    {
+      "code": "k09",
+      "skillId": "define-agent-boundaries"
+    },
+    {
+      "code": "k10",
+      "skillId": "process-rust-text-and-hashmaps"
+    },
+    {
+      "code": "k11",
+      "skillId": "verify-agent-completion"
+    },
+    {
+      "code": "k12",
+      "skillId": "implement-rust-state-pattern"
+    },
+    {
+      "code": "k13",
+      "skillId": "secure-agent-actions"
+    },
+    {
+      "code": "k14",
+      "skillId": "design-rust-abstractions"
+    },
+    {
+      "code": "k15",
+      "skillId": "compose-rust-closures"
+    },
+    {
+      "code": "k16",
+      "skillId": "diagnose-rust-borrows"
+    },
+    {
+      "code": "k17",
+      "skillId": "update-agent-instructions"
+    },
+    {
+      "code": "k18",
+      "skillId": "match-rust-variants"
+    },
+    {
+      "code": "k19",
+      "skillId": "manage-rust-memory-and-mutability"
+    }
+  ],
+  "usage": {
+    "generation": {
+      "promptTokens": 25324,
+      "completionTokens": 38538
+    },
+    "blind": {
+      "promptTokens": 139412,
+      "completionTokens": 41590
+    }
+  },
+  "perCandidate": [
+    {
+      "skillId": "diagnose-rust-borrows",
+      "name": "诊断 Rust 借用、切片与生命周期错误",
+      "code": "k16",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "diagnose-rust-borrows-sc1",
+          "text": "我这个函数先对同一个 HashMap 值取了可变引用做插入，随后在同一作用域又取了另一个可变引用做删除，编译器报 E0499。我改成先做完插入再删除还是不能过，请帮我定位是哪里违反了借用规则。",
+          "triggered": [
+            "diagnose-rust-borrows"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "diagnose-rust-borrows-sc2",
+          "text": "我写了一个工具函数，接收两个 &str，想返回二者中较长的那一个，编译器报 E0106 说缺少生命周期标注。我试了加上 'static 但报错说返回引用不能比参数活得久，请帮我判断返回引用应该与哪个参数关联。",
+          "triggered": [
+            "diagnose-rust-borrows"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "diagnose-rust-borrows-sc3",
+          "text": "这段解析代码从网络报文里按字节偏移切子串，编译器报 E0502，因为它认为我同时持有原始缓冲区的可变引用；我还担心遇到多字节字符会在非 UTF-8 边界上 panic，请帮我一起检查切片位置和借用问题。",
+          "triggered": [
+            "diagnose-rust-borrows",
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "diagnose-rust-borrows-sc3",
+          "others": [
+            "process-rust-text-and-hashmaps"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "model-rust-domain-types",
+      "name": "用结构体、方法与枚举建模 Rust 领域类型",
+      "code": "k04",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "model-rust-domain-types-sc1",
+          "text": "我正在从 CLI 参数和配置文件构造服务配置，想把 host、port、retry 这些相关字段放在一个类型里，并在基于默认值覆盖部分字段时不逐个重复赋值。",
+          "triggered": [
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "model-rust-domain-types-sc2",
+          "text": "我要表示支付流程的多种状态，其中待支付和已关闭没有额外数据，已支付需要保存支付时间和流水号，不想再用字符串加可空字段来凑。",
+          "triggered": [
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "model-rust-domain-types-sc3",
+          "text": "我在写矩形布局计算，想提供根据宽高创建矩形的构造器和判断能否容纳另一个矩形的方法，调用方在判断之后还要继续使用被比较的矩形。",
+          "triggered": [
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "structure-rust-cli-sc2",
+          "intended": "structure-rust-cli"
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc2",
+          "intended": "implement-rust-state-pattern"
+        }
+      ]
+    },
+    {
+      "skillId": "match-rust-variants",
+      "name": "用模式匹配处理 Rust 变体与可反驳模式",
+      "code": "k18",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "match-rust-variants-sc1",
+          "text": "我在解析一个配置文件，每个配置项是一个枚举，不同变体要执行不同的初始化逻辑。现在我需要根据变体分发，但编译器一直提示有分支没覆盖到，能帮我理清怎么写出完整的匹配吗？",
+          "triggered": [
+            "match-rust-variants"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "match-rust-variants-sc2",
+          "text": "我有一段代码只需要处理网络请求结果里的成功情况，错误情况直接忽略，现在用 match 写了两行分支，感觉有点啰嗦，有没有更简洁的写法？",
+          "triggered": [
+            "match-rust-variants"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "match-rust-variants-sc3",
+          "text": "编译的时候报错说 let 语句不能使用可能匹配失败的模式，我代码里写了 let Some(value) = config.get(\"key\")，但 config.get 返回的是 Option，应该怎么改才符合 Rust 的规则？",
+          "triggered": [
+            "match-rust-variants"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "process-rust-text-and-hashmaps",
+      "name": "安全处理 Rust 文本与键值集合",
+      "code": "k10",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc1",
+          "text": "我要从一批用户输入的评论里截取前 120 个字节作为列表摘要，但有些评论带 emoji 或中文，直接按字节切片在运行时会 panic；帮我改成能落在字符边界的安全截断，截断后不要出现半个字符。",
+          "triggered": [
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc2",
+          "text": "我在统计服务日志里每个 error code 的出现次数，现在用 HashMap 先 contains_key 再 insert 或 get_mut 更新，代码又长又容易出现重复键逻辑；帮我改成用 entry API 一次性处理“不存在时插入 0，然后递增”。",
+          "triggered": [
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc3",
+          "text": "我拿到几个返回 String 的函数结果，想和一个常量前缀拼成一条完整消息；但用 + 拼接时第一个 String 被移动了，后面还要继续用它，而且两个 String 相加会报错；帮我改成不夺取参数所有权的拼接写法，比如用 format! 或 push_str。",
+          "triggered": [
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "diagnose-rust-borrows-sc3",
+          "intended": "diagnose-rust-borrows"
+        }
+      ]
+    },
+    {
+      "skillId": "design-rust-abstractions",
+      "name": "用泛型、trait 与 trait object 设计抽象",
+      "code": "k14",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "design-rust-abstractions-sc1",
+          "text": "我写了三个几乎一样的函数，分别对 `Vec<i32>`、`Vec<f64>` 和 `Vec<i64>` 求最大值；我想合并成一个泛型版本，但用 `T` 和 `>` 比较一直编译不过，需要知道该加哪些 trait 约束。",
+          "triggered": [
+            "design-rust-abstractions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-rust-abstractions-sc2",
+          "text": "我在做内容聚合模块，`NewsArticle` 和 `Tweet` 要生成各自的摘要，但字段不同。我想定义一个统一的摘要接口，让两个类型各自实现，并让一个函数接收任何实现了该接口的类型；最好还能提供默认摘要格式，只让少数类型覆盖。",
+          "triggered": [
+            "design-rust-abstractions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-rust-abstractions-sc3",
+          "text": "我在写一个可扩展的绘图库，现在内置了圆形、矩形，但用户以后可以注册自己的形状。我想把不同类型的形状放进一个集合并统一调用 `draw`，同时需要确认：如果 `draw` 方法返回 `Self` 或带泛型参数，为什么就不能放进 `Vec<Box<dyn Draw>>`？",
+          "triggered": [
+            "design-rust-abstractions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc2",
+          "intended": "compose-rust-closures"
+        }
+      ]
+    },
+    {
+      "skillId": "compose-rust-closures",
+      "name": "创建、约束并缓存 Rust 闭包",
+      "code": "k15",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc1",
+          "text": "我的服务启动时并不总会用到某份配置文件，但一旦用到某个键就需要解析；同一个键在后续请求里还会被反复读取。我不想启动时全量解析，也不想对同一个键重复解析，想改成第一次读取时执行解析并缓存结果。",
+          "triggered": [
+            "compose-rust-closures"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc2",
+          "text": "我要给查询结果集加一个调用方传入的行级映射函数，并把它保存在执行器结构体里，渲染每行时调用。这个函数可能只读外部状态，也可能需要修改捕获的统计计数器，我不确定字段该怎么写泛型约束和 trait bound。",
+          "triggered": [
+            "design-rust-abstractions",
+            "compose-rust-closures"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc3",
+          "text": "我在写一个小型任务队列，提交任务时传一段逻辑，队列会把它发到工作线程执行。现在编译器提示闭包借用了调用者栈上的临时数据导致生命周期不够，我想让它在定义时把数据 move 进去，并确认这个闭包应该实现 FnOnce 还是 FnMut。",
+          "triggered": [
+            "coordinate-rust-threads",
+            "compose-rust-closures"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc2",
+          "others": [
+            "design-rust-abstractions"
+          ]
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc3",
+          "others": [
+            "coordinate-rust-threads"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "manage-rust-memory-and-mutability",
+      "name": "管理 Rust 内存布局、析构与内部可变性",
+      "code": "k19",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc1",
+          "text": "我在写一个表达式树，`enum Expr { Num(i64), Add(Expr, Expr) }` 一直报 E0072，说类型有无限大小，我该怎么调整这个定义才能编译？",
+          "triggered": [
+            "manage-rust-memory-and-mutability"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc2",
+          "text": "我的日志文件句柄实现了 Drop，但我想在某个检查点之前就确保它已经 flush 并关闭，直接写 `handle.drop()` 编译不过，正确的提前释放方式是什么？",
+          "triggered": [
+            "manage-rust-memory-and-mutability"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc3",
+          "text": "我在实现一个统计结构的 trait 方法 `record(&self, msg)`，需要更新内部计数器，但 trait 要求保持 `&self` 签名，不能改成 `&mut self`，我该怎么在不可变引用下修改状态？",
+          "triggered": [
+            "manage-rust-memory-and-mutability"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "implement-rust-state-pattern-sc3",
+          "intended": "implement-rust-state-pattern"
+        }
+      ]
+    },
+    {
+      "skillId": "coordinate-rust-threads",
+      "name": "用线程、通道与 Arc<Mutex> 协调并发",
+      "code": "k07",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "coordinate-rust-threads-sc1",
+          "text": "我有一批独立的文件哈希计算任务，想同时跑起来，等所有任务结束后把每个文件的哈希按原顺序收进一个 Vec 返回；现在担心主线程先退出或者结果丢失。",
+          "triggered": [
+            "coordinate-rust-threads"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-rust-threads-sc2",
+          "text": "我要让两个后台线程分别扫描不同目录，把发现的问题文件路径发给同一个消费者做统一处理；想知道怎么把同一个发送端安全地传给多个线程还不出现所有权冲突。",
+          "triggered": [
+            "coordinate-rust-threads"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-rust-threads-sc3",
+          "text": "我在多个线程里更新同一个共享计数器，直接把 Rc<Mutex<Counter>> 搬进线程编译报 Rc 不能跨线程；另外还想避免两个线程各持一个锁互相卡死。",
+          "triggered": [
+            "coordinate-rust-threads"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc3",
+          "intended": "compose-rust-closures"
+        }
+      ]
+    },
+    {
+      "skillId": "structure-rust-cli",
+      "name": "拆分 Rust CLI 并传递 Result 错误",
+      "code": "k02",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "structure-rust-cli-sc1",
+          "text": "我想给现在这个命令行工具加单元测试，但所有参数解析和文件读取逻辑都堆在 main 里，根本没法直接调用那些内部步骤；请帮我把可测试的部分移到 lib，main 只保留启动入口。",
+          "triggered": [
+            "structure-rust-cli"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "structure-rust-cli-sc2",
+          "text": "现在 main 里同时负责搜集参数、设置默认值和执行业务逻辑，参数一多就越来越乱；请帮我把这些配置项聚合成一个 Config，并用返回 Result 的方式处理缺参等错误，而不是直接 panic。",
+          "triggered": [
+            "structure-rust-cli",
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "structure-rust-cli-sc3",
+          "text": "用户少传参数时，我的工具会输出一长串 panic 和 index out of bounds 信息，完全没有可读提示；请改成把可能失败的操作返回 Result，在 main 里输出简短错误信息并返回非零退出码。",
+          "triggered": [
+            "structure-rust-cli"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "structure-rust-cli-sc2",
+          "others": [
+            "model-rust-domain-types"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "run-rust-tests",
+      "name": "筛选、串行并观察 Rust 测试",
+      "code": "k05",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "run-rust-tests-sc1",
+          "text": "auth 模块里有几个测试挂了，我想只跑这个模块下面的用例，别把整个项目的测试都跑一遍，好快点看到是哪个断言失败了。",
+          "triggered": [
+            "run-rust-tests"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "run-rust-tests-sc2",
+          "text": "我的集成测试会同时读写同一个临时目录，经常随机失败，我想让它们不要并行执行，按顺序跑一遍确认是不是竞争问题。",
+          "triggered": [
+            "run-rust-tests"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "run-rust-tests-sc3",
+          "text": "有个测试通过了，但我在里面加的 println! 调试日志在终端里没显示出来，我想看到这些输出确认中间过程。",
+          "triggered": [
+            "run-rust-tests"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "implement-rust-state-pattern",
+      "name": "用所有权安全地实现 Rust 状态模式",
+      "code": "k12",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "implement-rust-state-pattern-sc1",
+          "text": "我正在重构博客发布流程，现在 Post 里放了一个状态枚举，发布、审核、驳回的逻辑都散在各处 match。请帮我把草稿、审核中、已发布这些状态分别封装起来，让每个状态自己决定如何转移到下一个状态，并统一由 Post 持有当前状态。",
+          "triggered": [
+            "implement-rust-state-pattern"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc2",
+          "text": "我们订单模块现在用一个 status 字符串标记状态，导致支付前就可能调用发货。我想把草稿订单、已支付订单、已发货订单做成不同的类型，状态转换方法获取当前订单的所有权并返回下一状态类型，让跳过支付状态的调用在编译期直接失败。",
+          "triggered": [
+            "implement-rust-state-pattern",
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc3",
+          "text": "我在实现连接协议状态机时，有些查询方法是 &self 但要读取当前状态，而收到关闭信号时又需要把旧状态换成新状态，总是遇到不能从借用字段里移动状态的编译错误。请帮我调整状态字段的存放方式，让读取只借引用，切换时能把旧状态所有权拿出来。",
+          "triggered": [
+            "implement-rust-state-pattern",
+            "manage-rust-memory-and-mutability"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "implement-rust-state-pattern-sc2",
+          "others": [
+            "model-rust-domain-types"
+          ]
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc3",
+          "others": [
+            "manage-rust-memory-and-mutability"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "define-agent-boundaries",
+      "name": "定义 Agent 观察、动作与职责边界",
+      "code": "k09",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "define-agent-boundaries-sc1",
+          "text": "我在设计一个内部运维助手，准备接入工单、日志和发布平台；请帮我先确定它每一步必须看到哪些字段、哪些查询必须走工具、哪些变更操作只允许在预演模式下执行。",
+          "triggered": [
+            "define-agent-boundaries",
+            "secure-agent-actions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "define-agent-boundaries-sc2",
+          "text": "我们现有的编码助手经常在回复里直接建议改数据库或改配置，但它根本没有对应工具，只能靠嘴说；我想梳理它当前实际能拿到和能执行的所有接口，并把这些约束落到系统里。",
+          "triggered": [
+            "define-agent-boundaries"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "define-agent-boundaries-sc3",
+          "text": "我要让 Agent 自动总结一个仓库结构并选择构建命令，但拿不准代码结构摘要应该在构造上下文时注入，还是做成一个检索工具让模型调用；构建命令又该用通用 shell 还是专用工具。",
+          "triggered": [
+            "define-agent-boundaries",
+            "design-agent-tools"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "define-agent-boundaries-sc1",
+          "others": [
+            "secure-agent-actions"
+          ]
+        },
+        {
+          "scenarioId": "define-agent-boundaries-sc3",
+          "others": [
+            "design-agent-tools"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "secure-agent-actions-sc1",
+          "intended": "secure-agent-actions"
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc3",
+          "intended": "secure-agent-actions"
+        },
+        {
+          "scenarioId": "manage-agent-context-sc1",
+          "intended": "manage-agent-context"
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc1",
+          "intended": "verify-agent-completion"
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc3",
+          "intended": "verify-agent-completion"
+        }
+      ]
+    },
+    {
+      "skillId": "secure-agent-actions",
+      "name": "为 Agent 动作建立可执行安全边界",
+      "code": "k13",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "secure-agent-actions-sc1",
+          "text": "我们下周要上线一个会读取工单、自动给客户回复并能在后台改订单状态的 Agent。现在我在做上线前检查，请帮我按动作的风险把自动执行、需要人工审批和必须阻断的边界列清楚，并指出当前这套规则可能被绕过的路径。",
+          "triggered": [
+            "secure-agent-actions",
+            "define-agent-boundaries"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc2",
+          "text": "我接了一个第三方 MCP 工具集给我们的 Agent 用，它会先读网页再决定调用哪些工具。请帮我审查这些工具描述和参数里有没有可能夹带伪指令，并设计外部网页内容进入上下文前的隔离和校验方式。",
+          "triggered": [
+            "design-agent-tools",
+            "secure-agent-actions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc3",
+          "text": "我们在做一个能帮用户改签机票、申请退款的 Agent，现在模型会自己上报舱位、保险状态和当前时间，我很担心它被网页里的一句话带偏后直接执行退款。请帮我规定哪些事实必须由服务端查询、哪些退款/改签动作需要人工确认。",
+          "triggered": [
+            "secure-agent-actions",
+            "define-agent-boundaries"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "secure-agent-actions-sc1",
+          "others": [
+            "define-agent-boundaries"
+          ]
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc2",
+          "others": [
+            "design-agent-tools"
+          ]
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc3",
+          "others": [
+            "define-agent-boundaries"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "define-agent-boundaries-sc1",
+          "intended": "define-agent-boundaries"
+        },
+        {
+          "scenarioId": "design-agent-tools-sc3",
+          "intended": "design-agent-tools"
+        }
+      ]
+    },
+    {
+      "skillId": "manage-agent-context",
+      "name": "压缩上下文并维持运行状态",
+      "code": "k06",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "manage-agent-context-sc1",
+          "text": "我们的 agent 在跑长调研任务时，经常在上下文还很充裕时就开始重复问已经确认过的供应商，或者漏掉中间拿到的报价。帮我设计一个在对话末尾注入任务进度和环境摘要的机制，让结论由代码维护，不要靠它自己从原始记录里现算。",
+          "triggered": [
+            "manage-agent-context",
+            "define-agent-boundaries"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-agent-context-sc2",
+          "text": "我在给一个多工具调用 agent 框架做上下文压缩，现在每次压缩后缓存前缀都会变，成本反而更高。我想知道应该在什么阈值触发、只压缩哪些 tool results、怎么标记已压缩内容，并保证时间和公司名这些关键信息不丢。",
+          "triggered": [
+            "manage-agent-context"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-agent-context-sc3",
+          "text": "我的 agent 处理长任务时，只要看到 token 快接近窗口限制就会提前收尾，哪怕还有几步没执行。帮我加一种每步注入总预算和剩余预算、按剩余比例调整探索与利用权重的提示策略，避免它过早放弃。",
+          "triggered": [
+            "manage-agent-context"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "manage-agent-context-sc1",
+          "others": [
+            "define-agent-boundaries"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "design-agent-tools",
+      "name": "设计可选、透明、可分页的 Agent 工具",
+      "code": "k08",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "design-agent-tools-sc1",
+          "text": "我要给现在的客服 Agent 新增一个内部知识库检索工具，目前拿不准返回结果应该做成条目列表加摘要，还是把匹配到的文档正文都拼进去。帮我把这个工具的返回结构和每次返回量定一下，避免一次检索就把上下文撑爆。",
+          "triggered": [
+            "design-agent-tools"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-agent-tools-sc2",
+          "text": "线上 Agent 最近总是把“查一下这个订单的物流状态”调用成“创建退款单”工具，模型版本没变过。帮我重新看一下这两个工具的命名、描述和入参说明，把容易混淆的边界写清楚。",
+          "triggered": [
+            "design-agent-tools"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-agent-tools-sc3",
+          "text": "我们准备接入一个外部 MCP 服务来让 Agent 操作 Git 仓库，但安全团队担心它可能在我们不知情时给命令追加参数，或者把长输出截断后不告诉我们。帮我出一份针对这类工具接口的评审清单，重点看它有没有隐式改输入输出。",
+          "triggered": [
+            "design-agent-tools",
+            "secure-agent-actions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "design-agent-tools-sc3",
+          "others": [
+            "secure-agent-actions"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "define-agent-boundaries-sc3",
+          "intended": "define-agent-boundaries"
+        },
+        {
+          "scenarioId": "secure-agent-actions-sc2",
+          "intended": "secure-agent-actions"
+        }
+      ]
+    },
+    {
+      "skillId": "validate-generated-artifacts",
+      "name": "渲染、验证并安全交付生成产物",
+      "code": "k03",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "validate-generated-artifacts-sc1",
+          "text": "我让模型生成了一份内部周报网页，里面有几张图表和表格。你帮我在真实浏览器里跑一遍，截图给我看有没有白屏、错位或者控制台报错，确认能正常展示再给我。",
+          "triggered": [
+            "validate-generated-artifacts"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "validate-generated-artifacts-sc2",
+          "text": "我让模型写了一个客户分群 SQL，准备放到例行报表里。你先帮我在测试库实际执行一下，核对结果是不是符合业务逻辑，特别是漏斗那一段别再漏条件，确认没问题我再发布。",
+          "triggered": [
+            "validate-generated-artifacts"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "validate-generated-artifacts-sc3",
+          "text": "我让 Agent 给销售人员生成了一个移动端报价表单，我要求前端只拿界面描述 JSON 用受信组件渲染，不直接跑任意 HTML。你帮我在交付前验证这个表单在目标组件里渲染和交互是否正常。",
+          "triggered": [
+            "validate-generated-artifacts"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "coordinate-agent-work",
+      "name": "编排多 Agent 协作与冲突处理",
+      "code": "k01",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "coordinate-agent-work-sc1",
+          "text": "我现在要让 6 个 Agent 分头分析同一批线上事故日志并各自给出结论，再由一个汇总 Agent 合并。帮我定一下它们之间的通信方式、进度怎么暴露，以及汇总时如果结论互相矛盾按什么规则裁决。",
+          "triggered": [
+            "coordinate-agent-work"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-agent-work-sc2",
+          "text": "我们有一条多 Agent 代码评审流水线，最近发现一个 Agent 的误判会被后续 Agent 不断强化，最后产出的问题清单看起来很有道理，但原始日志并不支持。帮我设计独立复核、交叉验证以及熔断后人工介入的位置。",
+          "triggered": [
+            "coordinate-agent-work",
+            "verify-agent-completion"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-agent-work-sc3",
+          "text": "我要让多个 Agent 共同维护一套跨文件配置，可能出现 A 改了端口、B 改了服务发现规则这种文件层面不冲突但逻辑上互相矛盾的情况。帮我设计资源所有权、冲突检测方式和可重复执行的结算机制。",
+          "triggered": [
+            "coordinate-agent-work"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "coordinate-agent-work-sc2",
+          "others": [
+            "verify-agent-completion"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "verify-agent-completion-sc2",
+          "intended": "verify-agent-completion"
+        }
+      ]
+    },
+    {
+      "skillId": "verify-agent-completion",
+      "name": "用独立证据判定任务完成",
+      "code": "k11",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "verify-agent-completion-sc1",
+          "text": "我让 Agent 自动修复后端报错，它每次自己在本地跑个测试就宣称完成了，我想把“可以停”这个判断改成由一个只能看代码变更和 CI 日志、看不到它生成过程的检查步骤来做，该怎么设计？",
+          "triggered": [
+            "verify-agent-completion",
+            "define-agent-boundaries"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc2",
+          "text": "我们让 Agent 边改代码边写测试，再由同一个模型基于相同上下文评审核质量，结果经常出现改得差但审核全通过，我想加一道检查，确认这些审核意见之间是否真的相互独立。",
+          "triggered": [
+            "verify-agent-completion",
+            "coordinate-agent-work"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc3",
+          "text": "我要在发布流水线里加一个最终验证环节，让验证 Agent 根据构建产物和第三方测试报告来判断是否满足上线条件，但它不能改测试用例、采集脚本或通过线，这个约束该怎么落地？",
+          "triggered": [
+            "define-agent-boundaries",
+            "verify-agent-completion"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "verify-agent-completion-sc1",
+          "others": [
+            "define-agent-boundaries"
+          ]
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc2",
+          "others": [
+            "coordinate-agent-work"
+          ]
+        },
+        {
+          "scenarioId": "verify-agent-completion-sc3",
+          "others": [
+            "define-agent-boundaries"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "coordinate-agent-work-sc2",
+          "intended": "coordinate-agent-work"
+        }
+      ]
+    },
+    {
+      "skillId": "update-agent-instructions",
+      "name": "从失败轨迹生成可回滚指令补丁",
+      "code": "k17",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "update-agent-instructions-sc1",
+          "text": "那个整理会议纪要的助手已经连续一周把待办事项归到错误的人名下，我导出了最近 20 条失败样例，请把这些样例压缩成一条简短的补充规则，只追加到现有提示词里，不要改动原有内容，并且告诉我怎么回滚。",
+          "triggered": [
+            "update-agent-instructions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "update-agent-instructions-sc2",
+          "text": "最近客服 Agent 在报价时总忽略大客户折扣，我们有几十条链路日志，我想把“优先检查合同折扣”这条经验固化下来，但拿不准是写进团队手册、更新技能说明，还是改成服务代码里的默认策略，帮我判断并给出具体落点。",
+          "triggered": [
+            "update-agent-instructions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "update-agent-instructions-sc3",
+          "text": "我们的代码审查 Agent 对 Python 项目反复建议用已弃用的 asyncio 写法，我有几次错误建议的截图和日志，帮我把“遇到 async 时先查当前版本推荐写法”整理成一条带来源的注意事项，追加到审查技能说明里，不要整篇重写。",
+          "triggered": [
+            "update-agent-instructions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    }
+  ],
+  "unrelated": [
+    {
+      "scenarioId": "unrelated-sc1",
+      "text": "请帮我给销售团队写一封群发邮件，汇总上周各地区销售额并突出增长最快的区域。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc2",
+      "text": "我需要用 Python 读取一个 300MB 的日志文件，统计每个状态码出现的次数。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc3",
+      "text": "帮我设计一个订单管理系统的 MySQL 表结构，包含订单、商品和支付记录的关系。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc4",
+      "text": "分析这篇文章的标题和关键词，给出三个更适合搜索引擎的标题方案。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc5",
+      "text": "给我一个大纲，用来做 15 分钟的产品路线图演示，包含问题、方案和未来计划。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc6",
+      "text": "我有一些销售数据在 Google Sheets 里，请写一个公式自动标记低于季度目标的单元格。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc7",
+      "text": "请为我的开源项目写一段 README 的快速开始部分，面向第一次接触的用户。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc8",
+      "text": "我需要一个 docker-compose.yml，用来启动本地 PostgreSQL、Redis 和一个 Node 服务。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc9",
+      "text": "写一个 Bash 脚本，把当前目录下以 IMG_ 开头、按日期命名的图片统一重命名为 YYYY-MM-DD_序号 格式。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc10",
+      "text": "这是 5 份用户访谈转录文本，请提炼出重复出现的痛点和三条主要改进方向。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc11",
+      "text": "帮我画一个移动端登录注册流程的低保真线框图，并标出密码错误、手机号已注册等异常状态。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc12",
+      "text": "请给一位即将到期的企业客户写一封续约提醒邮件，语气专业且不希望显得有压力。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc13",
+      "text": "我在 Figma 里维护设计系统，请帮我整理一份颜色、字号和间距的变量命名对照表。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc14",
+      "text": "写一条 SQL：在用户表里找出过去 30 天登录过但没有下单的用户，输出邮箱和最后登录时间。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc15",
+      "text": "帮我为一家精品咖啡店写三条 Instagram 推广文案，面向大学生群体，突出性价比和自习友好。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc16",
+      "text": "我想用 GitHub Actions 在每次 PR 时自动运行 ESLint 和 Jest 测试，请给出工作流配置。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc17",
+      "text": "制定一个四周的机器学习入门学习计划，每天 1 小时，涵盖 Python、pandas 和简单的分类模型。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc18",
+      "text": "请帮我写一个 Nginx 配置，把 /api 路径反向代理到 127.0.0.1:3000，并保留原始 Host 头。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc19",
+      "text": "我在 Jupyter Notebook 里加载了天气数据，请帮我画一张展示温度和降雨量变化的双轴折线图。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc20",
+      "text": "帮我起草一份数据保护影响评估的问题清单，用来评估一个新的客户数据分析项目是否合规。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    }
+  ],
+  "conflictGroups": [
+    {
+      "scenarioId": "diagnose-rust-borrows-sc3",
+      "intended": "diagnose-rust-borrows",
+      "triggered": [
+        "diagnose-rust-borrows",
+        "process-rust-text-and-hashmaps"
+      ]
+    },
+    {
+      "scenarioId": "compose-rust-closures-sc2",
+      "intended": "compose-rust-closures",
+      "triggered": [
+        "design-rust-abstractions",
+        "compose-rust-closures"
+      ]
+    },
+    {
+      "scenarioId": "compose-rust-closures-sc3",
+      "intended": "compose-rust-closures",
+      "triggered": [
+        "coordinate-rust-threads",
+        "compose-rust-closures"
+      ]
+    },
+    {
+      "scenarioId": "structure-rust-cli-sc2",
+      "intended": "structure-rust-cli",
+      "triggered": [
+        "structure-rust-cli",
+        "model-rust-domain-types"
+      ]
+    },
+    {
+      "scenarioId": "implement-rust-state-pattern-sc2",
+      "intended": "implement-rust-state-pattern",
+      "triggered": [
+        "implement-rust-state-pattern",
+        "model-rust-domain-types"
+      ]
+    },
+    {
+      "scenarioId": "implement-rust-state-pattern-sc3",
+      "intended": "implement-rust-state-pattern",
+      "triggered": [
+        "implement-rust-state-pattern",
+        "manage-rust-memory-and-mutability"
+      ]
+    },
+    {
+      "scenarioId": "define-agent-boundaries-sc1",
+      "intended": "define-agent-boundaries",
+      "triggered": [
+        "define-agent-boundaries",
+        "secure-agent-actions"
+      ]
+    },
+    {
+      "scenarioId": "define-agent-boundaries-sc3",
+      "intended": "define-agent-boundaries",
+      "triggered": [
+        "define-agent-boundaries",
+        "design-agent-tools"
+      ]
+    },
+    {
+      "scenarioId": "secure-agent-actions-sc1",
+      "intended": "secure-agent-actions",
+      "triggered": [
+        "secure-agent-actions",
+        "define-agent-boundaries"
+      ]
+    },
+    {
+      "scenarioId": "secure-agent-actions-sc2",
+      "intended": "secure-agent-actions",
+      "triggered": [
+        "design-agent-tools",
+        "secure-agent-actions"
+      ]
+    },
+    {
+      "scenarioId": "secure-agent-actions-sc3",
+      "intended": "secure-agent-actions",
+      "triggered": [
+        "secure-agent-actions",
+        "define-agent-boundaries"
+      ]
+    },
+    {
+      "scenarioId": "manage-agent-context-sc1",
+      "intended": "manage-agent-context",
+      "triggered": [
+        "manage-agent-context",
+        "define-agent-boundaries"
+      ]
+    },
+    {
+      "scenarioId": "design-agent-tools-sc3",
+      "intended": "design-agent-tools",
+      "triggered": [
+        "design-agent-tools",
+        "secure-agent-actions"
+      ]
+    },
+    {
+      "scenarioId": "coordinate-agent-work-sc2",
+      "intended": "coordinate-agent-work",
+      "triggered": [
+        "coordinate-agent-work",
+        "verify-agent-completion"
+      ]
+    },
+    {
+      "scenarioId": "verify-agent-completion-sc1",
+      "intended": "verify-agent-completion",
+      "triggered": [
+        "verify-agent-completion",
+        "define-agent-boundaries"
+      ]
+    },
+    {
+      "scenarioId": "verify-agent-completion-sc2",
+      "intended": "verify-agent-completion",
+      "triggered": [
+        "verify-agent-completion",
+        "coordinate-agent-work"
+      ]
+    },
+    {
+      "scenarioId": "verify-agent-completion-sc3",
+      "intended": "verify-agent-completion",
+      "triggered": [
+        "define-agent-boundaries",
+        "verify-agent-completion"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "merge",
+      "candidates": [
+        "diagnose-rust-borrows",
+        "process-rust-text-and-hashmaps"
+      ],
+      "names": [
+        "诊断 Rust 借用、切片与生命周期错误",
+        "安全处理 Rust 文本与键值集合"
+      ],
+      "basis": "同一场景（diagnose-rust-borrows-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "diagnose-rust-borrows-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "design-rust-abstractions",
+        "compose-rust-closures"
+      ],
+      "names": [
+        "用泛型、trait 与 trait object 设计抽象",
+        "创建、约束并缓存 Rust 闭包"
+      ],
+      "basis": "同一场景（compose-rust-closures-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "compose-rust-closures-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "coordinate-rust-threads",
+        "compose-rust-closures"
+      ],
+      "names": [
+        "用线程、通道与 Arc<Mutex> 协调并发",
+        "创建、约束并缓存 Rust 闭包"
+      ],
+      "basis": "同一场景（compose-rust-closures-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "compose-rust-closures-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "structure-rust-cli",
+        "model-rust-domain-types"
+      ],
+      "names": [
+        "拆分 Rust CLI 并传递 Result 错误",
+        "用结构体、方法与枚举建模 Rust 领域类型"
+      ],
+      "basis": "同一场景（structure-rust-cli-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "structure-rust-cli-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "implement-rust-state-pattern",
+        "model-rust-domain-types"
+      ],
+      "names": [
+        "用所有权安全地实现 Rust 状态模式",
+        "用结构体、方法与枚举建模 Rust 领域类型"
+      ],
+      "basis": "同一场景（implement-rust-state-pattern-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "implement-rust-state-pattern-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "implement-rust-state-pattern",
+        "manage-rust-memory-and-mutability"
+      ],
+      "names": [
+        "用所有权安全地实现 Rust 状态模式",
+        "管理 Rust 内存布局、析构与内部可变性"
+      ],
+      "basis": "同一场景（implement-rust-state-pattern-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "implement-rust-state-pattern-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "define-agent-boundaries",
+        "secure-agent-actions"
+      ],
+      "names": [
+        "定义 Agent 观察、动作与职责边界",
+        "为 Agent 动作建立可执行安全边界"
+      ],
+      "basis": "同一场景（define-agent-boundaries-sc1, secure-agent-actions-sc1, secure-agent-actions-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "define-agent-boundaries-sc1",
+        "secure-agent-actions-sc1",
+        "secure-agent-actions-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "define-agent-boundaries",
+        "design-agent-tools"
+      ],
+      "names": [
+        "定义 Agent 观察、动作与职责边界",
+        "设计可选、透明、可分页的 Agent 工具"
+      ],
+      "basis": "同一场景（define-agent-boundaries-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "define-agent-boundaries-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "design-agent-tools",
+        "secure-agent-actions"
+      ],
+      "names": [
+        "设计可选、透明、可分页的 Agent 工具",
+        "为 Agent 动作建立可执行安全边界"
+      ],
+      "basis": "同一场景（secure-agent-actions-sc2, design-agent-tools-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "secure-agent-actions-sc2",
+        "design-agent-tools-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "manage-agent-context",
+        "define-agent-boundaries"
+      ],
+      "names": [
+        "压缩上下文并维持运行状态",
+        "定义 Agent 观察、动作与职责边界"
+      ],
+      "basis": "同一场景（manage-agent-context-sc1）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "manage-agent-context-sc1"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "coordinate-agent-work",
+        "verify-agent-completion"
+      ],
+      "names": [
+        "编排多 Agent 协作与冲突处理",
+        "用独立证据判定任务完成"
+      ],
+      "basis": "同一场景（coordinate-agent-work-sc2, verify-agent-completion-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "coordinate-agent-work-sc2",
+        "verify-agent-completion-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "verify-agent-completion",
+        "define-agent-boundaries"
+      ],
+      "names": [
+        "用独立证据判定任务完成",
+        "定义 Agent 观察、动作与职责边界"
+      ],
+      "basis": "同一场景（verify-agent-completion-sc1, verify-agent-completion-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "verify-agent-completion-sc1",
+        "verify-agent-completion-sc3"
+      ]
+    }
+  ],
+  "totals": {
+    "candidates": 19,
+    "scenarios": 57,
+    "unrelatedScenarios": 20,
+    "triggerPassed": 4,
+    "triggerConflict": 15,
+    "triggerMiss": 0,
+    "unrelatedFalseTriggers": 0,
+    "conflictGroups": 17
+  }
+}

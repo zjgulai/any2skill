@@ -1,0 +1,1422 @@
+{
+  "schemaVersion": "book-receipt/v1",
+  "receiptSchemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "bookRunId": "book-07faf309c5a1",
+  "createdAt": "2026-10-11T12:47:49.543Z",
+  "finishedAt": "2026-10-11T14:18:10.821Z",
+  "sourceRoot": "sources/ai-agent-book-zh/book",
+  "inputs": {
+    "layer2": "deepseek",
+    "concurrency": 4,
+    "passthrough": [
+      "--layer2",
+      "deepseek",
+      "--llm-model",
+      "deepseek-v4-pro",
+      "--llm-base-url",
+      "https://api.deepseek.com",
+      "--judge-model",
+      "deepseek-v4-pro",
+      "--judge-base-url",
+      "https://api.deepseek.com"
+    ],
+    "judgeApplied": true,
+    "sources": [
+      {
+        "fileKey": "afterword",
+        "path": "sources/ai-agent-book-zh/book/afterword.md",
+        "sha256": "sha256:2f7a7ed1792c7d05675b21c58e2998cf70971bde65f1d06c088b16feee41bb63",
+        "bytes": 10495
+      },
+      {
+        "fileKey": "chapter1",
+        "path": "sources/ai-agent-book-zh/book/chapter1.md",
+        "sha256": "sha256:03f1c8e82fbb112758e0ed85b147b3aaef3083b7389c6d9aac0d5abe3c0474c5",
+        "bytes": 82813
+      },
+      {
+        "fileKey": "chapter10",
+        "path": "sources/ai-agent-book-zh/book/chapter10.md",
+        "sha256": "sha256:9d3ae92955cc8ca5fd8ed7e5e9f1bdb6ad6c6cf7aa3ea77cfee7931badaafd15",
+        "bytes": 101683
+      },
+      {
+        "fileKey": "chapter2",
+        "path": "sources/ai-agent-book-zh/book/chapter2.md",
+        "sha256": "sha256:a64c23de09c1108b2c038184b06ed89f0b0929fd1e08208e25b5d983d268af59",
+        "bytes": 130806
+      },
+      {
+        "fileKey": "chapter3",
+        "path": "sources/ai-agent-book-zh/book/chapter3.md",
+        "sha256": "sha256:aef4bd529d906b7cd1fa32ab25e55ef88254a9220d769bebead423b1c754d6bc",
+        "bytes": 100023
+      },
+      {
+        "fileKey": "chapter4",
+        "path": "sources/ai-agent-book-zh/book/chapter4.md",
+        "sha256": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+        "bytes": 71664
+      },
+      {
+        "fileKey": "chapter5",
+        "path": "sources/ai-agent-book-zh/book/chapter5.md",
+        "sha256": "sha256:f6153570ccd5dd763a4f1cfbb01bcc8eb3d6012738ec5645db720d733f86019f",
+        "bytes": 113700
+      },
+      {
+        "fileKey": "chapter6",
+        "path": "sources/ai-agent-book-zh/book/chapter6.md",
+        "sha256": "sha256:952cd29bcd63e6bcf599a240b34487f852e55154f7ec21af65af06042558f1e6",
+        "bytes": 93559
+      },
+      {
+        "fileKey": "chapter7",
+        "path": "sources/ai-agent-book-zh/book/chapter7.md",
+        "sha256": "sha256:30bbc29c9826d0223bd9d10393378f3f01970d9af88b9f9d2115dfaca54218e8",
+        "bytes": 109424
+      },
+      {
+        "fileKey": "chapter8",
+        "path": "sources/ai-agent-book-zh/book/chapter8.md",
+        "sha256": "sha256:000ee0097f74a53fdb4d6a2950b21cc5848a16e7d7501dce1ee7ad19bc366af7",
+        "bytes": 136717
+      },
+      {
+        "fileKey": "chapter9",
+        "path": "sources/ai-agent-book-zh/book/chapter9.md",
+        "sha256": "sha256:855e8b9af9cb72f891452542825fa5e2886e763af0429c715fc7d3a7f5a6592d",
+        "bytes": 62756
+      },
+      {
+        "fileKey": "introduction",
+        "path": "sources/ai-agent-book-zh/book/introduction.md",
+        "sha256": "sha256:bb43afb1de9454cfa9f97be9eed126944f2b51436edddf41ede8e78b1cc632c8",
+        "bytes": 19439
+      },
+      {
+        "fileKey": "reference-answers",
+        "path": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "sha256": "sha256:94aac6489bcea07a12ea447cb17216502bbb9a091ce2e0938bbd652cefbcc01f",
+        "bytes": 69703
+      }
+    ]
+  },
+  "exitCode": 4,
+  "files": [
+    {
+      "fileKey": "afterword",
+      "path": "sources/ai-agent-book-zh/book/afterword.md",
+      "sha256": "sha256:2f7a7ed1792c7d05675b21c58e2998cf70971bde65f1d06c088b16feee41bb63",
+      "bytes": 10495,
+      "exitCode": 0,
+      "runId": "run-6e6a6dea9b51",
+      "receiptPath": "pipeline/registry/run-6e6a6dea9b51.receipt.json",
+      "counts": {
+        "anchors": 3,
+        "objects": 5,
+        "passed": 5,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 4,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 1,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 0,
+          "AntiPattern": 0
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 3,
+        "processedAnchors": 3,
+        "coveredAnchors": 3,
+        "withoutObjects": {
+          "count": 0,
+          "anchors": []
+        }
+      },
+      "objectTypes": {
+        "Concept": 4,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 1,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 0,
+        "AntiPattern": 0
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 3,
+        "tokens": {
+          "input": 6754,
+          "output": 18717
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 5,
+        "tokens": {
+          "input": 7823,
+          "output": 1300
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 5,
+          "verdicts": {
+            "supported": 5
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[断点续跑] 已有 1/3 个锚点的付费产出，从第 2 个锚点继续。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter1",
+      "path": "sources/ai-agent-book-zh/book/chapter1.md",
+      "sha256": "sha256:03f1c8e82fbb112758e0ed85b147b3aaef3083b7389c6d9aac0d5abe3c0474c5",
+      "bytes": 82813,
+      "exitCode": 3,
+      "runId": "run-f73a959172d0",
+      "receiptPath": "pipeline/registry/run-f73a959172d0.receipt.json",
+      "counts": {
+        "anchors": 25,
+        "objects": 47,
+        "passed": 45,
+        "rejected": 2,
+        "objectTypes": {
+          "Concept": 25,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 3,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 19,
+          "AntiPattern": 0
+        }
+      },
+      "reasonCodes": {
+        "QUOTE_MISMATCH": 2
+      },
+      "coverage": {
+        "indexAnchors": 25,
+        "processedAnchors": 25,
+        "coveredAnchors": 24,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter1#h2-5"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 25,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 3,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 19,
+        "AntiPattern": 0
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 25,
+        "tokens": {
+          "input": 54381,
+          "output": 158893
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 45,
+        "tokens": {
+          "input": 61573,
+          "output": 10508
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 45,
+          "verdicts": {
+            "supported": 45
+          },
+          "notCalled": 2
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": null,
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter10",
+      "path": "sources/ai-agent-book-zh/book/chapter10.md",
+      "sha256": "sha256:9d3ae92955cc8ca5fd8ed7e5e9f1bdb6ad6c6cf7aa3ea77cfee7931badaafd15",
+      "bytes": 101683,
+      "exitCode": 4,
+      "runId": "run-failed-2ed95bb4f7de",
+      "receiptPath": "pipeline/registry/run-failed-2ed95bb4f7de.receipt.json",
+      "counts": {
+        "anchors": 0,
+        "objects": 0,
+        "passed": 0,
+        "rejected": 0,
+        "objectTypes": null
+      },
+      "reasonCodes": {},
+      "coverage": null,
+      "objectTypes": null,
+      "model": {
+        "modelId": null,
+        "calls": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": null,
+      "engineeringFailure": {
+        "kind": "layer2-response",
+        "message": "第 2 层响应不是可解析的 JSON：Unexpected token 'p', \"python\\nwo\"... is not valid JSON"
+      },
+      "childStderr": "运行失败（layer2-response）：第 2 层响应不是可解析的 JSON：Unexpected token 'p', \"python\\nwo\"... is not valid JSON",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter2",
+      "path": "sources/ai-agent-book-zh/book/chapter2.md",
+      "sha256": "sha256:a64c23de09c1108b2c038184b06ed89f0b0929fd1e08208e25b5d983d268af59",
+      "bytes": 130806,
+      "exitCode": 4,
+      "runId": "run-failed-903ad211e45d",
+      "receiptPath": "pipeline/registry/run-failed-903ad211e45d.receipt.json",
+      "counts": {
+        "anchors": 0,
+        "objects": 0,
+        "passed": 0,
+        "rejected": 0,
+        "objectTypes": null
+      },
+      "reasonCodes": {},
+      "coverage": null,
+      "objectTypes": null,
+      "model": {
+        "modelId": null,
+        "calls": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": null,
+      "engineeringFailure": {
+        "kind": "layer2-response",
+        "message": "第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n# 工具使\"... is not valid JSON"
+      },
+      "childStderr": "运行失败（layer2-response）：第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n# 工具使\"... is not valid JSON",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter3",
+      "path": "sources/ai-agent-book-zh/book/chapter3.md",
+      "sha256": "sha256:aef4bd529d906b7cd1fa32ab25e55ef88254a9220d769bebead423b1c754d6bc",
+      "bytes": 100023,
+      "exitCode": 4,
+      "runId": "run-failed-cd7e8a96f3fd",
+      "receiptPath": "pipeline/registry/run-failed-cd7e8a96f3fd.receipt.json",
+      "counts": {
+        "anchors": 0,
+        "objects": 0,
+        "passed": 0,
+        "rejected": 0,
+        "objectTypes": null
+      },
+      "reasonCodes": {},
+      "coverage": null,
+      "objectTypes": null,
+      "model": {
+        "modelId": null,
+        "calls": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": null,
+      "engineeringFailure": {
+        "kind": "layer2-response",
+        "message": "第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\nExtra\"... is not valid JSON"
+      },
+      "childStderr": "运行失败（layer2-response）：第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\nExtra\"... is not valid JSON",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter4",
+      "path": "sources/ai-agent-book-zh/book/chapter4.md",
+      "sha256": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+      "bytes": 71664,
+      "exitCode": 0,
+      "runId": "run-ec4a90a91b01",
+      "receiptPath": "pipeline/registry/run-ec4a90a91b01.receipt.json",
+      "counts": {
+        "anchors": 20,
+        "objects": 39,
+        "passed": 39,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 18,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 3,
+          "Case": 1,
+          "Playbook": 0,
+          "EngineeringRule": 14,
+          "AntiPattern": 3
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 20,
+        "processedAnchors": 20,
+        "coveredAnchors": 20,
+        "withoutObjects": {
+          "count": 0,
+          "anchors": []
+        }
+      },
+      "objectTypes": {
+        "Concept": 18,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 3,
+        "Case": 1,
+        "Playbook": 0,
+        "EngineeringRule": 14,
+        "AntiPattern": 3
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 20,
+        "tokens": {
+          "input": 44834,
+          "output": 121655
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": "gate-1-deterministic-only（判定者未启用——结论不完整）",
+      "engineeringFailure": null,
+      "childStderr": "[判据升级重判] 已落盘对象由 v6 的判据判过；本次用 v8 的判据重判，不重跑第 2 层。\n[判据升级重判] 本次**只用确定性判据**（重判路径默认不产生模型调用）。要只重扫判定者而不重跑第 2 层，传 --judge；要连第 2 层一起重跑，传 --rerun。回执的 verificationGate 会写明本次门禁只完成了哪一半。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter5",
+      "path": "sources/ai-agent-book-zh/book/chapter5.md",
+      "sha256": "sha256:f6153570ccd5dd763a4f1cfbb01bcc8eb3d6012738ec5645db720d733f86019f",
+      "bytes": 113700,
+      "exitCode": 0,
+      "runId": "run-71c4837ce705",
+      "receiptPath": "pipeline/registry/run-71c4837ce705.receipt.json",
+      "counts": {
+        "anchors": 20,
+        "objects": 37,
+        "passed": 37,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 17,
+          "Metric": 0,
+          "MentalModel": 1,
+          "DecisionModel": 0,
+          "Heuristic": 0,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 18,
+          "AntiPattern": 1
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 20,
+        "processedAnchors": 20,
+        "coveredAnchors": 19,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter5#h2-1"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 17,
+        "Metric": 0,
+        "MentalModel": 1,
+        "DecisionModel": 0,
+        "Heuristic": 0,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 18,
+        "AntiPattern": 1
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 20,
+        "tokens": {
+          "input": 53530,
+          "output": 138223
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 37,
+        "tokens": {
+          "input": 72451,
+          "output": 13433
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 37,
+          "verdicts": {
+            "supported": 37
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": null,
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter6",
+      "path": "sources/ai-agent-book-zh/book/chapter6.md",
+      "sha256": "sha256:952cd29bcd63e6bcf599a240b34487f852e55154f7ec21af65af06042558f1e6",
+      "bytes": 93559,
+      "exitCode": 4,
+      "runId": "run-failed-4e2d1ee92a5a",
+      "receiptPath": "pipeline/registry/run-failed-4e2d1ee92a5a.receipt.json",
+      "counts": {
+        "anchors": 0,
+        "objects": 0,
+        "passed": 0,
+        "rejected": 0,
+        "objectTypes": null
+      },
+      "reasonCodes": {},
+      "coverage": null,
+      "objectTypes": null,
+      "model": {
+        "modelId": null,
+        "calls": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": null,
+      "engineeringFailure": {
+        "kind": "layer2-response",
+        "message": "第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n桌面状态 \"... is not valid JSON"
+      },
+      "childStderr": "运行失败（layer2-response）：第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n桌面状态 \"... is not valid JSON",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter7",
+      "path": "sources/ai-agent-book-zh/book/chapter7.md",
+      "sha256": "sha256:30bbc29c9826d0223bd9d10393378f3f01970d9af88b9f9d2115dfaca54218e8",
+      "bytes": 109424,
+      "exitCode": 4,
+      "runId": "run-failed-bbdf5a95d049",
+      "receiptPath": "pipeline/registry/run-failed-bbdf5a95d049.receipt.json",
+      "counts": {
+        "anchors": 0,
+        "objects": 0,
+        "passed": 0,
+        "rejected": 0,
+        "objectTypes": null
+      },
+      "reasonCodes": {},
+      "coverage": null,
+      "objectTypes": null,
+      "model": {
+        "modelId": null,
+        "calls": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": null,
+      "engineeringFailure": {
+        "kind": "layer2-response",
+        "message": "第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n文件原始字\"... is not valid JSON"
+      },
+      "childStderr": "运行失败（layer2-response）：第 2 层响应不是可解析的 JSON：Unexpected token 'e', \"text\\n文件原始字\"... is not valid JSON",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter8",
+      "path": "sources/ai-agent-book-zh/book/chapter8.md",
+      "sha256": "sha256:000ee0097f74a53fdb4d6a2950b21cc5848a16e7d7501dce1ee7ad19bc366af7",
+      "bytes": 136717,
+      "exitCode": 3,
+      "runId": "run-f440d6f02f0a",
+      "receiptPath": "pipeline/registry/run-f440d6f02f0a.receipt.json",
+      "counts": {
+        "anchors": 42,
+        "objects": 75,
+        "passed": 74,
+        "rejected": 1,
+        "objectTypes": {
+          "Concept": 37,
+          "Metric": 1,
+          "MentalModel": 0,
+          "DecisionModel": 1,
+          "Heuristic": 4,
+          "Case": 2,
+          "Playbook": 0,
+          "EngineeringRule": 23,
+          "AntiPattern": 7
+        }
+      },
+      "reasonCodes": {
+        "QUOTE_MISMATCH": 1
+      },
+      "coverage": {
+        "indexAnchors": 42,
+        "processedAnchors": 42,
+        "coveredAnchors": 39,
+        "withoutObjects": {
+          "count": 3,
+          "anchors": [
+            "chapter8#h2-2",
+            "chapter8#h2-11",
+            "chapter8#h2-12"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 37,
+        "Metric": 1,
+        "MentalModel": 0,
+        "DecisionModel": 1,
+        "Heuristic": 4,
+        "Case": 2,
+        "Playbook": 0,
+        "EngineeringRule": 23,
+        "AntiPattern": 7
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 42,
+        "tokens": {
+          "input": 93310,
+          "output": 273038
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 74,
+        "tokens": {
+          "input": 108677,
+          "output": 20058
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 74,
+          "verdicts": {
+            "supported": 74
+          },
+          "notCalled": 1
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": null,
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter9",
+      "path": "sources/ai-agent-book-zh/book/chapter9.md",
+      "sha256": "sha256:855e8b9af9cb72f891452542825fa5e2886e763af0429c715fc7d3a7f5a6592d",
+      "bytes": 62756,
+      "exitCode": 0,
+      "runId": "run-d5d82988e66f",
+      "receiptPath": "pipeline/registry/run-d5d82988e66f.receipt.json",
+      "counts": {
+        "anchors": 17,
+        "objects": 32,
+        "passed": 32,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 6,
+          "Metric": 0,
+          "MentalModel": 3,
+          "DecisionModel": 1,
+          "Heuristic": 0,
+          "Case": 0,
+          "Playbook": 2,
+          "EngineeringRule": 18,
+          "AntiPattern": 2
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 17,
+        "processedAnchors": 17,
+        "coveredAnchors": 16,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter9#h2-5"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 6,
+        "Metric": 0,
+        "MentalModel": 3,
+        "DecisionModel": 1,
+        "Heuristic": 0,
+        "Case": 0,
+        "Playbook": 2,
+        "EngineeringRule": 18,
+        "AntiPattern": 2
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 17,
+        "tokens": {
+          "input": 38636,
+          "output": 112382
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 32,
+        "tokens": {
+          "input": 47796,
+          "output": 11142
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 32,
+          "verdicts": {
+            "supported": 32
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": null,
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "introduction",
+      "path": "sources/ai-agent-book-zh/book/introduction.md",
+      "sha256": "sha256:bb43afb1de9454cfa9f97be9eed126944f2b51436edddf41ede8e78b1cc632c8",
+      "bytes": 19439,
+      "exitCode": 4,
+      "runId": "run-failed-0579153399cc",
+      "receiptPath": "pipeline/registry/run-failed-0579153399cc.receipt.json",
+      "counts": {
+        "anchors": 0,
+        "objects": 0,
+        "passed": 0,
+        "rejected": 0,
+        "objectTypes": null
+      },
+      "reasonCodes": {},
+      "coverage": null,
+      "objectTypes": null,
+      "model": {
+        "modelId": null,
+        "calls": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": null,
+      "engineeringFailure": {
+        "kind": "layer2-response",
+        "message": "第 2 层响应不是可解析的 JSON：Unexpected token 'b', \"bash\\ngit \"... is not valid JSON"
+      },
+      "childStderr": "运行失败（layer2-response）：第 2 层响应不是可解析的 JSON：Unexpected token 'b', \"bash\\ngit \"... is not valid JSON",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "reference-answers",
+      "path": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "sha256": "sha256:94aac6489bcea07a12ea447cb17216502bbb9a091ce2e0938bbd652cefbcc01f",
+      "bytes": 69703,
+      "exitCode": 0,
+      "runId": "run-771fa62e2be9",
+      "receiptPath": "pipeline/registry/run-771fa62e2be9.receipt.json",
+      "counts": {
+        "anchors": 11,
+        "objects": 21,
+        "passed": 21,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 4,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 3,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 13,
+          "AntiPattern": 1
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 11,
+        "processedAnchors": 11,
+        "coveredAnchors": 11,
+        "withoutObjects": {
+          "count": 0,
+          "anchors": []
+        }
+      },
+      "objectTypes": {
+        "Concept": 4,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 3,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 13,
+        "AntiPattern": 1
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 11,
+        "tokens": {
+          "input": 31260,
+          "output": 86015
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 21,
+        "tokens": {
+          "input": 43315,
+          "output": 5609
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 21,
+          "verdicts": {
+            "supported": 21
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": null,
+      "noReceipt": false,
+      "noReceiptReason": null
+    }
+  ],
+  "totals": {
+    "files": 13,
+    "filesPassed": 5,
+    "filesRejected": 2,
+    "filesFailed": 6,
+    "filesWithoutReceipt": 0,
+    "anchors": 138,
+    "processedAnchors": 138,
+    "coveredAnchors": 132,
+    "anchorsWithoutObjects": 6,
+    "objects": 256,
+    "passed": 253,
+    "rejected": 3,
+    "objectTypes": {
+      "Concept": 111,
+      "Metric": 1,
+      "MentalModel": 4,
+      "DecisionModel": 2,
+      "Heuristic": 14,
+      "Case": 3,
+      "Playbook": 2,
+      "EngineeringRule": 105,
+      "AntiPattern": 14
+    },
+    "reasonCodesByCode": {
+      "QUOTE_MISMATCH": 3
+    },
+    "model": {
+      "calls": 138,
+      "inputTokens": 322705,
+      "outputTokens": 908923,
+      "failedCalls": 0
+    },
+    "judge": {
+      "enabled": false,
+      "calls": 214,
+      "inputTokens": 341635,
+      "outputTokens": 62050
+    }
+  },
+  "antipatterns": {
+    "fromLayer2": {
+      "label": "全书各章第 2 层提取（本章内综合）",
+      "total": 28,
+      "crossChapter": 7,
+      "crossChapterRatio": 0.25,
+      "sourceRefsPerObject": {
+        "mean": 1.36,
+        "max": 3
+      },
+      "referencedChapters": {
+        "chapter1": 2,
+        "chapter2": 10,
+        "chapter4": 7,
+        "chapter5": 5,
+        "chapter7": 1,
+        "chapter8": 7,
+        "chapter9": 4,
+        "reference-answers": 1
+      },
+      "crossChapterIds": [
+        "AP-SYNTH-T02-03",
+        "AP-SYNTH-T12-01",
+        "AP-SYNTH-T12-02",
+        "AP-SYNTH-T12-03",
+        "AP-SYNTH-T12-04",
+        "AP-SYNTH-T12-05",
+        "AP-SYNTH-T12-06"
+      ]
+    },
+    "perFile": [
+      {
+        "file": "antipatterns.objects.json",
+        "label": "antipatterns.objects.json",
+        "total": 14,
+        "crossChapter": 7,
+        "crossChapterRatio": 0.5,
+        "sourceRefsPerObject": {
+          "mean": 1.71,
+          "max": 3
+        },
+        "referencedChapters": {
+          "chapter1": 2,
+          "chapter2": 10,
+          "chapter4": 4,
+          "chapter5": 4,
+          "chapter7": 1,
+          "chapter9": 2
+        },
+        "crossChapterIds": [
+          "AP-SYNTH-T02-03",
+          "AP-SYNTH-T12-01",
+          "AP-SYNTH-T12-02",
+          "AP-SYNTH-T12-03",
+          "AP-SYNTH-T12-04",
+          "AP-SYNTH-T12-05",
+          "AP-SYNTH-T12-06"
+        ]
+      },
+      {
+        "file": "chapter4.objects.json",
+        "label": "chapter4.objects.json",
+        "total": 3,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter4": 3
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter5.objects.json",
+        "label": "chapter5.objects.json",
+        "total": 1,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter5": 1
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter8.objects.json",
+        "label": "chapter8.objects.json",
+        "total": 7,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter8": 7
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter9.objects.json",
+        "label": "chapter9.objects.json",
+        "total": 2,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter9": 2
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "reference-answers.objects.json",
+        "label": "reference-answers.objects.json",
+        "total": 1,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "reference-answers": 1
+        },
+        "crossChapterIds": []
+      }
+    ],
+    "crossChapter": {
+      "status": "present",
+      "declaredRunId": "run-6bc0e8a0e8b9",
+      "declaredComplete": true,
+      "label": "跨章综合（卡 06 的命令产出）",
+      "total": 14,
+      "crossChapter": 7,
+      "crossChapterRatio": 0.5,
+      "sourceRefsPerObject": {
+        "mean": 1.71,
+        "max": 3
+      },
+      "referencedChapters": {
+        "chapter1": 2,
+        "chapter2": 10,
+        "chapter4": 4,
+        "chapter5": 4,
+        "chapter7": 1,
+        "chapter9": 2
+      },
+      "crossChapterIds": [
+        "AP-SYNTH-T02-03",
+        "AP-SYNTH-T12-01",
+        "AP-SYNTH-T12-02",
+        "AP-SYNTH-T12-03",
+        "AP-SYNTH-T12-04",
+        "AP-SYNTH-T12-05",
+        "AP-SYNTH-T12-06"
+      ]
+    },
+    "runIdNote": "`fromLayer2` 是本次运行的产物；`crossChapter` 由卡 06 的命令**单独**产出，有自己的运行身份（上面已声明），两者不可互相代替，也不共用同一个 runId。"
+  },
+  "isolation": {
+    "children": {
+      "expectedProcesses": 13,
+      "complete": true,
+      "missing": [],
+      "note": "账本齐备：13 份进程账本，合计 2481 条访问记录，其中落在 benchmark/ 内的 13 条。",
+      "ledger": {
+        "ledgerFiles": 13,
+        "processes": [
+          {
+            "pid": 30513,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 89
+          },
+          {
+            "pid": 30514,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 274
+          },
+          {
+            "pid": 30515,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 177
+          },
+          {
+            "pid": 30516,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 193
+          },
+          {
+            "pid": 31870,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 65
+          },
+          {
+            "pid": 32998,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 71
+          },
+          {
+            "pid": 32999,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 235
+          },
+          {
+            "pid": 40375,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 281
+          },
+          {
+            "pid": 41571,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 233
+          },
+          {
+            "pid": 50404,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 414
+          },
+          {
+            "pid": 51116,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 213
+          },
+          {
+            "pid": 57510,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 73
+          },
+          {
+            "pid": 59241,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 163
+          }
+        ],
+        "truncated": false,
+        "recordCount": 2481,
+        "byMode": {
+          "read": 378,
+          "write": 1728,
+          "meta": 375
+        },
+        "distinctPaths": {
+          "read": 94,
+          "write": 70
+        },
+        "benchmark": {
+          "total": 13,
+          "reads": 0,
+          "writes": 0,
+          "meta": 13,
+          "metaOps": [
+            "realpathSync"
+          ],
+          "paths": [
+            "benchmark"
+          ],
+          "note": "`meta` 是 stat/realpath/access 这类**只问路径本身**的调用：卡 01 的路径守卫要判定「这个输入是否落在基准目录内」，就必须先解析基准目录自己。它拿到了存在性与解析后的路径，**没有读到任何内容**，因此不计入污染；列目录（可能看到那批对照物文件名）与读文件都归 `read`。"
+        },
+        "skillsWrites": [],
+        "sourceReads": [
+          "sources/ai-agent-book-zh/book/afterword.md",
+          "sources/ai-agent-book-zh/book/chapter1.md",
+          "sources/ai-agent-book-zh/book/chapter10.md",
+          "sources/ai-agent-book-zh/book/chapter2.md",
+          "sources/ai-agent-book-zh/book/chapter3.md",
+          "sources/ai-agent-book-zh/book/chapter4.md",
+          "sources/ai-agent-book-zh/book/chapter5.md",
+          "sources/ai-agent-book-zh/book/chapter6.md",
+          "sources/ai-agent-book-zh/book/chapter7.md",
+          "sources/ai-agent-book-zh/book/chapter8.md",
+          "sources/ai-agent-book-zh/book/chapter9.md",
+          "sources/ai-agent-book-zh/book/introduction.md",
+          "sources/ai-agent-book-zh/book/reference-answers.md"
+        ],
+        "readTargets": [
+          "/Users/lute/.dsh/.credentials.yaml",
+          "pipeline/knowledge/afterword.anchors.json",
+          "pipeline/knowledge/afterword.objects.json",
+          "pipeline/knowledge/afterword.objects.partial.json",
+          "pipeline/knowledge/chapter1.anchors.json",
+          "pipeline/knowledge/chapter1.objects.json",
+          "pipeline/knowledge/chapter1.objects.partial.json",
+          "pipeline/knowledge/chapter10.objects.json",
+          "pipeline/knowledge/chapter10.objects.partial.json",
+          "pipeline/knowledge/chapter2.objects.json",
+          "pipeline/knowledge/chapter2.objects.partial.json",
+          "pipeline/knowledge/chapter3.objects.json",
+          "pipeline/knowledge/chapter3.objects.partial.json",
+          "pipeline/knowledge/chapter4.anchors.json",
+          "pipeline/knowledge/chapter4.objects.json",
+          "pipeline/knowledge/chapter5.anchors.json",
+          "pipeline/knowledge/chapter5.objects.json",
+          "pipeline/knowledge/chapter5.objects.partial.json",
+          "pipeline/knowledge/chapter6.objects.json",
+          "pipeline/knowledge/chapter6.objects.partial.json",
+          "pipeline/knowledge/chapter7.objects.json",
+          "pipeline/knowledge/chapter7.objects.partial.json",
+          "pipeline/knowledge/chapter8.anchors.json",
+          "pipeline/knowledge/chapter8.objects.json",
+          "pipeline/knowledge/chapter8.objects.partial.json",
+          "pipeline/knowledge/chapter9.anchors.json",
+          "pipeline/knowledge/chapter9.objects.json",
+          "pipeline/knowledge/chapter9.objects.partial.json",
+          "pipeline/knowledge/introduction.objects.json",
+          "pipeline/knowledge/introduction.objects.partial.json",
+          "pipeline/knowledge/reference-answers.anchors.json",
+          "pipeline/knowledge/reference-answers.objects.json",
+          "pipeline/knowledge/reference-answers.objects.partial.json",
+          "pipeline/registry",
+          "pipeline/registry/afterword.layer2-raw.partial.json",
+          "pipeline/registry/chapter1.layer2-raw.partial.json",
+          "pipeline/registry/chapter10.layer2-raw.partial.json",
+          "pipeline/registry/chapter2.layer2-raw.partial.json",
+          "pipeline/registry/chapter3.layer2-raw.partial.json",
+          "pipeline/registry/chapter5.layer2-raw.partial.json",
+          "pipeline/registry/chapter6.layer2-raw.partial.json",
+          "pipeline/registry/chapter7.layer2-raw.partial.json",
+          "pipeline/registry/chapter8.layer2-raw.partial.json",
+          "pipeline/registry/chapter9.layer2-raw.partial.json",
+          "pipeline/registry/introduction.layer2-raw.partial.json",
+          "pipeline/registry/reference-answers.layer2-raw.partial.json",
+          "pipeline/registry/run-04dbdf862121.receipt.json",
+          "pipeline/registry/run-0daf5febec8a.receipt.json",
+          "pipeline/registry/run-11ebe0306e01.receipt.json",
+          "pipeline/registry/run-3c60c2ce53b6.receipt.json",
+          "pipeline/registry/run-3cf2f50b3870.receipt.json",
+          "pipeline/registry/run-470138ece6a3.receipt.json",
+          "pipeline/registry/run-6e6a6dea9b51.layer2-raw.json",
+          "pipeline/registry/run-6e6a6dea9b51.receipt.json",
+          "pipeline/registry/run-71c4837ce705.layer2-raw.json",
+          "pipeline/registry/run-72492cf49c89.receipt.json",
+          "pipeline/registry/run-771fa62e2be9.layer2-raw.json",
+          "pipeline/registry/run-7afb98d262b5.receipt.json",
+          "pipeline/registry/run-830be7cff17d.receipt.json",
+          "pipeline/registry/run-d5d82988e66f.layer2-raw.json",
+          "pipeline/registry/run-ec4a90a91b01.receipt.json",
+          "pipeline/registry/run-f440d6f02f0a.layer2-raw.json",
+          "pipeline/registry/run-f73a959172d0.layer2-raw.json",
+          "pipeline/run.mjs",
+          "pipeline/schemas/AntiPattern.schema.json",
+          "pipeline/schemas/Case.schema.json",
+          "pipeline/schemas/Concept.schema.json",
+          "pipeline/schemas/DecisionModel.schema.json",
+          "pipeline/schemas/EngineeringRule.schema.json",
+          "pipeline/schemas/Heuristic.schema.json",
+          "pipeline/schemas/MentalModel.schema.json",
+          "pipeline/schemas/Metric.schema.json",
+          "pipeline/schemas/Playbook.schema.json",
+          "pipeline/tools/anchor-index.mjs",
+          "pipeline/tools/json-schema-subset.mjs",
+          "pipeline/tools/judge.mjs",
+          "pipeline/tools/layer2-extractor.mjs",
+          "pipeline/tools/llm-client.mjs",
+          "pipeline/tools/model-stub.mjs",
+          "pipeline/tools/object-contract.mjs",
+          "pipeline/tools/verifier.mjs",
+          "sources/ai-agent-book-zh/book/afterword.md",
+          "sources/ai-agent-book-zh/book/chapter1.md",
+          "sources/ai-agent-book-zh/book/chapter10.md",
+          "sources/ai-agent-book-zh/book/chapter2.md",
+          "sources/ai-agent-book-zh/book/chapter3.md",
+          "sources/ai-agent-book-zh/book/chapter4.md",
+          "sources/ai-agent-book-zh/book/chapter5.md",
+          "sources/ai-agent-book-zh/book/chapter6.md",
+          "sources/ai-agent-book-zh/book/chapter7.md",
+          "sources/ai-agent-book-zh/book/chapter8.md",
+          "sources/ai-agent-book-zh/book/chapter9.md",
+          "sources/ai-agent-book-zh/book/introduction.md",
+          "sources/ai-agent-book-zh/book/reference-answers.md"
+        ],
+        "writeTargets": [
+          "pipeline/knowledge",
+          "pipeline/knowledge/afterword.anchors.json",
+          "pipeline/knowledge/afterword.objects.json",
+          "pipeline/knowledge/afterword.objects.partial.json",
+          "pipeline/knowledge/chapter1.anchors.json",
+          "pipeline/knowledge/chapter1.objects.json",
+          "pipeline/knowledge/chapter1.objects.partial.json",
+          "pipeline/knowledge/chapter10.anchors.json",
+          "pipeline/knowledge/chapter10.objects.partial.json",
+          "pipeline/knowledge/chapter2.anchors.json",
+          "pipeline/knowledge/chapter2.objects.partial.json",
+          "pipeline/knowledge/chapter3.anchors.json",
+          "pipeline/knowledge/chapter3.objects.partial.json",
+          "pipeline/knowledge/chapter4.anchors.json",
+          "pipeline/knowledge/chapter5.anchors.json",
+          "pipeline/knowledge/chapter5.objects.json",
+          "pipeline/knowledge/chapter5.objects.partial.json",
+          "pipeline/knowledge/chapter6.anchors.json",
+          "pipeline/knowledge/chapter6.objects.partial.json",
+          "pipeline/knowledge/chapter7.anchors.json",
+          "pipeline/knowledge/chapter7.objects.partial.json",
+          "pipeline/knowledge/chapter8.anchors.json",
+          "pipeline/knowledge/chapter8.objects.json",
+          "pipeline/knowledge/chapter8.objects.partial.json",
+          "pipeline/knowledge/chapter9.anchors.json",
+          "pipeline/knowledge/chapter9.objects.json",
+          "pipeline/knowledge/chapter9.objects.partial.json",
+          "pipeline/knowledge/introduction.anchors.json",
+          "pipeline/knowledge/introduction.objects.partial.json",
+          "pipeline/knowledge/reference-answers.anchors.json",
+          "pipeline/knowledge/reference-answers.objects.json",
+          "pipeline/knowledge/reference-answers.objects.partial.json",
+          "pipeline/registry",
+          "pipeline/registry/afterword.layer2-raw.partial.json",
+          "pipeline/registry/chapter1.layer2-raw.partial.json",
+          "pipeline/registry/chapter10.layer2-raw.partial.json",
+          "pipeline/registry/chapter2.layer2-raw.partial.json",
+          "pipeline/registry/chapter3.layer2-raw.partial.json",
+          "pipeline/registry/chapter5.layer2-raw.partial.json",
+          "pipeline/registry/chapter6.layer2-raw.partial.json",
+          "pipeline/registry/chapter7.layer2-raw.partial.json",
+          "pipeline/registry/chapter8.layer2-raw.partial.json",
+          "pipeline/registry/chapter9.layer2-raw.partial.json",
+          "pipeline/registry/introduction.layer2-raw.partial.json",
+          "pipeline/registry/reference-answers.layer2-raw.partial.json",
+          "pipeline/registry/run-6e6a6dea9b51.layer2-raw.json",
+          "pipeline/registry/run-6e6a6dea9b51.receipt.json",
+          "pipeline/registry/run-71c4837ce705.layer2-raw.json",
+          "pipeline/registry/run-71c4837ce705.receipt.json",
+          "pipeline/registry/run-771fa62e2be9.layer2-raw.json",
+          "pipeline/registry/run-771fa62e2be9.receipt.json",
+          "pipeline/registry/run-d5d82988e66f.layer2-raw.json",
+          "pipeline/registry/run-d5d82988e66f.receipt.json",
+          "pipeline/registry/run-ec4a90a91b01.receipt.json",
+          "pipeline/registry/run-f440d6f02f0a.layer2-raw.json",
+          "pipeline/registry/run-f440d6f02f0a.receipt.json",
+          "pipeline/registry/run-f73a959172d0.layer2-raw.json",
+          "pipeline/registry/run-f73a959172d0.receipt.json",
+          "pipeline/registry/run-failed-0579153399cc.layer2-raw.json",
+          "pipeline/registry/run-failed-0579153399cc.receipt.json",
+          "pipeline/registry/run-failed-2ed95bb4f7de.layer2-raw.json",
+          "pipeline/registry/run-failed-2ed95bb4f7de.receipt.json",
+          "pipeline/registry/run-failed-4e2d1ee92a5a.layer2-raw.json",
+          "pipeline/registry/run-failed-4e2d1ee92a5a.receipt.json",
+          "pipeline/registry/run-failed-903ad211e45d.layer2-raw.json",
+          "pipeline/registry/run-failed-903ad211e45d.receipt.json",
+          "pipeline/registry/run-failed-bbdf5a95d049.layer2-raw.json",
+          "pipeline/registry/run-failed-bbdf5a95d049.receipt.json",
+          "pipeline/registry/run-failed-cd7e8a96f3fd.layer2-raw.json",
+          "pipeline/registry/run-failed-cd7e8a96f3fd.receipt.json"
+        ],
+        "outsideRepo": [
+          "read /Users/lute/.dsh/.credentials.yaml"
+        ]
+      }
+    },
+    "orchestratorLedgerPath": "/Users/lute/Project/any2skills/pipeline/registry/fs-ledger/book-07faf309c5a1.orchestrator.json",
+    "verifyCommand": "node pipeline/run-book.mjs --verify-isolation pipeline/registry/book-07faf309c5a1.book-receipt.json",
+    "note": "子进程账本已齐备并可当场断言（见 children）。编排进程自己的账本在**本进程退出时**落盘，因此不在上面的汇总里——把两边合起来复核用上面的 verifyCommand。账本缺席或截断时该命令**拒绝**给出隔离结论（不按「没有记录」判通过）。"
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "schemaVersion": "task-suite-assessment/v1",
+  "assessedAt": "2026-10-15/16",
+  "adr": "docs/adr/ADR-032-task-suite-assessment.md",
+  "gate2": {
+    "rounds": [
+      {
+        "catalog": "pre-merge-19",
+        "reports": {
+          "list": "pipeline/registry/history/gate2-report.task-suite.2c869d6d.json",
+          "strict": "pipeline/registry/history/gate2-report.strict.task-suite.9747f6f0.json"
+        },
+        "list": {
+          "candidates": 19,
+          "scenarios": 57,
+          "unrelatedScenarios": 20,
+          "triggerPassed": 5,
+          "triggerConflict": 14,
+          "triggerMiss": 0,
+          "unrelatedFalseTriggers": 0,
+          "conflictGroups": 18
+        },
+        "strict": {
+          "candidates": 19,
+          "scenarios": 57,
+          "unrelatedScenarios": 20,
+          "triggerPassed": 4,
+          "triggerConflict": 15,
+          "triggerMiss": 0,
+          "unrelatedFalseTriggers": 0,
+          "conflictGroups": 17
+        },
+        "stableCounts": {
+          "stable": 11,
+          "listOnly": 5,
+          "strictOnly": 1
+        },
+        "mergesAccepted": [
+          {
+            "pair": "define-agent-boundaries|secure-agent-actions",
+            "strength": "strict 3 / list 3"
+          },
+          {
+            "pair": "coordinate-agent-work|verify-agent-completion",
+            "strength": "strict 2 / list 1"
+          }
+        ]
+      },
+      {
+        "catalog": "merged-17",
+        "reports": {
+          "list": "pipeline/registry/gate2-report.task-suite.json",
+          "strict": "pipeline/registry/gate2-report.strict.task-suite.json"
+        },
+        "list": {
+          "candidates": 17,
+          "scenarios": 51,
+          "unrelatedScenarios": 20,
+          "triggerPassed": 7,
+          "triggerConflict": 10,
+          "triggerMiss": 0,
+          "unrelatedFalseTriggers": 0,
+          "conflictGroups": 10
+        },
+        "strict": {
+          "candidates": 17,
+          "scenarios": 51,
+          "unrelatedScenarios": 20,
+          "triggerPassed": 9,
+          "triggerConflict": 8,
+          "triggerMiss": 0,
+          "unrelatedFalseTriggers": 0,
+          "conflictGroups": 6
+        },
+        "stableCounts": {
+          "stable": 6,
+          "listOnly": 3,
+          "strictOnly": 0
+        },
+        "mergesAccepted": []
+      }
+    ],
+    "mergeExecuted": [
+      {
+        "into": "define-agent-boundaries-and-safeguards",
+        "from": [
+          "define-agent-boundaries",
+          "secure-agent-actions"
+        ],
+        "basis": "strict 3/3 最强稳定边（两读数一致），吸收者按对象数 24>18"
+      },
+      {
+        "into": "coordinate-agent-work-and-verification",
+        "from": [
+          "coordinate-agent-work",
+          "verify-agent-completion"
+        ],
+        "basis": "strict 2/1，吸收者 36>9"
+      }
+    ],
+    "reports": {
+      "list": {
+        "file": "pipeline/registry/gate2-report.task-suite.json",
+        "sha256": "sha256:22f6aa6351ebde028adfd8522351e34e4b831a028746a632fa421779c69b5610"
+      },
+      "strict": {
+        "file": "pipeline/registry/gate2-report.strict.task-suite.json",
+        "sha256": "sha256:a0fb7021ae73ff6ffd3690a004490176b862e5f1149df280ef0e6b10485d4bd7"
+      },
+      "stable": {
+        "file": "pipeline/registry/gate2-stable.task-suite.json",
+        "sha256": "sha256:d1b8bd4e190432b0da9400f9907f7fa41f3fb950bae2b102e72464d49d5acb98"
+      }
+    }
+  },
+  "gate3": {
+    "note": "两源分别全量一轮（K=6、复跑制）。第一源报告同时替换了旧套件的同名文件——旧版已由 archiveIfExists 归档进 registry/history。",
+    "reports": {
+      "firstSource": {
+        "file": "pipeline/registry/gate3-report.json",
+        "sha256": "sha256:4f7dd8fd070678e3d316163f0206979ec7224383dcd4f25f285ab7cde32de6fb"
+      },
+      "rust": {
+        "file": "pipeline/registry/gate3-report.rust-book-cn.json",
+        "sha256": "sha256:66867564a2d0bc0e31e2e54c55dbbd83fc7421a3a73c422fe5990bc3d37129a1"
+      }
+    },
+    "results": [
+      {
+        "slug": "coordinate-agent-work-and-verification",
+        "verdict": "passed",
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 1
+      },
+      {
+        "slug": "define-agent-boundaries-and-safeguards",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 1
+      },
+      {
+        "slug": "design-agent-tools",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 1,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "manage-agent-context",
+        "verdict": "passed",
+        "improvements": 4,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "update-agent-instructions",
+        "verdict": "passed",
+        "improvements": 3,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "validate-generated-artifacts",
+        "verdict": "passed",
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 1
+      },
+      {
+        "slug": "compose-rust-closures",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 2,
+        "invalidTasks": 4
+      },
+      {
+        "slug": "coordinate-rust-threads",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 4
+      },
+      {
+        "slug": "design-rust-abstractions",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 2
+      },
+      {
+        "slug": "diagnose-rust-borrows",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 3
+      },
+      {
+        "slug": "implement-rust-state-pattern",
+        "verdict": "rejected",
+        "improvements": 1,
+        "confirmedDegradations": 1,
+        "noiseDegradations": 1,
+        "invalidTasks": 1
+      },
+      {
+        "slug": "manage-rust-memory-and-mutability",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "match-rust-variants",
+        "verdict": "rejected",
+        "improvements": 0,
+        "confirmedDegradations": 1,
+        "noiseDegradations": 0,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "model-rust-domain-types",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "process-rust-text-and-hashmaps",
+        "verdict": "passed",
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "run-rust-tests",
+        "verdict": "passed",
+        "improvements": 4,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 1,
+        "invalidTasks": 0
+      },
+      {
+        "slug": "structure-rust-cli",
+        "verdict": "low-utility",
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "invalidTasks": 2
+      }
+    ],
+    "totals": {
+      "passed": 6,
+      "lowUtility": 9,
+      "rejected": 2
+    }
+  },
+  "rejections": [
+    {
+      "slug": "match-rust-variants",
+      "reason": "negative-transfer-confirmed",
+      "evidenceFile": "pipeline/registry/rejected/match-rust-variants/REJECTION.md",
+      "inspection": "见 REJECTION.md：复跑复现的确认退化，ADR-006 下架"
+    },
+    {
+      "slug": "implement-rust-state-pattern",
+      "reason": "negative-transfer-confirmed",
+      "evidenceFile": "pipeline/registry/rejected/implement-rust-state-pattern/REJECTION.md",
+      "inspection": "见 REJECTION.md：复跑复现的确认退化，ADR-006 下架"
+    }
+  ],
+  "mergeArchive": {
+    "dir": "pipeline/registry/legacy-published/task-suite-v1-premerge/skills",
+    "slugs": [
+      "define-agent-boundaries",
+      "secure-agent-actions",
+      "verify-agent-completion",
+      "coordinate-agent-work"
+    ],
+    "note": "评测合并轮的 4 个被并者逐字节归档（哈希复验过）"
+  },
+  "finalPublished": [
+    "diagnose-rust-borrows",
+    "model-rust-domain-types",
+    "process-rust-text-and-hashmaps",
+    "design-rust-abstractions",
+    "compose-rust-closures",
+    "manage-rust-memory-and-mutability",
+    "coordinate-rust-threads",
+    "structure-rust-cli",
+    "run-rust-tests",
+    "define-agent-boundaries-and-safeguards",
+    "manage-agent-context",
+    "design-agent-tools",
+    "validate-generated-artifacts",
+    "coordinate-agent-work-and-verification",
+    "update-agent-instructions"
+  ],
+  "disclosure": "15 个在售：6 passed / 9 low-utility；2 个确认负迁移下架（registry/rejected/）。low-utility = 本测量设计下未测出增量（ADR-030）。"
+}
