@@ -88,6 +88,7 @@ function parseArgs(argv) {
     blindMode: 'list',
     compare: false,
     sourceKey: DEFAULT_SOURCE_KEY,
+    suite: false,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -101,6 +102,7 @@ function parseArgs(argv) {
     else if (a === '--no-resume') flags.resume = false
     else if (a === '--compare') flags.compare = true
     else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
+    else if (a === '--suite') flags.suite = true
     else if (a === '--blind-mode') {
       const v = need(i, a)
       if (!Object.hasOwn(BLIND_MODES, v)) {
@@ -180,6 +182,37 @@ export async function loadCandidatesForBlindTest(repoRoot, { only = null, source
   return { candidates, missingReceipts, candidatesTotal: all.length }
 }
 
+/**
+ * 套件目录模式（卡 27/ADR-032）：候选目录来自任务套件清单，而非章节划分的候选表。
+ * 盲测题面 = 新标题 + 新描述（与发布物 frontmatter description 同一函数生成）；
+ * 场景生成输入 = 成员 owned 对象的类型 + 摘要。**被测对象必须等于发布对象**——
+ * 这里与 `build-task-suite` 共用同一份装载（对象/门禁核验），名称与描述取自同一份
+ * 工作流文件。
+ */
+export async function loadSuiteCandidatesForBlindTest(repoRoot, { only = null } = {}) {
+  const { loadSuiteManifest, loadObjectIndex, loadMemberSources, loadWorkflow } = await import('./tools/task-skill-builder.mjs')
+  const suite = await loadSuiteManifest(repoRoot)
+  const objectIndex = await loadObjectIndex(repoRoot)
+  const picked = only ? suite.manifest.members.filter((m) => m.slug === only) : suite.manifest.members
+  if (only && picked.length === 0) {
+    throw new Error(`套件清单里没有成员：${only}（现有 ${suite.manifest.members.length} 个：${suite.manifest.members.map((m) => m.slug).slice(0, 6).join(', ')}…）`)
+  }
+  const candidates = []
+  for (const member of picked) {
+    const { workflow } = await loadWorkflow(repoRoot, member)
+    const { objects } = await loadMemberSources(repoRoot, member, objectIndex)
+    candidates.push({
+      skillId: member.slug,
+      name: workflow.title,
+      trigger: workflow.whenToUse[0] ?? '',
+      description: String(workflow.description).replace(/\s+/g, ' ').trim(),
+      chapterRefs: member.legacySlugs,
+      objectRows: objects.map((o) => ({ objectType: o.objectType, summary: summaryOfObject(o) })),
+    })
+  }
+  return { candidates, missingReceipts: [], candidatesTotal: suite.manifest.members.length }
+}
+
 const usageOf = (u) => ({ promptTokens: u?.prompt_tokens ?? 0, completionTokens: u?.completion_tokens ?? 0 })
 const addUsage = (acc, u) => {
   const x = usageOf(u)
@@ -226,19 +259,21 @@ async function main(argv) {
   const N = DEFAULT_UNRELATED_SCENARIOS
   const blindMode = flags.blindMode
   const blindMax = BLIND_MODES[blindMode].max
+  // 套件模式（卡 27/ADR-032）：产物按 `task-suite` 键命名空间，候选目录来自套件清单。
+  const artifactKey = flags.suite ? 'task-suite' : flags.sourceKey
 
   try {
     // ── 对照模式（ticket 13）：两读数 → 稳定对/仅宽松/仅严格三分，落盘 gate2-stable.json ──
     if (flags.compare) {
-      const listAbs = path.join(repoRoot, reportRelPath('list', flags.sourceKey))
-      const strictAbs = path.join(repoRoot, reportRelPath('strict', flags.sourceKey))
+      const listAbs = path.join(repoRoot, reportRelPath('list', artifactKey))
+      const strictAbs = path.join(repoRoot, reportRelPath('strict', artifactKey))
       const listReport = await readJsonOrNull(listAbs)
       const strictReport = await readJsonOrNull(strictAbs)
       if (!listReport || !strictReport) {
         throw new Error(`--compare 需要两份读数都在盘：${rel(listAbs)} 与 ${rel(strictAbs)}（先各跑一轮）。`)
       }
       const cmp = compareReadings(listReport, strictReport)
-      const stableAbs = await writeJson(path.join(repoRoot, stableRelPath(flags.sourceKey)), {
+      const stableAbs = await writeJson(path.join(repoRoot, stableRelPath(artifactKey)), {
         schemaVersion: 'gate2-stable/v1',
         createdAt: new Date().toISOString(),
         sources: { list: rel(listAbs), strict: rel(strictAbs) },
@@ -254,7 +289,9 @@ async function main(argv) {
       return EXIT.PASS
     }
 
-    const { candidates, missingReceipts } = await loadCandidatesForBlindTest(repoRoot, { only: flags.skill, sourceKey: flags.sourceKey })
+    const { candidates, missingReceipts } = flags.suite
+      ? await loadSuiteCandidatesForBlindTest(repoRoot, { only: flags.skill })
+      : await loadCandidatesForBlindTest(repoRoot, { only: flags.skill, sourceKey: flags.sourceKey })
     if (missingReceipts.length > 0) {
       process.stderr.write(
         '拒绝开工：以下候选所在源文件缺门禁一回执（被测对象无法确定为「发布出去的那批」）——\n' +
@@ -265,9 +302,9 @@ async function main(argv) {
     }
 
     // ── 复用底座：正式产物与 partial 同形状，后者优先（它是更新的那次运行） ──
-    const scenariosAbs = path.join(repoRoot, scenariosRelPath(flags.sourceKey))
-    const scenariosPartialAbs = path.join(repoRoot, scenariosPartialRelPath(flags.sourceKey))
-    const answersPartialAbs = path.join(repoRoot, answersPartialRelPath(blindMode, flags.sourceKey))
+    const scenariosAbs = path.join(repoRoot, scenariosRelPath(artifactKey))
+    const scenariosPartialAbs = path.join(repoRoot, scenariosPartialRelPath(artifactKey))
+    const answersPartialAbs = path.join(repoRoot, answersPartialRelPath(blindMode, artifactKey))
     const baseScenarios = (await readJsonOrNull(scenariosPartialAbs)) ?? (await readJsonOrNull(scenariosAbs))
     const usableBase = flags.resume && baseScenarios?.promptFingerprint === scenarioGenPromptFingerprint() ? baseScenarios : null
     const baseAnswers = flags.resume ? await readJsonOrNull(answersPartialAbs) : null
@@ -331,7 +368,7 @@ async function main(argv) {
 
     // 不静默覆盖：本轮会重写的三份正式产物，先把旧版按内容哈希归档进 registry/history/。
     await archiveIfExists(repoRoot, scenariosAbs)
-    await archiveIfExists(repoRoot, path.join(repoRoot, reportRelPath(blindMode, flags.sourceKey)))
+    await archiveIfExists(repoRoot, path.join(repoRoot, reportRelPath(blindMode, artifactKey)))
     await archiveIfExists(repoRoot, answersPartialAbs)
 
     const scenariosDoc = usableBase ?? {
@@ -487,7 +524,7 @@ async function main(argv) {
     }
 
     await writeJson(scenariosAbs, scenariosDoc)
-    const reportAbs = await writeJson(path.join(repoRoot, reportRelPath(blindMode, flags.sourceKey)), report)
+    const reportAbs = await writeJson(path.join(repoRoot, reportRelPath(blindMode, artifactKey)), report)
 
     const t = report.totals
     const summary = {
