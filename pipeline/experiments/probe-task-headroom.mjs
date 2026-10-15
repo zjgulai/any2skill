@@ -123,10 +123,25 @@ async function main(argv) {
   if (gen === null) throw lastErr
   process.stdout.write(`生成任务 ${gen.tasks.length} 个（v2 提示词；problems=${gen.problems.length}）\n`)
 
+  // 臂执行同样按瞬态处理：空响应/传输断重试一次（2026-10-15 深夜 API 多次空响应）。
+  const armWithRetry = async (params) => {
+    let err = null
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        return await runTaskArm(params)
+      } catch (e) {
+        err = e
+        process.stdout.write(`    （${params.arm} 臂第 ${attempt + 1} 次失败：${e?.message ?? e}）\n`)
+      }
+    }
+    throw err
+  }
+
   const results = []
   for (const task of gen.tasks) {
-    const without = await runTaskArm({ config, arm: 'without', task, taskId: task.taskId ?? `t${results.length + 1}` })
-    const withSkill = await runTaskArm({ config, arm: 'with', task, taskId: task.taskId ?? `t${results.length + 1}`, skillMarkdown: skillMd })
+    const taskId = task.taskId ?? `t${results.length + 1}`
+    const without = await armWithRetry({ config, arm: 'without', task, taskId })
+    const withSkill = await armWithRetry({ config, arm: 'with', task, taskId, skillMarkdown: skillMd })
     const state = without.passed && withSkill.passed ? 'both-pass'
       : !without.passed && withSkill.passed ? 'improvement'
       : without.passed && !withSkill.passed ? 'degradation' : 'invalid'
