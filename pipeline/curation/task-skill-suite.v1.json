@@ -1,0 +1,715 @@
+{
+  "schemaVersion": "task-skill-suite/v1",
+  "createdAt": "2026-10-15",
+  "note": "岗位技能套件清单（ADR-031）。每个成员声明精确 owned 对象/AP；测试钉住：主对象两两不相交、并集等于旧 30 契约去重并集、全部 ID 可解析到过门禁一的对象、两个 rejected 绝不出现。人工评审本文件即评审技能边界。",
+  "members": [
+    {
+      "slug": "diagnose-rust-borrows",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch04-02-references-and-borrowing-s1",
+        "ch04-03-slices-s1",
+        "ch10-03-lifetime-syntax-s1"
+      ],
+      "primaryObjects": [
+        "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H2-1-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-1-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01",
+        "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02",
+        "CH04-03-SLICES-H2-1-ANTIPATTERN-01",
+        "CH04-03-SLICES-H3-1-ENGINEERINGRULE-01",
+        "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+        "CH04-03-SLICES-H4-1-CONCEPT-01",
+        "CH04-03-SLICES-H4-2-HEURISTIC-01",
+        "CH04-03-SLICES-H3-2-CONCEPT-01",
+        "CH10-03-LIFETIME-SYNTAX-H2-1-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H2-1-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-1-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-1-CONCEPT-02",
+        "CH10-03-LIFETIME-SYNTAX-H4-1-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-2-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-3-CONCEPT-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-3-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-4-CONCEPT-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-4-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-5-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-5-ANTIPATTERN-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-6-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-7-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-7-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-8-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-9-CONCEPT-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-9-HEURISTIC-02",
+        "CH10-03-LIFETIME-SYNTAX-H3-10-ENGINEERINGRULE-01",
+        "CH10-03-LIFETIME-SYNTAX-H3-10-ENGINEERINGRULE-02",
+        "CH10-03-LIFETIME-SYNTAX-H2-2-ENGINEERINGRULE-01"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T01-02",
+        "AP-SYNTH-T01-03",
+        "AP-SYNTH-T01-04",
+        "AP-SYNTH-T01-05",
+        "AP-SYNTH-T01-06",
+        "AP-SYNTH-T01-07"
+      ],
+      "workflowFile": "pipeline/curation/workflows/diagnose-rust-borrows.json"
+    },
+    {
+      "slug": "model-rust-domain-types",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch05-01-defining-structs-s1",
+        "ch05-03-method-syntax-s1",
+        "ch06-01-defining-an-enum-s1"
+      ],
+      "primaryObjects": [
+        "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+        "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+        "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02",
+        "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+        "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+        "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02",
+        "CH05-02-EXAMPLE-STRUCTS-H2-1-ENGINEERINGRULE-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-1-ANTIPATTERN-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-2-CONCEPT-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-2-ENGINEERINGRULE-02",
+        "CH05-02-EXAMPLE-STRUCTS-H3-3-CONCEPT-01",
+        "CH05-02-EXAMPLE-STRUCTS-H3-3-HEURISTIC-02",
+        "CH05-03-METHOD-SYNTAX-H2-1-ENGINEERINGRULE-01",
+        "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-01",
+        "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-02",
+        "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-01",
+        "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-02",
+        "CH05-03-METHOD-SYNTAX-H3-3-CONCEPT-01",
+        "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
+        "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01",
+        "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-01",
+        "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-02",
+        "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-01",
+        "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-02",
+        "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-01",
+        "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T04-02",
+        "AP-SYNTH-T04-01",
+        "AP-SYNTH-T11-05",
+        "AP-SYNTH-T04-03"
+      ],
+      "workflowFile": "pipeline/curation/workflows/model-rust-domain-types.json"
+    },
+    {
+      "slug": "match-rust-variants",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch06-02-match-s1",
+        "ch18-02-refutability-s1"
+      ],
+      "primaryObjects": [
+        "CH06-02-MATCH-H2-1-CONCEPT-01",
+        "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
+        "CH06-02-MATCH-H3-1-CONCEPT-01",
+        "CH06-02-MATCH-H3-1-CONCEPT-02",
+        "CH06-02-MATCH-H3-2-CONCEPT-01",
+        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H4-1-ENGINEERINGRULE-02",
+        "CH06-02-MATCH-H3-3-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H3-4-ENGINEERINGRULE-01",
+        "CH06-02-MATCH-H3-4-CONCEPT-02",
+        "CH06-03-IF-LET-H2-1-CONCEPT-01",
+        "CH06-03-IF-LET-H2-1-HEURISTIC-02",
+        "CH06-03-IF-LET-H2-2-HEURISTIC-01",
+        "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
+        "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T04-03",
+        "AP-SYNTH-T04-04",
+        "AP-SYNTH-T04-05",
+        "AP-SYNTH-T04-06"
+      ],
+      "workflowFile": "pipeline/curation/workflows/match-rust-variants.json"
+    },
+    {
+      "slug": "process-rust-text-and-hashmaps",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch08-02-strings-s1",
+        "ch08-03-hash-maps-s1"
+      ],
+      "primaryObjects": [
+        "CH08-02-STRINGS-H2-1-CONCEPT-01",
+        "CH08-02-STRINGS-H3-1-CONCEPT-01",
+        "CH08-02-STRINGS-H3-1-CONCEPT-02",
+        "CH08-02-STRINGS-H3-2-CONCEPT-01",
+        "CH08-02-STRINGS-H3-2-CONCEPT-02",
+        "CH08-02-STRINGS-H3-3-CONCEPT-01",
+        "CH08-02-STRINGS-H4-1-CONCEPT-01",
+        "CH08-02-STRINGS-H4-1-CONCEPT-02",
+        "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-01",
+        "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-02",
+        "CH08-02-STRINGS-H3-4-ENGINEERINGRULE-01",
+        "CH08-02-STRINGS-H4-3-CONCEPT-01",
+        "CH08-02-STRINGS-H4-3-ENGINEERINGRULE-02",
+        "CH08-02-STRINGS-H4-4-CONCEPT-01",
+        "CH08-02-STRINGS-H4-4-ENGINEERINGRULE-02",
+        "CH08-02-STRINGS-H3-5-ENGINEERINGRULE-01",
+        "CH08-02-STRINGS-H3-5-CONCEPT-02",
+        "CH08-02-STRINGS-H3-6-HEURISTIC-01",
+        "CH08-02-STRINGS-H3-6-HEURISTIC-02",
+        "CH08-02-STRINGS-H3-7-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-02",
+        "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-02",
+        "CH08-03-HASH-MAPS-H3-3-CONCEPT-01",
+        "CH08-03-HASH-MAPS-H3-4-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H4-1-ENGINEERINGRULE-01",
+        "CH08-03-HASH-MAPS-H4-2-CONCEPT-01",
+        "CH08-03-HASH-MAPS-H4-2-ENGINEERINGRULE-02",
+        "CH08-03-HASH-MAPS-H4-3-CONCEPT-01"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T05-03",
+        "AP-SYNTH-T01-01",
+        "AP-SYNTH-T05-06",
+        "AP-SYNTH-T05-08"
+      ],
+      "workflowFile": "pipeline/curation/workflows/process-rust-text-and-hashmaps.json"
+    },
+    {
+      "slug": "design-rust-abstractions",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch10-01-syntax-s1",
+        "ch10-02-traits-s1"
+      ],
+      "primaryObjects": [
+        "CH10-01-SYNTAX-H3-1-ENGINEERINGRULE-01",
+        "CH10-01-SYNTAX-H3-1-CONCEPT-02",
+        "CH10-01-SYNTAX-H3-2-CONCEPT-01",
+        "CH10-01-SYNTAX-H3-2-ENGINEERINGRULE-02",
+        "CH10-01-SYNTAX-H3-3-CONCEPT-01",
+        "CH10-01-SYNTAX-H3-3-CONCEPT-02",
+        "CH10-01-SYNTAX-H3-4-ENGINEERINGRULE-01",
+        "CH10-01-SYNTAX-H3-4-ENGINEERINGRULE-02",
+        "CH10-01-SYNTAX-H3-5-ENGINEERINGRULE-01",
+        "CH10-02-TRAITS-H2-1-CONCEPT-01",
+        "CH10-02-TRAITS-H3-1-CONCEPT-01",
+        "CH10-02-TRAITS-H3-1-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H3-2-ENGINEERINGRULE-01",
+        "CH10-02-TRAITS-H3-3-CONCEPT-01",
+        "CH10-02-TRAITS-H3-3-CONCEPT-02",
+        "CH10-02-TRAITS-H3-4-CONCEPT-01",
+        "CH10-02-TRAITS-H3-4-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H4-1-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H4-2-ENGINEERINGRULE-01",
+        "CH10-02-TRAITS-H4-3-CONCEPT-01",
+        "CH10-02-TRAITS-H3-5-CONCEPT-01",
+        "CH10-02-TRAITS-H3-5-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-01",
+        "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02",
+        "CH10-02-TRAITS-H3-7-CONCEPT-01",
+        "CH10-02-TRAITS-H3-7-CONCEPT-02",
+        "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-01",
+        "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-02",
+        "CH17-02-TRAIT-OBJECTS-H3-1-CONCEPT-01",
+        "CH17-02-TRAIT-OBJECTS-H3-1-HEURISTIC-02",
+        "CH17-02-TRAIT-OBJECTS-H3-2-CONCEPT-01",
+        "CH17-02-TRAIT-OBJECTS-H3-2-ENGINEERINGRULE-02",
+        "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-01",
+        "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-02",
+        "CH17-02-TRAIT-OBJECTS-H3-4-ENGINEERINGRULE-01"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T03-01",
+        "AP-SYNTH-T03-02",
+        "AP-SYNTH-T03-04",
+        "AP-SYNTH-T03-06",
+        "AP-SYNTH-T03-08"
+      ],
+      "workflowFile": "pipeline/curation/workflows/design-rust-abstractions.json"
+    },
+    {
+      "slug": "compose-rust-closures",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch13-01-closures-s1",
+        "ch13-01-closures-s2"
+      ],
+      "primaryObjects": [
+        "CH13-01-CLOSURES-H2-1-CONCEPT-01",
+        "CH13-01-CLOSURES-H3-1-DECISIONMODEL-01",
+        "CH13-01-CLOSURES-H3-1-ENGINEERINGRULE-02",
+        "CH13-01-CLOSURES-H4-1-ANTIPATTERN-01",
+        "CH13-01-CLOSURES-H4-2-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H4-2-ANTIPATTERN-02",
+        "CH13-01-CLOSURES-H3-2-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H3-3-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-01",
+        "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-02",
+        "CH13-01-CLOSURES-H3-5-CONCEPT-01",
+        "CH13-01-CLOSURES-H3-5-HEURISTIC-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T09-02",
+        "AP-SYNTH-T09-03"
+      ],
+      "workflowFile": "pipeline/curation/workflows/compose-rust-closures.json"
+    },
+    {
+      "slug": "manage-rust-memory-and-mutability",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch15-01-box-s2",
+        "ch15-03-drop-s1",
+        "ch15-05-interior-mutability-s1"
+      ],
+      "primaryObjects": [
+        "CH15-01-BOX-H2-1-CONCEPT-01",
+        "CH15-01-BOX-H3-1-CONCEPT-01",
+        "CH15-01-BOX-H3-1-HEURISTIC-02",
+        "CH15-01-BOX-H3-2-CONCEPT-01",
+        "CH15-01-BOX-H4-1-CONCEPT-01",
+        "CH15-01-BOX-H4-1-ENGINEERINGRULE-02",
+        "CH15-01-BOX-H3-3-ENGINEERINGRULE-01",
+        "CH15-01-BOX-H3-3-CONCEPT-02",
+        "CH15-01-BOX-H3-4-ANTIPATTERN-01",
+        "CH15-01-BOX-H3-4-HEURISTIC-02",
+        "CH15-03-DROP-H2-1-CONCEPT-01",
+        "CH15-03-DROP-H2-1-ANTIPATTERN-02",
+        "CH15-03-DROP-H4-1-ENGINEERINGRULE-01",
+        "CH15-03-DROP-H4-1-CONCEPT-02",
+        "CH15-05-INTERIOR-MUTABILITY-H2-1-CONCEPT-01",
+        "CH15-05-INTERIOR-MUTABILITY-H3-1-DECISIONMODEL-01",
+        "CH15-05-INTERIOR-MUTABILITY-H3-1-ENGINEERINGRULE-02",
+        "CH15-05-INTERIOR-MUTABILITY-H3-2-ANTIPATTERN-01",
+        "CH15-05-INTERIOR-MUTABILITY-H3-2-ENGINEERINGRULE-02",
+        "CH15-05-INTERIOR-MUTABILITY-H4-1-ENGINEERINGRULE-01",
+        "CH15-05-INTERIOR-MUTABILITY-H4-1-CONCEPT-02",
+        "CH15-05-INTERIOR-MUTABILITY-H3-3-ENGINEERINGRULE-01",
+        "CH15-05-INTERIOR-MUTABILITY-H3-3-ANTIPATTERN-02",
+        "CH15-05-INTERIOR-MUTABILITY-H3-4-HEURISTIC-01",
+        "CH15-05-INTERIOR-MUTABILITY-H3-4-CONCEPT-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T06-01",
+        "AP-SYNTH-T06-03",
+        "AP-SYNTH-T01-02",
+        "AP-SYNTH-T01-03",
+        "AP-SYNTH-T06-06",
+        "AP-SYNTH-T08-08"
+      ],
+      "workflowFile": "pipeline/curation/workflows/manage-rust-memory-and-mutability.json"
+    },
+    {
+      "slug": "coordinate-rust-threads",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch16-01-threads-s1",
+        "ch16-02-message-passing-s1",
+        "ch16-03-shared-state-s1"
+      ],
+      "primaryObjects": [
+        "CH16-01-THREADS-H2-1-CONCEPT-01",
+        "CH16-01-THREADS-H2-1-ENGINEERINGRULE-02",
+        "CH16-01-THREADS-H3-1-CONCEPT-01",
+        "CH16-01-THREADS-H3-1-ENGINEERINGRULE-02",
+        "CH16-01-THREADS-H4-1-CONCEPT-01",
+        "CH16-01-THREADS-H4-1-ENGINEERINGRULE-02",
+        "CH16-01-THREADS-H3-2-CONCEPT-01",
+        "CH16-01-THREADS-H3-2-ENGINEERINGRULE-02",
+        "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-01",
+        "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-02",
+        "CH16-02-MESSAGE-PASSING-H3-1-ENGINEERINGRULE-01",
+        "CH16-02-MESSAGE-PASSING-H3-2-ENGINEERINGRULE-01",
+        "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-01",
+        "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-02",
+        "CH16-03-SHARED-STATE-H2-1-CONCEPT-01",
+        "CH16-03-SHARED-STATE-H3-1-ENGINEERINGRULE-01",
+        "CH16-03-SHARED-STATE-H3-1-ANTIPATTERN-02",
+        "CH16-03-SHARED-STATE-H3-2-ENGINEERINGRULE-01",
+        "CH16-03-SHARED-STATE-H3-2-CONCEPT-02",
+        "CH16-03-SHARED-STATE-H4-1-ENGINEERINGRULE-01",
+        "CH16-03-SHARED-STATE-H4-2-ENGINEERINGRULE-01",
+        "CH16-03-SHARED-STATE-H4-3-CONCEPT-01",
+        "CH16-03-SHARED-STATE-H3-3-CONCEPT-01",
+        "CH16-03-SHARED-STATE-H3-3-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T07-01",
+        "AP-SYNTH-T07-02",
+        "AP-SYNTH-T09-08",
+        "AP-SYNTH-T01-01",
+        "AP-SYNTH-T07-03",
+        "AP-SYNTH-T06-08"
+      ],
+      "workflowFile": "pipeline/curation/workflows/coordinate-rust-threads.json"
+    },
+    {
+      "slug": "structure-rust-cli",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch12-03-improving-error-handling-and-modularity-s1"
+      ],
+      "primaryObjects": [
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ANTIPATTERN-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ENGINEERINGRULE-02",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-02",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-CONCEPT-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-HEURISTIC-02",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-CONCEPT-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-HEURISTIC-02",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-4-HEURISTIC-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-5-ANTIPATTERN-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ENGINEERINGRULE-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ANTIPATTERN-02",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-2-ENGINEERINGRULE-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-02",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-CONCEPT-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-HEURISTIC-02",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-5-ENGINEERINGRULE-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
+        "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T02-07"
+      ],
+      "workflowFile": "pipeline/curation/workflows/structure-rust-cli.json"
+    },
+    {
+      "slug": "run-rust-tests",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch11-02-running-tests-s1"
+      ],
+      "primaryObjects": [
+        "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+        "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02",
+        "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+        "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02",
+        "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+        "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02",
+        "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01",
+        "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+        "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02",
+        "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+        "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02",
+        "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+        "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T08-01"
+      ],
+      "workflowFile": "pipeline/curation/workflows/run-rust-tests.json"
+    },
+    {
+      "slug": "implement-rust-state-pattern",
+      "sourceKey": "rust-book-cn",
+      "legacySlugs": [
+        "ch17-03-oo-design-patterns-s1"
+      ],
+      "primaryObjects": [
+        "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-2-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-3-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-4-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-6-ENGINEERINGRULE-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H3-6-ANTIPATTERN-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-1-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-1-ENGINEERINGRULE-02",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-01",
+        "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02"
+      ],
+      "crossChapterObjects": [],
+      "workflowFile": "pipeline/curation/workflows/implement-rust-state-pattern.json"
+    },
+    {
+      "slug": "define-agent-boundaries",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter1-s1"
+      ],
+      "primaryObjects": [
+        "CHAPTER1-H1-1-CONCEPT-01",
+        "CHAPTER1-H2-1-CONCEPT-01",
+        "CHAPTER1-H2-1-CONCEPT-02",
+        "CHAPTER1-H3-1-CONCEPT-01",
+        "CHAPTER1-H3-1-ENGINEERINGRULE-02",
+        "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+        "CHAPTER1-H3-3-CONCEPT-01",
+        "CHAPTER1-H3-3-ENGINEERINGRULE-02",
+        "CHAPTER1-H4-1-CONCEPT-01",
+        "CHAPTER1-H3-4-CONCEPT-01",
+        "CHAPTER1-H3-5-CONCEPT-01",
+        "CHAPTER1-H3-5-CONCEPT-02",
+        "CHAPTER1-H2-2-CONCEPT-01",
+        "CHAPTER1-H2-2-HEURISTIC-02",
+        "CHAPTER1-H3-6-CONCEPT-01",
+        "CHAPTER1-H3-6-CONCEPT-02",
+        "CHAPTER1-H3-11-ENGINEERINGRULE-01",
+        "CHAPTER1-H2-4-CONCEPT-01"
+      ],
+      "crossChapterObjects": [],
+      "workflowFile": "pipeline/curation/workflows/define-agent-boundaries.json"
+    },
+    {
+      "slug": "secure-agent-actions",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter1-s1",
+        "chapter2-s3",
+        "chapter5-s3"
+      ],
+      "primaryObjects": [
+        "CHAPTER1-H3-2-ENGINEERINGRULE-01",
+        "CHAPTER1-H4-1-ENGINEERINGRULE-02",
+        "CHAPTER1-H3-10-CONCEPT-01",
+        "CHAPTER1-H3-10-ENGINEERINGRULE-02",
+        "CHAPTER1-H4-7-ENGINEERINGRULE-01",
+        "CHAPTER1-H4-7-ENGINEERINGRULE-02",
+        "CHAPTER1-H4-8-CONCEPT-01",
+        "CHAPTER1-H4-8-ENGINEERINGRULE-02",
+        "CHAPTER1-H2-4-ENGINEERINGRULE-02",
+        "CHAPTER2-H3-18-CONCEPT-01",
+        "CHAPTER2-H3-18-ENGINEERINGRULE-02",
+        "CHAPTER4-H2-3-CONCEPT-02",
+        "CHAPTER4-H2-6-ENGINEERINGRULE-02",
+        "CHAPTER4-H2-8-ENGINEERINGRULE-01",
+        "CHAPTER5-H3-11-ENGINEERINGRULE-01",
+        "CHAPTER5-H3-11-ANTIPATTERN-02",
+        "CHAPTER5-H3-14-ENGINEERINGRULE-02",
+        "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+        "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+        "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+        "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+        "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
+        "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+        "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T12-01",
+        "AP-SYNTH-T12-02",
+        "AP-SYNTH-T12-04"
+      ],
+      "workflowFile": "pipeline/curation/workflows/secure-agent-actions.json"
+    },
+    {
+      "slug": "manage-agent-context",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter2-s3",
+        "chapter5-s3"
+      ],
+      "primaryObjects": [
+        "CHAPTER2-H3-11-CONCEPT-01",
+        "CHAPTER2-H2-6-CONCEPT-01",
+        "CHAPTER2-H3-23-MENTALMODEL-01",
+        "CHAPTER2-H3-23-ENGINEERINGRULE-02",
+        "CHAPTER2-H3-24-CONCEPT-01",
+        "CHAPTER2-H3-24-CONCEPT-02",
+        "CHAPTER2-H3-25-ENGINEERINGRULE-01",
+        "CHAPTER2-H3-25-CONCEPT-02",
+        "CHAPTER2-H3-26-DECISIONMODEL-01",
+        "CHAPTER2-H3-26-HEURISTIC-02",
+        "CHAPTER2-H3-27-ANTIPATTERN-01",
+        "CHAPTER2-H3-27-ANTIPATTERN-02",
+        "CHAPTER2-H3-28-CONCEPT-01",
+        "CHAPTER2-H3-28-ENGINEERINGRULE-02",
+        "CHAPTER2-H3-29-ENGINEERINGRULE-01",
+        "CHAPTER2-H3-29-ENGINEERINGRULE-02",
+        "CHAPTER2-H3-30-ENGINEERINGRULE-01",
+        "CHAPTER2-H3-30-ENGINEERINGRULE-02",
+        "CHAPTER2-H3-31-ENGINEERINGRULE-01",
+        "CHAPTER2-H3-31-ANTIPATTERN-02",
+        "REFERENCE-ANSWERS-H2-10-CONCEPT-01"
+      ],
+      "crossChapterObjects": [],
+      "workflowFile": "pipeline/curation/workflows/manage-agent-context.json"
+    },
+    {
+      "slug": "design-agent-tools",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter1-s1",
+        "chapter2-s3",
+        "chapter4-single-tool-design",
+        "chapter4-tool-design-principles"
+      ],
+      "primaryObjects": [
+        "CHAPTER1-H3-7-CONCEPT-01",
+        "CHAPTER1-H3-7-CONCEPT-02",
+        "CHAPTER4-H2-3-CONCEPT-01",
+        "CHAPTER4-H2-8-ENGINEERINGRULE-02",
+        "CHAPTER4-H1-1-CONCEPT-01",
+        "CHAPTER4-H1-1-CONCEPT-02",
+        "CHAPTER4-H2-1-ENGINEERINGRULE-01",
+        "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+        "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+        "CHAPTER4-H2-2-ANTIPATTERN-02",
+        "CHAPTER4-H3-1-ENGINEERINGRULE-02",
+        "CHAPTER4-H3-2-HEURISTIC-01",
+        "CHAPTER4-H3-2-HEURISTIC-02",
+        "CHAPTER4-H3-3-CONCEPT-01",
+        "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+        "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+        "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+        "CHAPTER4-H3-7-CONCEPT-01",
+        "CHAPTER4-H4-1-CONCEPT-01",
+        "CHAPTER4-H4-1-CONCEPT-02",
+        "CHAPTER4-H4-2-CONCEPT-01",
+        "CHAPTER4-H4-2-CONCEPT-02",
+        "CHAPTER4-H4-3-CONCEPT-01",
+        "CHAPTER4-H4-3-CASE-02",
+        "CHAPTER4-H3-1-CONCEPT-01"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T02-03",
+        "AP-SYNTH-T02-04"
+      ],
+      "workflowFile": "pipeline/curation/workflows/design-agent-tools.json"
+    },
+    {
+      "slug": "validate-generated-artifacts",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter5-s3"
+      ],
+      "primaryObjects": [
+        "CHAPTER5-H3-1-CONCEPT-02",
+        "CHAPTER5-H2-2-CONCEPT-01",
+        "CHAPTER5-H2-2-CONCEPT-02",
+        "CHAPTER5-H3-10-CONCEPT-01",
+        "CHAPTER5-H3-10-ENGINEERINGRULE-02",
+        "CHAPTER5-H3-12-ENGINEERINGRULE-02",
+        "CHAPTER5-H3-13-CONCEPT-01",
+        "CHAPTER5-H3-13-ENGINEERINGRULE-02",
+        "CHAPTER5-H3-14-CONCEPT-01",
+        "CHAPTER5-H3-15-ENGINEERINGRULE-01",
+        "CHAPTER5-H3-15-ENGINEERINGRULE-02",
+        "CHAPTER5-H2-3-CONCEPT-01",
+        "CHAPTER5-H2-4-CONCEPT-01",
+        "CHAPTER5-H2-4-CONCEPT-02",
+        "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+        "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [],
+      "workflowFile": "pipeline/curation/workflows/validate-generated-artifacts.json"
+    },
+    {
+      "slug": "coordinate-agent-work",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter10-s3",
+        "chapter2-s3",
+        "chapter5-s3"
+      ],
+      "primaryObjects": [
+        "CHAPTER2-H3-32-CONCEPT-01",
+        "CHAPTER2-H3-32-ENGINEERINGRULE-02",
+        "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+        "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+        "REFERENCE-ANSWERS-H2-10-HEURISTIC-02",
+        "CHAPTER10-H3-2-CONCEPT-01",
+        "CHAPTER10-H3-2-CONCEPT-02",
+        "CHAPTER10-H3-3-CONCEPT-01",
+        "CHAPTER10-H3-3-CONCEPT-02",
+        "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+        "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+        "CHAPTER10-H3-5-ANTIPATTERN-01",
+        "CHAPTER10-H3-5-ENGINEERINGRULE-02",
+        "CHAPTER10-H4-3-CONCEPT-01",
+        "CHAPTER10-H4-3-MENTALMODEL-02",
+        "CHAPTER10-H4-4-CONCEPT-01",
+        "CHAPTER10-H4-5-CONCEPT-01",
+        "CHAPTER10-H3-6-ENGINEERINGRULE-01",
+        "CHAPTER10-H3-6-ENGINEERINGRULE-02",
+        "CHAPTER10-H3-7-CONCEPT-01",
+        "CHAPTER10-H3-7-DECISIONMODEL-02",
+        "CHAPTER10-H3-8-CONCEPT-01",
+        "CHAPTER10-H3-8-ENGINEERINGRULE-02",
+        "CHAPTER10-H2-5-CONCEPT-01",
+        "CHAPTER10-H2-5-CONCEPT-02",
+        "CHAPTER10-H3-9-CONCEPT-01",
+        "CHAPTER10-H3-9-ENGINEERINGRULE-02",
+        "CHAPTER10-H3-10-CONCEPT-01",
+        "CHAPTER10-H3-10-HEURISTIC-02",
+        "CHAPTER10-H3-11-CASE-02",
+        "CHAPTER10-H3-12-ENGINEERINGRULE-01",
+        "CHAPTER10-H3-12-ANTIPATTERN-02",
+        "CHAPTER10-H3-13-ANTIPATTERN-01",
+        "CHAPTER10-H3-14-CONCEPT-01",
+        "CHAPTER10-H3-14-CONCEPT-02",
+        "CHAPTER10-H3-16-ENGINEERINGRULE-01"
+      ],
+      "crossChapterObjects": [],
+      "workflowFile": "pipeline/curation/workflows/coordinate-agent-work.json"
+    },
+    {
+      "slug": "verify-agent-completion",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter1-s1",
+        "chapter10-s3",
+        "chapter2-s3",
+        "chapter5-s3"
+      ],
+      "primaryObjects": [
+        "CHAPTER1-H2-3-CONCEPT-01",
+        "CHAPTER4-H2-6-CONCEPT-01",
+        "CHAPTER4-H2-9-CONCEPT-01",
+        "CHAPTER5-H3-12-CONCEPT-01",
+        "CHAPTER10-H4-1-CONCEPT-01",
+        "CHAPTER10-H4-1-ENGINEERINGRULE-02",
+        "CHAPTER10-H4-2-CONCEPT-01",
+        "CHAPTER10-H4-2-ENGINEERINGRULE-02",
+        "CHAPTER10-H3-11-ANTIPATTERN-01"
+      ],
+      "crossChapterObjects": [],
+      "workflowFile": "pipeline/curation/workflows/verify-agent-completion.json"
+    },
+    {
+      "slug": "update-agent-instructions",
+      "sourceKey": "ai-agent-book-zh",
+      "legacySlugs": [
+        "chapter9-s2"
+      ],
+      "primaryObjects": [
+        "AFTERWORD-H1-1-CONCEPT-01",
+        "AFTERWORD-H2-1-CONCEPT-01",
+        "AFTERWORD-H2-1-CONCEPT-02",
+        "AFTERWORD-H2-2-CONCEPT-01",
+        "AFTERWORD-H2-2-HEURISTIC-02",
+        "CHAPTER9-H2-2-CONCEPT-01",
+        "CHAPTER9-H2-2-DECISIONMODEL-02",
+        "CHAPTER9-H3-2-CONCEPT-01",
+        "CHAPTER9-H3-2-ENGINEERINGRULE-02",
+        "CHAPTER9-H3-4-ENGINEERINGRULE-01",
+        "CHAPTER9-H3-4-ENGINEERINGRULE-02",
+        "CHAPTER9-H3-5-CONCEPT-01",
+        "CHAPTER9-H3-5-ANTIPATTERN-02",
+        "CHAPTER9-H2-3-CONCEPT-01",
+        "CHAPTER9-H2-3-ENGINEERINGRULE-02"
+      ],
+      "crossChapterObjects": [
+        "AP-SYNTH-T12-05"
+      ],
+      "workflowFile": "pipeline/curation/workflows/update-agent-instructions.json"
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "coordinate-agent-work",
+  "name": "coordinate-agent-work",
+  "title": "编排多 Agent 协作与冲突处理",
+  "description": "编排多 Agent 系统的协作：拓扑与通信选型、任务协议与进度文件、资源分配与幂等、冲突防护与人工裁决、失败模式巡检。适用于设计多 Agent 流水线、排查级联错误/同质趋同/循环失控等协作故障时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter10-s3",
+      "chapter2-s3",
+      "chapter5-s3"
+    ],
+    "skillIds": [
+      "chapter10-s3",
+      "chapter2-s3",
+      "chapter5-s3"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/coordinate-agent-work.json",
+    "sha256": "sha256:16d28891de0d13119fdd912f388fc6fe788b1b413e046cd8c816dc1eddd7726d"
+  },
+  "sourceObjects": [
+    "CHAPTER2-H3-32-CONCEPT-01",
+    "CHAPTER2-H3-32-ENGINEERINGRULE-02",
+    "CHAPTER4-H2-7-ENGINEERINGRULE-01",
+    "CHAPTER4-H2-7-ENGINEERINGRULE-02",
+    "REFERENCE-ANSWERS-H2-10-HEURISTIC-02",
+    "CHAPTER10-H3-2-CONCEPT-01",
+    "CHAPTER10-H3-2-CONCEPT-02",
+    "CHAPTER10-H3-3-CONCEPT-01",
+    "CHAPTER10-H3-3-CONCEPT-02",
+    "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+    "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+    "CHAPTER10-H3-5-ANTIPATTERN-01",
+    "CHAPTER10-H3-5-ENGINEERINGRULE-02",
+    "CHAPTER10-H4-3-CONCEPT-01",
+    "CHAPTER10-H4-3-MENTALMODEL-02",
+    "CHAPTER10-H4-4-CONCEPT-01",
+    "CHAPTER10-H4-5-CONCEPT-01",
+    "CHAPTER10-H3-6-ENGINEERINGRULE-01",
+    "CHAPTER10-H3-6-ENGINEERINGRULE-02",
+    "CHAPTER10-H3-7-CONCEPT-01",
+    "CHAPTER10-H3-7-DECISIONMODEL-02",
+    "CHAPTER10-H3-8-CONCEPT-01",
+    "CHAPTER10-H3-8-ENGINEERINGRULE-02",
+    "CHAPTER10-H2-5-CONCEPT-01",
+    "CHAPTER10-H2-5-CONCEPT-02",
+    "CHAPTER10-H3-9-CONCEPT-01",
+    "CHAPTER10-H3-9-ENGINEERINGRULE-02",
+    "CHAPTER10-H3-10-CONCEPT-01",
+    "CHAPTER10-H3-10-HEURISTIC-02",
+    "CHAPTER10-H3-11-CASE-02",
+    "CHAPTER10-H3-12-ENGINEERINGRULE-01",
+    "CHAPTER10-H3-12-ANTIPATTERN-02",
+    "CHAPTER10-H3-13-ANTIPATTERN-01",
+    "CHAPTER10-H3-14-CONCEPT-01",
+    "CHAPTER10-H3-14-CONCEPT-02",
+    "CHAPTER10-H3-16-ENGINEERINGRULE-01"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-2",
+      "title": "维度二：协作拓扑",
+      "lineStart": 34,
+      "lineEnd": 45
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-3",
+      "title": "Agent 眼中的文件系统",
+      "lineStart": 133,
+      "lineEnd": 165
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-4",
+      "title": "Agent 间的通信与控制",
+      "lineStart": 166,
+      "lineEnd": 193
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-5",
+      "title": "对等协作模式：相互制衡与迭代改进",
+      "lineStart": 194,
+      "lineEnd": 199
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-3",
+      "title": "辩论模式",
+      "lineStart": 268,
+      "lineEnd": 275
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-4",
+      "title": "头脑风暴模式",
+      "lineStart": 276,
+      "lineEnd": 279
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-5",
+      "title": "专家小组模式",
+      "lineStart": 280,
+      "lineEnd": 283
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-6",
+      "title": "管理者模式：中心化协调",
+      "lineStart": 284,
+      "lineEnd": 442
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-7",
+      "title": "去中心化模式",
+      "lineStart": 443,
+      "lineEnd": 512
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-8",
+      "title": "跨组织协作：A2A 协议",
+      "lineStart": 513,
+      "lineEnd": 522
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h2-5",
+      "title": "多 Agent 协作的失败模式",
+      "lineStart": 523,
+      "lineEnd": 536
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-9",
+      "title": "失败模式一：共享文件系统的并发冲突",
+      "lineStart": 537,
+      "lineEnd": 548
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-10",
+      "title": "失败模式二：错误的级联放大",
+      "lineStart": 549,
+      "lineEnd": 554
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-11",
+      "title": "失败模式三：同质趋同",
+      "lineStart": 555,
+      "lineEnd": 560
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-12",
+      "title": "失败模式四：互相扯皮",
+      "lineStart": 561,
+      "lineEnd": 566
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-13",
+      "title": "失败模式五：循环失控",
+      "lineStart": 567,
+      "lineEnd": 570
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-14",
+      "title": "失败模式六：理解债与认知投降",
+      "lineStart": 571,
+      "lineEnd": 580
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-16",
+      "title": "Agentopia：十年尺度的长期生活模拟",
+      "lineStart": 635,
+      "lineEnd": 649
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-32",
+      "title": "隔离优于压缩：子 Agent 上下文隔离",
+      "lineStart": 1089,
+      "lineEnd": 1096
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-7",
+      "title": "协作工具",
+      "lineStart": 382,
+      "lineEnd": 428
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "anchor": "reference-answers#h2-10",
+      "title": "第十章 多 Agent 协作",
+      "lineStart": 368,
+      "lineEnd": 415
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 4,
+    "steps": 7,
+    "outputs": 4,
+    "checks": 8,
+    "evidence": 44
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 8578,
+    "markdownHash": "sha256:41deb83afaaccd98f05741225c4eb60162579a87ddec98e25d0becfce13763b3",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter10.md",
+    "objectsFiles": [
+      "pipeline/knowledge/chapter10.objects.json",
+      "pipeline/knowledge/chapter2.objects.json",
+      "pipeline/knowledge/chapter4.objects.json",
+      "pipeline/knowledge/reference-answers.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter10-s3/skill-contract.json",
+      "pipeline/registry/build/chapter2-s3/skill-contract.json",
+      "pipeline/registry/build/chapter5-s3/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/coordinate-agent-work.json",
+    "generation": "task-suite"
+  }
+}

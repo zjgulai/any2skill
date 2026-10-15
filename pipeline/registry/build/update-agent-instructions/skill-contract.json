@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "update-agent-instructions",
+  "name": "update-agent-instructions",
+  "title": "从失败轨迹生成可回滚指令补丁",
+  "description": "把运行中发现的失败与经验沉淀为可回滚的指令补丁：最小 diff、按表示性质选择载体、写入路径审查。适用于 Agent 行为纠偏、给提示词或技能文档做增量修订、以及决定一条经验该写文档、写程序还是进参数时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter9-s2"
+    ],
+    "skillIds": [
+      "chapter9-s2"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/update-agent-instructions.json",
+    "sha256": "sha256:314512b3b3c74939ae3264f89e6681e3ca079d9f7b2e21190490eadf3cbbae36"
+  },
+  "sourceObjects": [
+    "AFTERWORD-H1-1-CONCEPT-01",
+    "AFTERWORD-H2-1-CONCEPT-01",
+    "AFTERWORD-H2-1-CONCEPT-02",
+    "AFTERWORD-H2-2-CONCEPT-01",
+    "AFTERWORD-H2-2-HEURISTIC-02",
+    "CHAPTER9-H2-2-CONCEPT-01",
+    "CHAPTER9-H2-2-DECISIONMODEL-02",
+    "CHAPTER9-H3-2-CONCEPT-01",
+    "CHAPTER9-H3-2-ENGINEERINGRULE-02",
+    "CHAPTER9-H3-4-ENGINEERINGRULE-01",
+    "CHAPTER9-H3-4-ENGINEERINGRULE-02",
+    "CHAPTER9-H3-5-CONCEPT-01",
+    "CHAPTER9-H3-5-ANTIPATTERN-02",
+    "CHAPTER9-H2-3-CONCEPT-01",
+    "CHAPTER9-H2-3-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T12-05"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/afterword.md",
+      "anchor": "afterword#h1-1",
+      "title": "后记：回到 Agent = LLM + 上下文 + 工具",
+      "lineStart": 1,
+      "lineEnd": 12
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/afterword.md",
+      "anchor": "afterword#h2-1",
+      "title": "两朵乌云",
+      "lineStart": 13,
+      "lineEnd": 26
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/afterword.md",
+      "anchor": "afterword#h2-2",
+      "title": "模型与 Agent 的共同演进",
+      "lineStart": 27,
+      "lineEnd": 44
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter9.md",
+      "anchor": "chapter9#h2-2",
+      "title": "Agent 持续进化的四种方法",
+      "lineStart": 56,
+      "lineEnd": 74
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter9.md",
+      "anchor": "chapter9#h3-2",
+      "title": "将经验写成指令",
+      "lineStart": 97,
+      "lineEnd": 104
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter9.md",
+      "anchor": "chapter9#h3-4",
+      "title": "将经验写入参数",
+      "lineStart": 248,
+      "lineEnd": 255
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter9.md",
+      "anchor": "chapter9#h3-5",
+      "title": "从更新产物到更新“更新方法”",
+      "lineStart": 256,
+      "lineEnd": 285
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter9.md",
+      "anchor": "chapter9#h2-3",
+      "title": "构建可长期运行的持续进化闭环",
+      "lineStart": 286,
+      "lineEnd": 328
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-9",
+      "title": "Coding Agent 的安全",
+      "lineStart": 309,
+      "lineEnd": 350
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-18",
+      "title": "提示注入：上下文安全的核心威胁",
+      "lineStart": 730,
+      "lineEnd": 764
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter9.md",
+      "anchor": "chapter9#h3-7",
+      "title": "持续进化的安全边界",
+      "lineStart": 342,
+      "lineEnd": 351
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 22
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 5551,
+    "markdownHash": "sha256:0dce5491dadcd753243d323c7474d79b0b2835ef75bc79ecb2f4ac7bc19c2452",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/afterword.md",
+    "objectsFiles": [
+      "pipeline/knowledge/afterword.objects.json",
+      "pipeline/knowledge/chapter9.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter9-s2/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/update-agent-instructions.json",
+    "generation": "task-suite"
+  }
+}

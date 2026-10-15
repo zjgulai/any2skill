@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "define-agent-boundaries",
+  "name": "define-agent-boundaries",
+  "title": "定义 Agent 观察、动作与职责边界",
+  "description": "定义 Agent 的观察边界、动作边界与职责分层：哪些信息必须进入上下文、哪些操作必须经过动作接口、Harness 各层各管什么。适用于评审或设计 Agent 系统架构、判断一个能力应放在模型提示、上下文构造还是工具层时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter1-s1"
+    ],
+    "skillIds": [
+      "chapter1-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/define-agent-boundaries.json",
+    "sha256": "sha256:4f57fb38f3bea11c281357a8132bc506102a5502ab47aa2944e22664a0085f0d"
+  },
+  "sourceObjects": [
+    "CHAPTER1-H1-1-CONCEPT-01",
+    "CHAPTER1-H2-1-CONCEPT-01",
+    "CHAPTER1-H2-1-CONCEPT-02",
+    "CHAPTER1-H3-1-CONCEPT-01",
+    "CHAPTER1-H3-1-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+    "CHAPTER1-H3-3-CONCEPT-01",
+    "CHAPTER1-H3-3-ENGINEERINGRULE-02",
+    "CHAPTER1-H4-1-CONCEPT-01",
+    "CHAPTER1-H3-4-CONCEPT-01",
+    "CHAPTER1-H3-5-CONCEPT-01",
+    "CHAPTER1-H3-5-CONCEPT-02",
+    "CHAPTER1-H2-2-CONCEPT-01",
+    "CHAPTER1-H2-2-HEURISTIC-02",
+    "CHAPTER1-H3-6-CONCEPT-01",
+    "CHAPTER1-H3-6-CONCEPT-02",
+    "CHAPTER1-H3-11-ENGINEERINGRULE-01",
+    "CHAPTER1-H2-4-CONCEPT-01"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h1-1",
+      "title": "AI Agent 入门",
+      "lineStart": 1,
+      "lineEnd": 10
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-1",
+      "title": "现代 Agent = LLM + 上下文 + 工具",
+      "lineStart": 11,
+      "lineEnd": 36
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-1",
+      "title": "观察空间与动作空间：模型与世界的接口",
+      "lineStart": 37,
+      "lineEnd": 60
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-2",
+      "title": "工具：Agent 的手脚",
+      "lineStart": 61,
+      "lineEnd": 108
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-3",
+      "title": "LLM：Agent 的大脑",
+      "lineStart": 109,
+      "lineEnd": 114
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h4-1",
+      "title": "模型即 Agent：当模型本身成为产品",
+      "lineStart": 115,
+      "lineEnd": 124
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-4",
+      "title": "上下文：Agent 的眼睛",
+      "lineStart": 137,
+      "lineEnd": 160
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-5",
+      "title": "ReAct 循环",
+      "lineStart": 161,
+      "lineEnd": 262
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-2",
+      "title": "Harness 工程：模型之外的竞争力",
+      "lineStart": 263,
+      "lineEnd": 320
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-6",
+      "title": "从提示工程到 Loop 工程：工程范式的演进",
+      "lineStart": 321,
+      "lineEnd": 340
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-11",
+      "title": "Harness 五要素与「构建」部分的对应",
+      "lineStart": 506,
+      "lineEnd": 524
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-4",
+      "title": "本章小结",
+      "lineStart": 539,
+      "lineEnd": 560
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 6,
+    "evidence": 20
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 5028,
+    "markdownHash": "sha256:c7b6eb0c0f46c4d947471421bf82b3f75ba3229cb25348001fd1a92483255482",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter1.md",
+    "objectsFiles": [
+      "pipeline/knowledge/chapter1.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter1-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/define-agent-boundaries.json",
+    "generation": "task-suite"
+  }
+}

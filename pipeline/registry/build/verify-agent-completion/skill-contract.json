@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "verify-agent-completion",
+  "name": "verify-agent-completion",
+  "title": "用独立证据判定任务完成",
+  "description": "设计「模型不能自批完成」的验证机制：完成判据、独立证据通道、审核者约束与证据独立性抽检。适用于为 Agent 循环设计收尾条件、审查提案者-审核者流程、以及排查「完成声明不可信」问题时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter1-s1",
+      "chapter10-s3",
+      "chapter2-s3",
+      "chapter5-s3"
+    ],
+    "skillIds": [
+      "chapter1-s1",
+      "chapter10-s3",
+      "chapter2-s3",
+      "chapter5-s3"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/verify-agent-completion.json",
+    "sha256": "sha256:1b99cd3a3f2ffd8e06841a66c966bf436de77c61a61273138caab95f4b46632d"
+  },
+  "sourceObjects": [
+    "CHAPTER1-H2-3-CONCEPT-01",
+    "CHAPTER4-H2-6-CONCEPT-01",
+    "CHAPTER4-H2-9-CONCEPT-01",
+    "CHAPTER5-H3-12-CONCEPT-01",
+    "CHAPTER10-H4-1-CONCEPT-01",
+    "CHAPTER10-H4-1-ENGINEERINGRULE-02",
+    "CHAPTER10-H4-2-CONCEPT-01",
+    "CHAPTER10-H4-2-ENGINEERINGRULE-02",
+    "CHAPTER10-H3-11-ANTIPATTERN-01"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h2-3",
+      "title": "贯穿全书的设计模式",
+      "lineStart": 525,
+      "lineEnd": 538
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-1",
+      "title": "Loop 工程",
+      "lineStart": 200,
+      "lineEnd": 227
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h4-2",
+      "title": "提议者-审核者范式",
+      "lineStart": 228,
+      "lineEnd": 267
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter10.md",
+      "anchor": "chapter10#h3-11",
+      "title": "失败模式三：同质趋同",
+      "lineStart": 555,
+      "lineEnd": 560
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-6",
+      "title": "执行工具",
+      "lineStart": 270,
+      "lineEnd": 381
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-9",
+      "title": "思考题",
+      "lineStart": 443,
+      "lineEnd": 449
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-12",
+      "title": "代码驱动的多媒体生成",
+      "lineStart": 502,
+      "lineEnd": 588
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 13
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 3705,
+    "markdownHash": "sha256:ee98fc0f08a8bd78aa0d30e074a8db5aef8231e16e8cdc66f6d10e51bff59792",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter1.md",
+    "objectsFiles": [
+      "pipeline/knowledge/chapter1.objects.json",
+      "pipeline/knowledge/chapter10.objects.json",
+      "pipeline/knowledge/chapter4.objects.json",
+      "pipeline/knowledge/chapter5.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter1-s1/skill-contract.json",
+      "pipeline/registry/build/chapter10-s3/skill-contract.json",
+      "pipeline/registry/build/chapter2-s3/skill-contract.json",
+      "pipeline/registry/build/chapter5-s3/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/verify-agent-completion.json",
+    "generation": "task-suite"
+  }
+}

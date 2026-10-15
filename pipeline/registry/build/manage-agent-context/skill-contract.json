@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "manage-agent-context",
+  "name": "manage-agent-context",
+  "title": "压缩上下文并维持运行状态",
+  "description": "设计 Agent 的运行时上下文治理：状态栏注入、压缩时机与手段、缓存前缀稳定性、关键信息保全与预算感知。适用于长会话 Agent 出现「找不到关键信息」「提前收尾」「缓存频繁失效」等问题时，或为框架设计压缩管线时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter2-s3",
+      "chapter5-s3"
+    ],
+    "skillIds": [
+      "chapter2-s3",
+      "chapter5-s3"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/manage-agent-context.json",
+    "sha256": "sha256:842af64f4bece49b15af59e19c422cca4057368d5e4afb8484c36774bd321bb9"
+  },
+  "sourceObjects": [
+    "CHAPTER2-H3-11-CONCEPT-01",
+    "CHAPTER2-H2-6-CONCEPT-01",
+    "CHAPTER2-H3-23-MENTALMODEL-01",
+    "CHAPTER2-H3-23-ENGINEERINGRULE-02",
+    "CHAPTER2-H3-24-CONCEPT-01",
+    "CHAPTER2-H3-24-CONCEPT-02",
+    "CHAPTER2-H3-25-ENGINEERINGRULE-01",
+    "CHAPTER2-H3-25-CONCEPT-02",
+    "CHAPTER2-H3-26-DECISIONMODEL-01",
+    "CHAPTER2-H3-26-HEURISTIC-02",
+    "CHAPTER2-H3-27-ANTIPATTERN-01",
+    "CHAPTER2-H3-27-ANTIPATTERN-02",
+    "CHAPTER2-H3-28-CONCEPT-01",
+    "CHAPTER2-H3-28-ENGINEERINGRULE-02",
+    "CHAPTER2-H3-29-ENGINEERINGRULE-01",
+    "CHAPTER2-H3-29-ENGINEERINGRULE-02",
+    "CHAPTER2-H3-30-ENGINEERINGRULE-01",
+    "CHAPTER2-H3-30-ENGINEERINGRULE-02",
+    "CHAPTER2-H3-31-ENGINEERINGRULE-01",
+    "CHAPTER2-H3-31-ANTIPATTERN-02",
+    "REFERENCE-ANSWERS-H2-10-CONCEPT-01"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-11",
+      "title": "承上启下：从缓存机制到上下文内容的设计",
+      "lineStart": 594,
+      "lineEnd": 601
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h2-6",
+      "title": "Agent 状态栏：通过元信息增强 Agent 轨迹管理",
+      "lineStart": 857,
+      "lineEnd": 866
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-23",
+      "title": "Agent 状态栏的理论基础",
+      "lineStart": 867,
+      "lineEnd": 907
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-24",
+      "title": "Agent 状态栏的构成",
+      "lineStart": 908,
+      "lineEnd": 919
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-25",
+      "title": "Agent 状态栏在上下文中的具体位置",
+      "lineStart": 920,
+      "lineEnd": 950
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-26",
+      "title": "状态更新的两种实现与缓存代价",
+      "lineStart": 951,
+      "lineEnd": 990
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-27",
+      "title": "为什么需要压缩：不只是长度问题",
+      "lineStart": 995,
+      "lineEnd": 1006
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-28",
+      "title": "上下文学习的内部机制：检索而非推理",
+      "lineStart": 1007,
+      "lineEnd": 1027
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-29",
+      "title": "压缩与 KV Cache：看似矛盾，实则互补",
+      "lineStart": 1028,
+      "lineEnd": 1065
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-30",
+      "title": "生产级的分层压缩机制",
+      "lineStart": 1066,
+      "lineEnd": 1075
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-31",
+      "title": "压缩策略的设计原则",
+      "lineStart": 1076,
+      "lineEnd": 1088
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "anchor": "reference-answers#h2-10",
+      "title": "第十章 多 Agent 协作",
+      "lineStart": 368,
+      "lineEnd": 415
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 7,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 29
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 7189,
+    "markdownHash": "sha256:e9863076fc055f729614ac526af2f040ae5a72f4c1c97ec319842d868a3758c6",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter2.md",
+    "objectsFiles": [
+      "pipeline/knowledge/chapter2.objects.json",
+      "pipeline/knowledge/reference-answers.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter2-s3/skill-contract.json",
+      "pipeline/registry/build/chapter5-s3/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/manage-agent-context.json",
+    "generation": "task-suite"
+  }
+}

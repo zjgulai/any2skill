@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "task-suite-status/v1",
+  "createdAt": "2026-10-15T10:48:42.097Z",
+  "structuralGate": "passed",
+  "structuralGateDetail": [
+    {
+      "slug": "diagnose-rust-borrows",
+      "passed": true,
+      "bytes": 12137,
+      "markdownSha256": "sha256:244dd740080a8ace5a973ce0874c98699a666dabf2832fcfbb5c43dad9acb8fd"
+    },
+    {
+      "slug": "model-rust-domain-types",
+      "passed": true,
+      "bytes": 8788,
+      "markdownSha256": "sha256:e0fddc660ada865226fdcd5127bfea41405bd6a1441e9f5888bdc7d5324be382"
+    },
+    {
+      "slug": "match-rust-variants",
+      "passed": true,
+      "bytes": 6594,
+      "markdownSha256": "sha256:b321f611b833ae2e405778d79484ecc82a504dedf0d37a654f75c0faeb3d757d"
+    },
+    {
+      "slug": "process-rust-text-and-hashmaps",
+      "passed": true,
+      "bytes": 9158,
+      "markdownSha256": "sha256:489f32a963468c76b15805478a1529f7a9ede22647f656395aae85a3e05953a9"
+    },
+    {
+      "slug": "design-rust-abstractions",
+      "passed": true,
+      "bytes": 9716,
+      "markdownSha256": "sha256:aef1140b4bdfc9f38cf234d108205ad01b9ba26300f35022d28fb58b29b6bd55"
+    },
+    {
+      "slug": "compose-rust-closures",
+      "passed": true,
+      "bytes": 6224,
+      "markdownSha256": "sha256:e4ca6a9b76491faf31cfe757880d297aee28bc6535943d182ed656d23abe3ca1"
+    },
+    {
+      "slug": "manage-rust-memory-and-mutability",
+      "passed": true,
+      "bytes": 10095,
+      "markdownSha256": "sha256:86bce898b003d82fbffaa6280ad165385491171bb3c97c083d6963f15a1a2fc8"
+    },
+    {
+      "slug": "coordinate-rust-threads",
+      "passed": true,
+      "bytes": 8873,
+      "markdownSha256": "sha256:50b0ff9eb419af422b2cf43fa34254cad3a43a60bf08965c3fc7ba2343f55586"
+    },
+    {
+      "slug": "structure-rust-cli",
+      "passed": true,
+      "bytes": 7680,
+      "markdownSha256": "sha256:a18b8ed906733a776d396ba631b58caa63bfb66981f531574df62ab3b887052e"
+    },
+    {
+      "slug": "run-rust-tests",
+      "passed": true,
+      "bytes": 5471,
+      "markdownSha256": "sha256:12a8f7147b1a5a51ec6d6d77cb1f04f693e6df375ddbc002f1c5c5b1a99a7cff"
+    },
+    {
+      "slug": "implement-rust-state-pattern",
+      "passed": true,
+      "bytes": 5149,
+      "markdownSha256": "sha256:15eecde93ebbf98968295ee71a833467740a24e254988c20920765c6831043e0"
+    },
+    {
+      "slug": "define-agent-boundaries",
+      "passed": true,
+      "bytes": 5028,
+      "markdownSha256": "sha256:c7b6eb0c0f46c4d947471421bf82b3f75ba3229cb25348001fd1a92483255482"
+    },
+    {
+      "slug": "secure-agent-actions",
+      "passed": true,
+      "bytes": 10166,
+      "markdownSha256": "sha256:61780259df801ee85cb1599ef8bc3013b276556acbf2b0d4ef413dc7d56f6444"
+    },
+    {
+      "slug": "manage-agent-context",
+      "passed": true,
+      "bytes": 7189,
+      "markdownSha256": "sha256:e9863076fc055f729614ac526af2f040ae5a72f4c1c97ec319842d868a3758c6"
+    },
+    {
+      "slug": "design-agent-tools",
+      "passed": true,
+      "bytes": 7872,
+      "markdownSha256": "sha256:782cd340e56ac541aa44c6928de9f3cdf675c1a5de3ff741abacda0221599181"
+    },
+    {
+      "slug": "validate-generated-artifacts",
+      "passed": true,
+      "bytes": 5340,
+      "markdownSha256": "sha256:e9bcde63d0c32f2a1ae362de06c06e2529a51e76bdc55a61c6d5c04dbe994761"
+    },
+    {
+      "slug": "coordinate-agent-work",
+      "passed": true,
+      "bytes": 8578,
+      "markdownSha256": "sha256:41deb83afaaccd98f05741225c4eb60162579a87ddec98e25d0becfce13763b3"
+    },
+    {
+      "slug": "verify-agent-completion",
+      "passed": true,
+      "bytes": 3705,
+      "markdownSha256": "sha256:ee98fc0f08a8bd78aa0d30e074a8db5aef8231e16e8cdc66f6d10e51bff59792"
+    },
+    {
+      "slug": "update-agent-instructions",
+      "passed": true,
+      "bytes": 5551,
+      "markdownSha256": "sha256:0dce5491dadcd753243d323c7474d79b0b2835ef75bc79ecb2f4ac7bc19c2452"
+    }
+  ],
+  "triggerAssessment": "unassessed-after-recomposition",
+  "utilityAssessment": "unassessed-after-recomposition",
+  "note": "重组使历史上全部门禁二/三证据不再与本套件的名称/描述/正文对应——按 ADR-030 的重测协议与 ADR-031 的证据边界：**不聚合、不继承**旧的 passed/low-utility 判定。付费重测须由用户显式发起；发起前本套件是「结构合规、效用未评」状态，披露载体为本文件与 README。",
+  "historicalEvidence": {
+    "tiersFile": "pipeline/registry/tiers.json",
+    "tiersNote": "该文件是对旧 30 个发布物的历史测量记录，语义不迁移至本套件。",
+    "gate2Reports": [
+      "pipeline/registry/gate2-report.json",
+      "pipeline/registry/gate2-report.strict.json"
+    ],
+    "gate3Report": "pipeline/registry/gate3-report.json",
+    "freezeFiles": [
+      "pipeline/registry/freeze-2026-10-13T16-14-59.json",
+      "pipeline/registry/freeze-2026-10-14T22-17-15.json"
+    ]
+  },
+  "rejectedKept": [
+    "chapter3-s1",
+    "ch13-02-iterators-s1"
+  ]
+}

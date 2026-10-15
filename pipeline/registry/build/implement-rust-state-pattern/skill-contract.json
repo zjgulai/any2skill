@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "implement-rust-state-pattern",
+  "name": "implement-rust-state-pattern",
+  "title": "用所有权安全地实现 Rust 状态模式",
+  "description": "用 Rust 惯用法实现状态模式：私有状态字段、Box<dyn State> 转移、Option 与 take 的所有权搬迁。适用于把发布流程、订单流、协议状态机等按状态封装，并权衡增加新状态的成本时。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch17-03-oo-design-patterns-s1"
+    ],
+    "skillIds": [
+      "ch17-03-oo-design-patterns-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/implement-rust-state-pattern.json",
+    "sha256": "sha256:f7e411db62f2fe8f5016a920c1874367b3422f380f31eb527891bc95174ca926"
+  },
+  "sourceObjects": [
+    "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-02",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-2-CONCEPT-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-3-ENGINEERINGRULE-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-4-CONCEPT-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-02",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-6-ENGINEERINGRULE-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H3-6-ANTIPATTERN-02",
+    "CH17-03-OO-DESIGN-PATTERNS-H4-1-CONCEPT-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H4-1-ENGINEERINGRULE-02",
+    "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-01",
+    "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h2-1",
+      "title": "面向对象设计模式的实现",
+      "lineStart": 1,
+      "lineEnd": 44
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h3-1",
+      "title": "定义 `Post` 并新建一个草案状态的实例",
+      "lineStart": 45,
+      "lineEnd": 79
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h3-2",
+      "title": "存放博文内容的文本",
+      "lineStart": 80,
+      "lineEnd": 102
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h3-3",
+      "title": "确保博文草案的内容是空的",
+      "lineStart": 103,
+      "lineEnd": 125
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h3-4",
+      "title": "请求审核博文来改变其状态",
+      "lineStart": 126,
+      "lineEnd": 183
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h3-5",
+      "title": "增加改变 `content` 行为的 `approve` 方法",
+      "lineStart": 184,
+      "lineEnd": 318
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h3-6",
+      "title": "状态模式的权衡取舍",
+      "lineStart": 319,
+      "lineEnd": 340
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h4-1",
+      "title": "将状态和行为编码为类型",
+      "lineStart": 341,
+      "lineEnd": 399
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+      "anchor": "ch17-03-oo-design-patterns#h4-2",
+      "title": "实现状态转移为不同类型的转换",
+      "lineStart": 400,
+      "lineEnd": 469
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 21
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 5149,
+    "markdownHash": "sha256:15eecde93ebbf98968295ee71a833467740a24e254988c20920765c6831043e0",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch17-03-oo-design-patterns.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch17-03-oo-design-patterns-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/implement-rust-state-pattern.json",
+    "generation": "task-suite"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "run-rust-tests",
+  "name": "run-rust-tests",
+  "title": "筛选、串行并观察 Rust 测试",
+  "description": "控制 Rust 项目 cargo test 的运行方式：并行与输出截获的默认行为、按名称与模块筛选、串行化共享状态的测试、标记与排除慢测试。适用于调试失败用例、让依赖共享资源的测试稳定、排查输出被吞时的可见性问题。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch11-02-running-tests-s1"
+    ],
+    "skillIds": [
+      "ch11-02-running-tests-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/run-rust-tests.json",
+    "sha256": "sha256:1ec4402c6ce77abfdffe53206d7c2a71d088ac08eaf2268984c5023b4d699a99"
+  },
+  "sourceObjects": [
+    "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+    "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02",
+    "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02",
+    "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+    "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T08-01"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h2-1",
+      "title": "控制测试如何运行",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-1",
+      "title": "并行或连续的运行测试",
+      "lineStart": 7,
+      "lineEnd": 20
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-2",
+      "title": "显示函数输出",
+      "lineStart": 21,
+      "lineEnd": 74
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-3",
+      "title": "通过指定名字来运行部分测试",
+      "lineStart": 75,
+      "lineEnd": 121
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h4-1",
+      "title": "运行单个测试",
+      "lineStart": 122,
+      "lineEnd": 140
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h4-2",
+      "title": "过滤运行多个测试",
+      "lineStart": 141,
+      "lineEnd": 158
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+      "anchor": "ch11-02-running-tests#h3-4",
+      "title": "忽略某些测试",
+      "lineStart": 159,
+      "lineEnd": 207
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 23
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 5471,
+    "markdownHash": "sha256:12a8f7147b1a5a51ec6d6d77cb1f04f693e6df375ddbc002f1c5c5b1a99a7cff",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch11-02-running-tests.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch11-02-running-tests-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/run-rust-tests.json",
+    "generation": "task-suite"
+  }
+}

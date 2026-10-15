@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "manage-rust-memory-and-mutability",
+  "name": "manage-rust-memory-and-mutability",
+  "title": "管理 Rust 内存布局、析构与内部可变性",
+  "description": "处理 Rust 的堆间接与可变性设计：递归类型的 Box 间接化、Drop 析构时序与提前释放、RefCell 运行时借用检查与 Rc 共享。适用于修 E0072 递归类型错误、管理 RAII 资源、以及 &self 方法需要修改字段时。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch15-01-box-s2",
+      "ch15-03-drop-s1",
+      "ch15-05-interior-mutability-s1"
+    ],
+    "skillIds": [
+      "ch15-01-box-s2",
+      "ch15-03-drop-s1",
+      "ch15-05-interior-mutability-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/manage-rust-memory-and-mutability.json",
+    "sha256": "sha256:2bdc7ff2bd3e21287425de82b00f995054185533ab64785c262178ee68c64f02"
+  },
+  "sourceObjects": [
+    "CH15-01-BOX-H2-1-CONCEPT-01",
+    "CH15-01-BOX-H3-1-CONCEPT-01",
+    "CH15-01-BOX-H3-1-HEURISTIC-02",
+    "CH15-01-BOX-H3-2-CONCEPT-01",
+    "CH15-01-BOX-H4-1-CONCEPT-01",
+    "CH15-01-BOX-H4-1-ENGINEERINGRULE-02",
+    "CH15-01-BOX-H3-3-ENGINEERINGRULE-01",
+    "CH15-01-BOX-H3-3-CONCEPT-02",
+    "CH15-01-BOX-H3-4-ANTIPATTERN-01",
+    "CH15-01-BOX-H3-4-HEURISTIC-02",
+    "CH15-03-DROP-H2-1-CONCEPT-01",
+    "CH15-03-DROP-H2-1-ANTIPATTERN-02",
+    "CH15-03-DROP-H4-1-ENGINEERINGRULE-01",
+    "CH15-03-DROP-H4-1-CONCEPT-02",
+    "CH15-05-INTERIOR-MUTABILITY-H2-1-CONCEPT-01",
+    "CH15-05-INTERIOR-MUTABILITY-H3-1-DECISIONMODEL-01",
+    "CH15-05-INTERIOR-MUTABILITY-H3-1-ENGINEERINGRULE-02",
+    "CH15-05-INTERIOR-MUTABILITY-H3-2-ANTIPATTERN-01",
+    "CH15-05-INTERIOR-MUTABILITY-H3-2-ENGINEERINGRULE-02",
+    "CH15-05-INTERIOR-MUTABILITY-H4-1-ENGINEERINGRULE-01",
+    "CH15-05-INTERIOR-MUTABILITY-H4-1-CONCEPT-02",
+    "CH15-05-INTERIOR-MUTABILITY-H3-3-ENGINEERINGRULE-01",
+    "CH15-05-INTERIOR-MUTABILITY-H3-3-ANTIPATTERN-02",
+    "CH15-05-INTERIOR-MUTABILITY-H3-4-HEURISTIC-01",
+    "CH15-05-INTERIOR-MUTABILITY-H3-4-CONCEPT-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T06-01",
+    "AP-SYNTH-T06-03",
+    "AP-SYNTH-T01-02",
+    "AP-SYNTH-T01-03",
+    "AP-SYNTH-T06-06",
+    "AP-SYNTH-T08-08"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch15-01-box.md",
+      "anchor": "ch15-01-box#h2-1",
+      "title": "使用 `Box<T>` 指向堆上的数据",
+      "lineStart": 1,
+      "lineEnd": 12
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-01-box.md",
+      "anchor": "ch15-01-box#h3-1",
+      "title": "使用 `Box<T>` 在堆上储存数据",
+      "lineStart": 13,
+      "lineEnd": 33
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-01-box.md",
+      "anchor": "ch15-01-box#h3-2",
+      "title": "Box 允许创建递归类型",
+      "lineStart": 34,
+      "lineEnd": 39
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-01-box.md",
+      "anchor": "ch15-01-box#h4-1",
+      "title": "cons list 的更多内容",
+      "lineStart": 40,
+      "lineEnd": 99
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-01-box.md",
+      "anchor": "ch15-01-box#h3-3",
+      "title": "计算非递归类型的大小",
+      "lineStart": 100,
+      "lineEnd": 120
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-01-box.md",
+      "anchor": "ch15-01-box#h3-4",
+      "title": "使用 `Box<T>` 给递归类型一个已知的大小",
+      "lineStart": 121,
+      "lineEnd": 165
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+      "anchor": "ch15-03-drop#h2-1",
+      "title": "使用 `Drop` Trait 运行清理代码",
+      "lineStart": 1,
+      "lineEnd": 46
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+      "anchor": "ch15-03-drop#h4-1",
+      "title": "通过 `std::mem::drop` 提早丢弃值",
+      "lineStart": 47,
+      "lineEnd": 122
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h2-1",
+      "title": "`RefCell<T>` 和内部可变性模式",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h3-1",
+      "title": "通过 `RefCell<T>` 在运行时检查借用规则",
+      "lineStart": 7,
+      "lineEnd": 31
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h3-2",
+      "title": "内部可变性：不可变值的可变借用",
+      "lineStart": 32,
+      "lineEnd": 58
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h4-1",
+      "title": "内部可变性的用例：mock 对象",
+      "lineStart": 59,
+      "lineEnd": 252
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h3-3",
+      "title": "`RefCell<T>` 在运行时记录借用",
+      "lineStart": 253,
+      "lineEnd": 289
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+      "anchor": "ch15-05-interior-mutability#h3-4",
+      "title": "结合 `Rc<T>` 和 `RefCell<T>` 来拥有多个可变数据所有者",
+      "lineStart": 290,
+      "lineEnd": 346
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+      "anchor": "ch04-02-references-and-borrowing#h2-1",
+      "title": "引用与借用",
+      "lineStart": 1,
+      "lineEnd": 58
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+      "anchor": "ch04-02-references-and-borrowing#h3-1",
+      "title": "可变引用",
+      "lineStart": 59,
+      "lineEnd": 128
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 4,
+    "steps": 7,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 40
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 10095,
+    "markdownHash": "sha256:86bce898b003d82fbffaa6280ad165385491171bb3c97c083d6963f15a1a2fc8",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch15-01-box.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch15-01-box.objects.json",
+      "pipeline/knowledge/ch15-03-drop.objects.json",
+      "pipeline/knowledge/ch15-05-interior-mutability.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch15-01-box-s2/skill-contract.json",
+      "pipeline/registry/build/ch15-03-drop-s1/skill-contract.json",
+      "pipeline/registry/build/ch15-05-interior-mutability-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/manage-rust-memory-and-mutability.json",
+    "generation": "task-suite"
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "design-agent-tools",
+  "name": "design-agent-tools",
+  "title": "设计可选、透明、可分页的 Agent 工具",
+  "description": "面向 Agent 的工具接口设计：按目标划分粒度、写清描述与边界、设计结构化返回与分页、显式处理截断、杜绝静默参数注入。适用于新增工具、诊断「Agent 频繁选错工具」、以及评审第三方能力引入（MCP 服务、技能包）时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter1-s1",
+      "chapter2-s3",
+      "chapter4-single-tool-design",
+      "chapter4-tool-design-principles"
+    ],
+    "skillIds": [
+      "chapter1-s1",
+      "chapter2-s3",
+      "chapter4-s1",
+      "CHAPTER4-H2-2-SKILL-01"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/design-agent-tools.json",
+    "sha256": "sha256:4f7e438c4da5b47f19c2c1302f34952e0ace97a52d59734c04998781a22954f2"
+  },
+  "sourceObjects": [
+    "CHAPTER1-H3-7-CONCEPT-01",
+    "CHAPTER1-H3-7-CONCEPT-02",
+    "CHAPTER4-H2-3-CONCEPT-01",
+    "CHAPTER4-H2-8-ENGINEERINGRULE-02",
+    "CHAPTER4-H1-1-CONCEPT-01",
+    "CHAPTER4-H1-1-CONCEPT-02",
+    "CHAPTER4-H2-1-ENGINEERINGRULE-01",
+    "CHAPTER4-H2-1-ENGINEERINGRULE-02",
+    "CHAPTER4-H2-2-ENGINEERINGRULE-01",
+    "CHAPTER4-H2-2-ANTIPATTERN-02",
+    "CHAPTER4-H3-1-ENGINEERINGRULE-02",
+    "CHAPTER4-H3-2-HEURISTIC-01",
+    "CHAPTER4-H3-2-HEURISTIC-02",
+    "CHAPTER4-H3-3-CONCEPT-01",
+    "CHAPTER4-H3-3-ENGINEERINGRULE-02",
+    "CHAPTER4-H2-5-ENGINEERINGRULE-01",
+    "CHAPTER4-H2-5-ENGINEERINGRULE-02",
+    "CHAPTER4-H3-7-CONCEPT-01",
+    "CHAPTER4-H4-1-CONCEPT-01",
+    "CHAPTER4-H4-1-CONCEPT-02",
+    "CHAPTER4-H4-2-CONCEPT-01",
+    "CHAPTER4-H4-2-CONCEPT-02",
+    "CHAPTER4-H4-3-CONCEPT-01",
+    "CHAPTER4-H4-3-CASE-02",
+    "CHAPTER4-H3-1-CONCEPT-01"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T02-03",
+    "AP-SYNTH-T02-04"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter1.md",
+      "anchor": "chapter1#h3-7",
+      "title": "构建有效 Agent 的核心原则",
+      "lineStart": 341,
+      "lineEnd": 354
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-3",
+      "title": "工具生态：MCP 与 Skill Hub",
+      "lineStart": 100,
+      "lineEnd": 132
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-8",
+      "title": "本章小结",
+      "lineStart": 429,
+      "lineEnd": 442
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h1-1",
+      "title": "工具",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-1",
+      "title": "工具的分类",
+      "lineStart": 7,
+      "lineEnd": 33
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-2",
+      "title": "工具设计的通用原则",
+      "lineStart": 34,
+      "lineEnd": 37
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h3-1",
+      "title": "能力的表达形式：专用工具、通用执行器与 Skill",
+      "lineStart": 38,
+      "lineEnd": 69
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h3-2",
+      "title": "工具描述的艺术",
+      "lineStart": 70,
+      "lineEnd": 87
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h3-3",
+      "title": "参数传递的保真性",
+      "lineStart": 88,
+      "lineEnd": 99
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h2-5",
+      "title": "感知工具",
+      "lineStart": 218,
+      "lineEnd": 243
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h3-7",
+      "title": "多模态感知",
+      "lineStart": 244,
+      "lineEnd": 247
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h4-1",
+      "title": "原生多模态处理",
+      "lineStart": 248,
+      "lineEnd": 251
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h4-2",
+      "title": "提取为文本",
+      "lineStart": 252,
+      "lineEnd": 257
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter4.md",
+      "anchor": "chapter4#h4-3",
+      "title": "工具化多模态分析",
+      "lineStart": 258,
+      "lineEnd": 269
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter2.md",
+      "anchor": "chapter2#h3-17",
+      "title": "工具定义的设计",
+      "lineStart": 700,
+      "lineEnd": 729
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 5,
+    "inputs": 4,
+    "steps": 7,
+    "outputs": 4,
+    "checks": 8,
+    "evidence": 32
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 7872,
+    "markdownHash": "sha256:782cd340e56ac541aa44c6928de9f3cdf675c1a5de3ff741abacda0221599181",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter1.md",
+    "objectsFiles": [
+      "pipeline/knowledge/chapter1.objects.json",
+      "pipeline/knowledge/chapter4.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter1-s1/skill-contract.json",
+      "pipeline/registry/build/chapter2-s3/skill-contract.json",
+      "pipeline/registry/build/chapter4-single-tool-design/skill-contract.json",
+      "pipeline/registry/build/chapter4-tool-design-principles/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/design-agent-tools.json",
+    "generation": "task-suite"
+  }
+}

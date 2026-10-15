@@ -109,6 +109,9 @@ export function splitSections(body) {
     s.bullets = s.lines.filter((l) => /^- /.test(l)).length
     // 加粗小节头行（核心原则 / 实践模式的那种写法）。
     s.bolds = texts.filter((l) => /^\*\*[^*]+\*\*$/.test(l)).length
+    // 顶格编号行（任务骨架的「执行步骤」）。**不并入通配口径**——旧骨架的任何段落
+    // 都不按编号行计数，并入会改变既有段落的既有读数（卡 26 只做加法）。
+    s.numbered = s.lines.filter((l) => /^\d+\.\s/.test(l)).length
     // 通配兜底：种类不明的段落取两者较大值。**具体段落按骨架声明的 itemKind 计**——
     // 实践模式的示例列表项会盖过概念数，用 max 会误报（见 ADR-025）。
     s.itemCount = Math.max(s.bullets, s.bolds)
@@ -124,6 +127,7 @@ export function splitSections(body) {
 export function itemCountFor(section, spec) {
   if (spec?.itemKind === 'bold') return section.bolds ?? 0
   if (spec?.itemKind === 'bullet') return section.bullets ?? 0
+  if (spec?.itemKind === 'numbered') return section.numbered ?? 0
   return section.itemCount ?? 0
 }
 
@@ -135,6 +139,8 @@ export async function verifySkill(input) {
     anchorIndexes = [],
     repoRoot,
     sectionCountsExpected = null,
+    // 骨架可换（卡 26 任务套件）：缺省仍是原书六段，旧调用方逐字节兼容。
+    skeleton = SKELETON_SECTIONS,
   } = input
 
   const failures = []
@@ -170,9 +176,9 @@ export async function verifySkill(input) {
     }
   }
 
-  // ── 3. 6 段骨架 ──────────────────────────────────────────────────────────
+  // ── 3. 骨架段（缺省原书六段；任务套件传自己的骨架）────────────────────────
   const sections = splitSections(fm.ok ? fm.body : '')
-  const expected = SKELETON_SECTIONS.map((s) => s.heading)
+  const expected = skeleton.map((s) => s.heading)
   const actual = sections.map((s) => s.heading)
   const byHeading = new Map(sections.map((s) => [s.heading, s]))
 
@@ -189,7 +195,7 @@ export async function verifySkill(input) {
     push('SECTION_OUT_OF_ORDER', `出现骨架之外的段：${unknown.join(', ')}`, 'sections')
   }
 
-  for (const spec of SKELETON_SECTIONS) {
+  for (const spec of skeleton) {
     const sec = byHeading.get(spec.heading)
     if (!sec) continue
     if (sec.isEmpty) {
@@ -241,8 +247,11 @@ export async function verifySkill(input) {
     }
   }
 
-  // 正文回链必须与 sourceRefs 一致（ADR-004：深度阅读段回链 book/chapterN.md）
-  const readingSec = byHeading.get('## 深度阅读')
+  // 正文回链必须与 sourceRefs 一致（ADR-004：深度阅读段回链 book/chapterN.md）。
+  // 回链所在的段按骨架指认：旧骨架是「## 深度阅读」，任务骨架是「## 依据与边界」
+  // （`readingSection: true` 标记）。
+  const readingSpec = skeleton.find((s) => s.key === 'reading' || s.readingSection === true)
+  const readingSec = readingSpec ? byHeading.get(readingSpec.heading) : null
   if (readingSec) {
     const bodyFiles = new Set()
     for (const line of readingSec.lines) {

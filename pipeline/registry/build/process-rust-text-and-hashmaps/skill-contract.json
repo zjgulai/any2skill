@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "process-rust-text-and-hashmaps",
+  "name": "process-rust-text-and-hashmaps",
+  "title": "安全处理 Rust 文本与键值集合",
+  "description": "安全处理 Rust 字符串与 HashMap：UTF-8 边界、拼接的所有权规则、字符与字节迭代、键值集合的插入/查询/覆盖策略。适用于日志与文本处理、构建缓存/计数/注册表、以及排查字符串索引 panic 或所有权失效时。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch08-02-strings-s1",
+      "ch08-03-hash-maps-s1"
+    ],
+    "skillIds": [
+      "ch08-02-strings-s1",
+      "ch08-03-hash-maps-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/process-rust-text-and-hashmaps.json",
+    "sha256": "sha256:9df64ab8e22587357074e62990c5b4d4a65929d471bcf8a2cf4bb0cbbbe41a7b"
+  },
+  "sourceObjects": [
+    "CH08-02-STRINGS-H2-1-CONCEPT-01",
+    "CH08-02-STRINGS-H3-1-CONCEPT-01",
+    "CH08-02-STRINGS-H3-1-CONCEPT-02",
+    "CH08-02-STRINGS-H3-2-CONCEPT-01",
+    "CH08-02-STRINGS-H3-2-CONCEPT-02",
+    "CH08-02-STRINGS-H3-3-CONCEPT-01",
+    "CH08-02-STRINGS-H4-1-CONCEPT-01",
+    "CH08-02-STRINGS-H4-1-CONCEPT-02",
+    "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-01",
+    "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-02",
+    "CH08-02-STRINGS-H3-4-ENGINEERINGRULE-01",
+    "CH08-02-STRINGS-H4-3-CONCEPT-01",
+    "CH08-02-STRINGS-H4-3-ENGINEERINGRULE-02",
+    "CH08-02-STRINGS-H4-4-CONCEPT-01",
+    "CH08-02-STRINGS-H4-4-ENGINEERINGRULE-02",
+    "CH08-02-STRINGS-H3-5-ENGINEERINGRULE-01",
+    "CH08-02-STRINGS-H3-5-CONCEPT-02",
+    "CH08-02-STRINGS-H3-6-HEURISTIC-01",
+    "CH08-02-STRINGS-H3-6-HEURISTIC-02",
+    "CH08-02-STRINGS-H3-7-ENGINEERINGRULE-01",
+    "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-01",
+    "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-02",
+    "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-01",
+    "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-02",
+    "CH08-03-HASH-MAPS-H3-3-CONCEPT-01",
+    "CH08-03-HASH-MAPS-H3-4-ENGINEERINGRULE-01",
+    "CH08-03-HASH-MAPS-H4-1-ENGINEERINGRULE-01",
+    "CH08-03-HASH-MAPS-H4-2-CONCEPT-01",
+    "CH08-03-HASH-MAPS-H4-2-ENGINEERINGRULE-02",
+    "CH08-03-HASH-MAPS-H4-3-CONCEPT-01"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T05-03",
+    "AP-SYNTH-T01-01",
+    "AP-SYNTH-T05-06",
+    "AP-SYNTH-T05-08"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h2-1",
+      "title": "使用字符串存储 UTF-8 编码的文本",
+      "lineStart": 1,
+      "lineEnd": 6
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-1",
+      "title": "什么是字符串？",
+      "lineStart": 7,
+      "lineEnd": 14
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-2",
+      "title": "新建字符串",
+      "lineStart": 15,
+      "lineEnd": 69
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-3",
+      "title": "更新字符串",
+      "lineStart": 70,
+      "lineEnd": 73
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-1",
+      "title": "使用 `push_str` 和 `push` 附加字符串",
+      "lineStart": 74,
+      "lineEnd": 108
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-2",
+      "title": "使用 `+` 运算符或 `format!` 宏拼接字符串",
+      "lineStart": 109,
+      "lineEnd": 156
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-4",
+      "title": "索引字符串",
+      "lineStart": 157,
+      "lineEnd": 181
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-3",
+      "title": "内部表现",
+      "lineStart": 182,
+      "lineEnd": 204
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h4-4",
+      "title": "字节、标量值和字形簇！天呐！",
+      "lineStart": 205,
+      "lineEnd": 230
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-5",
+      "title": "字符串 slice",
+      "lineStart": 231,
+      "lineEnd": 250
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-6",
+      "title": "遍历字符串的方法",
+      "lineStart": 251,
+      "lineEnd": 295
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+      "anchor": "ch08-02-strings#h3-7",
+      "title": "字符串并不简单",
+      "lineStart": 296,
+      "lineEnd": 301
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h3-1",
+      "title": "新建一个哈希 map",
+      "lineStart": 9,
+      "lineEnd": 42
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h3-2",
+      "title": "哈希 map 和所有权",
+      "lineStart": 43,
+      "lineEnd": 64
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h3-3",
+      "title": "访问哈希 map 中的值",
+      "lineStart": 65,
+      "lineEnd": 106
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h3-4",
+      "title": "更新哈希 map",
+      "lineStart": 107,
+      "lineEnd": 110
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h4-1",
+      "title": "覆盖一个值",
+      "lineStart": 111,
+      "lineEnd": 129
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h4-2",
+      "title": "只在键没有对应值时插入",
+      "lineStart": 130,
+      "lineEnd": 151
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h4-3",
+      "title": "根据旧值更新一个值",
+      "lineStart": 152,
+      "lineEnd": 174
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+      "anchor": "ch04-01-what-is-ownership#h4-1",
+      "title": "变量与数据交互的方式（一）：移动",
+      "lineStart": 109,
+      "lineEnd": 172
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+      "anchor": "ch16-02-message-passing#h3-1",
+      "title": "通道与所有权转移",
+      "lineStart": 90,
+      "lineEnd": 132
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+      "anchor": "ch15-04-rc#h3-1",
+      "title": "使用 `Rc<T>` 共享数据",
+      "lineStart": 13,
+      "lineEnd": 90
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 45
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 9158,
+    "markdownHash": "sha256:489f32a963468c76b15805478a1529f7a9ede22647f656395aae85a3e05953a9",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch08-02-strings.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch08-02-strings.objects.json",
+      "pipeline/knowledge/ch08-03-hash-maps.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch08-02-strings-s1/skill-contract.json",
+      "pipeline/registry/build/ch08-03-hash-maps-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/process-rust-text-and-hashmaps.json",
+    "generation": "task-suite"
+  }
+}

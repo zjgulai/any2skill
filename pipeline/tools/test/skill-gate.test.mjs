@@ -12,7 +12,7 @@
 
 import { describe, it, before } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 
 import { DEFAULT_REPO_ROOT, buildAnchorIndex, sha256Hex } from '../../tools/anchor-index.mjs'
@@ -347,63 +347,54 @@ describe('Skill 契约侧车 · schema 不是摆设', () => {
   })
 })
 
-describe('发布区只接收装配产物（ADR-002 平面隔离）', () => {
-  it('已发布的 SKILL.md 与装配器产出逐字节相同——手改发布区会被本测试抓到', async () => {
-    // ⚠️ 比对基准由夹具重装一份改为**回执指向的暂存产物**（本次修订）。
-    // 原因：夹具是 `antipatterns: []`，而真实装配自 `judge-prompt/v2` 起会纳入跨章反模式
-    // （`crossChapterKept` 0 → 2，常见陷阱段 1 → 3 条）。夹具产出与发布产物于是**按设计**
-    // 不再相同——继续拿夹具比对，这条测试要么永远失败、要么逼着人把发布产物改回单章版本。
-    // 换基准并不放松这条判据：暂存产物由**装配器**写、发布由**构建**写，分属两个步骤，
-    // 手改其中任一个都会让两者分叉；而且比对对象取自**回执**而不是路径约定，
-    // 「这份发布对应哪次装配」可查。
-    const receiptPath = path.join(
-      REPO,
-      'pipeline',
-      'registry',
-      'build',
-      'chapter4-tool-design-principles',
-      'gate-receipt.json',
-    )
-    let receipt
-    try {
-      receipt = JSON.parse(await readFile(receiptPath, 'utf8'))
-    } catch (err) {
-      if (err.code === 'ENOENT') return // 尚未装配时跳过，不假装验过
-      throw err
+describe('发布区只接收装配产物（ADR-002 平面隔离；卡 26 起对活动发布面通用断言）', () => {
+  // 卡 26（ADR-031）把发布面从「旧 30」整体切换为「任务套件 19」。原断言钉死在
+  // chapter4-tool-design-principles 单个旧 slug 上——切换后该路径进入归档，断言指空。
+  // 改为**对 skills/ 活动面逐份通用断言**：无论新旧骨架、无论哪个源，两条不变式都成立：
+  //   ① 发布件哈希 = 构建契约记录的 markdownHash（手改发布区/装配后未重发都会被抓住）；
+  //   ② 发布件本身过门禁一（按契约声明的骨架校验）。
+  // 这比原断言更强：原断言只看一个 slug，现在覆盖发布区每一份。
+  const activeSlugs = async () => (await readdir(path.join(REPO, 'skills'))).sort()
+
+  it('每个发布物：发布件哈希 = 构建契约记录的 markdownHash', async () => {
+    const names = await activeSlugs()
+    assert.ok(names.length > 0, '发布区为空——先跑构建/迁移')
+    for (const slug of names) {
+      const onDisk = await readFile(path.join(REPO, 'skills', slug, 'SKILL.md'), 'utf8')
+      const contract = JSON.parse(
+        await readFile(path.join(REPO, 'pipeline', 'registry', 'build', slug, 'skill-contract.json'), 'utf8'),
+      )
+      assert.equal(contract.name ?? contract.slug, slug, `${slug}：契约 name 与目录名不符`)
+      const want = contract.gateReceipt?.markdownHash
+      assert.ok(want, `${slug}：契约缺少 gateReceipt.markdownHash——无法证明发布件过了门禁`)
+      assert.equal(
+        `sha256:${sha256Hex(onDisk)}`,
+        want,
+        `${slug}：发布件与门禁记录不一致（手改发布区，或装配产物变了而没重新发布）`,
+      )
     }
-    if (!receipt.artifacts?.published || !receipt.artifacts?.staged) return
-
-    const staged = await readFile(path.join(REPO, receipt.artifacts.staged), 'utf8')
-    const onDisk = await readFile(path.join(REPO, receipt.artifacts.published), 'utf8')
-    assert.equal(
-      onDisk,
-      staged,
-      '发布区的内容与装配器产出不一致：要么有人手改了 skills/，要么装配产物变了而没重新发布',
-    )
-
-    // 更强的断言：发布件必须就是**门禁验过的那一份**。比对暂存件只证明「两步产物一致」，
-    // 而哈希对上契约里记录的 `markdownHash` 才证明「发布出去的东西通过了那次门禁」——
-    // 装配器改了但没重跑门禁时，暂存件与发布件仍会一致，只有哈希能暴露它。
-    const contractPath = path.join(REPO, receipt.artifacts.contract)
-    const contract = JSON.parse(await readFile(contractPath, 'utf8'))
-    const want = contract.gateReceipt?.markdownHash
-    assert.ok(want, '契约缺少 gateReceipt.markdownHash——无法证明发布件过了门禁')
-    const got = `sha256:${sha256Hex(onDisk)}`
-    assert.equal(got, want, '发布件的哈希与门禁记录的 markdownHash 不一致')
   })
 
-  it('已发布的 SKILL.md 通过门禁一', async () => {
-    const published = path.join(REPO, 'skills', 'chapter4-tool-design-principles', 'SKILL.md')
-    let onDisk
-    try {
-      onDisk = await readFile(published, 'utf8')
-    } catch (err) {
-      if (err.code === 'ENOENT') return
-      throw err
+  it('已发布的 SKILL.md 逐份通过门禁一（按契约声明的骨架：新旧两套并存期通用）', async () => {
+    const names = await activeSlugs()
+    for (const slug of names) {
+      const onDisk = await readFile(path.join(REPO, 'skills', slug, 'SKILL.md'), 'utf8')
+      const contract = JSON.parse(
+        await readFile(path.join(REPO, 'pipeline', 'registry', 'build', slug, 'skill-contract.json'), 'utf8'),
+      )
+      let v
+      const indexes = []
+      for (const file of new Set((contract.sourceRefs ?? []).map((r) => r.file))) {
+        indexes.push(await buildAnchorIndex(path.join(REPO, file), { repoRoot: REPO }))
+      }
+      if (contract.schemaVersion === 'task-skill-contract/v1') {
+        const { TASK_SKELETON_SECTIONS } = await import('../../tools/task-skill-builder.mjs')
+        v = await verifySkill({ markdown: onDisk, contract, anchorIndexes: indexes, repoRoot: REPO, skeleton: TASK_SKELETON_SECTIONS })
+      } else {
+        // 旧六段发布物（如回归发布区）：缺省骨架。
+        v = await verifySkill({ markdown: onDisk, contract, anchorIndexes: indexes, repoRoot: REPO })
+      }
+      assert.equal(v.passed, true, `${slug}: ${JSON.stringify(v.failures, null, 2)}`)
     }
-    // 条目数不是判据（ADR-021），因此 `sectionCountsExpected` 取**发布文件自己**的实测段数：
-    // 门禁一在这里验的是「这份文件自身是否成立」，不是「它是否等于某次夹具装配」。
-    const v = await verifySkill({ ...doc(onDisk) })
-    assert.equal(v.passed, true, JSON.stringify(v.failures, null, 2))
   })
 })

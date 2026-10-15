@@ -60,6 +60,12 @@ export const FROZEN_PATHS = Object.freeze([
   'pipeline/knowledge/anchor-catalog.rust-book-cn.json',
   'pipeline/knowledge/themes.rust-book-cn.json',
   'pipeline/knowledge/antipatterns.rust-book-cn.objects.json',
+  // 任务技能套件（卡 26/ADR-031）：清单、工作流、迁移记录与归档面——
+  // 新发布面的每个字节都要能被 --verify 证明；旧 30 的归档字节同样在册。
+  'pipeline/curation/**',
+  'pipeline/registry/task-suite-lineage.v1.json',
+  'pipeline/registry/task-suite-status.v1.json',
+  'pipeline/registry/legacy-published/**',
   // 三道门禁的最终报告（比对结论须引用它们的状态）
   'pipeline/registry/gate2-report.json',
   'pipeline/registry/gate2-report.strict.json',

@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "model-rust-domain-types",
+  "name": "model-rust-domain-types",
+  "title": "用结构体、方法与枚举建模 Rust 领域类型",
+  "description": "用 Rust 类型系统建模领域数据与行为：结构体定义与更新语法、方法与关联函数、枚举携带数据、用 Option 消除空值。适用于设计配置/实体/状态类型、为类型组织 impl、以及把散落函数收拢为方法时。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch05-01-defining-structs-s1",
+      "ch05-03-method-syntax-s1",
+      "ch06-01-defining-an-enum-s1"
+    ],
+    "skillIds": [
+      "ch05-01-defining-structs-s1",
+      "ch05-03-method-syntax-s1",
+      "ch06-01-defining-an-enum-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/model-rust-domain-types.json",
+    "sha256": "sha256:4062c87424da4a688a2843874d722efbd376aea212bf3e021eff5f24748aa73d"
+  },
+  "sourceObjects": [
+    "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+    "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+    "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02",
+    "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+    "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+    "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02",
+    "CH05-02-EXAMPLE-STRUCTS-H2-1-ENGINEERINGRULE-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-1-ANTIPATTERN-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-2-CONCEPT-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-2-ENGINEERINGRULE-02",
+    "CH05-02-EXAMPLE-STRUCTS-H3-3-CONCEPT-01",
+    "CH05-02-EXAMPLE-STRUCTS-H3-3-HEURISTIC-02",
+    "CH05-03-METHOD-SYNTAX-H2-1-ENGINEERINGRULE-01",
+    "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-01",
+    "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-02",
+    "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-01",
+    "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-02",
+    "CH05-03-METHOD-SYNTAX-H3-3-CONCEPT-01",
+    "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
+    "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01",
+    "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-01",
+    "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-02",
+    "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-01",
+    "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-02",
+    "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-01",
+    "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T04-02",
+    "AP-SYNTH-T04-01",
+    "AP-SYNTH-T11-05",
+    "AP-SYNTH-T04-03"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h2-1",
+      "title": "定义并实例化结构体",
+      "lineStart": 1,
+      "lineEnd": 40
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-1",
+      "title": "变量与字段同名时的字段初始化简写语法",
+      "lineStart": 41,
+      "lineEnd": 52
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-2",
+      "title": "使用结构体更新语法从其他实例创建实例",
+      "lineStart": 53,
+      "lineEnd": 76
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-3",
+      "title": "使用没有命名字段的元组结构体来创建不同的类型",
+      "lineStart": 77,
+      "lineEnd": 88
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+      "anchor": "ch05-01-defining-structs#h3-4",
+      "title": "没有任何字段的类单元结构体",
+      "lineStart": 89,
+      "lineEnd": 175
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h2-1",
+      "title": "一个使用结构体的示例程序",
+      "lineStart": 1,
+      "lineEnd": 30
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h3-1",
+      "title": "使用元组重构",
+      "lineStart": 31,
+      "lineEnd": 46
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h3-2",
+      "title": "使用结构体重构：赋予更多意义",
+      "lineStart": 47,
+      "lineEnd": 64
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-02-example-structs.md",
+      "anchor": "ch05-02-example-structs#h3-3",
+      "title": "通过派生 trait 增加实用功能",
+      "lineStart": 65,
+      "lineEnd": 155
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h2-1",
+      "title": "方法语法",
+      "lineStart": 1,
+      "lineEnd": 4
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-1",
+      "title": "定义方法",
+      "lineStart": 5,
+      "lineEnd": 68
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-2",
+      "title": "带有更多参数的方法",
+      "lineStart": 69,
+      "lineEnd": 99
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-3",
+      "title": "关联函数",
+      "lineStart": 100,
+      "lineEnd": 113
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+      "anchor": "ch05-03-method-syntax#h3-4",
+      "title": "多个 `impl` 块",
+      "lineStart": 114,
+      "lineEnd": 125
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+      "anchor": "ch06-01-defining-an-enum#h2-1",
+      "title": "定义枚举",
+      "lineStart": 1,
+      "lineEnd": 17
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+      "anchor": "ch06-01-defining-an-enum#h3-1",
+      "title": "枚举值",
+      "lineStart": 18,
+      "lineEnd": 193
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+      "anchor": "ch06-01-defining-an-enum#h3-2",
+      "title": "`Option` 枚举和其相对于空值的优势",
+      "lineStart": 194,
+      "lineEnd": 266
+    },
+    {
+      "file": "sources/rust-book-cn/book/appendix-03-derivable-traits.md",
+      "anchor": "appendix-03-derivable-traits#h2-1",
+      "title": "附录 C：可派生的 trait",
+      "lineStart": 1,
+      "lineEnd": 20
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-02-match.md",
+      "anchor": "ch06-02-match#h3-3",
+      "title": "匹配是穷尽的",
+      "lineStart": 91,
+      "lineEnd": 106
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 41
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 8788,
+    "markdownHash": "sha256:e0fddc660ada865226fdcd5127bfea41405bd6a1441e9f5888bdc7d5324be382",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch05-01-defining-structs.objects.json",
+      "pipeline/knowledge/ch05-02-example-structs.objects.json",
+      "pipeline/knowledge/ch05-03-method-syntax.objects.json",
+      "pipeline/knowledge/ch06-01-defining-an-enum.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch05-01-defining-structs-s1/skill-contract.json",
+      "pipeline/registry/build/ch05-03-method-syntax-s1/skill-contract.json",
+      "pipeline/registry/build/ch06-01-defining-an-enum-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/model-rust-domain-types.json",
+    "generation": "task-suite"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "match-rust-variants",
+  "name": "match-rust-variants",
+  "title": "用模式匹配处理 Rust 变体与可反驳模式",
+  "description": "用 Rust 的 match 与 if let 处理枚举变体：穷举匹配、通配分支顺序、绑定规则与可反驳/不可反驳模式的位置约束。适用于写命令解析、状态分发、只关心单个变体的解构，以及排查模式位置相关的编译错误时。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch06-02-match-s1",
+      "ch18-02-refutability-s1"
+    ],
+    "skillIds": [
+      "ch06-02-match-s1",
+      "ch18-02-refutability-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/match-rust-variants.json",
+    "sha256": "sha256:fc70158c7c4ea7b628baba76fc2fe76d22912e74961f00b20b149120321111f4"
+  },
+  "sourceObjects": [
+    "CH06-02-MATCH-H2-1-CONCEPT-01",
+    "CH06-02-MATCH-H2-1-ENGINEERINGRULE-02",
+    "CH06-02-MATCH-H3-1-CONCEPT-01",
+    "CH06-02-MATCH-H3-1-CONCEPT-02",
+    "CH06-02-MATCH-H3-2-CONCEPT-01",
+    "CH06-02-MATCH-H4-1-ENGINEERINGRULE-01",
+    "CH06-02-MATCH-H4-1-ENGINEERINGRULE-02",
+    "CH06-02-MATCH-H3-3-ENGINEERINGRULE-01",
+    "CH06-02-MATCH-H3-4-ENGINEERINGRULE-01",
+    "CH06-02-MATCH-H3-4-CONCEPT-02",
+    "CH06-03-IF-LET-H2-1-CONCEPT-01",
+    "CH06-03-IF-LET-H2-1-HEURISTIC-02",
+    "CH06-03-IF-LET-H2-2-HEURISTIC-01",
+    "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
+    "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T04-03",
+    "AP-SYNTH-T04-04",
+    "AP-SYNTH-T04-05",
+    "AP-SYNTH-T04-06"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch06-02-match.md",
+      "anchor": "ch06-02-match#h2-1",
+      "title": "`match` 控制流运算符",
+      "lineStart": 1,
+      "lineEnd": 28
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-02-match.md",
+      "anchor": "ch06-02-match#h3-1",
+      "title": "绑定值的模式",
+      "lineStart": 29,
+      "lineEnd": 50
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-02-match.md",
+      "anchor": "ch06-02-match#h3-2",
+      "title": "匹配 `Option<T>`",
+      "lineStart": 51,
+      "lineEnd": 64
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-02-match.md",
+      "anchor": "ch06-02-match#h4-1",
+      "title": "匹配 `Some(T)`",
+      "lineStart": 65,
+      "lineEnd": 90
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-02-match.md",
+      "anchor": "ch06-02-match#h3-3",
+      "title": "匹配是穷尽的",
+      "lineStart": 91,
+      "lineEnd": 106
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-02-match.md",
+      "anchor": "ch06-02-match#h3-4",
+      "title": "通配模式和 `_` 占位符",
+      "lineStart": 107,
+      "lineEnd": 141
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+      "anchor": "ch06-03-if-let#h2-1",
+      "title": "`if let` 简单控制流",
+      "lineStart": 1,
+      "lineEnd": 80
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+      "anchor": "ch06-03-if-let#h2-2",
+      "title": "总结",
+      "lineStart": 81,
+      "lineEnd": 88
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+      "anchor": "ch18-02-refutability#h2-1",
+      "title": "Refutability（可反驳性）: 模式是否会匹配失效",
+      "lineStart": 1,
+      "lineEnd": 67
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+      "anchor": "ch06-01-defining-an-enum#h3-2",
+      "title": "`Option` 枚举和其相对于空值的优势",
+      "lineStart": 194,
+      "lineEnd": 266
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+      "anchor": "ch18-01-all-the-places-for-patterns#h3-1",
+      "title": "`match` 分支",
+      "lineStart": 5,
+      "lineEnd": 20
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch18-01-all-the-places-for-patterns.md",
+      "anchor": "ch18-01-all-the-places-for-patterns#h3-2",
+      "title": "`if let` 条件表达式",
+      "lineStart": 21,
+      "lineEnd": 62
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 27
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 6594,
+    "markdownHash": "sha256:b321f611b833ae2e405778d79484ecc82a504dedf0d37a654f75c0faeb3d757d",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch06-02-match.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch06-02-match.objects.json",
+      "pipeline/knowledge/ch06-03-if-let.objects.json",
+      "pipeline/knowledge/ch18-02-refutability.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch06-02-match-s1/skill-contract.json",
+      "pipeline/registry/build/ch18-02-refutability-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/match-rust-variants.json",
+    "generation": "task-suite"
+  }
+}

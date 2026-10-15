@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "compose-rust-closures",
+  "name": "compose-rust-closures",
+  "title": "创建、约束并缓存 Rust 闭包",
+  "description": "正确使用 Rust 闭包：语法与类型推断、三种捕获方式（Fn/FnMut/FnOnce）、把闭包存进结构体、用闭包与 HashMap 实现带缓存的惰性求值。适用于惰性初始化、回调存储、记忆化缓存等场景。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch13-01-closures-s1",
+      "ch13-01-closures-s2"
+    ],
+    "skillIds": [
+      "ch13-01-closures-s1",
+      "ch13-01-closures-s2"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/compose-rust-closures.json",
+    "sha256": "sha256:c7dc0f2dbc27fb9374921d11f95491ae57985b99d93980b611a3eada98d6a8fb"
+  },
+  "sourceObjects": [
+    "CH13-01-CLOSURES-H2-1-CONCEPT-01",
+    "CH13-01-CLOSURES-H3-1-DECISIONMODEL-01",
+    "CH13-01-CLOSURES-H3-1-ENGINEERINGRULE-02",
+    "CH13-01-CLOSURES-H4-1-ANTIPATTERN-01",
+    "CH13-01-CLOSURES-H4-2-ENGINEERINGRULE-01",
+    "CH13-01-CLOSURES-H4-2-ANTIPATTERN-02",
+    "CH13-01-CLOSURES-H3-2-ENGINEERINGRULE-01",
+    "CH13-01-CLOSURES-H3-3-ENGINEERINGRULE-01",
+    "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-01",
+    "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-02",
+    "CH13-01-CLOSURES-H3-5-CONCEPT-01",
+    "CH13-01-CLOSURES-H3-5-HEURISTIC-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T09-02",
+    "AP-SYNTH-T09-03"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h2-1",
+      "title": "闭包：可以捕获环境的匿名函数",
+      "lineStart": 1,
+      "lineEnd": 4
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h3-1",
+      "title": "使用闭包创建行为的抽象",
+      "lineStart": 5,
+      "lineEnd": 97
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h4-1",
+      "title": "使用函数重构",
+      "lineStart": 98,
+      "lineEnd": 145
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h4-2",
+      "title": "重构使用闭包储存代码",
+      "lineStart": 146,
+      "lineEnd": 214
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h3-2",
+      "title": "闭包类型推断和标注",
+      "lineStart": 215,
+      "lineEnd": 279
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h3-3",
+      "title": "使用带有泛型和 `Fn` trait 的闭包",
+      "lineStart": 280,
+      "lineEnd": 429
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h3-4",
+      "title": "`Cacher` 实现的限制",
+      "lineStart": 430,
+      "lineEnd": 463
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+      "anchor": "ch13-01-closures#h3-5",
+      "title": "闭包会捕获其环境",
+      "lineStart": 464,
+      "lineEnd": 568
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 23
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 6224,
+    "markdownHash": "sha256:e4ca6a9b76491faf31cfe757880d297aee28bc6535943d182ed656d23abe3ca1",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch13-01-closures.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch13-01-closures.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch13-01-closures-s1/skill-contract.json",
+      "pipeline/registry/build/ch13-01-closures-s2/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/compose-rust-closures.json",
+    "generation": "task-suite"
+  }
+}

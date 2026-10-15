@@ -29,35 +29,38 @@ Any content → executable Agent Skills. MVP pipeline.
 （门禁三：2 passed / 7 low-utility / 0 确认退化）。全链结论与实测规律（陷阱门槛、准入≠效用、
 五处固定路径漏网）见 [`docs/specs/03-second-source-report.md`](docs/specs/03-second-source-report.md)。
 
-> ### 盘上已有 30 个已发布的 skill
+> ### 盘上已有 19 个已发布的 skill（岗位技能套件）
 >
-> `find . -path ./node_modules -prune -o -name "SKILL.md" -print` → `skills/` 下 30 个：
-> `chapter4-tool-design-principles`（首个，卡 10/ADR-019）、`chapter4-single-tool-design`
-> （环 3 端到端首件，卡 11），卡 16「打通发布门径」放行的 6 个中的 5 个：
-> `chapter10-s3` / `chapter1-s1` / `chapter5-s3` / `chapter2-s3` / `chapter9-s2`
-> （其中三个带 `references/` 溢出文件——ADR-004 溢出阀的首批产物），以及第二源
-> （rust-book-cn）的 **23 个**：首发 2（卡 20）+ 第二波 3（卡 21）+ 跨章合成解锁 4（卡 22）
-> + 第三波 7（卡 23，其中 1 个被拒下架）+ 第四波 7（卡 24：智能指针/并发/测试/trait 对象）。
-> 第二源门禁三（卡 24 全量 23 个）：**8 passed / 15 low-utility / 0 拒绝 / 0 确认退化**——
-> 此前 `ch13-02-iterators-s1` 因 negative transfer 复现被下架
-> （`pipeline/registry/rejected/`，全项目第二个确认拒绝）。
+> `find ./skills -name "SKILL.md"` → **19 个任务型技能**（8 个语言中立的 Agent 工程工作流 +
+> 11 个显式 Rust 实现工作流），按工作阶段导航见
+> [`docs/guides/agent-full-stack-skill-suite.md`](docs/guides/agent-full-stack-skill-suite.md)：
+> `define-agent-boundaries` / `secure-agent-actions` / `manage-agent-context` /
+> `design-agent-tools` / `validate-generated-artifacts` / `coordinate-agent-work` /
+> `verify-agent-completion` / `update-agent-instructions`（Agent 工程）；
+> `diagnose-rust-borrows` / `model-rust-domain-types` / `match-rust-variants` /
+> `process-rust-text-and-hashmaps` / `design-rust-abstractions` / `compose-rust-closures` /
+> `manage-rust-memory-and-mutability` / `coordinate-rust-threads` / `structure-rust-cli` /
+> `run-rust-tests` / `implement-rust-state-pattern`（Rust 实现）。
 >
-> **低效用披露**（[`ADR-030`](docs/adr/ADR-030-low-utility-governance.md)）：发布区 30 个里
-> **18 个 low-utility**——含义是**在本测量设计下未测出效用增量**（无改进也无确认退化），
-> 不是「无用」，也不是「没测过」。完整分层见
-> [`pipeline/registry/tiers.json`](pipeline/registry/tiers.json)（12 passed / 18 low-utility / 1 rejected）。
-> 形状分析（≈87% 任务连基座模型都能过）与头差探针（v2 更难任务下 0 改进）偏支持
-> 「源内容在模型训练分布内、常规任务无头差」的解释——见
-> [`卡 25`](docs/tickets/25-low-utility-governance.md)。重测须有因（正文修订 / 仪器立版 /
-> 用户显式要求），禁止「换样本直到过」。
+> **重组说明**（[`ADR-031`](docs/adr/ADR-031-task-skill-suite-reorganization.md)、
+> [`卡 26`](docs/tickets/26-task-skill-suite.md)）：30 个章节编号导出的旧发布物已**逐字节归档**至
+> `pipeline/registry/legacy-published/chapter-suite-v1/skills/`（32 文件哈希复验 0 不一致），
+> 30→19 的映射与逐文件哈希在
+> [`pipeline/registry/task-suite-lineage.v1.json`](pipeline/registry/task-suite-lineage.v1.json)；
+> 两个 ch4 重复技能在 `design-agent-tools` 中合并去重（零增量对象），边界决策全部落在
+> [`pipeline/curation/task-skill-suite.v1.json`](pipeline/curation/task-skill-suite.v1.json)。
 >
-> ⚠ **`chapter3-s1` 已被门禁三拒绝并下架**（`pipeline/registry/rejected/chapter3-s1/`，
-> 移动而非删除）：全量效用 A/B 检出**首个确认的 negative transfer**（任务 t2 复跑复现：
-> 无 skill 过、有 skill 败），按 ADR-006 硬约束执行拒绝。发布区 8 → 7。
-> 8 个发布物的门禁三判定（4 通过 / 3 低效用 / 1 拒绝）与门禁二登记表见
-> [`卡 17`](docs/tickets/17-gates-cover-new-publishes.md)。
+> **证据状态**（[`task-suite-status.v1.json`](pipeline/registry/task-suite-status.v1.json)）：
+> 19 个全部通过结构门禁（门禁一）；**效用评估 = unassessed-after-recomposition**——
+> 重组使旧的效用测量不再对应这批名称/描述/正文（[ADR-030](docs/adr/ADR-030-low-utility-governance.md)
+> 的证据边界），**不聚合、不继承**旧 passed/low-utility。付费重测由用户显式发起；
+> 重测前按「结构合规、效用未评」引用。旧套件的测量记录（`tiers.json`、门禁二/三报告、
+> 冻结文件）原样保留为历史证据。
 >
-> 放行的三件依据（见 [`卡 16`](docs/tickets/16-publish-path.md)）：其余章配套代码
+> ⚠ 两个被门禁三确认拒绝的旧技能保持隔离（`pipeline/registry/rejected/`）：`chapter3-s1`
+> 与 `ch13-02-iterators-s1`——内容不随重组复活。
+>
+> 旧套件放行的三件历史依据（见 [`卡 16`](docs/tickets/16-publish-path.md)）：其余章配套代码
 > **轻镜像**（README 100% 覆盖）、溢出阀实现、体积阈值**对齐原书实测上限**（
 > [`ADR-028`](docs/adr/ADR-028-size-limit-aligned-to-source.md)）。
 >

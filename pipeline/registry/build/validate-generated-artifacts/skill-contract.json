@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "validate-generated-artifacts",
+  "name": "validate-generated-artifacts",
+  "title": "渲染、验证并安全交付生成产物",
+  "description": "对 Agent 生成的代码、界面与数据产物做渲染验证与安全交付：渲染后审核、失败上报自修复、声明式 UI 优先、确定性检查先行。适用于 Agent 生成 HTML/SQL/表单等产物需要被真实执行或渲染、或生成产物需要进入交付流程时。",
+  "sourceKey": "ai-agent-book-zh",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "chapter5-s3"
+    ],
+    "skillIds": [
+      "chapter5-s3"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/validate-generated-artifacts.json",
+    "sha256": "sha256:c1786dfcf2eec0c12d772dcfd2769e863e1bd6474c224e02e43dcd5b06957c9c"
+  },
+  "sourceObjects": [
+    "CHAPTER5-H3-1-CONCEPT-02",
+    "CHAPTER5-H2-2-CONCEPT-01",
+    "CHAPTER5-H2-2-CONCEPT-02",
+    "CHAPTER5-H3-10-CONCEPT-01",
+    "CHAPTER5-H3-10-ENGINEERINGRULE-02",
+    "CHAPTER5-H3-12-ENGINEERINGRULE-02",
+    "CHAPTER5-H3-13-CONCEPT-01",
+    "CHAPTER5-H3-13-ENGINEERINGRULE-02",
+    "CHAPTER5-H3-14-CONCEPT-01",
+    "CHAPTER5-H3-15-ENGINEERINGRULE-01",
+    "CHAPTER5-H3-15-ENGINEERINGRULE-02",
+    "CHAPTER5-H2-3-CONCEPT-01",
+    "CHAPTER5-H2-4-CONCEPT-01",
+    "CHAPTER5-H2-4-CONCEPT-02",
+    "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+    "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [],
+  "sourceRefs": [
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-1",
+      "title": "Coding 是 Agent 的基础能力",
+      "lineStart": 15,
+      "lineEnd": 57
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h2-2",
+      "title": "代码：通用 Agent 的元能力",
+      "lineStart": 351,
+      "lineEnd": 365
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-10",
+      "title": "代码作为思考工具",
+      "lineStart": 366,
+      "lineEnd": 405
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-12",
+      "title": "代码驱动的多媒体生成",
+      "lineStart": 502,
+      "lineEnd": 588
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-13",
+      "title": "代码作为系统适配器",
+      "lineStart": 589,
+      "lineEnd": 630
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-14",
+      "title": "代码作为生成式 UI",
+      "lineStart": 631,
+      "lineEnd": 727
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h3-15",
+      "title": "代码创造代码：Agent 自举",
+      "lineStart": 728,
+      "lineEnd": 774
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h2-3",
+      "title": "本章小结",
+      "lineStart": 775,
+      "lineEnd": 793
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/chapter5.md",
+      "anchor": "chapter5#h2-4",
+      "title": "思考题",
+      "lineStart": 794,
+      "lineEnd": 805
+    },
+    {
+      "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "anchor": "reference-answers#h2-5",
+      "title": "第五章 Coding Agent 与通用 Agent",
+      "lineStart": 149,
+      "lineEnd": 189
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 20
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 5340,
+    "markdownHash": "sha256:e9bcde63d0c32f2a1ae362de06c06e2529a51e76bdc55a61c6d5c04dbe994761",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "ai-agent-book-zh",
+    "sourceFile": "sources/ai-agent-book-zh/book/chapter5.md",
+    "objectsFiles": [
+      "pipeline/knowledge/chapter5.objects.json",
+      "pipeline/knowledge/reference-answers.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/chapter5-s3/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/validate-generated-artifacts.json",
+    "generation": "task-suite"
+  }
+}

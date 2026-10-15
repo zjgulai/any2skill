@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "task-skill-contract/v1",
+  "skillId": "coordinate-rust-threads",
+  "name": "coordinate-rust-threads",
+  "title": "用线程、通道与 Arc<Mutex> 协调并发",
+  "description": "Rust 并发编排：spawn/join 任务管理、move 闭包的所有权转移、mpsc 通道传递数据、Arc<Mutex> 共享状态与死锁防护。适用于把任务并行化、在通道与共享状态两种风格间选型、以及排查 Rc 跨线程报错时。",
+  "sourceKey": "rust-book-cn",
+  "suite": {
+    "manifestFile": "pipeline/curation/task-skill-suite.v1.json",
+    "manifestSha256": "sha256:41c1e67701e0d3086816ef8c869a1a13eb02cce94b02812f770020ebd29ef820"
+  },
+  "legacy": {
+    "slugs": [
+      "ch16-01-threads-s1",
+      "ch16-02-message-passing-s1",
+      "ch16-03-shared-state-s1"
+    ],
+    "skillIds": [
+      "ch16-01-threads-s1",
+      "ch16-02-message-passing-s1",
+      "ch16-03-shared-state-s1"
+    ]
+  },
+  "workflow": {
+    "file": "pipeline/curation/workflows/coordinate-rust-threads.json",
+    "sha256": "sha256:64a19e308fe69ed4c82958593447da0f84785256e621836abf63ca6385db5adc"
+  },
+  "sourceObjects": [
+    "CH16-01-THREADS-H2-1-CONCEPT-01",
+    "CH16-01-THREADS-H2-1-ENGINEERINGRULE-02",
+    "CH16-01-THREADS-H3-1-CONCEPT-01",
+    "CH16-01-THREADS-H3-1-ENGINEERINGRULE-02",
+    "CH16-01-THREADS-H4-1-CONCEPT-01",
+    "CH16-01-THREADS-H4-1-ENGINEERINGRULE-02",
+    "CH16-01-THREADS-H3-2-CONCEPT-01",
+    "CH16-01-THREADS-H3-2-ENGINEERINGRULE-02",
+    "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-01",
+    "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-02",
+    "CH16-02-MESSAGE-PASSING-H3-1-ENGINEERINGRULE-01",
+    "CH16-02-MESSAGE-PASSING-H3-2-ENGINEERINGRULE-01",
+    "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-01",
+    "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-02",
+    "CH16-03-SHARED-STATE-H2-1-CONCEPT-01",
+    "CH16-03-SHARED-STATE-H3-1-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H3-1-ANTIPATTERN-02",
+    "CH16-03-SHARED-STATE-H3-2-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H3-2-CONCEPT-02",
+    "CH16-03-SHARED-STATE-H4-1-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H4-2-ENGINEERINGRULE-01",
+    "CH16-03-SHARED-STATE-H4-3-CONCEPT-01",
+    "CH16-03-SHARED-STATE-H3-3-CONCEPT-01",
+    "CH16-03-SHARED-STATE-H3-3-ENGINEERINGRULE-02"
+  ],
+  "crossChapterObjects": [
+    "AP-SYNTH-T07-01",
+    "AP-SYNTH-T07-02",
+    "AP-SYNTH-T09-08",
+    "AP-SYNTH-T01-01",
+    "AP-SYNTH-T07-03",
+    "AP-SYNTH-T06-08"
+  ],
+  "sourceRefs": [
+    {
+      "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+      "anchor": "ch16-01-threads#h2-1",
+      "title": "使用线程同时运行代码",
+      "lineStart": 1,
+      "lineEnd": 24
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+      "anchor": "ch16-01-threads#h3-1",
+      "title": "使用 `spawn` 创建新线程",
+      "lineStart": 25,
+      "lineEnd": 69
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+      "anchor": "ch16-01-threads#h4-1",
+      "title": "使用 `join` 等待所有线程结束",
+      "lineStart": 70,
+      "lineEnd": 165
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+      "anchor": "ch16-01-threads#h3-2",
+      "title": "线程与 `move` 闭包",
+      "lineStart": 166,
+      "lineEnd": 286
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+      "anchor": "ch16-02-message-passing#h2-1",
+      "title": "使用消息传递在线程间传送数据",
+      "lineStart": 1,
+      "lineEnd": 89
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+      "anchor": "ch16-02-message-passing#h3-1",
+      "title": "通道与所有权转移",
+      "lineStart": 90,
+      "lineEnd": 132
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+      "anchor": "ch16-02-message-passing#h3-2",
+      "title": "发送多个值并观察接收者的等待",
+      "lineStart": 133,
+      "lineEnd": 183
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+      "anchor": "ch16-02-message-passing#h3-3",
+      "title": "通过克隆发送者来创建多个生产者",
+      "lineStart": 184,
+      "lineEnd": 257
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h2-1",
+      "title": "共享状态并发",
+      "lineStart": 1,
+      "lineEnd": 10
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h3-1",
+      "title": "互斥器一次只允许一个线程访问数据",
+      "lineStart": 11,
+      "lineEnd": 23
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h3-2",
+      "title": "`Mutex<T>`的 API",
+      "lineStart": 24,
+      "lineEnd": 56
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h4-1",
+      "title": "在线程间共享 `Mutex<T>`",
+      "lineStart": 57,
+      "lineEnd": 111
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h4-2",
+      "title": "多线程和多所有权",
+      "lineStart": 112,
+      "lineEnd": 168
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h4-3",
+      "title": "原子引用计数 `Arc<T>`",
+      "lineStart": 169,
+      "lineEnd": 214
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "anchor": "ch16-03-shared-state#h3-3",
+      "title": "`RefCell<T>`/`Rc<T>` 与 `Mutex<T>`/`Arc<T>` 的相似性",
+      "lineStart": 215,
+      "lineEnd": 222
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+      "anchor": "ch04-01-what-is-ownership#h4-1",
+      "title": "变量与数据交互的方式（一）：移动",
+      "lineStart": 109,
+      "lineEnd": 172
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+      "anchor": "ch08-03-hash-maps#h3-2",
+      "title": "哈希 map 和所有权",
+      "lineStart": 43,
+      "lineEnd": 64
+    },
+    {
+      "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+      "anchor": "ch15-04-rc#h3-1",
+      "title": "使用 `Rc<T>` 共享数据",
+      "lineStart": 13,
+      "lineEnd": 90
+    }
+  ],
+  "sectionCounts": {
+    "whenToUse": 4,
+    "inputs": 3,
+    "steps": 6,
+    "outputs": 3,
+    "checks": 7,
+    "evidence": 39
+  },
+  "riskFlags": [],
+  "gapCodes": [],
+  "gaps": [],
+  "evidenceGrade": "E2-derived",
+  "freshness": {
+    "state": "fresh",
+    "asOf": "1970-01-01T00:00:00.000Z"
+  },
+  "gateReceipt": {
+    "passed": true,
+    "reasonCodes": [],
+    "bytes": 8873,
+    "markdownHash": "sha256:50b0ff9eb419af422b2cf43fa34254cad3a43a60bf08965c3fc7ba2343f55586",
+    "checkedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "provenance": {
+    "sourceKey": "rust-book-cn",
+    "sourceFile": "sources/rust-book-cn/book/ch16-01-threads.md",
+    "objectsFiles": [
+      "pipeline/knowledge/ch16-01-threads.objects.json",
+      "pipeline/knowledge/ch16-02-message-passing.objects.json",
+      "pipeline/knowledge/ch16-03-shared-state.objects.json"
+    ],
+    "legacyContracts": [
+      "pipeline/registry/build/ch16-01-threads-s1/skill-contract.json",
+      "pipeline/registry/build/ch16-02-message-passing-s1/skill-contract.json",
+      "pipeline/registry/build/ch16-03-shared-state-s1/skill-contract.json"
+    ],
+    "suiteManifest": "pipeline/curation/task-skill-suite.v1.json",
+    "workflowFile": "pipeline/curation/workflows/coordinate-rust-threads.json",
+    "generation": "task-suite"
+  }
+}
