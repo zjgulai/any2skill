@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "tiers/v1",
+  "createdAt": "2026-10-15T06:55:04.380Z",
+  "note": "发布物分层记录（ADR-030）。tier 取值与 ADR-006/027 的门禁三判定一致：passed / low-utility / rejected（rejected 不在发布区）。本文件为**派生记录**——从各源门禁三报告生成，不手改；重生成命令见 regenerateBy。",
+  "regenerateBy": "node -e (见 docs/adr/ADR-030 与卡 25 的核实方式；重生成后须更新本文件并随最近一次提交落盘)",
+  "skills": [
+    {
+      "slug": "chapter1-s1",
+      "source": "ai-agent-book-zh",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 2,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 1,
+        "pendingReruns": 0,
+        "invalidTasks": 2
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "chapter10-s3",
+      "source": "ai-agent-book-zh",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 4
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "chapter2-s3",
+      "source": "ai-agent-book-zh",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "chapter3-s1",
+      "source": "ai-agent-book-zh",
+      "tier": "rejected",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 1,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "chapter4-single-tool-design",
+      "source": "ai-agent-book-zh",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 1,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "chapter4-tool-design-principles",
+      "source": "ai-agent-book-zh",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "chapter5-s3",
+      "source": "ai-agent-book-zh",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 3
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "chapter9-s2",
+      "source": "ai-agent-book-zh",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.json",
+      "reportSha256": "sha256:c7aaf07ccc6f60e6163be90d41eb0f3f99beae27be1f83b547f5402c84547fc5"
+    },
+    {
+      "slug": "ch04-02-references-and-borrowing-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch04-03-slices-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch05-01-defining-structs-s1",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 2,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch05-03-method-syntax-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch06-01-defining-an-enum-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch06-02-match-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch08-02-strings-s1",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 2,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch08-03-hash-maps-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 1,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch10-01-syntax-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch10-02-traits-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch10-03-lifetime-syntax-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch11-02-running-tests-s1",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch12-03-improving-error-handling-and-modularity-s1",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch13-01-closures-s1",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 3
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch13-01-closures-s2",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch15-01-box-s2",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 2,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch15-03-drop-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 1,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch15-05-interior-mutability-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 3
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch16-01-threads-s1",
+      "source": "rust-book-cn",
+      "tier": "passed",
+      "counts": {
+        "tasks": 6,
+        "improvements": 1,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch16-02-message-passing-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 0
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch16-03-shared-state-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 2
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch17-03-oo-design-patterns-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 1,
+        "pendingReruns": 0,
+        "invalidTasks": 1
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    },
+    {
+      "slug": "ch18-02-refutability-s1",
+      "source": "rust-book-cn",
+      "tier": "low-utility",
+      "counts": {
+        "tasks": 6,
+        "improvements": 0,
+        "confirmedDegradations": 0,
+        "noiseDegradations": 0,
+        "pendingReruns": 0,
+        "invalidTasks": 3
+      },
+      "reportFile": "pipeline/registry/gate3-report.rust-book-cn.json",
+      "reportSha256": "sha256:fbe9f7b5dbe9cd8029181486e29e022432c52def7266ed08a9e2f119f8078d19"
+    }
+  ]
+}

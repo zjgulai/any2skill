@@ -39,8 +39,17 @@ Any content → executable Agent Skills. MVP pipeline.
 > （rust-book-cn）的 **23 个**：首发 2（卡 20）+ 第二波 3（卡 21）+ 跨章合成解锁 4（卡 22）
 > + 第三波 7（卡 23，其中 1 个被拒下架）+ 第四波 7（卡 24：智能指针/并发/测试/trait 对象）。
 > 第二源门禁三（卡 24 全量 23 个）：**8 passed / 15 low-utility / 0 拒绝 / 0 确认退化**——
-> low-utility 是「无改进也无退化」的如实标记，不拒绝；此前 `ch13-02-iterators-s1` 因
-> negative transfer 复现被下架（`pipeline/registry/rejected/`，全项目第二个确认拒绝）。
+> 此前 `ch13-02-iterators-s1` 因 negative transfer 复现被下架
+> （`pipeline/registry/rejected/`，全项目第二个确认拒绝）。
+>
+> **低效用披露**（[`ADR-030`](docs/adr/ADR-030-low-utility-governance.md)）：发布区 30 个里
+> **18 个 low-utility**——含义是**在本测量设计下未测出效用增量**（无改进也无确认退化），
+> 不是「无用」，也不是「没测过」。完整分层见
+> [`pipeline/registry/tiers.json`](pipeline/registry/tiers.json)（12 passed / 18 low-utility / 1 rejected）。
+> 形状分析（≈87% 任务连基座模型都能过）与头差探针（v2 更难任务下 0 改进）偏支持
+> 「源内容在模型训练分布内、常规任务无头差」的解释——见
+> [`卡 25`](docs/tickets/25-low-utility-governance.md)。重测须有因（正文修订 / 仪器立版 /
+> 用户显式要求），禁止「换样本直到过」。
 >
 > ⚠ **`chapter3-s1` 已被门禁三拒绝并下架**（`pipeline/registry/rejected/chapter3-s1/`，
 > 移动而非删除）：全量效用 A/B 检出**首个确认的 negative transfer**（任务 t2 复跑复现：
