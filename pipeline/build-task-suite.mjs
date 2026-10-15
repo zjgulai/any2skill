@@ -26,7 +26,7 @@ import path from 'node:path'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 
-import { DEFAULT_REPO_ROOT, buildAnchorIndex } from './tools/anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, buildAnchorIndex, sourceBookRoot } from './tools/anchor-index.mjs'
 import { SIZE_LIMIT_BYTES } from './tools/skill-builder.mjs'
 import { verifySkill } from './tools/verify-skill.mjs'
 import { assertSlug, EXIT } from './build-skill.mjs'
@@ -97,11 +97,20 @@ export async function buildMember(repoRoot, member, suite, objectIndex) {
     anchorIndexes.push(await buildAnchorIndex(path.join(repoRoot, file), { repoRoot }))
   }
 
+  // legacy 章节契约（本仓重组路径）：逐份读取进 provenance。
+  // **新书直接策展**（卡 29）：legacySlugs 为空时没有旧契约可读——sourceFile 从
+  // owned 对象的所在章派生（对象装载按 fileKey 排序，取第一份，确定性）。
   const legacyContracts = []
-  for (const slug of member.legacySlugs) {
+  for (const slug of member.legacySlugs ?? []) {
     const rel = path.join('pipeline', 'registry', 'build', slug, 'skill-contract.json')
     legacyContracts.push({ slug, rel, doc: await readJson(path.join(repoRoot, rel), `旧契约 ${slug}`) })
   }
+  const derivedSourceFile =
+    legacyContracts.length > 0
+      ? legacyContracts[0].doc.provenance?.sourceFile ?? null
+      : objects.length > 0
+        ? path.join(sourceBookRoot(member.sourceKey), `${objects[0].__fileKey}.md`)
+        : null
 
   const contract = {
     schemaVersion: TASK_SKILL_CONTRACT_SCHEMA_VERSION,
@@ -111,7 +120,7 @@ export async function buildMember(repoRoot, member, suite, objectIndex) {
     description: workflow.description,
     sourceKey: member.sourceKey,
     suite: { manifestFile: path.relative(repoRoot, suite.abs), manifestSha256: suite.sha256 },
-    legacy: { slugs: member.legacySlugs, skillIds: legacyContracts.map((l) => l.doc.skillId) },
+    legacy: { slugs: member.legacySlugs ?? [], skillIds: legacyContracts.map((l) => l.doc.skillId) },
     workflow: { file: member.workflowFile, sha256: workflowSha },
     sourceObjects: member.primaryObjects,
     crossChapterObjects: member.crossChapterObjects ?? [],
@@ -127,7 +136,7 @@ export async function buildMember(repoRoot, member, suite, objectIndex) {
     gateReceipt: null,
     provenance: {
       sourceKey: member.sourceKey,
-      sourceFile: legacyContracts[0].doc.provenance?.sourceFile ?? null,
+      sourceFile: derivedSourceFile,
       objectsFiles: [...new Set(objects.map((o) => path.join('pipeline', 'knowledge', `${o.__fileKey}.objects.json`)))].sort(),
       legacyContracts: legacyContracts.map((l) => l.rel),
       suiteManifest: path.relative(repoRoot, suite.abs),

@@ -89,6 +89,8 @@ function parseArgs(argv) {
     compare: false,
     sourceKey: DEFAULT_SOURCE_KEY,
     suite: false,
+    suiteManifest: null,
+    suiteKey: null,
   }
   const need = (i, name) => {
     const v = args[i + 1]
@@ -103,6 +105,8 @@ function parseArgs(argv) {
     else if (a === '--compare') flags.compare = true
     else if (a === '--source-key') (flags.sourceKey = need(i, a)), (i += 1)
     else if (a === '--suite') flags.suite = true
+    else if (a === '--suite-manifest') (flags.suiteManifest = need(i, a)), (i += 1)
+    else if (a === '--suite-key') (flags.suiteKey = need(i, a)), (i += 1)
     else if (a === '--blind-mode') {
       const v = need(i, a)
       if (!Object.hasOwn(BLIND_MODES, v)) {
@@ -189,9 +193,9 @@ export async function loadCandidatesForBlindTest(repoRoot, { only = null, source
  * 这里与 `build-task-suite` 共用同一份装载（对象/门禁核验），名称与描述取自同一份
  * 工作流文件。
  */
-export async function loadSuiteCandidatesForBlindTest(repoRoot, { only = null } = {}) {
+export async function loadSuiteCandidatesForBlindTest(repoRoot, { only = null, manifestRel = null } = {}) {
   const { loadSuiteManifest, loadObjectIndex, loadMemberSources, loadWorkflow } = await import('./tools/task-skill-builder.mjs')
-  const suite = await loadSuiteManifest(repoRoot)
+  const suite = manifestRel ? await loadSuiteManifest(repoRoot, manifestRel) : await loadSuiteManifest(repoRoot)
   const objectIndex = await loadObjectIndex(repoRoot)
   const picked = only ? suite.manifest.members.filter((m) => m.slug === only) : suite.manifest.members
   if (only && picked.length === 0) {
@@ -259,8 +263,9 @@ async function main(argv) {
   const N = DEFAULT_UNRELATED_SCENARIOS
   const blindMode = flags.blindMode
   const blindMax = BLIND_MODES[blindMode].max
-  // 套件模式（卡 27/ADR-032）：产物按 `task-suite` 键命名空间，候选目录来自套件清单。
-  const artifactKey = flags.suite ? 'task-suite' : flags.sourceKey
+  // 套件模式（卡 27/ADR-032；卡 29 起支持按书指定清单与命名空间）：
+  // 产物按 `--suite-key`（缺省 `task-suite`）命名空间，候选目录来自套件清单。
+  const artifactKey = flags.suite ? (flags.suiteKey ?? 'task-suite') : flags.sourceKey
 
   try {
     // ── 对照模式（ticket 13）：两读数 → 稳定对/仅宽松/仅严格三分，落盘 gate2-stable.json ──
@@ -290,7 +295,7 @@ async function main(argv) {
     }
 
     const { candidates, missingReceipts } = flags.suite
-      ? await loadSuiteCandidatesForBlindTest(repoRoot, { only: flags.skill })
+      ? await loadSuiteCandidatesForBlindTest(repoRoot, { only: flags.skill, manifestRel: flags.suiteManifest })
       : await loadCandidatesForBlindTest(repoRoot, { only: flags.skill, sourceKey: flags.sourceKey })
     if (missingReceipts.length > 0) {
       process.stderr.write(

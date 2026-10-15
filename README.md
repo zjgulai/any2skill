@@ -2,6 +2,12 @@
 
 Any content → executable Agent Skills. MVP pipeline.
 
+> **要拿一本新的 md 书直接跑出技能？** 从
+> [`docs/guides/book-to-skills-runbook.md`](docs/guides/book-to-skills-runbook.md) 开始——
+> 八阶段完整工作流（入场 → 环 1/2 → 环 3 → 合成 → 筛查 → 策展 → 发布与评估 → 收束），
+> 编排入口 `node pipeline/run-new-book.mjs all --dir <书目录> --key <sourceKey> --model <id> --base-url <url>`；
+> 策展草稿（含字面保真条款）自动生成，编辑按核对单收敛即可。
+
 **当前状态**：环 1–2 已跑通（源文件 → 锚点索引 → 知识对象 → 机器验证，含独立判定者）。
 **环 3 已跑通**（章内语义聚类 + 技能候选：13 章 / 115 单元 / 40 候选，593 个对象全归类；
 见 [`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。

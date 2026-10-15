@@ -310,6 +310,11 @@ export async function loadWorkflow(repoRoot, member) {
   if (wf.schemaVersion !== WORKFLOW_SCHEMA_VERSION) {
     throw new Error(`${member.slug} 工作流 schemaVersion 不认识：${wf.schemaVersion}`)
   }
+  // 草稿与可发布物的硬边界（卡 29）：编排器生成的草案带 draft:true——拒绝构建，
+  // 直到编辑按核对单收敛并去掉草稿标记。防止「草案直接发布」这类静默降格。
+  if (wf.draft === true) {
+    throw new Error(`${member.slug} 的工作流仍是草稿（draft:true）——先按编辑核对单完成策展再构建。`)
+  }
   if (wf.slug !== member.slug) throw new Error(`${member.slug} 工作流的 slug 不匹配：${wf.slug}`)
   for (const field of ['description', 'whenToUse', 'inputs', 'steps', 'outputs', 'checks', 'stopConditions', 'rollback', 'boundaries']) {
     if (wf[field] === undefined) throw new Error(`${member.slug} 工作流缺字段：${field}`)
