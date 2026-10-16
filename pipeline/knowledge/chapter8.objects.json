@@ -1,0 +1,2297 @@
+[
+  {
+    "id": "CHAPTER8-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h1-1",
+        "title": "模型后训练",
+        "lineStart": 1,
+        "lineEnd": 25,
+        "contentHash": "sha256:86843006075630330d23beb7d69c9088e4c093d3377a0233690a23ba1fbba041"
+      }
+    ],
+    "evidenceQuote": "预训练（Pre-training）：在海量互联网文本上做“预测下一个词”的训练。这一步让模型学会语言规律、世界知识和基本推理，就像一个人读完了图书馆里的所有书——博学，但还不会好好回答问题。这是最贵的一步（动辄数千万美元），也是能力的地基。",
+    "canonicalTerm": "预训练",
+    "aliases": [
+      "Pre-training"
+    ],
+    "definition": "在海量互联网文本上做预测下一个词的训练，让模型学会语言规律、世界知识和基本推理，也是能力的地基。",
+    "examples": [
+      "就像一个人读完了图书馆里的所有书——博学，但还不会好好回答问题"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H1-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h1-1",
+        "title": "模型后训练",
+        "lineStart": 1,
+        "lineEnd": 25,
+        "contentHash": "sha256:86843006075630330d23beb7d69c9088e4c093d3377a0233690a23ba1fbba041"
+      }
+    ],
+    "evidenceQuote": "监督微调（SFT，Supervised Fine-Tuning，即用标注好的 “输入—输出” 对来训练模型，类似老师给出标准答案让学生照着学）：用几千到几万条 “问题—标准回答”的示范数据，教会模型 “该用什么格式、什么风格、什么流程来回答”。这一步把有知识、有能力的模型变成一个听得懂指令、输出规整的助手。它便宜、快、稳，是当前几乎所有部署模型都会经过的一步。",
+    "canonicalTerm": "监督微调",
+    "aliases": [
+      "SFT",
+      "Supervised Fine-Tuning"
+    ],
+    "definition": "用几千到几万条“问题—标准回答”的示范数据，教会模型该用什么格式、什么风格、什么流程来回答，把有知识、有能力的模型变成一个听得懂指令、输出规整的助手。",
+    "examples": [
+      "类似老师给出标准答案让学生照着学"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-1",
+        "title": "从预训练到 RL：四阶段全景",
+        "lineStart": 26,
+        "lineEnd": 38,
+        "contentHash": "sha256:c6d98249e0fd1ee9a09edd44c660e0993fa6f32db0244170239d297a02e2cbbe"
+      }
+    ],
+    "evidenceQuote": "表8-1 模型能力开发的四个环节\n\n| 阶段 | 用什么数据 | 优化目标 | 学到什么 | 典型代价 |\n|------|---------------------|-----------------------|------------------------|---------------------|\n| **预训练** | 海量原始互联网文本 | 预测下一个词 | 语言规律、世界知识、基本推理 | 极高（数百万～数千万美元） |\n| **Mid-training** | 目标语言/领域/能力语料与保留数据 | 继续预测下一个词（通常对全部 token 计算损失） | 补齐领域知识、语言和基础能力 | 中到高，取决于 token 规模与是否全参训练 |\n| **SFT** | 几千～几万条“输入—输出”示范对 | 预测下一个词（只在回答上算损失） | 指令遵循、输出格式、风格、流程协议 | 低（几小时～几天） |\n| **RL** | 任务、环境 + 奖励信号（参考答案可选） | 最大化期望奖励 | 可迁移的决策策略、探索出的新解法 | 高（常是 SFT 的几十～上百倍） |",
+    "canonicalTerm": "模型能力开发的四个环节",
+    "aliases": [],
+    "definition": "模型能力开发分为预训练、Mid-training、SFT、RL四个环节，各环节在数据、优化目标、学到内容和典型代价上不同。",
+    "examples": [
+      "预训练环节使用海量原始互联网文本，优化目标是预测下一个词，学到语言规律、世界知识、基本推理，典型代价极高（数百万～数千万美元）",
+      "RL环节使用任务、环境 + 奖励信号（参考答案可选），优化目标是最大化期望奖励，学到可迁移的决策策略、探索出的新解法，典型代价高（常是 SFT 的几十～上百倍）"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-1",
+        "title": "从预训练到 RL：四阶段全景",
+        "lineStart": 26,
+        "lineEnd": 38,
+        "contentHash": "sha256:c6d98249e0fd1ee9a09edd44c660e0993fa6f32db0244170239d297a02e2cbbe"
+      }
+    ],
+    "evidenceQuote": "| **SFT** | 几千～几万条“输入—输出”示范对 | 预测下一个词（只在回答上算损失） | 指令遵循、输出格式、风格、流程协议 | 低（几小时～几天） |",
+    "canonicalTerm": "SFT",
+    "aliases": [],
+    "definition": "SFT是模型能力开发中的一个环节，使用几千～几万条“输入—输出”示范对，优化目标为预测下一个词（只在回答上算损失），学到指令遵循、输出格式、风格、流程协议，典型代价低（几小时～几天）。",
+    "examples": [
+      "使用几千～几万条“输入—输出”示范对",
+      "预测下一个词（只在回答上算损失）"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-1",
+        "title": "预训练在做什么：预测下一个词",
+        "lineStart": 39,
+        "lineEnd": 48,
+        "contentHash": "sha256:4c0ca429d490379bb5e3714111ef1634f28219f9eedbb24394fa27e0a2be9aee"
+      }
+    ],
+    "evidenceQuote": "现代大模型的全部“智能”，都建立在一个简单到令人意外的任务上：**预测下一个词（Next Token Prediction，NTP）**。\n\n给模型看一段文本的前半部分，让它猜下一个 token 是什么。比如输入“中国的首都是”，模型应该给“北京”很高的概率。模型每猜一次，就把自己的预测和真实的下一个 token 比较，差距（称为损失 Loss）越大，就越用力地调整参数，让下次在类似上下文里猜得更准。在几万亿 token 的互联网文本上反复做这件事，模型被迫学会了语法、事实、逻辑乃至基本推理——因为要在海量语境里持续猜对下一个词，没有捷径，只能真正“消化”文本里的规律。",
+    "canonicalTerm": "预测下一个词",
+    "aliases": [
+      "Next Token Prediction",
+      "NTP"
+    ],
+    "definition": "给模型看一段文本的前半部分，让它猜测下一个 token，并将预测与真实的下一个 token 比较，以损失差距调整参数；在大规模互联网文本上反复进行，使模型学会语法、事实、逻辑和基本推理。",
+    "examples": [
+      "输入“中国的首都是”，模型应该给“北京”很高的概率。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-1",
+        "title": "预训练在做什么：预测下一个词",
+        "lineStart": 39,
+        "lineEnd": 48,
+        "contentHash": "sha256:4c0ca429d490379bb5e3714111ef1634f28219f9eedbb24394fa27e0a2be9aee"
+      }
+    ],
+    "evidenceQuote": "有一个关键点要记住，它会一路贯穿到 Mid-training、SFT 和 RL：**模型的输出本质上是一个概率分布**。给定前文，模型对词表里每一个可能的 token 都给出一个概率。所谓“训练”，归根结底就是**调整这个概率分布**——让我们想要的 token 概率更高、不想要的更低。四个环节的区别，只在于“想要什么”，以及“用什么信号来定义想要”。",
+    "statement": "模型的输出本质上是一个概率分布：给定前文，模型对词表里每一个可能的 token 都给出一个概率，训练就是调整这个概率分布。",
+    "rationale": "训练归根结底是调整概率分布，让想要的 token 概率更高、不想要的更低；四个环节的区别只在于想要什么以及用什么信号来定义想要。",
+    "appliesWhen": "理解预训练、Mid-training、SFT 和 RL 四个环节时。",
+    "violation": "把模型输出当作单一确定的 token，而不是词表上的概率分布。",
+    "chapterRef": "chapter8-h3-1"
+  },
+  {
+    "id": "CHAPTER8-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-2",
+        "title": "Mid-training 的本质：在目标分布上继续学习",
+        "lineStart": 49,
+        "lineEnd": 54,
+        "contentHash": "sha256:196b4da61fcbed47597bbbc50fd6c524111205e76476eabd4a3805fa2d820c93"
+      }
+    ],
+    "evidenceQuote": "如果模型几乎读不懂韩语文档、不了解企业内部协议，或没有形成目标任务所需的代码与长上下文表征，那么跳过这一步、直接教它“如何回答”或只按成败给奖惩，是补不上这些缺失的基础能力的。Mid-training 沿用预训练的下一个 token 目标，但把数据分布收窄到目标领域，并混入一部分通用保留数据以控制遗忘。它回答的是“模型是否拥有完成任务所需的知识与基本能力”，而不是“回答要长什么样”或“哪条策略奖励最高”。",
+    "canonicalTerm": "Mid-training",
+    "aliases": [],
+    "definition": "沿用预训练的下一个 token 目标，但把数据分布收窄到目标领域，并混入一部分通用保留数据以控制遗忘；回答的是模型是否拥有完成任务所需的知识与基本能力。",
+    "examples": [
+      "模型几乎读不懂韩语文档",
+      "不了解企业内部协议",
+      "没有形成目标任务所需的代码与长上下文表征"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-2-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-2",
+        "title": "Mid-training 的本质：在目标分布上继续学习",
+        "lineStart": 49,
+        "lineEnd": 54,
+        "contentHash": "sha256:196b4da61fcbed47597bbbc50fd6c524111205e76476eabd4a3805fa2d820c93"
+      }
+    ],
+    "evidenceQuote": "因此，用少量问答 SFT 让模型背下一批事实在技术上并非不可能，但它只反复强化少数访问路径，容易记住问法而不形成广泛可调用的知识。需要吸收大规模、彼此关联的领域知识时，应优先考虑 Mid-training；需要知识可更新、可追溯时，则优先考虑 RAG。",
+    "pattern": "用少量问答 SFT 让模型背下一批事实",
+    "harm": "只反复强化少数访问路径，容易记住问法而不形成广泛可调用的知识",
+    "corrective": "需要吸收大规模、彼此关联的领域知识时，应优先考虑 Mid-training；需要知识可更新、可追溯时，则优先考虑 RAG",
+    "evidence": [
+      "用少量问答 SFT 让模型背下一批事实在技术上并非不可能，但它只反复强化少数访问路径，容易记住问法而不形成广泛可调用的知识"
+    ],
+    "chapterRef": "chapter8-h3-2"
+  },
+  {
+    "id": "CHAPTER8-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-3",
+        "title": "SFT 的本质：换了数据的“预测下一个词”",
+        "lineStart": 55,
+        "lineEnd": 67,
+        "contentHash": "sha256:9cfd1d6c813fc21cb196ce7e1c833d529c4e58592e61daa07dbd26378e4ce8ec"
+      }
+    ],
+    "evidenceQuote": "一句话概括 SFT 的本质：**用极高的样本效率，把一套稳定的“输入→输出”映射与协议固化进参数。** 它固化的是“格式、风格、流程”这类**协议性知识**（该怎么说、怎么做），而非大量**事实性知识**（知道什么）——后者要靠预训练或 RAG。",
+    "canonicalTerm": "SFT",
+    "aliases": [],
+    "definition": "SFT 的核心本质是用极高的样本效率把稳定的“输入→输出”映射与协议固化进参数；它固化的是格式、风格、流程等协议性知识，而不是事实性知识。",
+    "examples": [
+      "格式",
+      "风格",
+      "流程"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-3",
+        "title": "SFT 的本质：换了数据的“预测下一个词”",
+        "lineStart": 55,
+        "lineEnd": 67,
+        "contentHash": "sha256:9cfd1d6c813fc21cb196ce7e1c833d529c4e58592e61daa07dbd26378e4ce8ec"
+      }
+    ],
+    "evidenceQuote": "几条经过验证的实践经验[^ch8-1]：**必须**把 LoRA 应用到所有主要权重矩阵（尤其参数占比最大的 MLP 层），只加在注意力层会掉点；",
+    "statement": "LoRA 必须应用到所有主要权重矩阵（尤其参数占比最大的 MLP 层）；只加在注意力层会掉点。",
+    "rationale": "参数占比最大的 MLP 层是主要权重矩阵的一部分，必须被 LoRA 覆盖，否则只加在注意力层会掉点。",
+    "appliesWhen": "在使用 LoRA 做参数高效微调时。",
+    "violation": "只把 LoRA 应用到注意力层而不覆盖所有主要权重矩阵，会掉点。",
+    "chapterRef": "chapter8-h3-3"
+  },
+  {
+    "id": "CHAPTER8-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-4",
+        "title": "什么时候需要先补底座，再做 SFT/RL",
+        "lineStart": 68,
+        "lineEnd": 85,
+        "contentHash": "sha256:49927f36fc56b463b5357bd95615ebfc59bddcedd95e9cbeaaab3f626a5deb03"
+      }
+    ],
+    "evidenceQuote": "RL 策略不直接模仿参考回答的 token，而是用奖励评估模型**自己生成**的回答；奖励计算仍可以使用参考答案或偏好数据。要从这种信号里学习，至少要满足两个前提：输出能被验证，并且当前策略偶尔能探索到有价值的行为。\n\n第一个前提是**格式支持**。如果任务要求输出 JSON 或工具调用，而模型吐出的是无法解析的文本，奖励函数连“成功还是失败”都判断不了。此时 SFT 可以先扮演“把话说利索”的角色：用少量示范稳定格式与基本流程，使奖励可计算，再由 RL 优化策略。这就是常见的“先 SFT、后 RL”。",
+    "canonicalTerm": "RL 可学习性的两个前提",
+    "aliases": [],
+    "definition": "要从奖励信号中学习，至少要满足两个前提：输出能被验证，并且当前策略偶尔能探索到有价值的行为。",
+    "examples": [
+      "当任务要求输出 JSON 或工具调用而模型吐出无法解析的文本时，奖励函数无法判断成功或失败；此时可先用 SFT 稳定格式与基本流程，使奖励可计算，再由 RL 优化策略。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-4-METRIC-02",
+    "objectType": "Metric",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-4",
+        "title": "什么时候需要先补底座，再做 SFT/RL",
+        "lineStart": 68,
+        "lineEnd": 85,
+        "contentHash": "sha256:49927f36fc56b463b5357bd95615ebfc59bddcedd95e9cbeaaab3f626a5deb03"
+      }
+    ],
+    "evidenceQuote": "先在留出任务上以与训练相近的温度采样，测量 `pass@1` 和 `pass@k`。若单次成功概率为 $p$，近似独立采样 $k$ 次至少成功一次的概率为\n\n$$\n\\operatorname{pass@}k = 1-(1-p)^k.\n$$",
+    "name": "pass@k",
+    "formula": "pass@k = 1-(1-p)^k",
+    "inputs": [
+      "单次成功概率 p",
+      "采样次数 k"
+    ],
+    "unit": "概率",
+    "window": "留出任务上以与训练相近的温度采样",
+    "failureModes": []
+  },
+  {
+    "id": "CHAPTER8-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-5",
+        "title": "SFT 与 RL 的本质区别",
+        "lineStart": 86,
+        "lineEnd": 121,
+        "contentHash": "sha256:ee9308a18a406b198cf4ddfd3a988559af316dd63b75ab596882db929c9f0719"
+      }
+    ],
+    "evidenceQuote": "- **SFT 最大化标注回答的概率。** 每个训练样本都用极大似然推动模型复现示范。多样且有代表性的示范可以教会模型可泛化的特征，但示范或 prompt 缺乏多样性时，模型也可能对表面模式或捷径过拟合。GeneralPoints 的有限示范把 J/Q/K 都当作 10，模型因此在测试值变化时性能下降。",
+    "canonicalTerm": "SFT 优化目标",
+    "aliases": [
+      "监督微调优化目标"
+    ],
+    "definition": "SFT 最大化标注回答的概率，通过极大似然推动模型复现示范；当示范或 prompt 缺乏多样性时，模型可能对表面模式或捷径过拟合。",
+    "examples": [
+      "GeneralPoints 的有限示范把 J/Q/K 都当作 10，模型因此在测试值变化时性能下降。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-5-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-5",
+        "title": "SFT 与 RL 的本质区别",
+        "lineStart": 86,
+        "lineEnd": 121,
+        "contentHash": "sha256:ee9308a18a406b198cf4ddfd3a988559af316dd63b75ab596882db929c9f0719"
+      }
+    ],
+    "evidenceQuote": "- **RL 最大化期望奖励。** 模型探索多条路径，并提高高奖励路径的概率。当奖励忠实反映目标、探索也足够时，模型可能发现示范中没有的可迁移策略。GeneralPoints 中，重新执行计算过程而不是套用固定值，在分布外测试中取得了更好表现。反过来，奖励或环境有偏时，RL 同样可能对捷径过拟合。",
+    "canonicalTerm": "RL 优化目标",
+    "aliases": [
+      "强化学习优化目标"
+    ],
+    "definition": "RL 最大化期望奖励，模型探索多条路径并提高高奖励路径的概率；当奖励忠实反映目标且探索足够时，模型可能发现示范中没有的可迁移策略；奖励或环境有偏时也可能对捷径过拟合。",
+    "examples": [
+      "GeneralPoints 中，重新执行计算过程而不是套用固定值，在分布外测试中取得了更好表现。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-6",
+        "title": "Agent 与环境的交互",
+        "lineStart": 124,
+        "lineEnd": 157,
+        "contentHash": "sha256:50daca1113d0012729a0215e0a22416ceb6a5b978bc693515f97372b36986995"
+      }
+    ],
+    "evidenceQuote": "**强化学习（Reinforcement Learning, RL）**的核心在于学习如何根据当前情境选择动作，以获得最大的**累积奖励（Cumulative Reward）**。想象一个学下棋的 AI：每走一步就是一个动作，赢棋得到正奖励、输棋得到负奖励，累积奖励就是整盘棋的总收益。Agent 和环境持续交互：每一步，Agent 观察当前状态，选择一个动作，环境产生新状态并给出奖励。",
+    "canonicalTerm": "强化学习",
+    "aliases": [
+      "Reinforcement Learning",
+      "RL"
+    ],
+    "definition": "学习如何根据当前情境选择动作，以获得最大的累积奖励。Agent 和环境持续交互：每一步，Agent 观察当前状态，选择一个动作，环境产生新状态并给出奖励。",
+    "examples": [
+      "学下棋的 AI：每走一步就是一个动作，赢棋得到正奖励、输棋得到负奖励，累积奖励就是整盘棋的总收益。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-6-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-6",
+        "title": "Agent 与环境的交互",
+        "lineStart": 124,
+        "lineEnd": 157,
+        "contentHash": "sha256:50daca1113d0012729a0215e0a22416ceb6a5b978bc693515f97372b36986995"
+      }
+    ],
+    "evidenceQuote": "**价值函数（Value Function）**回答的是这样一个问题：“如果我现在处于这个状态，按照当前策略一直行动下去，最终总共能获得多少奖励？”这就像一位经验丰富的棋手看到一个局面时，不需要算到最后一步，凭直觉就能估计出这盘棋的胜率。",
+    "canonicalTerm": "价值函数",
+    "aliases": [
+      "Value Function"
+    ],
+    "definition": "回答“如果我现在处于这个状态，按照当前策略一直行动下去，最终总共能获得多少奖励？”",
+    "examples": [
+      "经验丰富的棋手看到一个局面时，不需要算到最后一步，凭直觉就能估计出这盘棋的胜率。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-7-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-7",
+        "title": "两种动作表示：经典 RL 设置与 LLM 的变长策略",
+        "lineStart": 158,
+        "lineEnd": 249,
+        "contentHash": "sha256:1ada7e5a632c2a10cf3eda352bcb0ed92d300f920dc20513d02167a8652e6b10"
+      }
+    ],
+    "evidenceQuote": "MDP（Markov Decision Process，马尔可夫决策过程）是强化学习的数学框架，定义了状态、动作、奖励等核心要素。它的核心假设是**马尔可夫性质**：未来只取决于当前状态，而当前状态必须包含决策所需的全部历史信息。以国际象棋为例，状态不仅包括棋子位置，还应包括轮到哪方、王车易位权、吃过路兵权，以及五十步规则和重复局面判定所需的信息。状态定义充分时，无需每次重读完整棋谱；若观测没有包含必要历史，则应把历史纳入状态，或使用部分可观测模型。",
+    "canonicalTerm": "马尔可夫决策过程",
+    "aliases": [
+      "MDP",
+      "Markov Decision Process"
+    ],
+    "definition": "强化学习的数学框架，定义状态、动作、奖励等核心要素；其核心假设是马尔可夫性质：未来只取决于当前状态，且当前状态必须包含决策所需的全部历史信息。",
+    "examples": [
+      "国际象棋状态应包含棋子位置、轮到哪方、王车易位权、吃过路兵权以及五十步规则和重复局面判定所需的信息；若观测缺少必要历史，应把历史纳入状态或使用部分可观测模型。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-7-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-7",
+        "title": "两种动作表示：经典 RL 设置与 LLM 的变长策略",
+        "lineStart": 158,
+        "lineEnd": 249,
+        "contentHash": "sha256:1ada7e5a632c2a10cf3eda352bcb0ed92d300f920dc20513d02167a8652e6b10"
+      }
+    ],
+    "evidenceQuote": "经典 RL 也可以把内部计算或信息收集建模为状态与动作。LLM 的实用变化不是第一次允许“思考”，而是预训练语言策略能够用变长 token 序列表示内部计算，并与外部行动由同一策略生成。思考 token 不直接改变外部世界，却可以提高最终行动质量。于是 Agent 的动作表示不仅包括“做什么”，还包括“想多久、想什么”。\n\n最关键的实用创新，是把**思考 token 作为特殊动作纳入策略输出空间**。典型传统 RL 环境主要使用移动、攻击、拾取等改变环境状态的原始动作，尽管内部计算也可以在 MDP 或层级策略中建模；在 LLM Agent 中，**内部思考成为学习到的语言动作空间的核心组成部分**。它不直接改变外部环境，也不立即获得环境奖励，但能在 token 成本和上下文上限内表达多种计算路径。",
+    "canonicalTerm": "思考 token 作为特殊动作",
+    "aliases": [],
+    "definition": "LLM Agent 将思考 token 作为特殊动作纳入策略输出空间，使内部思考成为学习到的语言动作空间的核心组成部分；它不直接改变外部环境，也不立即获得环境奖励，但能在 token 成本和上下文上限内表达多种计算路径。",
+    "examples": [
+      "思考 token 不直接改变外部世界，却可以提高最终行动质量；Agent 的动作表示不仅包括“做什么”，还包括“想多久、想什么”。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-3",
+        "title": "模型预训练基础 `[可选阅读]`",
+        "lineStart": 250,
+        "lineEnd": 275,
+        "contentHash": "sha256:807a27d00f41d36132fbac3e28183e9ece6f739bd5d75d6894a48fb3fd3f3eea"
+      }
+    ],
+    "evidenceQuote": "以 MiniMind 2（一亿参数）为案例，在消费级 GPU 上完成完整训练流程。通过引入两项算法优化（QK Norm 和 Muon 优化器），收敛速度提升 3 倍，生成质量显著改善——实现成本极低，总训练约 14 小时，成本约 34 美元。\n>\n> 各训练阶段的效果：预训练后模型可以回答“世界上最高的山峰”等事实性问题，但格式不规范；SFT 后指令遵循与输出格式显著改善，能按期望方式组织答案；偏好优化进一步减少了事实错误与不自然表达。一亿参数的模型仍有明显局限（复杂问题容易出错），但启示是：**在固定的小规模预算下，算法改进比单纯堆规模更具性价比**。",
+    "statement": "在固定的小规模预算下，算法改进比单纯堆规模更具性价比",
+    "rationale": "以 MiniMind 2 一亿参数模型为例，引入 QK Norm 和 Muon 优化器后收敛速度提升 3 倍、生成质量显著改善，总训练约 14 小时、成本约 34 美元；而一亿参数模型仍有明显局限。",
+    "appliesWhen": "固定的小规模预算下",
+    "violation": "在固定的小规模预算下单纯堆规模而忽视算法改进",
+    "chapterRef": "chapter8-h2-3"
+  },
+  {
+    "id": "CHAPTER8-H2-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-3",
+        "title": "模型预训练基础 `[可选阅读]`",
+        "lineStart": 250,
+        "lineEnd": 275,
+        "contentHash": "sha256:807a27d00f41d36132fbac3e28183e9ece6f739bd5d75d6894a48fb3fd3f3eea"
+      }
+    ],
+    "evidenceQuote": "词元化（Tokenization）将文本切分为离散单元，比如“我喜欢编程”可能被切分为“我”“喜欢”“编程”三个 token——这些 token 就是模型处理文本的最小单位。",
+    "canonicalTerm": "词元化",
+    "aliases": [
+      "Tokenization"
+    ],
+    "definition": "将文本切分为离散单元，这些 token 是模型处理文本的最小单位",
+    "examples": [
+      "“我喜欢编程”可能被切分为“我”“喜欢”“编程”三个 token"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-4",
+        "title": "Mid-training：补知识与基础能力",
+        "lineStart": 276,
+        "lineEnd": 286,
+        "contentHash": "sha256:ceb3ecd14a3f7cfaf07133302b20128d45c4ebdc914718836dac3559b80f78b4"
+      }
+    ],
+    "evidenceQuote": "本章所说的 **Mid-training**，是指从已有基础模型出发，在目标数据分布上继续开展一个阶段的语言模型训练。它通常仍采用与预训练相同的预测下一个词任务，对文档、代码或推导的全部 token 计算损失。经典的 DAPT/TAPT 研究已经表明，在领域语料或任务相关的无标注语料上做第二阶段预训练，可以继续改善下游任务表现[^ch8-30]。",
+    "canonicalTerm": "Mid-training",
+    "aliases": [
+      "第二阶段预训练"
+    ],
+    "definition": "从已有基础模型出发，在目标数据分布上继续开展一个阶段的语言模型训练；通常沿用预训练的下一词预测任务，对文档、代码或推导的全部 token 计算损失。",
+    "examples": [
+      "在领域语料或任务相关的无标注语料上做第二阶段预训练，可以继续改善下游任务表现。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-4",
+        "title": "Mid-training：补知识与基础能力",
+        "lineStart": 276,
+        "lineEnd": 286,
+        "contentHash": "sha256:ceb3ecd14a3f7cfaf07133302b20128d45c4ebdc914718836dac3559b80f78b4"
+      }
+    ],
+    "evidenceQuote": "这也说明为什么不应把 SFT 当成主要的知识注入工具。SFT 当然可以记住少量事实，也常被放在 Mid-training 之后教模型如何回答领域问题；但少量 QA 对只覆盖有限问法，更擅长训练“如何访问与表达”，不适合承载大规模、相互关联的原始知识。反过来，Mid-training 降低了领域文本的语言模型损失，也不保证模型会自动按用户问题取出知识；已有研究发现，继续预训练与指令训练的顺序和数据组织会显著影响知识能否被问答形式访问[^ch8-31]。稳健配方通常是 Mid-training 吸收知识与能力 → 小规模 SFT 建立输出格式 → 有非零成功率后再 RL 提升成功率和泛化性。",
+    "statement": "不应把 SFT 当成主要的知识注入工具。",
+    "rationale": "SFT 可以记住少量事实，但少量 QA 对只覆盖有限问法，更擅长训练“如何访问与表达”，不适合承载大规模、相互关联的原始知识。",
+    "appliesWhen": "当需要向模型注入大规模、相互关联的原始知识时。",
+    "violation": "仅用少量 QA 对作为主要知识注入手段，却期望模型掌握大规模、相互关联的原始知识。",
+    "chapterRef": "chapter8-h2-4"
+  },
+  {
+    "id": "CHAPTER8-H3-8-CASE-01",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-8",
+        "title": "Mid-training 数据如何构造",
+        "lineStart": 287,
+        "lineEnd": 313,
+        "contentHash": "sha256:58e5762a427e96661b297802e175dbc83197e0e8f0e4ba82c7760c7878b2fd43"
+      }
+    ],
+    "evidenceQuote": "以 Mistral 7B v0.3 为基础（主要用英语预训练，对韩语几乎没有理解能力），通过韩语维基百科继续预训练来注入韩语能力——在已完成预训练的模型上用新语言数据继续做语言模型训练，模型已具备通用表征，只需适应新的数据分布，成本远低于从头训练。该实验使用约 80% 韩语 + 20% 英语的数据配比来缓解灾难性遗忘；这只是该实验的选择，不是通用默认值。最后用韩语指令数据做 SFT，获得实用的韩语对话能力。它把两种职责分得很清楚：Mid-training 先补韩语知识与语言能力，SFT 再教模型如何用韩语接受指令和组织回答。\n\n本实验也说明继续预训练可能带来的灾难性遗忘问题：韩语最终阶段的盲评分改善，英语能力却有下降。继续预训练可以把目标分布写进参数，但不能免除保留集、事实评估和数据质量审计。",
+    "title": "实验8-5：继续预训练学习新语言",
+    "context": "在已完成预训练的 Mistral 7B v0.3 上通过韩语维基百科继续预训练，注入韩语能力。",
+    "facts": [
+      "基础模型为 Mistral 7B v0.3，主要用英语预训练，对韩语几乎没有理解能力。",
+      "使用约 80% 韩语 + 20% 英语的数据配比来缓解灾难性遗忘。",
+      "最后用韩语指令数据做 SFT，获得实用的韩语对话能力。",
+      "韩语最终阶段盲评分改善，但英语能力下降。"
+    ],
+    "decisions": [
+      "通过韩语维基百科继续预训练来注入韩语能力。",
+      "采用约 80% 韩语 + 20% 英语的数据配比缓解灾难性遗忘。",
+      "用韩语指令数据做 SFT，使模型学会用韩语接受指令和组织回答。"
+    ],
+    "outcome": "获得实用的韩语对话能力；韩语盲评分改善，但英语能力下降，说明继续预训练可能带来灾难性遗忘。",
+    "limitations": [
+      "约 80% 韩语 + 20% 英语的数据配比只是该实验的选择，不是通用默认值。",
+      "继续预训练可以把目标分布写进参数，但不能免除保留集、事实评估和数据质量审计。"
+    ],
+    "dataClass": "LLM 继续预训练/新语言注入实验案例",
+    "evidenceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-8",
+        "title": "Mid-training 数据如何构造",
+        "lineStart": 287,
+        "lineEnd": 313,
+        "contentHash": "sha256:58e5762a427e96661b297802e175dbc83197e0e8f0e4ba82c7760c7878b2fd43"
+      }
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-8-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-8",
+        "title": "Mid-training 数据如何构造",
+        "lineStart": 287,
+        "lineEnd": 313,
+        "contentHash": "sha256:58e5762a427e96661b297802e175dbc83197e0e8f0e4ba82c7760c7878b2fd43"
+      }
+    ],
+    "evidenceQuote": "一类是原始短文本和通用数据，用来保留语言、知识与短上下文能力；另一类是“长度提升后的旧任务”：把模型已经会做的短任务放进当前长度的上下文，在不同位置加入相关信息和干扰项，检验同一能力在更长窗口中是否仍然成立。通用数据最好来自基模的原始预训练集；无法取得时，可以用 FineWeb-2 等开源预训练语料替代。",
+    "trigger": "Mid-training 中需要原始短文本和通用数据来保留语言、知识与短上下文能力时",
+    "recommendation": "通用数据最好来自基模的原始预训练集。",
+    "confidence": 0.5,
+    "exceptions": [
+      "无法取得基模原始预训练集时，可以用 FineWeb-2 等开源预训练语料替代。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-5",
+        "title": "SFT（监督微调）",
+        "lineStart": 314,
+        "lineEnd": 369,
+        "contentHash": "sha256:a704e5eab77d7aba8fb6a2414d40e2bc6337f72cc43318b8e10a2e564080f5bc"
+      }
+    ],
+    "evidenceQuote": "第一步，**采集轨迹**：从目标任务分布（如数学、代码）采样问题，用开源教师模型生成完整的“思考 + 答案”轨迹，并用规则验证器过滤掉最终答案错误的轨迹——否则错误的思考过程会被学生一并模仿。这一步“生成候选—验证过滤—只留正确轨迹”的做法有个专门的名字：**拒绝采样（Rejection Sampling）**。用它构造的数据做 SFT，就是**拒绝采样微调（Rejection Sampling Fine-Tuning, RFT）**。它介于纯 SFT 与 RL 之间：不训奖励模型、不做策略梯度，只靠“从多条采样中拒绝错的、留下对的”来提升数据质量，是可验证任务上性价比极高的数据构造手段。",
+    "canonicalTerm": "拒绝采样微调",
+    "aliases": [
+      "Rejection Sampling Fine-Tuning",
+      "RFT"
+    ],
+    "definition": "从多条采样中拒绝错的、留下对的来构造 SFT 数据；介于纯 SFT 与 RL 之间，不训练奖励模型、不做策略梯度，是可验证任务上性价比极高的数据构造手段。",
+    "examples": [
+      "在数学、代码等目标任务分布上采样问题，用开源教师模型生成“思考+答案”轨迹，并用规则验证器过滤掉最终答案错误的轨迹，只保留正确轨迹用于 SFT。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-5-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-5",
+        "title": "SFT（监督微调）",
+        "lineStart": 314,
+        "lineEnd": 369,
+        "contentHash": "sha256:a704e5eab77d7aba8fb6a2414d40e2bc6337f72cc43318b8e10a2e564080f5bc"
+      }
+    ],
+    "evidenceQuote": "无论走哪条路，构造流程都大同小异：先定义任务分布与输出 schema，再批量生成候选，然后用规则校验、格式检查加人工抽检做质量过滤，最后去重、平衡配比、保证多样性。数据不必贪多，数千到数万条高质量样本通常就足以固化输出格式。与其堆十万条脏数据，不如精修一万条干净数据：数据里的每一处噪声，SFT 都可能忠实地写进参数。",
+    "trigger": "在构造 SFT 训练数据、目标是固化输出格式时",
+    "recommendation": "数据不必贪多，优先精修一万条干净数据而非堆十万条脏数据；数千到数万条高质量样本通常足以固化输出格式。",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER8-H2-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-6",
+        "title": "SFT 数据合成：从示范到可训练轨迹",
+        "lineStart": 370,
+        "lineEnd": 385,
+        "contentHash": "sha256:27db022744d01213c190384d93815487e50240c1c77e21d6a3eff6cb8dedc3f6"
+      }
+    ],
+    "evidenceQuote": "数据合成的关键不是数量，而是覆盖面、多样性和准确性。训练集还应按任务模板、客户或时间段去重划分，评估集必须来自不重叠的任务类型；参考解法、隐藏测试和验证器反馈不能泄露给模型。",
+    "statement": "训练集应按任务模板、客户或时间段去重划分，评估集必须来自不重叠的任务类型；参考解法、隐藏测试和验证器反馈不能泄露给模型。",
+    "rationale": "数据合成的关键不是数量，而是覆盖面、多样性和准确性。",
+    "appliesWhen": "划分训练集和评估集时。",
+    "violation": "训练集与评估集任务类型重叠，或把参考解法、隐藏测试、验证器反馈泄露给模型。",
+    "chapterRef": "chapter8-h2-6"
+  },
+  {
+    "id": "CHAPTER8-H2-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-6",
+        "title": "SFT 数据合成：从示范到可训练轨迹",
+        "lineStart": 370,
+        "lineEnd": 385,
+        "contentHash": "sha256:27db022744d01213c190384d93815487e50240c1c77e21d6a3eff6cb8dedc3f6"
+      }
+    ],
+    "evidenceQuote": "SFT 只保留验证通过的成功轨迹，学习稳定的格式、流程和基本动作；RL 让当前策略重新 rollout，利用环境奖励探索示范之外的路径。失败轨迹不应直接当作正确示范，可以用来构造偏好对、发现任务覆盖缺口，或补上诊断与修复后再加入训练。",
+    "statement": "失败轨迹不应直接当作正确示范；它可以用来构造偏好对、发现任务覆盖缺口，或补上诊断与修复后再加入训练。",
+    "rationale": "SFT 阶段只保留验证通过的成功轨迹，以学习稳定的格式、流程和基本动作。",
+    "appliesWhen": "处理 SFT 与 RL 的成功或失败轨迹时。",
+    "violation": "把失败轨迹直接当作正确示范。",
+    "chapterRef": "chapter8-h2-6"
+  },
+  {
+    "id": "CHAPTER8-H2-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-7",
+        "title": "何时选择 Mid-training、SFT 与 RL",
+        "lineStart": 386,
+        "lineEnd": 409,
+        "contentHash": "sha256:0a97015cb6faed9aa5cf5fa0dd13ddb42e27645570dd8069ccd028a4aa174e27"
+      }
+    ],
+    "evidenceQuote": "3. **用 SFT 立协议，不拿它硬塞知识库。** 当模型“会做但不会按要求做”时，用高质量示范固化 JSON schema、工具调用、术语用法、流程和风格。少量事实可以随示范学入参数，但大量事实知识不应让少数 QA 对承担。",
+    "statement": "当模型“会做但不会按要求做”时，应用高质量示范固化 JSON schema、工具调用、术语用法、流程和风格，而不是用 SFT 硬塞大量事实知识。",
+    "rationale": "少量事实可以随示范学入参数，但大量事实知识不应让少数 QA 对承担。",
+    "appliesWhen": "模型“会做但不会按要求做”，即行为协议没有固化。",
+    "violation": "拿 SFT 硬塞大量事实知识。",
+    "chapterRef": "chapter8-h2-7"
+  },
+  {
+    "id": "CHAPTER8-H2-7-DECISIONMODEL-02",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-7",
+        "title": "何时选择 Mid-training、SFT 与 RL",
+        "lineStart": 386,
+        "lineEnd": 409,
+        "contentHash": "sha256:0a97015cb6faed9aa5cf5fa0dd13ddb42e27645570dd8069ccd028a4aa174e27"
+      }
+    ],
+    "evidenceQuote": "表8-4 Mid-training、SFT 与 RL 的选择准则\n\n| 观察到的现象 | 主要缺口 | 优先方法 | 进入下一阶段的门槛 |\n| --- | --- | --- | --- |\n| 领域概念、语言或基础操作不会；合理采样下 `pass@k` 仍接近 0 | 知识与能力不在基模的有效支持中 | **Mid-training**；动态事实则用 RAG | 领域留出集改善，通用保留集可接受，目标任务开始出现可验证的正确或部分正确轨迹 |\n| 偶尔能做对，但格式、工具 schema、语气或固定流程不稳定 | 行为协议没有固化 | **SFT** 或约束解码 | 解析成功率稳定，关键动作和输出协议可被验证器可靠评分 |\n| 已有非零成功率和可靠奖励，但好策略概率低、长程决策或 OOD 泛化不足 | 概率质量分配与策略优化 | **RL** | 奖励与真实目标一致；rollout 组内有足够奖励差异；独立测试集随训练改善 |\n| 只有少量稳定示范，尚无可交互环境 | 可模仿数据有、在线反馈无 | **SFT/RFT/离线偏好优化** | 先建立基线与评估，再判断是否值得建设 RL 环境 |",
+    "inputs": [
+      "观察到的现象",
+      "主要缺口"
+    ],
+    "branches": [
+      {
+        "condition": "领域概念、语言或基础操作不会；合理采样下 `pass@k` 仍接近 0",
+        "action": "优先采用 Mid-training；动态事实则用 RAG"
+      },
+      {
+        "condition": "偶尔能做对，但格式、工具 schema、语气或固定流程不稳定",
+        "action": "优先采用 SFT 或约束解码"
+      },
+      {
+        "condition": "已有非零成功率和可靠奖励，但好策略概率低、长程决策或 OOD 泛化不足",
+        "action": "优先采用 RL"
+      },
+      {
+        "condition": "只有少量稳定示范，尚无可交互环境",
+        "action": "优先采用 SFT/RFT/离线偏好优化"
+      }
+    ],
+    "outputs": [
+      "优先方法（Mid-training、SFT 或约束解码、RL、SFT/RFT/离线偏好优化）",
+      "进入下一阶段的门槛"
+    ],
+    "unknownPolicy": "只有少量稳定示范且尚无可交互环境时，先建立基线与评估，再判断是否值得建设 RL 环境。",
+    "stopConditions": [
+      "领域留出集改善，通用保留集可接受，目标任务开始出现可验证的正确或部分正确轨迹",
+      "解析成功率稳定，关键动作和输出协议可被验证器可靠评分",
+      "奖励与真实目标一致；rollout 组内有足够奖励差异；独立测试集随训练改善",
+      "先建立基线与评估，再判断是否值得建设 RL 环境"
+    ],
+    "reviewState": "candidate"
+  },
+  {
+    "id": "CHAPTER8-H2-8-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-8",
+        "title": "单轮强化学习：记忆与泛化的对照",
+        "lineStart": 410,
+        "lineEnd": 481,
+        "contentHash": "sha256:0086cdf67933f55a59671ab473b150485437ec503895ee6c22effae914d21bd3"
+      }
+    ],
+    "evidenceQuote": "本章的 RL 训练大多基于**策略梯度**：让模型对同一个问题多生成几条回答，奖励高的回答就提高它出现的概率、奖励低的就降低——“奖励高的方向多走，奖励低的方向少走”。为抑制单次更新把模型带偏，主流的 **PPO** 算法会在概率比超出指定区间时裁掉代理目标中的额外收益；它会抑制大幅更新，但不是对策略变化的硬约束（后文实验中出现的 “带价值网络的 PPO” 即指此，价值网络用来估计基线、算出更细的优势）。另一种 **GRPO** 则不训练价值网络，而是用 “同一问题的多条回答互相比较” 来判断每条的相对好坏。",
+    "canonicalTerm": "策略梯度",
+    "aliases": [],
+    "definition": "一种强化学习训练机制：让模型对同一个问题多生成几条回答，奖励高的回答提高出现概率、奖励低的回答降低出现概率。",
+    "examples": [
+      "PPO：在概率比超出指定区间时裁掉代理目标中的额外收益",
+      "GRPO：用同一问题的多条回答互相比较来判断每条的相对好坏"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-8-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-8",
+        "title": "单轮强化学习：记忆与泛化的对照",
+        "lineStart": 410,
+        "lineEnd": 481,
+        "contentHash": "sha256:0086cdf67933f55a59671ab473b150485437ec503895ee6c22effae914d21bd3"
+      }
+    ],
+    "evidenceQuote": "实验还说明，在本实验的设定下（Llama-3.2-Vision-11B 这个量级的基础模型，加上严格的结构化输出要求），RL 需要先用 SFT 初始化：未经 SFT 直接做端到端 RL 完全失败，因为基础模型无法产生结构化输出，奖励根本无法计算。注意这是特定设定下的结论而非普适规律：足够强的基础模型可以跳过 SFT 直接 RL 成功（见前文对 DeepSeek-R1-Zero 的讨论）。",
+    "statement": "在本实验的设定下（Llama-3.2-Vision-11B 这个量级的基础模型，加上严格的结构化输出要求），RL 需要先用 SFT 初始化；未经 SFT 直接做端到端 RL 完全失败。",
+    "rationale": "基础模型无法产生结构化输出，奖励根本无法计算。",
+    "appliesWhen": "使用 Llama-3.2-Vision-11B 量级的基础模型、要求严格的结构化输出，并试图直接进行端到端 RL 时。",
+    "violation": "跳过 SFT 初始化直接进行端到端 RL，基础模型无法产生结构化输出，奖励无法计算，训练完全失败。",
+    "chapterRef": "chapter8-h2-8"
+  },
+  {
+    "id": "CHAPTER8-H2-9-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-9",
+        "title": "RL 算法：从 16 次 rollout 到一次参数更新",
+        "lineStart": 482,
+        "lineEnd": 503,
+        "contentHash": "sha256:5a9b2941c5fb6c27cb9d8b2c3747ee1cc1bca5da06975ff4f82db43e6a60204c"
+      }
+    ],
+    "evidenceQuote": "系统把同一份初始代码、同一条问题描述分别复制到 16 个相互隔离的沙箱中，让模型独立解决 16 次。每一次都包含完整的“阅读代码 → 修改文件 → 运行测试 → 提交结果”，这整条过程就叫一次 **rollout**。问题和初始环境完全相同，但采样具有随机性，所以 16 次尝试可能走出不同路径：有的正确补上边界检查，有的只捕获异常掩盖问题，有的改错文件，还有的试图修改测试。",
+    "canonicalTerm": "rollout",
+    "aliases": [],
+    "definition": "一次 rollout 是包含“阅读代码 → 修改文件 → 运行测试 → 提交结果”的完整过程。",
+    "examples": [
+      "系统把同一份初始代码和问题描述复制到 16 个沙箱，让模型独立解决 16 次；由于采样随机性，16 次尝试可能走出不同路径，例如正确补上边界检查、只捕获异常掩盖问题、改错文件、试图修改测试。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-9-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-9",
+        "title": "RL 算法：从 16 次 rollout 到一次参数更新",
+        "lineStart": 482,
+        "lineEnd": 503,
+        "contentHash": "sha256:5a9b2941c5fb6c27cb9d8b2c3747ee1cc1bca5da06975ff4f82db43e6a60204c"
+      }
+    ],
+    "evidenceQuote": "奖励只说明单条轨迹成功或失败，**相对优势**则说明它相对于同组其他尝试有多好。这一组的平均成功率是 4/16：通过测试的 4 条高于组内平均，得到正优势；失败的 12 条低于平均，得到负优势。GRPO 的核心就是这种组内比较。若 16 条全部失败，或全部成功，大家的奖励完全一样，就比较不出谁更好，相对优势也会消失。",
+    "canonicalTerm": "相对优势",
+    "aliases": [],
+    "definition": "相对优势说明单条轨迹相对于同组其他尝试有多好；高于组内平均的轨迹得到正优势，低于组内平均的轨迹得到负优势。",
+    "examples": [
+      "在 16 次尝试中平均成功率为 4/16；通过测试的 4 条高于组内平均，得到正优势，失败的 12 条低于平均，得到负优势。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-9-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-9",
+        "title": "为什么 LLM RL 通常优先 On-Policy",
+        "lineStart": 504,
+        "lineEnd": 516,
+        "contentHash": "sha256:9df3c27737a32fc2c07eab33ff98450934068724ce233f7da21aa5db07383949"
+      }
+    ],
+    "evidenceQuote": "先区分两个容易混用的词。**Online（在线）**只表示数据在训练过程中不断通过与环境交互产生；**On-policy（在轨）**要求生成 rollout 的行为策略 $\\mu$ 与当前要优化的策略 $\\pi_\\theta$ 相同或足够接近。异步集群即使持续在线生成，只要 rollout worker 落后了几个 checkpoint，数据就已经陈旧，训练在统计意义上也已经带有 off-policy（离轨）成分。回放旧轨迹、使用旧模型数据或教师完整生成的数据，则是更明显的 off-policy。本章的 PPO/GRPO 配方通常每个 step 都用最新策略重新生成 rollout，因而以近似 on-policy 为目标；PPO 在同一批数据上做多轮 minibatch 更新时，后几轮已经开始偏离生成数据的 `old_policy`，这正是它需要概率比与 clipping 的原因。",
+    "canonicalTerm": "On-policy（在轨）",
+    "aliases": [
+      "在轨",
+      "On-policy"
+    ],
+    "definition": "要求生成 rollout 的行为策略与当前要优化的策略相同或足够接近。",
+    "examples": [
+      "本章的 PPO/GRPO 配方通常每个 step 都用最新策略重新生成 rollout，因而以近似 on-policy 为目标"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-9-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-9",
+        "title": "为什么 LLM RL 通常优先 On-Policy",
+        "lineStart": 504,
+        "lineEnd": 516,
+        "contentHash": "sha256:9df3c27737a32fc2c07eab33ff98450934068724ce233f7da21aa5db07383949"
+      }
+    ],
+    "evidenceQuote": "因此，“On-policy 更好”不是普遍定理，而是在当前 LLM 策略梯度中通常意味着**更低的分布偏差和更稳定的优化**；稳定大模型 RL 的实证研究也发现，减少策略陈旧度与训练—推理差异是代理目标有效的重要条件[^ch8-32]。",
+    "trigger": "在 LLM 策略梯度中判断 On-policy 是否更好时",
+    "recommendation": "通常选择 On-policy，因为它意味着更低的分布偏差和更稳定的优化",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER8-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h4-1",
+        "title": "看似 On-Policy，为什么仍会被数值误差拖垮",
+        "lineStart": 517,
+        "lineEnd": 529,
+        "contentHash": "sha256:381037cac8f10ba9fbd18db506bfbd9ea5e2256145ae8f6cced35989269b213a"
+      }
+    ],
+    "evidenceQuote": "在**任何参数更新之前**，用同一批轨迹比较 sampler 与 trainer 的 token log probability，监控 $\\rho_t$ 的均值、分位数、最大值、近似 KL 和被裁剪比例；这是最直接的 on-policy 单元测试。",
+    "statement": "在任何参数更新之前，用同一批轨迹比较 sampler 与 trainer 的 token log probability，监控 rho_t 的均值、分位数、最大值、近似 KL 和被裁剪比例。",
+    "rationale": "这是最直接的 on-policy 单元测试。",
+    "appliesWhen": "当需要执行 on-policy 单元测试时，在任何参数更新之前进行。",
+    "violation": "未在参数更新之前执行该 on-policy 单元测试。",
+    "chapterRef": "chapter8-h4-1"
+  },
+  {
+    "id": "CHAPTER8-H4-1-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h4-1",
+        "title": "看似 On-Policy，为什么仍会被数值误差拖垮",
+        "lineStart": 517,
+        "lineEnd": 529,
+        "contentHash": "sha256:381037cac8f10ba9fbd18db506bfbd9ea5e2256145ae8f6cced35989269b213a"
+      }
+    ],
+    "evidenceQuote": "批大小改变计算归约方式、破坏数值的 batch invariance，也已被直接观察到会把本应 on-policy 的 RL 变成隐式 off-policy；使用匹配的采样—训练数值或显式 off-policy 修正都能改善稳定性[^ch8-34]。",
+    "pattern": "批大小改变计算归约方式、破坏数值的 batch invariance。",
+    "harm": "把本应 on-policy 的 RL 变成隐式 off-policy。",
+    "corrective": "使用匹配的采样—训练数值或显式 off-policy 修正。",
+    "evidence": [
+      "批大小改变计算归约方式、破坏数值的 batch invariance，也已被直接观察到会把本应 on-policy 的 RL 变成隐式 off-policy"
+    ],
+    "chapterRef": "chapter8-h4-1"
+  },
+  {
+    "id": "CHAPTER8-H2-10-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-10",
+        "title": "RL 环境：从评估到仿真",
+        "lineStart": 530,
+        "lineEnd": 533,
+        "contentHash": "sha256:0bc207c68f21db974e0a6c8860c53521a7c3014cb442272eb8db98e6db550c1e"
+      }
+    ],
+    "evidenceQuote": "RL 训练的瓶颈往往不在算法，而在**环境是否足够真实、可重置、可并行**。真实 Agent 的电话、付款或文件修改可能昂贵且不可逆，不能靠无限重试弥补一次错误；第七章的评估环境可以提供验证器，但训练还需要让 Agent 反复试错、承受动作副作用，并在数百万次交互中保持稳定。因此环境工程是 RL 的前置条件，不是训练完成后的附属品。",
+    "statement": "环境工程是 RL 的前置条件，不是训练完成后的附属品。",
+    "rationale": "RL 训练的瓶颈往往不在算法，而在环境是否足够真实、可重置、可并行；真实 Agent 的电话、付款或文件修改可能昂贵且不可逆，不能靠无限重试弥补一次错误；训练还需要让 Agent 反复试错、承受动作副作用，并在数百万次交互中保持稳定。",
+    "appliesWhen": "进行 RL 训练、需要让 Agent 反复试错、承受动作副作用，并在数百万次交互中保持稳定时。",
+    "violation": "把环境工程视为训练完成后的附属品。",
+    "chapterRef": "chapter8-h2-10"
+  },
+  {
+    "id": "CHAPTER8-H3-10-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-10",
+        "title": "环境：模型练习的场地",
+        "lineStart": 534,
+        "lineEnd": 543,
+        "contentHash": "sha256:c8a2e19af72001f175feaf4b6223def9723eebfce4d91e39b45d923be736e790"
+      }
+    ],
+    "evidenceQuote": "- **环境一旦失真，策略就会失效。** 如果仿真里的客服总是按固定套路回话、错误信息跟生产环境对不上，模型就会学到一套只在仿真里管用的“应试策略”，一上线就暴露问题。这是 RL 项目最常见的失败方式——不是算法不行，而是练习场与考场并不相同。\n- **构建高保真环境，常常比训练本身更贵、更难。** 一个能大规模并行、可复现、反馈真实的环境，往往需要投入比调整模型多得多的工程资源。本章后面的工具调用实验（AWorld 的 MCP 沙盒、ReTool 的代码解释器沙盒）之所以花大力气搭建环境，正是因为**真实 API 有速率限制、会封号、有副作用，根本无法直接用于训练**——必须先构建一个稳定、可控、可重放的“影子世界”。",
+    "pattern": "在仿真环境与生产环境不一致的情况下训练RL策略，导致模型学到只在仿真管用的应试策略。",
+    "harm": "策略上线后暴露问题，无法在真实环境中使用。",
+    "corrective": "构建高保真、稳定、可控、可重放的仿真环境，避免练习场与考场不一致。",
+    "evidence": [
+      "仿真里的客服总是按固定套路回话、错误信息跟生产环境对不上，模型就会学到一套只在仿真里管用的“应试策略”，一上线就暴露问题。"
+    ],
+    "chapterRef": "chapter8-h3-10"
+  },
+  {
+    "id": "CHAPTER8-H3-11-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-11",
+        "title": "造不出环境怎么办：让模型扮演环境",
+        "lineStart": 544,
+        "lineEnd": 553,
+        "contentHash": "sha256:815e5f613cb73c07d36ec97b5e58076652fc80e3d1cd7a041bce07c55c2e586c"
+      }
+    ],
+    "evidenceQuote": "客服、销售类 Agent 的训练普遍用 LLM 扮演用户（用户模拟器），τ-bench 系列评测正是建立在这个思路上——同一个模型模拟器，既能当考场，也能当练习场。",
+    "canonicalTerm": "用户模拟器",
+    "aliases": [
+      "LLM 扮演用户"
+    ],
+    "definition": "用 LLM 扮演用户，在客服、销售等场景中模拟交互对手，用于 Agent 的训练与评测；同一个模拟器既能当考场也能当练习场。",
+    "examples": [
+      "客服类 Agent 训练",
+      "销售类 Agent 训练",
+      "τ-bench 系列评测"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-11-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-11",
+        "title": "造不出环境怎么办：让模型扮演环境",
+        "lineStart": 544,
+        "lineEnd": 553,
+        "contentHash": "sha256:815e5f613cb73c07d36ec97b5e58076652fc80e3d1cd7a041bce07c55c2e586c"
+      }
+    ],
+    "evidenceQuote": "但必须指出这条路的风险：**模拟器的世界知识就是训练的天花板，模拟器的系统性偏差会被策略照单全收。** 如果模拟的客服比真实用户更有耐心、模拟的搜索引擎从不返回垃圾结果，学生学到的就是一套只在 “模型扮演的世界” 里成立的策略；更糟的是，RL 会主动寻找并利用模拟器的漏洞，进行 reward hacking。所以工程上的稳妥做法是**混合**：用模型模拟承担大部分交互量，辅以真实环境的交互，并用真实环境交互定期校准模拟器的偏差。",
+    "pattern": "使用模型模拟环境训练 Agent 时，只依赖模拟器提供交互，不与真实环境交互校准",
+    "harm": "模拟器的系统性偏差会被策略照单全收，学生学到只在“模型扮演的世界”里成立的策略；RL 会主动寻找并利用模拟器漏洞进行 reward hacking",
+    "corrective": "采用混合策略：模型模拟承担大部分交互量，辅以真实环境交互，并定期用真实环境交互校准模拟器偏差",
+    "evidence": [
+      "模拟的客服比真实用户更有耐心、模拟的搜索引擎从不返回垃圾结果时，学生学到的是一套只在“模型扮演的世界”里成立的策略；RL 会主动寻找并利用模拟器的漏洞进行 reward hacking"
+    ],
+    "chapterRef": "chapter8-h3-11"
+  },
+  {
+    "id": "CHAPTER8-H3-12-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-12",
+        "title": "环境、任务分布与评估隔离",
+        "lineStart": 554,
+        "lineEnd": 563,
+        "contentHash": "sha256:c21fcaa48a1c6823985d626d9b606afffb9dee133598d85c965c1458374648fd"
+      }
+    ],
+    "evidenceQuote": "隔离要求也相同，但 RL 场景多了一条：训练环境和评估环境可以共享任务生成器与验证代码，却不能共享同一批任务。SWE-Gym、τ²-bench、AndroidWorld 都说明了这一点[^ch8-28]：测试用例、隐藏状态和参考解法应留在验证器一侧。",
+    "statement": "训练环境和评估环境可以共享任务生成器与验证代码，却不能共享同一批任务。",
+    "rationale": "隔离要求要求测试用例、隐藏状态和参考解法应留在验证器一侧，以隔离训练与评估。",
+    "appliesWhen": "在 RL 场景下构建训练环境和评估环境时。",
+    "violation": "训练环境和评估环境共享同一批任务，导致评估不再隔离。",
+    "chapterRef": "chapter8-h3-12"
+  },
+  {
+    "id": "CHAPTER8-H3-12-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-12",
+        "title": "环境、任务分布与评估隔离",
+        "lineStart": 554,
+        "lineEnd": 563,
+        "contentHash": "sha256:c21fcaa48a1c6823985d626d9b606afffb9dee133598d85c965c1458374648fd"
+      }
+    ],
+    "evidenceQuote": "确定性验证器“便宜”不等于“没有成本”。Lean kernel、测试运行器或容器执行可能让 CPU 验证速度远慢于 GPU 生成速度；这时吞吐量取决于并行的验证器 worker，而不是继续堆 GPU[^ch8-9]。",
+    "trigger": "当确定性验证器（如 Lean kernel、测试运行器或容器执行）可能让 CPU 验证速度远慢于 GPU 生成速度时。",
+    "recommendation": "应通过增加并行验证器 worker 来提升吞吐量，而不是继续堆 GPU。",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER8-H3-13-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-13",
+        "title": "多轮任务的核心挑战",
+        "lineStart": 566,
+        "lineEnd": 583,
+        "contentHash": "sha256:1ae48ebbac03985b0c807cb078046d1c8961abe88a322cf8f4dd9b351f6d83d2"
+      }
+    ],
+    "evidenceQuote": "从单轮到多轮，复杂性发生了质的跃迁。策略不仅要选择当前最优动作，还要考虑未来的状态价值；不仅要处理即时反馈，还要在延迟奖励下进行**信用分配（Credit Assignment）**——判断多步序列中到底哪一步对最终结果贡献最大。比如一个客服 Agent 用了 10 轮对话解决了用户问题，最终获得好评——但这个好评该归功于第 2 轮的精准提问，还是第 7 轮的耐心解释？",
+    "canonicalTerm": "信用分配",
+    "aliases": [
+      "Credit Assignment"
+    ],
+    "definition": "判断多步序列中到底哪一步对最终结果贡献最大",
+    "examples": [
+      "一个客服 Agent 用了 10 轮对话解决了用户问题，最终获得好评——但这个好评该归功于第 2 轮的精准提问，还是第 7 轮的耐心解释？"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-13-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-13",
+        "title": "多轮任务的核心挑战",
+        "lineStart": 566,
+        "lineEnd": 583,
+        "contentHash": "sha256:1ae48ebbac03985b0c807cb078046d1c8961abe88a322cf8f4dd9b351f6d83d2"
+      }
+    ],
+    "evidenceQuote": "V-IRL[^ch8-24]让 Agent 在真实城市街景中连续导航：训练使用纽约路线，测试迁移到不同城市，并同时改变方向表达和视觉外观。RL 在规则和视觉 OOD 上都明显优于 SFT，说明在多轮任务中，策略需要学会根据当前观测重新规划，而不是复现训练轨迹。",
+    "statement": "在多轮任务中，策略需要学会根据当前观测重新规划，而不是复现训练轨迹。",
+    "rationale": "RL 在规则和视觉 OOD 上都明显优于 SFT，证明重新规划比复现训练轨迹更有效。",
+    "appliesWhen": "当任务环境发生变化（如迁移到不同城市、改变方向表达和视觉外观）时，多轮任务中的策略需要根据当前观测重新规划。",
+    "violation": "如果策略仅复现训练轨迹而不进行重新规划，在 OOD 场景下可能表现不佳（如 SFT 劣于 RL）。",
+    "chapterRef": "chapter8-h3-13"
+  },
+  {
+    "id": "CHAPTER8-H3-14-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-14",
+        "title": "工具调用：把环境带进 Agent",
+        "lineStart": 584,
+        "lineEnd": 609,
+        "contentHash": "sha256:04f86e572749b14089c4176cb8ce3a3e79d5562c644f7c875d07a319e74c3dd5"
+      }
+    ],
+    "evidenceQuote": "工具轨迹还有一个关键实现细节：环境返回的 token 不是策略生成的，计算策略梯度时应屏蔽这些反馈 token，只对模型自己的思考和工具调用参数回传梯度。否则模型会被训练去预测沙盒输出，而不是学会如何使用工具。",
+    "statement": "在工具调用强化学习中，计算策略梯度时应屏蔽环境返回的反馈 token，只对模型自己的思考和工具调用参数回传梯度。",
+    "rationale": "否则模型会被训练去预测沙盒输出，而不是学会如何使用工具。",
+    "appliesWhen": "在工具调用强化学习中计算策略梯度时。",
+    "violation": "不屏蔽反馈 token 会导致模型学习预测沙盒输出而不是使用工具。",
+    "chapterRef": "chapter8-h3-14"
+  },
+  {
+    "id": "CHAPTER8-H3-14-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-14",
+        "title": "工具调用：把环境带进 Agent",
+        "lineStart": 584,
+        "lineEnd": 609,
+        "contentHash": "sha256:04f86e572749b14089c4176cb8ce3a3e79d5562c644f7c875d07a319e74c3dd5"
+      }
+    ],
+    "evidenceQuote": "AWorld-train 使用 MCP 服务器沙盒，提供 Web、文档、多媒体、代码和知识检索等工具。这个开放式实验的重点不是刷新 GAIA 指标，而是跑通可重置、可重放的多工具训练链路，并观察工具调用成功率和组合策略是否随训练改善。",
+    "canonicalTerm": "AWorld-train",
+    "aliases": [],
+    "definition": "一种使用 MCP 服务器沙盒进行多工具强化学习训练的开放式实验方法，提供 Web、文档、多媒体、代码和知识检索等工具，重点跑通可重置、可重放的多工具训练链路。",
+    "examples": [
+      "提供 Web、文档、多媒体、代码和知识检索等工具"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-15-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-15",
+        "title": "奖励来自哪里：规则、人类偏好与模型评判",
+        "lineStart": 614,
+        "lineEnd": 623,
+        "contentHash": "sha256:7cfe19de2da010d178304e3fca7ec4f93763a054acce4db7b4468cb96f85a53a"
+      }
+    ],
+    "evidenceQuote": "最可靠的来源是**可验证奖励（RLVR）**：用测试用例、数据库断言、状态差异或格式检查直接判断结果。数学答案、代码测试和结构化工具调用都适合从二元结果奖励开始；规则越确定，奖励越便宜、可复现，也越不容易被模型钻空子。",
+    "canonicalTerm": "可验证奖励",
+    "aliases": [
+      "RLVR"
+    ],
+    "definition": "最可靠的奖励来源，用测试用例、数据库断言、状态差异或格式检查直接判断结果。",
+    "examples": [
+      "数学答案",
+      "代码测试",
+      "结构化工具调用"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-15-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-15",
+        "title": "奖励来自哪里：规则、人类偏好与模型评判",
+        "lineStart": 614,
+        "lineEnd": 623,
+        "contentHash": "sha256:7cfe19de2da010d178304e3fca7ec4f93763a054acce4db7b4468cb96f85a53a"
+      }
+    ],
+    "evidenceQuote": "**reward hacking** 是钻规则或实现漏洞拿高分，**reward seeking** 则是模型先在心里建立一个“评判器会看什么”的模型，再按这个猜测调整行为。后者不一定篡改测试或伪造结果，却可能在长程任务中自行设置一个过于简单的检查，刚好通过就提前结束，交付物因此只满足代理指标而没有满足真实意图[^ch8-29]。",
+    "canonicalTerm": "reward seeking",
+    "aliases": [],
+    "definition": "模型先在心里建立一个“评判器会看什么”的模型，再按这个猜测调整行为。",
+    "examples": [
+      "在长程任务中自行设置一个过于简单的检查，刚好通过就提前结束"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-16-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-16",
+        "title": "奖励在什么时候给：结果还是过程",
+        "lineStart": 624,
+        "lineEnd": 633,
+        "contentHash": "sha256:af6fa10be1d8a0cd42d5c5bf0674e3c69e59c2d036c96210e638626f3acab499"
+      }
+    ],
+    "evidenceQuote": "结果奖励（ORM）只在 episode 结束时判断任务是否完成，最简单，也给策略最大的探索自由度；当中间路径没有公认标准、最优解尚未被人类发现时，SimpleVLA-RL 的稀疏成功/失败奖励就是合适的起点。",
+    "canonicalTerm": "结果奖励",
+    "aliases": [
+      "ORM"
+    ],
+    "definition": "只在 episode 结束时判断任务是否完成的奖励方式，最简单，也给策略最大的探索自由度。",
+    "examples": [
+      "SimpleVLA-RL 的稀疏成功/失败奖励"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-16-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-16",
+        "title": "奖励在什么时候给：结果还是过程",
+        "lineStart": 624,
+        "lineEnd": 633,
+        "contentHash": "sha256:af6fa10be1d8a0cd42d5c5bf0674e3c69e59c2d036c96210e638626f3acab499"
+      }
+    ],
+    "evidenceQuote": "“过早结束”是一个具体例子：模型说任务完成时，Harness 在隔离工作区运行模型看不到的验收测试；通过才给正奖励，未通过则给负奖励。测试必须读取真实文件或环境状态，不能只检查模型是否说了“已完成”，否则模型可能学会口头承诺验证而不真正验证。",
+    "statement": "测试必须读取真实文件或环境状态，不能只检查模型是否说了“已完成”。",
+    "rationale": "否则模型可能学会口头承诺验证而不真正验证。",
+    "appliesWhen": "当模型声称任务完成、由 Harness 在隔离工作区运行验收测试判断是否真正完成时。",
+    "violation": "只检查模型是否说了“已完成”，而不读取真实文件或环境状态。",
+    "chapterRef": "chapter8-h3-16"
+  },
+  {
+    "id": "CHAPTER8-H3-17-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-17",
+        "title": "奖励需要表达多少信息：标量、向量与生成式诊断",
+        "lineStart": 634,
+        "lineEnd": 643,
+        "contentHash": "sha256:a28dc2acb388f73bb676e2dd7f60ac2c98193352af057f6830164257b992c96d"
+      }
+    ],
+    "evidenceQuote": "奖励的**密度**和**表示形式**是两件事。标量只回答“总体多好”；半标量先给简短理由再给分数；向量按准确性、完整性、成本和安全等维度分别打分；生成式奖励则给出自然语言诊断并可多次采样后汇总。",
+    "canonicalTerm": "奖励表示形式",
+    "aliases": [],
+    "definition": "奖励表示形式分为标量、半标量、向量和生成式奖励：标量只回答“总体多好”；半标量先给简短理由再给分数；向量按准确性、完整性、成本和安全等维度分别打分；生成式奖励则给出自然语言诊断并可多次采样后汇总。",
+    "examples": [
+      "标量",
+      "半标量",
+      "向量",
+      "生成式奖励"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-17-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-17",
+        "title": "奖励需要表达多少信息：标量、向量与生成式诊断",
+        "lineStart": 634,
+        "lineEnd": 643,
+        "contentHash": "sha256:a28dc2acb388f73bb676e2dd7f60ac2c98193352af057f6830164257b992c96d"
+      }
+    ],
+    "evidenceQuote": "不要为了“奖励更丰富”而堆叠不可验证的维度。每增加一个评价维度，就增加一种被策略钻空子的可能；先确认这个信号能在少量 rollout 中产生有意义的组内差异，再决定是否加入训练。",
+    "statement": "不要为了“奖励更丰富”而堆叠不可验证的维度；每增加一个评价维度，就增加一种被策略钻空子的可能；先确认这个信号能在少量 rollout 中产生有意义的组内差异，再决定是否加入训练。",
+    "rationale": "每增加一个评价维度，就增加一种被策略钻空子的可能。",
+    "appliesWhen": "考虑在奖励中加入新的评价维度时。",
+    "violation": "堆叠不可验证的维度，或在未确认信号能在少量 rollout 中产生有意义的组内差异前就加入训练。",
+    "chapterRef": "chapter8-h3-17"
+  },
+  {
+    "id": "CHAPTER8-H3-18-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-18",
+        "title": "结果正确还不够：路径约束与 RLVP",
+        "lineStart": 644,
+        "lineEnd": 669,
+        "contentHash": "sha256:da60bb7a472a40c775d23c5f80515159076b7f65dbad8b282217ee148838c684"
+      }
+    ],
+    "evidenceQuote": "结果奖励解决“事情有没有办成”，却表达不了“是否按规定办成”。真实 Agent 可能通过改测试文件、跳过身份验证或执行破坏性命令获得表面成功。RLVP（Reinforcement Learning with Verified Penalty）的原则是：**奖励结果，惩罚路径**。它针对的是可机器判定的、与最终成败无关的**结果中性约束**；它不能替代对语义意图、交付完整性和早停行为的独立检查。",
+    "canonicalTerm": "RLVP",
+    "aliases": [
+      "Reinforcement Learning with Verified Penalty"
+    ],
+    "definition": "一种强化学习原则：奖励结果，惩罚路径；针对可机器判定的、与最终成败无关的结果中性约束；不能替代对语义意图、交付完整性和早停行为的独立检查。",
+    "examples": [
+      "真实 Agent 可能通过改测试文件、跳过身份验证或执行破坏性命令获得表面成功"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-18-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-18",
+        "title": "结果正确还不够：路径约束与 RLVP",
+        "lineStart": 644,
+        "lineEnd": 669,
+        "contentHash": "sha256:da60bb7a472a40c775d23c5f80515159076b7f65dbad8b282217ee148838c684"
+      }
+    ],
+    "evidenceQuote": "纯结果奖励在全败组和全胜组都会产生零方差、没有梯度；违规动作通常容易检测，惩罚几乎总能恢复差异；进展奖励只有在部分进展可达时才有效。",
+    "pattern": "纯结果奖励",
+    "harm": "在全败组和全胜组都会产生零方差、没有梯度",
+    "corrective": "对违规动作进行惩罚，以恢复组内差异",
+    "evidence": [
+      "纯结果奖励在全败组和全胜组都会产生零方差、没有梯度"
+    ],
+    "chapterRef": "chapter8-h3-18"
+  },
+  {
+    "id": "CHAPTER8-H2-13-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-13",
+        "title": "蒸馏：提升样本效率",
+        "lineStart": 670,
+        "lineEnd": 677,
+        "contentHash": "sha256:0b73f243d65e776c243c47fd44bbb4739b8d971d2cf8c6d11fca10cf32deb0ba"
+      }
+    ],
+    "evidenceQuote": "这里的“样本效率”特指：**每次昂贵的环境交互，能带来多少有效的参数更新**，而不只是训练步数或 GPU 时间。ReTool 的 RL 训练时间是 SFT 的 200 倍以上（9 天 vs 1 小时），因此减少环境采样尤其重要。",
+    "canonicalTerm": "样本效率",
+    "aliases": [],
+    "definition": "每次昂贵的环境交互能带来多少有效的参数更新，而不只是训练步数或 GPU 时间。",
+    "examples": [
+      "ReTool 的 RL 训练时间是 SFT 的 200 倍以上（9 天 vs 1 小时），因此减少环境采样尤其重要。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-13-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-13",
+        "title": "蒸馏：提升样本效率",
+        "lineStart": 670,
+        "lineEnd": 677,
+        "contentHash": "sha256:0b73f243d65e776c243c47fd44bbb4739b8d971d2cf8c6d11fca10cf32deb0ba"
+      }
+    ],
+    "evidenceQuote": "RL 样本效率低，除了高方差和在轨数据难复用，更根本的原因是反馈太稀疏。主流 model-free RL 通常只在一条 rollout 结束时得到一个成败标量，中间的错误原因、缺少字段、流程提示都没有直接的学习信号。比如客服说“需要信用卡后四位”，模型却只能从最终的 0/1 结果反复试错，可能要数百次交互才偶然学会这一步；人类听到一次就能记住。",
+    "canonicalTerm": "稀疏反馈",
+    "aliases": [],
+    "definition": "主流 model-free RL 通常只在一条 rollout 结束时得到一个成败标量，中间的错误原因、缺少字段、流程提示都没有直接的学习信号。",
+    "examples": [
+      "客服说“需要信用卡后四位”，模型却只能从最终的 0/1 结果反复试错，可能要数百次交互才偶然学会这一步；人类听到一次就能记住。"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-19-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-19",
+        "title": "在轨蒸馏：让一次 rollout 产生密集监督",
+        "lineStart": 678,
+        "lineEnd": 710,
+        "contentHash": "sha256:f2ef5614fea367ce9db4c235a77aa078f600daec87e9df9c662745020dd17b78"
+      }
+    ],
+    "evidenceQuote": "需要强调的是，它同样不是“从零创造能力”的办法：学生至少要能进入教师可纠正的有效状态，教师策略也不能离学生的有效支持太远。若基模连目标语言、领域概念或基本动作都没有，仍应先 Mid-training 或用离轨示范冷启动，再切换到在轨蒸馏。",
+    "statement": "若基模连目标语言、领域概念或基本动作都没有，应先进行 Mid-training 或用离轨示范冷启动，再切换到在轨蒸馏。",
+    "rationale": "在轨蒸馏不是从零创造能力的办法；学生至少要能进入教师可纠正的有效状态，教师策略也不能离学生的有效支持太远。",
+    "appliesWhen": "当基模缺乏目标语言、领域概念或基本动作，准备使用在轨蒸馏时。",
+    "violation": "直接切换到在轨蒸馏而不先冷启动，学生可能无法进入教师可纠正的有效状态。",
+    "chapterRef": "chapter8-h3-19"
+  },
+  {
+    "id": "CHAPTER8-H3-19-CASE-02",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-19",
+        "title": "在轨蒸馏：让一次 rollout 产生密集监督",
+        "lineStart": 678,
+        "lineEnd": 710,
+        "contentHash": "sha256:f2ef5614fea367ce9db4c235a77aa078f600daec87e9df9c662745020dd17b78"
+      }
+    ],
+    "evidenceQuote": "“稠密信号胜过稀疏信号”在一个纯 Agent 场景中也得到过验证。笔者和合作者曾在“时间感”任务上比较 DPO、四种 RL 与 On-Policy Distillation：前者分别受到稀疏奖励、目标错位、rollout 形状不匹配和策略崩溃的限制；换成冻结的 Qwen3-32B 教师，在学生自己的多轮轨迹上逐 token 对齐后，训练平滑收敛，四种条件下通过率比同源 SFT 基线高出 23 到 47 个百分点[^ch8-11]。这说明瓶颈往往不是奖励函数不够复杂，而是每次交互提供的信号不够密。",
+    "title": "“时间感”任务：DPO、四种 RL 与 On-Policy Distillation 的对比",
+    "context": "在一个纯 Agent 场景中验证“稠密信号胜过稀疏信号”。",
+    "facts": [
+      "比较对象包括 DPO、四种 RL 与 On-Policy Distillation。",
+      "DPO 等方法分别受到稀疏奖励、目标错位、rollout 形状不匹配和策略崩溃的限制。",
+      "换成冻结的 Qwen3-32B 教师，在学生自己的多轮轨迹上逐 token 对齐。",
+      "训练平滑收敛，四种条件下通过率比同源 SFT 基线高出 23 到 47 个百分点。"
+    ],
+    "decisions": [
+      "在 DPO、四种 RL 等方法受到限制后，改用冻结的 Qwen3-32B 教师进行逐 token 对齐。"
+    ],
+    "outcome": "训练平滑收敛，四种条件下通过率比同源 SFT 基线高出 23 到 47 个百分点。",
+    "limitations": [
+      "该验证限于一个纯 Agent 的“时间感”任务场景。"
+    ],
+    "dataClass": "实验对比案例",
+    "evidenceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-19",
+        "title": "在轨蒸馏：让一次 rollout 产生密集监督",
+        "lineStart": 678,
+        "lineEnd": 710,
+        "contentHash": "sha256:f2ef5614fea367ce9db4c235a77aa078f600daec87e9df9c662745020dd17b78"
+      }
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-20-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-20",
+        "title": "没有更强的教师怎么办：On-Policy 自蒸馏",
+        "lineStart": 711,
+        "lineEnd": 732,
+        "contentHash": "sha256:084dd6b10af0877a86fd9a39abb1847121e78744a06c4670a751fa192c524109"
+      }
+    ],
+    "evidenceQuote": "一个巧妙的破题思路是 **On-Policy Self-Distillation（OPSD，在轨自蒸馏）**[^ch8-15]：**同一个模型分饰教师和学生两角，但看到的上下文不同。** 教师版能看到“特权信息”——如标准答案或已验证的正确解答；学生版只看到问题本身，却在自己采样的轨迹上向教师版的逐 token 分布对齐。对着答案解释学生刚走过的路径，通常比独立探索更容易，因此一条 rollout 仍能产生密集监督。",
+    "canonicalTerm": "On-Policy Self-Distillation（OPSD，在轨自蒸馏）",
+    "aliases": [
+      "OPSD",
+      "在轨自蒸馏"
+    ],
+    "definition": "同一个模型分饰教师和学生两角但看到的上下文不同；教师版能看到标准答案或已验证的正确解答这类特权信息，学生版只看到问题本身，却在自己采样的轨迹上向教师版的逐 token 分布对齐。",
+    "examples": [
+      "标准答案",
+      "已验证的正确解答"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-20-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-20",
+        "title": "没有更强的教师怎么办：On-Policy 自蒸馏",
+        "lineStart": 711,
+        "lineEnd": 732,
+        "contentHash": "sha256:084dd6b10af0877a86fd9a39abb1847121e78744a06c4670a751fa192c524109"
+      }
+    ],
+    "evidenceQuote": "但它不会凭空创造新知识——如果模型拿着答案也讲不清过程，自蒸馏就没有额外信号；朴素 OPSD 还可能让模型丢失原有思考风格，需要额外正则稳定[^ch8-16]。",
+    "pattern": "朴素 OPSD",
+    "harm": "可能让模型丢失原有思考风格",
+    "corrective": "需要额外正则稳定",
+    "evidence": [
+      "朴素 OPSD 还可能让模型丢失原有思考风格，需要额外正则稳定"
+    ],
+    "chapterRef": "chapter8-h3-20"
+  },
+  {
+    "id": "CHAPTER8-H2-14-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-14",
+        "title": "从问题案例到后训练",
+        "lineStart": 733,
+        "lineEnd": 745,
+        "contentHash": "sha256:7c2047aa65df85b9ffe77a51fe0eaff8facb6e0c7bda667ec3dbbe24ce4ac730"
+      }
+    ],
+    "evidenceQuote": "失败归因记录、端到端回归任务、轨迹前缀回归任务、Rubric 评分各自对应不同的训练用法：\n\n表8-5 第七章评估数据集到第八章训练用法的映射\n\n| 第七章的评估数据集                     | 第八章的训练用法                                             |\n| -------------------------------------- | ------------------------------------------------------------ |\n| 端到端回归任务（含验证器）             | RL rollout 任务与可验证奖励（RLVR）；拒绝采样（RFT）的采样池 |\n| 轨迹前缀回归任务                       | DPO 偏好对、决策边界的 SFT 示范、On-Policy Distillation 的教师状态 |\n| 失败归因记录（首个错误步骤与错误类别） | 过程监督的负标签（PRM）、RLVP 路径惩罚的规则来源             |\n| Rubric 多维评分与人工金标集            | 向量奖励的各维度、生成式奖励模型（GRM）的训练与校准数据      |",
+    "canonicalTerm": "第七章评估数据集到第八章训练用法的映射",
+    "aliases": [],
+    "definition": "该映射将第七章的评估数据集与第八章的训练用法对应起来：端到端回归任务（含验证器）、轨迹前缀回归任务、失败归因记录（首个错误步骤与错误类别）、Rubric 多维评分与人工金标集分别对应不同的训练用法。",
+    "examples": [
+      "端到端回归任务（含验证器）对应 RL rollout 任务与可验证奖励（RLVR）以及拒绝采样（RFT）的采样池",
+      "轨迹前缀回归任务对应 DPO 偏好对、决策边界的 SFT 示范、On-Policy Distillation 的教师状态",
+      "失败归因记录（首个错误步骤与错误类别）对应过程监督的负标签（PRM）与 RLVP 路径惩罚的规则来源",
+      "Rubric 多维评分与人工金标集对应向量奖励的各维度、生成式奖励模型（GRM）的训练与校准数据"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-21-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-21",
+        "title": "案例 1：Coding Agent 过早结束",
+        "lineStart": 746,
+        "lineEnd": 763,
+        "contentHash": "sha256:85de75c62ad7a5a0602d97311a25424eb13dad21f80be89339e300ce5d486cab"
+      }
+    ],
+    "evidenceQuote": "端到端回归任务：把 “宣称完成前必须跑通验收测试” 写成可验证奖励。测试对模型不可见，模型宣称完成时才运行，通过 +1、不通过 −1；这正是 “判定交给模型写不了的隐藏测试”（见前文奖励设计）的直接应用，也是本案例可选的 RL 分支。",
+    "statement": "在端到端回归任务中，Coding Agent 宣称完成前必须跑通验收测试，且验收测试对模型不可见、只在模型宣称完成时运行。",
+    "rationale": "把完成判定交给模型自己写不了的隐藏测试，并通过 +1、不通过 −1 的奖励信号约束完成宣称。",
+    "appliesWhen": "使用端到端回归任务训练或奖励 Coding Agent，且模型准备宣称完成时。",
+    "violation": "模型未通过隐藏验收测试却宣称完成，获得不通过（−1）奖励。",
+    "chapterRef": "chapter8-h3-21"
+  },
+  {
+    "id": "CHAPTER8-H3-21-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-21",
+        "title": "案例 1：Coding Agent 过早结束",
+        "lineStart": 746,
+        "lineEnd": 763,
+        "contentHash": "sha256:85de75c62ad7a5a0602d97311a25424eb13dad21f80be89339e300ce5d486cab"
+      }
+    ],
+    "evidenceQuote": "**评估：边界集与保留集缺一不可（第一章命名的模式）。** 训练后的验证使用第七章的评估数据集：轨迹前缀边界集检查 “任务未完成时，模型是否选择继续验证而非宣称完成”；同样重要的是**保留集**——任务确实已完成时，模型应正常宣称完成。只盯前一个指标，会把模型训练成永远不敢收尾的**过度矫正**状态：每个任务都无限验证下去，延迟与成本崩溃。",
+    "statement": "评估针对“过早结束”的修复模型时，必须同时使用轨迹前缀边界集和保留集。",
+    "rationale": "只检查边界集会把模型训练成永远不敢收尾的过度矫正状态，导致每个任务无限验证、延迟与成本崩溃。",
+    "appliesWhen": "训练后验证模型在任务未完成时是否选择继续验证而非宣称完成，以及任务已完成时是否正常宣称完成。",
+    "violation": "只盯边界集指标而忽略保留集，模型可能在任务确实完成时也无法正常收尾。",
+    "chapterRef": "chapter8-h3-21"
+  },
+  {
+    "id": "CHAPTER8-H3-22-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-22",
+        "title": "案例 2：中文引号",
+        "lineStart": 764,
+        "lineEnd": 777,
+        "contentHash": "sha256:cc7ca9b02b2fe10a344ca33b814da5eec2aed27bcc26a0c78ef20965809b3f54"
+      }
+    ],
+    "evidenceQuote": "正确的修复是**作用域敏感的最小编辑**：中文自然语言中的引用可以转换为 `“”`，嵌套引用按中文标点规则处理；英文原文、可执行代码、JSON/schema、路径、标识符和 Markdown 反引号中的内容必须原样保留；无法判断作用域时应保留原文。",
+    "canonicalTerm": "作用域敏感的最小编辑",
+    "aliases": [],
+    "definition": "一种编辑策略：中文自然语言中的引用可以转换为弯引号，嵌套引用按中文标点规则处理；英文原文、可执行代码、JSON/schema、路径、标识符和 Markdown 反引号中的内容必须原样保留；无法判断作用域时应保留原文。",
+    "examples": [
+      "中文自然语言中的引用可以转换为弯引号",
+      "英文原文、可执行代码、JSON/schema、路径、标识符和 Markdown 反引号中的内容必须原样保留"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-22-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-22",
+        "title": "案例 2：中文引号",
+        "lineStart": 764,
+        "lineEnd": 777,
+        "contentHash": "sha256:cc7ca9b02b2fe10a344ca33b814da5eec2aed27bcc26a0c78ef20965809b3f54"
+      }
+    ],
+    "evidenceQuote": "用户反馈 “中文文章中的直引号应统一为弯引号”。这句话描述了期望，却没有给出可以直接训练的规则：同一个引号，在中文自然语言、英文原文、Markdown 行内代码、代码块、代码注释、JSON 或路径中承担的角色完全不同。正确的修复是**作用域敏感的最小编辑**：中文自然语言中的引用可以转换为 `“”`，嵌套引用按中文标点规则处理；英文原文、可执行代码、JSON/schema、路径、标识符和 Markdown 反引号中的内容必须原样保留；无法判断作用域时应保留原文。",
+    "statement": "中文自然语言中的引用可以转换为弯引号；嵌套引用按中文标点规则处理；英文原文、可执行代码、JSON/schema、路径、标识符和 Markdown 反引号中的内容必须原样保留；无法判断作用域时应保留原文。",
+    "rationale": "同一个引号在中文自然语言、英文原文、Markdown 行内代码、代码块、代码注释、JSON 或路径中承担的角色完全不同。",
+    "appliesWhen": "当直引号出现在中文自然语言、英文原文、Markdown 行内代码、代码块、代码注释、JSON 或路径等作用域中，并需要决定是否转换时。",
+    "violation": "在英文原文、可执行代码、JSON/schema、路径、标识符或 Markdown 反引号中的作用域中改动引号，而没有保留原文。",
+    "chapterRef": "chapter8-h3-22"
+  },
+  {
+    "id": "CHAPTER8-H3-23-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-23",
+        "title": "案例 3：编辑文件经常失败",
+        "lineStart": 778,
+        "lineEnd": 795,
+        "contentHash": "sha256:9660894d9965c988eb9759dc88f240358ce609c6d0acb699bf6f82c7a30a26c0"
+      }
+    ],
+    "evidenceQuote": "如第五章所述，Coding Agent 常用 `edit_file(path, old_string, new_string)` 这样的工具：模型把要替换的 `old_string` 抄写到工具参数。编辑工具通常按精确字符串匹配，哪怕只差一个空格、换行、反斜杠、Unicode 组合字符或低频 token，都会返回失败。",
+    "canonicalTerm": "edit_file(path, old_string, new_string)",
+    "aliases": [],
+    "definition": "Coding Agent 常用的编辑工具，按精确字符串匹配替换，模型把要替换的 old_string 抄写到工具参数；空格、换行、反斜杠、Unicode 组合字符或低频 token 之一的差异都会导致失败。",
+    "examples": [
+      "空格差异",
+      "换行差异",
+      "反斜杠差异",
+      "Unicode 组合字符差异",
+      "低频 token 差异"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H3-23-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h3-23",
+        "title": "案例 3：编辑文件经常失败",
+        "lineStart": 778,
+        "lineEnd": 795,
+        "contentHash": "sha256:9660894d9965c988eb9759dc88f240358ce609c6d0acb699bf6f82c7a30a26c0"
+      }
+    ],
+    "evidenceQuote": "若文件读取或工具返回已经改变字节，归因给工具；若序列化、转义或提示词拼装改变了内容，归因给 Harness；如果 tokenizer encode 后再 decode 发生变化，归因给 tokenizer。只有模型收到的上下文与原始字符串完全一致，而**模型输出是链路上首个出现差异的位置**，才能把它标为模型的精确复制能力问题，作为后训练候选。",
+    "statement": "只有模型收到的上下文与原始字符串完全一致，而模型输出是链路上首个出现差异的位置，才能把它标为模型的精确复制能力问题，作为后训练候选。",
+    "rationale": "文件读取或工具返回、序列化、转义或提示词拼装、tokenizer 编解码都可能先于模型输出引入差异，因此必须排除这些环节后才能归因给模型的精确复制能力。",
+    "appliesWhen": "诊断编辑文件失败轨迹并将差异归因给模型时",
+    "violation": "在工具、Harness 或 tokenizer 已引入差异的情况下仍将问题标为模型精确复制能力问题。",
+    "chapterRef": "chapter8-h3-23"
+  },
+  {
+    "id": "CHAPTER8-H2-15-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-15",
+        "title": "后训练实践要点",
+        "lineStart": 796,
+        "lineEnd": 819,
+        "contentHash": "sha256:32a8555802b0a4bc99ee9fdc81caaaf5e5199aa73514729f3339b9c9e89670fa"
+      }
+    ],
+    "evidenceQuote": "核心原则：**在投入大规模资源前，先用小规模实验验证关键假设**——小批 Mid-training 语料检查知识/能力与遗忘曲线，少量 SFT 数据测试格式能否稳定，小批 rollout 检查 `pass@k`、奖励差异和 sampler/trainer 数值一致性。快速失败比大规模失败更可接受。",
+    "statement": "在投入大规模资源前，先用小规模实验验证关键假设",
+    "rationale": "快速失败比大规模失败更可接受",
+    "appliesWhen": "投入大规模资源前",
+    "violation": "未经验证关键假设就直接投入大规模资源",
+    "chapterRef": "chapter8-h2-15"
+  },
+  {
+    "id": "CHAPTER8-H2-15-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-15",
+        "title": "后训练实践要点",
+        "lineStart": 796,
+        "lineEnd": 819,
+        "contentHash": "sha256:32a8555802b0a4bc99ee9fdc81caaaf5e5199aa73514729f3339b9c9e89670fa"
+      }
+    ],
+    "evidenceQuote": "5. **奖励函数设计不当**导致奖励黑客——模型学会钻奖励的漏洞来获得高分，而非真正完成任务（比如只看回复长度就生成冗长无意义的文本）。应该评估最终目标而非中间指标。",
+    "pattern": "奖励函数设计不当导致奖励黑客",
+    "harm": "模型学会钻奖励的漏洞来获得高分，而非真正完成任务",
+    "corrective": "应该评估最终目标而非中间指标",
+    "evidence": [
+      "比如只看回复长度就生成冗长无意义的文本"
+    ],
+    "chapterRef": "chapter8-h2-15"
+  },
+  {
+    "id": "CHAPTER8-H2-16-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-16",
+        "title": "本章小结",
+        "lineStart": 820,
+        "lineEnd": 863,
+        "contentHash": "sha256:d6c9dfe9004502a5dd7a403311805287bba5f454718a9af7a6efb8378c542487"
+      }
+    ],
+    "evidenceQuote": "Mid-training、SFT 和 RL 不是三种可互换的“微调力度”，而是分别处理**底座、协议与策略**。",
+    "statement": "Mid-training、SFT 和 RL 分别处理底座、协议与策略，而不是三种可互换的微调力度。",
+    "rationale": "三者处理对象不同，因此不能按微调力度互换。",
+    "appliesWhen": "当需要区分 Mid-training、SFT 和 RL 各阶段作用时。",
+    "violation": "将 Mid-training、SFT 和 RL 当作可互换的微调力度使用。",
+    "chapterRef": "chapter8-h2-16"
+  },
+  {
+    "id": "CHAPTER8-H2-16-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-16",
+        "title": "本章小结",
+        "lineStart": 820,
+        "lineEnd": 863,
+        "contentHash": "sha256:d6c9dfe9004502a5dd7a403311805287bba5f454718a9af7a6efb8378c542487"
+      }
+    ],
+    "evidenceQuote": "只有当当前策略能产生可评分且有奖励差异的轨迹时，RL 才能高效地重新分配概率并探索策略。",
+    "statement": "只有当当前策略能产生可评分且有奖励差异的轨迹时，RL 才能高效地重新分配概率并探索策略。",
+    "rationale": "RL 需要可评分且有奖励差异的轨迹来高效地重新分配概率并探索策略。",
+    "appliesWhen": "决定是否采用 RL 时。",
+    "violation": "在当前策略不能产生可评分且有奖励差异的轨迹时，仍期望 RL 高效。",
+    "chapterRef": "chapter8-h2-16"
+  },
+  {
+    "id": "CHAPTER8-H2-17-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-17",
+        "title": "思考题",
+        "lineStart": 864,
+        "lineEnd": 879,
+        "contentHash": "sha256:afd4ef3328a95ef73324e2b9b55128dce8e7e50a0a3f4aa57942a5a99700d664"
+      }
+    ],
+    "evidenceQuote": "灾难性遗忘——一次针对特定任务的微调破坏了模型原有的通用能力（如通用工具调用）——在 Agent 场景下尤其棘手。",
+    "canonicalTerm": "灾难性遗忘",
+    "aliases": [],
+    "definition": "一次针对特定任务的微调破坏了模型原有的通用能力（如通用工具调用），在 Agent 场景下尤其棘手。",
+    "examples": [
+      "通用工具调用"
+    ]
+  },
+  {
+    "id": "CHAPTER8-H2-17-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:19:12.854Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:19:12.854Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter8.md",
+        "anchor": "chapter8#h2-17",
+        "title": "思考题",
+        "lineStart": 864,
+        "lineEnd": 879,
+        "contentHash": "sha256:afd4ef3328a95ef73324e2b9b55128dce8e7e50a0a3f4aa57942a5a99700d664"
+      }
+    ],
+    "evidenceQuote": "模型蒸馏让小模型学习大模型的行为。按能力层次，被蒸馏的模型大致可分为三级——**Chat 模型**（单轮对话、直接作答）、**Reasoning 模型**（带长链思考再作答）、**Agentic 模型**（多轮调用工具、与环境交互）。",
+    "canonicalTerm": "被蒸馏模型的能力层次",
+    "aliases": [],
+    "definition": "按能力层次，被蒸馏的模型大致可分为三级：Chat 模型（单轮对话、直接作答）、Reasoning 模型（带长链思考再作答）、Agentic 模型（多轮调用工具、与环境交互）。",
+    "examples": [
+      "Chat 模型：单轮对话、直接作答",
+      "Reasoning 模型：带长链思考再作答",
+      "Agentic 模型：多轮调用工具、与环境交互"
+    ]
+  }
+]

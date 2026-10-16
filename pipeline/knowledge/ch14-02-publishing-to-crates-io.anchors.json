@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+  "fileKey": "ch14-02-publishing-to-crates-io",
+  "totalLines": 336,
+  "sourceHash": "sha256:fcad946a6828dd5de8a51d12dbc836b8800a14e25466a20d422d16448ef69e35",
+  "anchorCount": 11,
+  "levelCounts": {
+    "h2": 1,
+    "h3": 7,
+    "h4": 3
+  },
+  "anchors": [
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h2-1",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 2,
+      "title": "将 crate 发布到 Crates.io",
+      "lineStart": 1,
+      "lineEnd": 6,
+      "contentHash": "sha256:4e47b24b697b4894893088c82fb1316edd70a7e10ebac4fd148e829bb58ab1f0",
+      "contentBytes": 481
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h3-1",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 3,
+      "title": "编写有用的文档注释",
+      "lineStart": 7,
+      "lineEnd": 40,
+      "contentHash": "sha256:f1f5574a389c647c2a5be913a135d53427e0715e13db95ca4a69242f24cc127c",
+      "contentBytes": 1946
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h4-1",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 4,
+      "title": "常用（文档注释）部分",
+      "lineStart": 41,
+      "lineEnd": 50,
+      "contentHash": "sha256:64b03a6996a4c13699037ef6ba864aff4e0602f23c8d9ab9825fd21b8e77d77a",
+      "contentBytes": 974
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h4-2",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 4,
+      "title": "文档注释作为测试",
+      "lineStart": 51,
+      "lineEnd": 65,
+      "contentHash": "sha256:be20df1865eaf3eb2e7f1de7a892db87b1c10cc759ef068b03dd3f846d9c963b",
+      "contentBytes": 841
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h4-3",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 4,
+      "title": "注释包含项的结构",
+      "lineStart": 66,
+      "lineEnd": 95,
+      "contentHash": "sha256:de51420fc2c5690367a9e951096f10cdbbec968c5f52acfcc7aa20423902b781",
+      "contentBytes": 1632
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h3-2",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 3,
+      "title": "使用 `pub use` 导出合适的公有 API",
+      "lineStart": 96,
+      "lineEnd": 219,
+      "contentHash": "sha256:df132ad80468eb6a790e88b27e53787b031d09d8f2a49e1c3511c4f6b235b251",
+      "contentBytes": 5672
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h3-3",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 3,
+      "title": "创建 Crates.io 账号",
+      "lineStart": 220,
+      "lineEnd": 229,
+      "contentHash": "sha256:0ea70766c94cebb7fe339042c1c2fbcc8c75e65bbc110415bc25c644e8c04647",
+      "contentBytes": 993
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h3-4",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 3,
+      "title": "发布新 crate 之前",
+      "lineStart": 230,
+      "lineEnd": 289,
+      "contentHash": "sha256:a41a849028bf668a73d2f13debb0beb1b2d4799445bbda71544c36b2b5571e52",
+      "contentBytes": 3178
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h3-5",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 3,
+      "title": "发布到 Crates.io",
+      "lineStart": 290,
+      "lineEnd": 310,
+      "contentHash": "sha256:28e9d629f9b53618b3b40287ff750431aabfb5adb5192c6dc629e33a9f4fc8b6",
+      "contentBytes": 1438
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h3-6",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 3,
+      "title": "发布现存 crate 的新版本",
+      "lineStart": 311,
+      "lineEnd": 316,
+      "contentHash": "sha256:ac0792e986e31a8a7c92f775f467e4b63d1b8e3015f732cee8e9dc405a80db5e",
+      "contentBytes": 318
+    },
+    {
+      "anchor": "ch14-02-publishing-to-crates-io#h3-7",
+      "file": "sources/rust-book-cn/book/ch14-02-publishing-to-crates-io.md",
+      "level": 3,
+      "title": "使用 `cargo yank` 从 Crates.io 撤回版本",
+      "lineStart": 317,
+      "lineEnd": 336,
+      "contentHash": "sha256:62c8ce299ff12d953ce0b8773643649af2c66560bca3b65e64bd009767e4b411",
+      "contentBytes": 1111
+    }
+  ]
+}

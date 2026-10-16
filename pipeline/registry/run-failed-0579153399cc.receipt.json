@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-failed-0579153399cc",
+  "createdAt": "2026-10-11T13:37:52.243Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/introduction.md",
+    "hash": null,
+    "totalLines": null
+  },
+  "layer2": {
+    "kind": null,
+    "reused": false,
+    "note": null,
+    "reusedFrom": null,
+    "perAnchor": [],
+    "splits": [],
+    "usage": null
+  },
+  "model": {
+    "provider": null,
+    "modelId": null,
+    "calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "tokensDetail": {
+      "reasoning": 0,
+      "cachedInput": 0
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": "运行在写下用量之前就失败了，因此这里的 0 **不是「没有消耗」**，而是「没有记账」——真实的调用次数与 token 只能去服务商侧对账。",
+    "billing": "unknown（失败路径没有记账，不得读成 none）",
+    "configSource": null,
+    "fixture": null
+  },
+  "judge": {
+    "enabled": false,
+    "failedInJudgePhase": false,
+    "reason": "运行在验证阶段之前就失败了，判定者未运行"
+  },
+  "artifacts": {},
+  "counts": {
+    "anchors": 0,
+    "objects": 0,
+    "passed": 0,
+    "rejected": 0,
+    "objectTypes": null
+  },
+  "coverage": null,
+  "reasonCodes": {
+    "vocabulary": [],
+    "byCode": {}
+  },
+  "objectVerdicts": [],
+  "contentProblems": 0,
+  "engineeringFailure": {
+    "kind": "layer2-response",
+    "message": "第 2 层响应不是可解析的 JSON：Unexpected token 'b', \"bash\\ngit \"... is not valid JSON"
+  }
+}

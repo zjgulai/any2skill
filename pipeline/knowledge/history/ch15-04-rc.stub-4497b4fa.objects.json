@@ -1,0 +1,97 @@
+[
+  {
+    "id": "CH15-04-RC-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h2-1",
+        "title": "`Rc<T>` 引用计数智能指针",
+        "lineStart": 1,
+        "lineEnd": 12,
+        "contentHash": "sha256:6a3ace9a9a4d322bb87869cda8fbad86f5aa3c6853b515c0a858ff50be290650"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch15-04-rc-h2-1）",
+    "rationale": "理由（替身载荷，出处：ch15-04-rc-h2-1）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch15-04-rc-h2-1）",
+    "violation": "违反后果（替身载荷，出处：ch15-04-rc-h2-1）",
+    "chapterRef": "ch15-04-rc-h2-1",
+    "evidenceQuote": "大部分情况下所有权是非常明确的：可以准确地知道哪个变量拥有某个值。然而，有些情况单个值可能会有多个所有者。例如，在图数据结构中，多个边可能指向相同的节点，而这个节点从概念上讲为所有指向它的边所拥有。节点直到没有任何边指向它之前都不应该被清理"
+  },
+  {
+    "id": "CH15-04-RC-H3-1-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-1",
+        "title": "使用 `Rc<T>` 共享数据",
+        "lineStart": 13,
+        "lineEnd": 90,
+        "contentHash": "sha256:be2cca6cc28c7e523e17b3bdf7bacbbb5187eaa21a36607c561257b711194d8a"
+      }
+    ],
+    "title": "使用 `Rc<T>` 共享数据",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch15-04-rc-h3-1）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch15-04-rc-h3-1）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch15-04-rc-h3-1）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch15-04-rc-h3-1）",
+    "approval": "none",
+    "evidenceQuote": "让我们回到示例 15-5 中使用 `Box<T>` 定义 cons list 的例子。这一次，我们希望创建两个共享第三个列表所有权的列表，其概念将会看起来如图 15-3 所示："
+  },
+  {
+    "id": "CH15-04-RC-H3-2-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-2",
+        "title": "克隆 `Rc<T>` 会增加引用计数",
+        "lineStart": 91,
+        "lineEnd": 141,
+        "contentHash": "sha256:f68a2372028e9ad3332d432e8cb8b125204ae2ea3de6ff4ecc403fa04f978fb6"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch15-04-rc-h3-2）",
+    "recommendation": "建议（替身载荷，出处：ch15-04-rc-h3-2）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch15-04-rc-h3-2）"
+    ],
+    "evidenceQuote": "让我们修改示例 15-18 的代码以便观察创建和丢弃 `a` 中 `Rc<List>` 的引用时引用计数的变化。"
+  }
+]

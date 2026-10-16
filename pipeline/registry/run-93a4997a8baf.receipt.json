@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-93a4997a8baf",
+  "createdAt": "2026-10-14T04:36:05.452Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch18-02-refutability.md",
+    "hash": "sha256:4c01937aca7647c34e2b1b3c21c8fe4cc4bef2e8affdc3f46dfcdfdc33f30572",
+    "totalLines": 67
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch18-02-refutability#h2-1",
+        "lineStart": 1,
+        "lineEnd": 67,
+        "objectCount": 2,
+        "objectIds": [
+          "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
+          "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2469,
+            "output": 4081
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 1,
+      "tokens": {
+        "input": 2469,
+        "output": 4081
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch18-02-refutability#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2469,
+            "output": 4081
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 1,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 1,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 1,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 1,
+    "tokens": {
+      "input": 2469,
+      "output": 4081
+    },
+    "tokensDetail": {
+      "reasoning": 3504,
+      "cachedInput": 1408
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 2,
+    "tokens": {
+      "input": 3299,
+      "output": 414
+    },
+    "tokensDetail": {
+      "reasoning": 326,
+      "cachedInput": 768
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 2,
+      "verdicts": {
+        "supported": 2
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 2
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch18-02-refutability.anchors.json",
+      "sha256": "sha256:4add3986ef1926879ad52827e8e8a8518126dd8d63d4b3e8766fea6bbcd7e672",
+      "bytes": 720,
+      "anchorCount": 1
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch18-02-refutability.objects.json",
+      "sha256": "sha256:b776b06c9d71f15acc64bdcca261e3c886366f1ecd7c23784aa6dde147ed349c",
+      "bytes": 3651,
+      "objectCount": 2
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-93a4997a8baf.layer2-raw.json",
+      "sha256": "sha256:e9dfae5781b07f9d6b4763a8dadbe15844ec9cd9242286b4c3b8b08de71767b0"
+    }
+  },
+  "counts": {
+    "anchors": 1,
+    "objects": 2,
+    "passed": 2,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 1,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 1,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 1,
+    "processedAnchors": 1,
+    "processedKnown": true,
+    "coveredAnchors": 1,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=1，索引锚点数=1）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH18-02-REFUTABILITY-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+        "anchor": "ch18-02-refutability#h2-1",
+        "lineStart": 1,
+        "lineEnd": 67
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+          "anchor": "ch18-02-refutability#h2-1",
+          "lineStart": 1,
+          "lineEnd": 67
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“对某些可能的值进行匹配会失败的模式被称为是可反驳的”，与主张定义一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH18-02-REFUTABILITY-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+        "anchor": "ch18-02-refutability#h2-1",
+        "lineStart": 1,
+        "lineEnd": 67
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch18-02-refutability.md",
+          "anchor": "ch18-02-refutability#h2-1",
+          "lineStart": 1,
+          "lineEnd": 67
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明函数参数、let 语句和 for 循环只能接受不可反驳模式，且 if let 和 while let 表达式被限制为只能接受可反驳模式，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

@@ -1,0 +1,216 @@
+[
+  {
+    "id": "INTRODUCTION-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:33:48.283Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:33:48.283Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "anchor": "introduction#h1-1",
+        "title": "引言",
+        "lineStart": 1,
+        "lineEnd": 36,
+        "contentHash": "sha256:2fc63845ee013d73a145da79eb3a5d70602f26ab7cdcffe934d83002c5594f37"
+      }
+    ],
+    "evidenceQuote": "本书的核心公式只有一句话：**Agent = LLM + 上下文 + 工具**。三者缺一不可。\n\n更直观地说，就是**大脑 + 眼睛 + 手脚**。大脑（LLM）负责思考和决策，眼睛（上下文）决定 Agent 能看到什么信息，手脚（工具）决定 Agent 能做什么事情。（严格来说，“眼睛”只是一个粗略的类比：上下文不仅包含环境信息和对话历史，还包含工具定义等内容，也就是说 Agent “看到”的信息中也包括了“有哪些手脚可用”。这个隐喻旨在传达核心直觉：上下文是模型能感知到的一切信息。）",
+    "canonicalTerm": "Agent = LLM + 上下文 + 工具",
+    "aliases": [],
+    "definition": "Agent 由 LLM、上下文和工具三部分组成，三者缺一不可；LLM 负责思考和决策，上下文是模型能感知到的一切信息（包括环境信息、对话历史和工具定义等），工具决定 Agent 能做什么事情。",
+    "examples": [
+      "大脑 + 眼睛 + 手脚"
+    ]
+  },
+  {
+    "id": "INTRODUCTION-H1-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:33:48.283Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:33:48.283Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "anchor": "introduction#h1-1",
+        "title": "引言",
+        "lineStart": 1,
+        "lineEnd": 36,
+        "contentHash": "sha256:2fc63845ee013d73a145da79eb3a5d70602f26ab7cdcffe934d83002c5594f37"
+      }
+    ],
+    "evidenceQuote": "**第二，建立系统的评估（Evaluation）机制。** 没有评估，就无法判断一次改动带来的提升究竟源于设计本身，还是仅仅来自随机波动。评估把 Agent 的迭代从经验判断转化为可比较、可复现的工程过程，是以科学方法开展系统开发的基础。第七章将专门讨论这套方法。",
+    "statement": "建立系统的评估机制。",
+    "rationale": "没有评估，就无法判断一次改动带来的提升究竟源于设计本身，还是仅仅来自随机波动；评估把 Agent 的迭代从经验判断转化为可比较、可复现的工程过程，是以科学方法开展系统开发的基础。",
+    "appliesWhen": "在 Agent 迭代中，需要判断一次改动带来的提升是来自设计本身还是随机波动时。",
+    "violation": "没有建立评估机制，就无法判断提升来源，迭代无法转化为可比较、可复现的工程过程。",
+    "chapterRef": "introduction-h1-1"
+  },
+  {
+    "id": "INTRODUCTION-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:33:48.283Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:33:48.283Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "anchor": "introduction#h2-1",
+        "title": "全书结构",
+        "lineStart": 37,
+        "lineEnd": 53,
+        "contentHash": "sha256:1e6d353e8874c7bf9b544900d2205a61c05644ac21052f09954c8d2a41e6c160"
+      }
+    ],
+    "evidenceQuote": "本书共十章，围绕两个相互衔接的问题组织（图0-2）。**第一部分“如何构建 Agent”**包括第一至六章：从基本概念出发，依次讨论上下文、记忆与知识、工具、Coding Agent，以及观察与动作空间的扩展。**第二部分“如何提升 Agent 能力”**包括第七至十章：先用评估建立可度量的反馈，再通过模型后训练、基于运行经验的持续进化和多 Agent 协作，分别从模型参数、单体系统和群体系统三个层面扩展能力。",
+    "canonicalTerm": "全书结构",
+    "aliases": [],
+    "definition": "本书共十章，分为两部分：第一部分第一至六章围绕如何构建 Agent 展开；第二部分第七至十章围绕如何提升 Agent 能力展开。",
+    "examples": [
+      "第一部分（第一至六章）：如何构建 Agent",
+      "第二部分（第七至十章）：如何提升 Agent 能力"
+    ]
+  },
+  {
+    "id": "INTRODUCTION-H2-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:33:48.283Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:33:48.283Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "anchor": "introduction#h2-1",
+        "title": "全书结构",
+        "lineStart": 37,
+        "lineEnd": 53,
+        "contentHash": "sha256:1e6d353e8874c7bf9b544900d2205a61c05644ac21052f09954c8d2a41e6c160"
+      }
+    ],
+    "evidenceQuote": "深入解析 Agent 的核心公式：从实现层的 LLM + 上下文 + 工具，到直觉层的大脑 + 眼睛 + 手脚，再到学术层的策略（Policy）、观察空间（Observation Space）与动作空间（Action Space）。",
+    "canonicalTerm": "Agent 的核心公式",
+    "aliases": [],
+    "definition": "对 Agent 构成的三层描述：实现层为 LLM、上下文与工具；直觉层为大脑、眼睛与手脚；学术层为策略、观察空间与动作空间。",
+    "examples": [
+      "实现层：LLM + 上下文 + 工具",
+      "直觉层：大脑 + 眼睛 + 手脚",
+      "学术层：策略、观察空间与动作空间"
+    ]
+  },
+  {
+    "id": "INTRODUCTION-H2-2-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:53:22.975Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:53:22.975Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "anchor": "introduction#h2-2",
+        "title": "如何阅读本书",
+        "lineStart": 54,
+        "lineEnd": 76,
+        "contentHash": "sha256:596d4c3bdfea32eef22821109b9f500d4553d7a2351180856fbd32996b432ac3"
+      }
+    ],
+    "evidenceQuote": "实验代码按章节组织在 `chapter1/` 至 `chapter10/` 中；要查找“实验 X-Y”，请先打开对应的 `chapterX/README.md`，根据实验编号找到项目目录，再按照项目自身的 README 安装依赖并运行。",
+    "title": "查找实验代码",
+    "prerequisites": [],
+    "steps": [
+      {
+        "order": 1,
+        "action": "打开对应的 chapterX/README.md"
+      },
+      {
+        "order": 2,
+        "action": "根据实验编号找到项目目录"
+      },
+      {
+        "order": 3,
+        "action": "按照项目自身的 README 安装依赖并运行"
+      }
+    ],
+    "checks": [],
+    "rollback": "重新打开 chapterX/README.md 核对步骤",
+    "approval": "无需审批"
+  },
+  {
+    "id": "INTRODUCTION-H2-3-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:53:22.975Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:53:22.975Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "anchor": "introduction#h2-3",
+        "title": "前置知识",
+        "lineStart": 77,
+        "lineEnd": 98,
+        "contentHash": "sha256:819c6ed8b56d80f67de63080f53fc589d61b75f9c7a182416bc0983b50e1926e"
+      }
+    ],
+    "evidenceQuote": "对于希望系统地补充大模型基础知识的读者，推荐阅读《图解大模型》（图灵出版）。该书以直观的图解方式讲解了 Transformer 架构、预训练与微调等核心概念，与本书的 Agent 工程视角形成良好的互补。",
+    "trigger": "对于希望系统地补充大模型基础知识的读者",
+    "recommendation": "推荐阅读《图解大模型》（图灵出版），以直观的图解方式理解 Transformer 架构、预训练与微调等核心概念",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "INTRODUCTION-H2-3-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:53:22.975Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:53:22.975Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/introduction.md",
+        "anchor": "introduction#h2-3",
+        "title": "前置知识",
+        "lineStart": 77,
+        "lineEnd": 98,
+        "contentHash": "sha256:819c6ed8b56d80f67de63080f53fc589d61b75f9c7a182416bc0983b50e1926e"
+      }
+    ],
+    "evidenceQuote": "如果你在某些前置知识上有所欠缺，不必因此却步。本书的核心价值在于**架构设计原则和工程实践的方法论**，而非某个具体的算法或技巧。除第八章后训练以外，全书对数学和机器学习的要求很低，完全可以作为起点。",
+    "trigger": "如果你在某些前置知识上有所欠缺",
+    "recommendation": "不必因此却步，关注架构设计原则和工程实践方法论，把本书作为起点",
+    "confidence": 0.7,
+    "exceptions": []
+  }
+]

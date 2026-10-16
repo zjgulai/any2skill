@@ -1,0 +1,518 @@
+[
+  {
+    "id": "CH10-02-TRAITS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h2-1",
+        "title": "trait：定义共享的行为",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:6dc4752dfcb7d6ade7ed6044e2fee73b321c24928299015ac3ef356012e9d1de"
+      }
+    ],
+    "evidenceQuote": "*trait* 告诉 Rust 编译器某个特定类型拥有可能与其他类型共享的功能。可以通过 trait 以一种抽象的方式定义共享的行为。可以使用 *trait bounds* 指定泛型是任何拥有特定行为的类型。",
+    "canonicalTerm": "trait",
+    "aliases": [],
+    "definition": "trait 告诉 Rust 编译器某个特定类型拥有可能与其他类型共享的功能。可以通过 trait 以一种抽象的方式定义共享的行为。",
+    "examples": [
+      "可以使用 trait bounds 指定泛型是任何拥有特定行为的类型"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-1",
+        "title": "定义 trait",
+        "lineStart": 7,
+        "lineEnd": 30,
+        "contentHash": "sha256:4c293e47e457254008ddf31bd8c1a8aae12ca56c76f3de58c427d740c6375f7c"
+      }
+    ],
+    "evidenceQuote": "一个类型的行为由其可供调用的方法构成。如果可以对不同类型调用相同的方法的话，这些类型就可以共享相同的行为了。trait 定义是一种将方法签名组合起来的方法，目的是定义一个实现某些目的所必需的行为的集合。",
+    "canonicalTerm": "trait 定义",
+    "aliases": [],
+    "definition": "trait 定义是一种将方法签名组合起来的方法，目的是定义一个实现某些目的所必需的行为的集合。",
+    "examples": [
+      "如果可以对不同类型调用相同的方法，这些类型就可以共享相同的行为。"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-1",
+        "title": "定义 trait",
+        "lineStart": 7,
+        "lineEnd": 30,
+        "contentHash": "sha256:4c293e47e457254008ddf31bd8c1a8aae12ca56c76f3de58c427d740c6375f7c"
+      }
+    ],
+    "evidenceQuote": "在方法签名后跟分号，而不是在大括号中提供其实现。接着每一个实现这个 trait 的类型都需要提供其自定义行为的方法体，编译器也会确保任何实现 `Summary` trait 的类型都拥有与这个签名的定义完全一致的 `summarize` 方法。",
+    "statement": "在 trait 中声明方法签名时，方法签名后跟分号，而不是在大括号中提供其实现。",
+    "rationale": "trait 声明实现该 trait 的类型所需的行为；每个实现该 trait 的类型都要提供自定义方法体，编译器会确保签名与定义完全一致。",
+    "appliesWhen": "在 trait 中声明方法签名时。",
+    "violation": "在 trait 的方法签名后使用大括号提供实现。",
+    "chapterRef": "ch10-02-traits-h3-1"
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-2",
+        "title": "为类型实现 trait",
+        "lineStart": 31,
+        "lineEnd": 93,
+        "contentHash": "sha256:5b44ddf9c31dbd5e2d69f2d54fcf14b0cafb59354f89f3750c1c06c0830c360d"
+      }
+    ],
+    "evidenceQuote": "但是不能为外部类型实现外部 trait。例如，不能在 `aggregator` crate 中为 `Vec<T>` 实现 `Display` trait。这是因为 `Display` 和 `Vec<T>` 都定义于标准库中，它们并不位于 `aggregator` crate 本地作用域中。这个限制是被称为 **相干性**（*coherence*） 的程序属性的一部分，或者更具体的说是 **孤儿规则**（*orphan rule*），其得名于不存在父类型。这条规则确保了其他人编写的代码不会破坏你代码，反之亦然。没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust 将无从得知应该使用哪一个实现。",
+    "statement": "不能为外部类型实现外部 trait。",
+    "rationale": "该限制是相干性/孤儿规则的一部分，确保其他人编写的代码不会破坏你的代码，反之亦然；没有该规则，两个 crate 可能对相同类型实现相同 trait，Rust 将无从得知应使用哪个实现。",
+    "appliesWhen": "当 trait 与要实现该 trait 的类型均定义于当前 crate 本地作用域之外时。",
+    "violation": "在 aggregator crate 中为 Vec<T> 实现 Display trait。",
+    "chapterRef": "ch10-02-traits-h3-2"
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-3",
+        "title": "默认实现",
+        "lineStart": 94,
+        "lineEnd": 170,
+        "contentHash": "sha256:29a4c343dc9f82dc9cb556bdc9ce72a9d0baec86b0bbe4238989d012e2059dd8"
+      }
+    ],
+    "evidenceQuote": "如果想要对 `NewsArticle` 实例使用这个默认实现，而不是定义一个自己的实现，则可以通过 `impl Summary for NewsArticle {}` 指定一个空的 `impl` 块。",
+    "canonicalTerm": "空 impl 块采用 trait 默认实现",
+    "aliases": [],
+    "definition": "对 NewsArticle 实例使用默认实现时，可以通过 `impl Summary for NewsArticle {}` 指定一个空的 `impl` 块。",
+    "examples": [
+      "对 NewsArticle 实例使用 Summary trait 的默认实现，通过 impl Summary for NewsArticle {} 指定空 impl 块"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-3",
+        "title": "默认实现",
+        "lineStart": 94,
+        "lineEnd": 170,
+        "contentHash": "sha256:29a4c343dc9f82dc9cb556bdc9ce72a9d0baec86b0bbe4238989d012e2059dd8"
+      }
+    ],
+    "evidenceQuote": "默认实现允许调用相同 trait 中的其他方法，哪怕这些方法没有默认实现。如此，trait 可以提供很多有用的功能而只需要实现指定一小部分内容。例如，我们可以定义 `Summary` trait，使其具有一个需要实现的 `summarize_author` 方法，然后定义一个 `summarize` 方法，此方法的默认实现调用 `summarize_author` 方法：",
+    "canonicalTerm": "默认实现调用其他方法",
+    "aliases": [],
+    "definition": "默认实现允许调用相同 trait 中的其他方法，哪怕这些方法没有默认实现，从而 trait 可以提供很多有用的功能而只需要实现指定一小部分内容。",
+    "examples": [
+      "定义 Summary trait，使其具有需要实现的 summarize_author 方法，然后定义 summarize 方法的默认实现调用 summarize_author 方法"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-4",
+        "title": "trait 作为参数",
+        "lineStart": 171,
+        "lineEnd": 184,
+        "contentHash": "sha256:7f11ff9a5189f2cc958308a9e7b6f9e4343880be54656c3439dc0880ef865dd5"
+      }
+    ],
+    "evidenceQuote": "对于 `item` 参数，我们指定了 `impl` 关键字和 trait 名称，而不是具体的类型。该参数支持任何实现了指定 trait 的类型。在 `notify` 函数体中，可以调用任何来自 `Summary` trait 的方法，比如 `summarize`。",
+    "canonicalTerm": "impl Trait 参数",
+    "aliases": [
+      "impl Trait 语法"
+    ],
+    "definition": "在函数参数中使用 `impl` 关键字和 trait 名称而不是具体类型，使参数支持任何实现了该 trait 的类型，并允许函数体调用该 trait 的方法。",
+    "examples": [
+      "例如 `notify` 函数的参数 `item` 使用 `impl Summary` 语法，而不是具体类型。"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-4",
+        "title": "trait 作为参数",
+        "lineStart": 171,
+        "lineEnd": 184,
+        "contentHash": "sha256:7f11ff9a5189f2cc958308a9e7b6f9e4343880be54656c3439dc0880ef865dd5"
+      }
+    ],
+    "evidenceQuote": "对于 `item` 参数，我们指定了 `impl` 关键字和 trait 名称，而不是具体的类型。该参数支持任何实现了指定 trait 的类型。在 `notify` 函数体中，可以调用任何来自 `Summary` trait 的方法，比如 `summarize`。我们可以传递任何 `NewsArticle` 或 `Tweet` 的实例来调用 `notify`。任何用其它如 `String` 或 `i32` 的类型调用该函数的代码都不能编译，因为它们没有实现 `Summary`。",
+    "statement": "函数参数使用 `impl` 关键字和 trait 名称（如 `impl Summary`）时，传入未实现该 trait 的类型（如 `String` 或 `i32`）调用该函数，代码不能编译。",
+    "rationale": "这些类型没有实现 `Summary` trait，而函数参数要求 `impl Summary`。",
+    "appliesWhen": "调用参数使用 `impl` 关键字和 trait 名称的函数，并传入未实现该 trait 的类型时。",
+    "violation": "代码不能编译。",
+    "chapterRef": "ch10-02-traits-h3-4"
+  },
+  {
+    "id": "CH10-02-TRAITS-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-1",
+        "title": "Trait Bound 语法",
+        "lineStart": 185,
+        "lineEnd": 210,
+        "contentHash": "sha256:a94e41f9bb0103d303d1a25b1e5d6d38c027530bb832bd455a68e850643a3c72"
+      }
+    ],
+    "evidenceQuote": "`impl Trait` 语法适用于直观的例子，它实际上是一种较长形式语法的语法糖。我们称为 *trait bound*，它看起来像：\n\n```rust,ignore\npub fn notify<T: Summary>(item: T) {\n    println!(\"Breaking news! {}\", item.summarize());\n}\n```\n\n这与之前的例子相同，不过稍微冗长了一些。trait bound 与泛型参数声明在一起，位于尖括号中的冒号后面。",
+    "canonicalTerm": "trait bound",
+    "aliases": [],
+    "definition": "trait bound 是 `impl Trait` 的较长形式语法糖，与泛型参数声明在一起，位于尖括号中的冒号后面，例如 `T: Summary`。",
+    "examples": [
+      "使用 `pub fn notify<T: Summary>(item: T)` 声明受 trait bound 约束的泛型参数"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-1",
+        "title": "Trait Bound 语法",
+        "lineStart": 185,
+        "lineEnd": 210,
+        "contentHash": "sha256:a94e41f9bb0103d303d1a25b1e5d6d38c027530bb832bd455a68e850643a3c72"
+      }
+    ],
+    "evidenceQuote": "`impl Trait` 很方便，适用于短小的例子。trait bound 则适用于更复杂的场景。例如，可以获取两个实现了 `Summary` 的参数。使用 `impl Trait` 的语法看起来像这样：\n\n```rust,ignore\npub fn notify(item1: impl Summary, item2: impl Summary) {\n```\n\n这适用于 `item1` 和 `item2` 允许是不同类型的情况（只要它们都实现了 `Summary`）。不过如果你希望强制它们都是相同类型呢？这只有在使用 trait bound 时才有可能：\n\n```rust,ignore\npub fn notify<T: Summary>(item1: T, item2: T) {\n```\n\n泛型 `T` 被指定为 `item1` 和 `item2` 的参数限制，如此传递给参数 `item1` 和 `item2` 值的具体类型必须一致。",
+    "statement": "当函数需要强制两个参数为相同类型时，只有使用 trait bound 语法才有可能。",
+    "rationale": "`impl Trait` 语法允许两个参数分别是不同类型；trait bound 通过同一个泛型 `T` 约束两个参数，使传给它们的具体类型必须一致。",
+    "appliesWhen": "函数有多个参数，且要求它们的具体类型一致时。",
+    "violation": "在需要强制相同类型时，使用 `impl Trait` 分别标注两个参数，会允许两个参数拥有不同类型。",
+    "chapterRef": "ch10-02-traits-h4-1"
+  },
+  {
+    "id": "CH10-02-TRAITS-H4-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-2",
+        "title": "通过 `+` 指定多个 trait bound",
+        "lineStart": 211,
+        "lineEnd": 226,
+        "contentHash": "sha256:eb2c9fec0e625767c6ebc696c0fb38e0568896626cc6da1218b70fd8a175e703"
+      }
+    ],
+    "evidenceQuote": "如果 `notify` 需要显示 `item` 的格式化形式，同时也要使用 `summarize` 方法，那么 `item` 就需要同时实现两个不同的 trait：`Display` 和 `Summary`。这可以通过 `+` 语法实现：\n\n```rust,ignore\npub fn notify(item: impl Summary + Display) {\n```\n\n`+` 语法也适用于泛型的 trait bound：\n\n```rust,ignore\npub fn notify<T: Summary + Display>(item: T) {\n```\n\n通过指定这两个 trait bound，`notify` 的函数体可以调用 `summarize` 并使用 `{}` 来格式化 `item`。",
+    "statement": "在 Rust 中，当函数需要参数同时满足多个 trait 时，可以用 `+` 将多个 trait bound 连接起来：参数位置可写作 `impl Summary + Display`，泛型参数位置可写作 `T: Summary + Display`。",
+    "rationale": "通过 `+` 组合多个 trait bound 后，函数体可以同时使用这些 trait 提供的能力，例如调用 `summarize` 并用 `{}` 格式化 `item`。",
+    "appliesWhen": "函数参数或泛型参数需要同时满足多个 trait 约束时。",
+    "violation": "如果未用 `+` 同时指定所需的多个 trait bound，参数就不被约束为同时实现 `Display` 和 `Summary`。",
+    "chapterRef": "ch10-02-traits-h4-2"
+  },
+  {
+    "id": "CH10-02-TRAITS-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-3",
+        "title": "通过 `where` 简化 trait bound",
+        "lineStart": 227,
+        "lineEnd": 245,
+        "contentHash": "sha256:a7e4c59557c9336e1a65520e9b98ecbdd39f53b6c03e826629ca61b5ac5683f3"
+      }
+    ],
+    "evidenceQuote": "为此，Rust 有另一个在函数签名之后的 `where` 从句中指定 trait bound 的语法。所以除了这么写：\n\n```rust,ignore\nfn some_function<T: Display + Clone, U: Clone + Debug>(t: T, u: U) -> i32 {\n```\n\n还可以像这样使用 `where` 从句：\n\n```rust,ignore\nfn some_function<T, U>(t: T, u: U) -> i32\n    where T: Display + Clone,\n          U: Clone + Debug\n{\n```\n\n这个函数签名就显得不那么杂乱，函数名、参数列表和返回值类型都离得很近，看起来跟没有那么多 trait bounds 的函数很像。",
+    "canonicalTerm": "where 从句",
+    "aliases": [],
+    "definition": "Rust 中在函数签名之后指定 trait bound 的语法，用于替代写在泛型参数上的内联 trait bound，使函数签名更易读。",
+    "examples": [
+      "fn some_function<T, U>(t: T, u: U) -> i32\n    where T: Display + Clone,\n          U: Clone + Debug"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-5",
+        "title": "返回实现了 trait 的类型",
+        "lineStart": 246,
+        "lineEnd": 289,
+        "contentHash": "sha256:9c56fe6f3040e17558c215cabad5b7dbe08126c5378db64e222b2738f2ba845e"
+      }
+    ],
+    "evidenceQuote": "通过使用 `impl Summary` 作为返回值类型，我们指定了 `returns_summarizable` 函数返回某个实现了 `Summary` trait 的类型，但是不确定其具体的类型。在这个例子中 `returns_summarizable` 返回了一个 `Tweet`，不过调用方并不知情。",
+    "canonicalTerm": "返回实现了 trait 的类型",
+    "aliases": [],
+    "definition": "通过使用 `impl Summary` 作为返回值类型，指定函数返回某个实现了 `Summary` trait 的类型，但不指定其具体类型。",
+    "examples": [
+      "returns_summarizable 返回了一个 `Tweet`，不过调用方并不知情。"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-5",
+        "title": "返回实现了 trait 的类型",
+        "lineStart": 246,
+        "lineEnd": 289,
+        "contentHash": "sha256:9c56fe6f3040e17558c215cabad5b7dbe08126c5378db64e222b2738f2ba845e"
+      }
+    ],
+    "evidenceQuote": "不过这只适用于返回单一类型的情况。例如，这段代码的返回值类型指定为返回 `impl Summary`，但是返回了 `NewsArticle` 或 `Tweet` 就行不通：",
+    "statement": "使用 `impl Summary` 作为返回值类型只适用于返回单一类型；如果返回 `NewsArticle` 或 `Tweet` 就行不通。",
+    "rationale": "因为这种用法只适用于返回单一类型的情况。",
+    "appliesWhen": "函数返回值类型指定为返回 `impl Summary`，并尝试返回 `NewsArticle` 或 `Tweet` 时。",
+    "violation": "行不通。",
+    "chapterRef": "ch10-02-traits-h3-5"
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-6",
+        "title": "使用 trait bounds 来修复 `largest` 函数",
+        "lineStart": 290,
+        "lineEnd": 369,
+        "contentHash": "sha256:96c1fe29ca097294f1f3ee01818d76387998da2a1ce1fcfd30edf55beea8388f"
+      }
+    ],
+    "evidenceQuote": "为了只对实现了 `Copy` 的类型调用这些代码，可以在 `T` 的 trait bounds 中增加 `Copy`！示例 10-15 中展示了一个可以编译的泛型版本的 `largest` 函数的完整代码，只要传递给 `largest` 的 slice 值的类型实现了 `PartialOrd` **和** `Copy` 这两个 trait，例如 `i32` 和 `char`：",
+    "statement": "在 Rust 中，示例 10-15 的泛型 `largest` 函数要编译，需要传递给 `largest` 的 slice 值类型同时实现 `PartialOrd` 和 `Copy` 两个 trait。",
+    "rationale": "为了只对实现了 `Copy` 的类型调用这些代码，需要在 `T` 的 trait bounds 中增加 `Copy`；示例 10-15 的完整代码在类型实现 `PartialOrd` 和 `Copy` 时可以编译。",
+    "appliesWhen": "当只希望对实现了 `Copy` 的类型调用这些代码，并需要可编译的泛型 `largest` 函数时。",
+    "violation": "未在 `T` 的 trait bounds 中增加 `Copy` 时，就不能只对实现了 `Copy` 的类型调用这些代码。",
+    "chapterRef": "ch10-02-traits-h3-6"
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-6",
+        "title": "使用 trait bounds 来修复 `largest` 函数",
+        "lineStart": 290,
+        "lineEnd": 369,
+        "contentHash": "sha256:96c1fe29ca097294f1f3ee01818d76387998da2a1ce1fcfd30edf55beea8388f"
+      }
+    ],
+    "evidenceQuote": "在 `largest` 函数体中我们想要使用大于运算符（`>`）比较两个 `T` 类型的值。这个运算符被定义为标准库中 trait `std::cmp::PartialOrd` 的一个默认方法。所以需要在 `T` 的 trait bound 中指定 `PartialOrd`，这样 `largest` 函数可以用于任何可以比较大小的类型的 slice。因为 `PartialOrd` 位于 prelude 中所以并不需要手动将其引入作用域。",
+    "statement": "在 Rust 泛型函数中，如果使用大于运算符 `>` 比较两个 `T` 类型的值，需要在 `T` 的 trait bound 中指定 `PartialOrd`。",
+    "rationale": "`>` 运算符被定义为标准库 trait `std::cmp::PartialOrd` 的一个默认方法。",
+    "appliesWhen": "当泛型函数体中使用 `>` 比较两个 `T` 类型的值时。",
+    "violation": "未在 `T` 的 trait bound 中指定 `PartialOrd` 时，`largest` 函数不能用于任何可以比较大小的类型的 slice。",
+    "chapterRef": "ch10-02-traits-h3-6"
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-7-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-7",
+        "title": "使用 trait bound 有条件地实现方法",
+        "lineStart": 370,
+        "lineEnd": 428,
+        "contentHash": "sha256:2a588da0204d5ff77c9343708bdd055ff1f0578a7126f83edb54689d981257bc"
+      }
+    ],
+    "evidenceQuote": "通过使用带有 trait bound 的泛型参数的 `impl` 块，可以有条件地只为那些实现了特定 trait 的类型实现方法。例如，示例 10-16 中的类型 `Pair<T>` 总是实现了 `new` 方法，不过只有那些为 `T` 类型实现了 `PartialOrd` trait （来允许比较） **和** `Display` trait （来启用打印）的 `Pair<T>` 才会实现 `cmp_display` 方法：",
+    "canonicalTerm": "使用 trait bound 有条件地实现方法",
+    "aliases": [],
+    "definition": "使用带有 trait bound 的泛型参数的 impl 块，可以有条件地只为那些实现了特定 trait 的类型实现方法。",
+    "examples": [
+      "示例 10-16 中 Pair<T> 总是实现 new 方法，但只有为 T 实现 PartialOrd 和 Display 的 Pair<T> 才实现 cmp_display 方法。"
+    ]
+  },
+  {
+    "id": "CH10-02-TRAITS-H3-7-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:56:02.075Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:56:02.075Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-7",
+        "title": "使用 trait bound 有条件地实现方法",
+        "lineStart": 370,
+        "lineEnd": 428,
+        "contentHash": "sha256:2a588da0204d5ff77c9343708bdd055ff1f0578a7126f83edb54689d981257bc"
+      }
+    ],
+    "evidenceQuote": "对任何满足特定 trait bound 的类型实现 trait 被称为 *blanket implementations*，他们被广泛的用于 Rust 标准库中。例如，标准库为任何实现了 `Display` trait 的类型实现了 `ToString` trait。这个 `impl` 块看起来像这样：",
+    "canonicalTerm": "blanket implementations",
+    "aliases": [],
+    "definition": "对任何满足特定 trait bound 的类型实现 trait。",
+    "examples": [
+      "标准库为任何实现了 Display trait 的类型实现了 ToString trait。"
+    ]
+  }
+]

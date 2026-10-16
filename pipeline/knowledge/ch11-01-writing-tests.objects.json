@@ -1,0 +1,378 @@
+[
+  {
+    "id": "CH11-01-WRITING-TESTS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h2-1",
+        "title": "如何编写测试",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "contentHash": "sha256:8952f603838410855408dd7d842d76254e0b40761af842923104e54b3d0a7b89"
+      }
+    ],
+    "evidenceQuote": "Rust 中的测试函数是用来验证非测试代码是否按照期望的方式运行的。测试函数体通常执行如下三种操作：\n\n1. 设置任何所需的数据或状态\n2. 运行需要测试的代码\n3. 断言其结果是我们所期望的",
+    "canonicalTerm": "测试函数",
+    "aliases": [],
+    "definition": "Rust 中的测试函数是用来验证非测试代码是否按照期望的方式运行的。",
+    "examples": [
+      "设置任何所需的数据或状态",
+      "运行需要测试的代码",
+      "断言其结果是我们所期望的"
+    ]
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-1",
+        "title": "测试函数剖析",
+        "lineStart": 11,
+        "lineEnd": 154,
+        "contentHash": "sha256:c9da8521275c9e65be95b1a03d5675cf7bc259f6275870a31715428fe75681f5"
+      }
+    ],
+    "evidenceQuote": "为了将一个函数变成测试函数，需要在 `fn` 行之前加上 `#[test]`。当使用 `cargo test` 命令运行测试时，Rust 会构建一个测试执行程序用来调用标记了 `test` 属性的函数，并报告每一个测试是通过还是失败。",
+    "statement": "在 Rust 中，为了将一个函数变成测试函数，需要在 `fn` 行之前加上 `#[test]`；当使用 `cargo test` 命令运行测试时，Rust 会构建一个测试执行程序，调用标记了 `test` 属性的函数并报告每一个测试是通过还是失败。",
+    "rationale": "`cargo test` 会构建测试执行程序，依据 `test` 属性调用测试函数并报告测试是否通过。",
+    "appliesWhen": "当使用 `cargo test` 命令运行测试时。",
+    "violation": "若未在 `fn` 行之前加上 `#[test]` 属性，函数不能成为测试函数。",
+    "chapterRef": "ch11-01-writing-tests-h3-1"
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-1",
+        "title": "测试函数剖析",
+        "lineStart": 11,
+        "lineEnd": 154,
+        "contentHash": "sha256:c9da8521275c9e65be95b1a03d5675cf7bc259f6275870a31715428fe75681f5"
+      }
+    ],
+    "evidenceQuote": "当测试函数中出现 panic 时测试就失败了。每一个测试都在一个新线程中运行，当主线程发现测试线程异常了，就将对应测试标记为失败。",
+    "statement": "当 Rust 测试函数中出现 panic 时，该测试就失败；每个测试都在一个新线程中运行，当主线程发现测试线程异常了，就将对应测试标记为失败。",
+    "rationale": "测试运行在独立新线程中，主线程通过发现测试线程异常来判定测试失败。",
+    "appliesWhen": "当测试函数中出现 panic 时。",
+    "violation": "测试函数一旦出现 panic，对应的测试就会被标记为失败而不会通过。",
+    "chapterRef": "ch11-01-writing-tests-h3-1"
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-2",
+        "title": "使用 `assert!` 宏来检查结果",
+        "lineStart": 155,
+        "lineEnd": 287,
+        "contentHash": "sha256:6a0016eada9ef08f6bc415cfb9884a96daed5809268011cc3ec8fe99b61c4356"
+      }
+    ],
+    "evidenceQuote": "`assert!` 宏由标准库提供，在希望确保测试中一些条件为 `true` 时非常有用。需要向 `assert!` 宏提供一个求值为布尔值的参数。如果值是 `true`，`assert!` 什么也不做，同时测试会通过。如果值为 `false`，`assert!` 调用 `panic!` 宏，这会导致测试失败。`assert!` 宏帮助我们检查代码是否以期望的方式运行。",
+    "canonicalTerm": "assert! 宏",
+    "aliases": [],
+    "definition": "标准库提供的宏，接收一个求值为布尔值的参数；参数为 true 时什么都不做并使测试通过，参数为 false 时调用 panic! 宏导致测试失败，用于检查代码是否按期望方式运行。",
+    "examples": [
+      "例如在测试中传入一个求值为布尔值的参数，当参数为 true 时测试通过，为 false 时测试失败"
+    ]
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-2",
+        "title": "使用 `assert!` 宏来检查结果",
+        "lineStart": 155,
+        "lineEnd": 287,
+        "contentHash": "sha256:6a0016eada9ef08f6bc415cfb9884a96daed5809268011cc3ec8fe99b61c4356"
+      }
+    ],
+    "evidenceQuote": "注意在 `tests` 模块中新增加了一行：`use super::*;`。`tests` 是一个普通的模块，它遵循第 7 章 [“路径用于引用模块树中的项”][paths-for-referring-to-an-item-in-the-module-tree] 部分介绍的可见性规则。因为这是一个内部模块，要测试外部模块中的代码，需要将其引入到内部模块的作用域中。这里选择使用 glob 全局导入，以便在 `tests` 模块中使用所有在外部模块定义的内容。",
+    "statement": "在 Rust 单元测试中，`tests` 模块是普通模块并遵循可见性规则；作为内部模块要测试外部模块中的代码时，需要将外部模块代码引入到内部模块作用域中，例如使用 `use super::*;` 全局导入。",
+    "rationale": "`tests` 是内部模块，遵循可见性规则，不能自动访问外部模块定义的项；使用 glob 全局导入可以在 `tests` 模块中使用所有在外部模块定义的内容。",
+    "appliesWhen": "当 `tests` 模块作为内部模块需要测试外部模块中定义的代码时。",
+    "violation": "在 `tests` 内部模块中未引入外部模块代码就使用外部模块定义的内容，将因可见性规则而无法访问。",
+    "chapterRef": "ch11-01-writing-tests-h3-2"
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-3",
+        "title": "使用 `assert_eq!` 和 `assert_ne!` 宏来测试相等",
+        "lineStart": 288,
+        "lineEnd": 362,
+        "contentHash": "sha256:047e2b59f8c171ea5ec6982bfcd6067e41ed37903d31ad543948e059e87cc108"
+      }
+    ],
+    "evidenceQuote": "`assert_eq!` 和 `assert_ne!` 宏在底层分别使用了 `==` 和 `!=`。当断言失败时，这些宏会使用调试格式打印出其参数，这意味着被比较的值必需实现了 `PartialEq` 和 `Debug` trait。所有的基本类型和大部分标准库类型都实现了这些 trait。对于自定义的结构体和枚举，需要实现 `PartialEq` 才能断言他们的值是否相等。需要实现 `Debug` 才能在断言失败时打印他们的值。因为这两个 trait 都是派生 trait，如第 5 章示例 5-12 所提到的，通常可以直接在结构体或枚举上添加 `#[derive(PartialEq, Debug)]` 标注。附录 C [“可派生的 trait”][derivable-traits] 中有更多关于这些和其他派生 trait 的详细信息。",
+    "statement": "使用 `assert_eq!` 或 `assert_ne!` 时，被比较的值必须实现 `PartialEq` 和 `Debug` trait。",
+    "rationale": "这两个宏底层分别使用 `==` 和 `!=`，失败时用调试格式打印参数；自定义结构体或枚举需实现 `PartialEq` 才能断言相等，需实现 `Debug` 才能在失败时打印值。",
+    "appliesWhen": "对自定义结构体或枚举使用 `assert_eq!` 或 `assert_ne!` 进行相等或不等断言时。",
+    "violation": "若被比较的值未实现 `PartialEq`，无法断言相等；若未实现 `Debug`，失败时无法打印值。",
+    "chapterRef": "ch11-01-writing-tests-h3-3"
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-3",
+        "title": "使用 `assert_eq!` 和 `assert_ne!` 宏来测试相等",
+        "lineStart": 288,
+        "lineEnd": 362,
+        "contentHash": "sha256:047e2b59f8c171ea5ec6982bfcd6067e41ed37903d31ad543948e059e87cc108"
+      }
+    ],
+    "evidenceQuote": "需要注意的是，在一些语言和测试框架中，断言两个值相等的函数的参数叫做 `expected` 和 `actual`，而且指定参数的顺序是很关键的。然而在 Rust 中，他们则叫做 `left` 和 `right`，同时指定期望的值和被测试代码产生的值的顺序并不重要。这个测试中的断言也可以写成 `assert_eq!(add_two(2), 4)`，这时失败信息会变成 `` assertion failed: `(left == right)` `` 其中 `left` 是 `5` 而 `right` 是 `4`。",
+    "statement": "在 Rust 中使用 `assert_eq!` 时，指定期望的值和被测试代码产生的值的顺序并不重要；失败信息中它们被标记为 `left` 和 `right`。",
+    "rationale": "Rust 将两个参数称为 `left` 和 `right`，而不是像某些语言和测试框架那样称为 `expected` 和 `actual` 并把顺序视为关键。",
+    "appliesWhen": "用 `assert_eq!` 断言两个值相等，且需要判断是否必须按 expected/actual 顺序传参时。",
+    "violation": "在 Rust 中仍把 `assert_eq!` 的参数顺序当作关键，与原文所述“顺序并不重要”不一致。",
+    "chapterRef": "ch11-01-writing-tests-h3-3"
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-4",
+        "title": "自定义失败信息",
+        "lineStart": 363,
+        "lineEnd": 440,
+        "contentHash": "sha256:eb411f007714c456d2e6f6de7133653afd6d6702a0f8a3b5f3c91ab337410835"
+      }
+    ],
+    "evidenceQuote": "你也可以向 `assert!`、`assert_eq!` 和 `assert_ne!` 宏传递一个可选的失败信息参数，可以在测试失败时将自定义失败信息一同打印出来。任何在 `assert!` 的一个必需参数和 `assert_eq!` 和 `assert_ne!` 的两个必需参数之后指定的参数都会传递给 `format!` 宏（在第 8 章的 [“使用 `+` 运算符或 `format!` 宏拼接字符串”][concatenation-with-the--operator-or-the-format-macro] 部分讨论过），所以可以传递一个包含 `{}` 占位符的格式字符串和需要放入占位符的值。自定义信息有助于记录断言的意义；当测试失败时就能更好的理解代码出了什么问题。",
+    "canonicalTerm": "自定义失败信息",
+    "aliases": [],
+    "definition": "在 Rust 测试中，向 `assert!`、`assert_eq!` 和 `assert_ne!` 宏传递的可选失败信息参数，这些参数会传递给 `format!` 宏，可包含 `{}` 占位符和值，用于在测试失败时打印自定义信息。",
+    "examples": [
+      "assert!(result.contains(\"Carol\"), \"Greeting did not contain name, value was `{}`\", result);"
+    ]
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-4",
+        "title": "自定义失败信息",
+        "lineStart": 363,
+        "lineEnd": 440,
+        "contentHash": "sha256:eb411f007714c456d2e6f6de7133653afd6d6702a0f8a3b5f3c91ab337410835"
+      }
+    ],
+    "evidenceQuote": "这个程序的需求还没有被确定，因此问候文本开头的 `Hello` 文本很可能会改变。然而我们并不想在需求改变时不得不更新测试，所以相比检查 `greeting` 函数返回的确切值，我们将仅仅断言输出的文本中包含输入参数。",
+    "statement": "当程序需求尚未确定、输出可能变化时，应使用部分匹配断言（如 contains）而非精确相等断言。",
+    "rationale": "问候文本开头的 `Hello` 文本很可能会改变，我们不想在需求改变时不得不更新测试。",
+    "appliesWhen": "程序需求还未确定，输出文本可能改变时。",
+    "violation": "使用精确相等断言检查输出会在需求改变时不得不更新测试。",
+    "chapterRef": "ch11-01-writing-tests-h3-4"
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-5",
+        "title": "使用 `should_panic` 检查 panic",
+        "lineStart": 441,
+        "lineEnd": 607,
+        "contentHash": "sha256:8a9b673192863f300f185b19c74e52480ea1eed915f8ee6ffb31f77035887a26"
+      }
+    ],
+    "evidenceQuote": "可以通过对函数增加另一个属性 `should_panic` 来实现这些。这个属性在函数中的代码 panic 时会通过，而在其中的代码没有 panic 时失败。\n\n示例 11-8 展示了一个检查 `Guess::new` 是否按照我们的期望出错的测试：",
+    "canonicalTerm": "should_panic 属性",
+    "aliases": [],
+    "definition": "`should_panic` 属性使测试在函数中的代码 panic 时通过，在没有 panic 时失败。",
+    "examples": [
+      "示例 11-8 展示了一个检查 `Guess::new` 是否按照我们的期望出错的测试。"
+    ]
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-5-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-5",
+        "title": "使用 `should_panic` 检查 panic",
+        "lineStart": 441,
+        "lineEnd": 607,
+        "contentHash": "sha256:8a9b673192863f300f185b19c74e52480ea1eed915f8ee6ffb31f77035887a26"
+      }
+    ],
+    "evidenceQuote": "然而 `should_panic` 测试结果可能会非常含糊不清，因为它只是告诉我们代码产生了 panic。`should_panic` 甚至在一些不是我们期望的原因而导致 panic 时也会通过。为了使 `should_panic` 测试结果更精确，我们可以给 `should_panic` 属性增加一个可选的 `expected` 参数。测试工具会确保错误信息中包含其提供的文本。",
+    "pattern": "`should_panic` 测试仅检查代码是否产生 panic，不检查 panic 的原因，可能因为非预期原因导致的 panic 而通过。",
+    "harm": "测试结果含糊不清，可能掩盖非预期的 panic。",
+    "corrective": "给 `should_panic` 属性增加可选的 `expected` 参数，指定期望的 panic 信息子串，使测试工具确保错误信息中包含该文本。",
+    "evidence": [
+      "`should_panic` 甚至在一些不是我们期望的原因而导致 panic 时也会通过。",
+      "为了使 `should_panic` 测试结果更精确，我们可以给 `should_panic` 属性增加一个可选的 `expected` 参数。测试工具会确保错误信息中包含其提供的文本。"
+    ],
+    "chapterRef": "ch11-01-writing-tests-h3-5"
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-6",
+        "title": "将 `Result<T, E>` 用于测试",
+        "lineStart": 608,
+        "lineEnd": 641,
+        "contentHash": "sha256:edd4f0c619f0ea523734631d3be652f859c173967ed517b7c7dd73b53e9b3a8b"
+      }
+    ],
+    "evidenceQuote": "现在 `it_works` 函数的返回值类型为 `Result<(), String>`。在函数体中，不同于调用 `assert_eq!` 宏，而是在测试通过时返回 `Ok(())`，在测试失败时返回带有 `String` 的 `Err`。\n\n这样编写测试来返回 `Result<T, E>` 就可以在函数体中使用问号运算符，如此可以方便地编写测试，如果其中的任何操作返回 `Err` 值，则测试将失败。",
+    "canonicalTerm": "将 `Result<T, E>` 用于测试",
+    "aliases": [
+      "返回 `Result` 的测试"
+    ],
+    "definition": "测试函数可以返回 `Result<T, E>`：测试通过时返回 `Ok(())`，测试失败时返回带有 `String` 的 `Err`；这样可以在函数体中使用问号运算符，任何操作返回 `Err` 都会使测试失败。",
+    "examples": [
+      "`it_works` 函数在测试通过时返回 `Ok(())`，测试失败时返回带有 `String` 的 `Err`。"
+    ]
+  },
+  {
+    "id": "CH11-01-WRITING-TESTS-H3-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:56:17.169Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:56:17.169Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-6",
+        "title": "将 `Result<T, E>` 用于测试",
+        "lineStart": 608,
+        "lineEnd": 641,
+        "contentHash": "sha256:edd4f0c619f0ea523734631d3be652f859c173967ed517b7c7dd73b53e9b3a8b"
+      }
+    ],
+    "evidenceQuote": "这样编写测试来返回 `Result<T, E>` 就可以在函数体中使用问号运算符，如此可以方便地编写测试，如果其中的任何操作返回 `Err` 值，则测试将失败。\n\n你不能在使用 `Result<T, E>` 的测试中使用 `#[should_panic]` 注解。要断言操作返回 `Err` 值，*不要*在 `Result<T, E>` 值上使用问号运算符。相反，请使用 `assert!(value.is_err())`。",
+    "statement": "在需要断言操作返回 `Err` 值时，不要对 `Result<T, E>` 值使用问号运算符，而应使用 `assert!(value.is_err())`。",
+    "rationale": "问号运算符会传播 `Err` 并直接使测试失败，因此无法在需要断言 `Err` 的场景中使用它。",
+    "appliesWhen": "测试函数返回 `Result<T, E>`，并且需要断言某个操作返回 `Err` 值。",
+    "violation": "对需要断言 `Err` 值的 `Result<T, E>` 使用问号运算符。",
+    "chapterRef": "ch11-01-writing-tests-h3-6"
+  }
+]

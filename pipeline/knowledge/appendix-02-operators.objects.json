@@ -1,0 +1,95 @@
+[
+  {
+    "id": "APPENDIX-02-OPERATORS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:05:17.271Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:05:17.271Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/appendix-02-operators.md",
+        "anchor": "appendix-02-operators#h3-1",
+        "title": "运算符",
+        "lineStart": 5,
+        "lineEnd": 66,
+        "contentHash": "sha256:0c53ad8aa7931e6db9d1f1ea6e8cdf348d215cd411e6b036b8cea403f2eb019e"
+      }
+    ],
+    "evidenceQuote": "表 B-1 包含了 Rust 中的运算符、运算符如何出现在上下文中的示例、简短解释以及该运算符是否可重载。如果一个运算符是可重载的，则该运算符上用于重载的相关 trait 也会列出。\n\n<span class=\"caption\">表 B-1: 运算符</span>\n\n| 运算符 | 示例 | 解释 | 是否可重载 |\n|----------|---------|-------------|---------------|\n| `!` | `ident!(...)`, `ident!{...}`, `ident![...]` | 宏展开 |  |\n| `!` | `!expr` | 按位非或逻辑非 | `Not` |\n| `!=` | `var != expr` | 不等比较 | `PartialEq` |",
+    "canonicalTerm": "Rust 运算符表",
+    "aliases": [
+      "表 B-1"
+    ],
+    "definition": "Rust 运算符表列出运算符、运算符在上下文中的示例、简短解释以及该运算符是否可重载；可重载运算符还会列出用于重载的相关 trait。",
+    "examples": [
+      "`!expr` 表示按位非或逻辑非，用于重载的相关 trait 为 `Not`",
+      "`var != expr` 表示不等比较，用于重载的相关 trait 为 `PartialEq`"
+    ]
+  },
+  {
+    "id": "APPENDIX-02-OPERATORS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:05:17.271Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:05:17.271Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/appendix-02-operators.md",
+        "anchor": "appendix-02-operators#h3-2",
+        "title": "非运算符符号",
+        "lineStart": 67,
+        "lineEnd": 195,
+        "contentHash": "sha256:e09118d5e9154fcbcbafae99ec529e2483b71fa143bda1052de458644045b07b"
+      }
+    ],
+    "evidenceQuote": "| `path<...>` | 为一个类型中的泛型指定具体参数（如 `Vec<u8>`） |",
+    "canonicalTerm": "path<...>",
+    "aliases": [],
+    "definition": "为一个类型中的泛型指定具体参数",
+    "examples": [
+      "Vec<u8>"
+    ]
+  },
+  {
+    "id": "APPENDIX-02-OPERATORS-H3-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:05:17.271Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:05:17.271Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/appendix-02-operators.md",
+        "anchor": "appendix-02-operators#h3-2",
+        "title": "非运算符符号",
+        "lineStart": 67,
+        "lineEnd": 195,
+        "contentHash": "sha256:e09118d5e9154fcbcbafae99ec529e2483b71fa143bda1052de458644045b07b"
+      }
+    ],
+    "evidenceQuote": "| `path::<...>`, `method::<...>` | 为一个泛型、函数或表达式中的方法指定具体参数，通常指 turbofish（如 `\"42\".parse::<i32>()`）|",
+    "canonicalTerm": "turbofish",
+    "aliases": [
+      "path::<...>",
+      "method::<...>"
+    ],
+    "definition": "为一个泛型、函数或表达式中的方法指定具体参数",
+    "examples": [
+      "\"42\".parse::<i32>()"
+    ]
+  }
+]

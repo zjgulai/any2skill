@@ -1,0 +1,255 @@
+[
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+        "title": "使用 `panic!` 还是不用 `panic!`",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:8c95010f379f305367645e00f015c5792787a79f73228388adedbc19125391da"
+      }
+    ],
+    "evidenceQuote": "因此返回 `Result` 是定义可能会失败的函数的一个好的默认选择。\n\n有一些情况 panic 比返回 `Result` 更为合适，不过他们并不常见。让我们讨论一下为何在示例、代码原型和测试中，以及那些人们认为不会失败而编译器不这么看的情况下， panic 是合适的。",
+    "trigger": "定义一个可能会失败的函数时",
+    "recommendation": "返回 `Result` 作为定义可能会失败的函数的默认选择",
+    "confidence": 0.7,
+    "exceptions": [
+      "示例、代码原型和测试中",
+      "人们认为不会失败而编译器不这么看的情况下"
+    ]
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+        "title": "使用 `panic!` 还是不用 `panic!`",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:8c95010f379f305367645e00f015c5792787a79f73228388adedbc19125391da"
+      }
+    ],
+    "evidenceQuote": "如果代码 panic，就没有恢复的可能。你可以选择对任何错误场景都调用 `panic!`，不管是否有可能恢复，不过这样就是你代替调用者决定了这是不可恢复的。选择返回 `Result` 值的话，就将选择权交给了调用者，而不是代替他们做出决定。",
+    "pattern": "对任何错误场景都调用 `panic!`，不管是否有可能恢复",
+    "harm": "代码没有恢复可能，并且函数作者代替调用者决定了错误不可恢复",
+    "corrective": "返回 `Result` 将选择权交给调用者，而不是代替他们做出决定",
+    "evidence": [
+      "你可以选择对任何错误场景都调用 `panic!`，不管是否有可能恢复，不过这样就是你代替调用者决定了这是不可恢复的。"
+    ],
+    "chapterRef": "ch09-03-to-panic-or-not-to-panic-h2-1"
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+        "title": "示例、代码原型和测试都非常适合 panic",
+        "lineStart": 7,
+        "lineEnd": 14,
+        "contentHash": "sha256:f5883b52311844d750add25a9007cb790461e12465d3dc7d1cbcd8b1b8b9254d"
+      }
+    ],
+    "evidenceQuote": "如果方法调用在测试中失败了，我们希望这个测试都失败，即便这个方法并不是需要测试的功能。因为 `panic!` 会将测试标记为失败，此时调用 `unwrap` 或 `expect` 是恰当的。",
+    "trigger": "当测试中的方法调用失败时",
+    "recommendation": "调用 `unwrap` 或 `expect`，借助 `panic!` 将测试标记为失败",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+        "title": "示例、代码原型和测试都非常适合 panic",
+        "lineStart": 7,
+        "lineEnd": 14,
+        "contentHash": "sha256:f5883b52311844d750add25a9007cb790461e12465d3dc7d1cbcd8b1b8b9254d"
+      }
+    ],
+    "evidenceQuote": "当你编写一个示例来展示一些概念时，在拥有健壮的错误处理代码的同时也会使得例子不那么明确。例如，调用一个类似 `unwrap` 这样可能 `panic!` 的方法可以被理解为一个你实际希望程序处理错误方式的占位符，它根据其余代码运行方式可能会各不相同。\n\n类似地，在我们准备好决定如何处理错误之前，`unwrap` 和 `expect` 方法在原型设计时非常方便。当我们准备好让程序更加健壮时，它们会在代码中留下清晰的标记。",
+    "trigger": "编写示例展示概念或进行原型设计时",
+    "recommendation": "调用 `unwrap` 或 `expect` 作为错误处理方式的占位符，利用其在原型设计中的便利性，并让其留下清晰标记",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+        "title": "当我们比编译器知道更多的情况",
+        "lineStart": 15,
+        "lineEnd": 26,
+        "contentHash": "sha256:592acb589f5a88bcabab45a287c644935f17870a4ca953eba54e6b246de968b0"
+      }
+    ],
+    "evidenceQuote": "当你有一些其他的逻辑来确保 `Result` 会是 `Ok` 值时，调用 `unwrap` 也是合适的，虽然编译器无法理解这种逻辑。你仍然需要处理一个 `Result` 值：即使在你的特定情况下逻辑上是不可能的，你所调用的任何操作仍然有可能失败。如果通过人工检查代码来确保永远也不会出现 `Err` 值，那么调用 `unwrap` 也是完全可以接受的",
+    "statement": "当通过人工检查代码确保某个 `Result` 永远不会出现 `Err` 值时，可以接受调用 `unwrap`。",
+    "rationale": "编译器无法理解这种额外逻辑，仍要求处理 `Result`，但人工检查能够确认不会失败。",
+    "appliesWhen": "你拥有其他逻辑来确保 `Result` 会是 `Ok`，并且该操作仍返回 `Result` 值。",
+    "violation": "即使在特定情况下逻辑上不可能失败，所调用的任何操作仍然有可能失败。",
+    "chapterRef": "ch09-03-to-panic-or-not-to-panic-h3-2"
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+        "title": "当我们比编译器知道更多的情况",
+        "lineStart": 15,
+        "lineEnd": 26,
+        "contentHash": "sha256:592acb589f5a88bcabab45a287c644935f17870a4ca953eba54e6b246de968b0"
+      }
+    ],
+    "evidenceQuote": "如果 IP 地址字符串来源于用户而不是硬编码进程序中的话，那么就 **确实** 有失败的可能性，这时就绝对需要我们以一种更健壮的方式处理 `Result` 了。",
+    "statement": "当 IP 地址字符串来源于用户而不是硬编码时，存在失败可能性，必须采用更健壮的方式处理 `Result`。",
+    "rationale": "输入来源于用户而不是硬编码时，确实存在失败可能性。",
+    "appliesWhen": "解析的 IP 地址字符串来自用户输入，而不是硬编码进程序中。",
+    "violation": "未以更健壮的方式处理 `Result`，就违反了该要求。",
+    "chapterRef": "ch09-03-to-panic-or-not-to-panic-h3-2"
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+        "title": "错误处理指导原则",
+        "lineStart": 27,
+        "lineEnd": 42,
+        "contentHash": "sha256:5956004dd5868b5dbeaecb0e37939a983dc835ec6efad33178f5e20971f5ecdb"
+      }
+    ],
+    "evidenceQuote": "然而当错误预期会出现时，返回 `Result` 仍要比调用 `panic!` 更为合适。这样的例子包括解析器接收到格式错误的数据，或者 HTTP 请求返回了一个表明触发了限流的状态。在这些例子中，应该通过返回 `Result` 来表明失败预期是可能的，这样将有害状态向上传播，调用者就可以决定该如何处理这个问题。使用 `panic!` 来处理这些情况就不是最好的选择。",
+    "trigger": "当错误预期会出现时",
+    "recommendation": "返回 Result 而不是 panic!，以表明失败预期是可能的，并将有害状态向上传播，由调用者决定如何处理",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+        "title": "错误处理指导原则",
+        "lineStart": 27,
+        "lineEnd": 42,
+        "contentHash": "sha256:5956004dd5868b5dbeaecb0e37939a983dc835ec6efad33178f5e20971f5ecdb"
+      }
+    ],
+    "evidenceQuote": "当代码对值进行操作时，应该首先验证值是有效的，并在其无效时 `panic!`。这主要是出于安全的原因：尝试操作无效数据会暴露代码漏洞，这就是标准库在尝试越界访问数组时会 `panic!` 的主要原因：尝试访问不属于当前数据结构的内存是一个常见的安全隐患。",
+    "statement": "当代码对值进行操作时，应该首先验证值是有效的，并在其无效时 panic!",
+    "rationale": "尝试操作无效数据会暴露代码漏洞；标准库在尝试越界访问数组时会 panic，是因为访问不属于当前数据结构的内存是常见的安全隐患",
+    "appliesWhen": "当代码对值进行操作时",
+    "violation": "操作无效数据会暴露代码漏洞",
+    "chapterRef": "ch09-03-to-panic-or-not-to-panic-h3-3"
+  },
+  {
+    "id": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T03:50:27.050Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T03:50:27.050Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+        "title": "创建自定义类型进行有效性验证",
+        "lineStart": 43,
+        "lineEnd": 106,
+        "contentHash": "sha256:cb2742b1fa429026aedb39d665bb6bc143a3712a75ec191c2c0ce9695af6540e"
+      }
+    ],
+    "evidenceQuote": "相反我们可以创建一个新类型来将验证放入创建其实例的函数中，而不是到处重复这些检查。这样就可以安全的在函数签名中使用新类型并相信他们接收到的值。",
+    "statement": "创建一个新类型，将验证放入创建其实例的函数中，而不是到处重复检查；这样就可以在函数签名中使用该新类型并相信接收到的值。",
+    "rationale": "避免到处重复检查，并让函数签名通过新类型表明值已经过验证。",
+    "appliesWhen": "当同样的验证检查会在多处重复时。",
+    "violation": "到处重复相同的检查，而不是将验证放入创建实例的函数中。",
+    "chapterRef": "ch09-03-to-panic-or-not-to-panic-h3-4"
+  }
+]

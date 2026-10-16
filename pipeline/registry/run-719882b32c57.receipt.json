@@ -1,0 +1,4745 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-719882b32c57",
+  "createdAt": "2026-10-12T10:29:36.450Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/chapter6.md",
+    "hash": "sha256:952cd29bcd63e6bcf599a240b34487f852e55154f7ec21af65af06042558f1e6",
+    "totalLines": 777
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": {
+      "completedAnchorsBefore": 28,
+      "inFlightBefore": null,
+      "note": "本次为断点续跑：calls/tokens 含前次已完成锚点的消耗（前次那次被截断的调用不在其中，因为它没有产出可记录的用量）。"
+    },
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "chapter6#h1-1",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H1-1-CONCEPT-01",
+          "CHAPTER6-H1-1-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1595,
+            "output": 4838
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h2-1",
+        "lineStart": 5,
+        "lineEnd": 28,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H2-1-CONCEPT-01",
+          "CHAPTER6-H2-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2039,
+            "output": 4027
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h2-2",
+        "lineStart": 29,
+        "lineEnd": 34,
+        "objectCount": 0,
+        "objectIds": [],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1585,
+            "output": 438
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-1",
+        "lineStart": 35,
+        "lineEnd": 48,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-1-CONCEPT-01",
+          "CHAPTER6-H3-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1926,
+            "output": 5227
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-2",
+        "lineStart": 49,
+        "lineEnd": 72,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-2-CONCEPT-01",
+          "CHAPTER6-H3-2-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2206,
+            "output": 5445
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-3",
+        "lineStart": 73,
+        "lineEnd": 84,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-3-CONCEPT-01",
+          "CHAPTER6-H3-3-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1960,
+            "output": 6182
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-4",
+        "lineStart": 85,
+        "lineEnd": 100,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-4-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-4-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1916,
+            "output": 10513
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-5",
+        "lineStart": 101,
+        "lineEnd": 112,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-5-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-5-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2031,
+            "output": 4876
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-6",
+        "lineStart": 113,
+        "lineEnd": 197,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-6-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-6-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3577,
+            "output": 7939
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-7",
+        "lineStart": 198,
+        "lineEnd": 274,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-7-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-7-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3144,
+            "output": 8282
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-8",
+        "lineStart": 275,
+        "lineEnd": 288,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-8-CONCEPT-01",
+          "CHAPTER6-H3-8-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1910,
+            "output": 5671
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-9",
+        "lineStart": 289,
+        "lineEnd": 306,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-9-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-9-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1837,
+            "output": 13126
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h2-3",
+        "lineStart": 307,
+        "lineEnd": 312,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H2-3-CONCEPT-01",
+          "CHAPTER6-H2-3-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1632,
+            "output": 4406
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-10",
+        "lineStart": 313,
+        "lineEnd": 326,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER6-H3-10-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1851,
+            "output": 8838
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-11",
+        "lineStart": 327,
+        "lineEnd": 357,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-11-CONCEPT-01",
+          "CHAPTER6-H3-11-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1861,
+            "output": 8607
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h4-1",
+        "lineStart": 358,
+        "lineEnd": 388,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H4-1-ANTIPATTERN-01",
+          "CHAPTER6-H4-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2061,
+            "output": 5917
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-12",
+        "lineStart": 389,
+        "lineEnd": 403,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-12-ANTIPATTERN-01",
+          "CHAPTER6-H3-12-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1771,
+            "output": 9018
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-13",
+        "lineStart": 404,
+        "lineEnd": 415,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-13-CONCEPT-01",
+          "CHAPTER6-H3-13-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1793,
+            "output": 7102
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-14",
+        "lineStart": 416,
+        "lineEnd": 419,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER6-H3-14-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1557,
+            "output": 5302
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h4-2",
+        "lineStart": 420,
+        "lineEnd": 427,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER6-H4-2-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1589,
+            "output": 3517
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h4-3",
+        "lineStart": 428,
+        "lineEnd": 431,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER6-H4-3-MENTALMODEL-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1572,
+            "output": 3103
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h4-4",
+        "lineStart": 432,
+        "lineEnd": 437,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H4-4-CONCEPT-01",
+          "CHAPTER6-H4-4-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1665,
+            "output": 9532
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h4-5",
+        "lineStart": 438,
+        "lineEnd": 449,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H4-5-MENTALMODEL-01",
+          "CHAPTER6-H4-5-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1986,
+            "output": 10238
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-15",
+        "lineStart": 450,
+        "lineEnd": 459,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-15-CONCEPT-01",
+          "CHAPTER6-H3-15-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1661,
+            "output": 6581
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h2-4",
+        "lineStart": 460,
+        "lineEnd": 478,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H2-4-CONCEPT-01",
+          "CHAPTER6-H2-4-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1845,
+            "output": 6541
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-16",
+        "lineStart": 479,
+        "lineEnd": 497,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-16-CONCEPT-01",
+          "CHAPTER6-H3-16-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1948,
+            "output": 3630
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-17",
+        "lineStart": 498,
+        "lineEnd": 547,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-17-CONCEPT-01",
+          "CHAPTER6-H3-17-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2837,
+            "output": 5636
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-18",
+        "lineStart": 548,
+        "lineEnd": 555,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-18-CONCEPT-01",
+          "CHAPTER6-H3-18-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1800,
+            "output": 6375
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-19",
+        "lineStart": 556,
+        "lineEnd": 574,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-19-ANTIPATTERN-01",
+          "CHAPTER6-H3-19-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2196,
+            "output": 9157
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-20",
+        "lineStart": 575,
+        "lineEnd": 584,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-20-CONCEPT-01",
+          "CHAPTER6-H3-20-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1827,
+            "output": 7533
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h2-5",
+        "lineStart": 585,
+        "lineEnd": 601,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H2-5-CONCEPT-01",
+          "CHAPTER6-H2-5-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2004,
+            "output": 3578
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-21",
+        "lineStart": 602,
+        "lineEnd": 623,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-21-CONCEPT-01",
+          "CHAPTER6-H3-21-MENTALMODEL-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2198,
+            "output": 8632
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-22",
+        "lineStart": 624,
+        "lineEnd": 637,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-22-CONCEPT-01",
+          "CHAPTER6-H3-22-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1827,
+            "output": 8471
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-23",
+        "lineStart": 638,
+        "lineEnd": 663,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-23-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-23-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2070,
+            "output": 8123
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-24",
+        "lineStart": 664,
+        "lineEnd": 677,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-24-CONCEPT-01",
+          "CHAPTER6-H3-24-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1856,
+            "output": 7579
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-25",
+        "lineStart": 678,
+        "lineEnd": 688,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-25-ENGINEERINGRULE-01",
+          "CHAPTER6-H3-25-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1687,
+            "output": 8259
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-26",
+        "lineStart": 689,
+        "lineEnd": 725,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-26-CONCEPT-01",
+          "CHAPTER6-H3-26-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2214,
+            "output": 5908
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h3-27",
+        "lineStart": 726,
+        "lineEnd": 735,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H3-27-CONCEPT-01",
+          "CHAPTER6-H3-27-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1811,
+            "output": 10014
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h2-6",
+        "lineStart": 736,
+        "lineEnd": 762,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H2-6-CONCEPT-01",
+          "CHAPTER6-H2-6-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2300,
+            "output": 4845
+          }
+        }
+      },
+      {
+        "anchor": "chapter6#h2-7",
+        "lineStart": 763,
+        "lineEnd": 777,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER6-H2-7-CONCEPT-01",
+          "CHAPTER6-H2-7-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2428,
+            "output": 7749
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 40,
+      "tokens": {
+        "input": 79573,
+        "output": 270755
+      },
+      "byAnchor": [
+        {
+          "anchor": "chapter6#h1-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1595,
+            "output": 4838
+          }
+        },
+        {
+          "anchor": "chapter6#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2039,
+            "output": 4027
+          }
+        },
+        {
+          "anchor": "chapter6#h2-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1585,
+            "output": 438
+          }
+        },
+        {
+          "anchor": "chapter6#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1926,
+            "output": 5227
+          }
+        },
+        {
+          "anchor": "chapter6#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2206,
+            "output": 5445
+          }
+        },
+        {
+          "anchor": "chapter6#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1960,
+            "output": 6182
+          }
+        },
+        {
+          "anchor": "chapter6#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1916,
+            "output": 10513
+          }
+        },
+        {
+          "anchor": "chapter6#h3-5",
+          "calls": 1,
+          "tokens": {
+            "input": 2031,
+            "output": 4876
+          }
+        },
+        {
+          "anchor": "chapter6#h3-6",
+          "calls": 1,
+          "tokens": {
+            "input": 3577,
+            "output": 7939
+          }
+        },
+        {
+          "anchor": "chapter6#h3-7",
+          "calls": 1,
+          "tokens": {
+            "input": 3144,
+            "output": 8282
+          }
+        },
+        {
+          "anchor": "chapter6#h3-8",
+          "calls": 1,
+          "tokens": {
+            "input": 1910,
+            "output": 5671
+          }
+        },
+        {
+          "anchor": "chapter6#h3-9",
+          "calls": 1,
+          "tokens": {
+            "input": 1837,
+            "output": 13126
+          }
+        },
+        {
+          "anchor": "chapter6#h2-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1632,
+            "output": 4406
+          }
+        },
+        {
+          "anchor": "chapter6#h3-10",
+          "calls": 1,
+          "tokens": {
+            "input": 1851,
+            "output": 8838
+          }
+        },
+        {
+          "anchor": "chapter6#h3-11",
+          "calls": 1,
+          "tokens": {
+            "input": 1861,
+            "output": 8607
+          }
+        },
+        {
+          "anchor": "chapter6#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2061,
+            "output": 5917
+          }
+        },
+        {
+          "anchor": "chapter6#h3-12",
+          "calls": 1,
+          "tokens": {
+            "input": 1771,
+            "output": 9018
+          }
+        },
+        {
+          "anchor": "chapter6#h3-13",
+          "calls": 1,
+          "tokens": {
+            "input": 1793,
+            "output": 7102
+          }
+        },
+        {
+          "anchor": "chapter6#h3-14",
+          "calls": 1,
+          "tokens": {
+            "input": 1557,
+            "output": 5302
+          }
+        },
+        {
+          "anchor": "chapter6#h4-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1589,
+            "output": 3517
+          }
+        },
+        {
+          "anchor": "chapter6#h4-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1572,
+            "output": 3103
+          }
+        },
+        {
+          "anchor": "chapter6#h4-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1665,
+            "output": 9532
+          }
+        },
+        {
+          "anchor": "chapter6#h4-5",
+          "calls": 1,
+          "tokens": {
+            "input": 1986,
+            "output": 10238
+          }
+        },
+        {
+          "anchor": "chapter6#h3-15",
+          "calls": 1,
+          "tokens": {
+            "input": 1661,
+            "output": 6581
+          }
+        },
+        {
+          "anchor": "chapter6#h2-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1845,
+            "output": 6541
+          }
+        },
+        {
+          "anchor": "chapter6#h3-16",
+          "calls": 1,
+          "tokens": {
+            "input": 1948,
+            "output": 3630
+          }
+        },
+        {
+          "anchor": "chapter6#h3-17",
+          "calls": 1,
+          "tokens": {
+            "input": 2837,
+            "output": 5636
+          }
+        },
+        {
+          "anchor": "chapter6#h3-18",
+          "calls": 1,
+          "tokens": {
+            "input": 1800,
+            "output": 6375
+          }
+        },
+        {
+          "anchor": "chapter6#h3-19",
+          "calls": 1,
+          "tokens": {
+            "input": 2196,
+            "output": 9157
+          }
+        },
+        {
+          "anchor": "chapter6#h3-20",
+          "calls": 1,
+          "tokens": {
+            "input": 1827,
+            "output": 7533
+          }
+        },
+        {
+          "anchor": "chapter6#h2-5",
+          "calls": 1,
+          "tokens": {
+            "input": 2004,
+            "output": 3578
+          }
+        },
+        {
+          "anchor": "chapter6#h3-21",
+          "calls": 1,
+          "tokens": {
+            "input": 2198,
+            "output": 8632
+          }
+        },
+        {
+          "anchor": "chapter6#h3-22",
+          "calls": 1,
+          "tokens": {
+            "input": 1827,
+            "output": 8471
+          }
+        },
+        {
+          "anchor": "chapter6#h3-23",
+          "calls": 1,
+          "tokens": {
+            "input": 2070,
+            "output": 8123
+          }
+        },
+        {
+          "anchor": "chapter6#h3-24",
+          "calls": 1,
+          "tokens": {
+            "input": 1856,
+            "output": 7579
+          }
+        },
+        {
+          "anchor": "chapter6#h3-25",
+          "calls": 1,
+          "tokens": {
+            "input": 1687,
+            "output": 8259
+          }
+        },
+        {
+          "anchor": "chapter6#h3-26",
+          "calls": 1,
+          "tokens": {
+            "input": 2214,
+            "output": 5908
+          }
+        },
+        {
+          "anchor": "chapter6#h3-27",
+          "calls": 1,
+          "tokens": {
+            "input": 1811,
+            "output": 10014
+          }
+        },
+        {
+          "anchor": "chapter6#h2-6",
+          "calls": 1,
+          "tokens": {
+            "input": 2300,
+            "output": 4845
+          }
+        },
+        {
+          "anchor": "chapter6#h2-7",
+          "calls": 1,
+          "tokens": {
+            "input": 2428,
+            "output": 7749
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 40,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 40,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 40,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 40,
+    "tokens": {
+      "input": 79573,
+      "output": 270755
+    },
+    "tokensDetail": {
+      "reasoning": 255531,
+      "cachedInput": 57088
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 74,
+    "tokens": {
+      "input": 86934,
+      "output": 22917
+    },
+    "tokensDetail": {
+      "reasoning": 19742,
+      "cachedInput": 28416
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 74,
+      "verdicts": {
+        "supported": 70,
+        "insufficient": 4
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 70,
+      "deterministic-pass × insufficient": 4
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/chapter6.anchors.json",
+      "sha256": "sha256:6deb440ac061057226c01c7a2037d7f6448286d439e2faa4c56314191339dffa",
+      "bytes": 14058,
+      "anchorCount": 40
+    },
+    "objects": {
+      "path": "pipeline/knowledge/chapter6.objects.json",
+      "sha256": "sha256:0196ac3c7e6206436a712f2cda4223a42c89446b10e80ee9293693bc8354caed",
+      "bytes": 114495,
+      "objectCount": 74
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-719882b32c57.layer2-raw.json",
+      "sha256": "sha256:51315aa4990020888c0e52770ee05c5220f8b2c96fe0a7a100c3c7f32830fa06"
+    }
+  },
+  "counts": {
+    "anchors": 40,
+    "objects": 74,
+    "passed": 70,
+    "rejected": 4,
+    "objectTypes": {
+      "Concept": 34,
+      "Metric": 0,
+      "MentalModel": 3,
+      "DecisionModel": 0,
+      "Heuristic": 7,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 23,
+      "AntiPattern": 7
+    }
+  },
+  "coverage": {
+    "indexAnchors": 40,
+    "processedAnchors": 40,
+    "processedKnown": true,
+    "coveredAnchors": 39,
+    "withoutObjects": {
+      "count": 1,
+      "anchors": [
+        "chapter6#h2-2"
+      ]
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=40，索引锚点数=40）。",
+    "perLevel": {
+      "h1": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h2": {
+        "index": 7,
+        "covered": 6,
+        "without": 1
+      },
+      "h3": {
+        "index": 27,
+        "covered": 27,
+        "without": 0
+      },
+      "h4": {
+        "index": 5,
+        "covered": 5,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {
+      "JUDGE_INSUFFICIENT": 4
+    }
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CHAPTER6-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h1-1",
+        "lineStart": 1,
+        "lineEnd": 4
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h1-1",
+          "lineStart": 1,
+          "lineEnd": 4
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文直接包含主张定义中的完整陈述，逐句一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H1-1-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h1-1",
+        "lineStart": 1,
+        "lineEnd": 4
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h1-1",
+          "lineStart": 1,
+          "lineEnd": 4
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道在底层模型固定时提升Agent任务表现的主要系统工程手段是重新定义或扩展观察空间与动作空间，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-1",
+        "lineStart": 5,
+        "lineEnd": 28
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-1",
+          "lineStart": 5,
+          "lineEnd": 28
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“回合制是模型与接口的一种交互约定，不是环境的性质”，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-1",
+        "lineStart": 5,
+        "lineEnd": 28
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-1",
+          "lineStart": 5,
+          "lineEnd": 28
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文中的Computer Use行明确写出“动作后必须重新确认现实是否仍符合计划”，与主张及场景尺度完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-1",
+        "lineStart": 35,
+        "lineEnd": 48
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-1",
+          "lineStart": 35,
+          "lineEnd": 48
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出“异步（Asynchronous）意味着‘多件事可以同时进行’”，直接支撑主张定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-1",
+        "lineStart": 35,
+        "lineEnd": 48
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-1",
+          "lineStart": 35,
+          "lineEnd": 48
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写明应用异步范式时需先检查模型和API是否支持这种消息时序，且不能仅凭使用asyncio就认定模型具备原生异步能力，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-2",
+        "lineStart": 49,
+        "lineEnd": 72
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-2",
+          "lineStart": 49,
+          "lineEnd": 72
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Channel 机制是在 OpenClaw Gateway 和 Pine API 之间建立的实时事件通道，并在关键事件发生时将消息即时推送到 OpenClaw Agent，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-2",
+        "lineStart": 49,
+        "lineEnd": 72
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-2",
+          "lineStart": 49,
+          "lineEnd": 72
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张的trigger和recommendation均可在锚点原文最后一段中找到对应表述，原文明确主张将所有输入统一建模为事件流、通过事件循环驱动Agent，并强调事件主动通知而不只是定时检查。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-3",
+        "lineStart": 73,
+        "lineEnd": 84
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-3",
+          "lineStart": 73,
+          "lineEnd": 84
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道‘定时器（set_timer）处理依赖物理时间的事件’，直接支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-3",
+        "lineStart": 73,
+        "lineEnd": 84
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-3",
+          "lineStart": 73,
+          "lineEnd": 84
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张的断言与主锚点原文最后一段完全对应，且适用场景一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-4",
+        "lineStart": 85,
+        "lineEnd": 100
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-4",
+          "lineStart": 85,
+          "lineEnd": 100
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述Agent的响应不应局限于单一渠道，并说明消息发送扩展到多种渠道、综合决定渠道选择以避免错过重要消息和重复打扰，与主张及适用情形一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-4-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 11,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文支持原生ReAct循环中assistant消息直发用户且需打开指定会话，但主张将“往往可以看到工具调用过程”强化为“还必须看到/关心工具调用细节”，并把沟通模式绝对化为“被限制为用户发一条、Agent回一条的同步模式”，这些强限定原文未明确承载，故不充分。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-4",
+        "lineStart": 85,
+        "lineEnd": 100
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-4",
+          "lineStart": 85,
+          "lineEnd": 100
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文支持原生ReAct循环中assistant消息直发用户且需打开指定会话，但主张将“往往可以看到工具调用过程”强化为“还必须看到/关心工具调用细节”，并把沟通模式绝对化为“被限制为用户发一条、Agent回一条的同步模式”，这些强限定原文未明确承载，故不充分。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-5",
+        "lineStart": 101,
+        "lineEnd": 112
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-5",
+          "lineStart": 101,
+          "lineEnd": 112
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含“虚拟身份需要部署在隔离的执行环境中”，且上下文即为配置独立虚拟身份的场景，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-5-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-5",
+        "lineStart": 101,
+        "lineEnd": 112
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-5",
+          "lineStart": 101,
+          "lineEnd": 112
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明网站用CAPTCHA和IP信誉检测拦截自动化访问，并指出实践中需配置住宅代理网络（真实家庭IP）才能正常访问，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-6-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 14,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文后半句未包含“必须”这一限定，主张比原文更绝对。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-6",
+        "lineStart": 113,
+        "lineEnd": 197
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-6",
+          "lineStart": 113,
+          "lineEnd": 197
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文后半句未包含“必须”这一限定，主张比原文更绝对。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-6-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-6",
+        "lineStart": 113,
+        "lineEnd": 197
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-6",
+          "lineStart": 113,
+          "lineEnd": 197
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确建议使用轻量级分类LLM作为事件路由器，在事件到达时快速判断采用哪种策略，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-7-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-7",
+        "lineStart": 198,
+        "lineEnd": 274
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-7",
+          "lineStart": 198,
+          "lineEnd": 274
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文中的规则3明确表述了工具执行中的打断需要占位符、生成占位符响应、追加打断事件并重新调用LLM，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#017",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-7-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-7",
+        "lineStart": 198,
+        "lineEnd": 274
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-7",
+          "lineStart": 198,
+          "lineEnd": 274
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“在异步范式下应该将‘启动’和‘完成’解耦”，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#018",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-8-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-8",
+        "lineStart": 275,
+        "lineEnd": 288
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-8",
+          "lineStart": 275,
+          "lineEnd": 288
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文几乎逐字包含了主张中的全部定义要点，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#019",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-8-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 19,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-8",
+        "lineStart": 275,
+        "lineEnd": 288
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-8",
+          "lineStart": 275,
+          "lineEnd": 288
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句包含了主张中的所有内容：回合中途引导让用户能在任务进行中修正方向、Agent思考或组织回答时追加要求、系统保留已完成工作并带入新约束、在同一任务中调整计划。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#020",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-9-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 20,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-9",
+        "lineStart": 289,
+        "lineEnd": 306
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-9",
+          "lineStart": 289,
+          "lineEnd": 306
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确列出复杂任务中的可靠性至少要检查结果归属与未完成状态、任务恢复与动作控制、多条更新的综合使用三项，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#021",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-9-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 21,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文只是提出“能否同时遵守约束、而不是只记住最后一条消息”的检查问题，并未断言模型在处理多条异步更新时实际只记住最后一条消息或无法遵守约束。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-9",
+        "lineStart": 289,
+        "lineEnd": 306
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-9",
+          "lineStart": 289,
+          "lineEnd": 306
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文只是提出“能否同时遵守约束、而不是只记住最后一条消息”的检查问题，并未断言模型在处理多条异步更新时实际只记住最后一条消息或无法遵守约束。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#022",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 22,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文虽区分了语音输入法与语音 Agent，但未说明语音输入法“仅”把口述转成文字，主张中的关键限定超出了原文。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-3",
+        "lineStart": 307,
+        "lineEnd": 312
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-3",
+          "lineStart": 307,
+          "lineEnd": 312
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文虽区分了语音输入法与语音 Agent，但未说明语音输入法“仅”把口述转成文字，主张中的关键限定超出了原文。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#023",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-3-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 23,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-3",
+        "lineStart": 307,
+        "lineEnd": 312
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-3",
+          "lineStart": 307,
+          "lineEnd": 312
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说语音天然适合把 Agent 放进持续工作、随时可能被打断的输入输出回路，可支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#024",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-10-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 24,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-10",
+        "lineStart": 313,
+        "lineEnd": 326
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-10",
+          "lineStart": 313,
+          "lineEnd": 326
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确用“级联、轮次式、全双工”概括三种交互范式，并说明它们不是新旧替代而是延迟、成本和可观测性约束下的取舍。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#025",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-11-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 25,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-11",
+        "lineStart": 327,
+        "lineEnd": 357
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-11",
+          "lineStart": 327,
+          "lineEnd": 357
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述级联流水线由VAD、ASR、LLM、TTS串行组成，并指出模块化可独立优化但每级会增加等待时间，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#026",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-11-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 26,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-11",
+        "lineStart": 327,
+        "lineEnd": 357
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-11",
+          "lineStart": 327,
+          "lineEnd": 357
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文中的实验 6-4 明确用 WebSocket 串起麦克风、Silero VAD、本地 Whisper、流式 LLM 和 Fish S1 TTS，建立后续方案的级联基线，足以支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#027",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-1-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 27,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-1",
+        "lineStart": 358,
+        "lineEnd": 388
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-1",
+          "lineStart": 358,
+          "lineEnd": 388
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述 VAD+ASR+LLM+TTS 完全串行方案并列出与主张一致的三项问题：延迟累积、信息丢失、上下文被切断。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#028",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 28,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-1",
+        "lineStart": 358,
+        "lineEnd": 388
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-1",
+          "lineStart": 358,
+          "lineEnd": 388
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文在相同场景下明确写出端点判断的训练标签必须只使用决策时刻可见的信息，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#029",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-12-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 29,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-12",
+        "lineStart": 389,
+        "lineEnd": 403
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-12",
+          "lineStart": 389,
+          "lineEnd": 403
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述了级联方案即使采用流式感知，听、想、说仍通过离散接口交接，且情绪、语调和环境声等信息可能在转成纯文本时丢失，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#030",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-12-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 30,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-12",
+        "lineStart": 389,
+        "lineEnd": 403
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-12",
+          "lineStart": 389,
+          "lineEnd": 403
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文在 Omni 模型部分逐字包含该主张，且明确提到报数字时中途停顿可能被误判为说完。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#031",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-13-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 31,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-13",
+        "lineStart": 404,
+        "lineEnd": 415
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-13",
+          "lineStart": 404,
+          "lineEnd": 415
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道全双工模型不再预设轮次、持续听与说并不断决定继续、停顿、打断或调用工具，与主张定义一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#032",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-13-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 32,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-13",
+        "lineStart": 404,
+        "lineEnd": 415
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-13",
+          "lineStart": 404,
+          "lineEnd": 415
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张的定义逐句对应主锚点原文中对交互模型的描述，内容一致且无额外断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#033",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-14-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 33,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-14",
+        "lineStart": 416,
+        "lineEnd": 419
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-14",
+          "lineStart": 416,
+          "lineEnd": 419
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐字包含主张中的定义语句，完全承载该断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#034",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 34,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-2",
+        "lineStart": 420,
+        "lineEnd": 427
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-2",
+          "lineStart": 420,
+          "lineEnd": 427
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文完整包含了主张中关于方案机制、问题表现及根本原因的全部断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#035",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-3-MENTALMODEL-01",
+      "objectType": "MentalModel",
+      "ordinal": 35,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-3",
+        "lineStart": 428,
+        "lineEnd": 431
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-3",
+          "lineStart": 428,
+          "lineEnd": 431
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文完整包含主张中的触发句与推理表述，内容一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#036",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 36,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-4",
+        "lineStart": 432,
+        "lineEnd": 437
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-4",
+          "lineStart": 432,
+          "lineEnd": 437
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张的定义逐条对应锚点原文：MGRD让模型基于声学特征思考、筛选引用声学特征的思考过程训练模型，并通过强化学习防止跳过思考直接猜答案。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#037",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-4-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 37,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-4",
+        "lineStart": 432,
+        "lineEnd": 437
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-4",
+          "lineStart": 432,
+          "lineEnd": 437
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文明确包含主张的全部断言：构思与表达并行、构思脑持续产出片段、表达脑收到后结合已有回复立即生成语音并以流水线并行，因此不必等完整思考结束。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#038",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-5-MENTALMODEL-01",
+      "objectType": "MentalModel",
+      "ordinal": 38,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-5",
+        "lineStart": 438,
+        "lineEnd": 449
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-5",
+          "lineStart": 438,
+          "lineEnd": 449
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确区分了语音通路端到端与认知架构端到端两个含义，并说明两条轴彼此独立、系统可同时语音端到端且认知快慢分离，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#039",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H4-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 39,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-5",
+        "lineStart": 438,
+        "lineEnd": 449
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h4-5",
+          "lineStart": 438,
+          "lineEnd": 449
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道「在同时考察深度推理与实时对话的任务上，解耦架构并不天然落后于端到端模型」，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#040",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-15-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 40,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-15",
+        "lineStart": 450,
+        "lineEnd": 459
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-15",
+          "lineStart": 450,
+          "lineEnd": 459
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含与定义相同的句子，且停顿、填充词和重复可概括为非流畅语音信号。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#041",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-15-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 41,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-15",
+        "lineStart": 450,
+        "lineEnd": 459
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-15",
+          "lineStart": 450,
+          "lineEnd": 459
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道传统TTS过于流畅、零停顿反而容易暴露机器身份，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#042",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 42,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-4",
+        "lineStart": 460,
+        "lineEnd": 478
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-4",
+          "lineStart": 460,
+          "lineEnd": 478
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含与主张相同的定义句，直接支撑该断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#043",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 43,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-4",
+        "lineStart": 460,
+        "lineEnd": 478
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-4",
+          "lineStart": 460,
+          "lineEnd": 478
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含“区分‘看懂界面’和‘完成任务’”及“Computer Use 的难点不只是让模型在截图上答对，而是让它在每一步之后重新确认现实是否仍符合计划”的完整表述。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#044",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-16-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 44,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-16",
+        "lineStart": 479,
+        "lineEnd": 497
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-16",
+          "lineStart": 479,
+          "lineEnd": 497
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将 GUI 操作工具描述为 Computer Use 动作空间中的一类工具，并列出鼠标操作、键盘操作和感知动作三类能力，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#045",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-16-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 45,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-16",
+        "lineStart": 479,
+        "lineEnd": 497
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-16",
+          "lineStart": 479,
+          "lineEnd": 497
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文对命令执行工具的描述与主张完全一致，包含持久 bash 会话、120 秒超时、哨兵字符串检测完成及多次调用间保持环境状态。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#046",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-17-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 46,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-17",
+        "lineStart": 498,
+        "lineEnd": 547
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-17",
+          "lineStart": 498,
+          "lineEnd": 547
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第一段明确将视觉定位定义为在循环的每一轮中模型需要在截图中准确定位目标元素（如搜索框、提交按钮的坐标）的问题，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#047",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-17-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 47,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-17",
+        "lineStart": 498,
+        "lineEnd": 547
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-17",
+          "lineStart": 498,
+          "lineEnd": 547
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文在纯坐标预测部分明确指出分辨率不匹配时需在工具层实现双向坐标缩放并按宽高比选目标分辨率，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#048",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-18-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 48,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-18",
+        "lineStart": 548,
+        "lineEnd": 555
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-18",
+          "lineStart": 548,
+          "lineEnd": 555
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道核心思想是构建Agent–电脑观察接口（AOI），把连续的环境观察转换成模型便于处理的离散事件，直接支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#049",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-18-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 49,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-18",
+        "lineStart": 548,
+        "lineEnd": 555
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-18",
+          "lineStart": 548,
+          "lineEnd": 555
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明屏幕会放视频、转瞬即逝的通知和会议人声，并指出应重新设计观察接口而非动作接口，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#050",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-19-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 50,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-19",
+        "lineStart": 556,
+        "lineEnd": 574
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-19",
+          "lineStart": 556,
+          "lineEnd": 574
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐字包含主张中的“串行截图—思考—点击”循环模式及效率研究结论，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#051",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-19-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 51,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-19",
+        "lineStart": 556,
+        "lineEnd": 574
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-19",
+          "lineStart": 556,
+          "lineEnd": 574
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张的定义内容与锚点原文中关于世界模型让Agent比较候选动作后果、在页面加载期间准备下一步、弹窗时根据状态差异恢复以及重点在于预测可检查状态差异的表述一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#052",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-20-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 52,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-20",
+        "lineStart": 575,
+        "lineEnd": 584
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-20",
+          "lineStart": 575,
+          "lineEnd": 584
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句覆盖了主张中关于动作空间、无障碍服务API、触摸手势及手势类型界定的全部断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#053",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-20-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 53,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-20",
+        "lineStart": 575,
+        "lineEnd": 584
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-20",
+          "lineStart": 575,
+          "lineEnd": 584
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将生态壁垒定义为Computer Use在消费级场景中的独特挑战，并完整承载了商业模式冲突、绕过流量与注意力变现、结构性利益冲突及短期难以调和等断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#054",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-5-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 54,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-5",
+        "lineStart": 585,
+        "lineEnd": 601
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-5",
+          "lineStart": 585,
+          "lineEnd": 601
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明机器人操作需要模型看懂画面、在真实世界中连续做出动作，且每个动作会改变下一刻情况，足以支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#055",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-5-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 55,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-5",
+        "lineStart": 585,
+        "lineEnd": 601
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-5",
+          "lineStart": 585,
+          "lineEnd": 601
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出瓶颈不是增加静态问答基准，而是让系统在有限感知和控制带宽下持续完成闭环，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#056",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-21-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 56,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-21",
+        "lineStart": 602,
+        "lineEnd": 623
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-21",
+          "lineStart": 602,
+          "lineEnd": 623
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述理想控制器在二维桌面模拟器中不需要识别图像、也不会选错动作，并代表感知和决策都正确时该任务至少可以做到什么，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#057",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-21-MENTALMODEL-02",
+      "objectType": "MentalModel",
+      "ordinal": 57,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-21",
+        "lineStart": 602,
+        "lineEnd": 623
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-21",
+          "lineStart": 602,
+          "lineEnd": 623
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句承载了主张中的诊断问题和诊断方法，包括保持条件不变、人类接管闭环及差距体现。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#058",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-22-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 58,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-22",
+        "lineStart": 624,
+        "lineEnd": 637
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-22",
+          "lineStart": 624,
+          "lineEnd": 637
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出机器人系统通常把不同时间尺度的工作分开，并列出任务目标、长程规划、基本技能、VLA/技能策略和底层控制与安全层，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#059",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-22-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 59,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-22",
+        "lineStart": 624,
+        "lineEnd": 637
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-22",
+          "lineStart": 624,
+          "lineEnd": 637
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含主张的完整表述，并给出分开的原因说明。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#060",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-23-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 60,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-23",
+        "lineStart": 638,
+        "lineEnd": 663
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-23",
+          "lineStart": 638,
+          "lineEnd": 663
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文中明确写出与主张一致的句子，并进一步说明只开放五个工具且每完成一个技能都必须重新观察，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#061",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-23-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 61,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-23",
+        "lineStart": 638,
+        "lineEnd": 663
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-23",
+          "lineStart": 638,
+          "lineEnd": 663
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含该主张的完整表述，包括抓取失败只重试当前一步、物体被挪动或用户改变目标只需重规划受影响后续步骤。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#062",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-24-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 62,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-24",
+        "lineStart": 664,
+        "lineEnd": 677
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-24",
+          "lineStart": 664,
+          "lineEnd": 677
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明VLA接收当前画面和技能指令并输出机器人接下来要执行的动作，与主张定义一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#063",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-24-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 63,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-24",
+        "lineStart": 664,
+        "lineEnd": 677
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-24",
+          "lineStart": 664,
+          "lineEnd": 677
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了在大模型推理频率低于传统控制器时，工程上常用动作分块，由模型生成一小段动作、控制线程高频执行并在后台准备下一段，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#064",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-25-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 64,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-25",
+        "lineStart": 678,
+        "lineEnd": 688
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-25",
+          "lineStart": 678,
+          "lineEnd": 688
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明行为克隆主要学习示范者下一步怎么做，并未要求模型回答动作后果，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#065",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-25-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 65,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-25",
+        "lineStart": 678,
+        "lineEnd": 688
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-25",
+          "lineStart": 678,
+          "lineEnd": 688
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道不同机器人有不同自由度等，同一个动作不一定能直接搬到另一台机器人上，完全支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#066",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-26-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 66,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-26",
+        "lineStart": 689,
+        "lineEnd": 725
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-26",
+          "lineStart": 689,
+          "lineEnd": 725
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明世界模型不需要生成逼真机器人视频，只要能预测哪些候选动作更可能让纸张可抓取、哪些可能碰倒杯子，就能帮助规划器排序。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#067",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-26-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 67,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-26",
+        "lineStart": 689,
+        "lineEnd": 725
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-26",
+          "lineStart": 689,
+          "lineEnd": 725
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“动作执行后，真实摄像头观察仍然是最终事实；预测只能帮助选择，不能代替验收”，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#068",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-27-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 68,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-27",
+        "lineStart": 726,
+        "lineEnd": 735
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-27",
+          "lineStart": 726,
+          "lineEnd": 735
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张中的每条断言都能从锚点原文直接读出，且关键差异与失效条件与原文一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#069",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H3-27-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 69,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-27",
+        "lineStart": 726,
+        "lineEnd": 735
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h3-27",
+          "lineStart": 726,
+          "lineEnd": 735
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出“即使结果改善，真机部署仍然需要真实相机标定、执行器测试和完整的安全闭环”，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#070",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-6-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 70,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-6",
+        "lineStart": 736,
+        "lineEnd": 762
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-6",
+          "lineStart": 736,
+          "lineEnd": 762
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第1段逐字包含了主张中的定义句，直接承载该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#071",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 71,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-6",
+        "lineStart": 736,
+        "lineEnd": 762
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-6",
+          "lineStart": 736,
+          "lineEnd": 762
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道机器人在物理世界执行动作后，最终是否完成仍必须由新的观察来判定，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#072",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-7-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 72,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-7",
+        "lineStart": 763,
+        "lineEnd": 777
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-7",
+          "lineStart": 763,
+          "lineEnd": 777
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出SoM将Computer Use视觉定位从开放坐标预测转为封闭ID选择，并需先检测和标注界面元素（无论靠分割模型还是DOM），与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#073",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER6-H2-7-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 73,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-7",
+        "lineStart": 763,
+        "lineEnd": 777
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter6.md",
+          "anchor": "chapter6#h2-7",
+          "lineStart": 763,
+          "lineEnd": 777
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“模型倾向于只关注最后一个事件”，并以“使模型不遗漏关键信息”对应忽略其他事件的风险，足以支撑该主张及其危害描述。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#074",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 4,
+  "engineeringFailure": null
+}

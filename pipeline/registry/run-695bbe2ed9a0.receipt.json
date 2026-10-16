@@ -1,0 +1,578 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-695bbe2ed9a0",
+  "createdAt": "2026-10-14T19:38:07.485Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+    "hash": "sha256:05cc876c666c8cc47d649215d17d556bdd9f47f6195c1f9c211b5ce2551fd321",
+    "totalLines": 257
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch16-02-message-passing#h2-1",
+        "lineStart": 1,
+        "lineEnd": 89,
+        "objectCount": 2,
+        "objectIds": [
+          "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-01",
+          "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2912,
+            "output": 6386
+          }
+        }
+      },
+      {
+        "anchor": "ch16-02-message-passing#h3-1",
+        "lineStart": 90,
+        "lineEnd": 132,
+        "objectCount": 1,
+        "objectIds": [
+          "CH16-02-MESSAGE-PASSING-H3-1-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1964,
+            "output": 4934
+          }
+        }
+      },
+      {
+        "anchor": "ch16-02-message-passing#h3-2",
+        "lineStart": 133,
+        "lineEnd": 183,
+        "objectCount": 1,
+        "objectIds": [
+          "CH16-02-MESSAGE-PASSING-H3-2-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1905,
+            "output": 7641
+          }
+        }
+      },
+      {
+        "anchor": "ch16-02-message-passing#h3-3",
+        "lineStart": 184,
+        "lineEnd": 257,
+        "objectCount": 2,
+        "objectIds": [
+          "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-01",
+          "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2019,
+            "output": 7232
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 4,
+      "tokens": {
+        "input": 8800,
+        "output": 26193
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch16-02-message-passing#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2912,
+            "output": 6386
+          }
+        },
+        {
+          "anchor": "ch16-02-message-passing#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1964,
+            "output": 4934
+          }
+        },
+        {
+          "anchor": "ch16-02-message-passing#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1905,
+            "output": 7641
+          }
+        },
+        {
+          "anchor": "ch16-02-message-passing#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 2019,
+            "output": 7232
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 4,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 4,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 4,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 4,
+    "tokens": {
+      "input": 8800,
+      "output": 26193
+    },
+    "tokensDetail": {
+      "reasoning": 25054,
+      "cachedInput": 5632
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 6,
+    "tokens": {
+      "input": 8605,
+      "output": 1680
+    },
+    "tokensDetail": {
+      "reasoning": 1403,
+      "cachedInput": 2304
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 6,
+      "verdicts": {
+        "supported": 6
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 6
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch16-02-message-passing.anchors.json",
+      "sha256": "sha256:c39bf4045ee260794aaff34ddc39e49db8b92a4fa6fdfa376a56fa18eb1bf9fb",
+      "bytes": 1850,
+      "anchorCount": 4
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch16-02-message-passing.objects.json",
+      "sha256": "sha256:f68bcd5850bd7f230d998a155a0a862132e764029fe3edd2c7e6d72606b604ee",
+      "bytes": 9143,
+      "objectCount": 6
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-695bbe2ed9a0.layer2-raw.json",
+      "sha256": "sha256:a4fb8a1e4abe50223469ddb86c81044b563db5da3ea706b2aa7faac02638c3ed"
+    }
+  },
+  "counts": {
+    "anchors": 4,
+    "objects": 6,
+    "passed": 6,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 4,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 2,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 4,
+    "processedAnchors": 4,
+    "processedKnown": true,
+    "coveredAnchors": 4,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=4，索引锚点数=4）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 3,
+        "covered": 3,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h2-1",
+        "lineStart": 1,
+        "lineEnd": 89
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h2-1",
+          "lineStart": 1,
+          "lineEnd": 89
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句包含主张中的关键断言：通道由发送者和接收者组成、上下游位置、代码调用发送者与检查接收消息，以及任一端被丢弃时通道关闭。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h2-1",
+        "lineStart": 1,
+        "lineEnd": 89
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h2-1",
+          "lineStart": 1,
+          "lineEnd": 89
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写明 mpsc 是多个生产者、单个消费者的缩写，并说明一个通道可有多个发送端但只能有一个接收端。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-02-MESSAGE-PASSING-H3-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-1",
+        "lineStart": 90,
+        "lineEnd": 132
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-1",
+          "lineStart": 90,
+          "lineEnd": 132
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 send 获取参数所有权并移动值归接收者所有，可防止发送后再次意外使用，且场景为发送后再使用该值。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-02-MESSAGE-PASSING-H3-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-2",
+        "lineStart": 133,
+        "lineEnd": 183
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-2",
+          "lineStart": 133,
+          "lineEnd": 183
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在主线程中将 rx 当作迭代器接收多个值，并指出当通道被关闭时迭代器结束，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-3",
+        "lineStart": 184,
+        "lineEnd": 257
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-3",
+          "lineStart": 184,
+          "lineEnd": 257
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 mpsc 是 multiple producer, single consumer 的缩写，并演示通过克隆发送端使多个线程向同一接收者发送值，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-3",
+        "lineStart": 184,
+        "lineEnd": 257
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+          "anchor": "ch16-02-message-passing#h3-3",
+          "lineStart": 184,
+          "lineEnd": 257
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述在创建新线程前克隆发送端、将克隆句柄传给第一个线程、原始发送端传给第二个线程，两个线程向同一接收端发送不同消息。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

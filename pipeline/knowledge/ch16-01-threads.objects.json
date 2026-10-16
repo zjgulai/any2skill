@@ -1,0 +1,232 @@
+[
+  {
+    "id": "CH16-01-THREADS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h2-1",
+        "title": "使用线程同时运行代码",
+        "lineStart": 1,
+        "lineEnd": 24,
+        "contentHash": "sha256:214ad961501dbf731ab373628aeaa9dd362ad899f0efd37f578738f0bfdb40d1"
+      }
+    ],
+    "evidenceQuote": "在程序内部，也可以拥有多个同时运行的独立部分。运行这些独立部分的功能被称为 **线程**（_threads_）。将程序中的计算拆分进多个线程可以改善性能，因为程序可以同时进行多个任务，不过这也会增加复杂性。",
+    "canonicalTerm": "线程",
+    "aliases": [
+      "threads"
+    ],
+    "definition": "运行程序内部多个同时运行的独立部分的功能。",
+    "examples": [
+      "将程序中的计算拆分进多个线程，以同时进行多个任务并改善性能。"
+    ]
+  },
+  {
+    "id": "CH16-01-THREADS-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h2-1",
+        "title": "使用线程同时运行代码",
+        "lineStart": 1,
+        "lineEnd": 24,
+        "contentHash": "sha256:214ad961501dbf731ab373628aeaa9dd362ad899f0efd37f578738f0bfdb40d1"
+      }
+    ],
+    "evidenceQuote": "绿色线程的 M:N 模型需要更大的语言运行时来管理这些线程。因此，Rust 标准库只提供了 1:1 线程模型实现。由于 Rust 是较为底层的语言，如果你愿意牺牲性能来换取抽象，以获得对线程运行更精细的控制及更低的上下文切换成本，你可以使用实现了 M:N 线程模型的 crate。",
+    "statement": "Rust 标准库只提供 1:1 线程模型实现。",
+    "rationale": "绿色线程的 M:N 模型需要更大的语言运行时来管理这些线程。",
+    "appliesWhen": "使用 Rust 标准库提供的线程模型时。",
+    "violation": "期望仅通过 Rust 标准库获得 M:N 绿色线程模型。",
+    "chapterRef": "ch16-01-threads-h2-1"
+  },
+  {
+    "id": "CH16-01-THREADS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-1",
+        "title": "使用 `spawn` 创建新线程",
+        "lineStart": 25,
+        "lineEnd": 69,
+        "contentHash": "sha256:c750eab52bfd52033c2ea92174146cbb180e848f321d7b7c6207c5bbe3c614c6"
+      }
+    ],
+    "evidenceQuote": "为了创建一个新线程，需要调用 `thread::spawn` 函数并传递一个闭包（第 13 章学习了闭包），并在其中包含希望在新线程运行的代码。示例 16-1 中的例子在主线程打印了一些文本而另一些文本则由新线程打印：",
+    "canonicalTerm": "thread::spawn",
+    "aliases": [],
+    "definition": "创建一个新线程需要调用 thread::spawn 函数并传递一个闭包，在闭包中包含希望在新线程运行的代码。",
+    "examples": [
+      "示例 16-1：主线程打印一些文本，新线程通过 thread::spawn 的闭包打印另一些文本。"
+    ]
+  },
+  {
+    "id": "CH16-01-THREADS-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-1",
+        "title": "使用 `spawn` 创建新线程",
+        "lineStart": 25,
+        "lineEnd": 69,
+        "contentHash": "sha256:c750eab52bfd52033c2ea92174146cbb180e848f321d7b7c6207c5bbe3c614c6"
+      }
+    ],
+    "evidenceQuote": "这些线程可能会轮流运行，不过并不保证如此：这依赖操作系统如何调度线程。",
+    "statement": "多个线程可能轮流运行，但并不保证如此；实际调度顺序依赖操作系统如何调度线程。",
+    "rationale": "线程调度由操作系统决定，因此无法保证轮流运行。",
+    "appliesWhen": "当多个线程并发运行且它们的执行顺序会影响程序行为或输出时。",
+    "violation": "假定线程一定轮流运行或按固定顺序执行。",
+    "chapterRef": "ch16-01-threads-h3-1"
+  },
+  {
+    "id": "CH16-01-THREADS-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h4-1",
+        "title": "使用 `join` 等待所有线程结束",
+        "lineStart": 70,
+        "lineEnd": 165,
+        "contentHash": "sha256:91a2399beb311588711e2f930521f2a1688619dec2d8a39770fd42549e17288d"
+      }
+    ],
+    "evidenceQuote": "`thread::spawn` 的返回值类型是 `JoinHandle`。`JoinHandle` 是一个拥有所有权的值，当对其调用 `join` 方法时，它会等待其线程结束。示例 16-2 展示了如何使用示例 16-1 中创建的线程的 `JoinHandle` 并调用 `join` 来确保新建线程在 `main` 退出前结束运行：",
+    "canonicalTerm": "JoinHandle",
+    "aliases": [],
+    "definition": "thread::spawn 的返回值类型；一个拥有所有权的值，调用其 join 方法时会等待其线程结束。",
+    "examples": [
+      "示例 16-2 保存 thread::spawn 的返回值 JoinHandle 并调用 join，以确保新建线程在 main 退出前结束运行。"
+    ]
+  },
+  {
+    "id": "CH16-01-THREADS-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h4-1",
+        "title": "使用 `join` 等待所有线程结束",
+        "lineStart": 70,
+        "lineEnd": 165,
+        "contentHash": "sha256:91a2399beb311588711e2f930521f2a1688619dec2d8a39770fd42549e17288d"
+      }
+    ],
+    "evidenceQuote": "由于主线程结束，示例 16-1 中的代码大部分时候不光会提早结束新建线程，甚至不能实际保证新建线程会被执行。其原因在于无法保证线程运行的顺序！\n\n可以通过将 `thread::spawn` 的返回值储存在变量中来修复新建线程部分没有执行或者完全没有执行的问题。`thread::spawn` 的返回值类型是 `JoinHandle`。`JoinHandle` 是一个拥有所有权的值，当对其调用 `join` 方法时，它会等待其线程结束。示例 16-2 展示了如何使用示例 16-1 中创建的线程的 `JoinHandle` 并调用 `join` 来确保新建线程在 `main` 退出前结束运行：",
+    "statement": "保存 thread::spawn 返回的 JoinHandle 并调用其 join 方法，能确保新建线程在 main 退出前结束运行。",
+    "rationale": "JoinHandle 是一个拥有所有权的值，调用 join 方法时会等待其线程结束。",
+    "appliesWhen": "当需要修复新建线程未执行或未完整执行的问题，并确保其在 main 退出前结束运行时。",
+    "violation": "不保存 JoinHandle 并调用 join 时，主线程结束可能提早结束新建线程，甚至不能实际保证新建线程会被执行。",
+    "chapterRef": "ch16-01-threads-h4-1"
+  },
+  {
+    "id": "CH16-01-THREADS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-2",
+        "title": "线程与 `move` 闭包",
+        "lineStart": 166,
+        "lineEnd": 286,
+        "contentHash": "sha256:cb1cb7d811da5f4ec02c0455f60f6823e833567b65d5b7a0d2817edd1f1af9b8"
+      }
+    ],
+    "evidenceQuote": "在第 13 章中，我们讲到可以在参数列表前使用 `move` 关键字强制闭包获取其使用的环境值的所有权。这个技巧在创建新线程将值的所有权从一个线程移动到另一个线程时最为实用。",
+    "canonicalTerm": "move 闭包",
+    "aliases": [],
+    "definition": "在参数列表前使用 `move` 关键字强制闭包获取其使用的环境值的所有权，这个技巧在创建新线程将值的所有权从一个线程移动到另一个线程时最为实用。",
+    "examples": [
+      "创建新线程将值的所有权从一个线程移动到另一个线程时使用 `move` 闭包"
+    ]
+  },
+  {
+    "id": "CH16-01-THREADS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:34:07.136Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:34:07.136Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-2",
+        "title": "线程与 `move` 闭包",
+        "lineStart": 166,
+        "lineEnd": 286,
+        "contentHash": "sha256:cb1cb7d811da5f4ec02c0455f60f6823e833567b65d5b7a0d2817edd1f1af9b8"
+      }
+    ],
+    "evidenceQuote": "Rust 的所有权规则又一次帮助了我们！示例 16-3 中的错误是因为 Rust 是保守的并只会为线程借用 `v`，这意味着主线程理论上可能使新建线程的引用无效。通过告诉 Rust 将 `v` 的所有权移动到新建线程，我们向 Rust 保证主线程不会再使用 `v`。如果对示例 16-4 也做出如此修改，那么当在主线程中使用 `v` 时就会违反所有权规则。 `move` 关键字覆盖了 Rust 默认保守的借用，但它不允许我们违反所有权规则。",
+    "statement": "当 Rust 默认保守地只为线程借用主线程数据时，应通过 `move` 关键字将值的所有权移动到新建线程，向 Rust 保证主线程不会再使用该值；`move` 关键字覆盖 Rust 默认保守的借用，但不允许违反所有权规则。",
+    "rationale": "Rust 默认保守地只为线程借用 `v`，主线程理论上可能使新建线程的引用无效；通过将 `v` 的所有权移动到新建线程，向 Rust 保证主线程不会再使用 `v`。",
+    "appliesWhen": "当主线程理论上可能使新建线程的引用无效时。",
+    "violation": "若沿用默认借用而不将所有权移动到新建线程，主线程可能使新线程中的引用失效；若 `move` 后主线程仍使用该值，则违反所有权规则。",
+    "chapterRef": "ch16-01-threads-h3-2"
+  }
+]

@@ -1,0 +1,363 @@
+[
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h2-1",
+        "title": "什么是所有权？",
+        "lineStart": 1,
+        "lineEnd": 28,
+        "contentHash": "sha256:cfc3276dc5e712a5326017a63adf03957cca3e1dc4292ad908995c8907afe292"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch04-01-what-is-ownership-h2-1）",
+    "rationale": "理由（替身载荷，出处：ch04-01-what-is-ownership-h2-1）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch04-01-what-is-ownership-h2-1）",
+    "violation": "违反后果（替身载荷，出处：ch04-01-what-is-ownership-h2-1）",
+    "chapterRef": "ch04-01-what-is-ownership-h2-1",
+    "evidenceQuote": "Rust 的核心功能（之一）是 **所有权**（*ownership*）。虽然该功能很容易解释，但它对语言的其他部分有着深刻的影响。"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-1-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-1",
+        "title": "所有权规则",
+        "lineStart": 29,
+        "lineEnd": 36,
+        "contentHash": "sha256:245cad05370eb39e6f29feced57dabbd092229bf389e81ca5312d9e6baa890f2"
+      }
+    ],
+    "title": "所有权规则",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch04-01-what-is-ownership-h3-1）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch04-01-what-is-ownership-h3-1）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch04-01-what-is-ownership-h3-1）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch04-01-what-is-ownership-h3-1）",
+    "approval": "none",
+    "evidenceQuote": "首先，让我们看一下所有权的规则。当我们通过举例说明时，请谨记这些规则："
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-2-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-2",
+        "title": "变量作用域",
+        "lineStart": 37,
+        "lineEnd": 61,
+        "contentHash": "sha256:297ec50a7ddb399c4465342a96e47250cf9868e28a0806931e462e2b4afbe9ad"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch04-01-what-is-ownership-h3-2）",
+    "recommendation": "建议（替身载荷，出处：ch04-01-what-is-ownership-h3-2）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch04-01-what-is-ownership-h3-2）"
+    ],
+    "evidenceQuote": "我们已经在第 2 章完成一个 Rust 程序示例。既然我们已经掌握了基本语法，将不会在之后的例子中包含 `fn main() {` 代码，所以如果你是一路跟过来的，必须手动将之后例子的代码放入一个 `main` 函数中。这样，例子将显得更加"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-3-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-3",
+        "title": "`String` 类型",
+        "lineStart": 62,
+        "lineEnd": 83,
+        "contentHash": "sha256:f8e588e16d39a8136685249b96648f9d7faaade277e971070b815024b036d2a8"
+      }
+    ],
+    "title": "`String` 类型",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch04-01-what-is-ownership-h3-3）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch04-01-what-is-ownership-h3-3）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch04-01-what-is-ownership-h3-3）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch04-01-what-is-ownership-h3-3）",
+    "approval": "none",
+    "evidenceQuote": "为了演示所有权的规则，我们需要一个比第 3 章[“数据类型”][data-types]<!-- ignore -->中讲到的都要复杂的数据类型。前面介绍的类型都是已知大小的，可以存储在栈中，并且当离开作用域时被移出栈，如果代码的另一部分需要"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-4-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-4",
+        "title": "内存与分配",
+        "lineStart": 84,
+        "lineEnd": 108,
+        "contentHash": "sha256:0c6f40c60b4a7be6588a6a9fdcfae6e96f6975b069a6a00d3a40b279b5b67c5a"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch04-01-what-is-ownership-h3-4）",
+    "recommendation": "建议（替身载荷，出处：ch04-01-what-is-ownership-h3-4）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch04-01-what-is-ownership-h3-4）"
+    ],
+    "evidenceQuote": "就字符串字面量来说，我们在编译时就知道其内容，所以文本被直接硬编码进最终的可执行文件中。这使得字符串字面量快速且高效。不过这些特性都只得益于字符串字面量的不可变性。不幸的是，我们不能为了每一个在编译时大小未知的文本而将一块内存放入二进制文件"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-1-CASE-01",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-1",
+        "title": "变量与数据交互的方式（一）：移动",
+        "lineStart": 109,
+        "lineEnd": 172,
+        "contentHash": "sha256:3ca8b5d495140dbda43570ef3163178f7469726e4b468ce3826f7ba8782f3151"
+      }
+    ],
+    "title": "变量与数据交互的方式（一）：移动",
+    "context": "背景（替身载荷，出处：ch04-01-what-is-ownership-h4-1）",
+    "facts": [
+      "事实（替身载荷，出处：ch04-01-what-is-ownership-h4-1）"
+    ],
+    "decisions": [
+      "决策（替身载荷，出处：ch04-01-what-is-ownership-h4-1）"
+    ],
+    "outcome": "结果（替身载荷，出处：ch04-01-what-is-ownership-h4-1）",
+    "evidenceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-1",
+        "title": "变量与数据交互的方式（一）：移动",
+        "lineStart": 109,
+        "lineEnd": 172,
+        "contentHash": "sha256:3ca8b5d495140dbda43570ef3163178f7469726e4b468ce3826f7ba8782f3151"
+      }
+    ],
+    "limitations": [
+      "局限（替身载荷，出处：ch04-01-what-is-ownership-h4-1）"
+    ],
+    "dataClass": "public",
+    "evidenceQuote": "在 Rust 中，多个变量能够以不同的方式与同一数据交互。让我们看看示例 4-2 中一个使用整型的例子。"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-2-DECISIONMODEL-01",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-2",
+        "title": "变量与数据交互的方式（二）：克隆",
+        "lineStart": 173,
+        "lineEnd": 186,
+        "contentHash": "sha256:5516fc09ddaa951b5168d25dd233895a940c2415888903c6db8575191006f9a0"
+      }
+    ],
+    "inputs": [
+      "输入（替身载荷，出处：ch04-01-what-is-ownership-h4-2）"
+    ],
+    "branches": [
+      {
+        "condition": "条件（替身载荷，出处：ch04-01-what-is-ownership-h4-2）",
+        "action": "动作（替身载荷，出处：ch04-01-what-is-ownership-h4-2）"
+      }
+    ],
+    "outputs": [
+      "输出（替身载荷，出处：ch04-01-what-is-ownership-h4-2）"
+    ],
+    "unknownPolicy": "未知处理（替身载荷，出处：ch04-01-what-is-ownership-h4-2）",
+    "stopConditions": [
+      "停止条件（替身载荷，出处：ch04-01-what-is-ownership-h4-2）"
+    ],
+    "reviewState": "candidate",
+    "evidenceQuote": "如果我们 **确实** 需要深度复制 `String` 中堆上的数据，而不仅仅是栈上的数据，可以使用一个叫做 `clone` 的通用函数。第 5 章会讨论方法语法，不过因为方法在很多语言中是一个常见功能，所以之前你可能已经见过了。"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-3-CASE-01",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-3",
+        "title": "只在栈上的数据：拷贝",
+        "lineStart": 187,
+        "lineEnd": 208,
+        "contentHash": "sha256:21422704c60e97cea477e90fe1f58640127034c292a86f458a3018a2abc43923"
+      }
+    ],
+    "title": "只在栈上的数据：拷贝",
+    "context": "背景（替身载荷，出处：ch04-01-what-is-ownership-h4-3）",
+    "facts": [
+      "事实（替身载荷，出处：ch04-01-what-is-ownership-h4-3）"
+    ],
+    "decisions": [
+      "决策（替身载荷，出处：ch04-01-what-is-ownership-h4-3）"
+    ],
+    "outcome": "结果（替身载荷，出处：ch04-01-what-is-ownership-h4-3）",
+    "evidenceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-3",
+        "title": "只在栈上的数据：拷贝",
+        "lineStart": 187,
+        "lineEnd": 208,
+        "contentHash": "sha256:21422704c60e97cea477e90fe1f58640127034c292a86f458a3018a2abc43923"
+      }
+    ],
+    "limitations": [
+      "局限（替身载荷，出处：ch04-01-what-is-ownership-h4-3）"
+    ],
+    "dataClass": "public",
+    "evidenceQuote": "这里还有一个没有提到的小窍门。这些代码使用了整型并且是有效的，他们是示例 4-2 中的一部分："
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-5-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-5",
+        "title": "所有权与函数",
+        "lineStart": 209,
+        "lineEnd": 222,
+        "contentHash": "sha256:7cd8f30fac9c9d8466c9b9ac1bbea509e8457f6cc89fc98adda98666dbe46d0d"
+      }
+    ],
+    "title": "所有权与函数",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch04-01-what-is-ownership-h3-5）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch04-01-what-is-ownership-h3-5）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch04-01-what-is-ownership-h3-5）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch04-01-what-is-ownership-h3-5）",
+    "approval": "none",
+    "evidenceQuote": "将值传递给函数在语义上与给变量赋值相似。向函数传递值可能会移动或者复制，就像赋值语句一样。示例 4-3 使用注释展示变量何时进入和离开作用域："
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-6-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-6",
+        "title": "返回值与作用域",
+        "lineStart": 223,
+        "lineEnd": 257,
+        "contentHash": "sha256:c7e019efd03d03a2db71a9b78e77bf1a638b0f8bb7984bbbc65beb459bc941ad"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch04-01-what-is-ownership-h3-6）",
+    "recommendation": "建议（替身载荷，出处：ch04-01-what-is-ownership-h3-6）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch04-01-what-is-ownership-h3-6）"
+    ],
+    "evidenceQuote": "返回值也可以转移所有权。示例 4-4 与示例 4-3 一样带有类似的注释。"
+  }
+]

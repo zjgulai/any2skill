@@ -1,0 +1,510 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-6e6a6dea9b51",
+  "createdAt": "2026-10-11T12:47:49.671Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/afterword.md",
+    "hash": "sha256:2f7a7ed1792c7d05675b21c58e2998cf70971bde65f1d06c088b16feee41bb63",
+    "totalLines": 44
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": {
+      "completedAnchorsBefore": 1,
+      "inFlightBefore": null,
+      "note": "本次为断点续跑：calls/tokens 含前次已完成锚点的消耗（前次那次被截断的调用不在其中，因为它没有产出可记录的用量）。"
+    },
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "afterword#h1-1",
+        "lineStart": 1,
+        "lineEnd": 12,
+        "objectCount": 1,
+        "objectIds": [
+          "AFTERWORD-H1-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1801,
+            "output": 4265
+          }
+        }
+      },
+      {
+        "anchor": "afterword#h2-1",
+        "lineStart": 13,
+        "lineEnd": 26,
+        "objectCount": 2,
+        "objectIds": [
+          "AFTERWORD-H2-1-CONCEPT-01",
+          "AFTERWORD-H2-1-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2346,
+            "output": 4756
+          }
+        }
+      },
+      {
+        "anchor": "afterword#h2-2",
+        "lineStart": 27,
+        "lineEnd": 44,
+        "objectCount": 2,
+        "objectIds": [
+          "AFTERWORD-H2-2-CONCEPT-01",
+          "AFTERWORD-H2-2-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2607,
+            "output": 9696
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 3,
+      "tokens": {
+        "input": 6754,
+        "output": 18717
+      },
+      "byAnchor": [
+        {
+          "anchor": "afterword#h1-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1801,
+            "output": 4265
+          }
+        },
+        {
+          "anchor": "afterword#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2346,
+            "output": 4756
+          }
+        },
+        {
+          "anchor": "afterword#h2-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2607,
+            "output": 9696
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 3,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 3,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 3,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 3,
+    "tokens": {
+      "input": 6754,
+      "output": 18717
+    },
+    "tokensDetail": {
+      "reasoning": 17404,
+      "cachedInput": 5120
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 5,
+    "tokens": {
+      "input": 7823,
+      "output": 1300
+    },
+    "tokensDetail": {
+      "reasoning": 1029,
+      "cachedInput": 1920
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 5,
+      "verdicts": {
+        "supported": 5
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 5
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/afterword.anchors.json",
+      "sha256": "sha256:06ec6d01050edf36313dc5e6644467bc502192244b40d52d9a6a20789022d3ec",
+      "bytes": 1351,
+      "anchorCount": 3
+    },
+    "objects": {
+      "path": "pipeline/knowledge/afterword.objects.json",
+      "sha256": "sha256:83a2e4ff32e0a0efa0f6af49e31f26ca2c15a32aca276e4147610c943c9ecf6d",
+      "bytes": 8994,
+      "objectCount": 5
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-6e6a6dea9b51.layer2-raw.json",
+      "sha256": "sha256:dec0ab71efabc89107173e0ae68aa53a7a9a203600f97769b7fe15cd0437386b"
+    }
+  },
+  "counts": {
+    "anchors": 3,
+    "objects": 5,
+    "passed": 5,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 4,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 1,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 0,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 3,
+    "processedAnchors": 3,
+    "processedKnown": true,
+    "coveredAnchors": 3,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=3，索引锚点数=3）。",
+    "perLevel": {
+      "h1": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h2": {
+        "index": 2,
+        "covered": 2,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "AFTERWORD-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h1-1",
+        "lineStart": 1,
+        "lineEnd": 12
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "anchor": "afterword#h1-1",
+          "lineStart": 1,
+          "lineEnd": 12
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出该公式由LLM、上下文和工具三要素组成，并说明全书十章都在这三个词里展开，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AFTERWORD-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-1",
+        "lineStart": 13,
+        "lineEnd": 26
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "anchor": "afterword#h2-1",
+          "lineStart": 13,
+          "lineEnd": 26
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文中明确写出了“小世界假设”的相同定义：一个足够大的模型本就装得下物理世界里几乎所有重要的通用知识，学一次就够。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AFTERWORD-H2-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-1",
+        "lineStart": 13,
+        "lineEnd": 26
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "anchor": "afterword#h2-1",
+          "lineStart": 13,
+          "lineEnd": 26
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句包含主张中的核心断言：大世界假设指向训练一次补不上的具体用户/公司知识，模型只能在上岗后持续学习、无法出厂一次配齐。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AFTERWORD-H2-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-2",
+        "lineStart": 27,
+        "lineEnd": 44
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "anchor": "afterword#h2-2",
+          "lineStart": 27,
+          "lineEnd": 44
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了应用层用harness补齐模型暂时做不好的事、补救沉淀为训练信号、模型内化后删除对应代码并形成自我强化飞轮，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "AFTERWORD-H2-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-2",
+        "lineStart": 27,
+        "lineEnd": 44
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/afterword.md",
+          "anchor": "afterword#h2-2",
+          "lineStart": 27,
+          "lineEnd": 44
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述在模型之上造应用时，harness 是短期最锋利的技术杠杆，应用层长久护城河在技术之外，并列出独占数据、稳固渠道、用户信任、网络效应、人与Agent协作的物理世界场景，且主张将harness用于争取时间、构筑技术之外壁垒，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

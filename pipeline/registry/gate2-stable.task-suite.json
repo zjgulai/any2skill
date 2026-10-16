@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "gate2-stable/v1",
+  "createdAt": "2026-10-15T12:54:20.174Z",
+  "sources": {
+    "list": "pipeline/registry/gate2-report.task-suite.json",
+    "strict": "pipeline/registry/gate2-report.strict.task-suite.json"
+  },
+  "counts": {
+    "stable": 6,
+    "listOnly": 3,
+    "strictOnly": 0
+  },
+  "stable": [
+    {
+      "pair": "compose-rust-closures|design-rust-abstractions",
+      "candidates": [
+        "compose-rust-closures",
+        "design-rust-abstractions"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "compose-rust-closures-sc2"
+      ],
+      "listScenarioIds": [
+        "compose-rust-closures-sc2"
+      ]
+    },
+    {
+      "pair": "compose-rust-closures|diagnose-rust-borrows",
+      "candidates": [
+        "compose-rust-closures",
+        "diagnose-rust-borrows"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "compose-rust-closures-sc3"
+      ],
+      "listScenarioIds": [
+        "compose-rust-closures-sc3"
+      ]
+    },
+    {
+      "pair": "define-agent-boundaries-and-safeguards|design-agent-tools",
+      "candidates": [
+        "define-agent-boundaries-and-safeguards",
+        "design-agent-tools"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 2,
+      "strictScenarioIds": [
+        "design-agent-tools-sc3"
+      ],
+      "listScenarioIds": [
+        "define-agent-boundaries-and-safeguards-sc1",
+        "design-agent-tools-sc3"
+      ]
+    },
+    {
+      "pair": "diagnose-rust-borrows|implement-rust-state-pattern",
+      "candidates": [
+        "diagnose-rust-borrows",
+        "implement-rust-state-pattern"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "implement-rust-state-pattern-sc3"
+      ],
+      "listScenarioIds": [
+        "implement-rust-state-pattern-sc3"
+      ]
+    },
+    {
+      "pair": "diagnose-rust-borrows|process-rust-text-and-hashmaps",
+      "candidates": [
+        "diagnose-rust-borrows",
+        "process-rust-text-and-hashmaps"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 1,
+      "strictScenarioIds": [
+        "diagnose-rust-borrows-sc3"
+      ],
+      "listScenarioIds": [
+        "diagnose-rust-borrows-sc3"
+      ]
+    },
+    {
+      "pair": "implement-rust-state-pattern|model-rust-domain-types",
+      "candidates": [
+        "implement-rust-state-pattern",
+        "model-rust-domain-types"
+      ],
+      "strictScenarios": 1,
+      "listScenarios": 2,
+      "strictScenarioIds": [
+        "implement-rust-state-pattern-sc2"
+      ],
+      "listScenarioIds": [
+        "implement-rust-state-pattern-sc1",
+        "implement-rust-state-pattern-sc2"
+      ]
+    }
+  ],
+  "listOnly": [
+    {
+      "pair": "compose-rust-closures|coordinate-rust-threads",
+      "candidates": [
+        "compose-rust-closures",
+        "coordinate-rust-threads"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "compose-rust-closures-sc3"
+      ]
+    },
+    {
+      "pair": "compose-rust-closures|process-rust-text-and-hashmaps",
+      "candidates": [
+        "compose-rust-closures",
+        "process-rust-text-and-hashmaps"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "compose-rust-closures-sc1"
+      ]
+    },
+    {
+      "pair": "model-rust-domain-types|structure-rust-cli",
+      "candidates": [
+        "model-rust-domain-types",
+        "structure-rust-cli"
+      ],
+      "strictScenarios": 0,
+      "listScenarios": 1,
+      "strictScenarioIds": [],
+      "listScenarioIds": [
+        "structure-rust-cli-sc2"
+      ]
+    }
+  ],
+  "strictOnly": []
+}

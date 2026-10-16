@@ -1,0 +1,432 @@
+[
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h2-1",
+        "title": "面向对象设计模式的实现",
+        "lineStart": 1,
+        "lineEnd": 44,
+        "contentHash": "sha256:b503aedfa00890034940ecb0f65e3cae29e4992c96d25e927f84e8dbad1d9934"
+      }
+    ],
+    "evidenceQuote": "**状态模式**（*state pattern*）是一个面向对象设计模式。该模式的关键在于一个值有某些内部状态，体现为一系列的 **状态对象**，同时值的行为随着其内部状态而改变。状态对象共享功能：当然，在 Rust 中使用结构体和 trait 而不是对象和继承。每一个状态对象负责其自身的行为，以及该状态何时应当转移至另一个状态。持有一个状态对象的值对于不同状态的行为以及何时状态转移毫不知情。\n\n使用状态模式意味着当程序的业务需求改变时，无需修改保存状态值的代码或使用值的代码。我们只需更新某个状态对象内部的代码，即可改变其规则，也可以增加更多的状态对象。让我们看看一个有关状态模式和如何在 Rust 中使用它的例子。\n\n为了探索这个概念，我们将实现一个增量式的发布博文的工作流。",
+    "canonicalTerm": "状态模式",
+    "aliases": [
+      "state pattern"
+    ],
+    "definition": "状态模式是一种面向对象设计模式：一个值具有内部状态，体现为一系列状态对象，其行为随内部状态而改变；每个状态对象负责自身行为以及何时转移到另一状态，持有该状态对象的值对这些具体行为与转移时机不知情。",
+    "examples": [
+      "实现一个增量式的发布博文的工作流"
+    ]
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-1",
+        "title": "定义 `Post` 并新建一个草案状态的实例",
+        "lineStart": 45,
+        "lineEnd": 79,
+        "contentHash": "sha256:e55a071e32e30391edb3c770678936bd619ba6678d7b1f1950dd7d3a3fac44ce"
+      }
+    ],
+    "evidenceQuote": "因为 `Post` 的 `state` 字段是私有的，也就无法创建任何其他状态的 `Post` 了！。",
+    "statement": "Post 的 `state` 字段是私有的，因而无法创建任何其他状态的 `Post` 实例。",
+    "rationale": "私有字段阻止外部代码直接设置状态，因此无法创建其他状态的 `Post`。",
+    "appliesWhen": "外部代码试图创建不同状态的 `Post` 实例时。",
+    "violation": "尝试创建任何其他状态的 `Post` 将不可行。",
+    "chapterRef": "ch17-03-oo-design-patterns-h3-1"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-1",
+        "title": "定义 `Post` 并新建一个草案状态的实例",
+        "lineStart": 45,
+        "lineEnd": 79,
+        "contentHash": "sha256:e55a071e32e30391edb3c770678936bd619ba6678d7b1f1950dd7d3a3fac44ce"
+      }
+    ],
+    "evidenceQuote": "当创建新的 `Post` 时，我们将其 `state` 字段设置为一个存放了 `Box` 的 `Some` 值。这个 `Box` 指向一个 `Draft` 结构体新实例。这确保了无论何时新建一个 `Post` 实例，它都会从草案开始。",
+    "statement": "创建新 `Post` 时，`state` 字段必须设置为一个存放了 `Box` 的 `Some` 值，且该 `Box` 指向 `Draft` 结构体新实例，以确保从草案开始。",
+    "rationale": "`Box` 指向 `Draft` 实例，使新建的 `Post` 始终从草案状态开始。",
+    "appliesWhen": "创建新的 `Post` 实例时。",
+    "violation": "若 `state` 字段未指向 `Draft` 实例，则无法确保新建的 `Post` 从草案开始。",
+    "chapterRef": "ch17-03-oo-design-patterns-h3-1"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-2",
+        "title": "存放博文内容的文本",
+        "lineStart": 80,
+        "lineEnd": 102,
+        "contentHash": "sha256:171338a89860e1fae3f1ccd21e3215793413095414bdd9790336b59ca42bad8b"
+      }
+    ],
+    "evidenceQuote": "add_text 获取一个 `self` 的可变引用，因为需要改变调用 `add_text` 的 `Post` 实例。接着调用 `content` 中的 `String` 的 `push_str` 并传递 `text` 参数来保存到 `content` 中。这不是状态模式的一部分，因为它的行为并不依赖博文所处的状态。`add_text` 方法完全不与 `state` 状态交互，不过这是我们希望支持的行为的一部分。",
+    "canonicalTerm": "add_text 方法",
+    "aliases": [],
+    "definition": "向博文内容增加文本的方法，通过获取self的可变引用并调用content中String的push_str实现，该行为不依赖博文状态。",
+    "examples": [
+      "调用content中String的push_str并传递text参数"
+    ]
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-3",
+        "title": "确保博文草案的内容是空的",
+        "lineStart": 103,
+        "lineEnd": 125,
+        "contentHash": "sha256:b8d00cf0023bbdc043c98f22c5d8f32d2ff636022e2ebf78c0f186ec1460a13d"
+      }
+    ],
+    "evidenceQuote": "现在让我们使用能满足要求的最简单的方式来实现 `content` 方法：总是返回一个空字符串 slice。当实现了将博文状态改为发布的能力之后将改变这一做法。但是目前博文只能是草案状态，这意味着其内容应该总是空的。",
+    "statement": "当博文仅处于草案状态时，`content` 方法应总是返回空字符串 slice。",
+    "rationale": "因为目前博文只能是草案状态，草案的内容应该总是空的。",
+    "appliesWhen": "博文只有草案状态，且业务要求草案内容为空时。",
+    "violation": "在博文仅有草案状态时让 `content` 返回非空内容。",
+    "chapterRef": "ch17-03-oo-design-patterns-h3-3"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-4",
+        "title": "请求审核博文来改变其状态",
+        "lineStart": 126,
+        "lineEnd": 183,
+        "contentHash": "sha256:4699fdfbef7a063af3e50aa32ae95fbaf32a64d4c8e42d86cc83c38fb3d97fc6"
+      }
+    ],
+    "evidenceQuote": "注意不同于使用 `self`、 `&self` 或者 `&mut self` 作为方法的第一个参数，这里使用了 `self: Box<Self>`。这个语法意味着该方法只可在持有这个类型的 `Box` 上被调用。这个语法获取了 `Box<Self>` 的所有权使老状态无效化，以便 `Post` 的状态值可转换为一个新状态。",
+    "canonicalTerm": "self: Box<Self>",
+    "aliases": [],
+    "definition": "一种 Rust 方法接收者语法，表示方法只能在持有该类型的 Box 上调用，并获取 Box<Self> 的所有权。",
+    "examples": [
+      "State trait 的 request_review 方法使用 self: Box<Self> 获取 Box<Self> 所有权，使老状态无效化，以便 Post 的状态值可转换为新状态。"
+    ]
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-4",
+        "title": "请求审核博文来改变其状态",
+        "lineStart": 126,
+        "lineEnd": 183,
+        "contentHash": "sha256:4699fdfbef7a063af3e50aa32ae95fbaf32a64d4c8e42d86cc83c38fb3d97fc6"
+      }
+    ],
+    "evidenceQuote": "为了消费老状态，`request_review` 方法需要获取状态值的所有权。这就是 `Post` 的 `state` 字段中 `Option` 的来历：调用 `take` 方法将 `state` 字段中的 `Some` 值取出并留下一个 `None`，因为 Rust 不允许结构体实例中存在值为空的字段。这使得我们将 `state` 的值移出 `Post` 而不是借用它。接着我们将博文的 `state` 值设置为这个操作的结果。\n\n我们需要将 `state` 临时设置为 `None` 来获取 `state` 值，即老状态的所有权，而不是使用 `self.state = self.state.request_review();` 这样的代码直接更新状态值。这确保了当 `Post` 被转换为新状态后不能再使用老 `state` 值。",
+    "statement": "在 Rust 状态模式中需要取得状态字段所有权时，将状态字段包装为 Option，并调用 take 取出其中的 Some 值、留下 None，从而把旧状态移出 Post 而不是借用它。",
+    "rationale": "Rust 不允许结构体实例中存在值为空的字段，Option 的 take 会在取出 Some 后留下 None，使字段仍保持有值。",
+    "appliesWhen": "需要消费老状态并把它设置为新状态，且旧状态值必须被移出结构体时。",
+    "violation": "直接使用 self.state = self.state.request_review(); 这样的代码直接更新状态值，而不是先将 state 临时设置为 None 来获取老状态所有权。",
+    "chapterRef": "ch17-03-oo-design-patterns-h3-4"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-5",
+        "title": "增加改变 `content` 行为的 `approve` 方法",
+        "lineStart": 184,
+        "lineEnd": 318,
+        "contentHash": "sha256:2fddb31550cfad38be96fafc150529ed8ab724f7d413098c13ac93ae19326585"
+      }
+    ],
+    "evidenceQuote": "这里调用 `Option` 的 `as_ref` 方法是因为需要 `Option` 中值的引用而不是获取其所有权。因为 `state` 是一个 `Option<Box<State>>`，调用 `as_ref` 会返回一个 `Option<&Box<State>>`。如果不调用 `as_ref`，将会得到一个错误，因为不能将 `state` 移动出借用的 `&self` 函数参数。",
+    "statement": "在 `&self` 方法中需要 `Option<Box<State>>` 中值的引用时，应调用 `as_ref` 获得引用，而不是移动 `state`。",
+    "rationale": "`as_ref` 会返回 `Option<&Box<State>>`；如果不调用 `as_ref`，会因为不能把 `state` 移动出借用的 `&self` 参数而得到编译错误。",
+    "appliesWhen": "当在 `Post` 的 `&self` 方法中访问 `state: Option<Box<State>>` 字段时。",
+    "violation": "在 `&self` 方法中直接移动 `state`，会导致编译错误。",
+    "chapterRef": "ch17-03-oo-design-patterns-h3-5"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-5",
+        "title": "增加改变 `content` 行为的 `approve` 方法",
+        "lineStart": 184,
+        "lineEnd": 318,
+        "contentHash": "sha256:2fddb31550cfad38be96fafc150529ed8ab724f7d413098c13ac93ae19326585"
+      }
+    ],
+    "evidenceQuote": "我们通过发布博文工作流的规则实现了状态模式。围绕这些规则的逻辑都存在于状态对象中而不是分散在 `Post` 之中。",
+    "statement": "发布博文工作流的规则逻辑应存在于状态对象中，而不是分散在 `Post` 中。",
+    "rationale": "发布博文工作流的规则通过状态模式实现，相关逻辑应由状态对象承载。",
+    "appliesWhen": "在实现发布博文工作流的状态模式时。",
+    "violation": "将状态相关规则逻辑分散在 `Post` 中，而不是集中在状态对象里。",
+    "chapterRef": "ch17-03-oo-design-patterns-h3-5"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-6",
+        "title": "状态模式的权衡取舍",
+        "lineStart": 319,
+        "lineEnd": 340,
+        "contentHash": "sha256:73f2592fc21b9ca654e1344f79e6ab20d941c252ae81d36530a9b7b2a701608f"
+      }
+    ],
+    "evidenceQuote": "状态模式的一个缺点是因为状态实现了状态之间的转换，一些状态会相互联系。如果在 `PendingReview` 和 `Published` 之间增加另一个状态，比如 `Scheduled`，则不得不修改 `PendingReview` 中的代码来转移到 `Scheduled`。",
+    "statement": "在状态模式中，由于状态之间相互联系，当需要在两个已有状态之间插入新状态时，必须修改负责转换到新状态的已有状态代码。",
+    "rationale": "状态实现了状态之间的转换，一些状态会相互联系。",
+    "appliesWhen": "使用状态模式封装不同状态行为，并且需要在已有状态之间增加新状态。",
+    "violation": "未修改已有状态代码，新增状态将无法被已有状态转移到达。",
+    "chapterRef": "ch17-03-oo-design-patterns-h3-6"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H3-6-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h3-6",
+        "title": "状态模式的权衡取舍",
+        "lineStart": 319,
+        "lineEnd": 340,
+        "contentHash": "sha256:73f2592fc21b9ca654e1344f79e6ab20d941c252ae81d36530a9b7b2a701608f"
+      }
+    ],
+    "evidenceQuote": "完全按照面向对象语言的定义实现这个模式并没有尽可能地利用 Rust 的优势。让我们看看一些代码中可以做出的修改，来将无效的状态和状态转移变为编译时错误。",
+    "pattern": "完全按照面向对象语言的定义实现状态模式",
+    "harm": "没有尽可能地利用 Rust 的优势",
+    "corrective": "进行代码修改，将无效的状态和状态转移变为编译时错误",
+    "evidence": [
+      "原文明确指出完全按照面向对象语言的定义实现状态模式没有尽可能利用 Rust 的优势"
+    ],
+    "chapterRef": "ch17-03-oo-design-patterns-h3-6"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h4-1",
+        "title": "将状态和行为编码为类型",
+        "lineStart": 341,
+        "lineEnd": 399,
+        "contentHash": "sha256:aceb7158ed62f5aa95d44f40897d57d2c09f8719a25f81bc1a77447bd493ff81"
+      }
+    ],
+    "evidenceQuote": "不同于完全封装状态和状态转移使得外部代码对其毫不知情，我们将状态编码进不同的类型。如此，Rust 的类型检查就会将任何在只能使用发布博文的地方使用草案博文的尝试变为编译时错误。",
+    "canonicalTerm": "将状态编码进不同的类型",
+    "aliases": [],
+    "definition": "不同于完全封装状态和状态转移，而是将状态编码进不同的类型；这样 Rust 的类型检查会将任何在只能使用发布博文的地方使用草案博文的尝试变为编译时错误。",
+    "examples": [
+      "在只能使用发布博文的地方使用草案博文，会被 Rust 类型检查变为编译时错误。"
+    ]
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h4-1",
+        "title": "将状态和行为编码为类型",
+        "lineStart": 341,
+        "lineEnd": 399,
+        "contentHash": "sha256:aceb7158ed62f5aa95d44f40897d57d2c09f8719a25f81bc1a77447bd493ff81"
+      }
+    ],
+    "evidenceQuote": "不过不同于存在一个草案博文时返回空字符串的 `content` 方法，我们将使草案博文完全没有 `content` 方法。这样如果尝试获取草案博文的内容，将会得到一个方法不存在的编译错误。这使得我们不可能在生产环境意外显示出草案博文的内容，因为这样的代码甚至就不能编译。",
+    "statement": "草案博文应完全没有 `content` 方法；这样尝试获取草案博文内容会得到方法不存在的编译错误，并使生产环境不可能意外显示草案博文内容。",
+    "rationale": "获取草案内容会得到方法不存在的编译错误，这意味着相关代码甚至不能编译。",
+    "appliesWhen": "当博文处于草案状态，需要阻止在生产环境意外显示其内容时。",
+    "violation": "在草案博文上保留返回空字符串的 `content` 方法。",
+    "chapterRef": "ch17-03-oo-design-patterns-h4-1"
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h4-2",
+        "title": "实现状态转移为不同类型的转换",
+        "lineStart": 400,
+        "lineEnd": 469,
+        "contentHash": "sha256:7b3689514facffdbcaab3e9a0b9c9091557e0699c1dadbb935fb4fe2e768862a"
+      }
+    ],
+    "evidenceQuote": "`request_review` 和 `approve` 方法获取 `self` 的所有权，因此会消费 `DraftPost` 和 `PendingReviewPost` 实例，并分别转换为 `PendingReviewPost` 和发布的 `Post`。这样在调用 `request_review` 之后就不会遗留任何 `DraftPost` 实例，后者同理。`PendingReviewPost` 并没有定义 `content` 方法，所以尝试读取其内容会导致编译错误，`DraftPost` 同理。因为唯一得到定义了 `content` 方法的 `Post` 实例的途径是调用 `PendingReviewPost` 的 `approve` 方法，而得到 `PendingReviewPost` 的唯一办法是调用 `DraftPost` 的 `request_review` 方法，现在我们就将发博文的工作流编码进了类型系统。",
+    "canonicalTerm": "状态转移为不同类型的转换",
+    "aliases": [],
+    "definition": "通过让状态转换方法获取当前实例的所有权并返回下一个状态类型，消费旧状态实例，使旧状态不可再被使用；只有通过合法转换才能得到具有目标方法的类型，从而将工作流编码进类型系统。",
+    "examples": [
+      "DraftPost::request_review 消费 DraftPost 并返回 PendingReviewPost；PendingReviewPost::approve 消费 PendingReviewPost 并返回发布的 Post。"
+    ]
+  },
+  {
+    "id": "CH17-03-OO-DESIGN-PATTERNS-H4-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T04:23:17.761Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T04:23:17.761Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-03-oo-design-patterns.md",
+        "anchor": "ch17-03-oo-design-patterns#h4-2",
+        "title": "实现状态转移为不同类型的转换",
+        "lineStart": 400,
+        "lineEnd": 469,
+        "contentHash": "sha256:7b3689514facffdbcaab3e9a0b9c9091557e0699c1dadbb935fb4fe2e768862a"
+      }
+    ],
+    "evidenceQuote": "不得不修改 `main` 来重新赋值 `post` 使得这个实现不再完全遵守面向对象的状态模式：状态间的转换不再完全封装在 `Post` 实现中。然而，得益于类型系统和编译时类型检查，我们得到了的是无效状态是不可能的！这确保了某些特定的 bug，比如显示未发布博文的内容，将在部署到生产环境之前被发现。",
+    "canonicalTerm": "编译时无效状态不可能",
+    "aliases": [],
+    "definition": "利用 Rust 的类型系统和编译时类型检查，使无效状态无法通过编译，从而在部署到生产环境之前发现特定 bug；该实现可能不再将状态转换完全封装在单一类型中。",
+    "examples": [
+      "显示未发布博文的内容这一 bug 将在部署到生产环境之前被发现。"
+    ]
+  }
+]

@@ -1,0 +1,174 @@
+[
+  {
+    "id": "CH15-04-RC-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:07:37.898Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:07:37.898Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h2-1",
+        "title": "`Rc<T>` 引用计数智能指针",
+        "lineStart": 1,
+        "lineEnd": 12,
+        "contentHash": "sha256:6a3ace9a9a4d322bb87869cda8fbad86f5aa3c6853b515c0a858ff50be290650"
+      }
+    ],
+    "evidenceQuote": "大部分情况下所有权是非常明确的：可以准确地知道哪个变量拥有某个值。然而，有些情况单个值可能会有多个所有者。例如，在图数据结构中，多个边可能指向相同的节点，而这个节点从概念上讲为所有指向它的边所拥有。节点直到没有任何边指向它之前都不应该被清理。\n\n为了启用多所有权，Rust 有一个叫做 `Rc<T>` 的类型。其名称为 **引用计数**（_reference counting_）的缩写。引用计数意味着记录一个值引用的数量来知晓这个值是否仍在被使用。如果某个值有零个引用，就代表没有任何有效引用并可以被清理。",
+    "canonicalTerm": "Rc<T>",
+    "aliases": [
+      "引用计数"
+    ],
+    "definition": "Rust 中用于启用多所有权的类型，通过记录一个值被引用的数量来判断该值是否仍在使用；当引用数为零时可被清理。",
+    "examples": [
+      "图数据结构中多个边指向相同节点，节点为所有指向它的边所拥有，直到没有任何边指向它之前不应被清理。"
+    ]
+  },
+  {
+    "id": "CH15-04-RC-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:07:37.898Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:07:37.898Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h2-1",
+        "title": "`Rc<T>` 引用计数智能指针",
+        "lineStart": 1,
+        "lineEnd": 12,
+        "contentHash": "sha256:6a3ace9a9a4d322bb87869cda8fbad86f5aa3c6853b515c0a858ff50be290650"
+      }
+    ],
+    "evidenceQuote": "注意 `Rc<T>` 只能用于单线程场景；第 16 章并发会涉及到如何在多线程程序中进行引用计数。",
+    "statement": "Rc<T> 只能用于单线程场景。",
+    "rationale": "多线程程序中的引用计数由第 16 章并发内容另行处理，不属于 Rc<T> 的适用范围。",
+    "appliesWhen": "使用 Rc<T> 时。",
+    "violation": "在多线程程序中使用 Rc<T>。",
+    "chapterRef": "ch15-04-rc-h2-1"
+  },
+  {
+    "id": "CH15-04-RC-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:07:37.898Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:07:37.898Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-1",
+        "title": "使用 `Rc<T>` 共享数据",
+        "lineStart": 13,
+        "lineEnd": 90,
+        "contentHash": "sha256:be2cca6cc28c7e523e17b3bdf7bacbbb5187eaa21a36607c561257b711194d8a"
+      }
+    ],
+    "evidenceQuote": "当创建 `b` 时，不同于获取 `a` 的所有权，这里会克隆 `a` 所包含的 `Rc<List>`，这会将引用计数从 1 增加到 2 并允许 `a` 和 `b` 共享 `Rc<List>` 中数据的所有权。创建 `c` 时也会克隆 `a`，这会将引用计数从 2 增加为 3。每次调用 `Rc::clone`，`Rc<List>` 中数据的引用计数都会增加，直到有零个引用之前其数据都不会被清理。",
+    "canonicalTerm": "Rc<T>",
+    "aliases": [],
+    "definition": "Rc<T> 是一种引用计数类型，允许多个所有者通过克隆 Rc 实例共享数据所有权；每次调用 Rc::clone 都会增加引用计数，直到有零个引用之前数据不会被清理。",
+    "examples": [
+      "创建 b 时克隆 a 所包含的 Rc<List> 将引用计数从 1 增加到 2，创建 c 时增加到 3"
+    ]
+  },
+  {
+    "id": "CH15-04-RC-H3-1-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:07:37.898Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:07:37.898Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-1",
+        "title": "使用 `Rc<T>` 共享数据",
+        "lineStart": 13,
+        "lineEnd": 90,
+        "contentHash": "sha256:be2cca6cc28c7e523e17b3bdf7bacbbb5187eaa21a36607c561257b711194d8a"
+      }
+    ],
+    "evidenceQuote": "`Rc::clone` 的实现并不像大部分类型的 `clone` 实现那样对所有数据进行深拷贝。`Rc::clone` 只会增加引用计数，这并不会花费多少时间。深拷贝可能会花费很长时间。通过使用 `Rc::clone` 进行引用计数，可以明显的区别深拷贝类的克隆和增加引用计数类的克隆。当查找代码中的性能问题时，只需考虑深拷贝类的克隆而无需考虑 `Rc::clone` 调用。",
+    "trigger": "当查找代码中的性能问题时",
+    "recommendation": "只需考虑深拷贝类的克隆，无需考虑 Rc::clone 调用",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CH15-04-RC-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:07:37.898Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:07:37.898Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-2",
+        "title": "克隆 `Rc<T>` 会增加引用计数",
+        "lineStart": 91,
+        "lineEnd": 141,
+        "contentHash": "sha256:f68a2372028e9ad3332d432e8cb8b125204ae2ea3de6ff4ecc403fa04f978fb6"
+      }
+    ],
+    "evidenceQuote": "我们能够看到 `a` 中 `Rc<List>` 的初始引用计数为1，接着每次调用 `clone`，计数会增加1。当 `c` 离开作用域时，计数减1。不必像调用 `Rc::clone` 增加引用计数那样调用一个函数来减少计数；`Drop` trait 的实现当 `Rc<T>` 值离开作用域时自动减少引用计数。",
+    "canonicalTerm": "Rc<T> 引用计数",
+    "aliases": [],
+    "definition": "`Rc<T>` 的引用计数在每次 `Rc::clone` 时增加 1，并在 `Rc<T>` 值离开作用域时由 `Drop` 自动减少 1。",
+    "examples": [
+      "`a` 中 `Rc<List>` 的初始引用计数为 1，每次调用 `clone` 计数增加 1，`c` 离开作用域时计数减 1。"
+    ]
+  },
+  {
+    "id": "CH15-04-RC-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T17:07:37.898Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T17:07:37.898Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-2",
+        "title": "克隆 `Rc<T>` 会增加引用计数",
+        "lineStart": 91,
+        "lineEnd": 141,
+        "contentHash": "sha256:f68a2372028e9ad3332d432e8cb8b125204ae2ea3de6ff4ecc403fa04f978fb6"
+      }
+    ],
+    "evidenceQuote": "通过不可变引用， `Rc<T>` 允许在程序的多个部分之间只读地共享数据。如果 `Rc<T>` 也允许多个可变引用，则会违反第 4 章讨论的借用规则之一：相同位置的多个可变借用可能造成数据竞争和不一致。",
+    "statement": "`Rc<T>` 通过不可变引用允许在程序的多个部分之间只读地共享数据；如果 `Rc<T>` 也允许多个可变引用，则会违反第 4 章讨论的借用规则之一。",
+    "rationale": "相同位置的多个可变借用可能造成数据竞争和不一致。",
+    "appliesWhen": "使用 `Rc<T>` 在程序的多个部分之间共享数据时。",
+    "violation": "若让 `Rc<T>` 允许多个可变引用，则会违反第 4 章讨论的借用规则之一。",
+    "chapterRef": "ch15-04-rc-h3-2"
+  }
+]

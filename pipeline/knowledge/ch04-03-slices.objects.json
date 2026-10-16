@@ -1,0 +1,175 @@
+[
+  {
+    "id": "CH04-03-SLICES-H2-1-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:29:11.751Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:29:11.751Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+        "anchor": "ch04-03-slices#h2-1",
+        "title": "切片 Slice 类型",
+        "lineStart": 1,
+        "lineEnd": 66,
+        "contentHash": "sha256:70dc494fae8ce9c57bd3bedaf6c4277508c2f5f7078c6cd508836ea8dad799b6"
+      }
+    ],
+    "evidenceQuote": "我们不得不时刻担心 `word` 的索引与 `s` 中的数据不再同步，这很啰嗦且易出错！如果编写这么一个 `second_word` 函数的话，管理索引这件事将更加容易出问题。它的签名看起来像这样：\n\n```rust,ignore\nfn second_word(s: &String) -> (usize, usize) {\n```\n\n现在我们要跟踪一个开始索引 **和** 一个结尾索引，同时有了更多从数据的某个特定状态计算而来的值，但都完全没有与这个状态相关联。现在有三个飘忽不定的不相关变量需要保持同步。\n\n幸运的是，Rust 为这个问题提供了一个解决方法：字符串 slice。",
+    "pattern": "用多个与底层数据状态无关的索引变量来跟踪字符串位置",
+    "harm": "索引与数据可能不同步，维护起来啰嗦且易出错",
+    "corrective": "使用字符串 slice 解决该问题",
+    "evidence": [
+      "我们不得不时刻担心 `word` 的索引与 `s` 中的数据不再同步，这很啰嗦且易出错！如果编写这么一个 `second_word` 函数的话，管理索引这件事将更加容易出问题。它的签名看起来像这样：\n\n```rust,ignore\nfn second_word(s: &String) -> (usize, usize) {\n```\n\n现在我们要跟踪一个开始索引 **和** 一个结尾索引，同时有了更多从数据的某个特定状态计算而来的值，但都完全没有与这个状态相关联。现在有三个飘忽不定的不相关变量需要保持同步。\n\n幸运的是，Rust 为这个问题提供了一个解决方法：字符串 slice。"
+    ],
+    "chapterRef": "ch04-03-slices-h2-1"
+  },
+  {
+    "id": "CH04-03-SLICES-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:29:11.751Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:29:11.751Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+        "anchor": "ch04-03-slices#h3-1",
+        "title": "字符串 slice",
+        "lineStart": 67,
+        "lineEnd": 151,
+        "contentHash": "sha256:c5afe36cc4f7d684109b6d1e5b1450f8644d076f0869286b3b08acd6260e062f"
+      }
+    ],
+    "evidenceQuote": "> 注意：字符串 slice range 的索引必须位于有效的 UTF-8 字符边界内，如果尝试从一个多字节字符的中间位置创建字符串 slice，则程序将会因错误而退出。出于介绍字符串 slice 的目的，本部分假设只使用 ASCII 字符集；第 8 章的[“使用字符串存储 UTF-8 编码的文本”][strings]<!-- ignore -->部分会更加全面的讨论 UTF-8 处理问题。",
+    "statement": "字符串 slice range 的索引必须位于有效的 UTF-8 字符边界内",
+    "rationale": "如果索引不在字符边界而从多字节字符中间创建 slice，程序会因错误退出；因此这里先只假设使用 ASCII，UTF-8 处理在第 8 章讨论",
+    "appliesWhen": "使用字符串 slice range 的索引创建 slice 时",
+    "violation": "如果尝试从一个多字节字符的中间位置创建字符串 slice，则程序将会因错误而退出",
+    "chapterRef": "ch04-03-slices-h3-1"
+  },
+  {
+    "id": "CH04-03-SLICES-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:29:11.751Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:29:11.751Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+        "anchor": "ch04-03-slices#h3-1",
+        "title": "字符串 slice",
+        "lineStart": 67,
+        "lineEnd": 151,
+        "contentHash": "sha256:c5afe36cc4f7d684109b6d1e5b1450f8644d076f0869286b3b08acd6260e062f"
+      }
+    ],
+    "evidenceQuote": "回忆一下借用规则，当拥有某值的不可变引用时，就不能再获取一个可变引用。因为 `clear` 需要清空 `String`，它尝试获取一个可变引用。在调用 `clear` 之后的 `println!` 使用了 `word` 中的引用，所以这个不可变的引用在此时必须仍然有效。Rust 不允许 `clear` 中的可变引用和 `word` 中的不可变引用同时存在，因此编译失败。",
+    "statement": "当拥有某值的不可变引用时，就不能再获取一个可变引用",
+    "rationale": "`println!` 使用 `word` 中的引用，所以不可变引用在此时必须仍然有效；Rust 不允许 `clear` 的可变引用和 `word` 的不可变引用同时存在",
+    "appliesWhen": "存在某值的不可变引用，且同时需要获取可变引用时",
+    "violation": "在不可变引用仍被使用时获取可变引用（例如 `clear` 清空 `String`），会编译失败",
+    "chapterRef": "ch04-03-slices-h3-1"
+  },
+  {
+    "id": "CH04-03-SLICES-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:29:11.751Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:29:11.751Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+        "anchor": "ch04-03-slices#h4-1",
+        "title": "字符串字面量就是 slice",
+        "lineStart": 152,
+        "lineEnd": 161,
+        "contentHash": "sha256:9eb1bcf4763555b35439b9ed0f13cba4eb25b618bc3186756a6f1344ab477563"
+      }
+    ],
+    "evidenceQuote": "```rust\nlet s = \"Hello, world!\";\n```\n\n这里 `s` 的类型是 `&str`：它是一个指向二进制程序特定位置的 slice。这也就是为什么字符串字面量是不可变的；`&str` 是一个不可变引用。",
+    "canonicalTerm": "字符串字面量",
+    "aliases": [],
+    "definition": "字符串字面量的类型是 `&str`，它是一个指向二进制程序特定位置的 slice；由于 `&str` 是不可变引用，因此字符串字面量不可变。",
+    "examples": [
+      "let s = \"Hello, world!\";"
+    ]
+  },
+  {
+    "id": "CH04-03-SLICES-H4-2-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:29:11.751Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:29:11.751Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+        "anchor": "ch04-03-slices#h4-2",
+        "title": "字符串 slice 作为参数",
+        "lineStart": 162,
+        "lineEnd": 185,
+        "contentHash": "sha256:fa3ccb8e0bf9164d52bce478fc9d7075cd46911c8f2f9be8fab943177fa3261c"
+      }
+    ],
+    "evidenceQuote": "如果有一个字符串 slice，可以直接传递它。如果有一个 `String`，则可以传递整个 `String` 的 slice 或对 `String` 的引用。这种灵活性利用了 *deref coercions* 的优势，这个特性我们将在[“函数和方法的隐式解引用强制转换”][deref-coercions]<!-- ignore -->章节中介绍。定义一个获取字符串 slice 而不是 `String` 引用的函数使得我们的 API 更加通用并且不会丢失任何功能：",
+    "trigger": "当函数需要接受字符串 slice 或 `String` 值时",
+    "recommendation": "把函数参数类型定义为字符串 slice（`&str`），而不是 `String` 引用，以使 API 更通用且不丢失功能",
+    "confidence": 0.9,
+    "exceptions": []
+  },
+  {
+    "id": "CH04-03-SLICES-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:29:11.751Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:29:11.751Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-03-slices.md",
+        "anchor": "ch04-03-slices#h3-2",
+        "title": "其他类型的 slice",
+        "lineStart": 186,
+        "lineEnd": 203,
+        "contentHash": "sha256:5d5de33d2ac66c5e20500cb0dfa6a7a09dc17d1bc7d2f58ab5aa34cfb364b7da"
+      }
+    ],
+    "evidenceQuote": "```rust\nlet a = [1, 2, 3, 4, 5];\n\nlet slice = &a[1..3];\n```\n\n这个 slice 的类型是 `&[i32]`。它跟字符串 slice 的工作方式一样，通过存储第一个集合元素的引用和一个集合总长度。你可以对其他所有集合使用这类 slice。第 8 章讲到 vector 时会详细讨论这些集合。",
+    "canonicalTerm": "其他类型的 slice",
+    "aliases": [
+      "更通用的 slice 类型"
+    ],
+    "definition": "更通用的 slice 类型可以对其他所有集合使用；对数组 `a` 取 `&a[1..3]` 得到的 slice 类型是 `&[i32]`，其工作方式与字符串 slice 相同：存储第一个集合元素的引用和一个集合总长度。",
+    "examples": [
+      "`let a = [1, 2, 3, 4, 5]; let slice = &a[1..3];` 得到的 slice 类型为 `&[i32]`。"
+    ]
+  }
+]

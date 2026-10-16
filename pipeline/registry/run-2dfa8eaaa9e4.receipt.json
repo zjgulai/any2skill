@@ -1,0 +1,1519 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-2dfa8eaaa9e4",
+  "createdAt": "2026-10-14T04:02:22.720Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+    "hash": "sha256:806f98dfacede0237d4e7d72f06e299576cf2d71c5979fc22874d95f327395d7",
+    "totalLines": 448
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h2-1",
+        "lineStart": 1,
+        "lineEnd": 14,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ANTIPATTERN-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1873,
+            "output": 4576
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-1",
+        "lineStart": 15,
+        "lineEnd": 31,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1777,
+            "output": 11301
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-2",
+        "lineStart": 32,
+        "lineEnd": 60,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-CONCEPT-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1879,
+            "output": 5996
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-3",
+        "lineStart": 61,
+        "lineEnd": 118,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-CONCEPT-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2317,
+            "output": 7042
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-4",
+        "lineStart": 119,
+        "lineEnd": 158,
+        "objectCount": 1,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-4-HEURISTIC-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1927,
+            "output": 3497
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+        "lineStart": 159,
+        "lineEnd": 174,
+        "objectCount": 1,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-5-ANTIPATTERN-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1718,
+            "output": 5218
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+        "lineStart": 175,
+        "lineEnd": 206,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ENGINEERINGRULE-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1974,
+            "output": 7058
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-2",
+        "lineStart": 207,
+        "lineEnd": 237,
+        "objectCount": 1,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-2-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1964,
+            "output": 6383
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-3",
+        "lineStart": 238,
+        "lineEnd": 273,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2098,
+            "output": 6076
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-6",
+        "lineStart": 274,
+        "lineEnd": 305,
+        "objectCount": 1,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1806,
+            "output": 5433
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+        "lineStart": 306,
+        "lineEnd": 350,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-CONCEPT-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2179,
+            "output": 11700
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-5",
+        "lineStart": 351,
+        "lineEnd": 375,
+        "objectCount": 1,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-5-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1764,
+            "output": 4821
+          }
+        }
+      },
+      {
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-7",
+        "lineStart": 376,
+        "lineEnd": 448,
+        "objectCount": 2,
+        "objectIds": [
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
+          "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2272,
+            "output": 5963
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 13,
+      "tokens": {
+        "input": 25548,
+        "output": 85064
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1873,
+            "output": 4576
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1777,
+            "output": 11301
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1879,
+            "output": 5996
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 2317,
+            "output": 7042
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1927,
+            "output": 3497
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+          "calls": 1,
+          "tokens": {
+            "input": 1718,
+            "output": 5218
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1974,
+            "output": 7058
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1964,
+            "output": 6383
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-3",
+          "calls": 1,
+          "tokens": {
+            "input": 2098,
+            "output": 6076
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-6",
+          "calls": 1,
+          "tokens": {
+            "input": 1806,
+            "output": 5433
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+          "calls": 1,
+          "tokens": {
+            "input": 2179,
+            "output": 11700
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-5",
+          "calls": 1,
+          "tokens": {
+            "input": 1764,
+            "output": 4821
+          }
+        },
+        {
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-7",
+          "calls": 1,
+          "tokens": {
+            "input": 2272,
+            "output": 5963
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 13,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 13,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 13,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 13,
+    "tokens": {
+      "input": 25548,
+      "output": 85064
+    },
+    "tokensDetail": {
+      "reasoning": 80178,
+      "cachedInput": 18304
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 21,
+    "tokens": {
+      "input": 24364,
+      "output": 6691
+    },
+    "tokensDetail": {
+      "reasoning": 5727,
+      "cachedInput": 8064
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 21,
+      "verdicts": {
+        "supported": 21
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 21
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch12-03-improving-error-handling-and-modularity.anchors.json",
+      "sha256": "sha256:5ad9de84e47159d546c18f4a19d28f74272df8239442c6b198714ed0ddaeaa57",
+      "bytes": 5793,
+      "anchorCount": 13
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch12-03-improving-error-handling-and-modularity.objects.json",
+      "sha256": "sha256:978adc4a39886c5c7cddab4f27a5d84ca3d899f6de92504cad5d323a18d7a67b",
+      "bytes": 35552,
+      "objectCount": 21
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-2dfa8eaaa9e4.layer2-raw.json",
+      "sha256": "sha256:f48be7d86c89a27dae79921c46ccb8ad48415db98d0704036237ddb1a905eb1d"
+    }
+  },
+  "counts": {
+    "anchors": 13,
+    "objects": 21,
+    "passed": 21,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 6,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 5,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 7,
+      "AntiPattern": 3
+    }
+  },
+  "coverage": {
+    "indexAnchors": 13,
+    "processedAnchors": 13,
+    "processedKnown": true,
+    "coveredAnchors": 13,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=13，索引锚点数=13）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 7,
+        "covered": 7,
+        "without": 0
+      },
+      "h4": {
+        "index": 5,
+        "covered": 5,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h2-1",
+        "lineStart": 1,
+        "lineEnd": 14
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h2-1",
+          "lineStart": 1,
+          "lineEnd": 14
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写明 main 同时进行解析参数和打开文件两个任务，并说明函数承担更多责任后更难以推导、测试和在不破坏其他部分的情况下修改。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h2-1",
+        "lineStart": 1,
+        "lineEnd": 14
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h2-1",
+          "lineStart": 1,
+          "lineEnd": 14
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述随着 main 函数增长并引入更多变量时，最好将配置变量组织进一个结构使其目的更明确，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-1",
+        "lineStart": 15,
+        "lineEnd": 31
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-1",
+          "lineStart": 15,
+          "lineEnd": 31
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确列出经过关注分离过程后保留在 main 函数中的责任应被限制为这四项，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-1",
+        "lineStart": 15,
+        "lineEnd": 31
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-1",
+          "lineStart": 15,
+          "lineEnd": 31
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张复述了锚点原文中关于 main 函数庞大时进行关注分离的指导性过程及各步骤，内容一致且可由原文读出。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-2",
+        "lineStart": 32,
+        "lineEnd": 60
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-2",
+          "lineStart": 32,
+          "lineEnd": 60
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张中的各断言均能从锚点原文对应文字读出：提取解析功能到函数、main传入整个vector、函数决定参数与变量对应并返回值、main不再负责参数与变量的对应。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-2-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-2",
+        "lineStart": 32,
+        "lineEnd": 60
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-2",
+          "lineStart": 32,
+          "lineEnd": 60
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确建议在做出小的增量重构改变后再次运行程序并验证参数解析是否仍然正常，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-3",
+        "lineStart": 61,
+        "lineEnd": 118
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-3",
+          "lineStart": 61,
+          "lineEnd": 118
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Config 结构体包含 query 和 filename 两个 String 字段，且 parse_config 返回 Config 实例。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-3-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-3",
+        "lineStart": 61,
+        "lineEnd": 118
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-3",
+          "lineStart": 61,
+          "lineEnd": 118
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文明确写道在第一轮编写时复制字符串取得进展没问题，并且调用 clone 完全可以接受，且优先拥有可工作但有点低效的程序而非过度优化，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-4-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-4",
+        "lineStart": 119,
+        "lineEnd": 158
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-4",
+          "lineStart": 119,
+          "lineEnd": 158
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当 parse_config 的目的是创建 Config 实例时，可将其改为与结构体关联的 new 函数并通过 Config::new 调用，支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-5-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+        "lineStart": 159,
+        "lineEnd": 174
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+          "lineStart": 159,
+          "lineEnd": 174
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文展示了运行程序时该错误信息会被输出，并明确说明它不能真正帮助终端用户理解发生了什么和应该做什么。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+        "lineStart": 175,
+        "lineEnd": 206
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+          "lineStart": 175,
+          "lineEnd": 206
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在访问索引1和2之前检查slice长度，若不够长则用更好的错误信息panic，而不是暴露index out of bounds，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-1-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+        "lineStart": 175,
+        "lineEnd": 206
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+          "lineStart": 175,
+          "lineEnd": 206
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出使用 panic! 会产生不希望提供给用户的额外信息，且 panic! 更趋向于程序问题而非使用问题。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-2",
+        "lineStart": 207,
+        "lineEnd": 237
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-2",
+          "lineStart": 207,
+          "lineEnd": 237
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当 Config::new 与 main 交流时使用 Result 表明问题，并返回 Err 而不是调用 panic!，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-3",
+        "lineStart": 238,
+        "lineEnd": 273
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-3",
+          "lineStart": 238,
+          "lineEnd": 273
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明了 unwrap_or_else 定义于标准库 Result<T, E> 上，用于自定义非 panic! 错误处理，Ok 时返回内部值，Err 时调用闭包并将 Err 内部值传给 err 参数，完全对应主张中的每一条断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-3-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-3",
+        "lineStart": 238,
+        "lineEnd": 273
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-3",
+          "lineStart": 238,
+          "lineEnd": 273
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明了 process::exit 会立即停止程序并将传入数字作为退出状态码，且类似基于 panic! 的错误处理但不再得到额外输出，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-6-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-6",
+        "lineStart": 274,
+        "lineEnd": 305
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-6",
+          "lineStart": 274,
+          "lineEnd": 305
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明提取一个叫做 `run` 的函数来存放目前 `main` 函数中不属于设置配置或处理错误的所有逻辑，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+        "lineStart": 306,
+        "lineEnd": 350
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+          "lineStart": 306,
+          "lineEnd": 350
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 `Box<dyn Error>` 是 trait 对象，意味着函数返回实现了 `Error` trait 的类型且无需指定具体类型，并可能在不同错误场景返回不同类型。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#017",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-4-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+        "lineStart": 306,
+        "lineEnd": 350
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+          "lineStart": 306,
+          "lineEnd": 350
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出用 `?` 替换 `expect`，并说明 `?` 会从函数返回错误值让调用者处理，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#018",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H4-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h4-5",
+        "lineStart": 351,
+        "lineEnd": 375
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h4-5",
+          "lineStart": 351,
+          "lineEnd": 375
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明因为run成功时返回()且只关心检测错误，所以使用if let检查Err并在出错时调用process::exit(1)，而不需要unwrap_or_else，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#019",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 19,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-7",
+        "lineStart": 376,
+        "lineEnd": 448
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-7",
+          "lineStart": 376,
+          "lineEnd": 448
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“现在我们有了一个拥有可以测试的公有 API 的库 crate 了”，直接支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#020",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH12-03-IMPROVING-ERROR-HANDLING-AND-MODULARITY-H3-7-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 20,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+        "anchor": "ch12-03-improving-error-handling-and-modularity#h3-7",
+        "lineStart": 376,
+        "lineEnd": 448
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+          "anchor": "ch12-03-improving-error-handling-and-modularity#h3-7",
+          "lineStart": 376,
+          "lineEnd": 448
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文在完成模块化重构后明确说“从现在开始几乎所有的工作都将在 src/lib.rs 中进行”，支撑主张的后续工作集中在该文件。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#021",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

@@ -1,0 +1,461 @@
+[
+  {
+    "id": "CH08-03-HASH-MAPS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h2-1",
+        "title": "哈希 map 储存键值对",
+        "lineStart": 1,
+        "lineEnd": 8,
+        "contentHash": "sha256:980bf52d00724f5f3a16137f7a5b86b8c559a99f3e8f7bebd6f33d426645e4dc"
+      }
+    ],
+    "evidenceQuote": "最后介绍的常用集合类型是 **哈希 map**（*hash map*）。`HashMap<K, V>` 类型储存了一个键类型 `K` 对应一个值类型 `V` 的映射。它通过一个 **哈希函数**（*hashing function*）来实现映射，决定如何将键和值放入内存中。很多编程语言支持这种数据结构，不过通常有不同的名字：哈希、map、对象、哈希表或者关联数组，仅举几例。\n\n哈希 map 可以用于需要任何类型作为键来寻找数据的情况，而不是像 vector 那样通过索引。例如，在一个游戏中，你可以将每个团队的分数记录到哈希 map 中，其中键是队伍的名字而值是每个团队的分数。给出一个队名，就能得到他们的得分。",
+    "canonicalTerm": "哈希 map",
+    "aliases": [
+      "hash map",
+      "哈希",
+      "map",
+      "对象",
+      "哈希表",
+      "关联数组"
+    ],
+    "definition": "HashMap<K, V> 类型储存键类型 K 到值类型 V 的映射，通过哈希函数决定如何将键和值放入内存中；可用于需要任何类型作为键来寻找数据，而不是像 vector 那样通过索引。",
+    "examples": [
+      "在一个游戏中，把每个团队的分数记录到哈希 map 中，键是队伍名字，值是队伍分数；给出队名即可得到得分。"
+    ]
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-1",
+        "title": "新建一个哈希 map",
+        "lineStart": 9,
+        "lineEnd": 42,
+        "contentHash": "sha256:24d172097128735f26d24645dd0a31fe13ae3e2066796bc6b26694c77b072c35"
+      }
+    ],
+    "evidenceQuote": "注意必须首先 `use` 标准库中集合部分的 `HashMap`。在这三个常用集合中，`HashMap` 是最不常用的，所以并没有被 prelude 自动引用。标准库中对 `HashMap` 的支持也相对较少，例如，并没有内建的构建宏。",
+    "statement": "在 Rust 中使用 `HashMap` 前，必须先用 `use std::collections::HashMap;` 显式导入。",
+    "rationale": "`HashMap` 在三个常用集合中最不常用，因此没有被 prelude 自动引用。",
+    "appliesWhen": "当 Rust 代码需要使用 `HashMap` 集合时。",
+    "violation": "未显式导入 `HashMap` 时，`HashMap` 不在 prelude 中，代码无法直接使用该类型。",
+    "chapterRef": "ch08-03-hash-maps-h3-1"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-1",
+        "title": "新建一个哈希 map",
+        "lineStart": 9,
+        "lineEnd": 42,
+        "contentHash": "sha256:24d172097128735f26d24645dd0a31fe13ae3e2066796bc6b26694c77b072c35"
+      }
+    ],
+    "evidenceQuote": "这里 `HashMap<_, _>` 类型标注是必要的，因为 `collect` 有可能当成多种不同的数据结构，而除非显式指定否则 Rust 无从得知你需要的类型。但是对于键和值的类型参数来说，可以使用下划线占位，而 Rust 能够根据 vector 中数据的类型推断出 `HashMap` 所包含的类型。",
+    "statement": "使用 `collect` 构建 `HashMap` 时，必须显式标注 `HashMap<_, _>` 类型。",
+    "rationale": "`collect` 可能产生多种数据结构，不显式指定目标类型时 Rust 无法推断。",
+    "appliesWhen": "当使用 `collect` 构建 `HashMap` 时。",
+    "violation": "省略 `HashMap<_, _>` 类型标注会使 Rust 无从得知要收集的目标集合类型。",
+    "chapterRef": "ch08-03-hash-maps-h3-1"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-2",
+        "title": "哈希 map 和所有权",
+        "lineStart": 43,
+        "lineEnd": 64,
+        "contentHash": "sha256:ab30fc69ffc9e1a22ad25a8a800e9f07e6c257ab6512443ccff8f03fd667ea02"
+      }
+    ],
+    "evidenceQuote": "对于像 `String` 这样拥有所有权的值，其值将被移动而哈希 map 会成为这些值的所有者，如示例 8-22 所示：\n\n```rust\nuse std::collections::HashMap;\n\nlet field_name = String::from(\"Favorite color\");\nlet field_value = String::from(\"Blue\");\n\nlet mut map = HashMap::new();\nmap.insert(field_name, field_value);\n// 这里 field_name 和 field_value 不再有效，\n// 尝试使用它们看看会出现什么编译错误！\n```",
+    "statement": "对于像 String 这样拥有所有权的值，插入哈希 map 时其值会被移动，哈希 map 会成为这些值的所有者；插入后原绑定不再有效，尝试使用它们会出现编译错误。",
+    "rationale": "插入时所有权转移给了哈希 map，原绑定失去所有权而不再有效。",
+    "appliesWhen": "将像 String 这样拥有所有权的值作为键或值插入哈希 map 时。",
+    "violation": "在插入后尝试继续使用已被移动的原绑定会导致编译错误。",
+    "chapterRef": "ch08-03-hash-maps-h3-2"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-2",
+        "title": "哈希 map 和所有权",
+        "lineStart": 43,
+        "lineEnd": 64,
+        "contentHash": "sha256:ab30fc69ffc9e1a22ad25a8a800e9f07e6c257ab6512443ccff8f03fd667ea02"
+      }
+    ],
+    "evidenceQuote": "如果将值的引用插入哈希 map，这些值本身将不会被移动进哈希 map。但是这些引用指向的值必须至少在哈希 map 有效时也是有效的。",
+    "statement": "如果将值的引用插入哈希 map，值本身不会被移动进哈希 map；但这些引用指向的值必须至少与哈希 map 一样长久有效。",
+    "rationale": "插入的是引用而不是值本身，因此不移动值，但引用指向的值必须满足哈希 map 有效期间的有效性要求。",
+    "appliesWhen": "将值的引用插入哈希 map 时。",
+    "violation": "引用指向的值在哈希 map 仍然有效期间失效。",
+    "chapterRef": "ch08-03-hash-maps-h3-2"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-3",
+        "title": "访问哈希 map 中的值",
+        "lineStart": 65,
+        "lineEnd": 106,
+        "contentHash": "sha256:3f20571deb8a823ffae75bc7730a5964e75aad391dbe5117d0efbea8124aba39"
+      }
+    ],
+    "evidenceQuote": "这里，`score` 是与蓝队分数相关的值，应为 `Some(10)`。因为 `get` 返回 `Option<V>`，所以结果被装进 `Some`；如果某个键在哈希 map 中没有对应的值，`get` 会返回 `None`。这时就要用某种第 6 章提到的方法之一来处理 `Option`。",
+    "canonicalTerm": "HashMap get 方法的 Option 返回值",
+    "aliases": [],
+    "definition": "HashMap 的 get 方法返回 Option<V>；当键有对应值时结果被装进 Some，当键没有对应值时返回 None。",
+    "examples": [
+      "蓝队分数对应的 get 结果为 Some(10)"
+    ]
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-3",
+        "title": "访问哈希 map 中的值",
+        "lineStart": 65,
+        "lineEnd": 106,
+        "contentHash": "sha256:3f20571deb8a823ffae75bc7730a5964e75aad391dbe5117d0efbea8124aba39"
+      }
+    ],
+    "evidenceQuote": "可以使用与 vector 类似的方式来遍历哈希 map 中的每一个键值对，也就是 `for` 循环：\n\n```rust\nuse std::collections::HashMap;\n\nlet mut scores = HashMap::new();\n\nscores.insert(String::from(\"Blue\"), 10);\nscores.insert(String::from(\"Yellow\"), 50);\n\nfor (key, value) in &scores {\n    println!(\"{}\", key, value);\n}\n```",
+    "canonicalTerm": "遍历哈希 map 的 for 循环",
+    "aliases": [],
+    "definition": "可以使用与 vector 类似的方式遍历哈希 map 中的每一个键值对，即使用 for 循环，并在循环变量中获得键和值。",
+    "examples": [
+      "使用 for (key, value) in &scores 遍历并打印每个键值对"
+    ]
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-4",
+        "title": "更新哈希 map",
+        "lineStart": 107,
+        "lineEnd": 110,
+        "contentHash": "sha256:e52bf5854985e5657ae7dde0ceac48dd106708df11c163b5a7096017715f41df"
+      }
+    ],
+    "evidenceQuote": "尽管键值对的数量是可以增长的，不过任何时候，每个键只能关联一个值。当我们想要改变哈希 map 中的数据时，必须决定如何处理一个键已经有值了的情况。可以选择完全无视旧值并用新值代替旧值。可以选择保留旧值而忽略新值，并只在键 **没有** 对应值时增加新值。或者可以结合新旧两值。",
+    "statement": "改变哈希 map 中的数据时，必须决定如何处理一个键已经有值了的情况。",
+    "rationale": "每个键只能关联一个值；可选处理方式包括用新值代替旧值、保留旧值而忽略新值并只在键没有对应值时增加新值、或结合新旧两值。",
+    "appliesWhen": "想要改变哈希 map 中的数据时。",
+    "violation": "键已经有值时未决定处理策略就继续更新。",
+    "chapterRef": "ch08-03-hash-maps-h3-4"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h4-1",
+        "title": "覆盖一个值",
+        "lineStart": 111,
+        "lineEnd": 129,
+        "contentHash": "sha256:3a820595d727b4907e8a00c5b8dcd0c92249db5178ab200b4d3abef965650647"
+      }
+    ],
+    "evidenceQuote": "如果我们插入了一个键值对，接着用相同的键插入一个不同的值，与这个键相关联的旧值将被替换。即便示例 8-24 中的代码调用了两次 `insert`，哈希 map 也只会包含一个键值对，因为两次都是对蓝队的键插入的值：",
+    "statement": "对哈希 map 的同一个键再次插入不同的值时，该键关联的旧值将被替换，哈希 map 只保留一个键值对。",
+    "rationale": "两次插入使用的是同一个键，因此哈希 map 只保留该键对应的一个值。",
+    "appliesWhen": "对一个键已存在的哈希 map 再次插入该键的不同值时。",
+    "violation": "同一键的旧值不会继续保留，哈希 map 中只会留下后插入的值。",
+    "chapterRef": "ch08-03-hash-maps-h4-1"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h4-2",
+        "title": "只在键没有对应值时插入",
+        "lineStart": 130,
+        "lineEnd": 151,
+        "contentHash": "sha256:6628c591630afa733d5f0e0266e5c784bd26849e85adfcbe8cbb4656b7e0f2c6"
+      }
+    ],
+    "evidenceQuote": "我们经常会检查某个特定的键是否有值，如果没有就插入一个值。为此哈希 map 有一个特有的 API，叫做 `entry`，它获取我们想要检查的键作为参数。`entry` 函数的返回值是一个枚举，`Entry`，它代表了可能存在也可能不存在的值。比如说我们想要检查黄队的键是否关联了一个值。如果没有，就插入值 50，对于蓝队也是如此。",
+    "canonicalTerm": "entry",
+    "aliases": [],
+    "definition": "哈希 map 特有的 API，获取想要检查的键作为参数，返回 `Entry` 枚举，代表可能存在也可能不存在的值，可用于只在键没有对应值时插入。",
+    "examples": [
+      "检查黄队的键是否关联了一个值；如果没有，就插入值 50"
+    ]
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H4-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h4-2",
+        "title": "只在键没有对应值时插入",
+        "lineStart": 130,
+        "lineEnd": 151,
+        "contentHash": "sha256:6628c591630afa733d5f0e0266e5c784bd26849e85adfcbe8cbb4656b7e0f2c6"
+      }
+    ],
+    "evidenceQuote": "`Entry` 的 `or_insert` 方法在键对应的值存在时就返回这个值的可变引用，如果不存在则将参数作为新值插入并返回新值的可变引用。这比编写自己的逻辑要简明的多，另外也与借用检查器结合得更好。",
+    "statement": "`Entry` 的 `or_insert` 方法在键对应的值存在时返回该值的可变引用；在键对应的值不存在时插入参数作为新值并返回新值的可变引用。",
+    "rationale": "使用 `or_insert` 比编写自己的检查逻辑更简明，并且与借用检查器结合得更好。",
+    "appliesWhen": "调用 `entry` 得到的 `Entry` 上的 `or_insert` 方法时，需要根据键是否已有值来决定返回现有值还是插入新值。",
+    "violation": "自己编写键存在性检查与插入逻辑，而不是使用 `Entry::or_insert`，会更冗长且与借用检查器结合得不好。",
+    "chapterRef": "ch08-03-hash-maps-h4-2"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h4-3",
+        "title": "根据旧值更新一个值",
+        "lineStart": 152,
+        "lineEnd": 174,
+        "contentHash": "sha256:60afa3481e491d2059fb4e76d7cd1998848d6af04ebea9950e8e3aabb8cbb986"
+      }
+    ],
+    "evidenceQuote": "`or_insert` 方法事实上会返回这个键的值的一个可变引用（`&mut V`）。这里我们将这个可变引用储存在 `count` 变量中，所以为了赋值必须首先使用星号（`*`）解引用 `count`。这个可变引用在 `for` 循环的结尾离开作用域，这样所有这些改变都是安全的并符合借用规则。",
+    "canonicalTerm": "or_insert 方法",
+    "aliases": [],
+    "definition": "`or_insert` 方法返回当前键对应值的一个可变引用（`&mut V`）；将该引用绑定到变量后，必须先用星号（`*`）解引用，才能对其指向的值进行赋值更新。",
+    "examples": [
+      "把 `or_insert` 返回的可变引用存入 `count` 后，通过解引用 `count` 对该键对应的值进行赋值更新。"
+    ]
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-5",
+        "title": "哈希函数",
+        "lineStart": 175,
+        "lineEnd": 180,
+        "contentHash": "sha256:8d66dbc11a42c3618a52b80a62e2b07fed2f6d012e78dc6fc145234e7e9e47d5"
+      }
+    ],
+    "evidenceQuote": "`HashMap` 默认使用一种 “密码学安全的”（“cryptographically strong” ）[^siphash] 哈希函数，它可以抵抗拒绝服务（Denial of Service, DoS）攻击。然而这并不是可用的最快的算法，不过为了更高的安全性值得付出一些性能的代价。如果性能监测显示此哈希函数非常慢，以致于你无法接受，你可以指定一个不同的 *hasher* 来切换为其它函数。hasher 是一个实现了 `BuildHasher` trait 的类型。第 10 章会讨论 trait 和如何实现它们。你并不需要从头开始实现你自己的 hasher；[crates.io](https://crates.io) 有其他人分享的实现了许多常用哈希算法的 hasher 的库。",
+    "canonicalTerm": "hasher",
+    "aliases": [],
+    "definition": "实现 BuildHasher trait 的类型，用于为 HashMap 指定不同的哈希函数。",
+    "examples": [
+      "crates.io 上他人分享的实现了许多常用哈希算法的 hasher 库"
+    ]
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H3-5-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h3-5",
+        "title": "哈希函数",
+        "lineStart": 175,
+        "lineEnd": 180,
+        "contentHash": "sha256:8d66dbc11a42c3618a52b80a62e2b07fed2f6d012e78dc6fc145234e7e9e47d5"
+      }
+    ],
+    "evidenceQuote": "`HashMap` 默认使用一种 “密码学安全的”（“cryptographically strong” ）[^siphash] 哈希函数，它可以抵抗拒绝服务（Denial of Service, DoS）攻击。然而这并不是可用的最快的算法，不过为了更高的安全性值得付出一些性能的代价。如果性能监测显示此哈希函数非常慢，以致于你无法接受，你可以指定一个不同的 *hasher* 来切换为其它函数。",
+    "trigger": "性能监测显示 HashMap 默认哈希函数非常慢，以致于你无法接受",
+    "recommendation": "指定一个不同的 hasher 来切换为其它函数",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H2-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h2-2",
+        "title": "总结",
+        "lineStart": 181,
+        "lineEnd": 195,
+        "contentHash": "sha256:89b7cc78360684bfdab07f1d30ca2947312993a68a51087539222a710921e1c3"
+      }
+    ],
+    "evidenceQuote": "将字符串转换为 Pig Latin，也就是每一个单词的第一个辅音字母被移动到单词的结尾并增加 “ay”，所以 “first” 会变成 “irst-fay”。元音字母开头的单词则在结尾增加  “hay”（“apple” 会变成 “apple-hay”）。",
+    "statement": "将字符串转换为 Pig Latin 时，每一个单词的第一个辅音字母被移动到单词的结尾并增加 “ay”；元音字母开头的单词则在结尾增加 “hay”。",
+    "rationale": "这是 Pig Latin 的转换规则。",
+    "appliesWhen": "当需要将字符串转换为 Pig Latin 时。",
+    "violation": "转换结果不符合首辅音后加 “ay” 或元音开头词尾加 “hay” 的规则。",
+    "chapterRef": "ch08-03-hash-maps-h2-2"
+  },
+  {
+    "id": "CH08-03-HASH-MAPS-H2-2-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:31:22.925Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:31:22.925Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-03-hash-maps.md",
+        "anchor": "ch08-03-hash-maps#h2-2",
+        "title": "总结",
+        "lineStart": 181,
+        "lineEnd": 195,
+        "contentHash": "sha256:89b7cc78360684bfdab07f1d30ca2947312993a68a51087539222a710921e1c3"
+      }
+    ],
+    "evidenceQuote": "给定一系列数字，使用 vector 并返回这个列表的平均数（mean, average）、中位数（排列数组后位于中间的值）和众数（mode，出现次数最多的值；这里哈希 map 会很有帮助）。",
+    "trigger": "需要计算一组数字的众数时",
+    "recommendation": "使用哈希 map 会很有帮助",
+    "confidence": 0.8,
+    "exceptions": []
+  }
+]

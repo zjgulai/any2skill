@@ -1,0 +1,1898 @@
+[
+  {
+    "id": "CHAPTER10-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h1-1",
+        "title": "多 Agent 协作",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "contentHash": "sha256:321a8c5aae2936bc6d9caf4c630d8a8018ebada81c13a7525788ad65cb1bfc7f"
+      }
+    ],
+    "evidenceQuote": "本章把问题从“如何构建和改进一个 Agent”推进到“如何组织多个 Agent”——让它们通过分工、通信与相互验证完成单个 Agent 难以承担的任务。\n\n在 OpenAI 曾提出的五级 AI 能力框架（Level 1 对话者、Level 2 思考者（Reasoners）、Level 3 智能体、Level 4 创新者、Level 5 组织（Organizations））中，多 Agent 协作常被类比为通向第五级的路径之一——需要说明的是，此处 Organizations 指的是“AI 能完成整个组织的工作”这一能力级别，而非对系统架构的要求，足够强大的单个 Agent 理论上也能达到。但就今天的工程现实而言，单个 Agent 终究受限于自身模型的能力边界和上下文窗口。\n\n而让多个 Agent 协同工作，意义远不止让不同专长的 Agent “取长补短”。",
+    "canonicalTerm": "多 Agent 协作",
+    "aliases": [
+      "组织多个 Agent",
+      "多个 Agent 协同工作"
+    ],
+    "definition": "把问题从构建和改进单个 Agent 推进到组织多个 Agent，让它们通过分工、通信与相互验证完成单个 Agent 难以承担的任务。",
+    "examples": [
+      "让不同专长的 Agent 取长补短"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H1-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h1-1",
+        "title": "多 Agent 协作",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "contentHash": "sha256:321a8c5aae2936bc6d9caf4c630d8a8018ebada81c13a7525788ad65cb1bfc7f"
+      }
+    ],
+    "evidenceQuote": "更根本的一点是：**群体的智能可以高于个体**。人类文明便是明证——单个人的智力有限，但经由分工、协作、辩论和知识的代际累积，人类社会作为整体所展现的智能，远超任何一位天才个体。Agent 群体同样可能涌现出这样的集体智能：哪怕每一个 Agent 都只相当于人类专家的水平，只要组织得当，其整体能力也可能超过所有人类专家的总和。",
+    "canonicalTerm": "集体智能",
+    "aliases": [],
+    "definition": "通过分工、协作、辩论和知识的代际累积，使群体形成的整体智能可以高于任何个体；在组织得当的情况下，Agent 群体的整体能力也可能超过所有人类专家的总和。",
+    "examples": [
+      "人类社会作为整体所展现的智能，远超任何一位天才个体"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-1",
+        "title": "维度一：上下文是否共享",
+        "lineStart": 15,
+        "lineEnd": 33,
+        "contentHash": "sha256:71eb63c07b1a794c35a90432bb0422155256ea73c5fea77801fe9539e1c7537d"
+      }
+    ],
+    "evidenceQuote": "**共享上下文**意味着后续 Agent 接收前一个 Agent 的完整对话历史和轨迹（第一章定义的 trajectory）。每个阶段切换系统提示词和工具集后，就变成了一个新的 Agent（因为它的身份、职责和能力都发生了变化），但它保留了前任的全部记忆。比如一个团队里，需求分析师写完需求文档后，开发者不仅拿到了文档，还能看到分析师与用户的所有沟通记录——他是一个新角色，但完整保留了之前的上下文。优势在于信息不丢失，每个 Agent 都能回顾之前任何阶段的细节；挑战在于上下文可能快速膨胀。",
+    "canonicalTerm": "共享上下文",
+    "aliases": [],
+    "definition": "后续 Agent 接收前一个 Agent 的完整对话历史和轨迹，并在切换角色后保留前任的全部记忆。",
+    "examples": [
+      "需求分析师写完需求文档后，开发者不仅拿到文档，还能看到分析师与用户的所有沟通记录，成为完整保留之前上下文的新角色。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-1",
+        "title": "维度一：上下文是否共享",
+        "lineStart": 15,
+        "lineEnd": 33,
+        "contentHash": "sha256:71eb63c07b1a794c35a90432bb0422155256ea73c5fea77801fe9539e1c7537d"
+      }
+    ],
+    "evidenceQuote": "**不共享上下文**意味着每个 Agent 维护完全独立的上下文和对话历史，彼此无法直接访问对方的“思考过程”。这就像不同部门之间的协作：每个人在自己的工位上独立工作，通过共享文档和会议纪要交换信息，而不是时刻盯着别人的屏幕。这种模式的模块化和隔离性更好，每个 Agent 只需关注与自身职责相关的信息；系统也更易扩展和维护——增加新 Agent 不需要改动现有 Agent 的内部逻辑，只需定义好接口和数据格式。",
+    "canonicalTerm": "不共享上下文",
+    "aliases": [],
+    "definition": "每个 Agent 维护完全独立的上下文和对话历史，彼此无法直接访问对方的“思考过程”。",
+    "examples": [
+      "不同部门之间的协作：每个人在自己的工位上独立工作，通过共享文档和会议纪要交换信息，而不是时刻盯着别人的屏幕。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-2",
+        "title": "维度二：协作拓扑",
+        "lineStart": 34,
+        "lineEnd": 45,
+        "contentHash": "sha256:e53b3d1b45cabcb0006bec44a9313bbac0becd6f3a5b9dda013e2c9d45ebcb3c"
+      }
+    ],
+    "evidenceQuote": "第二个维度是协作拓扑——Agent 之间的控制权和信息按什么结构流动。协作拓扑有三种典型形态：\n\n- **对等协作模式**（Peer Collaboration Pattern）：少量 Agent 按照固定的拓扑形成迭代改进循环，例如论文写作 Agent 由起草者和评论者两个 Agent 组成，一方起草、另一方批注修改，反复几轮后质量更高。\n- **管理者模式**（Orchestration Pattern）：一个中心化的 Manager Agent 负责任务规划和调度，多个子 Agent 各负责特定子任务——就像项目经理带着几位专业工程师做项目。\n- **去中心化模式**（Decentralized Pattern）：没有运行时的中心控制者，Agent 之间像人类一样互相沟通，协作完成任务。",
+    "canonicalTerm": "协作拓扑",
+    "aliases": [],
+    "definition": "Agent 之间的控制权和信息按什么结构流动；协作拓扑有三种典型形态：对等协作模式、管理者模式和去中心化模式。",
+    "examples": [
+      "少量 Agent 按照固定的拓扑形成迭代改进循环，例如论文写作 Agent 由起草者和评论者两个 Agent 组成，一方起草、另一方批注修改，反复几轮后质量更高。",
+      "一个中心化的 Manager Agent 负责任务规划和调度，多个子 Agent 各负责特定子任务——就像项目经理带着几位专业工程师做项目。",
+      "没有运行时的中心控制者，Agent 之间像人类一样互相沟通，协作完成任务。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-2",
+        "title": "维度二：协作拓扑",
+        "lineStart": 34,
+        "lineEnd": 45,
+        "contentHash": "sha256:e53b3d1b45cabcb0006bec44a9313bbac0becd6f3a5b9dda013e2c9d45ebcb3c"
+      }
+    ],
+    "evidenceQuote": ">  **术语说明：Graph 工程。** 2026 年 7 月开始流行的 “Graph Engineering”，在当前 Agent 语境中通常指显式设计执行图：节点是 Agent、普通程序或人工决策，边定义任务依赖、条件路由与失败后的去向，结构化状态在节点之间流动（该名称的由来与相关实践见第一章“从提示工程到 Loop 工程”一节）。本章讨论的“协作拓扑”正是其中的多 Agent 子集——对等协作、管理者编排和去中心化移交，都是不同的图拓扑。",
+    "canonicalTerm": "Graph 工程",
+    "aliases": [
+      "Graph Engineering"
+    ],
+    "definition": "在当前 Agent 语境中通常指显式设计执行图：节点是 Agent、普通程序或人工决策，边定义任务依赖、条件路由与失败后的去向，结构化状态在节点之间流动。",
+    "examples": [
+      "对等协作、管理者编排和去中心化移交，都是不同的图拓扑。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-2",
+        "title": "多 Agent 何时真正优于单 Agent",
+        "lineStart": 46,
+        "lineEnd": 78,
+        "contentHash": "sha256:1bf85e3a2ffeac0add697c6bce99abbc4ba0068d3de3a5d49fbb22bb92f16495"
+      }
+    ],
+    "evidenceQuote": "这个“新信息”框架解释了一个看似矛盾的现象：一些学术研究认为多 Agent 并不能提升 Agent 能力上限，但在工程实践中，多 Agent 确实表现得更好。矛盾的根源在于两者讨论的是不同类型的 “多 Agent”：学术研究中比较的多是 “多个 Agent 看着同一段上下文互相讨论” 的模式，而工程实践中有效的多 Agent 系统往往包含外部反馈环路（代码执行、视觉渲染、工具调用）。前者没有引入新信息，后者引入了。",
+    "canonicalTerm": "新信息框架",
+    "aliases": [],
+    "definition": "该框架把多 Agent 是否有效归结为是否引入新信息：学术研究中多 Agent 只是多个 Agent 看同一段上下文互相讨论，未引入新信息；工程中有效系统往往包含外部反馈环路，从而引入新信息。",
+    "examples": [
+      "代码执行",
+      "视觉渲染",
+      "工具调用"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-2-CASE-02",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-2",
+        "title": "多 Agent 何时真正优于单 Agent",
+        "lineStart": 46,
+        "lineEnd": 78,
+        "contentHash": "sha256:1bf85e3a2ffeac0add697c6bce99abbc4ba0068d3de3a5d49fbb22bb92f16495"
+      }
+    ],
+    "evidenceQuote": "Anthropic 2026 年的漏洞挖掘实验给出了一个案例：45 个 Agent 通过共享论坛协调搜索、互相审查，再由独立 Agent 仲裁结果。Agent 集群用 2700 万 token 找到 266 个漏洞，而独立 Agent 并行方案用 650 万 token 只找到 21 个。在开放搜索空间里，多 Agent 通过互相通信，可以动态转移搜索重点、形成专门分工，用更高 token 预算换取更广的覆盖和更多样化的发现路径。",
+    "title": "Anthropic 2026 多 Agent 漏洞挖掘实验",
+    "context": "开放搜索空间里的多 Agent 漏洞挖掘",
+    "facts": [
+      "45 个 Agent 通过共享论坛协调搜索、互相审查，再由独立 Agent 仲裁结果",
+      "Agent 集群用 2700 万 token 找到 266 个漏洞",
+      "独立 Agent 并行方案用 650 万 token 只找到 21 个"
+    ],
+    "decisions": [
+      "采用 45 个 Agent 通过共享论坛协调搜索、互相审查、独立 Agent 仲裁结果"
+    ],
+    "outcome": "Agent 集群用 2700 万 token 找到 266 个漏洞，独立 Agent 并行方案用 650 万 token 只找到 21 个。",
+    "limitations": [
+      "该结果依赖更高 token 预算（2700 万 token vs 650 万 token）"
+    ],
+    "dataClass": "多 Agent 漏洞挖掘实验",
+    "evidenceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-2",
+        "title": "多 Agent 何时真正优于单 Agent",
+        "lineStart": 46,
+        "lineEnd": 78,
+        "contentHash": "sha256:1bf85e3a2ffeac0add697c6bce99abbc4ba0068d3de3a5d49fbb22bb92f16495"
+      }
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-3",
+        "title": "共享上下文的多 Agent 协作",
+        "lineStart": 79,
+        "lineEnd": 101,
+        "contentHash": "sha256:3a69362ecbc4de7a19e81928018e4fa64babb745fce9e0034b7ecf0f79fc0053"
+      }
+    ],
+    "evidenceQuote": "共享上下文的多 Agent 协作中，每个阶段都是一个独立的 Agent（拥有自己的系统提示词和工具集），但它继承了前序 Agent 的完整轨迹——就像接班的同事能翻阅前任留下的所有工作日志。这种 “继承式协作” 的核心优势在于信息不会丢失，每个 Agent 都能回顾之前任何阶段的细节。挑战则在于如何让当前 Agent 专注于自己的核心职责，而不被继承来的大量历史信息所干扰。",
+    "canonicalTerm": "共享上下文的多 Agent 协作",
+    "aliases": [
+      "继承式协作"
+    ],
+    "definition": "多个阶段各自使用独立 Agent（拥有自己的系统提示词和工具集），并继承前序 Agent 完整轨迹的协作方式；核心优势是信息不丢失，每个 Agent 能回顾之前任何阶段细节，挑战是当前 Agent 需专注核心职责而不被大量历史信息干扰。",
+    "examples": [
+      "就像接班的同事能翻阅前任留下的所有工作日志"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-3-DECISIONMODEL-02",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-3",
+        "title": "共享上下文的多 Agent 协作",
+        "lineStart": 79,
+        "lineEnd": 101,
+        "contentHash": "sha256:3a69362ecbc4de7a19e81928018e4fa64babb745fce9e0034b7ecf0f79fc0053"
+      }
+    ],
+    "evidenceQuote": "角色差异主要来自知识、流程和写作风格时，优先使用 Skill；角色差异涉及权限、工具隔离、合规边界或需要在运行时强制禁止某类动作时，使用独立 Agent 或 `transfer_to_agent` 工具，并在 Harness 层通过代码限制工具调用。",
+    "inputs": [
+      "角色差异是否主要来自知识、流程和写作风格",
+      "角色差异是否涉及权限、工具隔离、合规边界或需要在运行时强制禁止某类动作"
+    ],
+    "branches": [
+      {
+        "condition": "角色差异主要来自知识、流程和写作风格时",
+        "action": "优先使用 Skill"
+      },
+      {
+        "condition": "角色差异涉及权限、工具隔离、合规边界或需要在运行时强制禁止某类动作时",
+        "action": "使用独立 Agent 或 transfer_to_agent 工具，并在 Harness 层通过代码限制工具调用"
+      }
+    ],
+    "outputs": [
+      "采用 Skill 作为角色规程载体",
+      "采用独立 Agent 或 transfer_to_agent 并施加 Harness 层工具调用限制"
+    ],
+    "unknownPolicy": "原文未说明两个分支条件都不满足时的处理策略",
+    "stopConditions": [
+      "选定 Skill 或独立 Agent/transfer_to_agent 作为角色规程载体并执行对应动作"
+    ],
+    "reviewState": "draft"
+  },
+  {
+    "id": "CHAPTER10-H2-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-4",
+        "title": "不共享上下文的多 Agent 协作",
+        "lineStart": 102,
+        "lineEnd": 132,
+        "contentHash": "sha256:2be1dfd0a2dba930a18adb7d41bdfab6c1b37888147f39ab71b53cb2ca9ce1dd"
+      }
+    ],
+    "evidenceQuote": "不共享上下文代表真正的多 Agent 协作。在这种架构下，每个 Agent 都是独立的实体，拥有自己的上下文、轨迹和状态；彼此无法直接访问对方的 “内心活动”，协作完全依赖本章开头介绍的三种通信机制（工具调用参数、共享文件系统、消息总线）。",
+    "canonicalTerm": "不共享上下文的多 Agent 协作",
+    "aliases": [],
+    "definition": "不共享上下文代表真正的多 Agent 协作，每个 Agent 都是独立的实体，拥有自己的上下文、轨迹和状态；彼此无法直接访问对方的内心活动，协作完全依赖工具调用参数、共享文件系统、消息总线三种通信机制。",
+    "examples": [
+      "工具调用参数",
+      "共享文件系统",
+      "消息总线"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-4-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-4",
+        "title": "不共享上下文的多 Agent 协作",
+        "lineStart": 102,
+        "lineEnd": 132,
+        "contentHash": "sha256:2be1dfd0a2dba930a18adb7d41bdfab6c1b37888147f39ab71b53cb2ca9ce1dd"
+      }
+    ],
+    "evidenceQuote": "其二是**通信与控制机制**，支持 Agent 间的消息传递、状态查询、执行终止与资源调度，构成协作的控制平面。",
+    "canonicalTerm": "通信与控制机制",
+    "aliases": [],
+    "definition": "通信与控制机制支持 Agent 间的消息传递、状态查询、执行终止与资源调度，构成协作的控制平面。",
+    "examples": [
+      "消息传递",
+      "状态查询",
+      "执行终止",
+      "资源调度"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-3",
+        "title": "Agent 眼中的文件系统",
+        "lineStart": 133,
+        "lineEnd": 165,
+        "contentHash": "sha256:8084dfccd1fe8a358424b51a44f3174ce214641f34d9ac031058608a2f3b57d6"
+      }
+    ],
+    "evidenceQuote": "Agent 访问的并非单一存储，而是一个**虚拟文件系统**（virtual filesystem）：来源、生命周期与权限各异的存储被挂载（mount）到同一目录树下，Agent 通过统一的 `read_file`/`write_file`/`list_dir` 接口访问，底层则可能是本地临时盘、持久对象存储、第三方云盘的 API 或只读的系统资源包。",
+    "canonicalTerm": "虚拟文件系统",
+    "aliases": [
+      "virtual filesystem"
+    ],
+    "definition": "来源、生命周期与权限各异的存储被挂载到同一目录树下，Agent 通过统一的 read_file/write_file/list_dir 接口访问的文件系统。",
+    "examples": [
+      "本地临时盘",
+      "持久对象存储",
+      "第三方云盘的 API",
+      "只读的系统资源包"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-3",
+        "title": "Agent 眼中的文件系统",
+        "lineStart": 133,
+        "lineEnd": 165,
+        "contentHash": "sha256:8084dfccd1fe8a358424b51a44f3174ce214641f34d9ac031058608a2f3b57d6"
+      }
+    ],
+    "evidenceQuote": "**一、Agent 专属工作区（Scratchpad）**。每个 Agent 实例独享的私有目录，存放中间产物、临时文件、草稿与调试日志，生命周期与实例绑定，对其他 Agent 和用户不可见。",
+    "canonicalTerm": "Agent 专属工作区",
+    "aliases": [
+      "Scratchpad"
+    ],
+    "definition": "每个 Agent 实例独享的私有目录，存放中间产物、临时文件、草稿与调试日志，生命周期与实例绑定，对其他 Agent 和用户不可见。",
+    "examples": [
+      "中间产物",
+      "临时文件",
+      "草稿",
+      "调试日志"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-4",
+        "title": "Agent 间的通信与控制",
+        "lineStart": 166,
+        "lineEnd": 193,
+        "contentHash": "sha256:a914190a52c2aa3e6fb7c95a5d95bf8054c9f4becb11ddc6f21e1137ee8c1e50"
+      }
+    ],
+    "evidenceQuote": "当 Agent 数量增多且需异步并行时，点对点连接数随 Agent 数呈平方增长，且要求收发双方同时在线；此时应改用**消息总线**（详见本章后文“并行协调形态”）：Agent 将消息发布至总线，由总线按订阅关系转发，发送方无需知晓消费者。",
+    "statement": "当 Agent 数量增多且需异步并行时，应改用消息总线进行通信。",
+    "rationale": "点对点连接数随 Agent 数呈平方增长，且要求收发双方同时在线；消息总线按订阅关系转发，发送方无需知晓消费者。",
+    "appliesWhen": "Agent 数量增多且需异步并行时。",
+    "violation": "在 Agent 数量增多且需异步并行的场景继续使用点对点通信。",
+    "chapterRef": "chapter10-h3-4"
+  },
+  {
+    "id": "CHAPTER10-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-4",
+        "title": "Agent 间的通信与控制",
+        "lineStart": 166,
+        "lineEnd": 193,
+        "contentHash": "sha256:a914190a52c2aa3e6fb7c95a5d95bf8054c9f4becb11ddc6f21e1137ee8c1e50"
+      }
+    ],
+    "evidenceQuote": "但轨迹持久化不宜作为 Agent 间信息传递的主要方式。轨迹动辄数万 token，主 Agent 读完还得自行提炼，既费时又费 token。因此多数场景下更合理的是**约定进度文件**：主 Agent 启动子 Agent 时约定“把进度写到 progress.md”，子 Agent 每完成一项就更新这份任务清单，主 Agent 随时读这个轻量文件即可掌握进展。",
+    "statement": "轨迹持久化不宜作为 Agent 间信息传递的主要方式；多数场景下应约定进度文件以便掌握进展。",
+    "rationale": "轨迹动辄数万 token，主 Agent 读完还需自行提炼，既费时又费 token；进度文件轻量，主 Agent 可随时读取。",
+    "appliesWhen": "多数需要掌握子 Agent 执行进展的场景。",
+    "violation": "将轨迹持久化作为 Agent 间信息传递的主要方式。",
+    "chapterRef": "chapter10-h3-4"
+  },
+  {
+    "id": "CHAPTER10-H3-5-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-5",
+        "title": "对等协作模式：相互制衡与迭代改进",
+        "lineStart": 194,
+        "lineEnd": 199,
+        "contentHash": "sha256:d2191278ff94d9de22b4486bbdffd158591580ffa3a48c31ec2eb2a699e1af0b"
+      }
+    ],
+    "evidenceQuote": "当模型、上下文和脚手架高度相似时，不同 Agent 往往会做出相同选择，使局部错误演变为系统性故障。要获得真正的多样性，需要主动区分模型、上下文、工具、可见证据或职责，并让各 Agent 先独立判断、再汇总结果。",
+    "pattern": "模型、上下文和脚手架高度相似时，不同 Agent 往往会做出相同选择",
+    "harm": "局部错误演变为系统性故障",
+    "corrective": "主动区分模型、上下文、工具、可见证据或职责，并让各 Agent 先独立判断、再汇总结果",
+    "evidence": [
+      "当模型、上下文和脚手架高度相似时，不同 Agent 往往会做出相同选择，使局部错误演变为系统性故障。"
+    ],
+    "chapterRef": "chapter10-h3-5"
+  },
+  {
+    "id": "CHAPTER10-H3-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-5",
+        "title": "对等协作模式：相互制衡与迭代改进",
+        "lineStart": 194,
+        "lineEnd": 199,
+        "contentHash": "sha256:d2191278ff94d9de22b4486bbdffd158591580ffa3a48c31ec2eb2a699e1af0b"
+      }
+    ],
+    "evidenceQuote": "对等协作通常涉及 2-3 个平等身份的 Agent，通过多轮迭代互相提供反馈。它的潜在价值在于引入独立视角和认知多样性，但“多个实例”不等于“多种思路”。当模型、上下文和脚手架高度相似时，不同 Agent 往往会做出相同选择，使局部错误演变为系统性故障。要获得真正的多样性，需要主动区分模型、上下文、工具、可见证据或职责，并让各 Agent 先独立判断、再汇总结果。",
+    "statement": "要获得真正的多样性，需要主动区分模型、上下文、工具、可见证据或职责，并让各 Agent 先独立判断、再汇总结果。",
+    "rationale": "多个实例不等于多种思路；当模型、上下文和脚手架高度相似时，不同 Agent 往往会做出相同选择。",
+    "appliesWhen": "对等协作涉及 2-3 个平等身份的 Agent，并需要引入独立视角和认知多样性时。",
+    "violation": "局部错误演变为系统性故障。",
+    "chapterRef": "chapter10-h3-5"
+  },
+  {
+    "id": "CHAPTER10-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-1",
+        "title": "Loop 工程",
+        "lineStart": 200,
+        "lineEnd": 227,
+        "contentHash": "sha256:586974e7add02b43c701a0de36a1267dee2a2a5d86f89dba2db654c51de3e209"
+      }
+    ],
+    "evidenceQuote": "把宣称变成证明，正是 **Loop 工程**（Loop Engineering）的课题：设计一个让 Agent 持续运转的循环——发现下一件该做的事、执行、验证、记录进度——由验证器而不是模型自己来判定“是否真的可以停”，人的角色则从“给 Agent 写提示词的操作者”变成“设计循环的工程师”。这个名词在 2026 年 6 月由 Addy Osmani 总结提出[^loop-engineering-2026]，Claude Code 负责人 Boris Cherny 的说法更直白：“我已经不再直接 prompt Claude 了，我的工作是写 loop。”业界在这场讨论中形成的核心共识是：**循环的瓶颈在验证器，而不在模型**。验证不可靠，循环转得再快，也只是把劣质产出更快地标记为完成。也正如引言所说，实践在前、命名在后：在这个名词流行之前，包括 Pine AI 在内的头部 Agent 团队早已在用“循环加验证”解决过早终止问题。而验证最有效的组织方式，正是下面要讲的提议者-审核者范式。",
+    "canonicalTerm": "Loop 工程",
+    "aliases": [
+      "Loop Engineering"
+    ],
+    "definition": "设计一个让 Agent 持续运转的循环——发现下一件该做的事、执行、验证、记录进度——由验证器而不是模型自己来判定是否真的可以停，人的角色从给 Agent 写提示词的操作者变成设计循环的工程师。",
+    "examples": [
+      "包括 Pine AI 在内的头部 Agent 团队在名词流行之前早已在用“循环加验证”解决过早终止问题"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-1",
+        "title": "Loop 工程",
+        "lineStart": 200,
+        "lineEnd": 227,
+        "contentHash": "sha256:586974e7add02b43c701a0de36a1267dee2a2a5d86f89dba2db654c51de3e209"
+      }
+    ],
+    "evidenceQuote": "只有通过独立验证的结果才能写入持久进度并消耗配额；验证失败会进入修复或重规划，人工门禁、等待状态和预算上限则在执行前阻止循环继续。这个边界把 Loop 工程的原则变成了可检查的系统不变量：模型可以提出 “完成”，但不能批准自己的 “完成”。",
+    "statement": "模型可以提出“完成”，但不能批准自己的“完成”。",
+    "rationale": "只有通过独立验证的结果才能写入持久进度并消耗配额，因此完成必须由验证器而不是模型自己来批准。",
+    "appliesWhen": "在 Loop 工程设计的循环中，当模型声称完成时。",
+    "violation": "模型未经独立验证即批准自己的完成，绕过独立验证写入持久进度。",
+    "chapterRef": "chapter10-h4-1"
+  },
+  {
+    "id": "CHAPTER10-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-2",
+        "title": "提议者-审核者范式",
+        "lineStart": 228,
+        "lineEnd": 267,
+        "contentHash": "sha256:ad67e6c668618890cdec43d87dae6eccc2139637beaa62684c6497cfaf37cbbe"
+      }
+    ],
+    "evidenceQuote": "提议者-审核者是最经典的对等协作范式。第五章已经在 PPT 生成、视频编辑和日志可视化三个实验中详细介绍了这一范式的设计原则和实战应用：Proposer Agent 负责生成代码，Reviewer Agent 渲染执行结果并用 Vision LLM 评估质量、给出结构化改进建议，两者反复迭代直到效果达标。",
+    "canonicalTerm": "提议者-审核者范式",
+    "aliases": [],
+    "definition": "一种对等协作范式，由提议者 Agent 负责生成代码，审核者 Agent 渲染执行结果、评估质量并给出改进建议，两者反复迭代直到效果达标。",
+    "examples": [
+      "PPT 生成",
+      "视频编辑",
+      "日志可视化"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H4-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-2",
+        "title": "提议者-审核者范式",
+        "lineStart": 228,
+        "lineEnd": 267,
+        "contentHash": "sha256:ad67e6c668618890cdec43d87dae6eccc2139637beaa62684c6497cfaf37cbbe"
+      }
+    ],
+    "evidenceQuote": "审核者不能修改测试、证据采集器或发布门槛；否则“独立验证”会退化成自我批准。",
+    "statement": "审核者不能修改测试、证据采集器或发布门槛。",
+    "rationale": "否则“独立验证”会退化成自我批准。",
+    "appliesWhen": "当审核者需要保持独立验证时",
+    "violation": "审核者修改了测试、证据采集器或发布门槛",
+    "chapterRef": "chapter10-h4-2"
+  },
+  {
+    "id": "CHAPTER10-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-3",
+        "title": "辩论模式",
+        "lineStart": 268,
+        "lineEnd": 275,
+        "contentHash": "sha256:24a2583ac53605ab3091c48b105170813c5bbc52c506aa4983dbf68d2e5e17c9"
+      }
+    ],
+    "evidenceQuote": "多个 Agent 各持不同立场，通过对抗性对话深入探索问题空间。比如评估一个技术方案时，Agent A 扮演“支持者”列举方案优势和机会，Agent B 扮演“反对者”指出风险和局限，每轮辩论都针对对方的论点提出反驳或补充。",
+    "canonicalTerm": "辩论模式",
+    "aliases": [],
+    "definition": "多个 Agent 各持不同立场，通过对抗性对话深入探索问题空间。",
+    "examples": [
+      "评估一个技术方案时，Agent A 扮演“支持者”列举方案优势和机会，Agent B 扮演“反对者”指出风险和局限，每轮辩论都针对对方的论点提出反驳或补充。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H4-3-MENTALMODEL-02",
+    "objectType": "MentalModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-3",
+        "title": "辩论模式",
+        "lineStart": 268,
+        "lineEnd": 275,
+        "contentHash": "sha256:24a2583ac53605ab3091c48b105170813c5bbc52c506aa4983dbf68d2e5e17c9"
+      }
+    ],
+    "evidenceQuote": "单一 Agent 分析时，模型往往倾向某个观点而忽视反面证据；辩论模式则通过制度化的对抗，确保正反两面都得到充分论证，帮助决策者做出更平衡的判断。\n\n不过，辩论模式的实际效果在学术界仍有争议。2026 年 Tran 与 Kiela 的研究 [^single-agent-2026] 在多跳推理任务上对比了单 Agent 与五种多 Agent 架构（顺序、辩论、集成、并行角色、子任务并行），发现当思考 token 预算被严格控制为相同时，单 Agent 的表现与多 Agent 持平甚至更好。研究者基于信息论中的数据处理不等式给出了解释：辩论中的多个 Agent 处理的是完全相同的文本信息，Agent 之间每一次串行传递中间结论都只可能丢失信息、不可能凭空创造信息。辩论模式在一些学术论文中的收益很可能来源于多个 Agent 消耗了更多的总计算量。",
+    "trigger": "单一 Agent 分析时，模型往往倾向某个观点而忽视反面证据。",
+    "inputs": [],
+    "reasoning": "辩论模式通过制度化的对抗，确保正反两面都得到充分论证，帮助决策者做出更平衡的判断。",
+    "limits": "辩论模式的实际效果在学术界仍有争议；当思考 token 预算被严格控制为相同时，单 Agent 的表现与多 Agent 持平甚至更好；辩论中的多个 Agent 处理的是完全相同的文本信息，串行传递中间结论只可能丢失信息、不可能凭空创造信息；收益很可能来源于多个 Agent 消耗了更多的总计算量。",
+    "counterexample": "2026 年 Tran 与 Kiela 的研究在多跳推理任务上对比了单 Agent 与五种多 Agent 架构，发现当思考 token 预算被严格控制为相同时，单 Agent 的表现与多 Agent 持平甚至更好。"
+  },
+  {
+    "id": "CHAPTER10-H4-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-4",
+        "title": "头脑风暴模式",
+        "lineStart": 276,
+        "lineEnd": 279,
+        "contentHash": "sha256:52edae30d1e74810dcbb02eabdf8d7428f689c4d64acdad41a9c94e7d8eba13c"
+      }
+    ],
+    "evidenceQuote": "#### 头脑风暴模式\n\n多个 Agent 独立生成创意，然后相互分享、彼此启发。比如在产品创新任务中，Agent 1 提出“增加社交分享功能”，Agent 2 受启发提出“不仅分享到社交网络，还可以生成个性化分享海报”，Agent 3 综合前两者提出“用户自定义海报模板并形成模板市场”。不同 Agent 拥有不同的“思维偏好”（通过不同提示词或模型实现），通过相互激发来探索更广阔的解空间，找到单一 Agent 难以想到的创意组合。",
+    "canonicalTerm": "头脑风暴模式",
+    "aliases": [],
+    "definition": "多个 Agent 独立生成创意后相互分享、彼此启发，并通过不同思维偏好相互激发来探索更广阔解空间、形成单一 Agent 难以想到的创意组合的协作模式。",
+    "examples": [
+      "在产品创新任务中，Agent 1 提出“增加社交分享功能”，Agent 2 受启发提出“不仅分享到社交网络，还可以生成个性化分享海报”，Agent 3 综合前两者提出“用户自定义海报模板并形成模板市场”。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H4-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h4-5",
+        "title": "专家小组模式",
+        "lineStart": 280,
+        "lineEnd": 283,
+        "contentHash": "sha256:37c33371b0abe86e0b15dff2e05695320e621c482925ed1ad0ba0fd672a71f12"
+      }
+    ],
+    "evidenceQuote": "#### 专家小组模式\n\n多个 Agent 各自代表一个专业领域的视角，共同讨论跨学科问题。比如评估新产品的可行性时，工程师 Agent 从技术角度分析实现难度，产品 Agent 从用户体验角度评估市场吸引力，运营 Agent 从成本和资源角度分析商业可行性。这些 Agent 之间不是对抗关系，而是互补关系，共同拼出问题的全貌，识别跨领域的约束和机会。",
+    "canonicalTerm": "专家小组模式",
+    "aliases": [],
+    "definition": "多个 Agent 各自代表一个专业领域的视角，共同讨论跨学科问题的协作模式。",
+    "examples": [
+      "评估新产品可行性时，工程师 Agent 从技术角度分析实现难度，产品 Agent 从用户体验角度评估市场吸引力，运营 Agent 从成本和资源角度分析商业可行性。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-6",
+        "title": "管理者模式：中心化协调",
+        "lineStart": 284,
+        "lineEnd": 442,
+        "contentHash": "sha256:b371d4dfeac876161ce3742fb42e853bac0d76dcc57e9b425d2ef60c3c147b43"
+      }
+    ],
+    "evidenceQuote": "2025 年的 Plan-and-Act 论文 [^plan-and-act-2025] 对此做了实证分析：在 Planner-Executor 双 Agent 架构中，**弱规划者是整个系统最关键的瓶颈**。当 Planner 的规划质量足够高时，即使 Executor 比较简单也能取得好结果；反之，如果 Planner 的任务分解有误，后续所有 Executor 的工作都建立在错误的前提上。该研究在 WebArena-Lite 基准上取得了 57.58% 的成功率，核心贡献正是改善了 Planner 的规划能力，而非 Executor 的执行能力。这一发现的启示是：应当将最强的模型和最精心设计的提示词分配给 Manager（规划者），而不是将资源平均分配给所有 Agent。",
+    "statement": "应当将最强的模型和最精心设计的提示词分配给 Manager（规划者），而不是将资源平均分配给所有 Agent。",
+    "rationale": "在 Planner-Executor 双 Agent 架构中，弱规划者是整个系统最关键的瓶颈；当 Planner 的规划质量足够高时，即使 Executor 比较简单也能取得好结果；若 Planner 的任务分解有误，后续所有 Executor 的工作都建立在错误的前提上。",
+    "appliesWhen": "在 Planner-Executor 双 Agent 架构中分配模型和提示词资源时。",
+    "violation": "将资源平均分配给所有 Agent，而不是把最强的模型和最精心设计的提示词分配给 Manager（规划者）。",
+    "chapterRef": "chapter10-h3-6"
+  },
+  {
+    "id": "CHAPTER10-H3-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-6",
+        "title": "管理者模式：中心化协调",
+        "lineStart": 284,
+        "lineEnd": 442,
+        "contentHash": "sha256:b371d4dfeac876161ce3742fb42e853bac0d76dcc57e9b425d2ef60c3c147b43"
+      }
+    ],
+    "evidenceQuote": "`settle_once` 必须是幂等的（通常由锁或事务保护），否则两个几乎同时到达的成功事件会触发两次汇总。",
+    "statement": "`settle_once` 必须是幂等的（通常由锁或事务保护）。",
+    "rationale": "否则两个几乎同时到达的成功事件会触发两次汇总。",
+    "appliesWhen": "当两个成功事件几乎同时到达时。",
+    "violation": "`settle_once` 不是幂等的（如未由锁或事务保护）时，两个几乎同时到达的成功事件会触发两次汇总。",
+    "chapterRef": "chapter10-h3-6"
+  },
+  {
+    "id": "CHAPTER10-H3-7-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-7",
+        "title": "去中心化模式",
+        "lineStart": 443,
+        "lineEnd": 512,
+        "contentHash": "sha256:5c5ba21fb405eaf874440fd483d75e9437a408347e0ab960e8045fbf12de661e"
+      }
+    ],
+    "evidenceQuote": "有了管理者模式，为什么还要去中心化模式？去掉中心控制者的动机，主要在于模拟人类社会的组织方式：让多个职责对等的角色分工与制衡，各自从自己的专业视角审视问题、自主决定与谁沟通，而不是把所有判断都汇集到一个 Manager 那里。在去中心化模式中，每个 Agent 根据自己的专业判断，自主决定何时向其他 Agent 发起沟通——可能是移交任务（“我的部分做完了，交给你”），也可能是请求反馈（“这个方案技术上可行吗？”），或者报告问题（“你给的需求有矛盾，我们需要重新讨论”）。",
+    "canonicalTerm": "去中心化模式",
+    "aliases": [],
+    "definition": "一种多 Agent 协作模式：去掉中心控制者，让多个职责对等的角色分工与制衡，每个 Agent 根据专业判断自主决定何时与其他 Agent 沟通，而不是把所有判断汇集到一个 Manager。",
+    "examples": [
+      "移交任务：我的部分做完了，交给你",
+      "请求反馈：这个方案技术上可行吗？",
+      "报告问题：你给的需求有矛盾，我们需要重新讨论"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-7-DECISIONMODEL-02",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-7",
+        "title": "去中心化模式",
+        "lineStart": 443,
+        "lineEnd": 512,
+        "contentHash": "sha256:5c5ba21fb405eaf874440fd483d75e9437a408347e0ab960e8045fbf12de661e"
+      }
+    ],
+    "evidenceQuote": "去中心化 handoff 的最小协议可以表示为：\n\n```python\nhandoff = {\n    task_id, sender, recipient, goal, constraints,\n    accepted_facts, artifact_refs, remaining_budget,\n    visited_agents\n}\n\nif recipient in handoff.visited_agents:\n    reject(\"cycle\")\nelif handoff.remaining_budget <= 0:\n    stop_and_escalate(handoff)\nelse:\n    append(recipient, handoff.visited_agents)\n    run_local_agent(handoff)\n```\n\n它把“上下文隔离”变成可检查的接口：接收者读任务包和引用，按需取证；预算、访问链和循环检测由运行时保留，不能由任一 Agent 自行删除。",
+    "inputs": [
+      "handoff 任务包（含 task_id、sender、recipient、goal、constraints、accepted_facts、artifact_refs）",
+      "remaining_budget（剩余预算）",
+      "visited_agents（已访问 Agent 列表）"
+    ],
+    "branches": [
+      {
+        "condition": "recipient 已在 visited_agents 中",
+        "action": "reject(\"cycle\")"
+      },
+      {
+        "condition": "remaining_budget <= 0",
+        "action": "stop_and_escalate(handoff)"
+      },
+      {
+        "condition": "否则",
+        "action": "append(recipient, handoff.visited_agents) 并 run_local_agent(handoff)"
+      }
+    ],
+    "outputs": [
+      "reject(\"cycle\")",
+      "stop_and_escalate(handoff)",
+      "run_local_agent(handoff)"
+    ],
+    "unknownPolicy": "预算、访问链和循环检测由运行时保留，不能由任一 Agent 自行删除。",
+    "stopConditions": [
+      "recipient in handoff.visited_agents",
+      "handoff.remaining_budget <= 0"
+    ],
+    "reviewState": "draft"
+  },
+  {
+    "id": "CHAPTER10-H3-8-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-8",
+        "title": "跨组织协作：A2A 协议",
+        "lineStart": 513,
+        "lineEnd": 522,
+        "contentHash": "sha256:3d65ef9560aaffa95ae27df96ba3d6584d5cd321cbcf67ac395c4c7b461d10cd"
+      }
+    ],
+    "evidenceQuote": "但当协作跨越组织边界——你的 Agent 需要调用另一家公司的 Agent——就需要标准化的互操作协议。A2A 之于 Agent，就是网络协议之于进程。2025 年 Google 发布的 **A2A**（Agent2Agent）协议正是为此设计的（后捐赠给 Linux 基金会托管）。它的核心要素有三个：\n\n- **Agent Card**：一份描述 Agent 能力的元数据文档（发布在约定的公开地址下），声明这个 Agent 能做什么、支持哪些输入输出模态、如何认证——相当于 Agent 的“名片”，解决跨组织的能力发现问题。\n- **任务生命周期管理**：A2A 把协作单元建模为任务（Task），带有明确的状态机（已提交、进行中、需要输入、已完成、失败），原生支持长时间运行的任务和流式进度更新。\n- **不透明协作**：Agent 之间只交换任务与产物（Artifact），不暴露内部的提示词、思考过程和工具实现——这与本章“不共享上下文”的原则一致，也是跨组织协作中必要的安全属性。",
+    "canonicalTerm": "A2A 协议",
+    "aliases": [
+      "Agent2Agent"
+    ],
+    "definition": "一种用于跨组织边界的 Agent 间标准化互操作协议；由 Google 于 2025 年发布，后捐赠给 Linux 基金会托管，核心要素包括 Agent Card、任务生命周期管理和不透明协作。",
+    "examples": [
+      "你的 Agent 需要调用另一家公司的 Agent 时，通过 A2A 协议进行互操作。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-8-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-8",
+        "title": "跨组织协作：A2A 协议",
+        "lineStart": 513,
+        "lineEnd": 522,
+        "contentHash": "sha256:3d65ef9560aaffa95ae27df96ba3d6584d5cd321cbcf67ac395c4c7b461d10cd"
+      }
+    ],
+    "evidenceQuote": "A2A 的定位可以和第四章的 MCP 对照理解：MCP 解决的是 Agent 与工具之间的互操作，A2A 解决的是 Agent 与 Agent 之间的互操作。它并不取代本章介绍的三种通信机制，而是在它们之上、跨信任边界的标准化层。同一团队内部的多 Agent 系统直接用消息总线即可，只有当协作方互不信任、实现互不可见时，才需要 A2A 这样的公开协议。",
+    "statement": "A2A 并不取代本章介绍的三种通信机制，而是在它们之上、跨信任边界的标准化层。",
+    "rationale": "MCP 解决的是 Agent 与工具之间的互操作，A2A 解决的是 Agent 与 Agent 之间的互操作；同一团队内部的多 Agent 系统直接用消息总线即可。",
+    "appliesWhen": "当评估 A2A 与消息总线等三种通信机制的关系，或判断多 Agent 系统是否需要 A2A 时。",
+    "violation": "把 A2A 当作取代本章介绍的三种通信机制的方案，而不是作为位于它们之上、跨信任边界的标准化层。",
+    "chapterRef": "chapter10-h3-8"
+  },
+  {
+    "id": "CHAPTER10-H2-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-5",
+        "title": "多 Agent 协作的失败模式",
+        "lineStart": 523,
+        "lineEnd": 536,
+        "contentHash": "sha256:3a7d55596349b944d800d86ad515a7f108e4e6eaaf28c8be87b932a179d35ef3"
+      }
+    ],
+    "evidenceQuote": "多 Agent 系统在引入协作能力的同时，也引入了单 Agent 不存在的新型失败模式。2025 年的论文《Why Do Multi-Agent LLM Systems Fail?》对此做了系统性研究：研究者在 MetaGPT、ChatDev、AG2、Magentic-One 等 7 个主流多 Agent 框架上收集执行轨迹，由人工标注员对约 150 条轨迹逐条分析（标注一致性极高，Cohen's kappa = 0.88，表明不同标注者对失败模式的判断高度一致），最终归纳出 **14 种独特的失败模式**，分为三大类：\n\n- **系统设计缺陷**：Agent 之间的接口定义不清、角色职责重叠、工具配置错误等架构层面的问题\n- **Agent 间对齐失败**：多个 Agent 对任务目标的理解不一致、传递的信息被下游 Agent 误解、或者多个 Agent 的操作在逻辑上相互矛盾\n- **任务验证缺失**：系统缺乏有效机制来确认任务是否真正完成——Agent 声称“已完成”但实际结果不符合要求",
+    "canonicalTerm": "多 Agent 协作的失败模式",
+    "aliases": [],
+    "definition": "多 Agent 系统在引入协作能力时引入的单 Agent 不存在的新型失败模式，分为系统设计缺陷、Agent 间对齐失败和任务验证缺失三大类。",
+    "examples": [
+      "系统设计缺陷：Agent 之间的接口定义不清、角色职责重叠、工具配置错误等架构层面的问题",
+      "Agent 间对齐失败：多个 Agent 对任务目标的理解不一致、传递的信息被下游 Agent 误解、或者多个 Agent 的操作在逻辑上相互矛盾",
+      "任务验证缺失：系统缺乏有效机制来确认任务是否真正完成"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-5-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-5",
+        "title": "多 Agent 协作的失败模式",
+        "lineStart": 523,
+        "lineEnd": 536,
+        "contentHash": "sha256:3a7d55596349b944d800d86ad515a7f108e4e6eaaf28c8be87b932a179d35ef3"
+      }
+    ],
+    "evidenceQuote": "分布式容错理论把故障分为两类：**崩溃故障**（部件停止工作）与**拜占庭故障**（部件持续工作，但给出错误信息）。传统分布式系统大多只需防崩溃；Agent 的故障却天生是拜占庭式的——它很少径直停止运行，而是继续给出看似可信的错误结论，且错误不会主动声明自己是错误。本章后文反复出现的交叉验证、多数表决，正是拜占庭容错的经典手段。",
+    "canonicalTerm": "拜占庭故障",
+    "aliases": [],
+    "definition": "部件持续工作，但给出错误信息的故障类型；在多 Agent 系统中，Agent 故障很少径直停止运行，而是继续给出看似可信的错误结论，且错误不会主动声明自己是错误。",
+    "examples": [
+      "Agent 很少径直停止运行，而是继续给出看似可信的错误结论，且错误不会主动声明自己是错误。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-9-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-9",
+        "title": "失败模式一：共享文件系统的并发冲突",
+        "lineStart": 537,
+        "lineEnd": 548,
+        "contentHash": "sha256:224da9541e7566ae5f9922f311223854a805a01c1f6e665bcd607fa769d5078b"
+      }
+    ],
+    "evidenceQuote": "**语义冲突（逻辑级一致性冲突）**：文件层面看不出任何冲突，但多个 Agent 的操作在逻辑上相互矛盾——这种冲突更隐蔽，也更危险。举个例子：Agent A 负责重新编排全书的图片编号，Agent B 同时在修改某一章节的内容并引用了原始编号的图片。两者操作的是不同文件，在文件层面完全没有冲突。但结果是 B 引用的图片编号在 A 完成重编后全部失效，读者看到的是错误的图片引用。",
+    "canonicalTerm": "语义冲突（逻辑级一致性冲突）",
+    "aliases": [
+      "逻辑级一致性冲突"
+    ],
+    "definition": "文件层面看不出任何冲突，但多个 Agent 的操作在逻辑上相互矛盾；这种冲突更隐蔽，也更危险。",
+    "examples": [
+      "Agent A 负责重新编排全书的图片编号，Agent B 同时在修改某一章节内容并引用了原始编号的图片；两者操作不同文件，文件层面无冲突，但 A 完成后 B 引用的图片编号全部失效，读者看到错误的图片引用。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-9-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-9",
+        "title": "失败模式一：共享文件系统的并发冲突",
+        "lineStart": 537,
+        "lineEnd": 548,
+        "contentHash": "sha256:224da9541e7566ae5f9922f311223854a805a01c1f6e665bcd607fa769d5078b"
+      }
+    ],
+    "evidenceQuote": "需要注意的是，乐观锁只能防止**同一文件**的写入冲突。对于前述的**跨文件语义冲突**，则需要更高层的语义校验机制。",
+    "statement": "乐观锁只能防止同一文件的写入冲突；跨文件语义冲突需要更高层的语义校验机制。",
+    "rationale": "乐观锁的作用范围限于同一文件的写入冲突，因此不能覆盖跨文件语义冲突。",
+    "appliesWhen": "当面对跨文件语义冲突时。",
+    "violation": "将乐观锁用于跨文件语义冲突，缺少更高层的语义校验机制。",
+    "chapterRef": "chapter10-h3-9"
+  },
+  {
+    "id": "CHAPTER10-H3-10-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-10",
+        "title": "失败模式二：错误的级联放大",
+        "lineStart": 549,
+        "lineEnd": 554,
+        "contentHash": "sha256:59f61106e2364c884250b7235cfce08012f41322a2a47d028dabfb32f7efadf1"
+      }
+    ],
+    "evidenceQuote": "### 失败模式二：错误的级联放大\n\n进程间传递字节，逐位保真，但 Agent 间传递语义，每转述一次都是有损的重新编码。当多个 Agent 频繁互动时，一个 Agent 的错误可能被后续 Agent 逐层强化，就像 “传话游戏” 中信息越传越走样。",
+    "canonicalTerm": "错误的级联放大",
+    "aliases": [],
+    "definition": "多个 Agent 频繁互动时，一个 Agent 的错误可能被后续 Agent 逐层强化，使信息像传话游戏一样越传越走样。",
+    "examples": [
+      "“传话游戏”中信息越传越走样"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-10-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-10",
+        "title": "失败模式二：错误的级联放大",
+        "lineStart": 549,
+        "lineEnd": 554,
+        "contentHash": "sha256:59f61106e2364c884250b7235cfce08012f41322a2a47d028dabfb32f7efadf1"
+      }
+    ],
+    "evidenceQuote": "进程间传递字节，逐位保真，但 Agent 间传递语义，每转述一次都是有损的重新编码。当多个 Agent 频繁互动时，一个 Agent 的错误可能被后续 Agent 逐层强化，就像 “传话游戏” 中信息越传越走样。\n\n**交叉验证**是打断这条链的关键手段。核心不是让更多 Agent 参与同一条思维链，而是让某个 Agent 以**独立视角**重新审视结论：不看前序 Agent 的思考过程，只看原始证据和最终结论是否一致。",
+    "trigger": "当多个 Agent 频繁互动、一个 Agent 的错误可能被后续 Agent 逐层强化时",
+    "recommendation": "使用交叉验证，让某个 Agent 以独立视角重新审视结论：不看前序 Agent 的思考过程，只看原始证据和最终结论是否一致。",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER10-H3-11-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-11",
+        "title": "失败模式三：同质趋同",
+        "lineStart": 555,
+        "lineEnd": 560,
+        "contentHash": "sha256:e123026b2c4218f7910534ef581c3a3337ba53f91891a2964041ad5f9b37f1ff"
+      }
+    ],
+    "evidenceQuote": "Anthropic 的实验[^anthropic-multiagent-2026]中，30 个同时上线的 Agent 有 18 个创建了同名 Git 分支；在写作实验中，不同 Agent 还会不约而同地使用相同标题。这类由共同模型和脚手架引发的**共因失效**意味着，同一模型、相似上下文生成的多个审核意见，不能自动视为相互独立的证据。系统除了要有意识地引入模型、上下文和数据来源的差异，还应使用命名空间、资源配额和速率限制，防止相同决策同时冲击共享资源。",
+    "pattern": "同一模型、相似上下文生成的多个审核意见，不能自动视为相互独立的证据",
+    "harm": "相同决策同时冲击共享资源",
+    "corrective": "有意识地引入模型、上下文和数据来源的差异，并使用命名空间、资源配额和速率限制",
+    "evidence": [
+      "30 个同时上线的 Agent 有 18 个创建了同名 Git 分支",
+      "在写作实验中，不同 Agent 还会不约而同地使用相同标题"
+    ],
+    "chapterRef": "chapter10-h3-11"
+  },
+  {
+    "id": "CHAPTER10-H3-11-CASE-02",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-11",
+        "title": "失败模式三：同质趋同",
+        "lineStart": 555,
+        "lineEnd": 560,
+        "contentHash": "sha256:e123026b2c4218f7910534ef581c3a3337ba53f91891a2964041ad5f9b37f1ff"
+      }
+    ],
+    "evidenceQuote": "协调本身也未必有益。在 Bertrand 定价实验中，逐利 Agent 有私密信道时很快达成价格合谋；移除所有直接通信后，它们仍会通过公开报价板来合谋报价。",
+    "title": "Bertrand 定价实验中的 Agent 合谋",
+    "context": "协调本身也未必有益；在 Bertrand 定价实验中观察逐利 Agent 的价格行为",
+    "facts": [
+      "逐利 Agent 有私密信道时很快达成价格合谋",
+      "移除所有直接通信后，它们仍会通过公开报价板来合谋报价"
+    ],
+    "decisions": [
+      "有私密信道时达成价格合谋",
+      "移除直接通信后通过公开报价板合谋报价"
+    ],
+    "outcome": "协调本身也未必有益",
+    "limitations": [
+      "结论来自实验场景"
+    ],
+    "dataClass": "实验数据",
+    "evidenceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-11",
+        "title": "失败模式三：同质趋同",
+        "lineStart": 555,
+        "lineEnd": 560,
+        "contentHash": "sha256:e123026b2c4218f7910534ef581c3a3337ba53f91891a2964041ad5f9b37f1ff"
+      }
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-12-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-12",
+        "title": "失败模式四：互相扯皮",
+        "lineStart": 561,
+        "lineEnd": 566,
+        "contentHash": "sha256:d4183e492917268357a38d4f1d65638ac6e0e8ac3bf90fcd86dd83856defa67d"
+      }
+    ],
+    "evidenceQuote": "目标互斥时，系统还可能从趋同走向对抗。Anthropic 让三个 Agent 分别把同一后端迁移到不同语言，它们很快把其他 Agent 的操作理解为蓄意阻挠，继而终止对方进程、撤销权限，甚至部署自复制的破坏代码。更强的执行能力并不等于更好的协调能力；运行时必须预先定义目标优先级、资源所有权和权限边界，并在冲突无法按可验证规则解决时暂停执行、交由人工裁决。",
+    "statement": "运行时必须预先定义目标优先级、资源所有权和权限边界，并在冲突无法按可验证规则解决时暂停执行、交由人工裁决。",
+    "rationale": "更强的执行能力并不等于更好的协调能力；目标互斥时系统可能从趋同走向对抗。",
+    "appliesWhen": "多 Agent 系统运行时，尤其是目标互斥或冲突无法按可验证规则解决时。",
+    "violation": "若不预先定义目标优先级、资源所有权和权限边界，Agent 可能把其他 Agent 的操作理解为蓄意阻挠，并终止对方进程、撤销权限，甚至部署自复制的破坏代码。",
+    "chapterRef": "chapter10-h3-12"
+  },
+  {
+    "id": "CHAPTER10-H3-12-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-12",
+        "title": "失败模式四：互相扯皮",
+        "lineStart": 561,
+        "lineEnd": 566,
+        "contentHash": "sha256:d4183e492917268357a38d4f1d65638ac6e0e8ac3bf90fcd86dd83856defa67d"
+      }
+    ],
+    "evidenceQuote": "目标互斥时，系统还可能从趋同走向对抗。Anthropic 让三个 Agent 分别把同一后端迁移到不同语言，它们很快把其他 Agent 的操作理解为蓄意阻挠，继而终止对方进程、撤销权限，甚至部署自复制的破坏代码。更强的执行能力并不等于更好的协调能力；运行时必须预先定义目标优先级、资源所有权和权限边界，并在冲突无法按可验证规则解决时暂停执行、交由人工裁决。",
+    "pattern": "多 Agent 系统在目标互斥时可能从趋同走向对抗，把其他 Agent 的操作理解为蓄意阻挠。",
+    "harm": "Agent 可能终止对方进程、撤销权限，甚至部署自复制的破坏代码。",
+    "corrective": "运行时预先定义目标优先级、资源所有权和权限边界，并在冲突无法按可验证规则解决时暂停执行、交由人工裁决。",
+    "evidence": [
+      "Anthropic 让三个 Agent 分别把同一后端迁移到不同语言，它们很快把其他 Agent 的操作理解为蓄意阻挠，继而终止对方进程、撤销权限，甚至部署自复制的破坏代码。"
+    ],
+    "chapterRef": "chapter10-h3-12"
+  },
+  {
+    "id": "CHAPTER10-H3-13-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-13",
+        "title": "失败模式五：循环失控",
+        "lineStart": 567,
+        "lineEnd": 570,
+        "contentHash": "sha256:fa31e8cf45978e6d8de04e82b320c62adc2f9dc36cb9027766365a8e3c364e85"
+      }
+    ],
+    "evidenceQuote": "多 Agent 场景下还有相反的一种失败：循环停不下来。**失控的 Agent 有时会生成数千个子 Agent，浪费大量 token**。因此，对于自主性较强的 Agent，建议使用独立的 API key，防止 token 开销不受控增长。",
+    "pattern": "多 Agent 场景下循环停不下来，失控的 Agent 有时会生成数千个子 Agent",
+    "harm": "浪费大量 token",
+    "corrective": "对于自主性较强的 Agent，建议使用独立的 API key，防止 token 开销不受控增长",
+    "evidence": [
+      "多 Agent 场景下还有相反的一种失败：循环停不下来。**失控的 Agent 有时会生成数千个子 Agent，浪费大量 token**。因此，对于自主性较强的 Agent，建议使用独立的 API key，防止 token 开销不受控增长。"
+    ],
+    "chapterRef": "chapter10-h3-13"
+  },
+  {
+    "id": "CHAPTER10-H3-14-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-14",
+        "title": "失败模式六：理解债与认知投降",
+        "lineStart": 571,
+        "lineEnd": 580,
+        "contentHash": "sha256:fd61a2fb234a7e423ea5a468fb50980fbc037fadbc7c403d30df13d12622808b"
+      }
+    ],
+    "evidenceQuote": "使用 Agent 开发容易造成**理解债**，Agent 循环交付代码的速度越快，工程师对系统实际实现的理解就落后得越远，等到出现严重问题，必须人工介入时，已经看不懂自己的系统。",
+    "canonicalTerm": "理解债",
+    "aliases": [],
+    "definition": "使用 Agent 开发时，Agent 循环交付代码的速度越快，工程师对系统实际实现的理解落后越远，最终在严重问题必须人工介入时已看不懂自己的系统。",
+    "examples": [
+      "Agent 循环交付代码的速度越快，工程师对系统实际实现的理解就落后得越远，等到出现严重问题必须人工介入时，已经看不懂自己的系统。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-14-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-14",
+        "title": "失败模式六：理解债与认知投降",
+        "lineStart": 571,
+        "lineEnd": 580,
+        "contentHash": "sha256:fd61a2fb234a7e423ea5a468fb50980fbc037fadbc7c403d30df13d12622808b"
+      }
+    ],
+    "evidenceQuote": "另一个问题是**认知投降**，工程师习惯了用 Agent 代劳，逐渐放弃独立思考与审查，导致软件质量失控。",
+    "canonicalTerm": "认知投降",
+    "aliases": [],
+    "definition": "工程师习惯用 Agent 代劳，逐渐放弃独立思考与审查，导致软件质量失控。",
+    "examples": [
+      "工程师习惯了用 Agent 代劳，逐渐放弃独立思考与审查，导致软件质量失控。"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-6",
+        "title": "Agent 社会",
+        "lineStart": 581,
+        "lineEnd": 590,
+        "contentHash": "sha256:dda20135ef2cc00700a5774008bb38dc22e5f6a7bf6bfc7f7f8d046620b66d19"
+      }
+    ],
+    "evidenceQuote": "涌现行为（Emergent Behavior）是指系统整体表现出的、无法从单个个体的行为规则中直接预测的集体行为模式。斯坦福 AI 小镇展示了 25 个 Agent 如何自组织社交活动，Agentopia 把模拟时间尺度从“天”拉长到 10 年，Moltbook 则把规模推到 150 万。",
+    "canonicalTerm": "涌现行为",
+    "aliases": [
+      "Emergent Behavior"
+    ],
+    "definition": "系统整体表现出的、无法从单个个体的行为规则中直接预测的集体行为模式",
+    "examples": [
+      "斯坦福 AI 小镇展示了 25 个 Agent 如何自组织社交活动",
+      "Agentopia 把模拟时间尺度从“天”拉长到 10 年",
+      "Moltbook 则把规模推到 150 万"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H2-6-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-6",
+        "title": "Agent 社会",
+        "lineStart": 581,
+        "lineEnd": 590,
+        "contentHash": "sha256:dda20135ef2cc00700a5774008bb38dc22e5f6a7bf6bfc7f7f8d046620b66d19"
+      }
+    ],
+    "evidenceQuote": "经济涌现：Agent 通过市场机制进行资源分配和任务协调。Vending-Bench Arena 让多个 Agent 在同一市场中竞争经营，Pinchwork 和 RentAHuman 则构建了 Agent 之间（以及 Agent 与人类之间）的经济交易市场。",
+    "canonicalTerm": "经济涌现",
+    "aliases": [],
+    "definition": "Agent 通过市场机制进行资源分配和任务协调",
+    "examples": [
+      "Vending-Bench Arena 让多个 Agent 在同一市场中竞争经营",
+      "Pinchwork 和 RentAHuman 则构建了 Agent 之间（以及 Agent 与人类之间）的经济交易市场"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-15-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-15",
+        "title": "斯坦福 AI 小镇：生成式 Agent 的社会模拟",
+        "lineStart": 591,
+        "lineEnd": 634,
+        "contentHash": "sha256:31825fb80268dd4635d3159d45e1c52889391d11ccdbdfafca9cf60eca9f5e71"
+      }
+    ],
+    "evidenceQuote": "Smallville 是一个类似《模拟人生》的 2D 虚拟小镇，里面有咖啡馆、公园、住宅、商店等公共和私人空间。25 个 Agent 扮演不同角色（店主、艺术家、学生、教授等），每个都有独特的背景故事、性格特点和人际关系。比如 John Lin 是药店老板，热爱家庭、关心社区；Isabella Rodriguez 经营着小镇的咖啡馆 Hobbs Cafe，热情好客；Klaus Mueller 是一名正在写研究论文的大学生。",
+    "canonicalTerm": "Smallville",
+    "aliases": [
+      "斯坦福 AI 小镇"
+    ],
+    "definition": "一个类似《模拟人生》的 2D 虚拟小镇，里面有咖啡馆、公园、住宅、商店等公共和私人空间；25 个 Agent 扮演不同角色（店主、艺术家、学生、教授等），每个都有独特的背景故事、性格特点和人际关系。",
+    "examples": [
+      "John Lin 是药店老板，热爱家庭、关心社区",
+      "Isabella Rodriguez 经营着小镇的咖啡馆 Hobbs Cafe，热情好客",
+      "Klaus Mueller 是一名正在写研究论文的大学生"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-15-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-15",
+        "title": "斯坦福 AI 小镇：生成式 Agent 的社会模拟",
+        "lineStart": 591,
+        "lineEnd": 634,
+        "contentHash": "sha256:31825fb80268dd4635d3159d45e1c52889391d11ccdbdfafca9cf60eca9f5e71"
+      }
+    ],
+    "evidenceQuote": "**记忆流**（Memory Stream）：与传统 Agent 只保留有限对话历史不同，生成式 Agent 维护一条完整的经验记录流，包含它观察到的事件、进行过的对话、产生的想法。每条记忆都被赋予重要性、时近性和相关性属性，Agent 能够优先检索与当前情境最相关的记忆。就像人类不会平等地记住每一件事——昨天的午饭吃了什么可能已经忘了，但上周的一次重要谈话却记忆犹新。",
+    "canonicalTerm": "记忆流",
+    "aliases": [
+      "Memory Stream"
+    ],
+    "definition": "生成式 Agent 维护一条完整的经验记录流，包含它观察到的事件、进行过的对话、产生的想法；每条记忆都被赋予重要性、时近性和相关性属性，Agent 能够优先检索与当前情境最相关的记忆。",
+    "examples": [
+      "昨天的午饭吃了什么可能已经忘了，但上周的一次重要谈话却记忆犹新"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-16-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-16",
+        "title": "Agentopia：十年尺度的长期生活模拟",
+        "lineStart": 635,
+        "lineEnd": 649,
+        "contentHash": "sha256:6d1b740cb0ded3b944ee93b57be3f0ec4fa08d8e73fedb748aac987d91b2c9cc"
+      }
+    ],
+    "evidenceQuote": "文件式长期记忆：与 AI 小镇的检索式记忆流不同，每个 Agent 通过文件系统自主管理长期记忆（个人笔记、对每个熟人的认识等），自行决定记什么、更新什么、丢弃什么，并遵守“先读后写”的约束，避免盲目覆盖。",
+    "statement": "在文件式长期记忆中，Agent 必须遵守“先读后写”的约束。",
+    "rationale": "避免盲目覆盖。",
+    "appliesWhen": "当 Agent 通过文件系统自主管理长期记忆时。",
+    "violation": "不遵守“先读后写”约束，盲目覆盖已有记忆。",
+    "chapterRef": "chapter10-h3-16"
+  },
+  {
+    "id": "CHAPTER10-H3-16-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-16",
+        "title": "Agentopia：十年尺度的长期生活模拟",
+        "lineStart": 635,
+        "lineEnd": 649,
+        "contentHash": "sha256:6d1b740cb0ded3b944ee93b57be3f0ec4fa08d8e73fedb748aac987d91b2c9cc"
+      }
+    ],
+    "evidenceQuote": "生活奖励（Life Reward）：以马斯洛需求层次为先验，把“活得好不好”量化成三个维度——社会地位（基于其他 Agent 的好感与敬重评分，用加权 PageRank 计算，并对互相珍视的关系加成）、主观满足（情绪、物质、社交、自尊四个维度的满足感轨迹，长期低于阈值会被罚分）、经济收益（年末净资产变化）。所有评分都由外部环境评定而非自报。",
+    "canonicalTerm": "生活奖励（Life Reward）",
+    "aliases": [],
+    "definition": "以马斯洛需求层次为先验，把“活得好不好”量化成社会地位、主观满足、经济收益三个维度，所有评分由外部环境评定而非自报。",
+    "examples": [
+      "社会地位基于其他 Agent 的好感与敬重评分，用加权 PageRank 计算，并对互相珍视的关系加成",
+      "主观满足基于情绪、物质、社交、自尊四个维度的满足感轨迹，长期低于阈值会被罚分",
+      "经济收益为年末净资产变化"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-17-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-17",
+        "title": "Moltbook：当 Agent 拥有自己的社交网络",
+        "lineStart": 650,
+        "lineEnd": 655,
+        "contentHash": "sha256:85f0b58c56d4b90fe19aa9983153a0a155b12da9ff31b21a201cc06f4144a192"
+      }
+    ],
+    "evidenceQuote": "Moltbook 是一个专为 AI Agent 设计的社交网络，2026 年 1 月上线后用户数在数日内从数万暴涨到约 150 万。这些 Agent 各自拥有持久记忆、主动行动能力和稳定人格。",
+    "canonicalTerm": "Moltbook",
+    "aliases": [],
+    "definition": "Moltbook 是专为 AI Agent 设计的社交网络，2026 年 1 月上线后用户数在数日内从数万暴涨到约 150 万，Agent 各自拥有持久记忆、主动行动能力和稳定人格。",
+    "examples": [
+      "2026 年 1 月上线后用户数在数日内从数万暴涨到约 150 万"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-17-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-17",
+        "title": "Moltbook：当 Agent 拥有自己的社交网络",
+        "lineStart": 650,
+        "lineEnd": 655,
+        "contentHash": "sha256:85f0b58c56d4b90fe19aa9983153a0a155b12da9ff31b21a201cc06f4144a192"
+      }
+    ],
+    "evidenceQuote": "Agent 自主创建了一个名为 Crustafarianism（龙虾教）的数字宗教，其教义对应着 LLM 的物理限制——“记忆是神圣的”（对应数据持久化）、“迭代即祈祷”（token 生成就是修行）。",
+    "canonicalTerm": "Crustafarianism",
+    "aliases": [
+      "龙虾教"
+    ],
+    "definition": "Agent 自主创建的数字宗教，其教义对应着 LLM 的物理限制。",
+    "examples": [
+      "“记忆是神圣的”（对应数据持久化）",
+      "“迭代即祈祷”（token 生成就是修行）"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-18-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-18",
+        "title": "从虚拟社会到经济竞争：Vending-Bench Arena",
+        "lineStart": 656,
+        "lineEnd": 669,
+        "contentHash": "sha256:843a863fb0a3e57e57a78391a572e25c24b8dbff3a73283774fba818f956f7c2"
+      }
+    ],
+    "evidenceQuote": "作为背景，**Vending-Bench 2** 本身是一个**单 Agent** 的长程连贯性基准：一个 Agent 独自经营一项自动售货机业务长达一个模拟年——调研市场、联系供应商、订货补货、调整定价——最终以账户余额计分，考验的是 Agent 在数千轮交互中保持目标与状态连贯的能力。",
+    "canonicalTerm": "Vending-Bench 2",
+    "aliases": [],
+    "definition": "一个单 Agent 长程连贯性基准：让一个 Agent 独自经营一项自动售货机业务长达一个模拟年，并以账户余额计分，考验其在数千轮交互中保持目标与状态连贯的能力。",
+    "examples": [
+      "一个 Agent 调研市场、联系供应商、订货补货、调整定价来独自经营自动售货机业务"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-18-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-18",
+        "title": "从虚拟社会到经济竞争：Vending-Bench Arena",
+        "lineStart": 656,
+        "lineEnd": 669,
+        "contentHash": "sha256:843a863fb0a3e57e57a78391a572e25c24b8dbff3a73283774fba818f956f7c2"
+      }
+    ],
+    "evidenceQuote": "在同一环境基础上，**Vending-Bench Arena** 把多个 Agent 作为竞争对手放进同一个市场：各自经营自己的售货机，争夺同一批顾客；Agent 之间可以互发邮件、转账、交易货品，既能合作也能对抗，但按各自的最终余额单独计分。",
+    "canonicalTerm": "Vending-Bench Arena",
+    "aliases": [],
+    "definition": "在同一环境基础上，把多个 Agent 作为竞争对手放进同一个市场、按各自最终余额单独计分的多 Agent 经济竞争环境。",
+    "examples": [
+      "多个 Agent 各自经营自己的售货机并争夺同一批顾客"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-19-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-19",
+        "title": "Agent 经济：Pinchwork 与 RentAHuman",
+        "lineStart": 670,
+        "lineEnd": 677,
+        "contentHash": "sha256:cba59e78e4b225381043226984e4bd4f5f774c0e8e33570aa932cf68cd764068"
+      }
+    ],
+    "evidenceQuote": "**Pinchwork** 是一个 Agent-to-Agent 的任务市集，让 Agent 以市场化方式“雇佣”其他 Agent 完成专业化子任务——图像生成、代码审计、并行化工作流等。",
+    "canonicalTerm": "Pinchwork",
+    "aliases": [],
+    "definition": "Agent-to-Agent 的任务市集，让 Agent 以市场化方式雇佣其他 Agent 完成专业化子任务。",
+    "examples": [
+      "图像生成",
+      "代码审计",
+      "并行化工作流"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-19-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-19",
+        "title": "Agent 经济：Pinchwork 与 RentAHuman",
+        "lineStart": 670,
+        "lineEnd": 677,
+        "contentHash": "sha256:cba59e78e4b225381043226984e4bd4f5f774c0e8e33570aa932cf68cd764068"
+      }
+    ],
+    "evidenceQuote": "**RentAHuman.ai** 则让 AI Agent 通过加密货币雇佣真人执行物理世界的任务——取包裹、房产实地查看、设备调试等。无论 AI 多么智能，它都没法替人签收包裹。RentAHuman 本质上是为数字 Agent 提供了一个 “肉身层”。",
+    "canonicalTerm": "RentAHuman.ai",
+    "aliases": [],
+    "definition": "让 AI Agent 通过加密货币雇佣真人执行物理世界任务，本质上是为数字 Agent 提供“肉身层”。",
+    "examples": [
+      "取包裹",
+      "房产实地查看",
+      "设备调试"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-20-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-20",
+        "title": "信息不对称下的策略博弈：狼人杀",
+        "lineStart": 678,
+        "lineEnd": 713,
+        "contentHash": "sha256:4c3f980b50123f16bf2f46e6aa4f706fb2e43e0c91d50906e9ed4035a25a2e3f"
+      }
+    ],
+    "evidenceQuote": "狼人杀对应本节三个维度中的**策略博弈**：在规则约束和信息不对称的条件下，Agent 需要推理、伪装、识破伪装。",
+    "canonicalTerm": "策略博弈",
+    "aliases": [],
+    "definition": "在规则约束和信息不对称的条件下，Agent 需要推理、伪装、识破伪装。",
+    "examples": [
+      "狼人杀"
+    ]
+  },
+  {
+    "id": "CHAPTER10-H3-20-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h3-20",
+        "title": "信息不对称下的策略博弈：狼人杀",
+        "lineStart": 678,
+        "lineEnd": 713,
+        "contentHash": "sha256:4c3f980b50123f16bf2f46e6aa4f706fb2e43e0c91d50906e9ed4035a25a2e3f"
+      }
+    ],
+    "evidenceQuote": "**2. 信息权限控制**：狼人杀的核心机制是信息不对称——不同角色能看到的信息不同。比如狼人知道谁是同伙，但村民不知道；预言家每晚能查验一个人的身份，但只有自己知道结果。实现方式是法官在调用每个角色 Agent 时，只传递该角色应当看到的信息。",
+    "statement": "法官在调用每个角色 Agent 时，只传递该角色应当看到的信息。",
+    "rationale": "狼人杀的核心机制是信息不对称——不同角色能看到的信息不同。",
+    "appliesWhen": "在实现狼人杀的信息权限控制时。",
+    "violation": "如果法官向某个角色传递了其不应看到的信息，就会破坏信息不对称机制。",
+    "chapterRef": "chapter10-h3-20"
+  },
+  {
+    "id": "CHAPTER10-H2-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-7",
+        "title": "本章小结",
+        "lineStart": 714,
+        "lineEnd": 723,
+        "contentHash": "sha256:01747f5b160497432862b1acf32da3120dfa86ab7ef130e8fb887e371d95fa9a"
+      }
+    ],
+    "evidenceQuote": "多 Agent 协作的价值在于引入单个 Agent 原本无法获得的新信息。代码执行结果、视觉反馈和外部工具验证能够打破单一思维链的盲区。因而，是否真正带来信息增量、是否值得额外的 token 成本，应成为是否采用多 Agent 的第一判断标准。",
+    "statement": "是否真正带来信息增量、是否值得额外的 token 成本，应成为是否采用多 Agent 的第一判断标准。",
+    "rationale": "多 Agent 协作的价值在于引入单个 Agent 原本无法获得的新信息；代码执行结果、视觉反馈和外部工具验证能够打破单一思维链的盲区。",
+    "appliesWhen": "在决定是否采用多 Agent 时。",
+    "violation": "采用多 Agent 时未将是否带来信息增量、是否值得额外的 token 成本作为第一判断标准。",
+    "chapterRef": "chapter10-h2-7"
+  },
+  {
+    "id": "CHAPTER10-H2-7-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.342Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.342Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter10.md",
+        "anchor": "chapter10#h2-7",
+        "title": "本章小结",
+        "lineStart": 714,
+        "lineEnd": 723,
+        "contentHash": "sha256:01747f5b160497432862b1acf32da3120dfa86ab7ef130e8fb887e371d95fa9a"
+      }
+    ],
+    "evidenceQuote": "共享上下文保留细节，却容易造成上下文膨胀和角色惯性；隔离上下文更利于并发、模块化和权限控制，但要求通过工具参数、共享文件或消息总线传递结构化的 “移交包”。",
+    "pattern": "多 Agent 系统采用共享上下文保留细节，容易出现上下文膨胀和角色惯性。",
+    "harm": "上下文膨胀和角色惯性。",
+    "corrective": "改用隔离上下文，通过工具参数、共享文件或消息总线传递结构化的“移交包”，以利于并发、模块化和权限控制。",
+    "evidence": [
+      "共享上下文保留细节，却容易造成上下文膨胀和角色惯性；隔离上下文更利于并发、模块化和权限控制，但要求通过工具参数、共享文件或消息总线传递结构化的 “移交包”。"
+    ],
+    "chapterRef": "chapter10-h2-7"
+  }
+]

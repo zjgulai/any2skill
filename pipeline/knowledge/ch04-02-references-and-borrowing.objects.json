@@ -1,0 +1,232 @@
+[
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h2-1",
+        "title": "引用与借用",
+        "lineStart": 1,
+        "lineEnd": 58,
+        "contentHash": "sha256:7c42767db5adc0f50a4575a1c38b095a5235cea5c107aa84e78fab21bab0d12b"
+      }
+    ],
+    "evidenceQuote": "我们将创建一个引用的行为称为 **借用**（*borrowing*）。正如现实生活中，如果一个人拥有某样东西，你可以从他那里借来。当你使用完毕，必须还回去。",
+    "canonicalTerm": "借用",
+    "aliases": [
+      "borrowing"
+    ],
+    "definition": "创建引用的行为称为借用；就像从拥有者处借来某样东西，使用完毕后必须归还。",
+    "examples": [
+      "从拥有某样东西的人那里借来，用完后还回去"
+    ]
+  },
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h2-1",
+        "title": "引用与借用",
+        "lineStart": 1,
+        "lineEnd": 58,
+        "contentHash": "sha256:7c42767db5adc0f50a4575a1c38b095a5235cea5c107aa84e78fab21bab0d12b"
+      }
+    ],
+    "evidenceQuote": "正如变量在默认情况下是不可变的一样，引用也是不可变的。我们无法通过引用修改内容。",
+    "statement": "默认情况下引用是不可变的，无法通过引用修改其指向的内容。",
+    "rationale": "与变量在默认情况下不可变的规则一致。",
+    "appliesWhen": "当代码通过不可变引用尝试修改其指向的内容时。",
+    "violation": "试图通过不可变引用修改内容，代码无法完成修改。",
+    "chapterRef": "ch04-02-references-and-borrowing-h2-1"
+  },
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-1",
+        "title": "可变引用",
+        "lineStart": 59,
+        "lineEnd": 128,
+        "contentHash": "sha256:9f8c97a1b424869fac9876339e83ca334704e8fe8e7866d36d841734357f812d"
+      }
+    ],
+    "evidenceQuote": "首先，我们必须将 `s` 改为 `mut`。然后必须在调用 `change` 函数的地方创建一个可变引用 `&mut s`，并更新函数签名以接受一个可变引用 `some_string: &mut String`。这就非常清楚地表明，`change` 函数将改变它所借用的值。",
+    "canonicalTerm": "可变引用",
+    "aliases": [],
+    "definition": "一种通过 `&mut` 创建的引用，用于表明函数将改变它所借用的值。",
+    "examples": [
+      "&mut s",
+      "some_string: &mut String"
+    ]
+  },
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-1",
+        "title": "可变引用",
+        "lineStart": 59,
+        "lineEnd": 128,
+        "contentHash": "sha256:9f8c97a1b424869fac9876339e83ca334704e8fe8e7866d36d841734357f812d"
+      }
+    ],
+    "evidenceQuote": "这个报错说这段代码是无效的，因为我们不能在同一时间多次将 `s` 作为可变变量借用。第一个可变的借入在 `r1` 中，并且必须持续到在 `println!` 中使用它，但是在那个可变引用的创建和它的使用之间，我们又尝试在 `r2` 中创建另一个可变引用，它借用了与 `r1` 相同的数据。\n\n防止同一时间对同一数据进行多个可变引用的限制允许可变性，不过是以一种受限制的方式允许。新 Rustacean 们经常难以适应这一点，因为大部分语言中变量任何时候都是可变的。\n\n这个限制的好处是 Rust 可以在编译时就避免数据竞争。",
+    "statement": "不能在同一时间多次将同一数据作为可变变量借用。",
+    "rationale": "该限制使可变性以受限制的方式允许，并让 Rust 在编译时避免数据竞争。",
+    "appliesWhen": "当某一数据的可变引用（如 r1）在其最后使用之前，尝试创建另一个指向相同数据的可变引用（如 r2）时。",
+    "violation": "代码无效，无法编译。",
+    "chapterRef": "ch04-02-references-and-borrowing-h3-1"
+  },
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-2",
+        "title": "悬垂引用（Dangling References）",
+        "lineStart": 129,
+        "lineEnd": 170,
+        "contentHash": "sha256:e9fda8b0275851ea2448378c0e4562a02856f3a98ec946db3fa3c56032411988"
+      }
+    ],
+    "evidenceQuote": "在具有指针的语言中，很容易通过释放内存时保留指向它的指针而错误地生成一个 **悬垂指针**（*dangling pointer*），所谓悬垂指针是其指向的内存可能已经被分配给其它持有者。",
+    "canonicalTerm": "悬垂指针",
+    "aliases": [],
+    "definition": "悬垂指针是其指向的内存可能已经被分配给其它持有者的指针。",
+    "examples": [
+      "释放内存时保留指向它的指针"
+    ]
+  },
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-2",
+        "title": "悬垂引用（Dangling References）",
+        "lineStart": 129,
+        "lineEnd": 170,
+        "contentHash": "sha256:e9fda8b0275851ea2448378c0e4562a02856f3a98ec946db3fa3c56032411988"
+      }
+    ],
+    "evidenceQuote": "相比之下，在 Rust 中编译器确保引用永远也不会变成悬垂状态：当你拥有一些数据的引用，编译器确保数据不会在其引用之前离开作用域。",
+    "statement": "在 Rust 中编译器确保引用永远也不会变成悬垂状态。",
+    "rationale": "当你拥有一些数据的引用，编译器确保数据不会在其引用之前离开作用域。",
+    "appliesWhen": "当你拥有一些数据的引用。",
+    "violation": "数据在其引用之前离开作用域。",
+    "chapterRef": "ch04-02-references-and-borrowing-h3-2"
+  },
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-3",
+        "title": "引用的规则",
+        "lineStart": 171,
+        "lineEnd": 181,
+        "contentHash": "sha256:64da66cab4a4a6d7ed71385b673e5b3eba061cb0309f5a0027c3ac0153f0fd14"
+      }
+    ],
+    "evidenceQuote": "让我们概括一下之前对引用的讨论：\n\n* 在任意给定时间，**要么** 只能有一个可变引用，**要么** 只能有多个不可变引用。",
+    "statement": "在任意给定时间，要么只能有一个可变引用，要么只能有多个不可变引用。",
+    "rationale": "原文将其作为对之前引用讨论的概括。",
+    "appliesWhen": "在任意给定时间。",
+    "violation": "同时存在多个可变引用，或同时存在可变引用与不可变引用。",
+    "chapterRef": "ch04-02-references-and-borrowing-h3-3"
+  },
+  {
+    "id": "CH04-02-REFERENCES-AND-BORROWING-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:16:45.959Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:16:45.959Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-02-references-and-borrowing.md",
+        "anchor": "ch04-02-references-and-borrowing#h3-3",
+        "title": "引用的规则",
+        "lineStart": 171,
+        "lineEnd": 181,
+        "contentHash": "sha256:64da66cab4a4a6d7ed71385b673e5b3eba061cb0309f5a0027c3ac0153f0fd14"
+      }
+    ],
+    "evidenceQuote": "让我们概括一下之前对引用的讨论：\n\n* 在任意给定时间，**要么** 只能有一个可变引用，**要么** 只能有多个不可变引用。\n* 引用必须总是有效的。",
+    "statement": "引用必须总是有效的。",
+    "rationale": "原文将其作为对之前引用讨论的概括。",
+    "appliesWhen": "对任何引用。",
+    "violation": "引用无效。",
+    "chapterRef": "ch04-02-references-and-borrowing-h3-3"
+  }
+]

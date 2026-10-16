@@ -1,0 +1,1336 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-b1b4ad10cbcb",
+  "createdAt": "2026-10-14T15:56:02.075Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch10-02-traits.md",
+    "hash": "sha256:9f2092fcdbed3beba5231e86b090e0fcea7d5692cf93832c62facbd176a84e2a",
+    "totalLines": 428
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch10-02-traits#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "objectCount": 1,
+        "objectIds": [
+          "CH10-02-TRAITS-H2-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1566,
+            "output": 5191
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h3-1",
+        "lineStart": 7,
+        "lineEnd": 30,
+        "objectCount": 2,
+        "objectIds": [
+          "CH10-02-TRAITS-H3-1-CONCEPT-01",
+          "CH10-02-TRAITS-H3-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1862,
+            "output": 8269
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h3-2",
+        "lineStart": 31,
+        "lineEnd": 93,
+        "objectCount": 1,
+        "objectIds": [
+          "CH10-02-TRAITS-H3-2-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2416,
+            "output": 5284
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h3-3",
+        "lineStart": 94,
+        "lineEnd": 170,
+        "objectCount": 2,
+        "objectIds": [
+          "CH10-02-TRAITS-H3-3-CONCEPT-01",
+          "CH10-02-TRAITS-H3-3-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2283,
+            "output": 9110
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h3-4",
+        "lineStart": 171,
+        "lineEnd": 184,
+        "objectCount": 2,
+        "objectIds": [
+          "CH10-02-TRAITS-H3-4-CONCEPT-01",
+          "CH10-02-TRAITS-H3-4-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1733,
+            "output": 10574
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h4-1",
+        "lineStart": 185,
+        "lineEnd": 210,
+        "objectCount": 2,
+        "objectIds": [
+          "CH10-02-TRAITS-H4-1-CONCEPT-01",
+          "CH10-02-TRAITS-H4-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1766,
+            "output": 7355
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h4-2",
+        "lineStart": 211,
+        "lineEnd": 226,
+        "objectCount": 1,
+        "objectIds": [
+          "CH10-02-TRAITS-H4-2-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1637,
+            "output": 5492
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h4-3",
+        "lineStart": 227,
+        "lineEnd": 245,
+        "objectCount": 1,
+        "objectIds": [
+          "CH10-02-TRAITS-H4-3-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1685,
+            "output": 6794
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h3-5",
+        "lineStart": 246,
+        "lineEnd": 289,
+        "objectCount": 2,
+        "objectIds": [
+          "CH10-02-TRAITS-H3-5-CONCEPT-01",
+          "CH10-02-TRAITS-H3-5-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1971,
+            "output": 8811
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h3-6",
+        "lineStart": 290,
+        "lineEnd": 369,
+        "objectCount": 2,
+        "objectIds": [
+          "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-01",
+          "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2557,
+            "output": 8542
+          }
+        }
+      },
+      {
+        "anchor": "ch10-02-traits#h3-7",
+        "lineStart": 370,
+        "lineEnd": 428,
+        "objectCount": 2,
+        "objectIds": [
+          "CH10-02-TRAITS-H3-7-CONCEPT-01",
+          "CH10-02-TRAITS-H3-7-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2175,
+            "output": 4510
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 11,
+      "tokens": {
+        "input": 21651,
+        "output": 79932
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch10-02-traits#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1566,
+            "output": 5191
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1862,
+            "output": 8269
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2416,
+            "output": 5284
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 2283,
+            "output": 9110
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1733,
+            "output": 10574
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1766,
+            "output": 7355
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h4-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1637,
+            "output": 5492
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h4-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1685,
+            "output": 6794
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h3-5",
+          "calls": 1,
+          "tokens": {
+            "input": 1971,
+            "output": 8811
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h3-6",
+          "calls": 1,
+          "tokens": {
+            "input": 2557,
+            "output": 8542
+          }
+        },
+        {
+          "anchor": "ch10-02-traits#h3-7",
+          "calls": 1,
+          "tokens": {
+            "input": 2175,
+            "output": 4510
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 11,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 11,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 11,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 11,
+    "tokens": {
+      "input": 21651,
+      "output": 79932
+    },
+    "tokensDetail": {
+      "reasoning": 76037,
+      "cachedInput": 15488
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 18,
+    "tokens": {
+      "input": 20947,
+      "output": 8484
+    },
+    "tokensDetail": {
+      "reasoning": 7700,
+      "cachedInput": 6912
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 18,
+      "verdicts": {
+        "supported": 17,
+        "unsupported": 1
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 17,
+      "deterministic-pass × unsupported": 1
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch10-02-traits.anchors.json",
+      "sha256": "sha256:a6a336a1f3f39c141f72b4e12b1313941f0cbb05b6d78e9cc74a33fa7332e0ec",
+      "bytes": 4143,
+      "anchorCount": 11
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch10-02-traits.objects.json",
+      "sha256": "sha256:8f111ce50d63bcecbf49889235ad7f845865c495dac175aed8b379e36d0bd420",
+      "bytes": 27196,
+      "objectCount": 18
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-b1b4ad10cbcb.layer2-raw.json",
+      "sha256": "sha256:20af7b286fa8912b0e0a9678a87c4e32174efc483210e314ee6da77aa37a504c"
+    }
+  },
+  "counts": {
+    "anchors": 11,
+    "objects": 18,
+    "passed": 17,
+    "rejected": 1,
+    "objectTypes": {
+      "Concept": 10,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 8,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 11,
+    "processedAnchors": 11,
+    "processedKnown": true,
+    "coveredAnchors": 11,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=11，索引锚点数=11）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 7,
+        "covered": 7,
+        "without": 0
+      },
+      "h4": {
+        "index": 3,
+        "covered": 3,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {
+      "JUDGE_NOT_SUPPORTED": 1
+    }
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH10-02-TRAITS-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句包含了主张中关于 trait 告知编译器共享功能以及通过 trait 抽象定义共享行为的全部表述。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-1",
+        "lineStart": 7,
+        "lineEnd": 30
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-1",
+          "lineStart": 7,
+          "lineEnd": 30
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出trait定义是一种将方法签名组合起来以定义实现某些目的所必需行为集合的方法。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-1",
+        "lineStart": 7,
+        "lineEnd": 30
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-1",
+          "lineStart": 7,
+          "lineEnd": 30
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在 trait 声明中，方法签名后跟分号而不是在大括号中提供其实现，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-2",
+        "lineStart": 31,
+        "lineEnd": 93
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-2",
+          "lineStart": 31,
+          "lineEnd": 93
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“但是不能为外部类型实现外部 trait”，并解释当 trait 与类型均不在本地作用域时受限，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-3",
+        "lineStart": 94,
+        "lineEnd": 170
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-3",
+          "lineStart": 94,
+          "lineEnd": 170
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明可以通过空的 `impl Summary for NewsArticle {}` 对 NewsArticle 实例使用默认实现，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-3-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-3",
+        "lineStart": 94,
+        "lineEnd": 170
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-3",
+          "lineStart": 94,
+          "lineEnd": 170
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文直接明确说明默认实现允许调用相同 trait 中无默认实现的其他方法，并指出 trait 因此可提供很多功能而只需实现指定小部分内容。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-4",
+        "lineStart": 171,
+        "lineEnd": 184
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-4",
+          "lineStart": 171,
+          "lineEnd": 184
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明了参数使用 impl 关键字和 trait 名称而非具体类型、支持任何实现该 trait 的类型，并允许函数体调用该 trait 的方法。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-4",
+        "lineStart": 171,
+        "lineEnd": 184
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-4",
+          "lineStart": 171,
+          "lineEnd": 184
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明使用 `impl Summary` 参数时，传入如 `String` 或 `i32` 等未实现 `Summary` 的类型调用该函数不能编译，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 8,
+      "status": "reject",
+      "reasonCode": "JUDGE_NOT_SUPPORTED",
+      "failures": [
+        {
+          "code": "JUDGE_NOT_SUPPORTED",
+          "detail": "判定者判为 unsupported：原文称 `impl Trait` 是 trait bound 这一较长形式的语法糖，而主张把 trait bound 说成 `impl Trait` 的较长形式语法糖，糖关系方向相反。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-1",
+        "lineStart": 185,
+        "lineEnd": 210
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h4-1",
+          "lineStart": 185,
+          "lineEnd": 210
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "reject",
+        "verdict": "unsupported",
+        "reasonCode": "JUDGE_NOT_SUPPORTED",
+        "reason": "原文称 `impl Trait` 是 trait bound 这一较长形式的语法糖，而主张把 trait bound 说成 `impl Trait` 的较长形式语法糖，糖关系方向相反。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H4-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-1",
+        "lineStart": 185,
+        "lineEnd": 210
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h4-1",
+          "lineStart": 185,
+          "lineEnd": 210
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当希望强制两个参数为相同类型时，只有在使用 trait bound 时才有可能，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H4-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-2",
+        "lineStart": 211,
+        "lineEnd": 226
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h4-2",
+          "lineStart": 211,
+          "lineEnd": 226
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了用 `+` 连接多个 trait bound，并给出 `impl Summary + Display` 和 `T: Summary + Display` 两种写法。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H4-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h4-3",
+        "lineStart": 227,
+        "lineEnd": 245
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h4-3",
+          "lineStart": 227,
+          "lineEnd": 245
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 where 从句是在函数签名之后指定 trait bound 的语法，并展示其替代内联 trait bound 且使函数签名更易读。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-5-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-5",
+        "lineStart": 246,
+        "lineEnd": 289
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-5",
+          "lineStart": 246,
+          "lineEnd": 289
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文的标题和正文直接说明了通过 `impl Summary` 返回值类型返回实现 `Summary` trait 的类型但不指定具体类型，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-5",
+        "lineStart": 246,
+        "lineEnd": 289
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-5",
+          "lineStart": 246,
+          "lineEnd": 289
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 impl Summary 只适用于返回单一类型，且返回 NewsArticle 或 Tweet 就行不通。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-6",
+        "lineStart": 290,
+        "lineEnd": 369
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-6",
+          "lineStart": 290,
+          "lineEnd": 369
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明示例 10-15 的泛型 largest 函数要编译，传给 largest 的 slice 值类型需实现 PartialOrd 和 Copy 两个 trait。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-6",
+        "lineStart": 290,
+        "lineEnd": 369
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-6",
+          "lineStart": 290,
+          "lineEnd": 369
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在 largest 函数体中使用 `>` 比较两个 `T` 类型的值，需要在 `T` 的 trait bound 中指定 `PartialOrd`，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-7-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-7",
+        "lineStart": 370,
+        "lineEnd": 428
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-7",
+          "lineStart": 370,
+          "lineEnd": 428
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了使用带 trait bound 的泛型参数 impl 块，可以有条件地只为实现了特定 trait 的类型实现方法，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#017",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH10-02-TRAITS-H3-7-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+        "anchor": "ch10-02-traits#h3-7",
+        "lineStart": 370,
+        "lineEnd": 428
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch10-02-traits.md",
+          "anchor": "ch10-02-traits#h3-7",
+          "lineStart": 370,
+          "lineEnd": 428
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将 blanket implementations 定义为对任何满足特定 trait bound 的类型实现 trait，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#018",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 1,
+  "engineeringFailure": null
+}

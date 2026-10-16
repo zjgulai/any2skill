@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+  "fileKey": "ch20-02-multithreaded",
+  "totalLines": 796,
+  "sourceHash": "sha256:a32e43cd2f3a5485b2fa97bdbb21c6b76f1856e550c61abb49c4376178f3b513",
+  "anchorCount": 11,
+  "levelCounts": {
+    "h2": 1,
+    "h3": 2,
+    "h4": 8
+  },
+  "anchors": [
+    {
+      "anchor": "ch20-02-multithreaded#h2-1",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 2,
+      "title": "将单线程服务器变为多线程服务器",
+      "lineStart": 1,
+      "lineEnd": 4,
+      "contentHash": "sha256:78a10567da48d0063ef0b75bf9b06b517b39ac189d78335f28c7b2ba7bc81718",
+      "contentBytes": 519
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h3-1",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 3,
+      "title": "在当前服务器实现中模拟慢请求",
+      "lineStart": 5,
+      "lineEnd": 49,
+      "contentHash": "sha256:59d6061c6b1c7083d11ad6e12ac1f9603d5563579f418f88ad65b60b84396e62",
+      "contentBytes": 2042
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h3-2",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 3,
+      "title": "使用线程池改善吞吐量",
+      "lineStart": 50,
+      "lineEnd": 63,
+      "contentHash": "sha256:a41fa7d076c65e4214b4f492578bdc52750c4cd288cb1b80521a994278d5d195",
+      "contentBytes": 2289
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-1",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "为每一个请求分配线程的代码结构",
+      "lineStart": 64,
+      "lineEnd": 93,
+      "contentHash": "sha256:8dcaee22bd68b2dce2d6bb518a1efe0c3427b9c0d02a5c969f87f7e45c28e161",
+      "contentBytes": 1315
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-2",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "为有限数量的线程创建一个类似的接口",
+      "lineStart": 94,
+      "lineEnd": 130,
+      "contentHash": "sha256:87d7e484298b10213ade2937f9948e64b6f0b4009859fb1da81049a4f209a460",
+      "contentBytes": 1504
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-3",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "采用编译器驱动构建 `ThreadPool` 结构体",
+      "lineStart": 131,
+      "lineEnd": 276,
+      "contentHash": "sha256:05837294a569a37cd9e1fd8580df2d98011f68a3bb75fcfd3dcf7d3c62ff47da",
+      "contentBytes": 7098
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-4",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "在 `new` 中验证池中线程数量",
+      "lineStart": 277,
+      "lineEnd": 312,
+      "contentHash": "sha256:0fd97debd887bc0f6c6a741bacb0f5767f1e3a2783434bc13388efbccaba491e",
+      "contentBytes": 1838
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-5",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "分配空间以储存线程",
+      "lineStart": 313,
+      "lineEnd": 364,
+      "contentHash": "sha256:0914d787ab3aff846592c82be3a1de1d34795bde090b980808da74dc0e671f36",
+      "contentBytes": 2292
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-6",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "`Worker` 结构体负责从 `ThreadPool` 中将代码传递给线程",
+      "lineStart": 365,
+      "lineEnd": 435,
+      "contentHash": "sha256:d9d337166615a404d674f269db9203a44aa70ec4f4527e966e692e21433c32a3",
+      "contentBytes": 3613
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-7",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "使用通道向线程发送请求",
+      "lineStart": 436,
+      "lineEnd": 640,
+      "contentHash": "sha256:f1dfc306f615cdae8149195a17f10a27595ef06a32181412f447c4d3be23b41a",
+      "contentBytes": 6588
+    },
+    {
+      "anchor": "ch20-02-multithreaded#h4-8",
+      "file": "sources/rust-book-cn/book/ch20-02-multithreaded.md",
+      "level": 4,
+      "title": "实现 `execute` 方法",
+      "lineStart": 641,
+      "lineEnd": 796,
+      "contentHash": "sha256:4f266fd585b5309eb06ffd6391f07cc56cd5c4b9bbaf98d538239dfc094ab673",
+      "contentBytes": 7058
+    }
+  ]
+}

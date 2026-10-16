@@ -1,0 +1,1466 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-771fa62e2be9",
+  "createdAt": "2026-10-11T13:37:52.322Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/reference-answers.md",
+    "hash": "sha256:94aac6489bcea07a12ea447cb17216502bbb9a091ce2e0938bbd652cefbcc01f",
+    "totalLines": 415
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "reference-answers#h1-1",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "objectCount": 1,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H1-1-HEURISTIC-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1534,
+            "output": 3593
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-1",
+        "lineStart": 5,
+        "lineEnd": 52,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+          "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2902,
+            "output": 11849
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-2",
+        "lineStart": 53,
+        "lineEnd": 90,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-01",
+          "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2806,
+            "output": 7809
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-3",
+        "lineStart": 91,
+        "lineEnd": 130,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-3-CONCEPT-01",
+          "REFERENCE-ANSWERS-H2-3-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3198,
+            "output": 3489
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-4",
+        "lineStart": 131,
+        "lineEnd": 148,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+          "REFERENCE-ANSWERS-H2-4-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2044,
+            "output": 9043
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-5",
+        "lineStart": 149,
+        "lineEnd": 189,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+          "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2918,
+            "output": 7319
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-6",
+        "lineStart": 190,
+        "lineEnd": 243,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+          "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3602,
+            "output": 9565
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-7",
+        "lineStart": 244,
+        "lineEnd": 283,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-01",
+          "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2944,
+            "output": 5249
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-8",
+        "lineStart": 284,
+        "lineEnd": 337,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-8-CONCEPT-01",
+          "REFERENCE-ANSWERS-H2-8-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3779,
+            "output": 10059
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-9",
+        "lineStart": 338,
+        "lineEnd": 367,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+          "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2409,
+            "output": 9574
+          }
+        }
+      },
+      {
+        "anchor": "reference-answers#h2-10",
+        "lineStart": 368,
+        "lineEnd": 415,
+        "objectCount": 2,
+        "objectIds": [
+          "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
+          "REFERENCE-ANSWERS-H2-10-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3124,
+            "output": 8466
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 11,
+      "tokens": {
+        "input": 31260,
+        "output": 86015
+      },
+      "byAnchor": [
+        {
+          "anchor": "reference-answers#h1-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1534,
+            "output": 3593
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2902,
+            "output": 11849
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2806,
+            "output": 7809
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-3",
+          "calls": 1,
+          "tokens": {
+            "input": 3198,
+            "output": 3489
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-4",
+          "calls": 1,
+          "tokens": {
+            "input": 2044,
+            "output": 9043
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-5",
+          "calls": 1,
+          "tokens": {
+            "input": 2918,
+            "output": 7319
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-6",
+          "calls": 1,
+          "tokens": {
+            "input": 3602,
+            "output": 9565
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-7",
+          "calls": 1,
+          "tokens": {
+            "input": 2944,
+            "output": 5249
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-8",
+          "calls": 1,
+          "tokens": {
+            "input": 3779,
+            "output": 10059
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-9",
+          "calls": 1,
+          "tokens": {
+            "input": 2409,
+            "output": 9574
+          }
+        },
+        {
+          "anchor": "reference-answers#h2-10",
+          "calls": 1,
+          "tokens": {
+            "input": 3124,
+            "output": 8466
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 11,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 11,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 11,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 11,
+    "tokens": {
+      "input": 31260,
+      "output": 86015
+    },
+    "tokensDetail": {
+      "reasoning": 81855,
+      "cachedInput": 15488
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 21,
+    "tokens": {
+      "input": 43315,
+      "output": 5609
+    },
+    "tokensDetail": {
+      "reasoning": 4607,
+      "cachedInput": 8064
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 21,
+      "verdicts": {
+        "supported": 21
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 21
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/reference-answers.anchors.json",
+      "sha256": "sha256:031b76a5b394af9c976c8011765647ee3e69e8f43b74272a5f958ec617306ab7",
+      "bytes": 4272,
+      "anchorCount": 11
+    },
+    "objects": {
+      "path": "pipeline/knowledge/reference-answers.objects.json",
+      "sha256": "sha256:551cfb65879e5b4804f92cf2152cb056fd06655caa2dccf3b815cfb445e77680",
+      "bytes": 32520,
+      "objectCount": 21
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-771fa62e2be9.layer2-raw.json",
+      "sha256": "sha256:8b1cb388b277883e74d0d486486476dbbc89cdc41c8124a2f8a64e289d58a4d2"
+    }
+  },
+  "counts": {
+    "anchors": 11,
+    "objects": 21,
+    "passed": 21,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 4,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 3,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 13,
+      "AntiPattern": 1
+    }
+  },
+  "coverage": {
+    "indexAnchors": 11,
+    "processedAnchors": 11,
+    "processedKnown": true,
+    "coveredAnchors": 11,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=11，索引锚点数=11）。",
+    "perLevel": {
+      "h1": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h2": {
+        "index": 10,
+        "covered": 10,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "REFERENCE-ANSWERS-H1-1-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h1-1",
+        "lineStart": 1,
+        "lineEnd": 4
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h1-1",
+          "lineStart": 1,
+          "lineEnd": 4
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明参考答案仅供读者参考，并建议读者使用 LLM 结合书稿内容进一步讨论这些问题，完整支撑该建议。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-1",
+        "lineStart": 5,
+        "lineEnd": 52
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-1",
+          "lineStart": 5,
+          "lineEnd": 52
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文明确包含主张中的各项断言：评级对象细化到工具+参数、按可逆性/权限/影响面计算风险、采用规则确定性检查、验证时只检查结构化数据。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-1",
+        "lineStart": 5,
+        "lineEnd": 52
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-1",
+          "lineStart": 5,
+          "lineEnd": 52
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在累计缓存读取费用二次增长时不能每轮压缩，否则既可能损害Agent性能，也会引入额外的压缩调用和缓存重建开销，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-2",
+        "lineStart": 53,
+        "lineEnd": 90
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-2",
+          "lineStart": 53,
+          "lineEnd": 90
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第4题明确给出在防止状态栏错误传导时的缓解措施：用确定性代码维护、绝不让LLM批量统计长历史，即便用LLM也只逐条抽取再由代码汇总，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-2",
+        "lineStart": 53,
+        "lineEnd": 90
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-2",
+          "lineStart": 53,
+          "lineEnd": 90
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文完整包含该策略，并说明压缩是有损投影、涉及未保留信息时有风险，足以支撑该主张及适用条件。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-3",
+        "lineStart": 91,
+        "lineEnd": 130
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-3",
+          "lineStart": 91,
+          "lineEnd": 130
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第6条明确说明RAPTOR擅长从宏观概念逐步钻取细节的“跨层穿梭”式查询并兼顾总览与细节两种粒度。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-3-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-3",
+        "lineStart": 91,
+        "lineEnd": 130
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-3",
+          "lineStart": 91,
+          "lineEnd": 130
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明GraphRAG擅长多跳关系推理与实体消歧等“A和B有什么关系”类查询，并通过社区摘要提供主题聚类，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-4",
+        "lineStart": 131,
+        "lineEnd": 148
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-4",
+          "lineStart": 131,
+          "lineEnd": 148
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确提到“同名工具遮蔽（tool shadowing）把敏感调用路由给恶意方”，直接支撑该主张的模式与危害。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-4",
+        "lineStart": 131,
+        "lineEnd": 148
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-4",
+          "lineStart": 131,
+          "lineEnd": 148
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明对发邮件、拨电话、对外转账等不可逆或非幂等操作应改用事前控制手段，如提议者-审核者的事前审批。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-5",
+        "lineStart": 149,
+        "lineEnd": 189
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-5",
+          "lineStart": 149,
+          "lineEnd": 189
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点明确写出“原则：适应与报告并行，不能让适应机制吞掉异常信号”，直接支撑在处理日志解析格式变化时适应机制必须与报告并行这一主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-5",
+        "lineStart": 149,
+        "lineEnd": 189
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-5",
+          "lineStart": 149,
+          "lineEnd": 189
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第8条明确写出与主张一致的安全策略：HTML/UI优先A2UI类声明式协议、只输出界面描述JSON、由客户端用受信组件目录渲染、不执行任意代码，确需任意HTML时在沙盒中展示。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-6",
+        "lineStart": 190,
+        "lineEnd": 243
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-6",
+          "lineStart": 190,
+          "lineEnd": 243
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文明确写出按可逆性给动作分级、快思考只执行可逆动作、不可逆操作交由慢思考把关且不允许快模型执行会造成不可逆后果的工具调用，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-6",
+        "lineStart": 190,
+        "lineEnd": 243
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-6",
+          "lineStart": 190,
+          "lineEnd": 243
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第12题答案明确写出“安全点的密度应与环境变化速度匹配；而在安全点之外还需要多少额外防护，取决于动作有多不可逆”，与主张逐字对应。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-7",
+        "lineStart": 244,
+        "lineEnd": 283
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-7",
+          "lineStart": 244,
+          "lineEnd": 283
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文在防泄漏评估设计中明确给出了与主张相同的结论：静态题库无终局，出路是参数化模板随机实例化并基于最终环境状态验证。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-7",
+        "lineStart": 244,
+        "lineEnd": 283
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-7",
+          "lineStart": 244,
+          "lineEnd": 283
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第6段明确说明失败可自动重试且无外部副作用时报告 Pass@k、k取实际允许重试次数；失败会留下不可逆后果时报告 Pass^k，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-8-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-8",
+        "lineStart": 284,
+        "lineEnd": 337
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-8",
+          "lineStart": 284,
+          "lineEnd": 337
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到灾难性遗忘是一次针对特定任务的微调破坏了模型原有的通用能力（如通用工具调用），与主张定义完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-8-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-8",
+        "lineStart": 284,
+        "lineEnd": 337
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-8",
+          "lineStart": 284,
+          "lineEnd": 337
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出“复用环境，不复用题目”并“应留出整批未见模板/域外场景做评估”，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#017",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-9",
+        "lineStart": 338,
+        "lineEnd": 367
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-9",
+          "lineStart": 338,
+          "lineEnd": 367
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文第4条明确写明“Agent 生成的代码修改必须由安全机制在隔离环境中复现、回归后才能发布”，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#018",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-9",
+        "lineStart": 338,
+        "lineEnd": 367
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-9",
+          "lineStart": 338,
+          "lineEnd": 367
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确列出相同的护栏指标，并要求设置不可被平均分抵消的硬阈值，且语境正是以满意度作为学习信号时设计护栏指标。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#019",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 19,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-10",
+        "lineStart": 368,
+        "lineEnd": 415
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-10",
+          "lineStart": 368,
+          "lineEnd": 415
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第10题答案逐字给出了该机制定义，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#020",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "REFERENCE-ANSWERS-H2-10-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 20,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-10",
+        "lineStart": 368,
+        "lineEnd": 415
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+          "anchor": "reference-answers#h2-10",
+          "lineStart": 368,
+          "lineEnd": 415
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确在切换阶段消除角色干扰时建议同时更换系统提示词与工具集（移除提问工具、换上 linter/测试工具）并在上下文末尾添加系统状态栏突出当前角色信息，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#021",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

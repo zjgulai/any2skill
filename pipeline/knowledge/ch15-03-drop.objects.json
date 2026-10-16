@@ -1,0 +1,120 @@
+[
+  {
+    "id": "CH15-03-DROP-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:24:50.550Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:24:50.550Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h2-1",
+        "title": "使用 `Drop` Trait 运行清理代码",
+        "lineStart": 1,
+        "lineEnd": 46,
+        "contentHash": "sha256:b2161ff8d53ee9955b8de883ec6244681871067ecbe40b8ebba555078b95477d"
+      }
+    ],
+    "evidenceQuote": "对于智能指针模式来说第二个重要的 trait 是 `Drop`，其允许我们在值要离开作用域时执行一些代码。可以为任何类型提供 `Drop` trait 的实现，同时所指定的代码被用于释放类似于文件或网络连接的资源。我们在智能指针上下文中讨论 `Drop` 是因为其功能几乎总是用于实现智能指针。例如，`Box<T>` 自定义了 `Drop` 用来释放 box 所指向的堆空间。",
+    "canonicalTerm": "Drop trait",
+    "aliases": [
+      "Drop"
+    ],
+    "definition": "Drop trait 允许在值离开作用域时执行一些代码，可以为任何类型提供实现；所指定的代码常用于释放文件或网络连接等资源，并且在智能指针上下文中几乎总是用于实现智能指针。",
+    "examples": [
+      "Box<T> 自定义了 Drop 用来释放 box 所指向的堆空间。"
+    ]
+  },
+  {
+    "id": "CH15-03-DROP-H2-1-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:24:50.550Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:24:50.550Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h2-1",
+        "title": "使用 `Drop` Trait 运行清理代码",
+        "lineStart": 1,
+        "lineEnd": 46,
+        "contentHash": "sha256:b2161ff8d53ee9955b8de883ec6244681871067ecbe40b8ebba555078b95477d"
+      }
+    ],
+    "evidenceQuote": "在其他一些语言中，我们不得不记住在每次使用完智能指针实例后调用清理内存或资源的代码。如果忘记的话，运行代码的系统可能会因为负荷过重而崩溃。在 Rust 中，可以指定每当值离开作用域时被执行的代码，编译器会自动插入这些代码。于是我们就不需要在程序中到处编写在实例结束时清理这些变量的代码 —— 而且还不会泄漏资源。",
+    "pattern": "在其他一些语言中，每次使用完智能指针实例后必须手动调用清理内存或资源的代码。",
+    "harm": "如果忘记手动调用清理代码，运行代码的系统可能会因为负荷过重而崩溃。",
+    "corrective": "在 Rust 中指定每当值离开作用域时被执行的代码，由编译器自动插入这些代码，从而无需在程序中到处编写清理代码，也不会泄漏资源。",
+    "evidence": [
+      "如果忘记的话，运行代码的系统可能会因为负荷过重而崩溃。"
+    ],
+    "chapterRef": "ch15-03-drop-h2-1"
+  },
+  {
+    "id": "CH15-03-DROP-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:24:50.550Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:24:50.550Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h4-1",
+        "title": "通过 `std::mem::drop` 提早丢弃值",
+        "lineStart": 47,
+        "lineEnd": 122,
+        "contentHash": "sha256:f2b009356d6c83f08087c462f2e0186bfba7e7887f980f92d420d6257c2e5a41"
+      }
+    ],
+    "evidenceQuote": "因为不能禁用当值离开作用域时自动插入的 `drop`，并且不能显式调用 `drop`，如果我们需要强制提早清理值，可以使用 `std::mem::drop` 函数。",
+    "statement": "当需要在值离开作用域之前强制清理值时，应使用 `std::mem::drop` 函数，而不能显式调用 `drop`。",
+    "rationale": "当值离开作用域时会自动插入 `drop` 且无法禁用，同时显式调用 `drop` 不被允许。",
+    "appliesWhen": "需要在值离开作用域之前强制清理值。",
+    "violation": "显式调用 `drop`。",
+    "chapterRef": "ch15-03-drop-h4-1"
+  },
+  {
+    "id": "CH15-03-DROP-H4-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:24:50.550Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:24:50.550Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h4-1",
+        "title": "通过 `std::mem::drop` 提早丢弃值",
+        "lineStart": 47,
+        "lineEnd": 122,
+        "contentHash": "sha256:f2b009356d6c83f08087c462f2e0186bfba7e7887f980f92d420d6257c2e5a41"
+      }
+    ],
+    "evidenceQuote": "`std::mem::drop` 函数不同于 `Drop` trait 中的 `drop` 方法。可以通过传递希望提早强制丢弃的值作为参数。`std::mem::drop` 位于 prelude，所以我们可以修改示例 15-15 中的 `main` 来调用 `drop` 函数。如示例 15-16 所示：",
+    "canonicalTerm": "std::mem::drop",
+    "aliases": [],
+    "definition": "用于在值离开作用域之前强制丢弃值的函数；它不同于 `Drop` trait 中的 `drop` 方法，位于 prelude。",
+    "examples": [
+      "示例 15-16 展示修改 `main` 来调用 `drop` 函数，并传入希望提早强制丢弃的值。"
+    ]
+  }
+]

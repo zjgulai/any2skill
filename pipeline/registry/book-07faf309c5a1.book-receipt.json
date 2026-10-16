@@ -1,0 +1,1638 @@
+{
+  "schemaVersion": "book-receipt/v2",
+  "receiptSchemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "bookRunId": "book-07faf309c5a1",
+  "createdAt": "2026-10-12T12:08:01.535Z",
+  "finishedAt": "2026-10-12T12:08:01.906Z",
+  "sourceRoot": "sources/ai-agent-book-zh/book",
+  "inputs": {
+    "layer2": "deepseek",
+    "concurrency": 4,
+    "passthrough": [
+      "--layer2",
+      "deepseek",
+      "--llm-model",
+      "deepseek-v4-pro",
+      "--llm-base-url",
+      "https://api.deepseek.com",
+      "--judge-model",
+      "deepseek-v4-pro",
+      "--judge-base-url",
+      "https://api.deepseek.com"
+    ],
+    "judgeApplied": true,
+    "sources": [
+      {
+        "fileKey": "afterword",
+        "path": "sources/ai-agent-book-zh/book/afterword.md",
+        "sha256": "sha256:2f7a7ed1792c7d05675b21c58e2998cf70971bde65f1d06c088b16feee41bb63",
+        "bytes": 10495
+      },
+      {
+        "fileKey": "chapter1",
+        "path": "sources/ai-agent-book-zh/book/chapter1.md",
+        "sha256": "sha256:03f1c8e82fbb112758e0ed85b147b3aaef3083b7389c6d9aac0d5abe3c0474c5",
+        "bytes": 82813
+      },
+      {
+        "fileKey": "chapter10",
+        "path": "sources/ai-agent-book-zh/book/chapter10.md",
+        "sha256": "sha256:9d3ae92955cc8ca5fd8ed7e5e9f1bdb6ad6c6cf7aa3ea77cfee7931badaafd15",
+        "bytes": 101683
+      },
+      {
+        "fileKey": "chapter2",
+        "path": "sources/ai-agent-book-zh/book/chapter2.md",
+        "sha256": "sha256:a64c23de09c1108b2c038184b06ed89f0b0929fd1e08208e25b5d983d268af59",
+        "bytes": 130806
+      },
+      {
+        "fileKey": "chapter3",
+        "path": "sources/ai-agent-book-zh/book/chapter3.md",
+        "sha256": "sha256:aef4bd529d906b7cd1fa32ab25e55ef88254a9220d769bebead423b1c754d6bc",
+        "bytes": 100023
+      },
+      {
+        "fileKey": "chapter4",
+        "path": "sources/ai-agent-book-zh/book/chapter4.md",
+        "sha256": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+        "bytes": 71664
+      },
+      {
+        "fileKey": "chapter5",
+        "path": "sources/ai-agent-book-zh/book/chapter5.md",
+        "sha256": "sha256:f6153570ccd5dd763a4f1cfbb01bcc8eb3d6012738ec5645db720d733f86019f",
+        "bytes": 113700
+      },
+      {
+        "fileKey": "chapter6",
+        "path": "sources/ai-agent-book-zh/book/chapter6.md",
+        "sha256": "sha256:952cd29bcd63e6bcf599a240b34487f852e55154f7ec21af65af06042558f1e6",
+        "bytes": 93559
+      },
+      {
+        "fileKey": "chapter7",
+        "path": "sources/ai-agent-book-zh/book/chapter7.md",
+        "sha256": "sha256:30bbc29c9826d0223bd9d10393378f3f01970d9af88b9f9d2115dfaca54218e8",
+        "bytes": 109424
+      },
+      {
+        "fileKey": "chapter8",
+        "path": "sources/ai-agent-book-zh/book/chapter8.md",
+        "sha256": "sha256:000ee0097f74a53fdb4d6a2950b21cc5848a16e7d7501dce1ee7ad19bc366af7",
+        "bytes": 136717
+      },
+      {
+        "fileKey": "chapter9",
+        "path": "sources/ai-agent-book-zh/book/chapter9.md",
+        "sha256": "sha256:855e8b9af9cb72f891452542825fa5e2886e763af0429c715fc7d3a7f5a6592d",
+        "bytes": 62756
+      },
+      {
+        "fileKey": "introduction",
+        "path": "sources/ai-agent-book-zh/book/introduction.md",
+        "sha256": "sha256:bb43afb1de9454cfa9f97be9eed126944f2b51436edddf41ede8e78b1cc632c8",
+        "bytes": 19439
+      },
+      {
+        "fileKey": "reference-answers",
+        "path": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "sha256": "sha256:94aac6489bcea07a12ea447cb17216502bbb9a091ce2e0938bbd652cefbcc01f",
+        "bytes": 69703
+      }
+    ]
+  },
+  "exitCode": 3,
+  "files": [
+    {
+      "fileKey": "afterword",
+      "path": "sources/ai-agent-book-zh/book/afterword.md",
+      "sha256": "sha256:2f7a7ed1792c7d05675b21c58e2998cf70971bde65f1d06c088b16feee41bb63",
+      "bytes": 10495,
+      "exitCode": 0,
+      "runId": "run-6e6a6dea9b51",
+      "receiptPath": "pipeline/registry/run-6e6a6dea9b51.receipt.json",
+      "counts": {
+        "anchors": 3,
+        "objects": 5,
+        "passed": 5,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 4,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 1,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 0,
+          "AntiPattern": 0
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 3,
+        "processedAnchors": 3,
+        "coveredAnchors": 3,
+        "withoutObjects": {
+          "count": 0,
+          "anchors": []
+        }
+      },
+      "objectTypes": {
+        "Concept": 4,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 1,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 0,
+        "AntiPattern": 0
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 3,
+        "tokens": {
+          "input": 6754,
+          "output": 18717
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 5,
+        "tokens": {
+          "input": 7823,
+          "output": 1300
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 5,
+          "verdicts": {
+            "supported": 5
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-6e6a6dea9b51.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter1",
+      "path": "sources/ai-agent-book-zh/book/chapter1.md",
+      "sha256": "sha256:03f1c8e82fbb112758e0ed85b147b3aaef3083b7389c6d9aac0d5abe3c0474c5",
+      "bytes": 82813,
+      "exitCode": 3,
+      "runId": "run-f73a959172d0",
+      "receiptPath": "pipeline/registry/run-f73a959172d0.receipt.json",
+      "counts": {
+        "anchors": 25,
+        "objects": 47,
+        "passed": 45,
+        "rejected": 2,
+        "objectTypes": {
+          "Concept": 25,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 3,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 19,
+          "AntiPattern": 0
+        }
+      },
+      "reasonCodes": {
+        "QUOTE_MISMATCH": 2
+      },
+      "coverage": {
+        "indexAnchors": 25,
+        "processedAnchors": 25,
+        "coveredAnchors": 24,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter1#h2-5"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 25,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 3,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 19,
+        "AntiPattern": 0
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 25,
+        "tokens": {
+          "input": 54381,
+          "output": 158893
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 45,
+        "tokens": {
+          "input": 61573,
+          "output": 10508
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 45,
+          "verdicts": {
+            "supported": 45
+          },
+          "notCalled": 2
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-f73a959172d0.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter10",
+      "path": "sources/ai-agent-book-zh/book/chapter10.md",
+      "sha256": "sha256:9d3ae92955cc8ca5fd8ed7e5e9f1bdb6ad6c6cf7aa3ea77cfee7931badaafd15",
+      "bytes": 101683,
+      "exitCode": 0,
+      "runId": "run-87ad04bf522f",
+      "receiptPath": "pipeline/registry/run-87ad04bf522f.receipt.json",
+      "counts": {
+        "anchors": 34,
+        "objects": 61,
+        "passed": 61,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 37,
+          "Metric": 0,
+          "MentalModel": 1,
+          "DecisionModel": 2,
+          "Heuristic": 1,
+          "Case": 2,
+          "Playbook": 0,
+          "EngineeringRule": 13,
+          "AntiPattern": 5
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 34,
+        "processedAnchors": 34,
+        "coveredAnchors": 32,
+        "withoutObjects": {
+          "count": 2,
+          "anchors": [
+            "chapter10#h2-1",
+            "chapter10#h2-8"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 37,
+        "Metric": 0,
+        "MentalModel": 1,
+        "DecisionModel": 2,
+        "Heuristic": 1,
+        "Case": 2,
+        "Playbook": 0,
+        "EngineeringRule": 13,
+        "AntiPattern": 5
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 34,
+        "tokens": {
+          "input": 72350,
+          "output": 204512
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 61,
+        "tokens": {
+          "input": 81397,
+          "output": 13124
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 61,
+          "verdicts": {
+            "supported": 61
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-87ad04bf522f.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter2",
+      "path": "sources/ai-agent-book-zh/book/chapter2.md",
+      "sha256": "sha256:a64c23de09c1108b2c038184b06ed89f0b0929fd1e08208e25b5d983d268af59",
+      "bytes": 130806,
+      "exitCode": 3,
+      "runId": "run-8d6ad897d05c",
+      "receiptPath": "pipeline/registry/run-8d6ad897d05c.receipt.json",
+      "counts": {
+        "anchors": 42,
+        "objects": 72,
+        "passed": 70,
+        "rejected": 2,
+        "objectTypes": {
+          "Concept": 26,
+          "Metric": 1,
+          "MentalModel": 1,
+          "DecisionModel": 1,
+          "Heuristic": 5,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 29,
+          "AntiPattern": 9
+        }
+      },
+      "reasonCodes": {
+        "QUOTE_MISMATCH": 1,
+        "JUDGE_INSUFFICIENT": 1
+      },
+      "coverage": {
+        "indexAnchors": 42,
+        "processedAnchors": 42,
+        "coveredAnchors": 39,
+        "withoutObjects": {
+          "count": 3,
+          "anchors": [
+            "chapter2#h2-2",
+            "chapter2#h2-7",
+            "chapter2#h2-9"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 26,
+        "Metric": 1,
+        "MentalModel": 1,
+        "DecisionModel": 1,
+        "Heuristic": 5,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 29,
+        "AntiPattern": 9
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 42,
+        "tokens": {
+          "input": 90298,
+          "output": 261018
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 71,
+        "tokens": {
+          "input": 97988,
+          "output": 20370
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 71,
+          "verdicts": {
+            "supported": 70,
+            "insufficient": 1
+          },
+          "notCalled": 1
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-8d6ad897d05c.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter3",
+      "path": "sources/ai-agent-book-zh/book/chapter3.md",
+      "sha256": "sha256:aef4bd529d906b7cd1fa32ab25e55ef88254a9220d769bebead423b1c754d6bc",
+      "bytes": 100023,
+      "exitCode": 0,
+      "runId": "run-2173b6f94c6b",
+      "receiptPath": "pipeline/registry/run-2173b6f94c6b.receipt.json",
+      "counts": {
+        "anchors": 29,
+        "objects": 52,
+        "passed": 52,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 27,
+          "Metric": 0,
+          "MentalModel": 1,
+          "DecisionModel": 1,
+          "Heuristic": 1,
+          "Case": 1,
+          "Playbook": 0,
+          "EngineeringRule": 16,
+          "AntiPattern": 5
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 29,
+        "processedAnchors": 29,
+        "coveredAnchors": 28,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter3#h2-5"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 27,
+        "Metric": 0,
+        "MentalModel": 1,
+        "DecisionModel": 1,
+        "Heuristic": 1,
+        "Case": 1,
+        "Playbook": 0,
+        "EngineeringRule": 16,
+        "AntiPattern": 5
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 29,
+        "tokens": {
+          "input": 64979,
+          "output": 209323
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 52,
+        "tokens": {
+          "input": 76594,
+          "output": 14250
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 52,
+          "verdicts": {
+            "supported": 52
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-2173b6f94c6b.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter4",
+      "path": "sources/ai-agent-book-zh/book/chapter4.md",
+      "sha256": "sha256:2b08715724e111bfae237e4b1660070ee844ccb3e5ed9f54b92e8d0ab4f30394",
+      "bytes": 71664,
+      "exitCode": 0,
+      "runId": "run-ec4a90a91b01",
+      "receiptPath": "pipeline/registry/run-ec4a90a91b01.receipt.json",
+      "counts": {
+        "anchors": 20,
+        "objects": 39,
+        "passed": 39,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 18,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 3,
+          "Case": 1,
+          "Playbook": 0,
+          "EngineeringRule": 14,
+          "AntiPattern": 3
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 20,
+        "processedAnchors": 20,
+        "coveredAnchors": 20,
+        "withoutObjects": {
+          "count": 0,
+          "anchors": []
+        }
+      },
+      "objectTypes": {
+        "Concept": 18,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 3,
+        "Case": 1,
+        "Playbook": 0,
+        "EngineeringRule": 14,
+        "AntiPattern": 3
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 20,
+        "tokens": {
+          "input": 44834,
+          "output": 121655
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": false,
+        "calls": 0,
+        "tokens": null,
+        "summary": null
+      },
+      "verificationGate": "gate-1-deterministic-only（判定者未启用——结论不完整）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-830be7cff17d.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter5",
+      "path": "sources/ai-agent-book-zh/book/chapter5.md",
+      "sha256": "sha256:f6153570ccd5dd763a4f1cfbb01bcc8eb3d6012738ec5645db720d733f86019f",
+      "bytes": 113700,
+      "exitCode": 0,
+      "runId": "run-71c4837ce705",
+      "receiptPath": "pipeline/registry/run-71c4837ce705.receipt.json",
+      "counts": {
+        "anchors": 20,
+        "objects": 37,
+        "passed": 37,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 17,
+          "Metric": 0,
+          "MentalModel": 1,
+          "DecisionModel": 0,
+          "Heuristic": 0,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 18,
+          "AntiPattern": 1
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 20,
+        "processedAnchors": 20,
+        "coveredAnchors": 19,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter5#h2-1"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 17,
+        "Metric": 0,
+        "MentalModel": 1,
+        "DecisionModel": 0,
+        "Heuristic": 0,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 18,
+        "AntiPattern": 1
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 20,
+        "tokens": {
+          "input": 53530,
+          "output": 138223
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 37,
+        "tokens": {
+          "input": 72451,
+          "output": 13433
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 37,
+          "verdicts": {
+            "supported": 37
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-71c4837ce705.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter6",
+      "path": "sources/ai-agent-book-zh/book/chapter6.md",
+      "sha256": "sha256:952cd29bcd63e6bcf599a240b34487f852e55154f7ec21af65af06042558f1e6",
+      "bytes": 93559,
+      "exitCode": 3,
+      "runId": "run-719882b32c57",
+      "receiptPath": "pipeline/registry/run-719882b32c57.receipt.json",
+      "counts": {
+        "anchors": 40,
+        "objects": 74,
+        "passed": 70,
+        "rejected": 4,
+        "objectTypes": {
+          "Concept": 34,
+          "Metric": 0,
+          "MentalModel": 3,
+          "DecisionModel": 0,
+          "Heuristic": 7,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 23,
+          "AntiPattern": 7
+        }
+      },
+      "reasonCodes": {
+        "JUDGE_INSUFFICIENT": 4
+      },
+      "coverage": {
+        "indexAnchors": 40,
+        "processedAnchors": 40,
+        "coveredAnchors": 39,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter6#h2-2"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 34,
+        "Metric": 0,
+        "MentalModel": 3,
+        "DecisionModel": 0,
+        "Heuristic": 7,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 23,
+        "AntiPattern": 7
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 40,
+        "tokens": {
+          "input": 79573,
+          "output": 270755
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 74,
+        "tokens": {
+          "input": 86934,
+          "output": 22917
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 74,
+          "verdicts": {
+            "supported": 70,
+            "insufficient": 4
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-719882b32c57.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter7",
+      "path": "sources/ai-agent-book-zh/book/chapter7.md",
+      "sha256": "sha256:30bbc29c9826d0223bd9d10393378f3f01970d9af88b9f9d2115dfaca54218e8",
+      "bytes": 109424,
+      "exitCode": 3,
+      "runId": "run-6c82490ec0d9",
+      "receiptPath": "pipeline/registry/run-6c82490ec0d9.receipt.json",
+      "counts": {
+        "anchors": 48,
+        "objects": 82,
+        "passed": 80,
+        "rejected": 2,
+        "objectTypes": {
+          "Concept": 27,
+          "Metric": 3,
+          "MentalModel": 0,
+          "DecisionModel": 2,
+          "Heuristic": 1,
+          "Case": 1,
+          "Playbook": 0,
+          "EngineeringRule": 44,
+          "AntiPattern": 4
+        }
+      },
+      "reasonCodes": {
+        "QUOTE_MISMATCH": 1,
+        "JUDGE_INSUFFICIENT": 1
+      },
+      "coverage": {
+        "indexAnchors": 48,
+        "processedAnchors": 48,
+        "coveredAnchors": 45,
+        "withoutObjects": {
+          "count": 3,
+          "anchors": [
+            "chapter7#h2-3",
+            "chapter7#h2-4",
+            "chapter7#h2-13"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 27,
+        "Metric": 3,
+        "MentalModel": 0,
+        "DecisionModel": 2,
+        "Heuristic": 1,
+        "Case": 1,
+        "Playbook": 0,
+        "EngineeringRule": 44,
+        "AntiPattern": 4
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 48,
+        "tokens": {
+          "input": 94936,
+          "output": 264140
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 81,
+        "tokens": {
+          "input": 95270,
+          "output": 23181
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 81,
+          "verdicts": {
+            "supported": 80,
+            "insufficient": 1
+          },
+          "notCalled": 1
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-6c82490ec0d9.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter8",
+      "path": "sources/ai-agent-book-zh/book/chapter8.md",
+      "sha256": "sha256:000ee0097f74a53fdb4d6a2950b21cc5848a16e7d7501dce1ee7ad19bc366af7",
+      "bytes": 136717,
+      "exitCode": 3,
+      "runId": "run-f440d6f02f0a",
+      "receiptPath": "pipeline/registry/run-f440d6f02f0a.receipt.json",
+      "counts": {
+        "anchors": 42,
+        "objects": 75,
+        "passed": 74,
+        "rejected": 1,
+        "objectTypes": {
+          "Concept": 37,
+          "Metric": 1,
+          "MentalModel": 0,
+          "DecisionModel": 1,
+          "Heuristic": 4,
+          "Case": 2,
+          "Playbook": 0,
+          "EngineeringRule": 23,
+          "AntiPattern": 7
+        }
+      },
+      "reasonCodes": {
+        "QUOTE_MISMATCH": 1
+      },
+      "coverage": {
+        "indexAnchors": 42,
+        "processedAnchors": 42,
+        "coveredAnchors": 39,
+        "withoutObjects": {
+          "count": 3,
+          "anchors": [
+            "chapter8#h2-2",
+            "chapter8#h2-11",
+            "chapter8#h2-12"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 37,
+        "Metric": 1,
+        "MentalModel": 0,
+        "DecisionModel": 1,
+        "Heuristic": 4,
+        "Case": 2,
+        "Playbook": 0,
+        "EngineeringRule": 23,
+        "AntiPattern": 7
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 42,
+        "tokens": {
+          "input": 93310,
+          "output": 273038
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 74,
+        "tokens": {
+          "input": 108677,
+          "output": 20058
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 74,
+          "verdicts": {
+            "supported": 74
+          },
+          "notCalled": 1
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-f440d6f02f0a.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "chapter9",
+      "path": "sources/ai-agent-book-zh/book/chapter9.md",
+      "sha256": "sha256:855e8b9af9cb72f891452542825fa5e2886e763af0429c715fc7d3a7f5a6592d",
+      "bytes": 62756,
+      "exitCode": 0,
+      "runId": "run-d5d82988e66f",
+      "receiptPath": "pipeline/registry/run-d5d82988e66f.receipt.json",
+      "counts": {
+        "anchors": 17,
+        "objects": 32,
+        "passed": 32,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 6,
+          "Metric": 0,
+          "MentalModel": 3,
+          "DecisionModel": 1,
+          "Heuristic": 0,
+          "Case": 0,
+          "Playbook": 2,
+          "EngineeringRule": 18,
+          "AntiPattern": 2
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 17,
+        "processedAnchors": 17,
+        "coveredAnchors": 16,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "chapter9#h2-5"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 6,
+        "Metric": 0,
+        "MentalModel": 3,
+        "DecisionModel": 1,
+        "Heuristic": 0,
+        "Case": 0,
+        "Playbook": 2,
+        "EngineeringRule": 18,
+        "AntiPattern": 2
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 17,
+        "tokens": {
+          "input": 38636,
+          "output": 112382
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 32,
+        "tokens": {
+          "input": 47796,
+          "output": 11142
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 32,
+          "verdicts": {
+            "supported": 32
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-d5d82988e66f.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "introduction",
+      "path": "sources/ai-agent-book-zh/book/introduction.md",
+      "sha256": "sha256:bb43afb1de9454cfa9f97be9eed126944f2b51436edddf41ede8e78b1cc632c8",
+      "bytes": 19439,
+      "exitCode": 0,
+      "runId": "run-b4f6bc9be539",
+      "receiptPath": "pipeline/registry/run-b4f6bc9be539.receipt.json",
+      "counts": {
+        "anchors": 5,
+        "objects": 7,
+        "passed": 7,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 3,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 2,
+          "Case": 0,
+          "Playbook": 1,
+          "EngineeringRule": 1,
+          "AntiPattern": 0
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 5,
+        "processedAnchors": 5,
+        "coveredAnchors": 4,
+        "withoutObjects": {
+          "count": 1,
+          "anchors": [
+            "introduction#h2-4"
+          ]
+        }
+      },
+      "objectTypes": {
+        "Concept": 3,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 2,
+        "Case": 0,
+        "Playbook": 1,
+        "EngineeringRule": 1,
+        "AntiPattern": 0
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 5,
+        "tokens": {
+          "input": 11343,
+          "output": 27717
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 7,
+        "tokens": {
+          "input": 11435,
+          "output": 1871
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 7,
+          "verdicts": {
+            "supported": 7
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-b4f6bc9be539.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    },
+    {
+      "fileKey": "reference-answers",
+      "path": "sources/ai-agent-book-zh/book/reference-answers.md",
+      "sha256": "sha256:94aac6489bcea07a12ea447cb17216502bbb9a091ce2e0938bbd652cefbcc01f",
+      "bytes": 69703,
+      "exitCode": 0,
+      "runId": "run-771fa62e2be9",
+      "receiptPath": "pipeline/registry/run-771fa62e2be9.receipt.json",
+      "counts": {
+        "anchors": 11,
+        "objects": 21,
+        "passed": 21,
+        "rejected": 0,
+        "objectTypes": {
+          "Concept": 4,
+          "Metric": 0,
+          "MentalModel": 0,
+          "DecisionModel": 0,
+          "Heuristic": 3,
+          "Case": 0,
+          "Playbook": 0,
+          "EngineeringRule": 13,
+          "AntiPattern": 1
+        }
+      },
+      "reasonCodes": {},
+      "coverage": {
+        "indexAnchors": 11,
+        "processedAnchors": 11,
+        "coveredAnchors": 11,
+        "withoutObjects": {
+          "count": 0,
+          "anchors": []
+        }
+      },
+      "objectTypes": {
+        "Concept": 4,
+        "Metric": 0,
+        "MentalModel": 0,
+        "DecisionModel": 0,
+        "Heuristic": 3,
+        "Case": 0,
+        "Playbook": 0,
+        "EngineeringRule": 13,
+        "AntiPattern": 1
+      },
+      "model": {
+        "modelId": "deepseek-v4-pro",
+        "calls": 11,
+        "tokens": {
+          "input": 31260,
+          "output": 86015
+        },
+        "failedCalls": 0
+      },
+      "judge": {
+        "enabled": true,
+        "calls": 21,
+        "tokens": {
+          "input": 43315,
+          "output": 5609
+        },
+        "summary": {
+          "enabled": true,
+          "all": false,
+          "calls": 21,
+          "verdicts": {
+            "supported": 21
+          },
+          "notCalled": 0
+        }
+      },
+      "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+      "engineeringFailure": null,
+      "childStderr": "[产出固化] 本次未调用模型，直接复用已落盘对象；回执仍是由产出它们的运行写下的那一份：pipeline/registry/run-771fa62e2be9.receipt.json\n要基于当前正文重新产出，请显式传 --rerun（会产生模型调用）。",
+      "noReceipt": false,
+      "noReceiptReason": null
+    }
+  ],
+  "totals": {
+    "files": 13,
+    "filesPassed": 8,
+    "filesRejected": 5,
+    "filesFailed": 0,
+    "filesWithoutReceipt": 0,
+    "anchors": 336,
+    "processedAnchors": 336,
+    "coveredAnchors": 319,
+    "anchorsWithoutObjects": 17,
+    "objects": 604,
+    "passed": 593,
+    "rejected": 11,
+    "objectTypes": {
+      "Concept": 265,
+      "Metric": 5,
+      "MentalModel": 10,
+      "DecisionModel": 8,
+      "Heuristic": 31,
+      "Case": 7,
+      "Playbook": 3,
+      "EngineeringRule": 231,
+      "AntiPattern": 44
+    },
+    "reasonCodesByCode": {
+      "QUOTE_MISMATCH": 5,
+      "JUDGE_INSUFFICIENT": 6
+    },
+    "model": {
+      "calls": 336,
+      "inputTokens": 736184,
+      "outputTokens": 2146388,
+      "failedCalls": 0
+    },
+    "judge": {
+      "enabled": true,
+      "allFilesJudged": false,
+      "filesJudged": 12,
+      "calls": 560,
+      "inputTokens": 791253,
+      "outputTokens": 157763
+    }
+  },
+  "antipatterns": {
+    "fromLayer2": {
+      "label": "全书各章第 2 层提取（本章内综合）",
+      "total": 44,
+      "crossChapter": 0,
+      "crossChapterRatio": 0,
+      "sourceRefsPerObject": {
+        "mean": 1,
+        "max": 1
+      },
+      "referencedChapters": {
+        "chapter10": 5,
+        "chapter2": 9,
+        "chapter3": 5,
+        "chapter4": 3,
+        "chapter5": 1,
+        "chapter6": 7,
+        "chapter7": 4,
+        "chapter8": 7,
+        "chapter9": 2,
+        "reference-answers": 1
+      },
+      "crossChapterIds": []
+    },
+    "perFile": [
+      {
+        "file": "chapter10.objects.json",
+        "label": "chapter10.objects.json",
+        "total": 5,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter10": 5
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter2.objects.json",
+        "label": "chapter2.objects.json",
+        "total": 9,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter2": 9
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter3.objects.json",
+        "label": "chapter3.objects.json",
+        "total": 5,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter3": 5
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter4.objects.json",
+        "label": "chapter4.objects.json",
+        "total": 3,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter4": 3
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter5.objects.json",
+        "label": "chapter5.objects.json",
+        "total": 1,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter5": 1
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter6.objects.json",
+        "label": "chapter6.objects.json",
+        "total": 7,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter6": 7
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter7.objects.json",
+        "label": "chapter7.objects.json",
+        "total": 4,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter7": 4
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter8.objects.json",
+        "label": "chapter8.objects.json",
+        "total": 7,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter8": 7
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "chapter9.objects.json",
+        "label": "chapter9.objects.json",
+        "total": 2,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "chapter9": 2
+        },
+        "crossChapterIds": []
+      },
+      {
+        "file": "reference-answers.objects.json",
+        "label": "reference-answers.objects.json",
+        "total": 1,
+        "crossChapter": 0,
+        "crossChapterRatio": 0,
+        "sourceRefsPerObject": {
+          "mean": 1,
+          "max": 1
+        },
+        "referencedChapters": {
+          "reference-answers": 1
+        },
+        "crossChapterIds": []
+      }
+    ],
+    "crossChapter": {
+      "status": "present",
+      "declaredRunId": "run-6bc0e8a0e8b9",
+      "declaredComplete": true,
+      "label": "跨章综合（卡 06 的命令产出）",
+      "total": 14,
+      "crossChapter": 7,
+      "crossChapterRatio": 0.5,
+      "sourceRefsPerObject": {
+        "mean": 1.71,
+        "max": 3
+      },
+      "referencedChapters": {
+        "chapter1": 2,
+        "chapter2": 10,
+        "chapter4": 4,
+        "chapter5": 4,
+        "chapter7": 1,
+        "chapter9": 2
+      },
+      "crossChapterIds": [
+        "AP-SYNTH-T02-03",
+        "AP-SYNTH-T12-01",
+        "AP-SYNTH-T12-02",
+        "AP-SYNTH-T12-03",
+        "AP-SYNTH-T12-04",
+        "AP-SYNTH-T12-05",
+        "AP-SYNTH-T12-06"
+      ]
+    },
+    "runIdNote": "`fromLayer2` 是本次运行的产物；`crossChapter` 由卡 06 的命令**单独**产出，有自己的运行身份（上面已声明），两者不可互相代替，也不共用同一个 runId。"
+  },
+  "isolation": {
+    "children": {
+      "expectedProcesses": 13,
+      "complete": true,
+      "missing": [],
+      "note": "账本齐备：13 份进程账本，合计 938 条访问记录，其中落在 benchmark/ 内的 13 条。",
+      "ledger": {
+        "ledgerFiles": 13,
+        "processes": [
+          {
+            "pid": 86048,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 65
+          },
+          {
+            "pid": 86049,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 87
+          },
+          {
+            "pid": 86050,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 72
+          },
+          {
+            "pid": 86051,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 73
+          },
+          {
+            "pid": 86053,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 60
+          },
+          {
+            "pid": 86054,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 71
+          },
+          {
+            "pid": 86055,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 67
+          },
+          {
+            "pid": 86057,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 66
+          },
+          {
+            "pid": 86062,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 64
+          },
+          {
+            "pid": 86063,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 86
+          },
+          {
+            "pid": 86064,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 81
+          },
+          {
+            "pid": 86065,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 77
+          },
+          {
+            "pid": 86066,
+            "entry": "/Users/lute/Project/any2skills/pipeline/run.mjs",
+            "cwd": "/Users/lute/Project/any2skills",
+            "recordCount": 69
+          }
+        ],
+        "truncated": false,
+        "recordCount": 938,
+        "byMode": {
+          "read": 535,
+          "write": 26,
+          "meta": 377
+        },
+        "distinctPaths": {
+          "read": 80,
+          "write": 14
+        },
+        "benchmark": {
+          "total": 13,
+          "reads": 0,
+          "writes": 0,
+          "meta": 13,
+          "metaOps": [
+            "realpathSync"
+          ],
+          "paths": [
+            "benchmark"
+          ],
+          "note": "`meta` 是 stat/realpath/access 这类**只问路径本身**的调用：卡 01 的路径守卫要判定「这个输入是否落在基准目录内」，就必须先解析基准目录自己。它拿到了存在性与解析后的路径，**没有读到任何内容**，因此不计入污染；列目录（可能看到那批对照物文件名）与读文件都归 `read`。"
+        },
+        "skillsWrites": [],
+        "sourceReads": [
+          "sources/ai-agent-book-zh/book/afterword.md",
+          "sources/ai-agent-book-zh/book/chapter1.md",
+          "sources/ai-agent-book-zh/book/chapter10.md",
+          "sources/ai-agent-book-zh/book/chapter2.md",
+          "sources/ai-agent-book-zh/book/chapter3.md",
+          "sources/ai-agent-book-zh/book/chapter4.md",
+          "sources/ai-agent-book-zh/book/chapter5.md",
+          "sources/ai-agent-book-zh/book/chapter6.md",
+          "sources/ai-agent-book-zh/book/chapter7.md",
+          "sources/ai-agent-book-zh/book/chapter8.md",
+          "sources/ai-agent-book-zh/book/chapter9.md",
+          "sources/ai-agent-book-zh/book/introduction.md",
+          "sources/ai-agent-book-zh/book/reference-answers.md"
+        ],
+        "readTargets": [
+          "pipeline/knowledge/afterword.objects.json",
+          "pipeline/knowledge/chapter1.objects.json",
+          "pipeline/knowledge/chapter10.objects.json",
+          "pipeline/knowledge/chapter2.objects.json",
+          "pipeline/knowledge/chapter3.objects.json",
+          "pipeline/knowledge/chapter4.objects.json",
+          "pipeline/knowledge/chapter5.objects.json",
+          "pipeline/knowledge/chapter6.objects.json",
+          "pipeline/knowledge/chapter7.objects.json",
+          "pipeline/knowledge/chapter8.objects.json",
+          "pipeline/knowledge/chapter9.objects.json",
+          "pipeline/knowledge/introduction.objects.json",
+          "pipeline/knowledge/reference-answers.objects.json",
+          "pipeline/registry",
+          "pipeline/registry/run-04dbdf862121.receipt.json",
+          "pipeline/registry/run-0daf5febec8a.receipt.json",
+          "pipeline/registry/run-11ebe0306e01.receipt.json",
+          "pipeline/registry/run-15de53ce83c2.receipt.json",
+          "pipeline/registry/run-2173b6f94c6b.receipt.json",
+          "pipeline/registry/run-25c042ad44af.receipt.json",
+          "pipeline/registry/run-2f20e308ea26.receipt.json",
+          "pipeline/registry/run-3c60c2ce53b6.receipt.json",
+          "pipeline/registry/run-3cf2f50b3870.receipt.json",
+          "pipeline/registry/run-45eeaab3e0dd.receipt.json",
+          "pipeline/registry/run-470138ece6a3.receipt.json",
+          "pipeline/registry/run-6c82490ec0d9.receipt.json",
+          "pipeline/registry/run-6e6a6dea9b51.receipt.json",
+          "pipeline/registry/run-719882b32c57.receipt.json",
+          "pipeline/registry/run-71c4837ce705.receipt.json",
+          "pipeline/registry/run-72492cf49c89.receipt.json",
+          "pipeline/registry/run-771fa62e2be9.receipt.json",
+          "pipeline/registry/run-7afb98d262b5.receipt.json",
+          "pipeline/registry/run-830be7cff17d.receipt.json",
+          "pipeline/registry/run-87ad04bf522f.receipt.json",
+          "pipeline/registry/run-8d6ad897d05c.receipt.json",
+          "pipeline/registry/run-91419694cd02.receipt.json",
+          "pipeline/registry/run-94e4f937b089.receipt.json",
+          "pipeline/registry/run-95f6baaef266.receipt.json",
+          "pipeline/registry/run-96db68e7684b.receipt.json",
+          "pipeline/registry/run-9a30407d7271.receipt.json",
+          "pipeline/registry/run-9af7c2379a5e.receipt.json",
+          "pipeline/registry/run-ae23e8ac51f5.receipt.json",
+          "pipeline/registry/run-b4f6bc9be539.receipt.json",
+          "pipeline/registry/run-b91057fed065.receipt.json",
+          "pipeline/registry/run-bfba30f1feca.receipt.json",
+          "pipeline/registry/run-c2deb413424d.receipt.json",
+          "pipeline/registry/run-c41621394382.receipt.json",
+          "pipeline/registry/run-cac6856c3c85.receipt.json",
+          "pipeline/registry/run-cd3b850dd8ad.receipt.json",
+          "pipeline/registry/run-d5d82988e66f.receipt.json",
+          "pipeline/registry/run-d99c89057f3a.receipt.json",
+          "pipeline/registry/run-da280b5930ca.receipt.json",
+          "pipeline/registry/run-dbdb4563f59e.receipt.json",
+          "pipeline/registry/run-e4a57c21cd0a.receipt.json",
+          "pipeline/registry/run-ec4a90a91b01.receipt.json",
+          "pipeline/registry/run-f440d6f02f0a.receipt.json",
+          "pipeline/registry/run-f73a959172d0.receipt.json",
+          "pipeline/run.mjs",
+          "pipeline/tools/anchor-index.mjs",
+          "pipeline/tools/json-schema-subset.mjs",
+          "pipeline/tools/judge.mjs",
+          "pipeline/tools/layer2-extractor.mjs",
+          "pipeline/tools/llm-client.mjs",
+          "pipeline/tools/model-json.mjs",
+          "pipeline/tools/model-stub.mjs",
+          "pipeline/tools/object-contract.mjs",
+          "pipeline/tools/verifier.mjs",
+          "sources/ai-agent-book-zh/book/afterword.md",
+          "sources/ai-agent-book-zh/book/chapter1.md",
+          "sources/ai-agent-book-zh/book/chapter10.md",
+          "sources/ai-agent-book-zh/book/chapter2.md",
+          "sources/ai-agent-book-zh/book/chapter3.md",
+          "sources/ai-agent-book-zh/book/chapter4.md",
+          "sources/ai-agent-book-zh/book/chapter5.md",
+          "sources/ai-agent-book-zh/book/chapter6.md",
+          "sources/ai-agent-book-zh/book/chapter7.md",
+          "sources/ai-agent-book-zh/book/chapter8.md",
+          "sources/ai-agent-book-zh/book/chapter9.md",
+          "sources/ai-agent-book-zh/book/introduction.md",
+          "sources/ai-agent-book-zh/book/reference-answers.md"
+        ],
+        "writeTargets": [
+          "pipeline/knowledge",
+          "pipeline/knowledge/afterword.anchors.json",
+          "pipeline/knowledge/chapter1.anchors.json",
+          "pipeline/knowledge/chapter10.anchors.json",
+          "pipeline/knowledge/chapter2.anchors.json",
+          "pipeline/knowledge/chapter3.anchors.json",
+          "pipeline/knowledge/chapter4.anchors.json",
+          "pipeline/knowledge/chapter5.anchors.json",
+          "pipeline/knowledge/chapter6.anchors.json",
+          "pipeline/knowledge/chapter7.anchors.json",
+          "pipeline/knowledge/chapter8.anchors.json",
+          "pipeline/knowledge/chapter9.anchors.json",
+          "pipeline/knowledge/introduction.anchors.json",
+          "pipeline/knowledge/reference-answers.anchors.json"
+        ],
+        "outsideRepo": []
+      }
+    },
+    "orchestratorLedgerPath": "/Users/lute/Project/any2skills/pipeline/registry/fs-ledger/book-07faf309c5a1.orchestrator.json",
+    "verifyCommand": "node pipeline/run-book.mjs --verify-isolation pipeline/registry/book-07faf309c5a1.book-receipt.json",
+    "note": "子进程账本已齐备并可当场断言（见 children）。编排进程自己的账本在**本进程退出时**落盘，因此不在上面的汇总里——把两边合起来复核用上面的 verifyCommand。账本缺席或截断时该命令**拒绝**给出隔离结论（不按「没有记录」判通过）。"
+  }
+}

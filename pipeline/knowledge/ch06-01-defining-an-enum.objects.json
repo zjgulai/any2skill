@@ -1,0 +1,178 @@
+[
+  {
+    "id": "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:12:02.465Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:12:02.465Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+        "anchor": "ch06-01-defining-an-enum#h2-1",
+        "title": "定义枚举",
+        "lineStart": 1,
+        "lineEnd": 17,
+        "contentHash": "sha256:2e0f54af5ebbac1a1f96d2efa2b2876f3111b7481a634ab543c76c8f3642bd5d"
+      }
+    ],
+    "evidenceQuote": "可以通过在代码中定义一个 `IpAddrKind` 枚举来表现这个概念并列出可能的 IP 地址类型，`V4` 和 `V6`。这被称为枚举的 **成员**（*variants*）：",
+    "canonicalTerm": "枚举",
+    "aliases": [],
+    "definition": "枚举用于在代码中表现某个概念，并列出可能的类型成员；这些列出的可能值称为成员。",
+    "examples": [
+      "IpAddrKind 枚举通过列出 V4 和 V6 两个成员来表示 IP 地址类型。"
+    ]
+  },
+  {
+    "id": "CH06-01-DEFINING-AN-ENUM-H2-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:12:02.465Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:12:02.465Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+        "anchor": "ch06-01-defining-an-enum#h2-1",
+        "title": "定义枚举",
+        "lineStart": 1,
+        "lineEnd": 17,
+        "contentHash": "sha256:2e0f54af5ebbac1a1f96d2efa2b2876f3111b7481a634ab543c76c8f3642bd5d"
+      }
+    ],
+    "evidenceQuote": "可以通过在代码中定义一个 `IpAddrKind` 枚举来表现这个概念并列出可能的 IP 地址类型，`V4` 和 `V6`。这被称为枚举的 **成员**（*variants*）：",
+    "canonicalTerm": "枚举成员",
+    "aliases": [],
+    "definition": "枚举中列出的可能类型或值；例如 IpAddrKind 枚举中的 V4 和 V6 就是成员，英文称为 variants。",
+    "examples": [
+      "IpAddrKind 枚举的成员包括 V4 和 V6。"
+    ]
+  },
+  {
+    "id": "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:12:02.465Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:12:02.465Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+        "anchor": "ch06-01-defining-an-enum#h3-1",
+        "title": "枚举值",
+        "lineStart": 18,
+        "lineEnd": 193,
+        "contentHash": "sha256:db7393554917be4a5fc900462b4bb76a6b11b22c97c12f2d7f3672d8b32d2886"
+      }
+    ],
+    "evidenceQuote": "我们可以使用一种更简洁的方式来表达相同的概念，仅仅使用枚举并将数据直接放进每一个枚举成员而不是将枚举作为结构体的一部分。`IpAddr` 枚举的新定义表明了 `V4` 和 `V6` 成员都关联了 `String` 值：\n\n```rust\nenum IpAddr {\n    V4(String),\n    V6(String),\n}\n\nlet home = IpAddr::V4(String::from(\"127.0.0.1\"));\n\nlet loopback = IpAddr::V6(String::from(\"::1\"));\n```\n\n我们直接将数据附加到枚举的每个成员上，这样就不需要一个额外的结构体了。",
+    "canonicalTerm": "枚举成员关联数据",
+    "aliases": [
+      "带数据的枚举成员"
+    ],
+    "definition": "枚举成员可以直接携带数据，将数据放进每个枚举成员而不依赖额外的结构体。",
+    "examples": [
+      "`IpAddr::V4(String::from(\"127.0.0.1\"))`",
+      "`IpAddr::V6(String::from(\"::1\"))`"
+    ]
+  },
+  {
+    "id": "CH06-01-DEFINING-AN-ENUM-H3-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:12:02.465Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:12:02.465Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+        "anchor": "ch06-01-defining-an-enum#h3-1",
+        "title": "枚举值",
+        "lineStart": 18,
+        "lineEnd": 193,
+        "contentHash": "sha256:db7393554917be4a5fc900462b4bb76a6b11b22c97c12f2d7f3672d8b32d2886"
+      }
+    ],
+    "evidenceQuote": "用枚举替代结构体还有另一个优势：每个成员可以处理不同类型和数量的数据。IPv4 版本的 IP 地址总是含有四个值在 0 和 255 之间的数字部分。如果我们想要将 `V4` 地址存储为四个 `u8` 值而 `V6` 地址仍然表现为一个 `String`，这就不能使用结构体了。枚举则可以轻易地处理这个情况：\n\n```rust\nenum IpAddr {\n    V4(u8, u8, u8, u8),\n    V6(String),\n}\n\nlet home = IpAddr::V4(127, 0, 0, 1);\n\nlet loopback = IpAddr::V6(String::from(\"::1\"));\n```\n\n这些代码展示了使用枚举来存储两种不同 IP 地址的几种可能的选择。",
+    "canonicalTerm": "枚举成员处理不同类型和数量的数据",
+    "aliases": [],
+    "definition": "枚举的每个成员可以处理不同类型和数量的数据，这是结构体无法做到的。",
+    "examples": [
+      "`enum IpAddr { V4(u8, u8, u8, u8), V6(String) }`",
+      "`let home = IpAddr::V4(127, 0, 0, 1);`"
+    ]
+  },
+  {
+    "id": "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:12:02.465Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:12:02.465Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+        "anchor": "ch06-01-defining-an-enum#h3-2",
+        "title": "`Option` 枚举和其相对于空值的优势",
+        "lineStart": 194,
+        "lineEnd": 266,
+        "contentHash": "sha256:b399a7e3852bc5fd3faf07f992a8cd58d451f87a0c18769f7f545d3e097bd03f"
+      }
+    ],
+    "evidenceQuote": "换句话说，在对 `Option<T>` 进行 `T` 的运算之前必须将其转换为 `T`。通常这能帮助我们捕获到空值最常见的问题之一：假设某值不为空但实际上为空的情况。",
+    "statement": "对 `Option<T>` 进行 `T` 的运算之前，必须先将其转换为 `T`。",
+    "rationale": "这样可以捕获空值最常见的问题之一：假设某值不为空但实际上为空。",
+    "appliesWhen": "当需要对 `Option<T>` 类型的值执行 `T` 的运算时。",
+    "violation": "在未将 `Option<T>` 转换为 `T` 的情况下直接进行 `T` 的运算，可能落入空值常见问题：假设某值不为空但实际上为空。",
+    "chapterRef": "ch06-01-defining-an-enum-h3-2"
+  },
+  {
+    "id": "CH06-01-DEFINING-AN-ENUM-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:12:02.465Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:12:02.465Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-01-defining-an-enum.md",
+        "anchor": "ch06-01-defining-an-enum#h3-2",
+        "title": "`Option` 枚举和其相对于空值的优势",
+        "lineStart": 194,
+        "lineEnd": 266,
+        "contentHash": "sha256:b399a7e3852bc5fd3faf07f992a8cd58d451f87a0c18769f7f545d3e097bd03f"
+      }
+    ],
+    "evidenceQuote": "不再担心会错误地假设一个非空值，会让你对代码更加有信心。为了拥有一个可能为空的值，你必须要显式地将其放入对应类型的 `Option<T>` 中。接着，当使用这个值时，必须明确地处理值为空的情况。只要一个值不是 `Option<T>` 类型，你就 **可以** 安全地认定它的值不为空。这是 Rust 的一个经过深思熟虑的设计决策，来限制空值的泛滥以增加 Rust 代码的安全性。",
+    "statement": "只要一个值不是 `Option<T>` 类型，就可以安全地认定它的值不为空。",
+    "rationale": "这是 Rust 经过深思熟虑的设计决策，通过限制空值的泛滥来增加代码安全性。",
+    "appliesWhen": "判断一个值是否可能为空时，且该值不是 `Option<T>` 类型。",
+    "violation": "对一个 `Option<T>` 类型的值也安全地认定其不为空，而未明确处理值为空的情况。",
+    "chapterRef": "ch06-01-defining-an-enum-h3-2"
+  }
+]

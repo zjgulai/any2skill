@@ -1,0 +1,593 @@
+[
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h1-1",
+        "title": "编写猜数字游戏",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:bf904f6134bf44c6d6919e242844a6261473bffa7229e49446e577c23b12b8fd"
+      }
+    ],
+    "canonicalTerm": "编写猜数字游戏",
+    "aliases": [
+      "别名（替身载荷，出处：ch02-00-guessing-game-tutorial-h1-1）"
+    ],
+    "definition": "定义（替身载荷，出处：ch02-00-guessing-game-tutorial-h1-1）",
+    "examples": [
+      "示例（替身载荷，出处：ch02-00-guessing-game-tutorial-h1-1）"
+    ],
+    "evidenceQuote": "让我们一起动手完成一个项目，来快速上手 Rust！本章将介绍 Rust 中一些常用概念，并向你展示如何在实际项目中运用它们。你将会学到 `let`、`match`、方法、关联函数、引用外部 crate 等知识！后续章节会深入探讨这些概念的细"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-1",
+        "title": "创建一个新项目",
+        "lineStart": 7,
+        "lineEnd": 43,
+        "contentHash": "sha256:63b0397e9de98b32367b6df76e83dbea1f6cd7f5e35d915364d9f67cc7d302db"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-1）",
+    "rationale": "理由（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-1）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-1）",
+    "violation": "违反后果（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-1）",
+    "chapterRef": "ch02-00-guessing-game-tutorial-h2-1",
+    "evidenceQuote": "要创建一个新项目，请进入你在第 1 章中所创建的 *projects* 目录，使用 Cargo 新建一个项目，如下："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H2-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-2",
+        "title": "处理一次猜测",
+        "lineStart": 44,
+        "lineEnd": 81,
+        "contentHash": "sha256:38d6e01e3f8b13ffd62eb389c4be33f51f8cff70df1b6737b586617da7c8fdc7"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-2）",
+    "rationale": "理由（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-2）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-2）",
+    "violation": "违反后果（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-2）",
+    "chapterRef": "ch02-00-guessing-game-tutorial-h2-2",
+    "evidenceQuote": "猜数字程序的第一部分请求用户输入，处理该输入，并检查输入是否符合预期格式。首先，我们将允许玩家输入猜测。在 *src/main.rs* 中输入示例 2-1 中的代码。"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-1-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-1",
+        "title": "使用变量存储值",
+        "lineStart": 82,
+        "lineEnd": 110,
+        "contentHash": "sha256:fcc6aeae1839ae350979ac066f6893ff7fe32a3637a787469f91b976c30bdddb"
+      }
+    ],
+    "title": "使用变量存储值",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-1）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-1）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-1）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-1）",
+    "approval": "none",
+    "evidenceQuote": "接下来，创建一个储存用户输入的**变量**（*variable*），像这样："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-2-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-2",
+        "title": "接收用户输入",
+        "lineStart": 111,
+        "lineEnd": 124,
+        "contentHash": "sha256:047bf7a642c145759d84c16f5ac103bc5cf83a9b4722e082f38dbb54583dfa9e"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-2）",
+    "recommendation": "建议（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-2）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-2）"
+    ],
+    "evidenceQuote": "回忆一下，我们在程序的第一行使用 `use std::io;` 从标准库中引入了输入/输出功能。现在我们可以从 `io` 模块调用 `stdin` 函数，这将允许我们处理用户输入："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-3-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+        "title": "使用 `Result` 类型来处理潜在的错误",
+        "lineStart": 125,
+        "lineEnd": 158,
+        "contentHash": "sha256:a7176b80724f46733a387bc075c08a7626862c2a26eef427b723d2a89f3b9d02"
+      }
+    ],
+    "title": "使用 `Result` 类型来处理潜在的错误",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-3）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-3）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-3）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-3）",
+    "approval": "none",
+    "evidenceQuote": "我们还要继续分析这行代码。虽然我们已经讲到了文本中的第三行，但它仍然是单个逻辑代码行的一部分（即一行代码中插入了空行）。下一部分是这个方法："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-4-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-4",
+        "title": "使用 `println!` 占位符打印值",
+        "lineStart": 159,
+        "lineEnd": 177,
+        "contentHash": "sha256:6f50ae1bbbcd782f0305d321085b4b6861942dfb99ce05538f01d5b846cdd6dc"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-4）",
+    "recommendation": "建议（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-4）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-4）"
+    ],
+    "evidenceQuote": "除了闭合花括号外，目前为止代码中只有一行需要讨论："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-5-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-5",
+        "title": "测试第一部分代码",
+        "lineStart": 178,
+        "lineEnd": 200,
+        "contentHash": "sha256:87298e5ac21ecb1ad75a0341c92e5df7d2f779bb034f24e2c123d409c72da66e"
+      }
+    ],
+    "title": "测试第一部分代码",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-5）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-5）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-5）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-5）",
+    "approval": "none",
+    "evidenceQuote": "让我们来测试下猜数字游戏的第一部分。使用 `cargo run` 运行："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H2-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-3",
+        "title": "生成一个秘密数字",
+        "lineStart": 201,
+        "lineEnd": 204,
+        "contentHash": "sha256:5474e96d51e7b2b3834d25b163655aa83b74cf66e56145ec82c7309fda24dd57"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-3）",
+    "rationale": "理由（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-3）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-3）",
+    "violation": "违反后果（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-3）",
+    "chapterRef": "ch02-00-guessing-game-tutorial-h2-3",
+    "evidenceQuote": "接下来，需要生成一个秘密数字，好让用户来猜。秘密数字应该每次都不同，这样重复玩才不会乏味；范围应该在 1 到 100 之间，这样才不会太困难。Rust 标准库中尚未包含随机数功能。然而，Rust 团队还是提供了一个包含上述功能的 [`ran"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-6-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-6",
+        "title": "使用 crate 来增加更多功能",
+        "lineStart": 205,
+        "lineEnd": 277,
+        "contentHash": "sha256:211e98a41070e34394f1275978259322fe2468c33803e4ecbc8df54674407d10"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-6）",
+    "recommendation": "建议（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-6）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-6）"
+    ],
+    "evidenceQuote": "记住，*crate* 是一个 Rust 代码包。我们正在构建的项目是一个 **二进制 crate**，它生成一个可执行文件。 `rand` crate 是一个 **库 crate**，库 crate 可以包含任意能被其他程序使用的代码，但是"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H4-1-CASE-01",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h4-1",
+        "title": "*Cargo.lock* 文件确保构建是可重现的",
+        "lineStart": 278,
+        "lineEnd": 283,
+        "contentHash": "sha256:e97519189b19efce19129979c1f6f1169e44fee572cd2942944d41535674f902"
+      }
+    ],
+    "title": "*Cargo.lock* 文件确保构建是可重现的",
+    "context": "背景（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-1）",
+    "facts": [
+      "事实（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-1）"
+    ],
+    "decisions": [
+      "决策（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-1）"
+    ],
+    "outcome": "结果（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-1）",
+    "evidenceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h4-1",
+        "title": "*Cargo.lock* 文件确保构建是可重现的",
+        "lineStart": 278,
+        "lineEnd": 283,
+        "contentHash": "sha256:e97519189b19efce19129979c1f6f1169e44fee572cd2942944d41535674f902"
+      }
+    ],
+    "limitations": [
+      "局限（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-1）"
+    ],
+    "dataClass": "public",
+    "evidenceQuote": "Cargo 有一个机制来确保任何人在任何时候重新构建代码，都会产生相同的结果：Cargo 只会使用你指定的依赖版本，除非你又手动指定了别的。例如，如果下周 `rand` crate 的 `0.8.4` 版本出来了，它修复了一个重要的 bug"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H4-2-DECISIONMODEL-01",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h4-2",
+        "title": "更新 crate 到一个新版本",
+        "lineStart": 284,
+        "lineEnd": 310,
+        "contentHash": "sha256:a6e1834de79aba5248533d857eaebfcdcaeeb890e3ddfa12bd26888c23b2d80c"
+      }
+    ],
+    "inputs": [
+      "输入（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-2）"
+    ],
+    "branches": [
+      {
+        "condition": "条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-2）",
+        "action": "动作（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-2）"
+      }
+    ],
+    "outputs": [
+      "输出（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-2）"
+    ],
+    "unknownPolicy": "未知处理（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-2）",
+    "stopConditions": [
+      "停止条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h4-2）"
+    ],
+    "reviewState": "candidate",
+    "evidenceQuote": "当你**确实**需要升级 crate 时，Cargo 提供了这样一个命令 `update`，它会忽略 *Cargo.lock* 文件，并计算出所有符合 *Cargo.toml* 声明的最新版本。Cargo 接下来会把这些版本写入 *Carg"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-7-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-7",
+        "title": "生成一个随机数",
+        "lineStart": 311,
+        "lineEnd": 363,
+        "contentHash": "sha256:509a18ff36ceb33039d1e478d1ee45751fa66823bf6969f126ace1ba86dee21d"
+      }
+    ],
+    "title": "生成一个随机数",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-7）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-7）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-7）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-7）",
+    "approval": "none",
+    "evidenceQuote": "让我们开始使用 `rand` 来生成一个猜测的数字。下一步是更新 *src/main.rs*，如示例 2-3 所示。"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H2-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-4",
+        "title": "比较猜测的数字和秘密数字",
+        "lineStart": 364,
+        "lineEnd": 439,
+        "contentHash": "sha256:12d9eef53112362b495b408d72cb5480b6a06b65d6e6186b207562034552d298"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-4）",
+    "rationale": "理由（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-4）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-4）",
+    "violation": "违反后果（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-4）",
+    "chapterRef": "ch02-00-guessing-game-tutorial-h2-4",
+    "evidenceQuote": "现在有了用户输入和一个随机数，我们可以比较它们。这个步骤如示例 2-4 所示。注意这段代码还不能通过编译，我们稍后会解释。"
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H2-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-5",
+        "title": "使用循环来允许多次猜测",
+        "lineStart": 440,
+        "lineEnd": 489,
+        "contentHash": "sha256:803eef430787ecf3ed4bb485cf5d58f266b45eab1c7a325ed0ca873b6ba7d04c"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-5）",
+    "rationale": "理由（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-5）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-5）",
+    "violation": "违反后果（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-5）",
+    "chapterRef": "ch02-00-guessing-game-tutorial-h2-5",
+    "evidenceQuote": "`loop` 关键字创建了一个无限循环。我们会增加循环来给用户更多猜数字的机会："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-8-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-8",
+        "title": "猜测正确后退出",
+        "lineStart": 490,
+        "lineEnd": 501,
+        "contentHash": "sha256:02486a64927172cabe6192389c777588cab9a603b1ed2c588b57a96c69e6f6bb"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-8）",
+    "recommendation": "建议（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-8）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-8）"
+    ],
+    "evidenceQuote": "让我们增加一个 `break` 语句，在用户猜对时退出游戏："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H3-9-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-9",
+        "title": "处理无效输入",
+        "lineStart": 502,
+        "lineEnd": 563,
+        "contentHash": "sha256:bbdcadf464bcc07c0e21be15814a44a78deb963d8c0696315159c167947b28cb"
+      }
+    ],
+    "title": "处理无效输入",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-9）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-9）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-9）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：ch02-00-guessing-game-tutorial-h3-9）",
+    "approval": "none",
+    "evidenceQuote": "为了进一步改善游戏性，不要在用户输入非数字时崩溃，需要忽略非数字，让用户可以继续猜测。可以通过修改 `guess` 将 `String` 转化为 `u32` 那部分代码来实现，如示例 2-5 所示："
+  },
+  {
+    "id": "CH02-00-GUESSING-GAME-TUTORIAL-H2-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-6",
+        "title": "总结",
+        "lineStart": 564,
+        "lineEnd": 590,
+        "contentHash": "sha256:e90b4e7b6b95d00572033ab66cce19db377814c34b1fd7279835133763b0bba9"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-6）",
+    "rationale": "理由（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-6）",
+    "appliesWhen": "适用条件（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-6）",
+    "violation": "违反后果（替身载荷，出处：ch02-00-guessing-game-tutorial-h2-6）",
+    "chapterRef": "ch02-00-guessing-game-tutorial-h2-6",
+    "evidenceQuote": "此时此刻，你顺利完成了猜数字游戏。恭喜！"
+  }
+]

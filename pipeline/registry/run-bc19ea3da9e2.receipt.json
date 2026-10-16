@@ -1,0 +1,679 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-bc19ea3da9e2",
+  "createdAt": "2026-10-14T19:34:07.136Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch16-01-threads.md",
+    "hash": "sha256:71543fe7a36a82025e702e7968d9b9396091d2209c45a4f08e6eb332f230aa79",
+    "totalLines": 286
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch16-01-threads#h2-1",
+        "lineStart": 1,
+        "lineEnd": 24,
+        "objectCount": 2,
+        "objectIds": [
+          "CH16-01-THREADS-H2-1-CONCEPT-01",
+          "CH16-01-THREADS-H2-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2074,
+            "output": 4658
+          }
+        }
+      },
+      {
+        "anchor": "ch16-01-threads#h3-1",
+        "lineStart": 25,
+        "lineEnd": 69,
+        "objectCount": 2,
+        "objectIds": [
+          "CH16-01-THREADS-H3-1-CONCEPT-01",
+          "CH16-01-THREADS-H3-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1953,
+            "output": 6913
+          }
+        }
+      },
+      {
+        "anchor": "ch16-01-threads#h4-1",
+        "lineStart": 70,
+        "lineEnd": 165,
+        "objectCount": 2,
+        "objectIds": [
+          "CH16-01-THREADS-H4-1-CONCEPT-01",
+          "CH16-01-THREADS-H4-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2358,
+            "output": 9194
+          }
+        }
+      },
+      {
+        "anchor": "ch16-01-threads#h3-2",
+        "lineStart": 166,
+        "lineEnd": 286,
+        "objectCount": 2,
+        "objectIds": [
+          "CH16-01-THREADS-H3-2-CONCEPT-01",
+          "CH16-01-THREADS-H3-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2877,
+            "output": 7532
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 4,
+      "tokens": {
+        "input": 9262,
+        "output": 28297
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch16-01-threads#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2074,
+            "output": 4658
+          }
+        },
+        {
+          "anchor": "ch16-01-threads#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1953,
+            "output": 6913
+          }
+        },
+        {
+          "anchor": "ch16-01-threads#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2358,
+            "output": 9194
+          }
+        },
+        {
+          "anchor": "ch16-01-threads#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2877,
+            "output": 7532
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 4,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 4,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 4,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 4,
+    "tokens": {
+      "input": 9262,
+      "output": 28297
+    },
+    "tokensDetail": {
+      "reasoning": 26688,
+      "cachedInput": 5632
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 8,
+    "tokens": {
+      "input": 11679,
+      "output": 2211
+    },
+    "tokensDetail": {
+      "reasoning": 1844,
+      "cachedInput": 3072
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 8,
+      "verdicts": {
+        "supported": 8
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 8
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch16-01-threads.anchors.json",
+      "sha256": "sha256:dc037f7163815e0a44ed6813be6471ba82a486276d56db7fdb255d1f0c1f391d",
+      "bytes": 1749,
+      "anchorCount": 4
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch16-01-threads.objects.json",
+      "sha256": "sha256:6a8ca3cc5faa448e523dce047d0dffab2680c497973ef06e1a6a35cd1b6083ee",
+      "bytes": 11837,
+      "objectCount": 8
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-bc19ea3da9e2.layer2-raw.json",
+      "sha256": "sha256:84bfbc4e246f2b3bdc7e30bdd0b54434bcae15c4bd12894a38e4f1dd380c9ff0"
+    }
+  },
+  "counts": {
+    "anchors": 4,
+    "objects": 8,
+    "passed": 8,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 4,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 4,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 4,
+    "processedAnchors": 4,
+    "processedKnown": true,
+    "coveredAnchors": 4,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=4，索引锚点数=4）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 2,
+        "covered": 2,
+        "without": 0
+      },
+      "h4": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH16-01-THREADS-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h2-1",
+        "lineStart": 1,
+        "lineEnd": 24
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h2-1",
+          "lineStart": 1,
+          "lineEnd": 24
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写着“运行这些独立部分的功能被称为线程”，直接支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-01-THREADS-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h2-1",
+        "lineStart": 1,
+        "lineEnd": 24
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h2-1",
+          "lineStart": 1,
+          "lineEnd": 24
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“Rust 标准库只提供了 1:1 线程模型实现”，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-01-THREADS-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-1",
+        "lineStart": 25,
+        "lineEnd": 69
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-1",
+          "lineStart": 25,
+          "lineEnd": 69
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明创建新线程需要调用 thread::spawn 函数并传递一个闭包，并在其中包含希望在新线程运行的代码，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-01-THREADS-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-1",
+        "lineStart": 25,
+        "lineEnd": 69
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-1",
+          "lineStart": 25,
+          "lineEnd": 69
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张的陈述与锚点原文中“这些线程可能会轮流运行，不过并不保证如此：这依赖操作系统如何调度线程”几乎逐字对应，且适用条件与原文讨论多线程并发运行、输出因调度不同而变化的语境一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-01-THREADS-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h4-1",
+        "lineStart": 70,
+        "lineEnd": 165
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h4-1",
+          "lineStart": 70,
+          "lineEnd": 165
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 thread::spawn 的返回值类型是 JoinHandle，且 JoinHandle 是拥有所有权的值，调用其 join 方法时会等待其线程结束，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-01-THREADS-H4-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h4-1",
+        "lineStart": 70,
+        "lineEnd": 165
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h4-1",
+          "lineStart": 70,
+          "lineEnd": 165
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明保存 thread::spawn 返回的 JoinHandle 并调用 join 可以修复新建线程未执行或未完整执行的问题，并确保新建线程在 main 退出前结束运行。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-01-THREADS-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-2",
+        "lineStart": 166,
+        "lineEnd": 286
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-2",
+          "lineStart": 166,
+          "lineEnd": 286
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含主张中的两处断言：使用 move 关键字强制闭包获取环境值所有权，以及该技巧在跨线程移动所有权时最为实用。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH16-01-THREADS-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+        "anchor": "ch16-01-threads#h3-2",
+        "lineStart": 166,
+        "lineEnd": 286
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch16-01-threads.md",
+          "anchor": "ch16-01-threads#h3-2",
+          "lineStart": 166,
+          "lineEnd": 286
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明默认保守借用、用 move 转移所有权、保证主线程不再使用，且 move 覆盖默认借用但不允许违反所有权规则。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

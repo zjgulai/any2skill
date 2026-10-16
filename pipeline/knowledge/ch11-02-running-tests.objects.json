@@ -1,0 +1,372 @@
+[
+  {
+    "id": "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h2-1",
+        "title": "控制测试如何运行",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:9cb730bfb58f423fc017e5371da1d3e8b8c8785d2f6fc6b0cd9996cf80d3da3c"
+      }
+    ],
+    "evidenceQuote": "可以指定命令行参数来改变 `cargo test` 的默认行为。例如，`cargo test` 生成的二进制文件的默认行为是并行的运行所有测试，并截获测试运行过程中产生的输出，阻止他们被显示出来，使得阅读测试结果相关的内容变得更容易。",
+    "statement": "`cargo test` 生成的测试二进制文件的默认行为是并行运行所有测试，并截获测试运行过程中产生的输出，阻止它们显示出来。",
+    "rationale": "使得阅读测试结果相关的内容变得更容易。",
+    "appliesWhen": "未通过命令行参数改变 `cargo test` 的默认行为时。",
+    "violation": "把 `cargo test` 的默认行为描述为串行运行测试，或认为测试输出默认会全部显示。",
+    "chapterRef": "ch11-02-running-tests-h2-1"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h2-1",
+        "title": "控制测试如何运行",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:9cb730bfb58f423fc017e5371da1d3e8b8c8785d2f6fc6b0cd9996cf80d3da3c"
+      }
+    ],
+    "evidenceQuote": "可以将一部分命令行参数传递给 `cargo test`，而将另外一部分传递给生成的测试二进制文件。为了分隔这两种参数，需要先列出传递给 `cargo test` 的参数，接着是分隔符 `--`，再之后是传递给测试二进制文件的参数。",
+    "statement": "当需要将命令行参数分别传给 `cargo test` 和生成的测试二进制文件时，必须先列出传给 `cargo test` 的参数，接着使用分隔符 `--`，再之后列出传给测试二进制文件的参数。",
+    "rationale": "为了分隔这两种参数。",
+    "appliesWhen": "需要将一部分命令行参数传递给 `cargo test`，而将另一部分传递给生成的测试二进制文件时。",
+    "violation": "把传递给测试二进制文件的参数放在分隔符 `--` 之前。",
+    "chapterRef": "ch11-02-running-tests-h2-1"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-1",
+        "title": "并行或连续的运行测试",
+        "lineStart": 7,
+        "lineEnd": 20,
+        "contentHash": "sha256:660ba112bdad60c73e48a6b6d9dea22b39db2189cada4f7fad49d8a6247727e8"
+      }
+    ],
+    "evidenceQuote": "当运行多个测试时， Rust 默认使用线程来并行运行。这意味着测试会更快地运行完毕，所以你可以更快的得到代码能否工作的反馈。因为测试是在同时运行的，你应该确保测试不能相互依赖，或依赖任何共享的状态，包括依赖共享的环境，比如当前工作目录或者环境变量。\n\n举个例子，每一个测试都运行一些代码，假设这些代码都在硬盘上创建一个 *test-output.txt* 文件并写入一些数据。接着每一个测试都读取文件中的数据并断言这个文件包含特定的值，而这个值在每个测试中都是不同的。因为所有测试都是同时运行的，一个测试可能会在另一个测试读写文件过程中修改了文件。那么第二个测试就会失败，并不是因为代码不正确，而是因为测试并行运行时相互干扰。一个解决方案是使每一个测试读写不同的文件；另一个解决方案是一次运行一个测试。",
+    "statement": "当运行多个测试时，Rust 默认使用线程并行运行；测试不应相互依赖或依赖任何共享状态，包括当前工作目录或环境变量。",
+    "rationale": "并行运行测试更快完成、可以更快得到代码能否工作的反馈；测试同时运行时，若相互依赖或共享状态，则可能相互干扰。",
+    "appliesWhen": "运行多个测试时（Rust 默认并行运行）。",
+    "violation": "测试并行运行时可能相互干扰，导致测试失败，但并非代码不正确。",
+    "chapterRef": "ch11-02-running-tests-h3-1"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-1",
+        "title": "并行或连续的运行测试",
+        "lineStart": 7,
+        "lineEnd": 20,
+        "contentHash": "sha256:660ba112bdad60c73e48a6b6d9dea22b39db2189cada4f7fad49d8a6247727e8"
+      }
+    ],
+    "evidenceQuote": "因为所有测试都是同时运行的，一个测试可能会在另一个测试读写文件过程中修改了文件。那么第二个测试就会失败，并不是因为代码不正确，而是因为测试并行运行时相互干扰。一个解决方案是使每一个测试读写不同的文件；另一个解决方案是一次运行一个测试。\n\n如果你不希望测试并行运行，或者想要更加精确的控制线程的数量，可以传递 `--test-threads` 参数和希望使用线程的数量给测试二进制文件。例如：\n\n```text\n$ cargo test -- --test-threads=1\n```\n\n这里将测试线程设置为 `1`，告诉程序不要使用任何并行机制。这也会比并行运行花费更多时间，不过在有共享的状态时，测试就不会潜在的相互干扰了。",
+    "statement": "如果不希望测试并行运行，或者想要更精确控制线程数量，可向测试二进制文件传递 `--test-threads` 参数和希望使用的线程数量；例如 `--test-threads=1`。",
+    "rationale": "将测试线程设置为 `1` 告诉程序不要使用任何并行机制；虽然比并行运行花费更多时间，但在有共享状态时测试不会潜在相互干扰。",
+    "appliesWhen": "不希望测试并行运行，或想要更精确控制线程数量，或存在共享状态时。",
+    "violation": "若测试并行运行且存在共享状态，一个测试可能在另一个测试读写文件时修改文件，导致第二个测试失败，并非代码不正确。",
+    "chapterRef": "ch11-02-running-tests-h3-1"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-2",
+        "title": "显示函数输出",
+        "lineStart": 21,
+        "lineEnd": 74,
+        "contentHash": "sha256:f5bc6e1497de7f12951e33410482119a215b0248779d1cbe41e0bd8761013f84"
+      }
+    ],
+    "evidenceQuote": "默认情况下，当测试通过时，Rust 的测试库会截获打印到标准输出的所有内容。比如在测试中调用了 `println!` 而测试通过了，我们将不会在终端看到 `println!` 的输出：只会看到说明测试通过的提示行。如果测试失败了，则会看到所有标准输出和其他错误信息。",
+    "canonicalTerm": "测试输出截获",
+    "aliases": [
+      "通过测试输出截获"
+    ],
+    "definition": "默认情况下，当测试通过时，Rust 的测试库会截获打印到标准输出的所有内容；通过测试中的 println! 输出不会显示，失败时则会显示所有标准输出和其他错误信息。",
+    "examples": [
+      "测试中调用 `println!` 且测试通过时，终端不会看到 `println!` 的输出，只会看到说明测试通过的提示行",
+      "测试失败时会看到所有标准输出和其他错误信息"
+    ]
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-2",
+        "title": "显示函数输出",
+        "lineStart": 21,
+        "lineEnd": 74,
+        "contentHash": "sha256:f5bc6e1497de7f12951e33410482119a215b0248779d1cbe41e0bd8761013f84"
+      }
+    ],
+    "evidenceQuote": "注意输出中不会出现测试通过时打印的内容，即 `I got the value 4`。因为当测试通过时，这些输出会被截获。失败测试的输出 `I got the value 8`，则出现在输出的测试摘要部分，同时也显示了测试失败的原因。\n\n如果你希望也能看到通过的测试中打印的值，可以通过在末尾增加 `--show-output` 参数来告知 Rust 显示通过测试的输出：\n\n```console\n$ cargo test -- --show-output\n```",
+    "statement": "如果希望看到通过测试中打印的值，可以在 cargo test 命令末尾增加 `--show-output` 参数来显示通过测试的输出。",
+    "rationale": "因为测试通过时这些输出会被截获，所以需要显式告知 Rust 显示通过测试的输出。",
+    "appliesWhen": "使用 `cargo test` 运行测试，并希望查看通过测试的打印值时。",
+    "violation": "未在命令末尾增加 `--show-output` 参数时，通过测试中打印的值不会显示。",
+    "chapterRef": "ch11-02-running-tests-h3-2"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-3",
+        "title": "通过指定名字来运行部分测试",
+        "lineStart": 75,
+        "lineEnd": 121,
+        "contentHash": "sha256:855b19446bcdfafd3295b7e60bf593ce2a187598df82ae8f1151d60b4d9d11a8"
+      }
+    ],
+    "evidenceQuote": "### 通过指定名字来运行部分测试\n\n有时运行整个测试集会耗费很长时间。如果你负责特定位置的代码，你可能会希望只运行与这些代码相关的测试。你可以向 `cargo test` 传递所希望运行的测试名称的参数来选择运行哪些测试。",
+    "statement": "可以通过向 cargo test 传递测试名称参数来选择运行哪些测试。",
+    "rationale": "有时运行整个测试集会耗费很长时间；负责特定位置的代码时，可能希望只运行与这些代码相关的测试。",
+    "appliesWhen": "当负责特定位置的代码并希望只运行相关测试时。",
+    "violation": "未向 cargo test 传递所希望运行的测试名称的参数。",
+    "chapterRef": "ch11-02-running-tests-h3-3"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-1",
+        "title": "运行单个测试",
+        "lineStart": 122,
+        "lineEnd": 140,
+        "contentHash": "sha256:cc618ca81c564edc3c7ed0a0f0b40908da824879e4b1816921c5c807757d03be"
+      }
+    ],
+    "evidenceQuote": "可以向 `cargo test` 传递任意测试的名称来只运行这个测试：\n\n```text\n$ cargo test one_hundred\n    Finished dev [unoptimized + debuginfo] target(s) in 0.0 secs\n     Running target/debug/deps/adder-06a75b4a1f2515e9\n\nrunning 1 test\ntest tests::one_hundred ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out\n```\n\n只有名称为 `one_hundred` 的测试被运行了；因为其余两个测试并不匹配这个名称。",
+    "statement": "可以向 cargo test 传递任意测试的名称来只运行这个测试。",
+    "rationale": "cargo test 会按名称过滤测试，只运行名称匹配的测试。",
+    "appliesWhen": "需要只运行某一个测试时。",
+    "violation": "如果传递的测试名称不匹配，该测试不会被运行。",
+    "chapterRef": "ch11-02-running-tests-h4-1"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-1",
+        "title": "运行单个测试",
+        "lineStart": 122,
+        "lineEnd": 140,
+        "contentHash": "sha256:cc618ca81c564edc3c7ed0a0f0b40908da824879e4b1816921c5c807757d03be"
+      }
+    ],
+    "evidenceQuote": "不能像这样指定多个测试名称；只有传递给 `cargo test` 的第一个值才会被使用。不过有运行多个测试的方法。",
+    "pattern": "同时向 cargo test 指定多个测试名称。",
+    "harm": "只有第一个值会被使用，后续测试名称被忽略。",
+    "corrective": "改用其他可运行多个测试的方法。",
+    "evidence": [
+      "不能像这样指定多个测试名称；只有传递给 `cargo test` 的第一个值才会被使用。不过有运行多个测试的方法。"
+    ],
+    "chapterRef": "ch11-02-running-tests-h4-1"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-2",
+        "title": "过滤运行多个测试",
+        "lineStart": 141,
+        "lineEnd": 158,
+        "contentHash": "sha256:66cf818cbf39e4063aa910281927f1356d47b7ee5c29d2deaf25d4d670ffb1bd"
+      }
+    ],
+    "evidenceQuote": "这运行了所有名字中带有 `add` 的测试，也过滤掉了名为 `one_hundred` 的测试。",
+    "statement": "所有名字中带有 `add` 的测试会被运行，名为 `one_hundred` 的测试会被过滤掉。",
+    "rationale": "测试输出明确显示，名字中带有 `add` 的测试被运行，而 `one_hundred` 被过滤掉。",
+    "appliesWhen": "需要运行名称中包含 `add` 的测试，同时排除名称为 `one_hundred` 的测试时。",
+    "violation": "如果测试名称不含 `add`，如 `one_hundred`，则不会在此过滤中被运行。",
+    "chapterRef": "ch11-02-running-tests-h4-2"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-2",
+        "title": "过滤运行多个测试",
+        "lineStart": 141,
+        "lineEnd": 158,
+        "contentHash": "sha256:66cf818cbf39e4063aa910281927f1356d47b7ee5c29d2deaf25d4d670ffb1bd"
+      }
+    ],
+    "evidenceQuote": "同时注意测试所在的模块也是测试名称的一部分，所以可以通过模块名来运行一个模块中的所有测试。",
+    "statement": "测试所在的模块是测试名称的一部分，因此可以通过模块名来运行该模块中的所有测试。",
+    "rationale": "因为模块名是测试名称的一部分，所以模块名可以作为过滤条件来匹配并运行整个模块的测试。",
+    "appliesWhen": "需要运行某个模块中的所有测试时。",
+    "violation": "若测试所在的模块不是测试名称的一部分，则不能通过模块名来运行一个模块中的所有测试。",
+    "chapterRef": "ch11-02-running-tests-h4-2"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-4",
+        "title": "忽略某些测试",
+        "lineStart": 159,
+        "lineEnd": 207,
+        "contentHash": "sha256:c30c3462c0189d08ad5da8d8e5541533e4ab049554ecc44efcb781a115b1e98c"
+      }
+    ],
+    "evidenceQuote": "有时一些特定的测试执行起来是非常耗费时间的，所以在大多数运行 `cargo test` 的时候希望能排除他们。虽然可以通过参数列举出所有希望运行的测试来做到，也可以使用 `ignore` 属性来标记耗时的测试并排除他们，如下所示：",
+    "statement": "耗时的测试可以使用 `ignore` 属性来标记，以便在运行测试时排除它们。",
+    "rationale": "某些特定测试执行起来非常耗费时间，大多数运行 `cargo test` 的时候希望排除它们。",
+    "appliesWhen": "当测试非常耗费时间，且希望在大多数 `cargo test` 运行中排除它时。",
+    "violation": "未使用 `ignore` 属性标记，就无法通过该属性在 `cargo test` 运行中排除这些测试。",
+    "chapterRef": "ch11-02-running-tests-h3-4"
+  },
+  {
+    "id": "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T20:03:38.517Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T20:03:38.517Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-4",
+        "title": "忽略某些测试",
+        "lineStart": 159,
+        "lineEnd": 207,
+        "contentHash": "sha256:c30c3462c0189d08ad5da8d8e5541533e4ab049554ecc44efcb781a115b1e98c"
+      }
+    ],
+    "evidenceQuote": "`expensive_test` 被列为 `ignored`，如果我们只希望运行被忽略的测试，可以使用 `cargo test -- --ignored`：",
+    "statement": "只希望运行被忽略的测试时，使用 `cargo test -- --ignored`。",
+    "rationale": "`expensive_test` 被列为 `ignored`，因此要运行被忽略的测试需要使用 `-- --ignored`。",
+    "appliesWhen": "当只希望运行被忽略的测试时。",
+    "violation": "如果不使用 `cargo test -- --ignored`，就无法只运行被忽略的测试。",
+    "chapterRef": "ch11-02-running-tests-h3-4"
+  }
+]

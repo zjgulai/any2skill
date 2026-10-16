@@ -1,0 +1,319 @@
+[
+  {
+    "id": "CH16-03-SHARED-STATE-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h2-1",
+        "title": "共享状态并发",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "contentHash": "sha256:8c885e47cb7b28f3ffda45a3255c0632983f6ea0a06d893fc5c84d2bded8deea"
+      }
+    ],
+    "evidenceQuote": "共享内存类似于多所有权：多个线程可以同时访问相同的内存位置。第 15 章介绍了智能指针如何使得多所有权成为可能，然而这会增加额外的复杂性，因为需要以某种方式管理这些不同的所有者。Rust 的类型系统和所有权规则极大的协助了正确地管理这些所有权。作为一个例子，让我们看看互斥器，一个更为常见的共享内存并发原语。",
+    "canonicalTerm": "共享内存并发",
+    "aliases": [],
+    "definition": "共享内存类似于多所有权：多个线程可以同时访问相同的内存位置。",
+    "examples": [
+      "互斥器"
+    ]
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h3-1",
+        "title": "互斥器一次只允许一个线程访问数据",
+        "lineStart": 11,
+        "lineEnd": 23,
+        "contentHash": "sha256:190264f185de7ea955280b4ac115f94089e4b0bc8b39e9b495901f515ddd8fb5"
+      }
+    ],
+    "evidenceQuote": "互斥器以难以使用著称，因为你不得不记住：\n\n1. 在使用数据之前尝试获取锁。\n2. 处理完被互斥器所保护的数据之后，必须解锁数据，这样其他线程才能够获取锁。",
+    "statement": "使用互斥器所保护的数据之前要先尝试获取锁；处理完被互斥器所保护的数据之后必须解锁数据，这样其他线程才能获取锁。",
+    "rationale": "这样其他线程才能够获取锁。",
+    "appliesWhen": "当线程需要访问互斥器所保护的共享数据时",
+    "violation": "如果处理完被互斥器所保护的数据之后不解锁，其他线程将无法获取锁。",
+    "chapterRef": "ch16-03-shared-state-h3-1"
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H3-1-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h3-1",
+        "title": "互斥器一次只允许一个线程访问数据",
+        "lineStart": 11,
+        "lineEnd": 23,
+        "contentHash": "sha256:190264f185de7ea955280b4ac115f94089e4b0bc8b39e9b495901f515ddd8fb5"
+      }
+    ],
+    "evidenceQuote": "作为一个现实中互斥器的例子，想象一下在某个会议的一次小组座谈会中，只有一个麦克风。如果一位成员要发言，他必须请求或表示希望使用麦克风。一旦得到了麦克风，他可以畅所欲言，然后将麦克风交给下一位希望讲话的成员。如果一位成员结束发言后忘记将麦克风交还，其他人将无法发言。如果对共享麦克风的管理出现了问题，座谈会将无法如期进行！",
+    "pattern": "在共享麦克风使用中，成员结束发言后忘记将麦克风交还。",
+    "harm": "其他人将无法发言；如果对共享麦克风的管理出现问题，座谈会将无法如期进行。",
+    "corrective": "发言结束后将麦克风交给下一位希望讲话的成员。",
+    "evidence": [
+      "如果一位成员结束发言后忘记将麦克风交还，其他人将无法发言。",
+      "如果对共享麦克风的管理出现了问题，座谈会将无法如期进行！"
+    ],
+    "chapterRef": "ch16-03-shared-state-h3-1"
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h3-2",
+        "title": "`Mutex<T>`的 API",
+        "lineStart": 24,
+        "lineEnd": 56,
+        "contentHash": "sha256:4fa7c8c7d8b3dcd48f0c7f1b0b04c6040460caab97fd53a29c3d012673fac18f"
+      }
+    ],
+    "evidenceQuote": "一旦获取了锁，就可以将返回值（在这里是`num`）视为一个其内部数据的可变引用了。类型系统确保了我们在使用 `m` 中的值之前获取锁：`Mutex<i32>` 并不是一个 `i32`，所以 **必须** 获取锁才能使用这个 `i32` 值。我们是不会忘记这么做的，因为反之类型系统不允许访问内部的 `i32` 值。",
+    "statement": "使用 `Mutex<T>` 内部数据前必须获取锁。",
+    "rationale": "`Mutex<i32>` 并不是 `i32`，类型系统不允许直接访问内部的 `i32` 值。",
+    "appliesWhen": "访问或使用 `Mutex<T>` 内部数据时。",
+    "violation": "未获取锁时，类型系统不允许访问内部的 `i32` 值。",
+    "chapterRef": "ch16-03-shared-state-h3-2"
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H3-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h3-2",
+        "title": "`Mutex<T>`的 API",
+        "lineStart": 24,
+        "lineEnd": 56,
+        "contentHash": "sha256:4fa7c8c7d8b3dcd48f0c7f1b0b04c6040460caab97fd53a29c3d012673fac18f"
+      }
+    ],
+    "evidenceQuote": "正如你所怀疑的，`Mutex<T>` 是一个智能指针。更准确的说，`lock` 调用 **返回** 一个叫做 `MutexGuard` 的智能指针。这个智能指针实现了 `Deref` 来指向其内部数据；其也提供了一个 `Drop` 实现当 `MutexGuard` 离开作用域时自动释放锁，这正发生于示例 16-12 内部作用域的结尾。为此，我们不会冒忘记释放锁并阻塞互斥器为其它线程所用的风险，因为锁的释放是自动发生的。",
+    "canonicalTerm": "MutexGuard",
+    "aliases": [],
+    "definition": "`lock` 调用返回的智能指针，它实现 `Deref` 指向内部数据，并在离开作用域时通过 `Drop` 自动释放锁。",
+    "examples": [
+      "示例 16-12 中，`MutexGuard` 在内部作用域结尾自动释放锁。"
+    ]
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h4-1",
+        "title": "在线程间共享 `Mutex<T>`",
+        "lineStart": 57,
+        "lineEnd": 111,
+        "contentHash": "sha256:01f51c599283832f263b8187ef12c5581f55f7fa8b67c870a35515edb7776d6c"
+      }
+    ],
+    "evidenceQuote": "错误信息表明 `counter` 值在上一次循环中被移动了。所以 Rust 告诉我们不能将 `counter` 锁的所有权移动到多个线程中。",
+    "statement": "不能将 `counter` 锁的所有权移动到多个线程中。",
+    "rationale": "错误信息表明 `counter` 值在上一次循环中被移动了，因此 Rust 告知不能将该锁所有权移动到多个线程中。",
+    "appliesWhen": "当在循环中试图把同一个 `counter` 锁的所有权移动到多个线程时。",
+    "violation": "Rust 会给出编译错误，并阻止将 `counter` 锁的所有权移动到多个线程中。",
+    "chapterRef": "ch16-03-shared-state-h4-1"
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H4-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h4-2",
+        "title": "多线程和多所有权",
+        "lineStart": 112,
+        "lineEnd": 168,
+        "contentHash": "sha256:5c0c01ea1765a865630ed9bbb125033d3cda9d19d90b165615990c09a834b396"
+      }
+    ],
+    "evidenceQuote": "不幸的是，`Rc<T>` 并不能安全的在线程间共享。当 `Rc<T>` 管理引用计数时，它必须在每一个 `clone` 调用时增加计数，并在每一个克隆被丢弃时减少计数。`Rc<T>` 并没有使用任何并发原语，来确保改变计数的操作不会被其他线程打断。在计数出错时可能会导致诡异的 bug，比如可能会造成内存泄漏，或在使用结束之前就丢弃一个值。",
+    "statement": "`Rc<T>` 不能安全地在线程间共享。",
+    "rationale": "`Rc<T>` 管理引用计数时没有使用并发原语，改变计数的操作可能被其他线程打断，导致计数出错，进而可能造成内存泄漏或在值使用结束之前丢弃。",
+    "appliesWhen": "当使用 `Rc<T>` 管理引用计数并需要在线程间共享时。",
+    "violation": "在线程间共享 `Rc<T>` 时，其计数操作可能被其他线程打断，导致计数出错，并可能出现内存泄漏或在值使用结束之前就丢弃。",
+    "chapterRef": "ch16-03-shared-state-h4-2"
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h4-3",
+        "title": "原子引用计数 `Arc<T>`",
+        "lineStart": 169,
+        "lineEnd": 214,
+        "contentHash": "sha256:e522cdec57520d4c34a7cea8f11e36c0ef68d5532b383f1f1c88a76cbea82bed"
+      }
+    ],
+    "evidenceQuote": "所幸 `Arc<T>` **正是** 这么一个类似 `Rc<T>` 并可以安全的用于并发环境的类型。字母 “a” 代表 **原子性**（_atomic_），所以这是一个**原子引用计数**（_atomically reference counted_）类型。原子性是另一类这里还未涉及到的并发原语：请查看标准库中 `std::sync::atomic` 的文档来获取更多细节。其中的要点就是：原子性类型工作起来类似原始类型，不过可以安全的在线程间共享。\n\n你可能会好奇为什么不是所有的原始类型都是原子性的？为什么不是所有标准库中的类型都默认使用 `Arc<T>` 实现？原因在于线程安全带有性能惩罚，我们希望只在必要时才为此买单。如果只是在单线程中对值进行操作，原子性提供的保证并无必要，代码可以因此运行的更快。\n\n回到之前的例子：`Arc<T>` 和 `Rc<T>` 有着相同的 API，所以修改程序中的 `use` 行和 `new` 调用。示例 16-15 中的代码最终可以编译和运行：",
+    "canonicalTerm": "Arc<T>",
+    "aliases": [
+      "原子引用计数"
+    ],
+    "definition": "Arc<T> 是一个类似 Rc<T> 并可以安全用于并发环境的原子引用计数类型；其原子性类型工作起来类似原始类型，但可以安全在线程间共享。",
+    "examples": [
+      "Arc<T> 与 Rc<T> 有着相同的 API，修改程序中的 use 行和 new 调用即可切换到 Arc<T>，示例 16-15 中的代码最终可以编译和运行。"
+    ]
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H4-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h4-3",
+        "title": "原子引用计数 `Arc<T>`",
+        "lineStart": 169,
+        "lineEnd": 214,
+        "contentHash": "sha256:e522cdec57520d4c34a7cea8f11e36c0ef68d5532b383f1f1c88a76cbea82bed"
+      }
+    ],
+    "evidenceQuote": "原因在于线程安全带有性能惩罚，我们希望只在必要时才为此买单。如果只是在单线程中对值进行操作，原子性提供的保证并无必要，代码可以因此运行的更快。",
+    "statement": "在单线程中对值进行操作时，不要使用原子性类型（如 Arc<T>）提供的线程安全保证，因为这会带来不必要的性能惩罚。",
+    "rationale": "线程安全带有性能惩罚，只在必要时才应为此买单；单线程操作不需要原子性保证，因此代码可以运行得更快。",
+    "appliesWhen": "仅在单线程中对值进行操作，不需要跨线程共享时。",
+    "violation": "在单线程代码中默认使用原子类型或 Arc<T> 实现，为不必要的线程安全保证付出性能代价。",
+    "chapterRef": "ch16-03-shared-state-h4-3"
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h3-3",
+        "title": "`RefCell<T>`/`Rc<T>` 与 `Mutex<T>`/`Arc<T>` 的相似性",
+        "lineStart": 215,
+        "lineEnd": 222,
+        "contentHash": "sha256:c142252d1fb1f03e333071816cf795c64654556e15a517b9b06edfe84ead9a54"
+      }
+    ],
+    "evidenceQuote": "你可能注意到了，因为 `counter` 是不可变的，不过可以获取其内部值的可变引用；这意味着 `Mutex<T>` 提供了内部可变性，就像 `Cell` 系列类型那样。正如第 15 章中使用 `RefCell<T>` 可以改变 `Rc<T>` 中的内容那样，同样的可以使用 `Mutex<T>` 来改变 `Arc<T>` 中的内容。",
+    "canonicalTerm": "Mutex<T> 的内部可变性",
+    "aliases": [],
+    "definition": "当 `counter` 不可变时，可以获取其内部值的可变引用；`Mutex<T>` 提供了这种内部可变性，就像 `Cell` 系列类型那样。",
+    "examples": [
+      "正如第 15 章中使用 `RefCell<T>` 可以改变 `Rc<T>` 中的内容那样，使用 `Mutex<T>` 可以改变 `Arc<T>` 中的内容。"
+    ]
+  },
+  {
+    "id": "CH16-03-SHARED-STATE-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:42:02.349Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:42:02.349Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+        "anchor": "ch16-03-shared-state#h3-3",
+        "title": "`RefCell<T>`/`Rc<T>` 与 `Mutex<T>`/`Arc<T>` 的相似性",
+        "lineStart": 215,
+        "lineEnd": 222,
+        "contentHash": "sha256:c142252d1fb1f03e333071816cf795c64654556e15a517b9b06edfe84ead9a54"
+      }
+    ],
+    "evidenceQuote": "另一个值得注意的细节是 Rust 不能避免使用 `Mutex<T>` 的全部逻辑错误。回忆一下第 15 章使用 `Rc<T>` 就有造成引用循环的风险，这时两个 `Rc<T>` 值相互引用，造成内存泄漏。同理，`Mutex<T>` 也有造成 **死锁**（_deadlock_） 的风险。这发生于当一个操作需要锁住两个资源而两个线程各持一个锁，这会造成它们永远相互等待。",
+    "statement": "当一个操作需要锁住两个资源，而两个线程各持一个锁时，会发生死锁并造成它们永远相互等待。",
+    "rationale": "Rust 不能避免使用 `Mutex<T>` 的全部逻辑错误；与 `Rc<T>` 可能造成引用循环类似，`Mutex<T>` 也有造成死锁的风险。",
+    "appliesWhen": "并发操作需要锁住两个资源，且存在两个线程各持一个锁的情况。",
+    "violation": "线程会永远相互等待，形成死锁。",
+    "chapterRef": "ch16-03-shared-state-h3-3"
+  }
+]

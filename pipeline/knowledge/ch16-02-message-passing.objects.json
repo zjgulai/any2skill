@@ -1,0 +1,182 @@
+[
+  {
+    "id": "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:38:07.485Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:38:07.485Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h2-1",
+        "title": "使用消息传递在线程间传送数据",
+        "lineStart": 1,
+        "lineEnd": 89,
+        "contentHash": "sha256:349405d677578efa479039e2cb96da4853dc59199109b9b2dc71c63c5eab0929"
+      }
+    ],
+    "evidenceQuote": "编程中的通道有两部分组成，一个发送者（transmitter）和一个接收者（receiver）。发送者位于上游位置，在这里可以将橡皮鸭放入河中，接收者则位于下游，橡皮鸭最终会漂流至此。代码中的一部分调用发送者的方法以及希望发送的数据，另一部分则检查接收端收到的消息。当发送者或接收者任一被丢弃时可以认为通道被 **关闭**（_closed_）了。",
+    "canonicalTerm": "通道",
+    "aliases": [
+      "channel"
+    ],
+    "definition": "编程中的通道由发送者和接收者两部分组成；发送者位于上游，接收者位于下游；代码中的一部分调用发送者的方法以及希望发送的数据，另一部分则检查接收端收到的消息；当发送者或接收者任一被丢弃时，通道关闭。",
+    "examples": [
+      "发送者位于上游位置，在这里可以将橡皮鸭放入河中，接收者则位于下游，橡皮鸭最终会漂流至此。"
+    ]
+  },
+  {
+    "id": "CH16-02-MESSAGE-PASSING-H2-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:38:07.485Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:38:07.485Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h2-1",
+        "title": "使用消息传递在线程间传送数据",
+        "lineStart": 1,
+        "lineEnd": 89,
+        "contentHash": "sha256:349405d677578efa479039e2cb96da4853dc59199109b9b2dc71c63c5eab0929"
+      }
+    ],
+    "evidenceQuote": "这里使用 `mpsc::channel` 函数创建一个新的通道；`mpsc` 是 **多个生产者，单个消费者**（_multiple producer, single consumer_）的缩写。简而言之，Rust 标准库实现通道的方式意味着一个通道可以有多个产生值的 **发送**（_sending_）端，但只能有一个消费这些值的 **接收**（_receiving_）端。想象一下多条小河小溪最终汇聚成大河：所有通过这些小河发出的东西最后都会来到下游的大河。",
+    "canonicalTerm": "mpsc",
+    "aliases": [
+      "多个生产者，单个消费者",
+      "multiple producer, single consumer"
+    ],
+    "definition": "mpsc 是多个生产者，单个消费者的缩写；Rust 标准库实现通道的方式意味着一个通道可以有多个发送端，但只能有一个接收端。",
+    "examples": [
+      "多条小河小溪最终汇聚成大河，所有通过小河发出的东西最后都会来到下游的大河。"
+    ]
+  },
+  {
+    "id": "CH16-02-MESSAGE-PASSING-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:38:07.485Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:38:07.485Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-1",
+        "title": "通道与所有权转移",
+        "lineStart": 90,
+        "lineEnd": 132,
+        "contentHash": "sha256:045bd4b58b3cef5476ba521336ecb7561cb3664934645e8505241e672283ee0e"
+      }
+    ],
+    "evidenceQuote": "我们的并发错误会造成一个编译时错误。`send` 函数获取其参数的所有权并移动这个值归接收者所有。这可以防止在发送后再次意外地使用这个值；所有权系统检查一切是否合乎规则。",
+    "statement": "`send` 函数获取其参数的所有权并移动这个值归接收者所有；这可以防止在发送后再次意外地使用这个值。",
+    "rationale": "所有权系统检查一切是否合乎规则，使并发错误表现为编译时错误。",
+    "appliesWhen": "当尝试在 `send` 发送值之后再次使用该值时。",
+    "violation": "产生编译时错误。",
+    "chapterRef": "ch16-02-message-passing-h3-1"
+  },
+  {
+    "id": "CH16-02-MESSAGE-PASSING-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:38:07.485Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:38:07.485Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-2",
+        "title": "发送多个值并观察接收者的等待",
+        "lineStart": 133,
+        "lineEnd": 183,
+        "contentHash": "sha256:f139595d25f9bbaffe46e71e8f9ec77d0186cf53d3f6a10f4ac91df37845bbfb"
+      }
+    ],
+    "evidenceQuote": "在主线程中，不再显式调用 `recv` 函数：而是将 `rx` 当作一个迭代器。对于每一个接收到的值，我们将其打印出来。当通道被关闭时，迭代器也将结束。",
+    "statement": "通道接收端 rx 可以被当作迭代器使用；当通道关闭时，迭代器结束。",
+    "rationale": "不再显式调用 recv 函数，而是逐个接收并打印每个接收到的值。",
+    "appliesWhen": "需要从通道接收并处理多个值时。",
+    "violation": "如果继续显式调用 recv 函数逐个接收值，则没有使用迭代器接收值。",
+    "chapterRef": "ch16-02-message-passing-h3-2"
+  },
+  {
+    "id": "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:38:07.485Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:38:07.485Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-3",
+        "title": "通过克隆发送者来创建多个生产者",
+        "lineStart": 184,
+        "lineEnd": 257,
+        "contentHash": "sha256:5953c3a518abbe4d7c2bf4bbd67b47b1f6ef30f17671c5e2b62d54e47c28d8c8"
+      }
+    ],
+    "evidenceQuote": "之前我们提到了`mpsc`是 _multiple producer, single consumer_ 的缩写。可以运用 `mpsc` 来扩展示例 16-10 中的代码来创建向同一接收者发送值的多个线程。这可以通过克隆通道的发送端来做到，如示例 16-11 所示：",
+    "canonicalTerm": "mpsc 多生产者单消费者通道",
+    "aliases": [
+      "mpsc",
+      "multiple producer, single consumer"
+    ],
+    "definition": "mpsc 是 multiple producer, single consumer 的缩写，表示通道可以有多个发送端和一个接收端，可用于创建向同一接收者发送值的多个线程。",
+    "examples": [
+      "示例 16-11 中的代码通过克隆通道发送端创建多个线程，向同一接收者发送值"
+    ]
+  },
+  {
+    "id": "CH16-02-MESSAGE-PASSING-H3-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:38:07.485Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:38:07.485Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch16-02-message-passing.md",
+        "anchor": "ch16-02-message-passing#h3-3",
+        "title": "通过克隆发送者来创建多个生产者",
+        "lineStart": 184,
+        "lineEnd": 257,
+        "contentHash": "sha256:5953c3a518abbe4d7c2bf4bbd67b47b1f6ef30f17671c5e2b62d54e47c28d8c8"
+      }
+    ],
+    "evidenceQuote": "这一次，在创建新线程之前，我们对通道的发送端调用了 `clone` 方法。这会给我们一个可以传递给第一个新建线程的发送端句柄。我们会将原始的通道发送端传递给第二个新建线程。这样就会有两个线程，每个线程将向通道的接收端发送不同的消息。",
+    "canonicalTerm": "克隆发送者以创建多个生产者",
+    "aliases": [],
+    "definition": "在创建新线程之前调用通道发送端的 clone 方法，得到可传递给第一个新建线程的发送端句柄，再把原始通道发送端传递给第二个新建线程，从而让两个线程都能向同一接收端发送不同的消息。",
+    "examples": [
+      "示例 16-11 在两个线程中分别通过克隆发送端和原始发送端向同一个接收端发送不同的消息"
+    ]
+  }
+]

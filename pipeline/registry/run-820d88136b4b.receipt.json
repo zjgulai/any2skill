@@ -1,0 +1,991 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-820d88136b4b",
+  "createdAt": "2026-10-14T20:03:38.517Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+    "hash": "sha256:cd688652da16ad8d7fdfc090d4f0a8b390073764e712782338c2e0240a701d15",
+    "totalLines": 207
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch11-02-running-tests#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+          "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1686,
+            "output": 2541
+          }
+        }
+      },
+      {
+        "anchor": "ch11-02-running-tests#h3-1",
+        "lineStart": 7,
+        "lineEnd": 20,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+          "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1755,
+            "output": 8074
+          }
+        }
+      },
+      {
+        "anchor": "ch11-02-running-tests#h3-2",
+        "lineStart": 21,
+        "lineEnd": 74,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+          "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1947,
+            "output": 8091
+          }
+        }
+      },
+      {
+        "anchor": "ch11-02-running-tests#h3-3",
+        "lineStart": 75,
+        "lineEnd": 121,
+        "objectCount": 1,
+        "objectIds": [
+          "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1800,
+            "output": 7502
+          }
+        }
+      },
+      {
+        "anchor": "ch11-02-running-tests#h4-1",
+        "lineStart": 122,
+        "lineEnd": 140,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+          "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1681,
+            "output": 5457
+          }
+        }
+      },
+      {
+        "anchor": "ch11-02-running-tests#h4-2",
+        "lineStart": 141,
+        "lineEnd": 158,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+          "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1686,
+            "output": 8970
+          }
+        }
+      },
+      {
+        "anchor": "ch11-02-running-tests#h3-4",
+        "lineStart": 159,
+        "lineEnd": 207,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+          "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1925,
+            "output": 6721
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 7,
+      "tokens": {
+        "input": 12480,
+        "output": 47356
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch11-02-running-tests#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1686,
+            "output": 2541
+          }
+        },
+        {
+          "anchor": "ch11-02-running-tests#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1755,
+            "output": 8074
+          }
+        },
+        {
+          "anchor": "ch11-02-running-tests#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1947,
+            "output": 8091
+          }
+        },
+        {
+          "anchor": "ch11-02-running-tests#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1800,
+            "output": 7502
+          }
+        },
+        {
+          "anchor": "ch11-02-running-tests#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1681,
+            "output": 5457
+          }
+        },
+        {
+          "anchor": "ch11-02-running-tests#h4-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1686,
+            "output": 8970
+          }
+        },
+        {
+          "anchor": "ch11-02-running-tests#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1925,
+            "output": 6721
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 7,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 7,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 7,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 7,
+    "tokens": {
+      "input": 12480,
+      "output": 47356
+    },
+    "tokensDetail": {
+      "reasoning": 44730,
+      "cachedInput": 9856
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 13,
+    "tokens": {
+      "input": 12093,
+      "output": 3381
+    },
+    "tokensDetail": {
+      "reasoning": 2812,
+      "cachedInput": 4992
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 13,
+      "verdicts": {
+        "supported": 13
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 13
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch11-02-running-tests.anchors.json",
+      "sha256": "sha256:ae0b9cc725b4e74a0b392e54e26ff15c8409314137f9d426b62cab94d7829232",
+      "bytes": 2851,
+      "anchorCount": 7
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch11-02-running-tests.objects.json",
+      "sha256": "sha256:daadb2f8fa9e8015292be879b5af782c0e8c4d6c8a9662c30dca0b608892b130",
+      "bytes": 20778,
+      "objectCount": 13
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-820d88136b4b.layer2-raw.json",
+      "sha256": "sha256:f0a7375be11ac4bddd73f1c70e411e65dcb7c7b8a4c769dc3e7876a36b737f31"
+    }
+  },
+  "counts": {
+    "anchors": 7,
+    "objects": 13,
+    "passed": 13,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 1,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 11,
+      "AntiPattern": 1
+    }
+  },
+  "coverage": {
+    "indexAnchors": 7,
+    "processedAnchors": 7,
+    "processedKnown": true,
+    "coveredAnchors": 7,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=7，索引锚点数=7）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 4,
+        "covered": 4,
+        "without": 0
+      },
+      "h4": {
+        "index": 2,
+        "covered": 2,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明，在未通过命令行参数改变默认行为时，cargo test 生成的二进制文件默认并行运行所有测试并截获输出以阻止显示。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明为分隔两类参数，需先列出传给 cargo test 的参数，接着用分隔符 `--`，之后列出传给测试二进制文件的参数，完整支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-1",
+        "lineStart": 7,
+        "lineEnd": 20
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-1",
+          "lineStart": 7,
+          "lineEnd": 20
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Rust 默认使用线程并行运行多个测试，并且测试不应相互依赖或依赖包括当前工作目录和环境变量在内的共享状态。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-1",
+        "lineStart": 7,
+        "lineEnd": 20
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-1",
+          "lineStart": 7,
+          "lineEnd": 20
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在不希望并行运行或需要更精确控制线程数时可传递 `--test-threads` 和线程数量，并给出 `--test-threads=1` 示例，同时提及存在共享状态时避免干扰，支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-2",
+        "lineStart": 21,
+        "lineEnd": 74
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-2",
+          "lineStart": 21,
+          "lineEnd": 74
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了默认情况下测试通过时截获标准输出、通过测试的 println! 输出不显示、失败时显示所有标准输出和错误信息，完全支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-2",
+        "lineStart": 21,
+        "lineEnd": 74
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-2",
+          "lineStart": 21,
+          "lineEnd": 74
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明如果希望看到通过测试中打印的值，可以在末尾增加 `--show-output` 参数来显示通过测试的输出，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H3-3-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-3",
+        "lineStart": 75,
+        "lineEnd": 121
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-3",
+          "lineStart": 75,
+          "lineEnd": 121
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在负责特定位置代码并希望只运行相关测试时，可以向 cargo test 传递测试名称参数来选择运行哪些测试，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H4-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-1",
+        "lineStart": 122,
+        "lineEnd": 140
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h4-1",
+          "lineStart": 122,
+          "lineEnd": 140
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到“可以向 cargo test 传递任意测试的名称来只运行这个测试”，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H4-1-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-1",
+        "lineStart": 122,
+        "lineEnd": 140
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h4-1",
+          "lineStart": 122,
+          "lineEnd": 140
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明不能同时指定多个测试名称，且只有传给 cargo test 的第一个值会被使用，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-2",
+        "lineStart": 141,
+        "lineEnd": 158
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h4-2",
+          "lineStart": 141,
+          "lineEnd": 158
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明运行所有名字中带有 `add` 的测试并过滤掉名为 `one_hundred` 的测试，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H4-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h4-2",
+        "lineStart": 141,
+        "lineEnd": 158
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h4-2",
+          "lineStart": 141,
+          "lineEnd": 158
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写明测试所在模块是测试名称的一部分，因此可以通过模块名运行该模块中的所有测试。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-4",
+        "lineStart": 159,
+        "lineEnd": 207
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-4",
+          "lineStart": 159,
+          "lineEnd": 207
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明可以用 `ignore` 属性标记耗时的测试并在大多数 `cargo test` 运行中排除它们。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-02-RUNNING-TESTS-H3-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+        "anchor": "ch11-02-running-tests#h3-4",
+        "lineStart": 159,
+        "lineEnd": 207
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-02-running-tests.md",
+          "anchor": "ch11-02-running-tests#h3-4",
+          "lineStart": 159,
+          "lineEnd": 207
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出“如果我们只希望运行被忽略的测试，可以使用 `cargo test -- --ignored`”，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

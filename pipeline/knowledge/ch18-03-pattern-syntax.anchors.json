@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+  "fileKey": "ch18-03-pattern-syntax",
+  "totalLines": 604,
+  "sourceHash": "sha256:78d4d204762dfc4d90ecd02f02cd40a39359e69b1a1e8df604346bc0a6dcd729",
+  "anchorCount": 18,
+  "levelCounts": {
+    "h2": 2,
+    "h3": 8,
+    "h4": 8
+  },
+  "anchors": [
+    {
+      "anchor": "ch18-03-pattern-syntax#h2-1",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 2,
+      "title": "模式语法",
+      "lineStart": 1,
+      "lineEnd": 4,
+      "contentHash": "sha256:5085c486da35417c55e3f7b38f86a7f0a4737dcce9b7aa5fb98f1daaaca2bcc4",
+      "contentBytes": 198
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-1",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "匹配字面量",
+      "lineStart": 5,
+      "lineEnd": 21,
+      "contentHash": "sha256:1099cb4937e716ae51593880fc79278edb5ec8855dafe020c1f02e876e21d1f9",
+      "contentBytes": 387
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-2",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "匹配命名变量",
+      "lineStart": 22,
+      "lineEnd": 54,
+      "contentHash": "sha256:abebcede445a636f80d96e369b26a72c70a2b928850c5c137a1bef58a1a24cb7",
+      "contentBytes": 2526
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-3",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "多个模式",
+      "lineStart": 55,
+      "lineEnd": 70,
+      "contentHash": "sha256:3cf02e5523eef068351731f775603761ed0fa7da10ba5b4c055fbe4e8b9c337c",
+      "contentBytes": 479
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-4",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "通过 `..=` 匹配值的范围",
+      "lineStart": 71,
+      "lineEnd": 101,
+      "contentHash": "sha256:10388ffa8e90f543e4f314962fe6cdf45d55221769be50e6982079166319cf13",
+      "contentBytes": 1114
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-5",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "解构并分解值",
+      "lineStart": 102,
+      "lineEnd": 105,
+      "contentHash": "sha256:0d0af5ecd5eb50ed01844a9d40a32914a39cf8855f4da10413512627b00c9d67",
+      "contentBytes": 163
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-1",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "解构结构体",
+      "lineStart": 106,
+      "lineEnd": 184,
+      "contentHash": "sha256:0378981e430675ee14f08749ea6ccdd528de430d5742d3a435ae74e92cad01f1",
+      "contentBytes": 3073
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-2",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "解构枚举",
+      "lineStart": 185,
+      "lineEnd": 235,
+      "contentHash": "sha256:34aef231c8734281ee5bc1d24af9679dddab5a2edc06855aeabcb973abad779f",
+      "contentBytes": 2168
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-3",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "解构嵌套的结构体和枚举",
+      "lineStart": 236,
+      "lineEnd": 283,
+      "contentHash": "sha256:f3ee8d03c3a83b31ae09990d4a37f6e176d18d009044caf13af8d5e00cb19334",
+      "contentBytes": 1489
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-4",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "解构结构体和元组",
+      "lineStart": 284,
+      "lineEnd": 300,
+      "contentHash": "sha256:83cb657570bf4fb12edbf8f8f9b59fefe01ec1c63f084a618b2b4cb07e8dde8c",
+      "contentBytes": 574
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-6",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "忽略模式中的值",
+      "lineStart": 301,
+      "lineEnd": 304,
+      "contentHash": "sha256:f39773a642e73c2557af692450b8d26a2d44048c54ac5a681fe24408e82f4b1a",
+      "contentBytes": 503
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-5",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "使用 `_` 忽略整个值",
+      "lineStart": 305,
+      "lineEnd": 326,
+      "contentHash": "sha256:87098a97d991279a5a95aa714393a2af4b9de2d894746e57f07b8b021759e13d",
+      "contentBytes": 1040
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-6",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "使用嵌套的 `_` 忽略部分值",
+      "lineStart": 327,
+      "lineEnd": 368,
+      "contentHash": "sha256:2534928d1e8b43cb1b227f6d90930da002b4ab7422ca8373a528255349e6a1c4",
+      "contentBytes": 1931
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-7",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "通过在名字前以一个下划线开头来忽略未使用的变量",
+      "lineStart": 369,
+      "lineEnd": 415,
+      "contentHash": "sha256:663a00b14e61b9feea7a7b894644dca1aea7fd72c63ece9ca6d78604d7a49059",
+      "contentBytes": 1931
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h4-8",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 4,
+      "title": "用 `..` 忽略剩余值",
+      "lineStart": 416,
+      "lineEnd": 487,
+      "contentHash": "sha256:c441f25c52e9b9182d2b3bca1b273d89b20aa50e621a36bde67c5ed8a5223332",
+      "contentBytes": 2763
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-7",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "匹配守卫提供的额外条件",
+      "lineStart": 488,
+      "lineEnd": 564,
+      "contentHash": "sha256:b6ed2eef2c5e7dcd9c5c3c759c308e74021fadc2d49431b9de172ed1d023fa66",
+      "contentBytes": 3999
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h3-8",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 3,
+      "title": "`@` 绑定",
+      "lineStart": 565,
+      "lineEnd": 598,
+      "contentHash": "sha256:1a5b1cc0e9dbbc311375ec5fd6b802d80fb123f4d3789db17977f16891a79085",
+      "contentBytes": 1822
+    },
+    {
+      "anchor": "ch18-03-pattern-syntax#h2-2",
+      "file": "sources/rust-book-cn/book/ch18-03-pattern-syntax.md",
+      "level": 2,
+      "title": "总结",
+      "lineStart": 599,
+      "lineEnd": 604,
+      "contentHash": "sha256:49d8a72553a3d8bb135a63287486e120c6ceb1221dbf125733b78c8c7f148f0e",
+      "contentBytes": 514
+    }
+  ]
+}

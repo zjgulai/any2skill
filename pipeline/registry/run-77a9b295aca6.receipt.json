@@ -1,0 +1,771 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-77a9b295aca6",
+  "createdAt": "2026-10-14T03:50:27.050Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+    "hash": "sha256:082c63fc9cbcfeaa6d929f82a28eb6d564d0c8c25ffd4248c62c3e4d75b2174b",
+    "totalLines": 114
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "objectCount": 2,
+        "objectIds": [
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-HEURISTIC-01",
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1725,
+            "output": 9811
+          }
+        }
+      },
+      {
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+        "lineStart": 7,
+        "lineEnd": 14,
+        "objectCount": 2,
+        "objectIds": [
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-01",
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1666,
+            "output": 7718
+          }
+        }
+      },
+      {
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+        "lineStart": 15,
+        "lineEnd": 26,
+        "objectCount": 2,
+        "objectIds": [
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-01",
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1778,
+            "output": 11623
+          }
+        }
+      },
+      {
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+        "lineStart": 27,
+        "lineEnd": 42,
+        "objectCount": 2,
+        "objectIds": [
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-HEURISTIC-01",
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2125,
+            "output": 7965
+          }
+        }
+      },
+      {
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+        "lineStart": 43,
+        "lineEnd": 106,
+        "objectCount": 1,
+        "objectIds": [
+          "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-4-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2503,
+            "output": 5128
+          }
+        }
+      },
+      {
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h2-2",
+        "lineStart": 107,
+        "lineEnd": 114,
+        "objectCount": 0,
+        "objectIds": [],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1660,
+            "output": 2539
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 6,
+      "tokens": {
+        "input": 11457,
+        "output": 44784
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1725,
+            "output": 9811
+          }
+        },
+        {
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1666,
+            "output": 7718
+          }
+        },
+        {
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1778,
+            "output": 11623
+          }
+        },
+        {
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 2125,
+            "output": 7965
+          }
+        },
+        {
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 2503,
+            "output": 5128
+          }
+        },
+        {
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h2-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1660,
+            "output": 2539
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 6,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 6,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 6,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 6,
+    "tokens": {
+      "input": 11457,
+      "output": 44784
+    },
+    "tokensDetail": {
+      "reasoning": 43228,
+      "cachedInput": 8448
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 9,
+    "tokens": {
+      "input": 9213,
+      "output": 4151
+    },
+    "tokensDetail": {
+      "reasoning": 3762,
+      "cachedInput": 3456
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 9,
+      "verdicts": {
+        "supported": 9
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 9
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch09-03-to-panic-or-not-to-panic.anchors.json",
+      "sha256": "sha256:738574858464c9172b4b7e420b1c1d71a0cb9e65fb8cfed278b1cc9f0c1eb717",
+      "bytes": 2689,
+      "anchorCount": 6
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch09-03-to-panic-or-not-to-panic.objects.json",
+      "sha256": "sha256:27fc59c7045ce1d9768db98e352054bb7dc235944f5e02b78dd89e08d304b36b",
+      "bytes": 13371,
+      "objectCount": 9
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-77a9b295aca6.layer2-raw.json",
+      "sha256": "sha256:01cd5755b87da4c197a4cbdaf670e268900830cd3ad7b2638fd4221764f8eb71"
+    }
+  },
+  "counts": {
+    "anchors": 6,
+    "objects": 9,
+    "passed": 9,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 0,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 4,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 4,
+      "AntiPattern": 1
+    }
+  },
+  "coverage": {
+    "indexAnchors": 6,
+    "processedAnchors": 6,
+    "processedKnown": true,
+    "coveredAnchors": 5,
+    "withoutObjects": {
+      "count": 1,
+      "anchors": [
+        "ch09-03-to-panic-or-not-to-panic#h2-2"
+      ]
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=6，索引锚点数=6）。",
+    "perLevel": {
+      "h2": {
+        "index": 2,
+        "covered": 1,
+        "without": 1
+      },
+      "h3": {
+        "index": 4,
+        "covered": 4,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述“返回 `Result` 是定义可能会失败的函数的一个好的默认选择”，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H2-1-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出可对任何错误场景调用 panic! 且不管是否可能恢复，并说明 panic 无恢复可能且是代替调用者决定不可恢复。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+        "lineStart": 7,
+        "lineEnd": 14
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+          "lineStart": 7,
+          "lineEnd": 14
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明测试中方法调用失败时，因 panic! 会将测试标记为失败，调用 unwrap 或 expect 是恰当的。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-1-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+        "lineStart": 7,
+        "lineEnd": 14
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-1",
+          "lineStart": 7,
+          "lineEnd": 14
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明示例中 unwrap 可作为错误处理占位符，并说明 unwrap/expect 在原型设计时方便且留下清晰标记。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+        "lineStart": 15,
+        "lineEnd": 26
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+          "lineStart": 15,
+          "lineEnd": 26
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表示当有逻辑确保Result为Ok且通过人工检查确定不会出现Err时，调用unwrap是完全可以接受的，足以支持主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+        "lineStart": 15,
+        "lineEnd": 26
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-2",
+          "lineStart": 15,
+          "lineEnd": 26
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到，IP 地址字符串来源于用户而非硬编码时确实有失败可能性，并绝对需要以更健壮的方式处理 Result，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+        "lineStart": 27,
+        "lineEnd": 42
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+          "lineStart": 27,
+          "lineEnd": 42
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到当错误预期会出现时返回Result比panic!更合适，并说明以此表明失败预期可能、将有害状态向上传播且由调用者决定处理，完整支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+        "lineStart": 27,
+        "lineEnd": 42
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-3",
+          "lineStart": 27,
+          "lineEnd": 42
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出当代码对值进行操作时应首先验证值有效并在无效时 panic，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH09-03-TO-PANIC-OR-NOT-TO-PANIC-H3-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+        "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+        "lineStart": 43,
+        "lineEnd": 106
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch09-03-to-panic-or-not-to-panic.md",
+          "anchor": "ch09-03-to-panic-or-not-to-panic#h3-4",
+          "lineStart": 43,
+          "lineEnd": 106
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当多处函数需要重复同样检查时，应创建新类型把验证放入实例创建函数，并可在函数签名中使用该类型信任接收到的值。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

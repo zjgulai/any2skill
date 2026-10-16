@@ -1,0 +1,1447 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-e5641c125901",
+  "createdAt": "2026-10-14T15:09:26.392Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch08-02-strings.md",
+    "hash": "sha256:de01fd74ce800807a66452f302576215e13a57911c31ecdc4e828042a8adc0a3",
+    "totalLines": 301
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch08-02-strings#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "objectCount": 1,
+        "objectIds": [
+          "CH08-02-STRINGS-H2-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1674,
+            "output": 6201
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h3-1",
+        "lineStart": 7,
+        "lineEnd": 14,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H3-1-CONCEPT-01",
+          "CH08-02-STRINGS-H3-1-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1831,
+            "output": 10036
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h3-2",
+        "lineStart": 15,
+        "lineEnd": 69,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H3-2-CONCEPT-01",
+          "CH08-02-STRINGS-H3-2-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2037,
+            "output": 12910
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h3-3",
+        "lineStart": 70,
+        "lineEnd": 73,
+        "objectCount": 1,
+        "objectIds": [
+          "CH08-02-STRINGS-H3-3-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1537,
+            "output": 3038
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h4-1",
+        "lineStart": 74,
+        "lineEnd": 108,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H4-1-CONCEPT-01",
+          "CH08-02-STRINGS-H4-1-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1864,
+            "output": 10258
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h4-2",
+        "lineStart": 109,
+        "lineEnd": 156,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-01",
+          "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2414,
+            "output": 14218
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h3-4",
+        "lineStart": 157,
+        "lineEnd": 181,
+        "objectCount": 1,
+        "objectIds": [
+          "CH08-02-STRINGS-H3-4-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1737,
+            "output": 5715
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h4-3",
+        "lineStart": 182,
+        "lineEnd": 204,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H4-3-CONCEPT-01",
+          "CH08-02-STRINGS-H4-3-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1920,
+            "output": 9192
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h4-4",
+        "lineStart": 205,
+        "lineEnd": 230,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H4-4-CONCEPT-01",
+          "CH08-02-STRINGS-H4-4-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1843,
+            "output": 10325
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h3-5",
+        "lineStart": 231,
+        "lineEnd": 250,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H3-5-ENGINEERINGRULE-01",
+          "CH08-02-STRINGS-H3-5-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1755,
+            "output": 8520
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h3-6",
+        "lineStart": 251,
+        "lineEnd": 295,
+        "objectCount": 2,
+        "objectIds": [
+          "CH08-02-STRINGS-H3-6-HEURISTIC-01",
+          "CH08-02-STRINGS-H3-6-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1728,
+            "output": 4890
+          }
+        }
+      },
+      {
+        "anchor": "ch08-02-strings#h3-7",
+        "lineStart": 296,
+        "lineEnd": 301,
+        "objectCount": 1,
+        "objectIds": [
+          "CH08-02-STRINGS-H3-7-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1583,
+            "output": 4618
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 12,
+      "tokens": {
+        "input": 21923,
+        "output": 99921
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch08-02-strings#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1674,
+            "output": 6201
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1831,
+            "output": 10036
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2037,
+            "output": 12910
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1537,
+            "output": 3038
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1864,
+            "output": 10258
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h4-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2414,
+            "output": 14218
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1737,
+            "output": 5715
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h4-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1920,
+            "output": 9192
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h4-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1843,
+            "output": 10325
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h3-5",
+          "calls": 1,
+          "tokens": {
+            "input": 1755,
+            "output": 8520
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h3-6",
+          "calls": 1,
+          "tokens": {
+            "input": 1728,
+            "output": 4890
+          }
+        },
+        {
+          "anchor": "ch08-02-strings#h3-7",
+          "calls": 1,
+          "tokens": {
+            "input": 1583,
+            "output": 4618
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 12,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 12,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 12,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 12,
+    "tokens": {
+      "input": 21923,
+      "output": 99921
+    },
+    "tokensDetail": {
+      "reasoning": 94835,
+      "cachedInput": 16896
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 20,
+    "tokens": {
+      "input": 21309,
+      "output": 5602
+    },
+    "tokensDetail": {
+      "reasoning": 4659,
+      "cachedInput": 7680
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 20,
+      "verdicts": {
+        "supported": 20
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 20
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch08-02-strings.anchors.json",
+      "sha256": "sha256:12f535fd6115f41e526f11c5b92b41850d3117feb4a5096bf0d1105723badd55",
+      "bytes": 4507,
+      "anchorCount": 12
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch08-02-strings.objects.json",
+      "sha256": "sha256:1b5f3dbc7f4b7ec8121960420efcd7b836354fd11f23427a4ee3de70c92a7532",
+      "bytes": 32132,
+      "objectCount": 20
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-e5641c125901.layer2-raw.json",
+      "sha256": "sha256:280b0deb49760f6b5e57ca69449660be5619019070ff9c036f7094ba3a82b710"
+    }
+  },
+  "counts": {
+    "anchors": 12,
+    "objects": 20,
+    "passed": 20,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 11,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 2,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 7,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 12,
+    "processedAnchors": 12,
+    "processedKnown": true,
+    "coveredAnchors": 12,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=12，索引锚点数=12）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 7,
+        "covered": 7,
+        "without": 0
+      },
+      "h4": {
+        "index": 4,
+        "covered": 4,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH08-02-STRINGS-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h2-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h2-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到会讨论 String 中任何集合类型都有的操作，如创建、更新和读取，直接支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-1",
+        "lineStart": 7,
+        "lineEnd": 14
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-1",
+          "lineStart": 7,
+          "lineEnd": 14
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐项承载了主张：核心语言只有 str/&str，String 由标准库提供且可增长、可变、有所有权、UTF-8 编码，Rustacean 所说的字符串通常同时指 String 和 &str，且两者均为 UTF-8 编码。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-1",
+        "lineStart": 7,
+        "lineEnd": 14
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-1",
+          "lineStart": 7,
+          "lineEnd": 14
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 OsString、OsStr、CString、CStr 等以 String/Str 结尾对应所有权和可借用变体，并指出它们能以不同编码或内存表现形式存储文本。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-2",
+        "lineStart": 15,
+        "lineEnd": 69
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-2",
+          "lineStart": 15,
+          "lineEnd": 69
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 to_string 可用于任何实现了 Display trait 的类型且字符串字面量实现了它，并展示了从这些类型创建 String 的示例。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-2-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-2",
+        "lineStart": 15,
+        "lineEnd": 69
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-2",
+          "lineStart": 15,
+          "lineEnd": 69
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在这个例子中 String::from 和 to_string 最终做到完全相同的事情，因此如何选择是风格问题。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-3",
+        "lineStart": 70,
+        "lineEnd": 73
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-3",
+          "lineStart": 70,
+          "lineEnd": 73
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 String 的大小和内容可以改变，并可使用 + 运算符或 format! 宏拼接，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-1",
+        "lineStart": 74,
+        "lineEnd": 108
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-1",
+          "lineStart": 74,
+          "lineEnd": 108
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 push_str 方法向 String 附加字符串 slice、使 String 变长，且不获取参数的所有权。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-1",
+        "lineStart": 74,
+        "lineEnd": 108
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-1",
+          "lineStart": 74,
+          "lineEnd": 108
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 `push` 方法获取一个单独的字符作为参数并附加到 `String` 中，与主张定义一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-2",
+        "lineStart": 109,
+        "lineEnd": 156
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-2",
+          "lineStart": 109,
+          "lineEnd": 156
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明了 `+` 调用 `add`、`s` 参数为 `&str` 导致不能相加两个 `String`、`&String` 经解引用强制转换为 `&str` 使 `s2` 仍有效，以及 `add` 获取 `self` 所有权使 `s1` 失效，均与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-2",
+        "lineStart": 109,
+        "lineEnd": 156
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-2",
+          "lineStart": 109,
+          "lineEnd": 156
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明对于更复杂的字符串连接可以使用format!宏，且format!与println!工作原理相同、返回String且不会获取参数所有权，支撑主张全部断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-4",
+        "lineStart": 157,
+        "lineEnd": 181
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-4",
+          "lineStart": 157,
+          "lineEnd": 181
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明对 String 使用索引语法会出现编译错误，并直接指出 Rust 的字符串不支持索引。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-3",
+        "lineStart": 182,
+        "lineEnd": 204
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-3",
+          "lineStart": 182,
+          "lineEnd": 204
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 String 是 Vec<u8> 的封装，并说明 len 返回使用 UTF-8 编码字符串所需的字节数。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-3",
+        "lineStart": 182,
+        "lineEnd": 204
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-3",
+          "lineStart": 182,
+          "lineEnd": 204
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Rust 根本不会编译对字符串进行字节索引的代码，并直接以 `&\"hello\"[0]` 为例，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-4",
+        "lineStart": 205,
+        "lineEnd": 230
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-4",
+          "lineStart": 205,
+          "lineEnd": 230
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明以字形簇角度理解会得到人们所说的构成单词的字母，足以支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H4-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-4",
+        "lineStart": 205,
+        "lineEnd": 230
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h4-4",
+          "lineStart": 205,
+          "lineEnd": 230
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Rust 不允许使用索引获取 String 字符，可直接支撑主张的核心断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-5",
+        "lineStart": 231,
+        "lineEnd": 250
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-5",
+          "lineStart": 231,
+          "lineEnd": 250
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明使用 `[]` 和 range 获取字符串 slice 时，如果字节索引不在字符边界上会在运行时 panic，并可能导致程序崩溃，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-5-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-5",
+        "lineStart": 231,
+        "lineEnd": 250
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-5",
+          "lineStart": 231,
+          "lineEnd": 250
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明使用 `[]` 和 range 创建含特定字节的字符串 slice，并给出 `&hello[0..4]` 得到头 4 个字节、即 “Зд” 的 `&str`，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#017",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-6-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-6",
+        "lineStart": 251,
+        "lineEnd": 295
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-6",
+          "lineStart": 251,
+          "lineEnd": 295
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当需要操作单独的 Unicode 标量值时最好使用 chars 方法，并可遍历其结果访问每个标量值，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#018",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-6-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-6",
+        "lineStart": 251,
+        "lineEnd": 295
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-6",
+          "lineStart": 251,
+          "lineEnd": 295
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明标准库未提供获取字形簇的功能，而 crates.io 上有些 crate 提供该功能，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#019",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH08-02-STRINGS-H3-7-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 19,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-7",
+        "lineStart": 296,
+        "lineEnd": 301
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+          "anchor": "ch08-02-strings#h3-7",
+          "lineStart": 296,
+          "lineEnd": 301
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Rust 将准确处理 String 数据作为默认行为，并意味着开发者必须更多思考如何预先处理 UTF-8 数据，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#020",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

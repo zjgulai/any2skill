@@ -1,0 +1,97 @@
+[
+  {
+    "id": "APPENDIX-02-OPERATORS-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/appendix-02-operators.md",
+        "anchor": "appendix-02-operators#h2-1",
+        "title": "附录 B：运算符与符号",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "contentHash": "sha256:4246a804c83f745c0112d9c5a2eb52eec1d8ef87ad29fe9ea611c7e4dbd22df2"
+      }
+    ],
+    "statement": "陈述（替身载荷，出处：appendix-02-operators-h2-1）",
+    "rationale": "理由（替身载荷，出处：appendix-02-operators-h2-1）",
+    "appliesWhen": "适用条件（替身载荷，出处：appendix-02-operators-h2-1）",
+    "violation": "违反后果（替身载荷，出处：appendix-02-operators-h2-1）",
+    "chapterRef": "appendix-02-operators-h2-1",
+    "evidenceQuote": "该附录包含了 Rust 语法的词汇表，包括运算符以及其他的符号，这些符号单独出现或出现在路径、泛型、trait bounds、宏、属性、注释、元组以及大括号上下文中。"
+  },
+  {
+    "id": "APPENDIX-02-OPERATORS-H3-1-PLAYBOOK-01",
+    "objectType": "Playbook",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/appendix-02-operators.md",
+        "anchor": "appendix-02-operators#h3-1",
+        "title": "运算符",
+        "lineStart": 5,
+        "lineEnd": 66,
+        "contentHash": "sha256:0c53ad8aa7931e6db9d1f1ea6e8cdf348d215cd411e6b036b8cea403f2eb019e"
+      }
+    ],
+    "title": "运算符",
+    "prerequisites": [
+      "前置条件（替身载荷，出处：appendix-02-operators-h3-1）"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "action": "步骤（替身载荷，出处：appendix-02-operators-h3-1）"
+      }
+    ],
+    "checks": [
+      "检查项（替身载荷，出处：appendix-02-operators-h3-1）"
+    ],
+    "rollback": "回退方式（替身载荷，出处：appendix-02-operators-h3-1）",
+    "approval": "none",
+    "evidenceQuote": "表 B-1 包含了 Rust 中的运算符、运算符如何出现在上下文中的示例、简短解释以及该运算符是否可重载。如果一个运算符是可重载的，则该运算符上用于重载的相关 trait 也会列出。"
+  },
+  {
+    "id": "APPENDIX-02-OPERATORS-H3-2-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-08T00:00:00.000Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-08T00:00:00.000Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/appendix-02-operators.md",
+        "anchor": "appendix-02-operators#h3-2",
+        "title": "非运算符符号",
+        "lineStart": 67,
+        "lineEnd": 195,
+        "contentHash": "sha256:e09118d5e9154fcbcbafae99ec529e2483b71fa143bda1052de458644045b07b"
+      }
+    ],
+    "trigger": "触发条件（替身载荷，出处：appendix-02-operators-h3-2）",
+    "recommendation": "建议（替身载荷，出处：appendix-02-operators-h3-2）",
+    "confidence": 0.5,
+    "exceptions": [
+      "例外（替身载荷，出处：appendix-02-operators-h3-2）"
+    ],
+    "evidenceQuote": "下面的列表中包含了所有和运算符不一样功能的非字符符号；也就是说，他们并不像函数调用或方法调用一样表现。"
+  }
+]

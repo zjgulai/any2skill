@@ -1,0 +1,746 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-415c09ea6b23",
+  "createdAt": "2026-10-14T08:42:06.059Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+    "hash": "sha256:bb41b4f5c8c4c48cad6b6bc0901292d85261abe5d55561e6a1eca4ad4338f62e",
+    "totalLines": 175
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch05-01-defining-structs#h2-1",
+        "lineStart": 1,
+        "lineEnd": 40,
+        "objectCount": 2,
+        "objectIds": [
+          "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+          "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2255,
+            "output": 4993
+          }
+        }
+      },
+      {
+        "anchor": "ch05-01-defining-structs#h3-1",
+        "lineStart": 41,
+        "lineEnd": 52,
+        "objectCount": 1,
+        "objectIds": [
+          "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1733,
+            "output": 6895
+          }
+        }
+      },
+      {
+        "anchor": "ch05-01-defining-structs#h3-2",
+        "lineStart": 53,
+        "lineEnd": 76,
+        "objectCount": 2,
+        "objectIds": [
+          "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+          "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2105,
+            "output": 9750
+          }
+        }
+      },
+      {
+        "anchor": "ch05-01-defining-structs#h3-3",
+        "lineStart": 77,
+        "lineEnd": 88,
+        "objectCount": 2,
+        "objectIds": [
+          "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+          "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1806,
+            "output": 5552
+          }
+        }
+      },
+      {
+        "anchor": "ch05-01-defining-structs#h3-4",
+        "lineStart": 89,
+        "lineEnd": 175,
+        "objectCount": 2,
+        "objectIds": [
+          "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+          "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2511,
+            "output": 5410
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 5,
+      "tokens": {
+        "input": 10410,
+        "output": 32600
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch05-01-defining-structs#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2255,
+            "output": 4993
+          }
+        },
+        {
+          "anchor": "ch05-01-defining-structs#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1733,
+            "output": 6895
+          }
+        },
+        {
+          "anchor": "ch05-01-defining-structs#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2105,
+            "output": 9750
+          }
+        },
+        {
+          "anchor": "ch05-01-defining-structs#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1806,
+            "output": 5552
+          }
+        },
+        {
+          "anchor": "ch05-01-defining-structs#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 2511,
+            "output": 5410
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 5,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 5,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 5,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 5,
+    "tokens": {
+      "input": 10410,
+      "output": 32600
+    },
+    "tokensDetail": {
+      "reasoning": 30591,
+      "cachedInput": 7040
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 9,
+    "tokens": {
+      "input": 11627,
+      "output": 2570
+    },
+    "tokensDetail": {
+      "reasoning": 2143,
+      "cachedInput": 3456
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 9,
+      "verdicts": {
+        "supported": 9
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 9
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch05-01-defining-structs.anchors.json",
+      "sha256": "sha256:4433b1420973aebd4a5aecb7a27ee3067e769ca26c061a0bd2cb414ac7eebac8",
+      "bytes": 2279,
+      "anchorCount": 5
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch05-01-defining-structs.objects.json",
+      "sha256": "sha256:efd5b8e8d14cc17f86a54ae2fb74a3962742c2ef703ad676f139caa351a6e448",
+      "bytes": 14832,
+      "objectCount": 9
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-415c09ea6b23.layer2-raw.json",
+      "sha256": "sha256:00547b320e87aac1e0eac2f53fbb8d13ee1dca756c9252beb20698f6dbc33bca"
+    }
+  },
+  "counts": {
+    "anchors": 5,
+    "objects": 9,
+    "passed": 9,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 4,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 4,
+      "AntiPattern": 1
+    }
+  },
+  "coverage": {
+    "indexAnchors": 5,
+    "processedAnchors": 5,
+    "processedKnown": true,
+    "coveredAnchors": 5,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=5，索引锚点数=5）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 4,
+        "covered": 4,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h2-1",
+        "lineStart": 1,
+        "lineEnd": 40
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h2-1",
+          "lineStart": 1,
+          "lineEnd": 40
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明了使用 struct 关键字为结构体命名、在大括号中定义字段的名字和类型，并且结构体名字需描述所组合数据的意义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h2-1",
+        "lineStart": 1,
+        "lineEnd": 40
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h2-1",
+          "lineStart": 1,
+          "lineEnd": 40
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确提到为函数参数起与结构体字段相同的名字时需重复字段名称与变量，并指出这有些啰嗦、字段更多时更加烦人，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-1",
+        "lineStart": 41,
+        "lineEnd": 52
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-1",
+          "lineStart": 41,
+          "lineEnd": 52
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当参数名与字段名完全相同时可使用字段初始化简写语法，无需重复 email 和 username，且行为与之前完全相同。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-2",
+        "lineStart": 53,
+        "lineEnd": 76
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-2",
+          "lineStart": 53,
+          "lineEnd": 76
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出“`..user1` 必须放在最后，以指定其余的字段应从 `user1` 的相应字段中获取其值”，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-2",
+        "lineStart": 53,
+        "lineEnd": 76
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-2",
+          "lineStart": 53,
+          "lineEnd": 76
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句包含主张的断言：username 的 String 被移动后不能再使用 user1，而只使用实现 Copy 的 active 和 sign_in_count 时 user1 仍有效。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-3",
+        "lineStart": 77,
+        "lineEnd": 88
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-3",
+          "lineStart": 77,
+          "lineEnd": 88
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确描述了元组结构体是与元组类似、有结构体名称含义、无具体字段名只有类型，并在想为整个元组命名且使其成为不同类型时很有用，完全支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-3",
+        "lineStart": 77,
+        "lineEnd": 88
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-3",
+          "lineStart": 77,
+          "lineEnd": 88
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文直接包含主张的全部断言：每个结构体有其自己的类型，且获取 Color 参数的函数不能接受 Point，即使两者字段类型相同。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-4",
+        "lineStart": 89,
+        "lineEnd": 175
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-4",
+          "lineStart": 89,
+          "lineEnd": 175
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明类单元结构体是没有任何字段的结构体、类似于 unit 类型，并常用于在类型上实现 trait 而无需存储数据，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-4",
+        "lineStart": 89,
+        "lineEnd": 175
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+          "anchor": "ch05-01-defining-structs#h3-4",
+          "lineStart": 89,
+          "lineEnd": 175
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在结构体中存储被其他对象拥有的数据的引用需要使用生命周期，且不指定生命周期时该写法无效，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

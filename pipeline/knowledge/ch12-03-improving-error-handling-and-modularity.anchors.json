@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+  "fileKey": "ch12-03-improving-error-handling-and-modularity",
+  "totalLines": 448,
+  "sourceHash": "sha256:806f98dfacede0237d4e7d72f06e299576cf2d71c5979fc22874d95f327395d7",
+  "anchorCount": 13,
+  "levelCounts": {
+    "h2": 1,
+    "h3": 7,
+    "h4": 5
+  },
+  "anchors": [
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h2-1",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 2,
+      "title": "重构改进模块性和错误处理",
+      "lineStart": 1,
+      "lineEnd": 14,
+      "contentHash": "sha256:6dcf8c14137f68e93a16fe76d4b479f8f2faebf277b0a5ba9f71bbd8646c7763",
+      "contentBytes": 1985
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h3-1",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 3,
+      "title": "二进制项目的关注分离",
+      "lineStart": 15,
+      "lineEnd": 31,
+      "contentHash": "sha256:6c87b38a8cc609d89b832004007d2f0412e174716ca0197c3c768e0a47ab6628",
+      "contentBytes": 1207
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h3-2",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 3,
+      "title": "提取参数解析器",
+      "lineStart": 32,
+      "lineEnd": 60,
+      "contentHash": "sha256:65ff0ce3213c1a81e7b52c09d866f529ef2446e22044b0fab19976a1224f4337",
+      "contentBytes": 1559
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h3-3",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 3,
+      "title": "组合配置值",
+      "lineStart": 61,
+      "lineEnd": 118,
+      "contentHash": "sha256:ffd408c7c2f51431bdd8b2e465f6f43fed4fbe0ef0b09cb3b6d816bd737f21cd",
+      "contentBytes": 3802
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h3-4",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 3,
+      "title": "创建一个 `Config` 的构造函数",
+      "lineStart": 119,
+      "lineEnd": 158,
+      "contentHash": "sha256:ae75e4bab9af64a8a165dee15162b64cfe3cac6e56c394e884e0589463cc8671",
+      "contentBytes": 1715
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h3-5",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 3,
+      "title": "修复错误处理",
+      "lineStart": 159,
+      "lineEnd": 174,
+      "contentHash": "sha256:867f3819702ed05f99c4e21a833ae44b2b921ece35f65977df0d966de5b6c61c",
+      "contentBytes": 837
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h4-1",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 4,
+      "title": "改善错误信息",
+      "lineStart": 175,
+      "lineEnd": 206,
+      "contentHash": "sha256:cb86baad5a72aa4a91be268f2008d8f83b5f97f31fd842c73276dc2441487e16",
+      "contentBytes": 1863
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h4-2",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 4,
+      "title": "从 `new` 中返回 `Result` 而不是调用 `panic!`",
+      "lineStart": 207,
+      "lineEnd": 237,
+      "contentHash": "sha256:5e3538e158352a978681bab65d24b1c0a3a2d3827dd1cd567a2c4d9b22ee99ee",
+      "contentBytes": 1760
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h4-3",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 4,
+      "title": "`Config::new` 调用并处理错误",
+      "lineStart": 238,
+      "lineEnd": 273,
+      "contentHash": "sha256:cdfbc41399659373fcd42c6998322a45489f9aa75a7bc91af5379b67222367ff",
+      "contentBytes": 2422
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h3-6",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 3,
+      "title": "从 `main` 提取逻辑",
+      "lineStart": 274,
+      "lineEnd": 305,
+      "contentHash": "sha256:31a9781e11c31e651537cece98ab30b326032cb54d2c20455c925d17da00c63f",
+      "contentBytes": 1309
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h4-4",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 4,
+      "title": "从 `run` 函数中返回错误",
+      "lineStart": 306,
+      "lineEnd": 350,
+      "contentHash": "sha256:97641f130e7ca08e3dd51ea53415207bfe84938ce2a2394ca49765282f048623",
+      "contentBytes": 2695
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h4-5",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 4,
+      "title": "处理 `main` 中 `run` 返回的错误",
+      "lineStart": 351,
+      "lineEnd": 375,
+      "contentHash": "sha256:c1f6c67ded020a65bca976f45c29d4c9089d0bd0aa9379ec9b9cc890194834f1",
+      "contentBytes": 999
+    },
+    {
+      "anchor": "ch12-03-improving-error-handling-and-modularity#h3-7",
+      "file": "sources/rust-book-cn/book/ch12-03-improving-error-handling-and-modularity.md",
+      "level": 3,
+      "title": "将代码拆分到库 crate",
+      "lineStart": 376,
+      "lineEnd": 448,
+      "contentHash": "sha256:5141e2f5ec872d2e1d001b7d34e1f9cd42199f876ea056640381d9d42f8ffb21",
+      "contentBytes": 2931
+    }
+  ]
+}

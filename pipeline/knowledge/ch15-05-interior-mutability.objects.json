@@ -1,0 +1,344 @@
+[
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h2-1",
+        "title": "`RefCell<T>` 和内部可变性模式",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:7adc1fef6d67402a27c26a4bc28bc75bcc917b82a220c58f3d55b28cbac89be6"
+      }
+    ],
+    "evidenceQuote": "**内部可变性**（_Interior mutability_）是 Rust 中的一个设计模式，它允许你即使在有不可变引用时也可以改变数据，这通常是借用规则所不允许的。为了改变数据，该模式在数据结构中使用 `unsafe` 代码来模糊 Rust 通常的可变性和借用规则。我们还未讲到不安全代码；第 19 章会学习它们。当可以确保代码在运行时会遵守借用规则，即使编译器不能保证的情况，可以选择使用那些运用内部可变性模式的类型。所涉及的 `unsafe` 代码将被封装进安全的 API 中，而外部类型仍然是不可变的。\n\n让我们通过遵循内部可变性模式的 `RefCell<T>` 类型来开始探索。",
+    "canonicalTerm": "内部可变性",
+    "aliases": [
+      "Interior mutability",
+      "内部可变性模式"
+    ],
+    "definition": "Rust 中的一种设计模式：允许在持有不可变引用时改变数据；该模式在数据结构中使用 `unsafe` 代码来模糊通常的可变性和借用规则，当能确保运行时遵守借用规则而编译器不能保证时可选用，且 `unsafe` 代码被封入安全 API，外部类型仍不可变。",
+    "examples": [
+      "`RefCell<T>` 类型（遵循内部可变性模式）"
+    ]
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-1-DECISIONMODEL-01",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-1",
+        "title": "通过 `RefCell<T>` 在运行时检查借用规则",
+        "lineStart": 7,
+        "lineEnd": 31,
+        "contentHash": "sha256:3bc38f4b3408e17735961e8504b7ac0a7bd58458ac27f02b53e1b4a73d5e3c7a"
+      }
+    ],
+    "evidenceQuote": "类似于 `Rc<T>`，`RefCell<T>` 只能用于单线程场景。如果尝试在多线程上下文中使用`RefCell<T>`，会得到一个编译错误。第 16 章会介绍如何在多线程程序中使用 `RefCell<T>` 的功能。\n\n如下为选择 `Box<T>`，`Rc<T>` 或 `RefCell<T>` 的理由：\n\n- `Rc<T>` 允许相同数据有多个所有者；`Box<T>` 和 `RefCell<T>` 有单一所有者。\n- `Box<T>` 允许在编译时执行不可变或可变借用检查；`Rc<T>`仅允许在编译时执行不可变借用检查；`RefCell<T>` 允许在运行时执行不可变或可变借用检查。\n- 因为 `RefCell<T>` 允许在运行时执行可变借用检查，所以我们可以在即便 `RefCell<T>` 自身是不可变的情况下修改其内部的值。",
+    "inputs": [
+      "相同数据是否需要多个所有者",
+      "借用检查应在编译时还是运行时执行",
+      "是否需要修改不可变值内部的值"
+    ],
+    "branches": [
+      {
+        "condition": "需要相同数据有多个所有者",
+        "action": "选择 Rc<T>"
+      },
+      {
+        "condition": "需要单一所有者，且希望在编译时执行不可变或可变借用检查",
+        "action": "选择 Box<T>"
+      },
+      {
+        "condition": "需要单一所有者，且希望在运行时执行不可变或可变借用检查，或需要在不可变值内部改变值",
+        "action": "选择 RefCell<T>"
+      }
+    ],
+    "outputs": [
+      "选择 Box<T>",
+      "选择 Rc<T>",
+      "选择 RefCell<T>"
+    ],
+    "unknownPolicy": "当需要在多线程上下文中使用 RefCell<T> 的功能时，参见第 16 章。",
+    "stopConditions": [
+      "已根据所有权和借用检查时机选定 Box<T>、Rc<T> 或 RefCell<T> 之一"
+    ],
+    "reviewState": "candidate"
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-1",
+        "title": "通过 `RefCell<T>` 在运行时检查借用规则",
+        "lineStart": 7,
+        "lineEnd": 31,
+        "contentHash": "sha256:3bc38f4b3408e17735961e8504b7ac0a7bd58458ac27f02b53e1b4a73d5e3c7a"
+      }
+    ],
+    "evidenceQuote": "类似于 `Rc<T>`，`RefCell<T>` 只能用于单线程场景。如果尝试在多线程上下文中使用`RefCell<T>`，会得到一个编译错误。",
+    "statement": "RefCell<T> 只能用于单线程场景。",
+    "rationale": "RefCell<T> 与 Rc<T> 类似，同样受单线程限制。",
+    "appliesWhen": "当代码使用 RefCell<T> 时。",
+    "violation": "在多线程上下文中使用 RefCell<T> 会得到编译错误。",
+    "chapterRef": "ch15-05-interior-mutability-h3-1"
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-2-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-2",
+        "title": "内部可变性：不可变值的可变借用",
+        "lineStart": 32,
+        "lineEnd": 58,
+        "contentHash": "sha256:aa68aad636ab96d2a9e7ab80aae4d32c7d38e4e79d8c85e1e719eef4ee9500a8"
+      }
+    ],
+    "evidenceQuote": "例如，如下代码不能编译：\n\n```rust,ignore,does_not_compile\nfn main() {\n    let x = 5;\n    let y = &mut x;\n}\n```\n\n如果尝试编译，会得到如下错误：\n\n```text\nerror[E0596]: cannot borrow immutable local variable `x` as mutable\n --> src/main.rs:3:18\n  |\n2 |     let x = 5;\n  |         - consider changing this to `mut x`\n3 |     let y = &mut x;\n  |                  ^ cannot borrow mutably\n```",
+    "pattern": "对不可变局部变量 `x` 进行可变借用（`let y = &mut x;`）",
+    "harm": "编译失败，编译器报错 E0596：不能将不可变局部变量 `x` 作为可变借用",
+    "corrective": "按编译器提示将 `x` 改为可变绑定 `mut x`",
+    "evidence": [
+      "编译器报错 E0596：不能将不可变局部变量 `x` 作为可变借用",
+      "编译器提示：考虑将 `x` 改为 `mut x`"
+    ],
+    "chapterRef": "ch15-05-interior-mutability-h3-2"
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-2",
+        "title": "内部可变性：不可变值的可变借用",
+        "lineStart": 32,
+        "lineEnd": 58,
+        "contentHash": "sha256:aa68aad636ab96d2a9e7ab80aae4d32c7d38e4e79d8c85e1e719eef4ee9500a8"
+      }
+    ],
+    "evidenceQuote": "然而，特定情况下，令一个值在其方法内部能够修改自身，而在其他代码中仍视为不可变，是很有用的。值方法外部的代码就不能修改其值了。`RefCell<T>` 是一个获得内部可变性的方法。`RefCell<T>` 并没有完全绕开借用规则，编译器中的借用检查器允许内部可变性并相应地在运行时检查借用规则。如果违反了这些规则，会出现 panic 而不是编译错误。",
+    "statement": "`RefCell<T>` 获得内部可变性时并没有完全绕开借用规则；编译器中的借用检查器允许内部可变性并相应地在运行时检查借用规则，违反这些规则会导致 panic 而不是编译错误。",
+    "rationale": "内部可变性的使用场景是让值在方法内部修改自身，而在其他代码中仍视为不可变，值方法外部的代码不能修改其值。",
+    "appliesWhen": "当使用 `RefCell<T>` 实现内部可变性时",
+    "violation": "在运行时违反借用规则会触发 panic，而不是编译错误",
+    "chapterRef": "ch15-05-interior-mutability-h3-2"
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h4-1",
+        "title": "内部可变性的用例：mock 对象",
+        "lineStart": 59,
+        "lineEnd": 252,
+        "contentHash": "sha256:af9ab5282a8108e26ec3fcae12ba41131b7b12a4e18e05aceee8971cdbf011e3"
+      }
+    ],
+    "evidenceQuote": "不能修改 `MockMessenger` 来记录消息，因为 `send` 方法获取了 `self` 的不可变引用。我们也不能参考错误文本的建议使用 `&mut self` 替代，因为这样 `send` 的签名就不符合 `Messenger` trait 定义中的签名了（可以试着这么改，看看会出现什么错误信息）。这正是内部可变性的用武之地！我们将通过 `RefCell` 来储存 `sent_messages`，然后 `send` 将能够修改 `sent_messages` 并储存消息。",
+    "statement": "当实现一个 trait 的方法时必须保持 `&self` 签名，而该方法又需要修改其内部字段时，应使用 `RefCell` 来存储该字段，以获得内部可变性并在不可变借用下修改内部值。",
+    "rationale": "因为 `send` 方法获取 `self` 的不可变引用，不能直接修改字段；也不能改用 `&mut self`，否则不符合 `Messenger` trait 定义中的签名。`RefCell` 提供内部可变性，允许在外部值被认为不可变时修改内部值。",
+    "appliesWhen": "实现 trait 方法时，方法签名被 trait 定义为 `&self`，但实现中需要修改 `self` 的某个内部字段。",
+    "violation": "如果不用 `RefCell` 而直接在 `&self` 方法中修改字段，会被借用检查器拒绝，代码无法编译。",
+    "chapterRef": "ch15-05-interior-mutability-h4-1"
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H4-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h4-1",
+        "title": "内部可变性的用例：mock 对象",
+        "lineStart": 59,
+        "lineEnd": 252,
+        "contentHash": "sha256:af9ab5282a8108e26ec3fcae12ba41131b7b12a4e18e05aceee8971cdbf011e3"
+      }
+    ],
+    "evidenceQuote": "**测试替身**（_test double_）是一个通用编程概念，它代表一个在测试中替代某个类型的类型。**mock 对象** 是特定类型的测试替身，它们记录测试过程中发生了什么以便可以断言操作是正确的。虽然 Rust 中的对象与其他语言中的对象并不是一回事，Rust 也没有像其他语言那样在标准库中内建 mock 对象功能，不过我们确实可以创建一个与 mock 对象有着相同功能的结构体。",
+    "canonicalTerm": "mock 对象",
+    "aliases": [],
+    "definition": "mock 对象是特定类型的测试替身，它们记录测试过程中发生了什么以便可以断言操作是正确的。",
+    "examples": [
+      "在 Rust 中创建一个与 mock 对象有着相同功能的结构体"
+    ]
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-3",
+        "title": "`RefCell<T>` 在运行时记录借用",
+        "lineStart": 253,
+        "lineEnd": 289,
+        "contentHash": "sha256:97631ed6a20e0a15ba50bf06eff1b6107d1b36d41744a629add73ab989515973"
+      }
+    ],
+    "evidenceQuote": "`RefCell<T>` 记录当前有多少个活动的 `Ref<T>` 和 `RefMut<T>` 智能指针。每次调用 `borrow`，`RefCell<T>` 将活动的不可变借用计数加一。当 `Ref<T>` 值离开作用域时，不可变借用计数减一。就像编译时借用规则一样，`RefCell<T>` 在任何时候只允许有多个不可变借用或一个可变借用。\n\n如果我们尝试违反这些规则，相比引用时的编译时错误，`RefCell<T>` 的实现会在运行时出现 panic。示例 15-23 展示了对示例 15-22 中 `send` 实现的修改，这里我们故意尝试在相同作用域创建两个可变借用以便演示 `RefCell<T>` 不允许我们在运行时这么做：",
+    "statement": "`RefCell<T>` 在任何时候只允许有多个不可变借用或一个可变借用。",
+    "rationale": "该约束与编译时借用规则一致，并由 `RefCell<T>` 在运行时强制执行；违反时会出现 panic。",
+    "appliesWhen": "使用 `RefCell<T>` 进行借用时。",
+    "violation": "在相同作用域创建两个可变借用等违反规则的行为会在运行时触发 panic。",
+    "chapterRef": "ch15-05-interior-mutability-h3-3"
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-3-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-3",
+        "title": "`RefCell<T>` 在运行时记录借用",
+        "lineStart": 253,
+        "lineEnd": 289,
+        "contentHash": "sha256:97631ed6a20e0a15ba50bf06eff1b6107d1b36d41744a629add73ab989515973"
+      }
+    ],
+    "evidenceQuote": "这里为 `borrow_mut` 返回的 `RefMut` 智能指针创建了 `one_borrow` 变量。接着用相同的方式在变量 `two_borrow` 创建了另一个可变借用。这会在相同作用域中创建两个可变引用，这是不允许的。当运行库的测试时，示例 15-23 编译时不会有任何错误，不过测试会失败：",
+    "pattern": "在同一作用域中连续调用 `borrow_mut` 创建两个可变借用。",
+    "harm": "违反 `RefCell<T>` 的运行时借用规则，代码能编译通过但测试失败。",
+    "corrective": "不要在相同作用域同时创建两个可变借用。",
+    "evidence": [
+      "示例 15-23 在同一作用域创建两个可变借用，编译时无错误但测试会失败。"
+    ],
+    "chapterRef": "ch15-05-interior-mutability-h3-3"
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-4-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-4",
+        "title": "结合 `Rc<T>` 和 `RefCell<T>` 来拥有多个可变数据所有者",
+        "lineStart": 290,
+        "lineEnd": 346,
+        "contentHash": "sha256:47a5b47736fe84ec8e9018c7092dc7b3e1b4b014ae2faef9cdc4aee43f5418ec"
+      }
+    ],
+    "evidenceQuote": "`RefCell<T>` 的一个常见用法是与 `Rc<T>` 结合。回忆一下 `Rc<T>` 允许对相同数据有多个所有者，不过只能提供数据的不可变访问。如果有一个储存了 `RefCell<T>` 的 `Rc<T>` 的话，就可以得到有多个所有者 **并且** 可以修改的值了！",
+    "trigger": "需要一个值有多个所有者，并且需要修改该值",
+    "recommendation": "将 `RefCell<T>` 存储在 `Rc<T>` 中，以同时获得多个所有者和可变访问能力",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CH15-05-INTERIOR-MUTABILITY-H3-4-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:27:05.766Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:27:05.766Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-05-interior-mutability.md",
+        "anchor": "ch15-05-interior-mutability#h3-4",
+        "title": "结合 `Rc<T>` 和 `RefCell<T>` 来拥有多个可变数据所有者",
+        "lineStart": 290,
+        "lineEnd": 346,
+        "contentHash": "sha256:47a5b47736fe84ec8e9018c7092dc7b3e1b4b014ae2faef9cdc4aee43f5418ec"
+      }
+    ],
+    "evidenceQuote": "通过使用 `RefCell<T>`，我们可以拥有一个表面上不可变的 `List`，不过可以使用 `RefCell<T>` 中提供内部可变性的方法来在需要时修改数据。`RefCell<T>` 的运行时借用规则检查也确实保护我们免于出现数据竞争——有时为了数据结构的灵活性而付出一些性能是值得的。",
+    "canonicalTerm": "内部可变性",
+    "aliases": [],
+    "definition": "内部可变性允许在表面上不可变的值中，在需要时修改内部数据，并通过运行时借用规则检查提供保护。",
+    "examples": [
+      "`RefCell<T>` 允许拥有一个表面上不可变的 `List`，并在需要时修改数据。"
+    ]
+  }
+]

@@ -1,0 +1,261 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-aa3bfa1287a1",
+  "createdAt": "2026-10-13T17:12:26.707Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch15-04-rc.md",
+    "hash": "sha256:0449ada0a942be8c037dce90637770e9aff45d502547a39ec8ddcd76f40b03e1",
+    "totalLines": 141
+  },
+  "layer2": {
+    "kind": "stub",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为确定性替身：本卡不发出任何真实模型调用。",
+    "reusedFrom": null,
+    "promptFingerprint": null,
+    "perAnchor": [],
+    "splits": [],
+    "usage": {
+      "calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "byAnchor": [],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": "本次第 2 层未按锚点发起任何真实调用（替身/夹具路径），因此没有逐锚点用量。此处 calls=0 表示「没有调用」，不表示「统计缺失」。",
+      "reconciliation": {
+        "perAnchorCalls": 0,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 0,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 0,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "stub",
+    "modelId": "stub/deterministic-v1",
+    "calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "tokensDetail": {
+      "reasoning": 0,
+      "cachedInput": 0
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "none（本次未发出任何真实模型调用；零凭据、零网络）",
+    "configSource": null,
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": false,
+    "reason": "第 2 层为确定性替身（零凭据、零网络），判定者无从调用",
+    "note": "本次**未应用判定者判据**：本次的 passed 只代表过了确定性判据，不代表过了第 3 层的全部判据——规格 D6 要求两组判据同权。"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch15-04-rc.anchors.json",
+      "sha256": "sha256:078e30cf8aef9afb2717974e5ce051a329f1f8fce3a5ab69f247eaa852f953f1",
+      "bytes": 1349,
+      "anchorCount": 3
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch15-04-rc.objects.json",
+      "sha256": "sha256:4497b4fa1ba9d2dbc55897d3eadf634fa371e931a7e18e1424f3bfcad3c63bb5",
+      "bytes": 3732,
+      "objectCount": 3,
+      "archivedPrevious": {
+        "path": "pipeline/knowledge/history/ch15-04-rc.ab474101.objects.json",
+        "sha256": "sha256:ab474101a5bb2eade16f704dd156850a6bcd16091bea7cbe0c6389f03f42e32d",
+        "bytes": 8478
+      }
+    },
+    "layer2Raw": null
+  },
+  "counts": {
+    "anchors": 3,
+    "objects": 3,
+    "passed": 3,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 0,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 1,
+      "Case": 0,
+      "Playbook": 1,
+      "EngineeringRule": 1,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 3,
+    "processedAnchors": null,
+    "processedKnown": false,
+    "coveredAnchors": 3,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次第 2 层**未按锚点发起调用**（替身/夹具路径），因此无法区分「被处理但产出 0」与「未处理」。withoutObjects 列的是**没有任何对象指向**的锚点，是一个保守的上界。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 2,
+        "covered": 2,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-deterministic-only（判定者未启用——结论不完整）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH15-04-RC-H2-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h2-1",
+        "lineStart": 1,
+        "lineEnd": 12
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h2-1",
+          "lineStart": 1,
+          "lineEnd": 12
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH15-04-RC-H3-1-PLAYBOOK-01",
+      "objectType": "Playbook",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-1",
+        "lineStart": 13,
+        "lineEnd": 90
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-1",
+          "lineStart": 13,
+          "lineEnd": 90
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH15-04-RC-H3-2-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+        "anchor": "ch15-04-rc#h3-2",
+        "lineStart": 91,
+        "lineEnd": 141
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-04-rc.md",
+          "anchor": "ch15-04-rc#h3-2",
+          "lineStart": 91,
+          "lineEnd": 141
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

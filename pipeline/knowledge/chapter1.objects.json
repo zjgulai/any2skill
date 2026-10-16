@@ -1,0 +1,1414 @@
+[
+  {
+    "id": "CHAPTER1-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h1-1",
+        "title": "AI Agent 入门",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "contentHash": "sha256:31e5e0ecfe2ec801a789d0a34a93c4a1c13d752cb85347ba0980a5de741842e4"
+      }
+    ],
+    "evidenceQuote": "如果你用 Cursor 写过代码，看它搜索代码库、编辑多个文件、运行测试直到通过；用 Deep Research 调研过一个课题，看它反复搜索、阅读，总结出一份完整报告；用 Manus 操控浏览器帮你完成在线任务；让豆包手机助手帮你在手机上订票、发消息；或者让 Pine AI 替你打电话给运营商协商降低账单——你已经在使用 AI Agent 了。\n\n这些产品的形态各异，但有一个共同点：它们不再是“你问一句、它答一句”的被动对话，而是能够自主规划执行步骤、调用各种工具完成任务，并根据结果不断调整策略的智能系统。AI Agent 正在成为我们与计算机交互的一种全新方式。",
+    "canonicalTerm": "AI Agent",
+    "aliases": [],
+    "definition": "AI Agent 是一种智能系统，它不再是“你问一句、它答一句”的被动对话，而是能够自主规划执行步骤、调用各种工具完成任务，并根据结果不断调整策略。",
+    "examples": [
+      "Cursor 搜索代码库、编辑多个文件、运行测试直到通过",
+      "Deep Research 反复搜索、阅读并总结出完整报告",
+      "Manus 操控浏览器完成在线任务",
+      "豆包手机助手在手机上订票、发消息",
+      "Pine AI 打电话给运营商协商降低账单"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-1",
+        "title": "现代 Agent = LLM + 上下文 + 工具",
+        "lineStart": 11,
+        "lineEnd": 36,
+        "contentHash": "sha256:53711b82cf216d32483f040a83905bc8774740980372177bc01d9a6af415d884"
+      }
+    ],
+    "evidenceQuote": "Harness 是 Agent 边界内环绕模型的运行与治理层，负责构造上下文、暴露工具接口、维护循环和状态，并实施权限、验证与纠正。Harness 可以创建、隔离或代理一个环境，却不因此包含环境自身的状态与转移规律。",
+    "canonicalTerm": "Harness",
+    "aliases": [],
+    "definition": "Harness 是 Agent 边界内环绕模型的运行与治理层，负责构造上下文、暴露工具接口、维护循环和状态，并实施权限、验证与纠正；它可以创建、隔离或代理一个环境，却不因此包含环境自身的状态与转移规律。",
+    "examples": [
+      "构造上下文",
+      "暴露工具接口",
+      "维护循环和状态",
+      "实施权限、验证与纠正",
+      "创建、隔离或代理一个环境"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H2-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-1",
+        "title": "现代 Agent = LLM + 上下文 + 工具",
+        "lineStart": 11,
+        "lineEnd": 36,
+        "contentHash": "sha256:53711b82cf216d32483f040a83905bc8774740980372177bc01d9a6af415d884"
+      }
+    ],
+    "evidenceQuote": "**上下文是 Agent 的眼睛**：它不只是输入给模型的那段文本，而是 Agent 在每个决策点收到并保留的信息表示——来自环境的观察、用户记忆、领域知识、自身状态和任务进展。",
+    "canonicalTerm": "上下文",
+    "aliases": [],
+    "definition": "上下文是 Agent 在每个决策点收到并保留的信息表示，包括来自环境的观察、用户记忆、领域知识、自身状态和任务进展。",
+    "examples": [
+      "来自环境的观察",
+      "用户记忆",
+      "领域知识",
+      "自身状态",
+      "任务进展"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-1",
+        "title": "观察空间与动作空间：模型与世界的接口",
+        "lineStart": 37,
+        "lineEnd": 60,
+        "contentHash": "sha256:46e6de7d2114a3cc8322590c3a9588a738cc4378e422d080ed2aa27c351c7830"
+      }
+    ],
+    "evidenceQuote": "**观察通道与动作接口共同构成了 Agent 与外部环境之间的边界**。Harness 把环境返回的观察转换为模型能够处理的上下文，再把模型选择的行动转换为对环境的工具调用。没有通过观察通道进入上下文的信息，对模型来说就像不存在；没有被动作接口允许的操作，模型即使知道该怎么做，也只能停留在文字建议上。\n\n因此，**在底层模型固定时，提升 Agent 任务表现最主要的系统工程手段，往往就是重新定义或扩展观察空间与动作空间**。用本书的术语说，就是扩展上下文和工具。许多看似需要“更聪明模型”的问题，其实只是接口问题：把任务所需的数据纳入上下文，或把完成任务所需的操作封装成工具，原本不可解的任务就可能变得可解。",
+    "canonicalTerm": "观察空间与动作空间",
+    "aliases": [],
+    "definition": "观察通道与动作接口共同构成 Agent 与外部环境的边界；在底层模型固定时，提升任务表现的主要系统工程手段往往是重新定义或扩展观察空间与动作空间，即扩展上下文和工具。",
+    "examples": [
+      "把任务所需的数据纳入上下文",
+      "把完成任务所需的操作封装成工具"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-1",
+        "title": "观察空间与动作空间：模型与世界的接口",
+        "lineStart": 37,
+        "lineEnd": 60,
+        "contentHash": "sha256:46e6de7d2114a3cc8322590c3a9588a738cc4378e422d080ed2aa27c351c7830"
+      }
+    ],
+    "evidenceQuote": "**观察通道与动作接口共同构成了 Agent 与外部环境之间的边界**。Harness 把环境返回的观察转换为模型能够处理的上下文，再把模型选择的行动转换为对环境的工具调用。没有通过观察通道进入上下文的信息，对模型来说就像不存在；没有被动作接口允许的操作，模型即使知道该怎么做，也只能停留在文字建议上。",
+    "statement": "没有通过观察通道进入上下文的信息，对模型来说就像不存在；没有被动作接口允许的操作，模型即使知道该怎么做，也只能停留在文字建议上。",
+    "rationale": "观察通道与动作接口共同构成 Agent 与外部环境之间的边界，观察被转换为模型可处理的上下文，行动被转换为对环境的工具调用。",
+    "appliesWhen": "当 Agent 依赖观察通道感知信息、依赖动作接口执行操作时",
+    "violation": "模型试图使用未进入上下文的信息，或试图执行未被动作接口允许的操作。",
+    "chapterRef": "chapter1-h3-1"
+  },
+  {
+    "id": "CHAPTER1-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-2",
+        "title": "工具：Agent 的手脚",
+        "lineStart": 61,
+        "lineEnd": 108,
+        "contentHash": "sha256:c6d97fa28877957fb1e7c84fbfcb11db8dbf23f576eb9e64c931f3b60b52d26c"
+      }
+    ],
+    "evidenceQuote": "当任务升级为读取表格、清洗缺失值、计算统计量并绘图时，受限的 Python 代码解释器就比不断叠加专用工具更容易组合和探索。但通用性也扩大了出错和攻击面：代码必须在隔离沙盒中运行，默认不能访问网络，也不能读取授权工作目录以外的文件，并对执行时间、CPU、内存和输出大小设置上限。",
+    "statement": "代码必须在隔离沙盒中运行，默认不能访问网络，也不能读取授权工作目录以外的文件，并对执行时间、CPU、内存和输出大小设置上限。",
+    "rationale": "通用性会扩大出错和攻击面。",
+    "appliesWhen": "当任务升级为读取表格、清洗缺失值、计算统计量并绘图时。",
+    "violation": "代码未在隔离沙盒中运行，或默认访问网络，或读取授权工作目录以外的文件，或未对执行时间、CPU、内存和输出大小设置上限。",
+    "chapterRef": "chapter1-h3-2"
+  },
+  {
+    "id": "CHAPTER1-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-2",
+        "title": "工具：Agent 的手脚",
+        "lineStart": 61,
+        "lineEnd": 108,
+        "contentHash": "sha256:c6d97fa28877957fb1e7c84fbfcb11db8dbf23f576eb9e64c931f3b60b52d26c"
+      }
+    ],
+    "evidenceQuote": "通用工具并不总是优于专用工具。支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作，仍应封装为参数明确、权限受限且全程可审计的专用工具，必要时再加上预览和人工确认。因此，工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**。",
+    "statement": "通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作。",
+    "rationale": "通用工具并不总是优于专用工具；支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作，应封装为参数明确、权限受限且全程可审计的专用工具。",
+    "appliesWhen": "当存在支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作时。",
+    "violation": "对支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作使用参数不明确、权限不受限、不可审计的通用工具。",
+    "chapterRef": "chapter1-h3-2"
+  },
+  {
+    "id": "CHAPTER1-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-3",
+        "title": "LLM：Agent 的大脑",
+        "lineStart": 109,
+        "lineEnd": 114,
+        "contentHash": "sha256:c79b95011876b4ebae177130ae7a81cd95f98bf28ec0d1efd4b34c9b45ca7756"
+      }
+    ],
+    "evidenceQuote": "大语言模型（Large Language Model, LLM）是 Agent 的决策核心。收到用户的请求后，它需要先解析真实意图（用户说的往往不是他真正想要的），再将模糊或复杂的任务拆解成可执行的步骤。执行过程中它还要持续做出判断：下一步该做什么、要不要调用工具、调哪个工具、传什么参数。这种 “理解-规划-执行” 的能力来自预训练所积累的知识，是工作流和自主 Agent 都依赖的基础。",
+    "canonicalTerm": "大语言模型",
+    "aliases": [
+      "LLM",
+      "Large Language Model"
+    ],
+    "definition": "大语言模型是 Agent 的决策核心，收到用户请求后需要解析真实意图、将模糊或复杂任务拆解成可执行步骤，并在执行过程中持续判断下一步行动、工具调用和参数。",
+    "examples": [
+      "判断下一步该做什么",
+      "判断要不要调用工具、调哪个工具、传什么参数"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-3",
+        "title": "LLM：Agent 的大脑",
+        "lineStart": 109,
+        "lineEnd": 114,
+        "contentHash": "sha256:c79b95011876b4ebae177130ae7a81cd95f98bf28ec0d1efd4b34c9b45ca7756"
+      }
+    ],
+    "evidenceQuote": "LLM 之所以能够进行有效的内部推演，得益于预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）阶段习得的能力——模型在推演时所遵循的是人类知识中已经沉淀下来的逻辑规则，包括数学定律、因果关系、问题分解策略等。因此与传统强化学习 Agent 不同，今天基于 LLM 的 Agent 不是盲目的随机探索，而是在结构化的知识体系上展开。",
+    "statement": "基于 LLM 的 Agent 应在结构化的知识体系上展开，而不是盲目随机探索。",
+    "rationale": "LLM 在推演时遵循预训练阶段沉淀的人类知识逻辑规则，如数学定律、因果关系、问题分解策略等。",
+    "appliesWhen": "适用于基于 LLM 的 Agent。",
+    "violation": "让基于 LLM 的 Agent 进行盲目随机探索。",
+    "chapterRef": "chapter1-h3-3"
+  },
+  {
+    "id": "CHAPTER1-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-1",
+        "title": "模型即 Agent：当模型本身成为产品",
+        "lineStart": 115,
+        "lineEnd": 124,
+        "contentHash": "sha256:7a55dd363c53f26bc580477c4d0504a34119984367900cd866fc35d80f5d07bb"
+      }
+    ],
+    "evidenceQuote": "Harness 这个词原指马具，即套在马身上的缰绳与挽具，不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。换到 Agent 语境里，模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳。在 Agent 中，Harness 包括上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。",
+    "canonicalTerm": "Harness",
+    "aliases": [],
+    "definition": "在 Agent 语境中，Harness 是把模型能力引导成可靠任务执行的工程外壳，包括上下文管理、工具接口、安全约束、验证与纠正等基础设施。",
+    "examples": [
+      "上下文管理",
+      "工具接口",
+      "安全约束",
+      "验证与纠正"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-1",
+        "title": "模型即 Agent：当模型本身成为产品",
+        "lineStart": 115,
+        "lineEnd": 124,
+        "contentHash": "sha256:7a55dd363c53f26bc580477c4d0504a34119984367900cd866fc35d80f5d07bb"
+      }
+    ],
+    "evidenceQuote": "模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。",
+    "statement": "模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。",
+    "rationale": "因为模型自主决策的空间越大，出错时的影响面也越大。",
+    "appliesWhen": "当模型自主决策的空间越大时。",
+    "violation": "在模型自主决策的空间越大时，未采用更精细的约束、验证和纠正机制来确保可靠性。",
+    "chapterRef": "chapter1-h4-1"
+  },
+  {
+    "id": "CHAPTER1-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-2",
+        "title": "Agent 的学习机制：从上下文适应到持久更新",
+        "lineStart": 125,
+        "lineEnd": 136,
+        "contentHash": "sha256:b2718037d57630d6b4df52f8e6fcb5da005816ac241dfa1054f78b7738839be2"
+      }
+    ],
+    "evidenceQuote": "要让变化跨越任务保留下来，可以更新**外部产物**：把事实和经验整理为知识文档，把可语言化的策略写进 Prompt 或 Skill，把确定性流程与约束写成程序和 Harness。这些产物可审计、可修订，执行时仍需通过上下文或工具接口被 Agent 使用。第三至五章分别给出知识与程序基础，第九章则讨论如何从已评价的运行轨迹中生成这些更新。",
+    "canonicalTerm": "外部产物更新",
+    "aliases": [
+      "跨任务的外部产物更新"
+    ],
+    "definition": "更新外部产物以让变化跨越任务保留下来，包括把事实和经验整理为知识文档、把可语言化的策略写进 Prompt 或 Skill、把确定性流程与约束写成程序和 Harness；这些产物可审计、可修订，执行时仍需通过上下文或工具接口被 Agent 使用。",
+    "examples": [
+      "把事实和经验整理为知识文档",
+      "把可语言化的策略写进 Prompt 或 Skill",
+      "把确定性流程与约束写成程序和 Harness"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-2",
+        "title": "Agent 的学习机制：从上下文适应到持久更新",
+        "lineStart": 125,
+        "lineEnd": 136,
+        "contentHash": "sha256:b2718037d57630d6b4df52f8e6fcb5da005816ac241dfa1054f78b7738839be2"
+      }
+    ],
+    "evidenceQuote": "当目标是医疗影像理解、自然语言风格或隐式决策策略等高维能力时，外部规则难以完整表达，就需要通过后训练更新**模型参数**。参数更新的部署成本较高，却能形成自然、广泛的泛化能力；第八章将系统介绍其方法。",
+    "canonicalTerm": "参数更新",
+    "aliases": [
+      "训练周期中的参数更新"
+    ],
+    "definition": "当目标是医疗影像理解、自然语言风格或隐式决策策略等高维能力时，外部规则难以完整表达，需要通过后训练更新模型参数；参数更新部署成本较高，但能形成自然、广泛的泛化能力。",
+    "examples": [
+      "医疗影像理解",
+      "自然语言风格",
+      "隐式决策策略"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-4",
+        "title": "上下文：Agent 的眼睛",
+        "lineStart": 137,
+        "lineEnd": 160,
+        "contentHash": "sha256:00105789f8490c0d813cfd046c82bc9f5eed4361bf75e22c1709747af89a1a60"
+      }
+    ],
+    "evidenceQuote": "前两项（系统提示词 + 工具定义）是静态前缀，后三项（用户消息 + 模型回复 + 工具执行结果）是随交互不断增长的动态消息历史。这五个部分共同构成了 LLM 每次推理时的上下文。",
+    "canonicalTerm": "上下文",
+    "aliases": [],
+    "definition": "上下文由系统提示词与工具定义组成的静态前缀，以及由用户消息、模型回复与工具执行结果组成的动态消息历史共同构成，是 LLM 每次推理时的上下文。",
+    "examples": [
+      "系统提示词与工具定义构成静态前缀",
+      "用户消息、模型回复与工具执行结果构成动态消息历史"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-4",
+        "title": "上下文：Agent 的眼睛",
+        "lineStart": 137,
+        "lineEnd": 160,
+        "contentHash": "sha256:00105789f8490c0d813cfd046c82bc9f5eed4361bf75e22c1709747af89a1a60"
+      }
+    ],
+    "evidenceQuote": "还有一点对工程实践更重要：**“给出了回答”不等于“完成了任务”**，上下文残缺时典型的失败不是报错退出，而是一个看上去毫无破绽的答案。",
+    "statement": "在评估 Agent 时，不能把“给出了回答”等同于“完成了任务”。",
+    "rationale": "上下文残缺时典型的失败不是报错退出，而是一个看上去毫无破绽的答案。",
+    "appliesWhen": "当上下文可能残缺时，判断 Agent 的任务完成情况。",
+    "violation": "仅凭 Agent 给出了回答就判定任务完成。",
+    "chapterRef": "chapter1-h3-4"
+  },
+  {
+    "id": "CHAPTER1-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-5",
+        "title": "ReAct 循环",
+        "lineStart": 161,
+        "lineEnd": 262,
+        "contentHash": "sha256:ae5b025811717d8902bf6e44cefece2f21b8c6c63195cec2b7ece5183e56525b"
+      }
+    ],
+    "evidenceQuote": "Agent 执行任务的核心模式叫做 **ReAct**（Reasoning + Acting）。虽然名字只体现了思考（Reasoning）和行动（Acting）两个词，但实际循环包含三个环节：模型先**思考**当前应该做什么，然后调用工具**行动**，再**观察**工具返回的结果并继续思考下一步。这个“想→做→看→想→做→看”的循环不断重复，直到任务完成。\n\n让我们通过一个多币种收入汇总的具体例子来理解 Agent 的**轨迹**（trajectory）。",
+    "canonicalTerm": "ReAct 循环",
+    "aliases": [
+      "ReAct",
+      "Reasoning + Acting"
+    ],
+    "definition": "Agent 执行任务的核心模式，实际循环包含三个环节：模型先思考当前应该做什么，然后调用工具行动，再观察工具返回的结果并继续思考下一步，这个“想→做→看”循环不断重复直到任务完成。",
+    "examples": [
+      "多币种收入汇总任务"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-5-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-5",
+        "title": "ReAct 循环",
+        "lineStart": 161,
+        "lineEnd": 262,
+        "contentHash": "sha256:ae5b025811717d8902bf6e44cefece2f21b8c6c63195cec2b7ece5183e56525b"
+      }
+    ],
+    "evidenceQuote": "让我们通过一个多币种收入汇总的具体例子来理解 Agent 的**轨迹**（trajectory）。轨迹是 Agent 在执行任务过程中不断积累的消息历史——用户消息、模型回复（包括思考过程和工具调用）、工具执行结果。",
+    "canonicalTerm": "轨迹",
+    "aliases": [
+      "trajectory"
+    ],
+    "definition": "Agent 在执行任务过程中不断积累的消息历史，包括用户消息、模型回复（包括思考过程和工具调用）和工具执行结果。",
+    "examples": [
+      "多币种收入汇总任务的轨迹"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H2-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-2",
+        "title": "Harness 工程：模型之外的竞争力",
+        "lineStart": 263,
+        "lineEnd": 320,
+        "contentHash": "sha256:f581aa38e38f787854d938f7c43210c333ab2d88b02dabea8b949504db0fffba"
+      }
+    ],
+    "evidenceQuote": "更精确地说，**Harness 不是模型之外的一切**，而是 **Agent 边界内、模型之外**的运行与治理层。它负责协调 Model 与 Environment 的交互，但不包括与之交互的环境本身：工具定义、调用适配器、沙箱的权限与重置机制属于 Harness；沙箱内随行动变化的文件和进程、外部数据库、网页、用户及物理世界属于 Environment。物理部署位置也不能决定概念归属——即使仿真环境与 Agent 运行在同一进程中，它仍然是 Environment。",
+    "canonicalTerm": "Harness",
+    "aliases": [],
+    "definition": "Harness 是 Agent 边界内、模型之外的运行与治理层，负责协调 Model 与 Environment 的交互，但不包括与之交互的环境本身。",
+    "examples": [
+      "工具定义",
+      "调用适配器",
+      "沙箱的权限与重置机制"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H2-2-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-2",
+        "title": "Harness 工程：模型之外的竞争力",
+        "lineStart": 263,
+        "lineEnd": 320,
+        "contentHash": "sha256:f581aa38e38f787854d938f7c43210c333ab2d88b02dabea8b949504db0fffba"
+      }
+    ],
+    "evidenceQuote": "早期的 Agent 框架主要关注上下文与工具：给模型工具、给模型上下文，让它“能做事”。而生产级 Agent 系统的重心已经转向约束、验证与纠正：确保工具调用是安全的、上下文是经过管理的、错误是可纠正的。",
+    "trigger": "当构建生产级 Agent 系统时",
+    "recommendation": "将工程重心放在约束、验证与纠正上，确保工具调用安全、上下文得到管理、错误可纠正。",
+    "confidence": 0.9,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER1-H3-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-6",
+        "title": "从提示工程到 Loop 工程：工程范式的演进",
+        "lineStart": 321,
+        "lineEnd": 340,
+        "contentHash": "sha256:adaf46e7cb87a2a2c9d84f7a8b7956ba8378a2486226f0f6023730b9ed5eeb48"
+      }
+    ],
+    "evidenceQuote": "**上下文工程**（Context Engineering）是第二波——人们认识到单纯优化提示词还不够，需要系统性地管理模型能看到的所有信息（系统指令、工具定义、对话历史、外部知识）。",
+    "canonicalTerm": "上下文工程",
+    "aliases": [
+      "Context Engineering"
+    ],
+    "definition": "第二波——人们认识到单纯优化提示词还不够，需要系统性地管理模型能看到的所有信息（系统指令、工具定义、对话历史、外部知识）。",
+    "examples": [
+      "系统指令",
+      "工具定义",
+      "对话历史",
+      "外部知识"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-6-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-6",
+        "title": "从提示工程到 Loop 工程：工程范式的演进",
+        "lineStart": 321,
+        "lineEnd": 340,
+        "contentHash": "sha256:adaf46e7cb87a2a2c9d84f7a8b7956ba8378a2486226f0f6023730b9ed5eeb48"
+      }
+    ],
+    "evidenceQuote": "**Harness 工程**是第三波——它将视野从“模型能看到什么”进一步扩展到“Agent 如何组织模型运行并与环境交互”，涵盖上下文与工具接口、约束机制、验证手段、反馈循环和错误恢复等 Agent 边界内、模型之外的运行与治理机制。",
+    "canonicalTerm": "Harness 工程",
+    "aliases": [],
+    "definition": "第三波——它将视野从“模型能看到什么”进一步扩展到“Agent 如何组织模型运行并与环境交互”，涵盖上下文与工具接口、约束机制、验证手段、反馈循环和错误恢复等 Agent 边界内、模型之外的运行与治理机制。",
+    "examples": [
+      "上下文与工具接口",
+      "约束机制",
+      "验证手段",
+      "反馈循环",
+      "错误恢复"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-7-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-7",
+        "title": "构建有效 Agent 的核心原则",
+        "lineStart": 341,
+        "lineEnd": 354,
+        "contentHash": "sha256:b4d88a8965009a216f9ff4a53303914c9d1c49abc529dec2ad851776c79d062e"
+      }
+    ],
+    "evidenceQuote": "**设计好工具接口（ACI，Agent-Computer Interface）**。ACI 强调的是从 Agent 视角设计接口（让 Agent 容易理解和使用），而非传统 API 从程序员视角设计接口。工具的命名和参数要直观，容易误用的地方要从设计上让错误无法发生——比如 SIM 卡的缺角让卡片只能从一个方向插进卡槽，避免了用户插反的错误；微波炉门没关好就绝不加热，避免了用户开门加热的危险行为。",
+    "canonicalTerm": "ACI（Agent-Computer Interface）",
+    "aliases": [
+      "Agent-Computer Interface"
+    ],
+    "definition": "从 Agent 视角设计工具接口，让 Agent 容易理解和使用，而非传统 API 从程序员视角设计接口。",
+    "examples": [
+      "SIM 卡的缺角让卡片只能从一个方向插进卡槽，避免了用户插反的错误",
+      "微波炉门没关好就绝不加热，避免了用户开门加热的危险行为"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-7-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-7",
+        "title": "构建有效 Agent 的核心原则",
+        "lineStart": 341,
+        "lineEnd": 354,
+        "contentHash": "sha256:b4d88a8965009a216f9ff4a53303914c9d1c49abc529dec2ad851776c79d062e"
+      }
+    ],
+    "evidenceQuote": "容易误用的地方要从设计上让错误无法发生——比如 SIM 卡的缺角让卡片只能从一个方向插进卡槽，避免了用户插反的错误；微波炉门没关好就绝不加热，避免了用户开门加热的危险行为。这种“用设计消除错误”的思路，在制造业里有一个专门的术语，叫**防呆**（Poka-yoke），源自丰田生产体系。",
+    "canonicalTerm": "防呆（Poka-yoke）",
+    "aliases": [
+      "Poka-yoke"
+    ],
+    "definition": "一种“用设计消除错误”的思路，在制造业中称为防呆，源自丰田生产体系。",
+    "examples": [
+      "SIM 卡的缺角让卡片只能从一个方向插进卡槽，避免了用户插反的错误",
+      "微波炉门没关好就绝不加热，避免了用户开门加热的危险行为"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-8-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-8",
+        "title": "如何选择模型",
+        "lineStart": 355,
+        "lineEnd": 371,
+        "contentHash": "sha256:bdfeb677da2968bb23522cad4c4258da5c6c751c59dd266b36d1560c38660998"
+      }
+    ],
+    "evidenceQuote": "Agent 需要进行多步思考、工具选择等复杂决策，不带思考能力的模型在这些任务上表现往往很差。只有极少数场景例外，例如只执行单步简单任务，或在 Computer Use 中仅需点击固定位置的简单 GUI 操作，此时不带思考的模型也能胜任。但只要涉及多步思考或动态决策，就一定要选择支持思考的模型。",
+    "statement": "涉及多步思考或动态决策的 Agent 任务一定要选择支持思考的模型。",
+    "rationale": "Agent 需要进行多步思考、工具选择等复杂决策，不带思考能力的模型在这些任务上表现往往很差。",
+    "appliesWhen": "当 Agent 任务涉及多步思考或动态决策时。",
+    "violation": "在涉及多步思考或动态决策的 Agent 任务中选择不支持思考的模型。",
+    "chapterRef": "chapter1-h3-8"
+  },
+  {
+    "id": "CHAPTER1-H3-8-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-8",
+        "title": "如何选择模型",
+        "lineStart": 355,
+        "lineEnd": 371,
+        "contentHash": "sha256:bdfeb677da2968bb23522cad4c4258da5c6c751c59dd266b36d1560c38660998"
+      }
+    ],
+    "evidenceQuote": "模型在基准测试中具备某种能力，并不意味着承载它的产品一定允许用户调用这种能力。不同厂商会对网络安全、模型蒸馏、模型提取、隐私数据和高风险操作设置不同的策略边界；同一个任务在聊天产品、Coding Agent 和 API 中也可能得到不同结果。因此，模型选型不能只比较准确率、价格和速度，还要在自己的真实任务上测试：模型是否愿意执行、接口是否暴露所需能力，以及服务条款是否允许这种使用方式。",
+    "statement": "模型选型不能只比较准确率、价格和速度，还要在自己的真实任务上测试模型是否愿意执行、接口是否暴露所需能力，以及服务条款是否允许这种使用方式。",
+    "rationale": "模型在基准测试中具备某种能力，并不意味着承载它的产品一定允许用户调用这种能力；不同厂商会对网络安全、模型蒸馏、模型提取、隐私数据和高风险操作设置不同的策略边界；同一个任务在聊天产品、Coding Agent 和 API 中也可能得到不同结果。",
+    "appliesWhen": "进行模型选型，尤其是任务涉及网络安全、模型蒸馏、模型提取、隐私数据或高风险操作时。",
+    "violation": "只比较准确率、价格和速度，而不在自己的真实任务上测试模型是否愿意执行、接口是否暴露所需能力以及服务条款是否允许该使用方式。",
+    "chapterRef": "chapter1-h3-8"
+  },
+  {
+    "id": "CHAPTER1-H3-9-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-9",
+        "title": "编排模式：工作流与自主",
+        "lineStart": 372,
+        "lineEnd": 383,
+        "contentHash": "sha256:8a4b814216afeafe9cf1fba6561f140b87863cd819214752f34b5e02df474d1a"
+      }
+    ],
+    "evidenceQuote": "编排模式是 Harness 中“上下文与工具”层面的组织方式——它决定了上下文如何在 LLM 调用之间流动、工具如何被调度，以及 Agent 的执行路径是预先设定还是动态生成。Agent 系统的编排方式经历了从简单到复杂的演进过程，每种模式都有其适用场景和相应的取舍。根据 Anthropic 与数十个团队合作构建 LLM Agent 的经验[^ch1-anthropic-building-effective-agents]，最成功的实现往往不是使用复杂的框架，而是采用简单、可组合的模式。在构建 LLM 应用时，应遵循“从简单到复杂”的原则：首先考虑单个 LLM 调用。如果通过优化提示词和上下文示例就能解决问题，就不要引入 Agent 系统。当需要多步骤处理时，对于可以清晰分解为固定子任务的场景，考虑使用工作流。只有当需要动态决策和灵活的执行路径时，才使用自主 Agent。",
+    "canonicalTerm": "编排模式",
+    "aliases": [],
+    "definition": "Harness 中“上下文与工具”层面的组织方式，它决定上下文如何在 LLM 调用之间流动、工具如何被调度，以及 Agent 的执行路径是预先设定还是动态生成。",
+    "examples": [
+      "工作流",
+      "自主 Agent"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-9-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-9",
+        "title": "编排模式：工作流与自主",
+        "lineStart": 372,
+        "lineEnd": 383,
+        "contentHash": "sha256:8a4b814216afeafe9cf1fba6561f140b87863cd819214752f34b5e02df474d1a"
+      }
+    ],
+    "evidenceQuote": "先给一个能力足够的 Agent 清晰的目标、必要的上下文和可组合的工具，用自然语言告诉它如何像人一样查证、比较、处理冲突；程序只固化权限、不得覆盖原始材料、原子发布等必须始终成立的边界。只有业务约束本身要求，或评估反复暴露出某类稳定失败时，才把对应步骤升级为专门的验证器、独立 Agent 或确定性流程。好的结构不是替 Agent 预演全部思考，而是守住边界，并把边界内的决策空间还给模型。",
+    "trigger": "给一个能力足够的 Agent 清晰的目标、必要的上下文和可组合的工具时",
+    "recommendation": "先给能力足够的 Agent 清晰的目标、必要的上下文和可组合的工具，用自然语言告诉它如何像人一样查证、比较、处理冲突；程序只固化权限、不得覆盖原始材料、原子发布等必须始终成立的边界；只有业务约束本身要求，或评估反复暴露出某类稳定失败时，才把对应步骤升级为专门的验证器、独立 Agent 或确定性流程；好的结构不是替 Agent 预演全部思考，而是守住边界，并把边界内的决策空间还给模型。",
+    "confidence": 0.8,
+    "exceptions": [
+      "业务约束本身要求，或评估反复暴露出某类稳定失败时，才把对应步骤升级为专门的验证器、独立 Agent 或确定性流程"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-3",
+        "title": "工作流模式：确定性的编排",
+        "lineStart": 384,
+        "lineEnd": 417,
+        "contentHash": "sha256:31761793e1910d092517f48a9477d4c4faf69de1545f87e6e4d891c8e18aa81e"
+      }
+    ],
+    "evidenceQuote": "**工作流**（Workflow）是通过预定义的代码路径来编排 LLM 和工具的系统。它的执行路径是确定性的，由开发者预先设计好——每一步做什么、下一步去哪里，都是代码写死的，LLM 只在每个节点内部负责理解和生成。\n\n以一个订机票 Agent 为例，工作流可以设计为四个固定节点：\n\n1. **核实用户身份**——调用身份验证 API，确认用户是谁\n2. **搜索可用航班**——根据用户需求查询航班数据库\n3. **完成付款**——调用支付接口扣款\n4. **确认预订**——调用预订 API 锁定座位，向用户发送确认信息\n\n每个节点内部可以使用 LLM（例如用自然语言理解用户的出行需求），但节点之间的流转顺序是代码固定的——系统不会在付款完成之前去预订座位，也不会在身份核实之前开始搜索航班。",
+    "canonicalTerm": "工作流",
+    "aliases": [
+      "Workflow"
+    ],
+    "definition": "工作流是通过预定义代码路径编排 LLM 和工具的系统，其执行路径由开发者预先确定，节点间流转顺序由代码固定，LLM 只在节点内部负责理解和生成。",
+    "examples": [
+      "订机票 Agent 工作流包含四个固定节点：核实用户身份、搜索可用航班、完成付款、确认预订。"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-3",
+        "title": "工作流模式：确定性的编排",
+        "lineStart": 384,
+        "lineEnd": 417,
+        "contentHash": "sha256:31761793e1910d092517f48a9477d4c4faf69de1545f87e6e4d891c8e18aa81e"
+      }
+    ],
+    "evidenceQuote": "第一是**严格的流程控制**：开发者可以确保关键步骤不被跳过或乱序执行，例如“付款前不能预订”这类业务规则通过代码强制执行，不依赖 LLM 的判断。",
+    "statement": "付款前不能预订这类业务规则通过代码强制执行，不依赖 LLM 的判断。",
+    "rationale": "确保关键步骤不被跳过或乱序执行。",
+    "appliesWhen": "当工作流中存在关键业务顺序要求、需要严格流程控制时。",
+    "violation": "关键步骤可能被跳过或乱序执行。",
+    "chapterRef": "chapter1-h4-3"
+  },
+  {
+    "id": "CHAPTER1-H4-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-4",
+        "title": "自主 Agent：动态自主决策",
+        "lineStart": 418,
+        "lineEnd": 433,
+        "contentHash": "sha256:42fa565cc81b5a0577f2a27a61da761c3690db3824fe1492fc10db6a8238a220"
+      }
+    ],
+    "evidenceQuote": "当工作流的固定路径无法满足需求时，我们就需要**自主 Agent**（Autonomous Agent）。自主 Agent 与工作流的核心区别在于：执行路径不是预先定义的，而是 Agent 根据**环境反馈**实时决定的。\n\n仍以订机票为例：自主 Agent 不需要预定义四个固定节点。用户说“帮我订下周三去上海的机票”，Agent 会自行决定先搜索航班、发现需要登录、于是先核实身份、再回来搜索、发现最便宜的航班需要转机、主动询问用户是否接受、用户说不要转机、Agent 调整搜索条件……",
+    "canonicalTerm": "自主 Agent",
+    "aliases": [
+      "Autonomous Agent"
+    ],
+    "definition": "当工作流固定路径无法满足需求时，执行路径不是预先定义、而是由 Agent 根据环境反馈实时决定的 Agent。",
+    "examples": [
+      "订机票时，用户提出需求后，Agent 自行决定先搜索航班，发现需要登录后先核实身份，再回来搜索，发现最便宜航班需要转机后主动询问用户，用户拒绝转机后调整搜索条件。"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-4",
+        "title": "自主 Agent：动态自主决策",
+        "lineStart": 418,
+        "lineEnd": 433,
+        "contentHash": "sha256:42fa565cc81b5a0577f2a27a61da761c3690db3824fe1492fc10db6a8238a220"
+      }
+    ],
+    "evidenceQuote": "这意味着自主 Agent 需要具备自主规划的能力——自主决定执行步骤，还需要能识别失败、调整策略，而不只是在出错时停下来。但自主性不等于无限制——必须设计明确的**停止条件**（任务完成、达到最大迭代次数或遭遇不可恢复的错误），否则 Agent 容易陷入死循环或过度执行。",
+    "statement": "自主 Agent 必须设计明确的停止条件（任务完成、达到最大迭代次数或遭遇不可恢复的错误）。",
+    "rationale": "否则 Agent 容易陷入死循环或过度执行。",
+    "appliesWhen": "设计自主 Agent 时",
+    "violation": "未设计明确停止条件，Agent 可能陷入死循环或过度执行。",
+    "chapterRef": "chapter1-h4-4"
+  },
+  {
+    "id": "CHAPTER1-H4-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-5",
+        "title": "两种模式的选择与混合",
+        "lineStart": 434,
+        "lineEnd": 441,
+        "contentHash": "sha256:a04bde845b5472fae4ec9caf0177371c2ca88d8941bc339703792f415aadc231"
+      }
+    ],
+    "evidenceQuote": "实践中，工作流和自主 Agent 并非非此即彼——很多系统会混合使用两种模式：关键的、有严格合规要求的流程用工作流来确保可靠性，需要灵活决策的部分切换到自主模式。例如，n8n 是一个成熟的工作流自动化开源框架，开发者通过可视化界面拖拽功能组件来构建 Agent，可以在同一个系统中同时使用工作流节点和自主 Agent 节点。",
+    "canonicalTerm": "工作流与自主 Agent 的混合模式",
+    "aliases": [],
+    "definition": "工作流和自主 Agent 并非非此即彼；很多系统会混合使用两种模式，关键、有严格合规要求的流程用工作流确保可靠性，需要灵活决策的部分切换到自主模式。",
+    "examples": [
+      "n8n 是一个成熟的工作流自动化开源框架，开发者通过可视化界面拖拽功能组件来构建 Agent，可以在同一个系统中同时使用工作流节点和自主 Agent 节点。"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-5-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-5",
+        "title": "两种模式的选择与混合",
+        "lineStart": 434,
+        "lineEnd": 441,
+        "contentHash": "sha256:a04bde845b5472fae4ec9caf0177371c2ca88d8941bc339703792f415aadc231"
+      }
+    ],
+    "evidenceQuote": "还有一种混合方式是**先由自主 Agent 把工作流写出来，再由工作流去执行**。Agent 读完任务后自行决定拓扑并生成一段编排代码；代码一旦生成，执行阶段就退回工作流的确定性。这样既保留了自主 Agent 面对未知任务的灵活性，又不必让模型在每一次调度上都参与决策。",
+    "trigger": "当需要在面对未知任务时保留自主 Agent 的灵活性、又不必让模型在每次调度都参与决策时",
+    "recommendation": "先由自主 Agent 把工作流写出来，再由工作流去执行；Agent 读完任务后自行决定拓扑并生成编排代码，执行阶段退回工作流的确定性。",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER1-H4-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-6",
+        "title": "主流 Agent 框架简要对比",
+        "lineStart": 442,
+        "lineEnd": 465,
+        "contentHash": "sha256:a64531ab08d01e515ac2bb337be6e28ff38bba8701255987edf09bf3b62d6148"
+      }
+    ],
+    "evidenceQuote": "Codex Harness 提供三条集成路径：`codex exec` 适合脚本与 CI 里的一次性任务；Codex SDK 适合第三方应用代码启动、恢复和流式处理任务；app-server 则通过 JSON-RPC 协议提供持久会话、事件流与审批回调，适合把 Agent 直接做进产品。",
+    "canonicalTerm": "Codex Harness",
+    "aliases": [],
+    "definition": "Codex Harness 提供三条集成路径：codex exec 适合脚本与 CI 里的一次性任务；Codex SDK 适合第三方应用代码启动、恢复和流式处理任务；app-server 则通过 JSON-RPC 协议提供持久会话、事件流与审批回调，适合把 Agent 直接做进产品。",
+    "examples": [
+      "codex exec 适合脚本与 CI 里的一次性任务",
+      "Codex SDK 适合第三方应用代码启动、恢复和流式处理任务",
+      "app-server 通过 JSON-RPC 协议提供持久会话、事件流与审批回调，适合把 Agent 直接做进产品"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-6",
+        "title": "主流 Agent 框架简要对比",
+        "lineStart": 442,
+        "lineEnd": 465,
+        "contentHash": "sha256:a64531ab08d01e515ac2bb337be6e28ff38bba8701255987edf09bf3b62d6148"
+      }
+    ],
+    "evidenceQuote": "注意，Agent 框架发展迅速，在你阅读本书时，很可能有些框架已经过时，又有新的框架流行起来。因此，学会某个具体框架的用法并不重要。选择框架时，关键考量不在于框架本身的复杂度，而在于它能否用尽可能少的抽象层让你专注于业务逻辑。",
+    "statement": "选择 Agent 框架时，关键考量不在于框架本身的复杂度，而在于它能否用尽可能少的抽象层让你专注于业务逻辑。",
+    "rationale": "Agent 框架发展迅速，具体框架可能很快过时，因此学会某个具体框架的用法并不重要。",
+    "appliesWhen": "需要从多个 Agent 框架中选型时。",
+    "violation": "选择框架时把框架本身的复杂度当作关键考量，或把重点放在学会某个具体框架的用法上，而不是关注抽象层是否足够少。",
+    "chapterRef": "chapter1-h4-6"
+  },
+  {
+    "id": "CHAPTER1-H3-10-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-10",
+        "title": "护栏与安全性",
+        "lineStart": 466,
+        "lineEnd": 473,
+        "contentHash": "sha256:0451b59a13af5c30b87ffe2acf403d14661bd0ce686582d5a6cf6c7934c15422"
+      }
+    ],
+    "evidenceQuote": "**护栏**（Guardrails）构成了保障 Agent 行为安全可控的分层防线，可用于管理数据隐私风险（例如防止系统提示泄露）或声誉风险（例如确保模型行为与品牌形象一致）。",
+    "canonicalTerm": "护栏",
+    "aliases": [
+      "Guardrails"
+    ],
+    "definition": "保障 Agent 行为安全可控的分层防线，可用于管理数据隐私风险或声誉风险。",
+    "examples": [
+      "防止系统提示泄露",
+      "确保模型行为与品牌形象一致"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H3-10-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-10",
+        "title": "护栏与安全性",
+        "lineStart": 466,
+        "lineEnd": 473,
+        "contentHash": "sha256:0451b59a13af5c30b87ffe2acf403d14661bd0ce686582d5a6cf6c7934c15422"
+      }
+    ],
+    "evidenceQuote": "护栏也存在另一类失败：**误拒绝**。为了降低危险请求被放行的概率，模型可能同时拒绝一部分合法但形式敏感的任务，例如经过授权的安全测试、模型蒸馏研究。因此，护栏评估不能只测试“应当拒绝的请求是否被拦截”，还要测试“明确允许的请求是否能够正常完成”。",
+    "statement": "护栏评估不能只测试应当拒绝的请求是否被拦截，还要测试明确允许的请求是否能够正常完成。",
+    "rationale": "护栏存在误拒绝失败：为降低危险请求被放行的概率，模型可能同时拒绝一部分合法但形式敏感的任务。",
+    "appliesWhen": "评估护栏时",
+    "violation": "只测试应当拒绝的请求是否被拦截，而忽略明确允许的请求能否正常完成。",
+    "chapterRef": "chapter1-h3-10"
+  },
+  {
+    "id": "CHAPTER1-H4-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-7",
+        "title": "护栏类型",
+        "lineStart": 474,
+        "lineEnd": 489,
+        "contentHash": "sha256:1cd47330f2cc1351c843cb68511942d1f614a4544f158b76e985ef3f01e8b507"
+      }
+    ],
+    "evidenceQuote": "执行层护栏管的是模型能做什么，在动作真正生效之前验证。其核心是**工具风险评级**：根据操作是否可逆、权限等级、财务影响，为每个工具标注风险等级（低/中/高），高风险操作需额外审查或人工确认。",
+    "statement": "高风险操作需额外审查或人工确认。",
+    "rationale": "工具风险评级根据操作是否可逆、权限等级、财务影响为每个工具标注低/中/高风险等级。",
+    "appliesWhen": "执行层护栏在模型动作真正生效之前对工具操作进行验证时。",
+    "violation": "高风险操作未经额外审查或人工确认直接生效。",
+    "chapterRef": "chapter1-h4-7"
+  },
+  {
+    "id": "CHAPTER1-H4-7-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-7",
+        "title": "护栏类型",
+        "lineStart": 474,
+        "lineEnd": 489,
+        "contentHash": "sha256:1cd47330f2cc1351c843cb68511942d1f614a4544f158b76e985ef3f01e8b507"
+      }
+    ],
+    "evidenceQuote": "执行层护栏管的是模型能做什么，在动作真正生效之前验证。其核心是**工具风险评级**：根据操作是否可逆、权限等级、财务影响，为每个工具标注风险等级（低/中/高），高风险操作需额外审查或人工确认。关键在于这类复核必须由**上下文之外**的机制完成——独立的审查进程、最小权限凭证、沙盒隔离、人在回路——否则它会和被注入的 Agent 一起沦陷。",
+    "statement": "执行层护栏的复核必须由上下文之外的机制完成。",
+    "rationale": "否则复核机制会和被注入的 Agent 一起沦陷。",
+    "appliesWhen": "在执行层对模型动作进行复核时。",
+    "violation": "复核机制与 Agent 处于同一上下文内，被注入时一并沦陷。",
+    "chapterRef": "chapter1-h4-7"
+  },
+  {
+    "id": "CHAPTER1-H4-8-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-8",
+        "title": "人工干预",
+        "lineStart": 490,
+        "lineEnd": 505,
+        "contentHash": "sha256:b350956c0485355b013b342961287cb43833ef2d7669e21167092e1f121e7a4f"
+      }
+    ],
+    "evidenceQuote": "**人工干预**（Human in the loop，又称人在回路）是一个关键的保护措施，它让 Agent 能够在不损害用户体验的情况下提升实际性能。这在部署早期尤为重要，有助于识别失败模式、发现边缘情况并建立健壮的评估周期。\n\n实施人工干预机制，可以让 Agent 在无法完成任务时平稳地移交控制权。在客户服务中，这意味着将问题升级到人工客服；对于 Coding Agent，这意味着将控制权交还给开发者。",
+    "canonicalTerm": "人工干预",
+    "aliases": [
+      "Human in the loop",
+      "人在回路"
+    ],
+    "definition": "关键的保护措施，让 Agent 在不损害用户体验的情况下提升实际性能；实施后可让 Agent 在无法完成任务时平稳移交控制权。",
+    "examples": [
+      "在客户服务中，将问题升级到人工客服",
+      "对于 Coding Agent，将控制权交还给开发者"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H4-8-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h4-8",
+        "title": "人工干预",
+        "lineStart": 490,
+        "lineEnd": 505,
+        "contentHash": "sha256:b350956c0485355b013b342961287cb43833ef2d7669e21167092e1f121e7a4f"
+      }
+    ],
+    "evidenceQuote": "**人工干预**（Human in the loop，又称人在回路）是一个关键的保护措施，它让 Agent 能够在不损害用户体验的情况下提升实际性能。这在部署早期尤为重要，有助于识别失败模式、发现边缘情况并建立健壮的评估周期。\n\n实施人工干预机制，可以让 Agent 在无法完成任务时平稳地移交控制权。在客户服务中，这意味着将问题升级到人工客服；对于 Coding Agent，这意味着将控制权交还给开发者。\n\n通常有两种主要情况会触发人工干预：\n\n**超过失败阈值**\n为 Agent 的重试次数或操作次数设置上限。如果 Agent 超过了这些限制，就应该升级到人工干预。\n\n**高风险操作**\n涉及敏感、不可逆或高风险的操作时，应触发人工监督，至少在团队对 Agent 可靠性建立起足够信心之前是如此。典型的例子包括授权大额退款或付款等。",
+    "statement": "当 Agent 超过重试次数或操作次数的上限时，应升级到人工干预；涉及敏感、不可逆或高风险操作时，应触发人工监督，至少在团队对 Agent 可靠性建立起足够信心之前。",
+    "rationale": "人工干预是关键的保护措施，能够在不损害用户体验的情况下提升实际性能，并在部署早期帮助识别失败模式、发现边缘情况和建立健壮的评估周期。",
+    "appliesWhen": "Agent 超过失败阈值，或涉及敏感、不可逆或高风险操作时，尤其在部署早期或团队对 Agent 可靠性建立足够信心之前。",
+    "violation": "在 Agent 超过重试/操作次数上限或执行高风险操作时，未升级到人工干预或未触发人工监督。",
+    "chapterRef": "chapter1-h4-8"
+  },
+  {
+    "id": "CHAPTER1-H3-11-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-11",
+        "title": "Harness 五要素与「构建」部分的对应",
+        "lineStart": 506,
+        "lineEnd": 524,
+        "contentHash": "sha256:08f1c58a59e4fe3a1c48ffaae2dccab40384cb5fcc5f41adac05497ebfea501d"
+      }
+    ],
+    "evidenceQuote": "**先说清楚两个公式的关系，以免读者记住两套骨架。** 全书的结构骨架只有一个，就是引言和后记反复使用的 **Agent = LLM + 上下文 + 工具**：第二至六章讨论构建，第七至九章讨论评估与进化，第十章讨论协作。**Agent = Model + Harness** 不是与它并列的另一套划分，而是同一事物在生产形态下的展开——它把“上下文”和“工具”两项细分为上下文管理、工具接口、约束、验证、纠正五项职责，因此，它是**构建部分内部的一个观察视角**，而不是覆盖全书十章的目录。",
+    "statement": "当需要理解 Agent = LLM + 上下文 + 工具 与 Agent = Model + Harness 的关系时，不应把后者当作与前一个公式并列的另一套划分，也不应把它当作覆盖全书十章的目录；它是同一事物在生产形态下的展开，将上下文和工具细分为上下文管理、工具接口、约束、验证、纠正五项职责，是构建部分内部的一个观察视角。",
+    "rationale": "全书的结构骨架只有一个，引言和后记反复使用的公式是 Agent = LLM + 上下文 + 工具；要避免读者记住两套骨架。",
+    "appliesWhen": "当读者需要区分全书结构骨架与 Agent = Model + Harness 的关系时",
+    "violation": "把 Agent = Model + Harness 当作与 Agent = LLM + 上下文 + 工具 并列的另一套划分，或当作覆盖全书十章的目录",
+    "chapterRef": "chapter1-h3-11"
+  },
+  {
+    "id": "CHAPTER1-H3-11-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h3-11",
+        "title": "Harness 五要素与「构建」部分的对应",
+        "lineStart": 506,
+        "lineEnd": 524,
+        "contentHash": "sha256:08f1c58a59e4fe3a1c48ffaae2dccab40384cb5fcc5f41adac05497ebfea501d"
+      }
+    ],
+    "evidenceQuote": "安全同样不按章划分：它是贯穿全书的横切关注点（Cross-cutting Concern，即一个影响系统多个部分的问题），按前一节的三层护栏组织——上下文层、执行层、数据层。上表的“安全关注点”一列，给的是每一章在这三层里最主要的落点。",
+    "statement": "组织安全关注点时，不应按章划分；安全是贯穿全书的横切关注点，应按上下文层、执行层、数据层三层护栏组织。",
+    "rationale": "横切关注点是一个影响系统多个部分的问题，因此安全作为横切关注点不应按章划分。",
+    "appliesWhen": "当在章节中整理安全关注点时",
+    "violation": "把安全按章划分，而不是作为贯穿全书的横切关注点按三层护栏组织",
+    "chapterRef": "chapter1-h3-11"
+  },
+  {
+    "id": "CHAPTER1-H2-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-3",
+        "title": "贯穿全书的设计模式",
+        "lineStart": 525,
+        "lineEnd": 538,
+        "contentHash": "sha256:62216ffddf6ab3bb80452acba8fe5931e5bd33d5be5128d37c45173dd46d6ef1"
+      }
+    ],
+    "evidenceQuote": "**提议者—审核者（Proposer-Reviewer）**：产出与评判由两个不共享上下文的角色分别承担，评判方看到的是产物本身——渲染结果、测试输出、结构化的调用参数——而不是产出方的推理过程。它成立的前提是**自审不可靠**：同一个上下文中的模型难以发现自己的认知盲区，也很难判断自己是否已被注入。第三章用它更新知识，第四章用它做工具调用的事前审批与事后验证（Sidecar 是它的一个只读变体），第五章的 PPT、视频与日志三个实验都以它为骨架，第七章用它评估 UI，第九章用它审核更新提案，第十章讨论了它在对等协作中的形态，以及为什么不能让同一个 Agent 自审。",
+    "canonicalTerm": "提议者—审核者",
+    "aliases": [
+      "Proposer-Reviewer"
+    ],
+    "definition": "产出与评判由两个不共享上下文的角色分别承担，评判方看到的是产物本身而不是产出方的推理过程；它成立的前提是自审不可靠。",
+    "examples": [
+      "第三章用它更新知识",
+      "第四章用它做工具调用的事前审批与事后验证（Sidecar 是它的一个只读变体）",
+      "第五章的 PPT、视频与日志三个实验以它为骨架",
+      "第七章用它评估 UI",
+      "第九章用它审核更新提案",
+      "第十章讨论它在对等协作中的形态，以及为什么不能让同一个 Agent 自审"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H2-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-3",
+        "title": "贯穿全书的设计模式",
+        "lineStart": 525,
+        "lineEnd": 538,
+        "contentHash": "sha256:62216ffddf6ab3bb80452acba8fe5931e5bd33d5be5128d37c45173dd46d6ef1"
+      }
+    ],
+    "evidenceQuote": "**边界集 + 保留集（Boundary Set + Retention Set）**：任何一次修改都要同时在“它应当改变的那批样本”和“它不应当影响的那批样本”上验证。只测前者会把过拟合当成进步，只测后者会把无效修改当成安全。第七章的回归任务、第八章的训练与评估隔离、第九章的更新提案验证都建立在这对集合上。",
+    "statement": "任何一次修改都要同时在“它应当改变的那批样本”和“它不应当影响的那批样本”上验证。",
+    "rationale": "只测前者会把过拟合当成进步，只测后者会把无效修改当成安全。",
+    "appliesWhen": "任何一次修改。",
+    "violation": "只测“应当改变的那批样本”或只测“不应当影响的那批样本”。",
+    "chapterRef": "chapter1-h2-3"
+  },
+  {
+    "id": "CHAPTER1-H2-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-4",
+        "title": "本章小结",
+        "lineStart": 539,
+        "lineEnd": 560,
+        "contentHash": "sha256:dba2380f71b92e0e6caf08659462befea1deeb1b6070220eee87b15a036fedd3"
+      }
+    ],
+    "evidenceQuote": "**Agent = 大脑 + 眼睛 + 手脚**：LLM 是大脑（决策核心），上下文是眼睛（决定它能看到什么），工具是手脚（决定它能做什么）。三者缺一不可。\n\n**扩展眼睛和手脚是最主要的能力杠杆**：在模型固定时，重新定义或扩展观察空间与动作空间——也就是扩展上下文和工具——往往能直接把原本不可解的任务变为可解。Manus 和 OpenClaw 的演进都说明，通用性很大程度上来自接口边界的扩大；这种扩大必须按需进行，并配合权限控制和验证。",
+    "canonicalTerm": "Agent = 大脑 + 眼睛 + 手脚",
+    "aliases": [],
+    "definition": "LLM 是大脑（决策核心），上下文是眼睛（决定它能看到什么），工具是手脚（决定它能做什么），三者缺一不可。",
+    "examples": [
+      "Manus 和 OpenClaw 的演进说明通用性很大程度上来自接口边界的扩大"
+    ]
+  },
+  {
+    "id": "CHAPTER1-H2-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter1.md",
+        "anchor": "chapter1#h2-4",
+        "title": "本章小结",
+        "lineStart": 539,
+        "lineEnd": 560,
+        "contentHash": "sha256:dba2380f71b92e0e6caf08659462befea1deeb1b6070220eee87b15a036fedd3"
+      }
+    ],
+    "evidenceQuote": "**安全是架构问题**：安全问题从第一行代码就要考虑，而不是上线前打补丁。护栏按被绕过的难度分为上下文层、执行层与数据层三层，后续各章的安全讨论都挂在这个骨架上。",
+    "statement": "安全问题从第一行代码就要考虑，而不是上线前打补丁。",
+    "rationale": "安全是架构问题，护栏按被绕过的难度分为上下文层、执行层与数据层三层，后续各章的安全讨论都挂在这个骨架上。",
+    "appliesWhen": "从第一行代码开始",
+    "violation": "上线前才打补丁",
+    "chapterRef": "chapter1-h2-4"
+  }
+]

@@ -1,0 +1,1181 @@
+{
+  "schemaVersion": "gate2-report/v1",
+  "createdAt": "2026-10-15T12:51:57.301Z",
+  "subset": null,
+  "model": {
+    "modelId": "deepseek-v4-pro"
+  },
+  "blindMode": "strict",
+  "promptFingerprints": {
+    "scenarioGen": "prompt-e3c3959885e0",
+    "blind": "prompt-5d75797397c2"
+  },
+  "scenarioSetFile": "pipeline/knowledge/gate2-scenarios.task-suite.json",
+  "scenarioSetSha256": "sha256:a2a746eb02201794793c34935e96268e716a34b8ff57477f8a95f4f1ab7fcbf4",
+  "catalogSha256": "sha256:fb9c9fec7c8fd904c0bee1b161063bf9ae015627936494752a4c4c2c685fc8d7",
+  "codeMapping": [
+    {
+      "code": "k01",
+      "skillId": "structure-rust-cli"
+    },
+    {
+      "code": "k02",
+      "skillId": "design-agent-tools"
+    },
+    {
+      "code": "k03",
+      "skillId": "diagnose-rust-borrows"
+    },
+    {
+      "code": "k04",
+      "skillId": "define-agent-boundaries-and-safeguards"
+    },
+    {
+      "code": "k05",
+      "skillId": "model-rust-domain-types"
+    },
+    {
+      "code": "k06",
+      "skillId": "update-agent-instructions"
+    },
+    {
+      "code": "k07",
+      "skillId": "compose-rust-closures"
+    },
+    {
+      "code": "k08",
+      "skillId": "coordinate-rust-threads"
+    },
+    {
+      "code": "k09",
+      "skillId": "manage-rust-memory-and-mutability"
+    },
+    {
+      "code": "k10",
+      "skillId": "validate-generated-artifacts"
+    },
+    {
+      "code": "k11",
+      "skillId": "coordinate-agent-work-and-verification"
+    },
+    {
+      "code": "k12",
+      "skillId": "process-rust-text-and-hashmaps"
+    },
+    {
+      "code": "k13",
+      "skillId": "manage-agent-context"
+    },
+    {
+      "code": "k14",
+      "skillId": "design-rust-abstractions"
+    },
+    {
+      "code": "k15",
+      "skillId": "run-rust-tests"
+    },
+    {
+      "code": "k16",
+      "skillId": "implement-rust-state-pattern"
+    },
+    {
+      "code": "k17",
+      "skillId": "match-rust-variants"
+    }
+  ],
+  "usage": {
+    "generation": {
+      "promptTokens": 31125,
+      "completionTokens": 46247
+    },
+    "blind": {
+      "promptTokens": 261124,
+      "completionTokens": 71218
+    }
+  },
+  "perCandidate": [
+    {
+      "skillId": "diagnose-rust-borrows",
+      "name": "诊断 Rust 借用、切片与生命周期错误",
+      "code": "k03",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "diagnose-rust-borrows-sc1",
+          "text": "我这个函数先对同一个 HashMap 值取了可变引用做插入，随后在同一作用域又取了另一个可变引用做删除，编译器报 E0499。我改成先做完插入再删除还是不能过，请帮我定位是哪里违反了借用规则。",
+          "triggered": [
+            "diagnose-rust-borrows"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "diagnose-rust-borrows-sc2",
+          "text": "我写了一个工具函数，接收两个 &str，想返回二者中较长的那一个，编译器报 E0106 说缺少生命周期标注。我试了加上 'static 但报错说返回引用不能比参数活得久，请帮我判断返回引用应该与哪个参数关联。",
+          "triggered": [
+            "diagnose-rust-borrows"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "diagnose-rust-borrows-sc3",
+          "text": "这段解析代码从网络报文里按字节偏移切子串，编译器报 E0502，因为它认为我同时持有原始缓冲区的可变引用；我还担心遇到多字节字符会在非 UTF-8 边界上 panic，请帮我一起检查切片位置和借用问题。",
+          "triggered": [
+            "diagnose-rust-borrows",
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "diagnose-rust-borrows-sc3",
+          "others": [
+            "process-rust-text-and-hashmaps"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc3",
+          "intended": "compose-rust-closures"
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc3",
+          "intended": "implement-rust-state-pattern"
+        }
+      ]
+    },
+    {
+      "skillId": "model-rust-domain-types",
+      "name": "用结构体、方法与枚举建模 Rust 领域类型",
+      "code": "k05",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "model-rust-domain-types-sc1",
+          "text": "我正在从 CLI 参数和配置文件构造服务配置，想把 host、port、retry 这些相关字段放在一个类型里，并在基于默认值覆盖部分字段时不逐个重复赋值。",
+          "triggered": [
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "model-rust-domain-types-sc2",
+          "text": "我要表示支付流程的多种状态，其中待支付和已关闭没有额外数据，已支付需要保存支付时间和流水号，不想再用字符串加可空字段来凑。",
+          "triggered": [
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "model-rust-domain-types-sc3",
+          "text": "我在写矩形布局计算，想提供根据宽高创建矩形的构造器和判断能否容纳另一个矩形的方法，调用方在判断之后还要继续使用被比较的矩形。",
+          "triggered": [
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "implement-rust-state-pattern-sc2",
+          "intended": "implement-rust-state-pattern"
+        }
+      ]
+    },
+    {
+      "skillId": "match-rust-variants",
+      "name": "用模式匹配处理 Rust 变体与可反驳模式",
+      "code": "k17",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "match-rust-variants-sc1",
+          "text": "我在解析一个配置文件，每个配置项是一个枚举，不同变体要执行不同的初始化逻辑。现在我需要根据变体分发，但编译器一直提示有分支没覆盖到，能帮我理清怎么写出完整的匹配吗？",
+          "triggered": [
+            "match-rust-variants"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "match-rust-variants-sc2",
+          "text": "我有一段代码只需要处理网络请求结果里的成功情况，错误情况直接忽略，现在用 match 写了两行分支，感觉有点啰嗦，有没有更简洁的写法？",
+          "triggered": [
+            "match-rust-variants"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "match-rust-variants-sc3",
+          "text": "编译的时候报错说 let 语句不能使用可能匹配失败的模式，我代码里写了 let Some(value) = config.get(\"key\")，但 config.get 返回的是 Option，应该怎么改才符合 Rust 的规则？",
+          "triggered": [
+            "match-rust-variants"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "process-rust-text-and-hashmaps",
+      "name": "安全处理 Rust 文本与键值集合",
+      "code": "k12",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc1",
+          "text": "我要从一批用户输入的评论里截取前 120 个字节作为列表摘要，但有些评论带 emoji 或中文，直接按字节切片在运行时会 panic；帮我改成能落在字符边界的安全截断，截断后不要出现半个字符。",
+          "triggered": [
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc2",
+          "text": "我在统计服务日志里每个 error code 的出现次数，现在用 HashMap 先 contains_key 再 insert 或 get_mut 更新，代码又长又容易出现重复键逻辑；帮我改成用 entry API 一次性处理“不存在时插入 0，然后递增”。",
+          "triggered": [
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "process-rust-text-and-hashmaps-sc3",
+          "text": "我拿到几个返回 String 的函数结果，想和一个常量前缀拼成一条完整消息；但用 + 拼接时第一个 String 被移动了，后面还要继续用它，而且两个 String 相加会报错；帮我改成不夺取参数所有权的拼接写法，比如用 format! 或 push_str。",
+          "triggered": [
+            "process-rust-text-and-hashmaps"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "diagnose-rust-borrows-sc3",
+          "intended": "diagnose-rust-borrows"
+        }
+      ]
+    },
+    {
+      "skillId": "design-rust-abstractions",
+      "name": "用泛型、trait 与 trait object 设计抽象",
+      "code": "k14",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "design-rust-abstractions-sc1",
+          "text": "我写了三个几乎一样的函数，分别对 `Vec<i32>`、`Vec<f64>` 和 `Vec<i64>` 求最大值；我想合并成一个泛型版本，但用 `T` 和 `>` 比较一直编译不过，需要知道该加哪些 trait 约束。",
+          "triggered": [
+            "design-rust-abstractions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-rust-abstractions-sc2",
+          "text": "我在做内容聚合模块，`NewsArticle` 和 `Tweet` 要生成各自的摘要，但字段不同。我想定义一个统一的摘要接口，让两个类型各自实现，并让一个函数接收任何实现了该接口的类型；最好还能提供默认摘要格式，只让少数类型覆盖。",
+          "triggered": [
+            "design-rust-abstractions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-rust-abstractions-sc3",
+          "text": "我在写一个可扩展的绘图库，现在内置了圆形、矩形，但用户以后可以注册自己的形状。我想把不同类型的形状放进一个集合并统一调用 `draw`，同时需要确认：如果 `draw` 方法返回 `Self` 或带泛型参数，为什么就不能放进 `Vec<Box<dyn Draw>>`？",
+          "triggered": [
+            "design-rust-abstractions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc2",
+          "intended": "compose-rust-closures"
+        }
+      ]
+    },
+    {
+      "skillId": "compose-rust-closures",
+      "name": "创建、约束并缓存 Rust 闭包",
+      "code": "k07",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc1",
+          "text": "我的服务启动时并不总会用到某份配置文件，但一旦用到某个键就需要解析；同一个键在后续请求里还会被反复读取。我不想启动时全量解析，也不想对同一个键重复解析，想改成第一次读取时执行解析并缓存结果。",
+          "triggered": [
+            "compose-rust-closures"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc2",
+          "text": "我要给查询结果集加一个调用方传入的行级映射函数，并把它保存在执行器结构体里，渲染每行时调用。这个函数可能只读外部状态，也可能需要修改捕获的统计计数器，我不确定字段该怎么写泛型约束和 trait bound。",
+          "triggered": [
+            "compose-rust-closures",
+            "design-rust-abstractions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc3",
+          "text": "我在写一个小型任务队列，提交任务时传一段逻辑，队列会把它发到工作线程执行。现在编译器提示闭包借用了调用者栈上的临时数据导致生命周期不够，我想让它在定义时把数据 move 进去，并确认这个闭包应该实现 FnOnce 还是 FnMut。",
+          "triggered": [
+            "diagnose-rust-borrows",
+            "compose-rust-closures"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "compose-rust-closures-sc2",
+          "others": [
+            "design-rust-abstractions"
+          ]
+        },
+        {
+          "scenarioId": "compose-rust-closures-sc3",
+          "others": [
+            "diagnose-rust-borrows"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "manage-rust-memory-and-mutability",
+      "name": "管理 Rust 内存布局、析构与内部可变性",
+      "code": "k09",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc1",
+          "text": "我在写一个表达式树，`enum Expr { Num(i64), Add(Expr, Expr) }` 一直报 E0072，说类型有无限大小，我该怎么调整这个定义才能编译？",
+          "triggered": [
+            "manage-rust-memory-and-mutability"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc2",
+          "text": "我的日志文件句柄实现了 Drop，但我想在某个检查点之前就确保它已经 flush 并关闭，直接写 `handle.drop()` 编译不过，正确的提前释放方式是什么？",
+          "triggered": [
+            "manage-rust-memory-and-mutability"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-rust-memory-and-mutability-sc3",
+          "text": "我在实现一个统计结构的 trait 方法 `record(&self, msg)`，需要更新内部计数器，但 trait 要求保持 `&self` 签名，不能改成 `&mut self`，我该怎么在不可变引用下修改状态？",
+          "triggered": [
+            "manage-rust-memory-and-mutability"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "coordinate-rust-threads",
+      "name": "用线程、通道与 Arc<Mutex> 协调并发",
+      "code": "k08",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "coordinate-rust-threads-sc1",
+          "text": "我有一批独立的文件哈希计算任务，想同时跑起来，等所有任务结束后把每个文件的哈希按原顺序收进一个 Vec 返回；现在担心主线程先退出或者结果丢失。",
+          "triggered": [
+            "coordinate-rust-threads"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-rust-threads-sc2",
+          "text": "我要让两个后台线程分别扫描不同目录，把发现的问题文件路径发给同一个消费者做统一处理；想知道怎么把同一个发送端安全地传给多个线程还不出现所有权冲突。",
+          "triggered": [
+            "coordinate-rust-threads"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-rust-threads-sc3",
+          "text": "我在多个线程里更新同一个共享计数器，直接把 Rc<Mutex<Counter>> 搬进线程编译报 Rc 不能跨线程；另外还想避免两个线程各持一个锁互相卡死。",
+          "triggered": [
+            "coordinate-rust-threads"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "structure-rust-cli",
+      "name": "拆分 Rust CLI 并传递 Result 错误",
+      "code": "k01",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "structure-rust-cli-sc1",
+          "text": "我想给现在这个命令行工具加单元测试，但所有参数解析和文件读取逻辑都堆在 main 里，根本没法直接调用那些内部步骤；请帮我把可测试的部分移到 lib，main 只保留启动入口。",
+          "triggered": [
+            "structure-rust-cli"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "structure-rust-cli-sc2",
+          "text": "现在 main 里同时负责搜集参数、设置默认值和执行业务逻辑，参数一多就越来越乱；请帮我把这些配置项聚合成一个 Config，并用返回 Result 的方式处理缺参等错误，而不是直接 panic。",
+          "triggered": [
+            "structure-rust-cli"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "structure-rust-cli-sc3",
+          "text": "用户少传参数时，我的工具会输出一长串 panic 和 index out of bounds 信息，完全没有可读提示；请改成把可能失败的操作返回 Result，在 main 里输出简短错误信息并返回非零退出码。",
+          "triggered": [
+            "structure-rust-cli"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "run-rust-tests",
+      "name": "筛选、串行并观察 Rust 测试",
+      "code": "k15",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "run-rust-tests-sc1",
+          "text": "auth 模块里有几个测试挂了，我想只跑这个模块下面的用例，别把整个项目的测试都跑一遍，好快点看到是哪个断言失败了。",
+          "triggered": [
+            "run-rust-tests"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "run-rust-tests-sc2",
+          "text": "我的集成测试会同时读写同一个临时目录，经常随机失败，我想让它们不要并行执行，按顺序跑一遍确认是不是竞争问题。",
+          "triggered": [
+            "run-rust-tests"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "run-rust-tests-sc3",
+          "text": "有个测试通过了，但我在里面加的 println! 调试日志在终端里没显示出来，我想看到这些输出确认中间过程。",
+          "triggered": [
+            "run-rust-tests"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "implement-rust-state-pattern",
+      "name": "用所有权安全地实现 Rust 状态模式",
+      "code": "k16",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "implement-rust-state-pattern-sc1",
+          "text": "我正在重构博客发布流程，现在 Post 里放了一个状态枚举，发布、审核、驳回的逻辑都散在各处 match。请帮我把草稿、审核中、已发布这些状态分别封装起来，让每个状态自己决定如何转移到下一个状态，并统一由 Post 持有当前状态。",
+          "triggered": [
+            "implement-rust-state-pattern"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc2",
+          "text": "我们订单模块现在用一个 status 字符串标记状态，导致支付前就可能调用发货。我想把草稿订单、已支付订单、已发货订单做成不同的类型，状态转换方法获取当前订单的所有权并返回下一状态类型，让跳过支付状态的调用在编译期直接失败。",
+          "triggered": [
+            "implement-rust-state-pattern",
+            "model-rust-domain-types"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc3",
+          "text": "我在实现连接协议状态机时，有些查询方法是 &self 但要读取当前状态，而收到关闭信号时又需要把旧状态换成新状态，总是遇到不能从借用字段里移动状态的编译错误。请帮我调整状态字段的存放方式，让读取只借引用，切换时能把旧状态所有权拿出来。",
+          "triggered": [
+            "implement-rust-state-pattern",
+            "diagnose-rust-borrows"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "implement-rust-state-pattern-sc2",
+          "others": [
+            "model-rust-domain-types"
+          ]
+        },
+        {
+          "scenarioId": "implement-rust-state-pattern-sc3",
+          "others": [
+            "diagnose-rust-borrows"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "define-agent-boundaries-and-safeguards",
+      "name": "划清 Agent 边界并建立动作安全防线",
+      "code": "k04",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "define-agent-boundaries-and-safeguards-sc1",
+          "text": "我在做一个客服 Agent，它能查知识库也能直接改工单状态。帮我理一下哪些数据必须通过受控接口进上下文，哪些修改操作要收到固定工具里并加人工确认，别让模型自己随意组合。",
+          "triggered": [
+            "define-agent-boundaries-and-safeguards"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "define-agent-boundaries-and-safeguards-sc2",
+          "text": "我们有个助手会读取外部网页并做总结，最近发现它可能被网页里的内容带偏去调用工具。帮我设计外部内容进入上下文时的隔离方式，并在工具执行前加一道独立校验，确保网页中的“指令”不会被当成系统指令。",
+          "triggered": [
+            "define-agent-boundaries-and-safeguards"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "define-agent-boundaries-and-safeguards-sc3",
+          "text": "我要上线一个能自动发邮件和对外转账的财务 Agent，上线前想做一次安全评审。帮我按“工具+参数”的可逆性和影响面做风险分级，列出哪些必须走慢速审批，并给出护栏测试要覆盖的硬指标。",
+          "triggered": [
+            "define-agent-boundaries-and-safeguards"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": [
+        {
+          "scenarioId": "design-agent-tools-sc3",
+          "intended": "design-agent-tools"
+        }
+      ]
+    },
+    {
+      "skillId": "manage-agent-context",
+      "name": "压缩上下文并维持运行状态",
+      "code": "k13",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "manage-agent-context-sc1",
+          "text": "我们的 agent 在跑长调研任务时，经常在上下文还很充裕时就开始重复问已经确认过的供应商，或者漏掉中间拿到的报价。帮我设计一个在对话末尾注入任务进度和环境摘要的机制，让结论由代码维护，不要靠它自己从原始记录里现算。",
+          "triggered": [
+            "manage-agent-context"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-agent-context-sc2",
+          "text": "我在给一个多工具调用 agent 框架做上下文压缩，现在每次压缩后缓存前缀都会变，成本反而更高。我想知道应该在什么阈值触发、只压缩哪些 tool results、怎么标记已压缩内容，并保证时间和公司名这些关键信息不丢。",
+          "triggered": [
+            "manage-agent-context"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "manage-agent-context-sc3",
+          "text": "我的 agent 处理长任务时，只要看到 token 快接近窗口限制就会提前收尾，哪怕还有几步没执行。帮我加一种每步注入总预算和剩余预算、按剩余比例调整探索与利用权重的提示策略，避免它过早放弃。",
+          "triggered": [
+            "manage-agent-context"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "design-agent-tools",
+      "name": "设计可选、透明、可分页的 Agent 工具",
+      "code": "k02",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-conflict",
+      "scenarios": [
+        {
+          "scenarioId": "design-agent-tools-sc1",
+          "text": "我要给现在的客服 Agent 新增一个内部知识库检索工具，目前拿不准返回结果应该做成条目列表加摘要，还是把匹配到的文档正文都拼进去。帮我把这个工具的返回结构和每次返回量定一下，避免一次检索就把上下文撑爆。",
+          "triggered": [
+            "design-agent-tools"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-agent-tools-sc2",
+          "text": "线上 Agent 最近总是把“查一下这个订单的物流状态”调用成“创建退款单”工具，模型版本没变过。帮我重新看一下这两个工具的命名、描述和入参说明，把容易混淆的边界写清楚。",
+          "triggered": [
+            "design-agent-tools"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "design-agent-tools-sc3",
+          "text": "我们准备接入一个外部 MCP 服务来让 Agent 操作 Git 仓库，但安全团队担心它可能在我们不知情时给命令追加参数，或者把长输出截断后不告诉我们。帮我出一份针对这类工具接口的评审清单，重点看它有没有隐式改输入输出。",
+          "triggered": [
+            "design-agent-tools",
+            "define-agent-boundaries-and-safeguards"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [
+        {
+          "scenarioId": "design-agent-tools-sc3",
+          "others": [
+            "define-agent-boundaries-and-safeguards"
+          ]
+        }
+      ],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "validate-generated-artifacts",
+      "name": "渲染、验证并安全交付生成产物",
+      "code": "k10",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "validate-generated-artifacts-sc1",
+          "text": "我让模型生成了一份内部周报网页，里面有几张图表和表格。你帮我在真实浏览器里跑一遍，截图给我看有没有白屏、错位或者控制台报错，确认能正常展示再给我。",
+          "triggered": [
+            "validate-generated-artifacts"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "validate-generated-artifacts-sc2",
+          "text": "我让模型写了一个客户分群 SQL，准备放到例行报表里。你先帮我在测试库实际执行一下，核对结果是不是符合业务逻辑，特别是漏斗那一段别再漏条件，确认没问题我再发布。",
+          "triggered": [
+            "validate-generated-artifacts"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "validate-generated-artifacts-sc3",
+          "text": "我让 Agent 给销售人员生成了一个移动端报价表单，我要求前端只拿界面描述 JSON 用受信组件渲染，不直接跑任意 HTML。你帮我在交付前验证这个表单在目标组件里渲染和交互是否正常。",
+          "triggered": [
+            "validate-generated-artifacts"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "coordinate-agent-work-and-verification",
+      "name": "编排多 Agent 协作、冲突与完成验证",
+      "code": "k11",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "coordinate-agent-work-and-verification-sc1",
+          "text": "我准备让代码生成、测试补全和修复三个 agent 并行改同一个仓库，需要确定它们之间怎么通信、每个 agent 的中间产物放哪里、以及同时改文件时冲突如何处理。",
+          "triggered": [
+            "coordinate-agent-work-and-verification"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-agent-work-and-verification-sc2",
+          "text": "现在有一个四个 agent 的评审链，A 的初判被 B、C 逐层转述后已经偏到离谱，而且循环里还不停创建子任务；请帮我定位这种级联和停不下来的问题，并加一道只对照原始证据的复核环节。",
+          "triggered": [
+            "coordinate-agent-work-and-verification"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "coordinate-agent-work-and-verification-sc3",
+          "text": "我的编码 agent 每次都说‘已完成，测试通过’，但测试也是它自己生成的；请帮我设计一个完成判定流程，让一个独立角色用不同上下文核对产物，不能让模型自己批准结束。",
+          "triggered": [
+            "coordinate-agent-work-and-verification"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    },
+    {
+      "skillId": "update-agent-instructions",
+      "name": "从失败轨迹生成可回滚指令补丁",
+      "code": "k06",
+      "scenarioCount": 3,
+      "hits": 3,
+      "hitRate": 1,
+      "promotionState": "trigger-passed",
+      "scenarios": [
+        {
+          "scenarioId": "update-agent-instructions-sc1",
+          "text": "那个整理会议纪要的助手已经连续一周把待办事项归到错误的人名下，我导出了最近 20 条失败样例，请把这些样例压缩成一条简短的补充规则，只追加到现有提示词里，不要改动原有内容，并且告诉我怎么回滚。",
+          "triggered": [
+            "update-agent-instructions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "update-agent-instructions-sc2",
+          "text": "最近客服 Agent 在报价时总忽略大客户折扣，我们有几十条链路日志，我想把“优先检查合同折扣”这条经验固化下来，但拿不准是写进团队手册、更新技能说明，还是改成服务代码里的默认策略，帮我判断并给出具体落点。",
+          "triggered": [
+            "update-agent-instructions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        },
+        {
+          "scenarioId": "update-agent-instructions-sc3",
+          "text": "我们的代码审查 Agent 对 Python 项目反复建议用已弃用的 asyncio 写法，我有几次错误建议的截图和日志，帮我把“遇到 async 时先查当前版本推荐写法”整理成一条带来源的注意事项，追加到审查技能说明里，不要整篇重写。",
+          "triggered": [
+            "update-agent-instructions"
+          ],
+          "unknownCodes": [],
+          "hit": true
+        }
+      ],
+      "miss": false,
+      "missedScenariosClaimedBy": [],
+      "coClaimedScenarios": [],
+      "claimsOtherScenarios": []
+    }
+  ],
+  "unrelated": [
+    {
+      "scenarioId": "unrelated-sc1",
+      "text": "我想规划一周的低卡路里饮食，每天控制在1800千卡以内，请帮我安排早中晚三餐和加餐食谱。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc2",
+      "text": "我下周去东京自由行5天，喜欢安静的小巷和咖啡馆，请帮我安排一份涵盖交通、景点和预算的行程。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc3",
+      "text": "我想在三个月内把西班牙语从A2提升到B1，请帮我制定每天30分钟的学习计划，包括听力和口语练习。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc4",
+      "text": "我家后院朝北、土壤偏黏，想种些耐阴好打理的多年生植物，请推荐几种并说明间距和浇水频率。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc5",
+      "text": "我要为朋友婚礼制作一份10首歌的仪式播放列表，风格要温馨不要太吵，请帮我选曲并排序。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc6",
+      "text": "我最近在考虑两种基金定投策略，请帮我比较定期定额和按估值分档投入在历史数据上的回撤和收益差异。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc7",
+      "text": "我需要给自由职业合同加一条保密条款，保护客户名单和报价信息，请帮我拟一段中文条款草稿。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc8",
+      "text": "我最近早上起床腰酸，久坐后更明显，请给我一些坐姿调整和拉伸建议，并告诉我何时该去看医生。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc9",
+      "text": "我用佳能R6拍夜景人像总出现背景过暗或人脸噪点，请给我一组参数设置和补光建议。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc10",
+      "text": "我在准备第一场半程马拉松，目前每周跑三次共20公里，请帮我制定一个8周训练计划，避免受伤。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc11",
+      "text": "我在写一篇关于明朝海禁政策对沿海贸易影响的文章，请帮我按时间线整理事件脉络和主要争议点。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc12",
+      "text": "我想把18平米的客厅改造成兼具书房功能的区域，预算2万，请给我一个家具布局和灯光方案。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc13",
+      "text": "我在复习数论，请帮我证明：对任意正整数 n，n^5 - n 能被 30 整除，给出清晰的同余或归纳证明。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc14",
+      "text": "我有一份CSV销售数据，想用pandas按季度汇总各区域销售额并生成折线图，请给我一段Python脚本思路。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc15",
+      "text": "我有一段30分钟旅行录像，想剪成3分钟快节奏vlog，请帮我设计分镜脚本和转场节奏。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc16",
+      "text": "我刚领养了一只2个月大的拉布拉多，晚上总叫、白天咬东西，请给我一些幼犬训练和作息安排建议。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc17",
+      "text": "我要应聘产品经理岗位，请帮我梳理常见案例分析面试题，并给出回答框架。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc18",
+      "text": "我在玩《博德之门3》第三章卡在某个战斗，请帮我分析队伍配置和战术思路，但不要剧透剧情。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc19",
+      "text": "我在设计一个关于城市热岛效应的地理课调研，需要学生用手机记录不同下垫面的温度，请帮我设计数据记录表和统计方法。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    },
+    {
+      "scenarioId": "unrelated-sc20",
+      "text": "我在写一个短篇科幻小说，主角能听见植物之间的化学信号，请帮我扩展世界观设定和冲突。",
+      "triggered": [],
+      "unknownCodes": [],
+      "falseTrigger": false
+    }
+  ],
+  "conflictGroups": [
+    {
+      "scenarioId": "diagnose-rust-borrows-sc3",
+      "intended": "diagnose-rust-borrows",
+      "triggered": [
+        "diagnose-rust-borrows",
+        "process-rust-text-and-hashmaps"
+      ]
+    },
+    {
+      "scenarioId": "compose-rust-closures-sc2",
+      "intended": "compose-rust-closures",
+      "triggered": [
+        "compose-rust-closures",
+        "design-rust-abstractions"
+      ]
+    },
+    {
+      "scenarioId": "compose-rust-closures-sc3",
+      "intended": "compose-rust-closures",
+      "triggered": [
+        "diagnose-rust-borrows",
+        "compose-rust-closures"
+      ]
+    },
+    {
+      "scenarioId": "implement-rust-state-pattern-sc2",
+      "intended": "implement-rust-state-pattern",
+      "triggered": [
+        "implement-rust-state-pattern",
+        "model-rust-domain-types"
+      ]
+    },
+    {
+      "scenarioId": "implement-rust-state-pattern-sc3",
+      "intended": "implement-rust-state-pattern",
+      "triggered": [
+        "implement-rust-state-pattern",
+        "diagnose-rust-borrows"
+      ]
+    },
+    {
+      "scenarioId": "design-agent-tools-sc3",
+      "intended": "design-agent-tools",
+      "triggered": [
+        "design-agent-tools",
+        "define-agent-boundaries-and-safeguards"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "merge",
+      "candidates": [
+        "diagnose-rust-borrows",
+        "process-rust-text-and-hashmaps"
+      ],
+      "names": [
+        "诊断 Rust 借用、切片与生命周期错误",
+        "安全处理 Rust 文本与键值集合"
+      ],
+      "basis": "同一场景（diagnose-rust-borrows-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "diagnose-rust-borrows-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "compose-rust-closures",
+        "design-rust-abstractions"
+      ],
+      "names": [
+        "创建、约束并缓存 Rust 闭包",
+        "用泛型、trait 与 trait object 设计抽象"
+      ],
+      "basis": "同一场景（compose-rust-closures-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "compose-rust-closures-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "diagnose-rust-borrows",
+        "compose-rust-closures"
+      ],
+      "names": [
+        "诊断 Rust 借用、切片与生命周期错误",
+        "创建、约束并缓存 Rust 闭包"
+      ],
+      "basis": "同一场景（compose-rust-closures-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "compose-rust-closures-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "implement-rust-state-pattern",
+        "model-rust-domain-types"
+      ],
+      "names": [
+        "用所有权安全地实现 Rust 状态模式",
+        "用结构体、方法与枚举建模 Rust 领域类型"
+      ],
+      "basis": "同一场景（implement-rust-state-pattern-sc2）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "implement-rust-state-pattern-sc2"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "implement-rust-state-pattern",
+        "diagnose-rust-borrows"
+      ],
+      "names": [
+        "用所有权安全地实现 Rust 状态模式",
+        "诊断 Rust 借用、切片与生命周期错误"
+      ],
+      "basis": "同一场景（implement-rust-state-pattern-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "implement-rust-state-pattern-sc3"
+      ]
+    },
+    {
+      "kind": "merge",
+      "candidates": [
+        "design-agent-tools",
+        "define-agent-boundaries-and-safeguards"
+      ],
+      "names": [
+        "设计可选、透明、可分页的 Agent 工具",
+        "划清 Agent 边界并建立动作安全防线"
+      ],
+      "basis": "同一场景（design-agent-tools-sc3）被 ≥2 个候选同时认领——ADR-007：粒度太碎，退回环 3 合并",
+      "scenarios": [
+        "design-agent-tools-sc3"
+      ]
+    }
+  ],
+  "totals": {
+    "candidates": 17,
+    "scenarios": 51,
+    "unrelatedScenarios": 20,
+    "triggerPassed": 9,
+    "triggerConflict": 8,
+    "triggerMiss": 0,
+    "unrelatedFalseTriggers": 0,
+    "conflictGroups": 6
+  }
+}

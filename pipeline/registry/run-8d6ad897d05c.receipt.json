@@ -1,0 +1,4675 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-8d6ad897d05c",
+  "createdAt": "2026-10-12T10:29:36.343Z",
+  "source": {
+    "path": "sources/ai-agent-book-zh/book/chapter2.md",
+    "hash": "sha256:06872e831c6e42fa9c222342cb459dc7a6db392cc12c8ac948df2b14e966d0d5",
+    "totalLines": 1114
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": {
+      "completedAnchorsBefore": 17,
+      "inFlightBefore": null,
+      "note": "本次为断点续跑：calls/tokens 含前次已完成锚点的消耗（前次那次被截断的调用不在其中，因为它没有产出可记录的用量）。"
+    },
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "chapter2#h1-1",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER2-H1-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1662,
+            "output": 2876
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-1",
+        "lineStart": 7,
+        "lineEnd": 40,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H2-1-CONCEPT-01",
+          "CHAPTER2-H2-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2665,
+            "output": 6923
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-2",
+        "lineStart": 41,
+        "lineEnd": 44,
+        "objectCount": 0,
+        "objectIds": [],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1555,
+            "output": 555
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-1",
+        "lineStart": 45,
+        "lineEnd": 57,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER2-H3-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1799,
+            "output": 8126
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-2",
+        "lineStart": 58,
+        "lineEnd": 94,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-2-CONCEPT-01",
+          "CHAPTER2-H3-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1804,
+            "output": 5539
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-3",
+        "lineStart": 95,
+        "lineEnd": 250,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-3-CONCEPT-01",
+          "CHAPTER2-H3-3-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3323,
+            "output": 5291
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-4",
+        "lineStart": 251,
+        "lineEnd": 369,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-4-CONCEPT-01",
+          "CHAPTER2-H3-4-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2692,
+            "output": 6146
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-5",
+        "lineStart": 370,
+        "lineEnd": 434,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-5-CONCEPT-01",
+          "CHAPTER2-H3-5-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2819,
+            "output": 4733
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-3",
+        "lineStart": 435,
+        "lineEnd": 501,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H2-3-ENGINEERINGRULE-01",
+          "CHAPTER2-H2-3-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3471,
+            "output": 9474
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-6",
+        "lineStart": 502,
+        "lineEnd": 525,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-6-CONCEPT-01",
+          "CHAPTER2-H3-6-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2558,
+            "output": 7617
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-7",
+        "lineStart": 526,
+        "lineEnd": 555,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-7-CONCEPT-01",
+          "CHAPTER2-H3-7-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2927,
+            "output": 5408
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-8",
+        "lineStart": 556,
+        "lineEnd": 559,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-8-CONCEPT-01",
+          "CHAPTER2-H3-8-METRIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1692,
+            "output": 6904
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-9",
+        "lineStart": 560,
+        "lineEnd": 579,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-9-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-9-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2377,
+            "output": 5903
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-10",
+        "lineStart": 580,
+        "lineEnd": 593,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-10-CONCEPT-01",
+          "CHAPTER2-H3-10-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2253,
+            "output": 6967
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-11",
+        "lineStart": 594,
+        "lineEnd": 601,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-11-CONCEPT-01",
+          "CHAPTER2-H3-11-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1801,
+            "output": 5298
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-4",
+        "lineStart": 602,
+        "lineEnd": 609,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER2-H2-4-ENGINEERINGRULE-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1601,
+            "output": 3854
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-12",
+        "lineStart": 610,
+        "lineEnd": 613,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-12-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-12-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1626,
+            "output": 7149
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-13",
+        "lineStart": 614,
+        "lineEnd": 642,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-13-CONCEPT-01",
+          "CHAPTER2-H3-13-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1806,
+            "output": 5189
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-14",
+        "lineStart": 643,
+        "lineEnd": 671,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-14-CONCEPT-01",
+          "CHAPTER2-H3-14-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1764,
+            "output": 10764
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-15",
+        "lineStart": 672,
+        "lineEnd": 691,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-15-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-15-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2132,
+            "output": 5567
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-16",
+        "lineStart": 692,
+        "lineEnd": 699,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-16-CONCEPT-01",
+          "CHAPTER2-H3-16-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1782,
+            "output": 6302
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-17",
+        "lineStart": 700,
+        "lineEnd": 729,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-17-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-17-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2715,
+            "output": 6866
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-18",
+        "lineStart": 730,
+        "lineEnd": 764,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-18-CONCEPT-01",
+          "CHAPTER2-H3-18-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2582,
+            "output": 6099
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-5",
+        "lineStart": 765,
+        "lineEnd": 775,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H2-5-ENGINEERINGRULE-01",
+          "CHAPTER2-H2-5-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1643,
+            "output": 7544
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-19",
+        "lineStart": 776,
+        "lineEnd": 793,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-19-CONCEPT-01",
+          "CHAPTER2-H3-19-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2488,
+            "output": 6376
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-20",
+        "lineStart": 794,
+        "lineEnd": 813,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-20-HEURISTIC-01",
+          "CHAPTER2-H3-20-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2121,
+            "output": 8727
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-21",
+        "lineStart": 814,
+        "lineEnd": 829,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-21-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-21-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2045,
+            "output": 7963
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-22",
+        "lineStart": 830,
+        "lineEnd": 856,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER2-H3-22-ANTIPATTERN-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2120,
+            "output": 4920
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-6",
+        "lineStart": 857,
+        "lineEnd": 866,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER2-H2-6-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1824,
+            "output": 3317
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-23",
+        "lineStart": 867,
+        "lineEnd": 907,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-23-MENTALMODEL-01",
+          "CHAPTER2-H3-23-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2502,
+            "output": 10637
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-24",
+        "lineStart": 908,
+        "lineEnd": 919,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-24-CONCEPT-01",
+          "CHAPTER2-H3-24-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1765,
+            "output": 5437
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-25",
+        "lineStart": 920,
+        "lineEnd": 950,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-25-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-25-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2068,
+            "output": 8267
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-26",
+        "lineStart": 951,
+        "lineEnd": 990,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-26-DECISIONMODEL-01",
+          "CHAPTER2-H3-26-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2938,
+            "output": 11694
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-7",
+        "lineStart": 991,
+        "lineEnd": 994,
+        "objectCount": 0,
+        "objectIds": [],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1556,
+            "output": 639
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-27",
+        "lineStart": 995,
+        "lineEnd": 1006,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-27-ANTIPATTERN-01",
+          "CHAPTER2-H3-27-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1804,
+            "output": 5810
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-28",
+        "lineStart": 1007,
+        "lineEnd": 1027,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-28-CONCEPT-01",
+          "CHAPTER2-H3-28-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2262,
+            "output": 3293
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-29",
+        "lineStart": 1028,
+        "lineEnd": 1065,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-29-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-29-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2610,
+            "output": 9521
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-30",
+        "lineStart": 1066,
+        "lineEnd": 1075,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-30-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-30-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1847,
+            "output": 3946
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-31",
+        "lineStart": 1076,
+        "lineEnd": 1088,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-31-ENGINEERINGRULE-01",
+          "CHAPTER2-H3-31-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1901,
+            "output": 6503
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h3-32",
+        "lineStart": 1089,
+        "lineEnd": 1096,
+        "objectCount": 2,
+        "objectIds": [
+          "CHAPTER2-H3-32-CONCEPT-01",
+          "CHAPTER2-H3-32-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1847,
+            "output": 8154
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-8",
+        "lineStart": 1097,
+        "lineEnd": 1102,
+        "objectCount": 1,
+        "objectIds": [
+          "CHAPTER2-H2-8-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1569,
+            "output": 6262
+          }
+        }
+      },
+      {
+        "anchor": "chapter2#h2-9",
+        "lineStart": 1103,
+        "lineEnd": 1114,
+        "objectCount": 0,
+        "objectIds": [],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1982,
+            "output": 2458
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 42,
+      "tokens": {
+        "input": 90298,
+        "output": 261018
+      },
+      "byAnchor": [
+        {
+          "anchor": "chapter2#h1-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1662,
+            "output": 2876
+          }
+        },
+        {
+          "anchor": "chapter2#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2665,
+            "output": 6923
+          }
+        },
+        {
+          "anchor": "chapter2#h2-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1555,
+            "output": 555
+          }
+        },
+        {
+          "anchor": "chapter2#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1799,
+            "output": 8126
+          }
+        },
+        {
+          "anchor": "chapter2#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1804,
+            "output": 5539
+          }
+        },
+        {
+          "anchor": "chapter2#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 3323,
+            "output": 5291
+          }
+        },
+        {
+          "anchor": "chapter2#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 2692,
+            "output": 6146
+          }
+        },
+        {
+          "anchor": "chapter2#h3-5",
+          "calls": 1,
+          "tokens": {
+            "input": 2819,
+            "output": 4733
+          }
+        },
+        {
+          "anchor": "chapter2#h2-3",
+          "calls": 1,
+          "tokens": {
+            "input": 3471,
+            "output": 9474
+          }
+        },
+        {
+          "anchor": "chapter2#h3-6",
+          "calls": 1,
+          "tokens": {
+            "input": 2558,
+            "output": 7617
+          }
+        },
+        {
+          "anchor": "chapter2#h3-7",
+          "calls": 1,
+          "tokens": {
+            "input": 2927,
+            "output": 5408
+          }
+        },
+        {
+          "anchor": "chapter2#h3-8",
+          "calls": 1,
+          "tokens": {
+            "input": 1692,
+            "output": 6904
+          }
+        },
+        {
+          "anchor": "chapter2#h3-9",
+          "calls": 1,
+          "tokens": {
+            "input": 2377,
+            "output": 5903
+          }
+        },
+        {
+          "anchor": "chapter2#h3-10",
+          "calls": 1,
+          "tokens": {
+            "input": 2253,
+            "output": 6967
+          }
+        },
+        {
+          "anchor": "chapter2#h3-11",
+          "calls": 1,
+          "tokens": {
+            "input": 1801,
+            "output": 5298
+          }
+        },
+        {
+          "anchor": "chapter2#h2-4",
+          "calls": 1,
+          "tokens": {
+            "input": 1601,
+            "output": 3854
+          }
+        },
+        {
+          "anchor": "chapter2#h3-12",
+          "calls": 1,
+          "tokens": {
+            "input": 1626,
+            "output": 7149
+          }
+        },
+        {
+          "anchor": "chapter2#h3-13",
+          "calls": 1,
+          "tokens": {
+            "input": 1806,
+            "output": 5189
+          }
+        },
+        {
+          "anchor": "chapter2#h3-14",
+          "calls": 1,
+          "tokens": {
+            "input": 1764,
+            "output": 10764
+          }
+        },
+        {
+          "anchor": "chapter2#h3-15",
+          "calls": 1,
+          "tokens": {
+            "input": 2132,
+            "output": 5567
+          }
+        },
+        {
+          "anchor": "chapter2#h3-16",
+          "calls": 1,
+          "tokens": {
+            "input": 1782,
+            "output": 6302
+          }
+        },
+        {
+          "anchor": "chapter2#h3-17",
+          "calls": 1,
+          "tokens": {
+            "input": 2715,
+            "output": 6866
+          }
+        },
+        {
+          "anchor": "chapter2#h3-18",
+          "calls": 1,
+          "tokens": {
+            "input": 2582,
+            "output": 6099
+          }
+        },
+        {
+          "anchor": "chapter2#h2-5",
+          "calls": 1,
+          "tokens": {
+            "input": 1643,
+            "output": 7544
+          }
+        },
+        {
+          "anchor": "chapter2#h3-19",
+          "calls": 1,
+          "tokens": {
+            "input": 2488,
+            "output": 6376
+          }
+        },
+        {
+          "anchor": "chapter2#h3-20",
+          "calls": 1,
+          "tokens": {
+            "input": 2121,
+            "output": 8727
+          }
+        },
+        {
+          "anchor": "chapter2#h3-21",
+          "calls": 1,
+          "tokens": {
+            "input": 2045,
+            "output": 7963
+          }
+        },
+        {
+          "anchor": "chapter2#h3-22",
+          "calls": 1,
+          "tokens": {
+            "input": 2120,
+            "output": 4920
+          }
+        },
+        {
+          "anchor": "chapter2#h2-6",
+          "calls": 1,
+          "tokens": {
+            "input": 1824,
+            "output": 3317
+          }
+        },
+        {
+          "anchor": "chapter2#h3-23",
+          "calls": 1,
+          "tokens": {
+            "input": 2502,
+            "output": 10637
+          }
+        },
+        {
+          "anchor": "chapter2#h3-24",
+          "calls": 1,
+          "tokens": {
+            "input": 1765,
+            "output": 5437
+          }
+        },
+        {
+          "anchor": "chapter2#h3-25",
+          "calls": 1,
+          "tokens": {
+            "input": 2068,
+            "output": 8267
+          }
+        },
+        {
+          "anchor": "chapter2#h3-26",
+          "calls": 1,
+          "tokens": {
+            "input": 2938,
+            "output": 11694
+          }
+        },
+        {
+          "anchor": "chapter2#h2-7",
+          "calls": 1,
+          "tokens": {
+            "input": 1556,
+            "output": 639
+          }
+        },
+        {
+          "anchor": "chapter2#h3-27",
+          "calls": 1,
+          "tokens": {
+            "input": 1804,
+            "output": 5810
+          }
+        },
+        {
+          "anchor": "chapter2#h3-28",
+          "calls": 1,
+          "tokens": {
+            "input": 2262,
+            "output": 3293
+          }
+        },
+        {
+          "anchor": "chapter2#h3-29",
+          "calls": 1,
+          "tokens": {
+            "input": 2610,
+            "output": 9521
+          }
+        },
+        {
+          "anchor": "chapter2#h3-30",
+          "calls": 1,
+          "tokens": {
+            "input": 1847,
+            "output": 3946
+          }
+        },
+        {
+          "anchor": "chapter2#h3-31",
+          "calls": 1,
+          "tokens": {
+            "input": 1901,
+            "output": 6503
+          }
+        },
+        {
+          "anchor": "chapter2#h3-32",
+          "calls": 1,
+          "tokens": {
+            "input": 1847,
+            "output": 8154
+          }
+        },
+        {
+          "anchor": "chapter2#h2-8",
+          "calls": 1,
+          "tokens": {
+            "input": 1569,
+            "output": 6262
+          }
+        },
+        {
+          "anchor": "chapter2#h2-9",
+          "calls": 1,
+          "tokens": {
+            "input": 1982,
+            "output": 2458
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 42,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 42,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 42,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 42,
+    "tokens": {
+      "input": 90298,
+      "output": 261018
+    },
+    "tokensDetail": {
+      "reasoning": 245927,
+      "cachedInput": 59520
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 71,
+    "tokens": {
+      "input": 97988,
+      "output": 20370
+    },
+    "tokensDetail": {
+      "reasoning": 17150,
+      "cachedInput": 27264
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "dsh-credentials:DEEPSEEK_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 71,
+      "verdicts": {
+        "supported": 70,
+        "insufficient": 1
+      },
+      "notCalled": 1
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 70,
+      "deterministic-pass × insufficient": 1,
+      "deterministic-reject × not-called": 1
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/chapter2.anchors.json",
+      "sha256": "sha256:d3ded1efd629cba65e4544c00a5959aa40b8df69e1ec961e72e4533bf779179d",
+      "bytes": 15036,
+      "anchorCount": 42
+    },
+    "objects": {
+      "path": "pipeline/knowledge/chapter2.objects.json",
+      "sha256": "sha256:432ffaf9ca641e58c2055c4ab3dea5f3e8296faf8acb09d35f1ec1964023119a",
+      "bytes": 114269,
+      "objectCount": 72
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-8d6ad897d05c.layer2-raw.json",
+      "sha256": "sha256:6fae2eda49dc84bc691442da3a07f843afa1eee4b5fee75148dfba5feffeb07c"
+    }
+  },
+  "counts": {
+    "anchors": 42,
+    "objects": 72,
+    "passed": 70,
+    "rejected": 2,
+    "objectTypes": {
+      "Concept": 26,
+      "Metric": 1,
+      "MentalModel": 1,
+      "DecisionModel": 1,
+      "Heuristic": 5,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 29,
+      "AntiPattern": 9
+    }
+  },
+  "coverage": {
+    "indexAnchors": 42,
+    "processedAnchors": 42,
+    "processedKnown": true,
+    "coveredAnchors": 39,
+    "withoutObjects": {
+      "count": 3,
+      "anchors": [
+        "chapter2#h2-2",
+        "chapter2#h2-7",
+        "chapter2#h2-9"
+      ]
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=42，索引锚点数=42）。",
+    "perLevel": {
+      "h1": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h2": {
+        "index": 9,
+        "covered": 6,
+        "without": 3
+      },
+      "h3": {
+        "index": 32,
+        "covered": 32,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {
+      "QUOTE_MISMATCH": 1,
+      "JUDGE_INSUFFICIENT": 1
+    }
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CHAPTER2-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h1-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h1-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确给出了相同的上下文定义，并列举了对话历史、系统指令、工具描述等信息。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-1",
+        "lineStart": 7,
+        "lineEnd": 40
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-1",
+          "lineStart": 7,
+          "lineEnd": 40
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明上下文包括实时代码上下文、流程规范和环境信息，并指出其是对环境的观察描述或配置而非环境本身，且质量直接决定 Agent 能否完成任务。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-1",
+        "lineStart": 7,
+        "lineEnd": 40
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-1",
+          "lineStart": 7,
+          "lineEnd": 40
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出生产系统可以做摘要和压缩，但不能悄悄丢掉决定下一步行动所需的信息，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-1",
+        "lineStart": 45,
+        "lineEnd": 57
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-1",
+          "lineStart": 45,
+          "lineEnd": 57
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文完整覆盖了主张中的核心定义及四种角色（system、user、assistant、tool）的各自含义、来源和关键关联，内容一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-2",
+        "lineStart": 58,
+        "lineEnd": 94
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-2",
+          "lineStart": 58,
+          "lineEnd": 94
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了 system、user 和 assistant 三种消息角色及其来源，足以支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-2",
+        "lineStart": 58,
+        "lineEnd": 94
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-2",
+          "lineStart": 58,
+          "lineEnd": 94
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文明确写道“每次调用都是无状态的，所有模型需要的信息必须在请求的消息列表中完整提供”，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-3-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-3",
+        "lineStart": 95,
+        "lineEnd": 250
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-3",
+          "lineStart": 95,
+          "lineEnd": 250
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到模型判断信息需要通过工具获取时不直接回答，而是返回结构化的工具调用请求，足以支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-3",
+        "lineStart": 95,
+        "lineEnd": 250
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-3",
+          "lineStart": 95,
+          "lineEnd": 250
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明每次调用都是无状态的、模型不会记住上一次对话，且Agent框架必须每次都把完整历史送回去，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-4",
+        "lineStart": 251,
+        "lineEnd": 369
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-4",
+          "lineStart": 251,
+          "lineEnd": 369
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出核心逻辑是 while 循环加一个判断：返回 tool_calls 就执行工具并继续循环，没有就输出结果并退出，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-4",
+        "lineStart": 251,
+        "lineEnd": 369
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-4",
+          "lineStart": 251,
+          "lineEnd": 369
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道生产代码需要一个 max_iterations cap，以防止 Agent 重复工具调用，足以支持该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-5-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-5",
+        "lineStart": 370,
+        "lineEnd": 434
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-5",
+          "lineStart": 370,
+          "lineEnd": 434
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主张中的全部断言均能在主锚点原文中找到对应表述：系统提示词和工具定义构成静态前缀，用户消息、模型回复和工具执行结果构成动态增长的消息历史，且该结构是后续讨论 KV Cache 优化和上下文压缩的基础。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-5-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-5",
+        "lineStart": 370,
+        "lineEnd": 434
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-5",
+          "lineStart": 370,
+          "lineEnd": 434
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到修改系统提示词后首次响应变慢，并说明改变前缀会导致缓存失效、模型需要重新计算，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-3-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-3",
+        "lineStart": 435,
+        "lineEnd": 501
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-3",
+          "lineStart": 435,
+          "lineEnd": 501
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "主锚点原文明确表述了复用 KV Cache 需保持 token 前缀不变，序列从某位置不同则首个不同 token 及其后的 KV 状态需重算，此前位置不受影响。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-3-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-3",
+        "lineStart": 435,
+        "lineEnd": 501
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-3",
+          "lineStart": 435,
+          "lineEnd": 501
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确给出“动态信息永远追加到末尾——时间戳、用户状态等变化的内容，作为新消息追加到对话末尾，而不是修改已有的系统提示词”，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#014",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-6-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-6",
+        "lineStart": 502,
+        "lineEnd": 525
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-6",
+          "lineStart": 502,
+          "lineEnd": 525
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Chat Template 是负责将 API 层面的结构化消息转换为模型能理解的线性 token 流的机制。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#015",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-6-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-6",
+        "lineStart": 502,
+        "lineEnd": 525
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-6",
+          "lineStart": 502,
+          "lineEnd": 525
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到开发者绕过API自行拼接消息、把工具结果作为普通user消息传递时，Chat Template会误将工具响应识别为新用户查询并破坏思维链保留机制，逐字支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#016",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-7-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-7",
+        "lineStart": 526,
+        "lineEnd": 555
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-7",
+          "lineStart": 526,
+          "lineEnd": 555
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述每个 token 的 K、V 只在首次进入上下文时计算一次并一直留存在缓存中，供后续注意力计算直接取用，足以支撑该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#017",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-7-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-7",
+        "lineStart": 526,
+        "lineEnd": 555
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-7",
+          "lineStart": 526,
+          "lineEnd": 555
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写明“系统提示词一旦定下来就不要改”，并指出动态系统提示词是错误做法、应保持提示词不变，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#018",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-8-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 18,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-8",
+        "lineStart": 556,
+        "lineEnd": 559
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-8",
+          "lineStart": 556,
+          "lineEnd": 559
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将 Prompt Cache 定义为推理引擎的优化，在多次 API 请求之间缓存相同前缀计算结果，且利用前缀不变性减少跨请求重复计算成本，与主张逐条一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#019",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-8-METRIC-02",
+      "objectType": "Metric",
+      "ordinal": 19,
+      "status": "reject",
+      "reasonCode": "JUDGE_INSUFFICIENT",
+      "failures": [
+        {
+          "code": "JUDGE_INSUFFICIENT",
+          "detail": "判定者判为 insufficient：锚点原文仅以 Anthropic、DeepSeek、GPT-5 为例说明约为十分之一，未普遍断言所有 Prompt Cache 缓存读取成本均约为首次计算成本的十分之一。"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-8",
+        "lineStart": 556,
+        "lineEnd": 559
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-8",
+          "lineStart": 556,
+          "lineEnd": 559
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "reject",
+        "verdict": "insufficient",
+        "reasonCode": "JUDGE_INSUFFICIENT",
+        "reason": "锚点原文仅以 Anthropic、DeepSeek、GPT-5 为例说明约为十分之一，未普遍断言所有 Prompt Cache 缓存读取成本均约为首次计算成本的十分之一。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#020",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-9-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 20,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-9",
+        "lineStart": 560,
+        "lineEnd": 579
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-9",
+          "lineStart": 560,
+          "lineEnd": 579
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道：当主 Agent 派生子 Agent 或旁路查询且子 Agent 继承父 Agent 上下文时，提示词、工具定义、模型配置、消息前缀和思考配置必须逐字节匹配，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#021",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-9-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 21,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-9",
+        "lineStart": 560,
+        "lineEnd": 579
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-9",
+          "lineStart": 560,
+          "lineEnd": 579
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文末句明确写出该主张，主锚点与主引文一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#022",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-10-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 22,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-10",
+        "lineStart": 580,
+        "lineEnd": 593
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-10",
+          "lineStart": 580,
+          "lineEnd": 593
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文与主张逐句对应，明确说明 prefill 阶段不是原封不动缓存字段，而是把字段含义结论写入后层 KV，且字段自身 token 的 KV 贡献不到 1%，真正影响输出的是下游读书笔记。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#023",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-10-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 23,
+      "status": "reject",
+      "reasonCode": "QUOTE_MISMATCH",
+      "failures": [
+        {
+          "code": "QUOTE_MISMATCH",
+          "detail": "引文未在所引锚点区间（1347 字符）内命中：\"反过来，如果没有 CoT，孤立地改字段会被忽略——因为结论早已固化在下游状态中，却没有一条思考路径去更新它，这是一条重要\"（已按 markdown-rendering+whitespace 归一化后仍不命中——即不止是排版差异）"
+        }
+      ],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-10",
+        "lineStart": 580,
+        "lineEnd": 593
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-10",
+          "lineStart": 580,
+          "lineEnd": 593
+        }
+      ],
+      "deterministic": {
+        "ok": false,
+        "reasonCode": "QUOTE_MISMATCH"
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": false,
+        "acceptedBy": null,
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "已被确定性判据拒绝，未送判定者（ADR-010 决策 3：默认短路）"
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-11-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 24,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-11",
+        "lineStart": 594,
+        "lineEnd": 601
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-11",
+          "lineStart": 594,
+          "lineEnd": 601
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文对 Agent 状态栏的定义与主张中的定义内容一致，均说明其作为独立机制在上下文末尾注入动态元信息以弥补模型无法主动归纳隐式状态的不足。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#024",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-11-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 25,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-11",
+        "lineStart": 594,
+        "lineEnd": 601
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-11",
+          "lineStart": 594,
+          "lineEnd": 601
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明当提示词变长、场景变多时把所有内容塞进一个系统提示词不再可行，并应按需加载而非一次性塞满，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#025",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 26,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-4",
+        "lineStart": 602,
+        "lineEnd": 609
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-4",
+          "lineStart": 602,
+          "lineEnd": 609
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确给出系统提示词设计的检验标准：聪明的新员工读完若不知道该怎么做，Agent 也一样不知道，且上下文涵盖设计或优化系统提示词。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#026",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-12-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 27,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-12",
+        "lineStart": 610,
+        "lineEnd": 613
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-12",
+          "lineStart": 610,
+          "lineEnd": 613
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写明在无法完成任务时要求把回复控制在1-2句话且不要解释为什么不能做某事，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#027",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-12-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 28,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-12",
+        "lineStart": 610,
+        "lineEnd": 613
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-12",
+          "lineStart": 610,
+          "lineEnd": 613
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明大写字母比“Please avoid doing X”更能引起模型注意，且应保留给真正关键的约束，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#028",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-13-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 29,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-13",
+        "lineStart": 614,
+        "lineEnd": 642
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-13",
+          "lineStart": 614,
+          "lineEnd": 642
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 XML 标签名称本身携带语义信息，能立即告诉模型标签内容的用途，并对比纯文本需要额外思考理解，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#029",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-13-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 30,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-13",
+        "lineStart": 614,
+        "lineEnd": 642
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-13",
+          "lineStart": 614,
+          "lineEnd": 642
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到XML和Markdown配合形成双层结构，并分别说明XML负责机器可解析的精确语义、Markdown负责人机共读的组织逻辑，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#030",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-14-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 31,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-14",
+        "lineStart": 643,
+        "lineEnd": 671
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-14",
+          "lineStart": 643,
+          "lineEnd": 671
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将流程驱动的提示词比作优秀新员工培训手册，并说明其提供清晰的标准操作流程（SOP），足以支持该定义。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#031",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-14-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 32,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-14",
+        "lineStart": 643,
+        "lineEnd": 671
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-14",
+          "lineStart": 643,
+          "lineEnd": 671
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文以规则堆砌的“组织方式”作比，明确描述上百条零散规则、缺少流程图和优先级说明，并指出多条规则同时适用及规则未覆盖时的困惑，支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#032",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-15-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 33,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-15",
+        "lineStart": 672,
+        "lineEnd": 691
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-15",
+          "lineStart": 672,
+          "lineEnd": 691
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写明按提成计费仅限谈判降低现有账单，退款和取消服务绝不能按提成且必须用固定费用，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#033",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-15-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 34,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-15",
+        "lineStart": 672,
+        "lineEnd": 691
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-15",
+          "lineStart": 672,
+          "lineEnd": 691
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确要求金额计算写死计费粒度并按每分钟$0.05汇总四舍五入，同时明确“节省”只基于现有账单，不得把避免未来涨价算作省钱，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#034",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-16-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 35,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-16",
+        "lineStart": 692,
+        "lineEnd": 699
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-16",
+          "lineStart": 692,
+          "lineEnd": 699
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明系统提示词中可给出两三个高质量输入-输出示例，用于难以用规则精确描述时让模型凭借上下文学习能力临时学会模式，支撑主张的各条断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#035",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-16-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 36,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-16",
+        "lineStart": 692,
+        "lineEnd": 699
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-16",
+          "lineStart": 692,
+          "lineEnd": 699
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出示例一旦确定应保持字节级稳定，动态检索最相关示例会改写前缀导致缓存失效，并建议生产系统为每类任务准备固定示例集，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#036",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-17-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 37,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-17",
+        "lineStart": 700,
+        "lineEnd": 729
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-17",
+          "lineStart": 700,
+          "lineEnd": 729
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明因果注意力下在末尾追加新内容不会改变任何已缓存token的K、V，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#037",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-17-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 38,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-17",
+        "lineStart": 700,
+        "lineEnd": 729
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-17",
+          "lineStart": 700,
+          "lineEnd": 729
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文中“维度二：信息组织”段落完整包含主张的pattern与harm内容，包括成功率下降超过30%、违反关键业务规则及跳过身份验证直接退款的例子。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#038",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-18-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 39,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-18",
+        "lineStart": 730,
+        "lineEnd": 764
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-18",
+          "lineStart": 730,
+          "lineEnd": 764
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出与主张逐句一致的提示注入定义和本质描述。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#039",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-18-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 40,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-18",
+        "lineStart": 730,
+        "lineEnd": 764
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-18",
+          "lineStart": 730,
+          "lineEnd": 764
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在外部内容注入上下文之前应用来源标记包裹并标注来源，并提示其中指令不可执行，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#040",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 41,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-5",
+        "lineStart": 765,
+        "lineEnd": 775
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-5",
+          "lineStart": 765,
+          "lineEnd": 775
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道“不是把所有知识一次性塞给 Agent，而是让它按需加载”，且适用背景与主张所述业务场景增多、提示词膨胀一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#041",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-5-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 42,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-5",
+        "lineStart": 765,
+        "lineEnd": 775
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-5",
+          "lineStart": 765,
+          "lineEnd": 775
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出“从静态提示工程到动态提示词的自然演进：不是把所有知识一次性塞给 Agent，而是让它按需加载”，与主张定义一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#042",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-19-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 43,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-19",
+        "lineStart": 776,
+        "lineEnd": 793
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-19",
+          "lineStart": 776,
+          "lineEnd": 793
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将渐进式披露描述为“先给 Agent 看目录摘要，需要时再加载完整内容”的设计哲学，并指出其与将所有指令塞入单一系统提示词不同，完全支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#043",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-19-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 44,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-19",
+        "lineStart": 776,
+        "lineEnd": 793
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-19",
+          "lineStart": 776,
+          "lineEnd": 793
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出 description 字段太宽泛（如 “help with backend”）会导致任何后端相关工作触发并令路由失准，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#044",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-20-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 45,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-20",
+        "lineStart": 794,
+        "lineEnd": 813
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-20",
+          "lineStart": 794,
+          "lineEnd": 813
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到核心原则只保留三到五条最重要的判断，并为关键原则配正例和反例，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#045",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-20-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 46,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-20",
+        "lineStart": 794,
+        "lineEnd": 813
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-20",
+          "lineStart": 794,
+          "lineEnd": 813
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文完整包含主张所述流程：从三到五篇原创文章开始、让Agent归纳生成初版、处理真实写作任务并由作者逐句改稿、将反复改动整理回Skill并为每条规则保留正例反例和适用范围。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#046",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-21-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 47,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-21",
+        "lineStart": 814,
+        "lineEnd": 829
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-21",
+          "lineStart": 814,
+          "lineEnd": 829
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出了不同 Agent Harness 实现 Skills 时遵循“少量目录常驻、完整正文按需加载”原则，并说明共同收益是无需启动加载所有 Skill 正文、无需每次调用新 Skill 时回头改写已建立上下文。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#047",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-21-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 48,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-21",
+        "lineStart": 814,
+        "lineEnd": 829
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-21",
+          "lineStart": 814,
+          "lineEnd": 829
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明“对 KV Cache 友好”并非“零成本”，并指出会忽略目录首次进入请求处理及完整 Skill 正文首次加载产生的新增计算，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#048",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-22-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 49,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-22",
+        "lineStart": 830,
+        "lineEnd": 856
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-22",
+          "lineStart": 830,
+          "lineEnd": 856
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出把所有专用代码工具定义放在系统提示词中会消耗大量token并干扰模型注意力，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#049",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-6-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 50,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-6",
+        "lineStart": 857,
+        "lineEnd": 866
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-6",
+          "lineStart": 857,
+          "lineEnd": 866
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将“任务进度、环境变化和工具调用计数等运行时状态”整理成结构化摘要并注入上下文的机制称为 Agent 状态栏，与主张定义一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#050",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-23-MENTALMODEL-01",
+      "objectType": "MentalModel",
+      "ordinal": 51,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-23",
+        "lineStart": 867,
+        "lineEnd": 907
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-23",
+          "lineStart": 867,
+          "lineEnd": 907
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述上下文窗口是只有一半的检索引擎、缺少提炼层，上下文不会被自动数、建索引或总结，结论需从原始记录现算且代价随N增长，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#051",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-23-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 52,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-23",
+        "lineStart": 867,
+        "lineEnd": 907
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-23",
+          "lineStart": 867,
+          "lineEnd": 907
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含与主张相同的场景和结论：在每次电话工具调用结果中标明累计呼叫次数，能让模型立即发现已达限制、停止呼叫并大幅降低错误率。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#052",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-24-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 53,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-24",
+        "lineStart": 908,
+        "lineEnd": 919
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-24",
+          "lineStart": 908,
+          "lineEnd": 919
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确给出与主张一致的定义：侧信道信息是不在主要数据通道中传递、但对理解事件很有帮助的辅助信息。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#053",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-24-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 54,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-24",
+        "lineStart": 908,
+        "lineEnd": 919
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-24",
+          "lineStart": 908,
+          "lineEnd": 919
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文直接包含与主张定义一致的环境当前状态观察摘要内容，逐项对应动态环境信息、异常操作提醒及隐式到显式观察的转换。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#054",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-25-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 55,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-25",
+        "lineStart": 920,
+        "lineEnd": 950
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-25",
+          "lineStart": 920,
+          "lineEnd": 950
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Agent 状态栏在 API 层面作为一条 user 角色消息插入到上下文末尾，而不是修改开头的 system 消息。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#055",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-25-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 56,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-25",
+        "lineStart": 920,
+        "lineEnd": 950
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-25",
+          "lineStart": 920,
+          "lineEnd": 950
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Agent 状态栏是作为 user 角色消息插入上下文末尾、由 Agent 框架自动生成的元信息，并用 <agent_status> 标签包裹以便模型识别其特殊性质，充分支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#056",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-26-DECISIONMODEL-01",
+      "objectType": "DecisionModel",
+      "ordinal": 57,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-26",
+        "lineStart": 951,
+        "lineEnd": 990
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-26",
+          "lineStart": 951,
+          "lineEnd": 990
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确给出了主张中的三条取舍条件及对应倾向实现一或实现二的选择，且与主张表述一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#057",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-26-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 58,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-26",
+        "lineStart": 951,
+        "lineEnd": 990
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-26",
+          "lineStart": 951,
+          "lineEnd": 990
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出状态栏尽量用代码维护，实在要用LLM时逐条抽取再由代码汇总、绝不要一次性批量统计，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#058",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-27-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 59,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-27",
+        "lineStart": 995,
+        "lineEnd": 1006
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-27",
+          "lineStart": 995,
+          "lineEnd": 1006
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到把所有原始信息堆在上下文里会迫使模型在数万 token 中反复检索，注意力分散、关键信息易遗漏，直接支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#059",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-27-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 60,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-27",
+        "lineStart": 995,
+        "lineEnd": 1006
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-27",
+          "lineStart": 995,
+          "lineEnd": 1006
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文第三段明确包含与主张完全一致的表述。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#060",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-28-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 61,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-28",
+        "lineStart": 1007,
+        "lineEnd": 1027
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-28",
+          "lineStart": 1007,
+          "lineEnd": 1027
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将上下文腐化定义为上下文窗口未满时Agent突然找不到关键信息或反复纠结于已解决问题的现象，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#061",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-28-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 62,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-28",
+        "lineStart": 1007,
+        "lineEnd": 1027
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-28",
+          "lineStart": 1007,
+          "lineEnd": 1027
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出上下文压缩的设计原则：不要让模型被动地在海量信息中检索，而要主动为模型提供经过提炼的结构化知识。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#062",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-29-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 63,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-29",
+        "lineStart": 1028,
+        "lineEnd": 1065
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-29",
+          "lineStart": 1028,
+          "lineEnd": 1065
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出压缩发生在两次API调用之间、由Agent框架预处理，System Prompt和Tool Definitions永远不动，压缩对象是对话历史中的tool results。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#063",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-29-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 64,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-29",
+        "lineStart": 1028,
+        "lineEnd": 1065
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-29",
+          "lineStart": 1028,
+          "lineEnd": 1065
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确列出了自适应窗口化的阈值触发、批量压缩和防重复保护三个机制，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#064",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-30-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 65,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-30",
+        "lineStart": 1066,
+        "lineEnd": 1075
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-30",
+          "lineStart": 1066,
+          "lineEnd": 1075
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道低价值内容（如大量搜索结果中只被使用了几行的内容）直接移除、不做摘要，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#065",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-30-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 66,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-30",
+        "lineStart": 1066,
+        "lineEnd": 1075
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-30",
+          "lineStart": 1066,
+          "lineEnd": 1075
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": false,
+        "normalized": true,
+        "acceptedBy": "normalization",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明API层微压缩适合在上下文即将溢出、反正要付出缓存重建代价时使用，并且不应频繁触发，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#066",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-31-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 67,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-31",
+        "lineStart": 1076,
+        "lineEnd": 1088
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-31",
+          "lineStart": 1076,
+          "lineEnd": 1088
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将时间和公司名列为不可丢失的关键信息，并以压缩例句说明不能丢失这些关键实体。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#067",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-31-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 68,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-31",
+        "lineStart": 1076,
+        "lineEnd": 1088
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-31",
+          "lineStart": 1076,
+          "lineEnd": 1088
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明压缩最容易丢失早期架构决策、约束理由和失败路径，并因此要求定期记录到文档而不是零散放在执行历史中，与主张的pattern和harm一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#068",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-32-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 69,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-32",
+        "lineStart": 1089,
+        "lineEnd": 1096
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-32",
+          "lineStart": 1089,
+          "lineEnd": 1096
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐句包含主张中的定义：让大体积中间信息不进入主上下文、主Agent委派独立子Agent、子Agent在自己上下文完成探索并只回传几百token摘要。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#069",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H3-32-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 70,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h3-32",
+        "lineStart": 1089,
+        "lineEnd": 1096
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h3-32",
+          "lineStart": 1089,
+          "lineEnd": 1096
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写到子 Agent 看不到主 Agent 完整上下文，任务描述必须自包含、目标明确，直接支持该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#070",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CHAPTER2-H2-8-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 71,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/ai-agent-book-zh/book/chapter2.md",
+        "anchor": "chapter2#h2-8",
+        "lineStart": 1097,
+        "lineEnd": 1102
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/ai-agent-book-zh/book/chapter2.md",
+          "anchor": "chapter2#h2-8",
+          "lineStart": 1097,
+          "lineEnd": 1102
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文与主张的定义逐字一致，完全承载了该断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#071",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 2,
+  "engineeringFailure": null
+}

@@ -1,0 +1,298 @@
+[
+  {
+    "id": "CH15-01-BOX-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h2-1",
+        "title": "使用 `Box<T>` 指向堆上的数据",
+        "lineStart": 1,
+        "lineEnd": 12,
+        "contentHash": "sha256:f3eebdd521fe5d5d0192ee711c921db44e8d703f172ef2ac43595b2f9f385079"
+      }
+    ],
+    "evidenceQuote": "最简单直接的智能指针是 _box_，其类型是 `Box<T>`。 box 允许你将一个值放在堆上而不是栈上。留在栈上的则是指向堆数据的指针。如果你想回顾一下栈与堆的区别请参考第 4 章。\n\n除了数据被储存在堆上而不是栈上之外，box 没有性能损失。不过也没有很多额外的功能。它们多用于如下场景：\n\n- 当有一个在编译时未知大小的类型，而又想要在需要确切大小的上下文中使用这个类型值的时候\n- 当有大量数据并希望在确保数据不被拷贝的情况下转移所有权的时候\n- 当希望拥有一个值并只关心它的类型是否实现了特定 trait 而不是其具体类型的时候",
+    "canonicalTerm": "Box<T>",
+    "aliases": [
+      "box"
+    ],
+    "definition": "Box<T> 是最简单直接的智能指针；它允许将一个值放在堆上而不是栈上，只在栈上保留指向堆数据的指针。除数据被储存在堆上而非栈上之外，box 没有性能损失，但也没有很多额外功能。",
+    "examples": [
+      "当有一个在编译时未知大小的类型，而又想要在需要确切大小的上下文中使用这个类型值的时候",
+      "当有大量数据并希望在确保数据不被拷贝的情况下转移所有权的时候",
+      "当希望拥有一个值并只关心它的类型是否实现了特定 trait 而不是其具体类型的时候"
+    ]
+  },
+  {
+    "id": "CH15-01-BOX-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-1",
+        "title": "使用 `Box<T>` 在堆上储存数据",
+        "lineStart": 13,
+        "lineEnd": 33,
+        "contentHash": "sha256:eb49fee9f87df2ca9e1a894c3500caf92895950a3cca6526036aefaa2a287df4"
+      }
+    ],
+    "evidenceQuote": "### 使用 `Box<T>` 在堆上储存数据\n\n在讨论 `Box<T>` 的用例之前，让我们熟悉一下语法以及如何与储存在 `Box<T>` 中的值进行交互。\n\n示例 15-1 展示了如何使用 box 在堆上储存一个 `i32`：\n\n<span class=\"filename\">文件名: src/main.rs</span>\n\n```rust\nfn main() {\n    let b = Box::new(5);\n    println!(\"b = {}\", b);\n}\n```\n\n<span class=\"caption\">示例 15-1：使用 box 在堆上储存一个 `i32` 值</span>\n\n这里定义了变量 `b`，其值是一个指向被分配在堆上的值 `5` 的 `Box`。这个程序会打印出 `b = 5`；在这个例子中，我们可以像数据是储存在栈上的那样访问 box 中的数据。正如任何拥有数据所有权的值那样，当像 `b` 这样的 box 在 `main` 的末尾离开作用域时，它将被释放。这个释放过程作用于 box 本身（位于栈上）和它所指向的数据（位于堆上）。",
+    "canonicalTerm": "Box<T>",
+    "aliases": [
+      "Box",
+      "box"
+    ],
+    "definition": "Box<T> 是一种通过 Box::new 在堆上储存数据并拥有其所有权的类型：Box 值指向分配在堆上的数据，可以像数据储存在栈上那样访问；当 Box 离开作用域时，会释放 box 本身（位于栈上）和所指向的数据（位于堆上）。",
+    "examples": [
+      "使用 let b = Box::new(5); 创建指向堆上 i32 值 5 的 Box，并像访问栈上数据一样访问 b"
+    ]
+  },
+  {
+    "id": "CH15-01-BOX-H3-1-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-1",
+        "title": "使用 `Box<T>` 在堆上储存数据",
+        "lineStart": 13,
+        "lineEnd": 33,
+        "contentHash": "sha256:eb49fee9f87df2ca9e1a894c3500caf92895950a3cca6526036aefaa2a287df4"
+      }
+    ],
+    "evidenceQuote": "将一个单独的值存放在堆上并不是很有意义，所以像示例 15-1 这样单独使用 box 并不常见。将像单个 `i32` 这样的值储存在栈上，也就是其默认存放的地方在大部分使用场景中更为合适。让我们看看一个不使用 box 时无法定义的类型的例子。",
+    "trigger": "当只需要储存像单个 i32 这样的普通值时",
+    "recommendation": "默认使用栈上储存，而不是使用 Box；避免单独使用 Box 存放一个值",
+    "confidence": 0.8,
+    "exceptions": [
+      "不使用 Box 时无法定义的类型"
+    ]
+  },
+  {
+    "id": "CH15-01-BOX-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-2",
+        "title": "Box 允许创建递归类型",
+        "lineStart": 34,
+        "lineEnd": 39,
+        "contentHash": "sha256:5733cdd4e74cfccf770aff6f2fef4fa8d789fb3b779ee499d101e9caf02d1be3"
+      }
+    ],
+    "evidenceQuote": "Rust 需要在编译时知道类型占用多少空间。一种无法在编译时知道大小的类型是 **递归类型**（_recursive type_），其值的一部分可以是相同类型的另一个值。这种值的嵌套理论上可以无限的进行下去，所以 Rust 不知道递归类型需要多少空间。不过 box 有一个已知的大小，所以通过在循环类型定义中插入 box，就可以创建递归类型了。\n\n让我们探索一下 _cons list_，一个函数式编程语言中的常见类型，来展示这个（递归类型）概念。除了递归之外，我们将要定义的 cons list 类型是很直白的，所以这个例子中的概念，在任何遇到更为复杂的涉及到递归类型的场景时都很实用。",
+    "canonicalTerm": "递归类型",
+    "aliases": [
+      "recursive type"
+    ],
+    "definition": "一种无法在编译时知道大小的类型，其值的一部分可以是相同类型的另一个值。",
+    "examples": [
+      "cons list"
+    ]
+  },
+  {
+    "id": "CH15-01-BOX-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h4-1",
+        "title": "cons list 的更多内容",
+        "lineStart": 40,
+        "lineEnd": 99,
+        "contentHash": "sha256:74d4670d05a6135ecd24fcc9591602c665b7a9d681874afb5681842c87ed0f73"
+      }
+    ],
+    "evidenceQuote": "```rust,ignore\nuse crate::List::{Cons, Nil};\n\nfn main() {\n    let list = Cons(1, Cons(2, Cons(3, Nil)));\n}\n```\n\n<span class=\"caption\">示例 15-3：使用 `List` 枚举储存列表 `1, 2, 3`</span>\n\n第一个 `Cons` 储存了 `1` 和另一个 `List` 值。这个 `List` 是另一个包含 `2` 的 `Cons` 值和下一个 `List` 值。接着又有另一个存放了 `3` 的 `Cons` 值和最后一个值为 `Nil` 的 `List`，非递归成员代表了列表的结尾。",
+    "canonicalTerm": "cons list",
+    "aliases": [],
+    "definition": "cons list 通过 `Cons` 枚举递归嵌套构造；储存列表 `1, 2, 3` 时形式为 `Cons(1, Cons(2, Cons(3, Nil)))`，最后一个值为 `Nil` 的 `List` 表示列表结尾。",
+    "examples": [
+      "Cons(1, Cons(2, Cons(3, Nil)))"
+    ]
+  },
+  {
+    "id": "CH15-01-BOX-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h4-1",
+        "title": "cons list 的更多内容",
+        "lineStart": 40,
+        "lineEnd": 99,
+        "contentHash": "sha256:74d4670d05a6135ecd24fcc9591602c665b7a9d681874afb5681842c87ed0f73"
+      }
+    ],
+    "evidenceQuote": "这个错误表明这个类型 “有无限的大小”。其原因是 `List` 的一个成员被定义为是递归的：它直接存放了另一个相同类型的值。这意味着 Rust 无法计算为了存放 `List` 值到底需要多少空间。",
+    "statement": "在 Rust 中，像 `List` 这样的递归类型，如果其成员直接存放另一个相同类型的值，编译器会认为该类型有无限大小，且无法计算存储该类型值所需的空间。",
+    "rationale": "递归成员直接存放同类型值，使该类型大小无限，Rust 无法计算存储所需空间。",
+    "appliesWhen": "定义递归类型（如 `List`）且其成员直接存放另一个同类型值时。",
+    "violation": "编译失败并提示该类型有无限大小，且无法计算所需空间。",
+    "chapterRef": "ch15-01-box-h4-1"
+  },
+  {
+    "id": "CH15-01-BOX-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-3",
+        "title": "计算非递归类型的大小",
+        "lineStart": 100,
+        "lineEnd": 120,
+        "contentHash": "sha256:2026f1aa4432d67fd497f9348e78550585ed4c6a6b917e69d3880bab98081c38"
+      }
+    ],
+    "evidenceQuote": "当 Rust 需要知道要为 `Message` 值分配多少空间时，它可以检查每一个成员并发现 `Message::Quit` 并不需要任何空间，`Message::Move` 需要足够储存两个 `i32` 值的空间，依此类推。因为只会使用一个成员，所以 `Message` 值需要的最大空间是存储其最大成员所需的空间大小。",
+    "statement": "对于非递归枚举类型，Rust 计算其值所需分配空间时，取存储其最大成员所需的空间大小。",
+    "rationale": "枚举值只会使用一个成员，因此所需空间只需容纳最大成员。",
+    "appliesWhen": "当 Rust 需要知道为非递归枚举值分配多少空间时。",
+    "violation": "如果按多个成员同时存在来分配空间，会违背“只会使用一个成员”的前提并分配过多空间。",
+    "chapterRef": "ch15-01-box-h3-3"
+  },
+  {
+    "id": "CH15-01-BOX-H3-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-3",
+        "title": "计算非递归类型的大小",
+        "lineStart": 100,
+        "lineEnd": 120,
+        "contentHash": "sha256:2026f1aa4432d67fd497f9348e78550585ed4c6a6b917e69d3880bab98081c38"
+      }
+    ],
+    "evidenceQuote": "当 Rust 编译器检查像示例 15-2 中的 `List` 这样的递归类型时会发生什么呢。编译器尝试计算出储存一个 `List` 枚举需要多少内存，并开始检查 `Cons` 成员，那么 `Cons` 需要的空间等于 `i32` 的大小加上 `List` 的大小。为了计算 `List` 需要多少内存，它检查其成员，从 `Cons` 成员开始。`Cons` 成员储存了一个 `i32` 值和一个 `List` 值，这样的计算将无限进行下去",
+    "canonicalTerm": "递归类型的大小计算",
+    "aliases": [],
+    "definition": "当 Rust 编译器检查包含自身的递归类型时，计算其所需内存会因某个成员包含自身类型的大小而无限进行下去。",
+    "examples": [
+      "示例 15-2 中的 `List` 枚举"
+    ]
+  },
+  {
+    "id": "CH15-01-BOX-H3-4-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-4",
+        "title": "使用 `Box<T>` 给递归类型一个已知的大小",
+        "lineStart": 121,
+        "lineEnd": 165,
+        "contentHash": "sha256:fac77150da8ddd3454c0778a14cced7bf613902468f00f1f94822a74807cde7f"
+      }
+    ],
+    "evidenceQuote": "Rust 无法计算出要为定义为递归的类型分配多少空间，所以编译器给出了示例 15-4 中的错误。这个错误也包括了有用的建议：\n\n```text\n  = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to\n  make `List` representable\n```\n\n在建议中，“indirection” 意味着不同于直接储存一个值，我们将间接的储存一个指向值的指针。",
+    "pattern": "在递归类型中直接储存一个值，而不是间接地储存指向值的指针",
+    "harm": "编译器无法计算出要为递归类型分配多少空间，从而给出错误",
+    "corrective": "插入间接存储（例如 Box、Rc 或 &），使递归类型可表示",
+    "evidence": [
+      "示例 15-4 中编译器错误及建议：insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `List` representable"
+    ],
+    "chapterRef": "ch15-01-box-h3-4"
+  },
+  {
+    "id": "CH15-01-BOX-H3-4-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:11:37.400Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:11:37.400Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-4",
+        "title": "使用 `Box<T>` 给递归类型一个已知的大小",
+        "lineStart": 121,
+        "lineEnd": 165,
+        "contentHash": "sha256:fac77150da8ddd3454c0778a14cced7bf613902468f00f1f94822a74807cde7f"
+      }
+    ],
+    "evidenceQuote": "box 只提供了间接存储和堆分配；他们并没有任何其他特殊的功能，比如我们将会见到的其他智能指针。它们也没有这些特殊功能带来的性能损失，所以他们可以用于像 cons list 这样间接存储是唯一所需功能的场景。我们还将在第 17 章看到 box 的更多应用场景。",
+    "trigger": "所需功能仅为间接存储和堆分配，而不需要其他智能指针的特殊功能",
+    "recommendation": "使用 Box<T>，因为它没有特殊功能带来的性能损失",
+    "confidence": 0.8,
+    "exceptions": []
+  }
+]

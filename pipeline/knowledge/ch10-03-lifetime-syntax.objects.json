@@ -1,0 +1,598 @@
+[
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h2-1",
+        "title": "生命周期与引用有效性",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:4bf35e1ecb992042a6ad2cf42326ae77a9b383c71a4c8699dd2705a4e8b2aa1c"
+      }
+    ],
+    "evidenceQuote": "Rust 中的每一个引用都有其 **生命周期**（*lifetime*），也就是引用保持有效的作用域。",
+    "statement": "Rust 中的每一个引用都有其生命周期，也就是引用保持有效的作用域。",
+    "rationale": "生命周期被定义为引用保持有效的作用域，因此每个引用都有生命周期。",
+    "appliesWhen": "任何 Rust 引用。",
+    "violation": "认为 Rust 中的某个引用没有生命周期或没有保持有效的作用域。",
+    "chapterRef": "ch10-03-lifetime-syntax-h2-1"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h2-1",
+        "title": "生命周期与引用有效性",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:4bf35e1ecb992042a6ad2cf42326ae77a9b383c71a4c8699dd2705a4e8b2aa1c"
+      }
+    ],
+    "evidenceQuote": "也会出现引用的生命周期以一些不同方式相关联的情况，所以 Rust 需要我们使用泛型生命周期参数来注明他们的关系，这样就能确保运行时实际使用的引用绝对是有效的。",
+    "statement": "当引用的生命周期以一些不同方式相关联时，Rust 需要我们使用泛型生命周期参数来注明它们的关系。",
+    "rationale": "这样就能确保运行时实际使用的引用绝对是有效的。",
+    "appliesWhen": "引用的生命周期以一些不同方式相关联时。",
+    "violation": "在引用的生命周期以不同方式相关联时不使用泛型生命周期参数注明它们的关系。",
+    "chapterRef": "ch10-03-lifetime-syntax-h2-1"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-1",
+        "title": "生命周期避免了悬垂引用",
+        "lineStart": 7,
+        "lineEnd": 44,
+        "contentHash": "sha256:f880975c028f98f5492956aaeacc876c6ded85c71dab909ac778176b5acd1409"
+      }
+    ],
+    "evidenceQuote": "这段代码不能编译因为 `r` 引用的值在尝试使用之前就离开了作用域。",
+    "statement": "如果引用所指向的值在引用被使用之前离开作用域，代码不能编译。",
+    "rationale": "`r` 引用的值在尝试使用之前就离开了作用域。",
+    "appliesWhen": "引用所指向的值在引用被使用之前离开作用域。",
+    "violation": "代码不能编译。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-1"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-1",
+        "title": "生命周期避免了悬垂引用",
+        "lineStart": 7,
+        "lineEnd": 44,
+        "contentHash": "sha256:f880975c028f98f5492956aaeacc876c6ded85c71dab909ac778176b5acd1409"
+      }
+    ],
+    "evidenceQuote": "那么 Rust 是如何决定这段代码是不被允许的呢？这得益于借用检查器。",
+    "canonicalTerm": "借用检查器",
+    "aliases": [],
+    "definition": "借用检查器是 Rust 中决定这类代码是否被允许的机制。",
+    "examples": [
+      "借用检查器决定文中这段代码不被允许。"
+    ]
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h4-1",
+        "title": "借用检查器",
+        "lineStart": 45,
+        "lineEnd": 84,
+        "contentHash": "sha256:7d067f5d76b62e57c9a6e565b2b01819ae15ff078aea913d96732229a24c74af"
+      }
+    ],
+    "evidenceQuote": "在编译时，Rust 比较这两个生命周期的大小，并发现 `r` 拥有生命周期 `'a`，不过它引用了一个拥有生命周期 `'b` 的对象。程序被拒绝编译，因为生命周期 `'b` 比生命周期 `'a` 要小：被引用的对象比它的引用者存在的时间更短。",
+    "statement": "在 Rust 中，如果被引用的对象比它的引用者存在的时间更短，程序会被拒绝编译。",
+    "rationale": "被引用的对象比它的引用者存在的时间更短，因此编译器拒绝编译。",
+    "appliesWhen": "当 Rust 编译器在编译时比较两个生命周期的大小时。",
+    "violation": "程序被拒绝编译。",
+    "chapterRef": "ch10-03-lifetime-syntax-h4-1"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-2",
+        "title": "函数中的泛型生命周期",
+        "lineStart": 85,
+        "lineEnd": 139,
+        "contentHash": "sha256:01cc22c08df9c51cc754ea125bbe90a60baf8b33ce2d47f5a0b0ff8fb2a2e703"
+      }
+    ],
+    "evidenceQuote": "提示文本揭示了返回值需要一个泛型生命周期参数，因为 Rust 并不知道将要返回的引用是指向 `x` 或 `y`。事实上我们也不知道，因为函数体中 `if` 块返回一个 `x` 的引用而 `else` 块返回一个 `y` 的引用！",
+    "statement": "当编译器不知道返回引用来自哪个输入引用时，需要为返回值添加泛型生命周期参数。",
+    "rationale": "编译器不知道将要返回的引用是指向 `x` 还是 `y`；函数体中 `if` 块返回 `x` 的引用，`else` 块返回 `y` 的引用，因此返回值来源不确定。",
+    "appliesWhen": "函数返回引用，且返回值可能来自多个输入引用（例如 `if`/`else` 分支分别返回不同参数）。",
+    "violation": "缺少该参数时，编译器无法判断返回引用是指向 `x` 还是 `y`。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-2"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-3",
+        "title": "生命周期标注语法",
+        "lineStart": 140,
+        "lineEnd": 155,
+        "contentHash": "sha256:df1e072ac75439bd4bdd0487f3653751e6288fa5894fd55689d0b656dec9f292"
+      }
+    ],
+    "evidenceQuote": "单个生命周期标注本身没有多少意义，因为生命周期标注告诉 Rust 多个引用的泛型生命周期参数如何相互联系的。例如如果函数有一个生命周期 `'a` 的 `i32` 的引用的参数 `first`。还有另一个同样是生命周期 `'a` 的 `i32` 的引用的参数 `second`。这两个生命周期标注意味着引用 `first` 和 `second` 必须与这泛型生命周期存在得一样久。",
+    "canonicalTerm": "生命周期标注",
+    "aliases": [],
+    "definition": "生命周期标注告诉 Rust 多个引用的泛型生命周期参数如何相互联系；单个生命周期标注本身没有多少意义。",
+    "examples": [
+      "函数参数 `first` 和 `second` 都标注为 `'a`，意味着它们必须与该泛型生命周期存在得一样久。"
+    ]
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-3",
+        "title": "生命周期标注语法",
+        "lineStart": 140,
+        "lineEnd": 155,
+        "contentHash": "sha256:df1e072ac75439bd4bdd0487f3653751e6288fa5894fd55689d0b656dec9f292"
+      }
+    ],
+    "evidenceQuote": "生命周期标注有着一个不太常见的语法：生命周期参数名称必须以撇号（`'`）开头，其名称通常全是小写，类似于泛型其名称非常短。`'a` 是大多数人默认使用的名称。生命周期参数标注位于引用的 `&` 之后，并有一个空格来将引用类型与生命周期标注分隔开。",
+    "statement": "生命周期参数名称必须以撇号（`'`）开头；生命周期参数标注位于引用的 `&` 之后，并有一个空格将引用类型与生命周期标注分隔开。",
+    "rationale": "生命周期标注有着一个不太常见的语法；该语法要求将引用类型与生命周期标注分隔开。",
+    "appliesWhen": "在 Rust 中标注生命周期参数时。",
+    "violation": "生命周期参数名称不以撇号开头，或生命周期参数标注与引用类型之间没有空格分隔。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-3"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-4",
+        "title": "函数签名中的生命周期标注",
+        "lineStart": 156,
+        "lineEnd": 247,
+        "contentHash": "sha256:f361b2e7be929d7ab3be9c21d9c66cbb3e5d46865bac794d2431b69c913029a3"
+      }
+    ],
+    "evidenceQuote": "现在来看看 `longest` 函数的上下文中的生命周期。就像泛型类型参数，泛型生命周期参数需要声明在函数名和参数列表间的尖括号中。这里我们想要告诉 Rust 关于参数中的引用和返回值之间的限制是他们都必须拥有相同的生命周期，就像示例 10-22 中在每个引用中都加上了 `'a` 那样：",
+    "canonicalTerm": "生命周期参数",
+    "aliases": [],
+    "definition": "在函数签名中声明于函数名和参数列表间尖括号内的泛型参数，用于标注参数与返回值中引用的生命周期，以要求它们拥有相同的生命周期。",
+    "examples": [
+      "在示例 10-22 的 `longest` 函数中，参数与返回值中的每个引用都加上了 `'a`。"
+    ]
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-4",
+        "title": "函数签名中的生命周期标注",
+        "lineStart": 156,
+        "lineEnd": 247,
+        "contentHash": "sha256:f361b2e7be929d7ab3be9c21d9c66cbb3e5d46865bac794d2431b69c913029a3"
+      }
+    ],
+    "evidenceQuote": "现在函数签名表明对于某些生命周期 `'a`，函数会获取两个参数，他们都是与生命周期 `'a` 存在的一样长的字符串 slice。函数会返回一个同样也与生命周期 `'a` 存在的一样长的字符串 slice。它的实际含义是 `longest` 函数返回的引用的生命周期与传入该函数的引用的生命周期的较小者一致。这就是我们告诉 Rust 需要其保证的约束条件。记住通过在函数签名中指定生命周期参数时，我们并没有改变任何传入值或返回值的生命周期，而是指出任何不满足这个约束条件的值都将被借用检查器拒绝。",
+    "statement": "当函数签名中参数和返回值使用相同的生命周期参数标注时，返回引用的生命周期必须与传入参数中较小者的生命周期一致。",
+    "rationale": "返回引用的生命周期与传入参数中较小者的生命周期一致，这是由共享同一生命周期参数所表达的约束。",
+    "appliesWhen": "函数签名中用相同生命周期参数标注多个引用参数和返回值时。",
+    "violation": "任何不满足这个约束条件的值都将被借用检查器拒绝。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-4"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-5",
+        "title": "深入理解生命周期",
+        "lineStart": 248,
+        "lineEnd": 298,
+        "contentHash": "sha256:659e9a15194e1ca826b7fb23f8db6e32a561cf442ca7fe4b6bc15426d07bd4c0"
+      }
+    ],
+    "evidenceQuote": "当从函数返回一个引用，返回值的生命周期参数需要与一个参数的生命周期参数相匹配。如果返回的引用 **没有** 指向任何一个参数，那么唯一的可能就是它指向一个函数内部创建的值，它将会是一个悬垂引用，因为它将会在函数结束时离开作用域。",
+    "statement": "当从函数返回一个引用，返回值的生命周期参数需要与一个参数的生命周期参数相匹配。",
+    "rationale": "如果返回的引用没有指向任何一个参数，那么唯一的可能就是它指向一个函数内部创建的值，它将会是一个悬垂引用，因为它将会在函数结束时离开作用域。",
+    "appliesWhen": "从函数返回一个引用时。",
+    "violation": "返回的引用没有指向任何参数时，它将成为悬垂引用。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-5"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-5-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-5",
+        "title": "深入理解生命周期",
+        "lineStart": 248,
+        "lineEnd": 298,
+        "contentHash": "sha256:659e9a15194e1ca826b7fb23f8db6e32a561cf442ca7fe4b6bc15426d07bd4c0"
+      }
+    ],
+    "evidenceQuote": "出现的问题是 `result` 在 `longest` 函数的结尾将离开作用域并被清理，而我们尝试从函数返回一个 `result` 的引用。无法指定生命周期参数来改变悬垂引用，而且 Rust 也不允许我们创建一个悬垂引用。在这种情况，最好的解决方案是返回一个有所有权的数据类型而不是一个引用，这样函数调用者就需要负责清理这个值了。",
+    "pattern": "尝试从函数返回 `result` 的引用，而 `result` 在函数的结尾会离开作用域并被清理。",
+    "harm": "产生悬垂引用；Rust 不允许创建一个悬垂引用。",
+    "corrective": "返回一个有所有权的数据类型而不是一个引用，由函数调用者负责清理。",
+    "evidence": [
+      "`result` 在 `longest` 函数的结尾将离开作用域并被清理",
+      "无法指定生命周期参数来改变悬垂引用"
+    ],
+    "chapterRef": "ch10-03-lifetime-syntax-h3-5"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-6",
+        "title": "结构体定义中的生命周期标注",
+        "lineStart": 299,
+        "lineEnd": 324,
+        "contentHash": "sha256:b389e264fe94bd9de433d774cce5e0d2d3559ea2702fb46eb448e76126008f14"
+      }
+    ],
+    "evidenceQuote": "这个结构体有一个字段，`part`，它存放了一个字符串 slice，这是一个引用。类似于泛型参数类型，必须在结构体名称后面的尖括号中声明泛型生命周期参数，以便在结构体定义中使用生命周期参数。这个标注意味着 `ImportantExcerpt` 的实例不能比其 `part` 字段中的引用存在的更久。",
+    "statement": "在包含引用的结构体定义中，必须在结构体名称后面的尖括号中声明泛型生命周期参数，以便在结构体定义中使用生命周期参数。",
+    "rationale": "该生命周期标注意味着结构体实例不能比其引用字段存在得更久。",
+    "appliesWhen": "当结构体定义中包含引用字段（例如存放字符串 slice 的 `part` 字段）时。",
+    "violation": "未在尖括号中声明生命周期参数，则无法在结构体定义中使用生命周期参数。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-6"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-7",
+        "title": "生命周期省略（Lifetime Elision）",
+        "lineStart": 325,
+        "lineEnd": 406,
+        "contentHash": "sha256:09adae57261c9ccfe64560b098a90bc577b53c20bb0f13a62f34edac7faf0a9f"
+      }
+    ],
+    "evidenceQuote": "省略规则并不提供完整的推断：如果 Rust 在明确遵守这些规则的前提下变量的生命周期仍然是模棱两可的话，它不会猜测剩余引用的生命周期应该是什么。在这种情况，编译器会给出一个错误，这可以通过增加对应引用之间相联系的生命周期标注来解决。\n\n函数或方法的参数的生命周期被称为 **输入生命周期**（*input lifetimes*），而返回值的生命周期被称为 **输出生命周期**（*output lifetimes*）。\n\n编译器采用三条规则来判断引用何时不需要明确的标注。第一条规则适用于输入生命周期，后两条规则适用于输出生命周期。如果编译器检查完这三条规则后仍然存在没有计算出生命周期的引用，编译器将会停止并生成错误。这些规则适用于 `fn` 定义，以及 `impl` 块。",
+    "statement": "生命周期省略规则不提供完整推断；编译器采用三条规则来判断引用何时不需要明确的标注，并且如果检查完这三条规则后仍有引用没有计算出生命周期，编译器会停止并生成错误。这些规则适用于 fn 定义以及 impl 块。",
+    "rationale": "省略规则并不提供完整的推断，编译器不会猜测剩余引用的生命周期，而是给出错误，这可以通过增加对应引用之间相联系的生命周期标注来解决。",
+    "appliesWhen": "适用于 fn 定义以及 impl 块。",
+    "violation": "如果编译器检查完这三条规则后仍存在没有计算出生命周期的引用，编译器将会停止并生成错误。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-7"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-7-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-7",
+        "title": "生命周期省略（Lifetime Elision）",
+        "lineStart": 325,
+        "lineEnd": 406,
+        "contentHash": "sha256:09adae57261c9ccfe64560b098a90bc577b53c20bb0f13a62f34edac7faf0a9f"
+      }
+    ],
+    "evidenceQuote": "第三条规则是如果方法有多个输入生命周期参数并且其中一个参数是 `&self` 或 `&mut self`，说明是个对象的方法(method)(译者注： 这里涉及 Rust 的面向对象，参见第 17 章), 那么所有输出生命周期参数被赋予 `self` 的生命周期。第三条规则使得方法更容易读写，因为只需更少的符号。",
+    "statement": "如果方法有多个输入生命周期参数且其中一个参数是 &self 或 &mut self，那么所有输出生命周期参数被赋予 self 的生命周期。",
+    "rationale": "第三条规则使得方法更容易读写，因为只需更少的符号。",
+    "appliesWhen": "当方法有多个输入生命周期参数且其中一个参数是 &self 或 &mut self 时。",
+    "violation": "若方法有多个输入生命周期参数且其中一个参数是 &self 或 &mut self，但输出生命周期未被赋予 self 的生命周期，则不满足第三条规则。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-7"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-8-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-8",
+        "title": "方法定义中的生命周期标注",
+        "lineStart": 407,
+        "lineEnd": 447,
+        "contentHash": "sha256:5913a2e540f8f358b668b1e14ac05374323c4418861052eeed5f0bce3638bf90"
+      }
+    ],
+    "evidenceQuote": "（实现方法时）结构体字段的生命周期必须总是在 `impl` 关键字之后声明并在结构体名称之后被使用，因为这些生命周期是结构体类型的一部分。",
+    "statement": "实现方法时，结构体字段的生命周期必须总是在 `impl` 关键字之后声明并在结构体名称之后被使用。",
+    "rationale": "因为这些生命周期是结构体类型的一部分。",
+    "appliesWhen": "当为带有生命周期字段的结构体实现方法时。",
+    "violation": "未在 `impl` 关键字之后声明并在结构体名称之后使用这些生命周期参数。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-8"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-9-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-9",
+        "title": "静态生命周期",
+        "lineStart": 448,
+        "lineEnd": 459,
+        "contentHash": "sha256:236e9f47e7a8bda2733ac1dce1ce9c2ee0582308d928aafdbab3c0b67a23353a"
+      }
+    ],
+    "evidenceQuote": "### 静态生命周期\n\n这里有一种特殊的生命周期值得讨论：`'static`，其生命周期**能够**存活于整个程序期间。所有的字符串字面量都拥有 `'static` 生命周期，我们也可以选择像下面这样标注出来：\n\n```rust\nlet s: &'static str = \"I have a static lifetime.\";\n```\n\n这个字符串的文本被直接储存在程序的二进制文件中而这个文件总是可用的。因此所有的字符串字面量都是 `'static` 的。",
+    "canonicalTerm": "'static 生命周期",
+    "aliases": [
+      "静态生命周期"
+    ],
+    "definition": "一种能够存活于整个程序期间的特殊生命周期；所有字符串字面量都拥有该生命周期，因为字符串文本被直接储存在程序的二进制文件中，而该文件总是可用。",
+    "examples": [
+      "let s: &'static str = \"I have a static lifetime.\";"
+    ]
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-9-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-9",
+        "title": "静态生命周期",
+        "lineStart": 448,
+        "lineEnd": 459,
+        "contentHash": "sha256:236e9f47e7a8bda2733ac1dce1ce9c2ee0582308d928aafdbab3c0b67a23353a"
+      }
+    ],
+    "evidenceQuote": "你可能在错误信息的帮助文本中见过使用 `'static` 生命周期的建议，不过将引用指定为 `'static` 之前，思考一下这个引用是否真的在整个程序的生命周期里都有效。你也许要考虑是否希望它存在得这么久，即使这是可能的。大部分情况，代码中的问题是尝试创建一个悬垂引用或者可用的生命周期不匹配，请解决这些问题而不是指定一个 `'static` 的生命周期。",
+    "trigger": "当错误信息建议使用 'static 生命周期，或准备将引用指定为 'static 时",
+    "recommendation": "先思考该引用是否真的会在整个程序生命周期内都有效，并考虑是否希望它存在这么久；大部分情况下应解决悬垂引用或生命周期不匹配问题，而不是指定 'static 生命周期。",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-10-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-10",
+        "title": "结合泛型类型参数、trait bounds 和生命周期",
+        "lineStart": 460,
+        "lineEnd": 480,
+        "contentHash": "sha256:0595b89ab8f3e91d74c4dfb056c8e6f4d45497a427c7af62131129caff424c34"
+      }
+    ],
+    "evidenceQuote": "因为生命周期也是泛型，所以生命周期参数 `'a` 和泛型类型参数 `T` 都位于函数名后的同一尖括号列表中。",
+    "statement": "在 Rust 中，生命周期参数和泛型类型参数位于函数名后的同一尖括号列表中。",
+    "rationale": "生命周期也是一种泛型。",
+    "appliesWhen": "在同一个函数中同时指定生命周期参数和泛型类型参数时。",
+    "violation": "将生命周期参数与泛型类型参数放在不同的括号列表中。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-10"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H3-10-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h3-10",
+        "title": "结合泛型类型参数、trait bounds 和生命周期",
+        "lineStart": 460,
+        "lineEnd": 480,
+        "contentHash": "sha256:0595b89ab8f3e91d74c4dfb056c8e6f4d45497a427c7af62131129caff424c34"
+      }
+    ],
+    "evidenceQuote": "`ann` 的类型是泛型 `T`，它可以被放入任何实现了 `where` 从句中指定的 `Display` trait 的类型。这个额外的参数会在函数比较字符串 slice 的长度之前被打印出来，这也就是为什么 `Display` trait bound 是必须的。",
+    "statement": "当泛型参数会在函数比较字符串 slice 的长度之前被打印时，需要为该泛型参数指定 `Display` trait bound。",
+    "rationale": "该泛型参数会在函数比较字符串 slice 的长度之前被打印出来。",
+    "appliesWhen": "函数接收泛型类型参数，并在比较字符串 slice 的长度之前打印该参数时。",
+    "violation": "不为该被打印的泛型参数指定 `Display` trait bound。",
+    "chapterRef": "ch10-03-lifetime-syntax-h3-10"
+  },
+  {
+    "id": "CH10-03-LIFETIME-SYNTAX-H2-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:13:10.597Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:13:10.597Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch10-03-lifetime-syntax.md",
+        "anchor": "ch10-03-lifetime-syntax#h2-2",
+        "title": "总结",
+        "lineStart": 481,
+        "lineEnd": 491,
+        "contentHash": "sha256:2917a532473cc2cef885753df6102c4891b68ce2f733b2a52834237a16333415"
+      }
+    ],
+    "evidenceQuote": "泛型类型参数意味着代码可以适用于不同的类型。trait 和 trait bounds 保证了即使类型是泛型的，这些类型也会拥有所需要的行为。由生命周期标注所指定的引用生命周期之间的关系保证了这些灵活多变的代码不会出现悬垂引用。而所有的这一切发生在编译时所以不会影响运行时效率！",
+    "statement": "使用泛型类型参数、trait 和 trait bounds 以及生命周期标注所指定的引用生命周期关系时，这些机制在编译时处理，不增加运行时开销；生命周期标注保证灵活多变的代码不会出现悬垂引用。",
+    "rationale": "泛型类型参数使代码适用于不同类型；trait 和 trait bounds 保证即使类型是泛型的也拥有所需行为；生命周期标注指定引用生命周期之间的关系，保证灵活多变的代码不会出现悬垂引用。",
+    "appliesWhen": "当代码使用泛型类型参数、trait 和 trait bounds 以及生命周期标注来编写既适用于多种场景又不重复的代码时。",
+    "violation": "灵活多变的代码出现悬垂引用。",
+    "chapterRef": "ch10-03-lifetime-syntax-h2-2"
+  }
+]

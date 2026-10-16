@@ -1,0 +1,85 @@
+[
+  {
+    "id": "CH06-03-IF-LET-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:31:46.737Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:31:46.737Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+        "anchor": "ch06-03-if-let#h2-1",
+        "title": "`if let` 简单控制流",
+        "lineStart": 1,
+        "lineEnd": 80,
+        "contentHash": "sha256:0c7152f4b8b374e14851dc8e1fc0dd5b57fddb3c633b3bb044104520b8097208"
+      }
+    ],
+    "evidenceQuote": "`if let` 语法让我们以一种不那么冗长的方式结合 `if` 和 `let`，来处理只匹配一个模式的值而忽略其他模式的情况。考虑示例 6-6 中的程序，它匹配一个 `Option<u8>` 值并只希望当值为 3 时执行代码：\n\n```rust\nlet some_u8_value = Some(0u8);\nmatch some_u8_value {\n    Some(3) => println!(\"three\"),\n    _ => (),\n}\n```\n\n<span class=\"caption\">示例 6-6：`match` 只关心当值为 `Some(3)` 时执行代码</span>\n\n我们想要对 `Some(3)` 匹配进行操作但是不想处理任何其他 `Some<u8>` 值或 `None` 值。为了满足 `match` 表达式（穷尽性）的要求，必须在处理完这唯一的成员后加上 `_ => ()`，这样也要增加很多样板代码。\n\n不过我们可以使用 `if let` 这种更短的方式编写。如下代码与示例 6-6 中的 `match` 行为一致：\n\n```rust\n# let some_u8_value = Some(0u8);\nif let Some(3) = some_u8_value {\n    println!(\"three\");\n}\n```",
+    "canonicalTerm": "if let",
+    "aliases": [],
+    "definition": "if let 语法让我们以一种不那么冗长的方式结合 if 和 let，来处理只匹配一个模式的值而忽略其他模式的情况。",
+    "examples": [
+      "if let Some(3) = some_u8_value {\n    println!(\"three\");\n}"
+    ]
+  },
+  {
+    "id": "CH06-03-IF-LET-H2-1-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:31:46.737Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:31:46.737Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+        "anchor": "ch06-03-if-let#h2-1",
+        "title": "`if let` 简单控制流",
+        "lineStart": 1,
+        "lineEnd": 80,
+        "contentHash": "sha256:0c7152f4b8b374e14851dc8e1fc0dd5b57fddb3c633b3bb044104520b8097208"
+      }
+    ],
+    "evidenceQuote": "如果你的程序遇到一个使用 `match` 表达起来过于啰嗦的逻辑，记住 `if let` 也在你的 Rust 工具箱中。",
+    "trigger": "程序遇到一个使用 match 表达起来过于啰嗦的逻辑。",
+    "recommendation": "考虑使用 if let 来简化表达。",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CH06-03-IF-LET-H2-2-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:31:46.737Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:31:46.737Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch06-03-if-let.md",
+        "anchor": "ch06-03-if-let#h2-2",
+        "title": "总结",
+        "lineStart": 81,
+        "lineEnd": 88,
+        "contentHash": "sha256:3dab19f77e1edd0f86034a7d6f685b93145ebf00188a7953ce22a945e15ec483"
+      }
+    ],
+    "evidenceQuote": "当枚举值包含数据时，你可以根据需要处理多少情况来选择使用 `match` 或 `if let` 来获取并使用这些值。",
+    "trigger": "当枚举值包含数据，且需要获取并使用这些值时",
+    "recommendation": "根据你需要处理的情况数量，选择使用 `match` 或 `if let` 来获取并使用枚举值",
+    "confidence": 0.7,
+    "exceptions": []
+  }
+]

@@ -1,0 +1,373 @@
+[
+  {
+    "id": "CH08-01-VECTORS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h2-1",
+        "title": "vector 用来储存一系列的值",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "contentHash": "sha256:ac9f49197089756e29aec565d1d32afb20cdbb3301df39f5d28abecdcc342f9d"
+      }
+    ],
+    "evidenceQuote": "我们要讲到的第一个类型是 `Vec<T>`，也被称为 *vector*。vector 允许我们在一个单独的数据结构中储存多个值，所有值在内存中彼此相邻排列。vector 只能储存相同类型的值。它们在拥有一系列项的场景下非常实用，例如文件中的文本行或购物车中商品的价格。",
+    "canonicalTerm": "Vec<T>",
+    "aliases": [
+      "vector"
+    ],
+    "definition": "vector 允许在一个单独的数据结构中储存多个值，所有值在内存中彼此相邻排列，并且只能储存相同类型的值。",
+    "examples": [
+      "文件中的文本行",
+      "购物车中商品的价格"
+    ]
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-1",
+        "title": "新建 vector",
+        "lineStart": 5,
+        "lineEnd": 26,
+        "contentHash": "sha256:5f73c75cd6d7637fa9ac3f60c5eb84e3476ae828280a66b0d2147e16ed4a68de"
+      }
+    ],
+    "evidenceQuote": "为了创建一个新的空 vector，可以调用 `Vec::new` 函数，如示例 8-1 所示：\n\n```rust\nlet v: Vec<i32> = Vec::new();\n```\n\n<span class=\"caption\">示例 8-1：新建一个空的 vector 来储存 `i32` 类型的值</span>\n\n注意这里我们增加了一个类型标注。因为没有向这个 vector 中插入任何值，Rust 并不知道我们想要储存什么类型的元素。这一点非常重要。",
+    "canonicalTerm": "使用 `Vec::new` 创建空 vector 的类型标注",
+    "aliases": [],
+    "definition": "调用 `Vec::new` 可以创建新的空 vector；在尚未插入任何值时，Rust 不知道要存储的元素类型，因此示例中增加类型标注来指定元素类型。",
+    "examples": [
+      "let v: Vec<i32> = Vec::new();"
+    ]
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-1",
+        "title": "新建 vector",
+        "lineStart": 5,
+        "lineEnd": 26,
+        "contentHash": "sha256:5f73c75cd6d7637fa9ac3f60c5eb84e3476ae828280a66b0d2147e16ed4a68de"
+      }
+    ],
+    "evidenceQuote": "更常见的做法是使用初始值来创建一个 `Vec`，而且为了方便 Rust 提供了 `vec!` 宏。这个宏会根据我们提供的值来创建一个新的 `Vec`。示例 8-2 新建一个拥有值 `1`、`2` 和 `3` 的 `Vec<i32>`：\n\n```rust\nlet v = vec![1, 2, 3];\n```\n\n<span class=\"caption\">示例 8-2：新建一个包含初值的 vector</span>\n\n因为我们提供了 `i32` 类型的初始值，Rust 可以推断出 `v` 的类型是 `Vec<i32>`，因此类型标注就不是必须的。",
+    "canonicalTerm": "`vec!` 宏",
+    "aliases": [],
+    "definition": "`vec!` 宏会根据提供的值创建一个新的 `Vec`；当提供 `i32` 类型的初始值时，Rust 可以推断出 `Vec<i32>` 类型，因此类型标注不是必须的。",
+    "examples": [
+      "let v = vec![1, 2, 3];"
+    ]
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-2",
+        "title": "更新 vector",
+        "lineStart": 27,
+        "lineEnd": 43,
+        "contentHash": "sha256:4b4e52f5f24ea000505d1760925d406becdc8a2314f538ebbebc5087c63d4d42"
+      }
+    ],
+    "evidenceQuote": "对于新建一个 vector 并向其增加元素，可以使用 `push` 方法，如示例 8-3 所示：\n\n```rust\nlet mut v = Vec::new();\n\nv.push(5);\nv.push(6);\nv.push(7);\nv.push(8);\n```",
+    "canonicalTerm": "push 方法",
+    "aliases": [],
+    "definition": "用于新建 vector 并向其增加元素的方法",
+    "examples": [
+      "v.push(5);",
+      "v.push(6);",
+      "v.push(7);",
+      "v.push(8);"
+    ]
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-2",
+        "title": "更新 vector",
+        "lineStart": 27,
+        "lineEnd": 43,
+        "contentHash": "sha256:4b4e52f5f24ea000505d1760925d406becdc8a2314f538ebbebc5087c63d4d42"
+      }
+    ],
+    "evidenceQuote": "如第 3 章中讨论的任何变量一样，如果想要能够改变它的值，必须使用 `mut` 关键字使其可变。放入其中的所有值都是 `i32` 类型的，而且 Rust 也根据数据做出如此判断，所以不需要 `Vec<i32>` 标注。",
+    "statement": "所有放入的值都是 `i32` 类型时，Rust 会根据数据推断类型，因此不需要 `Vec<i32>` 标注；如果想要改变值，必须使用 `mut` 关键字使其可变。",
+    "rationale": "与第 3 章中关于变量可变性的讨论一致；Rust 根据放入的数据判断类型。",
+    "appliesWhen": "当变量需要改变值，或已放入同类型 `i32` 值供 Rust 推断类型时。",
+    "violation": "未使用 `mut` 关键字使变量可变，就无法改变其值。",
+    "chapterRef": "ch08-01-vectors-h3-2"
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-3",
+        "title": "丢弃 vector 时也会丢弃其所有元素",
+        "lineStart": 44,
+        "lineEnd": 60,
+        "contentHash": "sha256:e9e815bfa5285e44c927a17b7ab9287b2ff198d7035cd5710e800a4d4d57dcbd"
+      }
+    ],
+    "evidenceQuote": "当 vector 被丢弃时，所有其内容也会被丢弃，这意味着这里它包含的整数将被清理。这可能看起来非常直观，不过一旦开始使用 vector 元素的引用，情况就变得有些复杂了。",
+    "statement": "当 vector 被丢弃时，其所有内容也会被丢弃，其中包含的整数会被清理。",
+    "rationale": "vector 被丢弃时会清理其内容；在直接包含整数的情况下，这一行为很直观。",
+    "appliesWhen": "vector 被丢弃时。",
+    "violation": "开始使用 vector 元素的引用时，原本直观的清理行为会变得复杂。",
+    "chapterRef": "ch08-01-vectors-h3-3"
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-4",
+        "title": "读取 vector 的元素",
+        "lineStart": 61,
+        "lineEnd": 131,
+        "contentHash": "sha256:2755eb68df9e639a98bb2009e751c25917792ca7b1076d34c6d4569873dff585"
+      }
+    ],
+    "evidenceQuote": "这里有两个需要注意的地方。首先，我们使用索引值 `2` 来获取第三个元素，索引是从 0 开始的。其次，这两个不同的获取第三个元素的方式分别为：使用 `&` 和 `[]` 返回一个引用；或者使用 `get` 方法以索引作为参数来返回一个 `Option<&T>`。",
+    "canonicalTerm": "读取 vector 元素",
+    "aliases": [
+      "访问 vector 元素"
+    ],
+    "definition": "有两种方法引用 vector 中储存的值：使用 `&` 和 `[]` 返回一个引用；使用 `get` 方法以索引作为参数返回一个 `Option<&T>`。索引从 0 开始。",
+    "examples": [
+      "使用 `&` 和 `[]` 返回一个引用",
+      "使用 `get` 方法以索引作为参数返回一个 `Option<&T>`"
+    ]
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-4-DECISIONMODEL-02",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-4",
+        "title": "读取 vector 的元素",
+        "lineStart": 61,
+        "lineEnd": 131,
+        "contentHash": "sha256:2755eb68df9e639a98bb2009e751c25917792ca7b1076d34c6d4569873dff585"
+      }
+    ],
+    "evidenceQuote": "当运行这段代码，你会发现对于第一个 `[]` 方法，当引用一个不存在的元素时 Rust 会造成 panic。这个方法更适合当程序认为尝试访问超过 vector 结尾的元素是一个严重错误的情况，这时应该使程序崩溃。\n\n当 `get` 方法被传递了一个数组外的索引时，它不会 panic 而是返回 `None`。当偶尔出现超过 vector 范围的访问属于正常情况的时候可以考虑使用它。接着你的代码可以有处理 `Some(&element)` 或 `None` 的逻辑，如第 6 章讨论的那样。例如，索引可能来源于用户输入的数字。如果它们不慎输入了一个过大的数字那么程序就会得到 `None` 值，你可以告诉用户当前 vector 元素的数量并再请求它们输入一个有效的值。这就比因为输入错误而使程序崩溃要友好的多！",
+    "inputs": [
+      "索引是否可能超出 vector 边界",
+      "越界是否被视为严重错误或正常情况"
+    ],
+    "branches": [
+      {
+        "condition": "程序认为尝试访问超过 vector 结尾的元素是一个严重错误，应使程序崩溃",
+        "action": "使用索引语法 `[]` 访问，越界时 Rust 会 panic"
+      },
+      {
+        "condition": "偶尔出现超过 vector 范围的访问属于正常情况",
+        "action": "使用 `get` 方法访问，并处理 `Some(&element)` 或 `None` 的逻辑"
+      }
+    ],
+    "outputs": [
+      "索引语法越界时造成 panic",
+      "get 方法越界时返回 None"
+    ],
+    "unknownPolicy": "当无法确定越界是否属于严重错误或正常情况时，原文未给出默认选择",
+    "stopConditions": [
+      "已确定越界属于严重错误还是正常情况",
+      "已编写 panic 处理或 Some/None 处理逻辑"
+    ],
+    "reviewState": "draft"
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-5",
+        "title": "遍历 vector 中的元素",
+        "lineStart": 132,
+        "lineEnd": 157,
+        "contentHash": "sha256:f40799a07b710d8408cb2a9063b8ee9334ea733c5804c1156510b2b2abf21e66"
+      }
+    ],
+    "evidenceQuote": "如果想要依次访问 vector 中的每一个元素，我们可以遍历其所有的元素而无需通过索引一次一个的访问。示例 8-8 展示了如何使用 `for` 循环来获取 `i32` 值的 vector 中的每一个元素的不可变引用并将其打印：\n\n```rust\nlet v = vec![100, 32, 57];\nfor i in &v {\n    println!(\"{}\", i);\n}\n```\n\n<span class=\"caption\">示例 8-8：通过 `for` 循环遍历 vector 的元素并打印</span>\n\n我们也可以遍历可变 vector 的每一个元素的可变引用以便能改变他们。示例 8-9 中的 `for` 循环会给每一个元素加 `50`：\n\n```rust\nlet mut v = vec![100, 32, 57];\nfor i in &mut v {\n    *i += 50;\n}\n```",
+    "canonicalTerm": "遍历 vector 中的元素",
+    "aliases": [],
+    "definition": "使用 `for` 循环依次访问 vector 中的每一个元素，无需通过索引一次一个地访问；可以通过 `&v` 获取不可变引用并打印，也可以通过 `&mut v` 获取可变引用并改变其值。",
+    "examples": [
+      "使用 `for i in &v` 遍历并打印 vector 中的每个元素",
+      "使用 `for i in &mut v` 遍历并为每个元素加 `50`"
+    ]
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-5",
+        "title": "遍历 vector 中的元素",
+        "lineStart": 132,
+        "lineEnd": 157,
+        "contentHash": "sha256:f40799a07b710d8408cb2a9063b8ee9334ea733c5804c1156510b2b2abf21e66"
+      }
+    ],
+    "evidenceQuote": "为了修改可变引用所指向的值，在使用 `+=` 运算符之前必须使用解引用运算符（`*`）获取 `i` 中的值。",
+    "statement": "修改可变引用所指向的值时，在使用 `+=` 运算符之前必须使用解引用运算符（`*`）获取 `i` 中的值。",
+    "rationale": "规则要求在 `+=` 运算之前先获取 `i` 中的值，以修改可变引用所指向的值。",
+    "appliesWhen": "当需要修改可变引用所指向的值并使用 `+=` 运算符时。",
+    "violation": "需要修改可变引用所指向的值并使用 `+=` 运算符时，未先使用解引用运算符 `*` 获取 `i` 中的值。",
+    "chapterRef": "ch08-01-vectors-h3-5"
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-6-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-6",
+        "title": "使用枚举来储存多种类型",
+        "lineStart": 158,
+        "lineEnd": 187,
+        "contentHash": "sha256:30bb51725b8891f6326636ed34ce3b707ec5411db0c9b8219afd45fd1e24da14"
+      }
+    ],
+    "evidenceQuote": "如果在编写程序时不能确切无遗地知道运行时会储存进 vector 的所有类型，枚举技术就行不通了。相反，你可以使用 trait 对象，第 17 章会讲到它。",
+    "trigger": "当需要让 vector 储存不同类型，但在编写程序时不能确切无遗地知道运行时会储存进 vector 的所有类型时",
+    "recommendation": "不要使用枚举技术，改用 trait 对象",
+    "confidence": 0.85,
+    "exceptions": []
+  },
+  {
+    "id": "CH08-01-VECTORS-H3-6-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T14:59:07.529Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T14:59:07.529Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-01-vectors.md",
+        "anchor": "ch08-01-vectors#h3-6",
+        "title": "使用枚举来储存多种类型",
+        "lineStart": 158,
+        "lineEnd": 187,
+        "contentHash": "sha256:30bb51725b8891f6326636ed34ce3b707ec5411db0c9b8219afd45fd1e24da14"
+      }
+    ],
+    "evidenceQuote": "枚举的成员都被定义为相同的枚举类型，所以当需要在 vector 中储存不同类型值时，我们可以定义并使用一个枚举！",
+    "canonicalTerm": "使用枚举在 vector 中储存多种类型",
+    "aliases": [],
+    "definition": "定义一个枚举，其成员存放不同类型值，所有枚举成员被当作相同的枚举类型；再创建储存该枚举值的 vector，从而在 vector 中存放不同类型的数据。",
+    "examples": [
+      "定义 SpreadsheetCell 枚举，包含 Int(i32)、Float(f64)、Text(String) 成员，并创建 vec![SpreadsheetCell::Int(3), SpreadsheetCell::Text(String::from(\"blue\")), SpreadsheetCell::Float(10.12)]"
+    ]
+  }
+]

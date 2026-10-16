@@ -1,0 +1,2457 @@
+[
+  {
+    "id": "CHAPTER7-H1-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h1-1",
+        "title": "Agent 的评估",
+        "lineStart": 1,
+        "lineEnd": 26,
+        "contentHash": "sha256:7badabb605add6fad2c31811863fa61b76a8b93ff69a16d0ba42cdf1abef42b3"
+      }
+    ],
+    "evidenceQuote": "一个关键认识是：**评估的对象不应只是模型，而应是模型与 Harness 的组合体**。同一个模型在不同的 Harness 中可能表现差异悬殊。",
+    "statement": "评估的对象不应只是模型，而应是模型与 Harness 的组合体",
+    "rationale": "同一个模型在不同的 Harness 中可能表现差异悬殊，因此评估结果取决于模型与 Harness 的组合",
+    "appliesWhen": "构建或评估 Agent 系统时",
+    "violation": "仅评估模型本身而忽略 Harness 的影响",
+    "chapterRef": "chapter7-h1-1"
+  },
+  {
+    "id": "CHAPTER7-H1-1-DECISIONMODEL-02",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h1-1",
+        "title": "Agent 的评估",
+        "lineStart": 1,
+        "lineEnd": 26,
+        "contentHash": "sha256:7badabb605add6fad2c31811863fa61b76a8b93ff69a16d0ba42cdf1abef42b3"
+      }
+    ],
+    "evidenceQuote": "**区分这两类问题的常见手段是模型替换实验（model swap）**——固定 Harness，只更换更强/更弱的模型，观察分数变化幅度；如果换强模型分数不涨，说明瓶颈在 Harness；如果换弱模型分数大跌、分数随模型能力大幅波动，最直接的解读就是瓶颈在模型能力本身、当前表现主要由模型决定（至于这是因为任务本身就难，还是 Harness 过度依赖模型先验，则需进一步分析）。",
+    "inputs": [
+      "固定 Harness，更换更强或更弱的模型并观察分数变化幅度"
+    ],
+    "branches": [
+      {
+        "condition": "换强模型分数不涨",
+        "action": "判断瓶颈在 Harness"
+      },
+      {
+        "condition": "换弱模型分数大跌且分数随模型能力大幅波动",
+        "action": "判断瓶颈在模型能力本身，当前表现主要由模型决定"
+      }
+    ],
+    "outputs": [
+      "瓶颈在 Harness",
+      "瓶颈在模型能力本身"
+    ],
+    "unknownPolicy": "当需要区分任务本身就难还是 Harness 过度依赖模型先验时，需进一步分析",
+    "stopConditions": [
+      "当分数随模型能力大幅波动且需进一步区分任务本身难与 Harness 过度依赖模型先验时，不直接给出结论"
+    ],
+    "reviewState": "candidate"
+  },
+  {
+    "id": "CHAPTER7-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-1",
+        "title": "一条评估任务的解剖：τ²-bench 的 telecom 领域",
+        "lineStart": 27,
+        "lineEnd": 30,
+        "contentHash": "sha256:8fc65fc09d557c1611bc48cfc33aba1db81dd4b2a64bba0d536162021dfe496c"
+      }
+    ],
+    "evidenceQuote": "τ²-bench 是 Sierra 的开源项目，按照 `chapter7/tau2-bench-eval/README.md` 中的命令克隆到本地后，打开任务文件 `data/tau2/domains/telecom/tasks_small.json`。",
+    "canonicalTerm": "τ²-bench",
+    "aliases": [],
+    "definition": "τ²-bench 是 Sierra 的开源项目，可按照 README 中的命令克隆到本地并打开 telecom 任务文件。",
+    "examples": [
+      "data/tau2/domains/telecom/tasks_small.json"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-1",
+        "title": "任务定义的四个组成部分",
+        "lineStart": 31,
+        "lineEnd": 94,
+        "contentHash": "sha256:062d1cd321e8b4bdbe6ed5f3f64bec9f516fd19ed4062636cd756a2ea5edf20d"
+      }
+    ],
+    "evidenceQuote": "**显式建模用户的认知边界。** `known_info` 仅包含姓名、号码与所在国家三项信息。飞行模式开启、数据漫游关闭这两项真正的故障原因不在其中——用户并不知情，因而无法主动陈述，Agent 只能通过提问和引导用户查询来获取。这就是**渐进式信息透露（Progressive Information Disclosure）** 在任务定义层面的实现方式：它并非依靠一句 “不要一次说完” 的提示词去约束模拟器，而是将用户的知识范围建模为一个独立字段。多数基准在任务开始时即给出完整需求，而真实用户的初始表述往往只是 “我上不了网”。将需求澄清到可执行的程度，本身就是 Agent 必须具备的能力之一。",
+    "canonicalTerm": "渐进式信息透露",
+    "aliases": [],
+    "definition": "在任务定义层面将用户的知识范围建模为一个独立字段，而不是依靠提示词约束模拟器，以实现任务信息的渐进式透露。",
+    "examples": [
+      "known_info 仅包含姓名、号码与所在国家三项信息；飞行模式开启、数据漫游关闭等真正故障原因不在其中，用户不知情且无法主动陈述。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-1",
+        "title": "任务定义的四个组成部分",
+        "lineStart": 31,
+        "lineEnd": 94,
+        "contentHash": "sha256:062d1cd321e8b4bdbe6ed5f3f64bec9f516fd19ed4062636cd756a2ea5edf20d"
+      }
+    ],
+    "evidenceQuote": "**防止用户模拟器被 Agent 忽悠。** `task_instructions` 包含三类约束：情绪设定（首次修复失败后应表现出轻度不满）、验收口径（仅当测速结果为 excellent 时才认定问题解决，poor、fair、good 均不接受）、以及**事实锚定（Grounding）** 要求，即关于设备状态的任何回答都必须以工具返回结果为依据。缺少事实锚定约束时，模拟用户会顺应 Agent 的引导确认问题已解决，评估随之退化为两个模型之间的相互确认。",
+    "statement": "在定义模拟用户的 task_instructions 时，关于设备状态的任何回答都必须以工具返回结果为依据。",
+    "rationale": "缺少事实锚定约束时，模拟用户会顺应 Agent 的引导确认问题已解决，评估随之退化为两个模型之间的相互确认。",
+    "appliesWhen": "在定义用户模拟器的 task_instructions 时，要求其关于设备状态的回答必须以工具返回结果为依据。",
+    "violation": "模拟用户对设备状态的回答未以工具返回结果为依据。",
+    "chapterRef": "chapter7-h3-1"
+  },
+  {
+    "id": "CHAPTER7-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-2",
+        "title": "一次真实运行的轨迹",
+        "lineStart": 95,
+        "lineEnd": 128,
+        "contentHash": "sha256:16d97993db358deb488f0139abfe9a96cb0df3b6fc0a793098af421e7af9fca0"
+      }
+    ],
+    "evidenceQuote": "发出工具调用的是**用户**而非 Agent。这就是**双控（Dual-Control）** 机制：模拟用户拥有一套独立的工具集，如 `check_status_bar`、`toggle_airplane_mode`、`reseat_sim_card`、`run_speed_test` 等。",
+    "canonicalTerm": "双控（Dual-Control）机制",
+    "aliases": [
+      "Dual-Control"
+    ],
+    "definition": "双控机制指模拟用户拥有一套独立工具集，由用户而非 Agent 发出对应工具调用。",
+    "examples": [
+      "模拟用户工具集包含 check_status_bar、toggle_airplane_mode、reseat_sim_card、run_speed_test"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-2-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-2",
+        "title": "一次真实运行的轨迹",
+        "lineStart": 95,
+        "lineEnd": 128,
+        "contentHash": "sha256:16d97993db358deb488f0139abfe9a96cb0df3b6fc0a793098af421e7af9fca0"
+      }
+    ],
+    "evidenceQuote": "这条满分轨迹中还包含一处未被验证器捕获的问题。telecom 的 Agent 政策首段即规定 “You should only make one tool call at a time”，而第 4 条消息中 Agent 一次发出了 `get_customer_by_phone` 与 `get_customer_by_name` 两个调用。验证器没有因此判定出错，原因在于本题的 `reward_basis` 只考虑最终状态。这并非 τ²-bench 的疏漏，而是二元奖励的固有代价：它以过程颗粒度换取跨模型可比的单一数字。但生产环境中的评估系统往往需要更多：不仅要判定对错，还要指出问题出在哪里。",
+    "pattern": "仅以最终状态作为奖励依据，不检查过程合规性",
+    "harm": "过程违规不会被验证器捕获，评估无法指出问题出在哪里",
+    "corrective": "生产环境中的评估系统需要不仅判定对错，还要指出问题出在哪里",
+    "evidence": [
+      "第 4 条消息中 Agent 一次发出了 `get_customer_by_phone` 与 `get_customer_by_name` 两个调用，验证器没有因此判定出错，原因在于本题的 `reward_basis` 只考虑最终状态"
+    ],
+    "chapterRef": "chapter7-h3-2"
+  },
+  {
+    "id": "CHAPTER7-H2-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-2",
+        "title": "评估指标：成功的定义",
+        "lineStart": 129,
+        "lineEnd": 132,
+        "contentHash": "sha256:73fa48cc952cd378888ab1a7288949546c080b7f4906ac6cd24519c9ffb651e9"
+      }
+    ],
+    "evidenceQuote": "仅凭 0.8 这个数字无法判断该系统是否可用。若它对应的是一个退款客服，则意味着每五名用户中就有一人未能拿到应得的退款；若它对应的是一个用于挖掘漏洞的安全 Agent，五次中命中四次已属相当可观。差别在于业务场景对成功率有多高的要求。",
+    "statement": "仅凭成功率数字（如 0.8）无法判断系统是否可用；判断系统是否可用需要结合业务场景对成功率的要求。",
+    "rationale": "同一成功率数字在不同业务场景下含义不同：退款客服场景中每五名用户有一人未拿到退款，漏洞挖掘安全 Agent 场景中五次命中四次已属可观。",
+    "appliesWhen": "当需要根据成功率数字判断系统是否可用时",
+    "violation": "仅凭成功率数字就判断系统是否可用",
+    "chapterRef": "chapter7-h2-2"
+  },
+  {
+    "id": "CHAPTER7-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-3",
+        "title": "技术奇观：用 Pass@k 看能力上限",
+        "lineStart": 133,
+        "lineEnd": 146,
+        "contentHash": "sha256:50a1102fc7fbe3ad557548d26f4dcb86305afed5b2901cf5bba41b05400eb462"
+      }
+    ],
+    "evidenceQuote": "当前许多模型和 Agent 仍处在一个可以称为 **“技术奇观”** 的阶段。这里的 “奇观” 是指在大量尝试、充足时间和人工筛选下展示出的能力上限：只要其中一次成功，就足以证明 “这件事原则上做得到”。这正是 **Pass@k** 的逻辑——在同一任务上运行 $k$ 次，只要至少有一次通过，任务就算通过；如果输出是连续得分，则取最好的一次，记为 **Best@k**。\n\nAnthropic 对长时运行 Agent 的讨论体现了这类能力上限。例如，让 Agent 自主工作一周，从头写出一个 C 编译器；或者持续探索，直到找到一个重要数学猜想的反例；又或者反复审查开源软件，发现已经存在几十年的重大安全漏洞。",
+    "canonicalTerm": "技术奇观",
+    "aliases": [
+      "奇观"
+    ],
+    "definition": "在大量尝试、充足时间和人工筛选下展示出的能力上限：只要其中一次成功，就足以证明“这件事原则上做得到”。",
+    "examples": [
+      "让 Agent 自主工作一周，从头写出一个 C 编译器",
+      "持续探索，直到找到一个重要数学猜想的反例",
+      "反复审查开源软件，发现已经存在几十年的重大安全漏洞"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-3-METRIC-02",
+    "objectType": "Metric",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-3",
+        "title": "技术奇观：用 Pass@k 看能力上限",
+        "lineStart": 133,
+        "lineEnd": 146,
+        "contentHash": "sha256:50a1102fc7fbe3ad557548d26f4dcb86305afed5b2901cf5bba41b05400eb462"
+      }
+    ],
+    "evidenceQuote": "这正是 **Pass@k** 的逻辑——在同一任务上运行 $k$ 次，只要至少有一次通过，任务就算通过；如果输出是连续得分，则取最好的一次，记为 **Best@k**。",
+    "name": "Pass@k",
+    "formula": "在同一任务上运行 $k$ 次，只要至少有一次通过，任务就算通过；如果输出是连续得分，则取最好的一次，记为 Best@k。",
+    "inputs": [
+      "同一任务的 $k$ 次运行结果（通过/未通过或连续得分）"
+    ],
+    "unit": "通过/未通过或连续得分",
+    "window": "$k$ 次运行",
+    "failureModes": []
+  },
+  {
+    "id": "CHAPTER7-H3-4-METRIC-01",
+    "objectType": "Metric",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-4",
+        "title": "业务可靠性：关注 Pass^k",
+        "lineStart": 147,
+        "lineEnd": 161,
+        "contentHash": "sha256:613fda02d73d04501bc4a4849a61b0b621226bbdb59fafbb46c330701bebcba5"
+      }
+    ],
+    "evidenceQuote": "真实业务通常更关心另一件事：在多次尝试中一次错都不能犯。我们把这个目标称为 **Pass^k**（可以读作 **Pass consecutive k**）：同一任务连续运行 $k$ 次，要求每一次都通过，且不能触发安全、合规或幻觉等一票否决项。它回答的是“Agent 能否稳定可靠地交付”，而不是 “能否偶尔创造奇迹”。\n\n若每次运行相互独立、单次成功率为 $p$，两类指标的关系很直观：\n\n$$\n\\mathrm{Pass@k}=1-(1-p)^k,\\qquad\n\\mathrm{Pass}^{k}=p^k.\n$$\n\n例如单次成功率 $p=0.6$ 时，$k=5$：Pass@5 $=1-0.4^5\\approx99.0\\%$，看起来几乎总能 “至少成功一次”；但 Pass^5 $=0.6^5\\approx7.8\\%$，说明连续五次都不出错仍然很难。前一个数字适合衡量探索时的能力天花板，后一个数字才接近支付、退款、权限变更、生产部署等场景的可靠性要求。",
+    "name": "Pass^k",
+    "formula": "Pass^k = p^k",
+    "inputs": [
+      "单次成功率 p",
+      "连续运行次数 k"
+    ],
+    "unit": "百分比（%）",
+    "window": "同一任务连续运行 k 次",
+    "failureModes": [
+      "触发安全、合规或幻觉等一票否决项"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-4",
+        "title": "业务可靠性：关注 Pass^k",
+        "lineStart": 147,
+        "lineEnd": 161,
+        "contentHash": "sha256:613fda02d73d04501bc4a4849a61b0b621226bbdb59fafbb46c330701bebcba5"
+      }
+    ],
+    "evidenceQuote": "评估报告必须写清 $k$ 次尝试的口径：是同一任务的 $k$ 次独立采样，还是生产流水线上连续 $k$ 个任务。对于会产生副作用的操作，不能简单地 “重试直到成功”，而应在沙盒或可回滚环境中采样，并把每一次失败都记入可靠性指标。",
+    "statement": "对于会产生副作用的操作，不能简单地“重试直到成功”，而应在沙盒或可回滚环境中采样，并把每一次失败都记入可靠性指标。",
+    "rationale": "会产生副作用的操作不应通过简单重试直到成功来采样；应在沙盒或可回滚环境中采样，并把每一次失败都记入可靠性指标。",
+    "appliesWhen": "评估会产生副作用的操作时",
+    "violation": "对会产生副作用的操作简单“重试直到成功”，且不将每次失败记入可靠性指标",
+    "chapterRef": "chapter7-h3-4"
+  },
+  {
+    "id": "CHAPTER7-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-5",
+        "title": "五个组成要素",
+        "lineStart": 166,
+        "lineEnd": 181,
+        "contentHash": "sha256:4309c2384859843274c12234cb251ac0142be1ac03ad07465ebb972a6c079675"
+      }
+    ],
+    "evidenceQuote": "**环境状态（Environment State）** 是任务执行中的可变信息：数据库中的客户、线路、套餐与账单，加上设备侧的飞行模式、漫游、省流开关与剩余流量。它必须可重置，`initialization_actions` 即重置脚本。真实性要求状态变化符合业务逻辑，可控性要求每次运行前都能回到同一起点。",
+    "canonicalTerm": "环境状态（Environment State）",
+    "aliases": [
+      "Environment State",
+      "环境状态"
+    ],
+    "definition": "任务执行中的可变信息，包括数据库中的客户、线路、套餐与账单，以及设备侧的飞行模式、漫游、省流开关与剩余流量；它必须可重置，并满足真实性与可控性要求。",
+    "examples": [
+      "数据库中的客户、线路、套餐与账单",
+      "设备侧的飞行模式、漫游、省流开关与剩余流量"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-5",
+        "title": "五个组成要素",
+        "lineStart": 166,
+        "lineEnd": 181,
+        "contentHash": "sha256:4309c2384859843274c12234cb251ac0142be1ac03ad07465ebb972a6c079675"
+      }
+    ],
+    "evidenceQuote": "五个要素缺其一，评估便无法构成可重复的循环。",
+    "statement": "五个要素缺其一，评估便无法构成可重复的循环。",
+    "rationale": "缺少任一组成要素都会破坏评估循环的可重复性，因此五要素必须完整。",
+    "appliesWhen": "判断评估环境是否能构成可重复循环时。",
+    "violation": "五个组成要素中至少缺少一个。",
+    "chapterRef": "chapter7-h3-5"
+  },
+  {
+    "id": "CHAPTER7-H3-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-6",
+        "title": "人机交互型与工具调用型评估环境",
+        "lineStart": 182,
+        "lineEnd": 202,
+        "contentHash": "sha256:b9cc666b85bce6d2f76c0d0c62a889678e5f73433f10ebaecce2ba412a70a369"
+      }
+    ],
+    "evidenceQuote": "另有一大类任务并不存在对话对方：代码生成、数据分析、数学求解等任务中，Agent 自始至终只与工具交互，正确性由能否通过执行验证决定，既不需要人工标注，也不需要模型评判。",
+    "canonicalTerm": "工具调用型评估环境",
+    "aliases": [],
+    "definition": "不存在对话对方的任务环境，Agent 自始至终只与工具交互，正确性由能否通过执行验证决定，既不需要人工标注，也不需要模型评判。",
+    "examples": [
+      "代码生成",
+      "数据分析",
+      "数学求解"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-6",
+        "title": "人机交互型与工具调用型评估环境",
+        "lineStart": 182,
+        "lineEnd": 202,
+        "contentHash": "sha256:b9cc666b85bce6d2f76c0d0c62a889678e5f73433f10ebaecce2ba412a70a369"
+      }
+    ],
+    "evidenceQuote": "此外，工具的执行效果取决于当前状态，因此失败时应返回清晰的错误信息而非单一的失败标志，使 Agent 能够据此调整策略。",
+    "statement": "工具失败时应返回清晰的错误信息，而非单一的失败标志。",
+    "rationale": "工具的执行效果取决于当前状态，清晰的错误信息使 Agent 能够据此调整策略。",
+    "appliesWhen": "工具的执行效果取决于当前状态。",
+    "violation": "仅返回单一的失败标志，Agent 无法据此调整策略。",
+    "chapterRef": "chapter7-h3-6"
+  },
+  {
+    "id": "CHAPTER7-H3-7-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-7",
+        "title": "基准设计的横向对照",
+        "lineStart": 207,
+        "lineEnd": 221,
+        "contentHash": "sha256:c031af6a4db4d614c67d60fddcebfc7a9263ac7eb338c12d23263d81605b71b2"
+      }
+    ],
+    "evidenceQuote": "| 基准                 | 被测能力               | 任务来源                 | 环境扮演者          | 验证器                                  |\n| ------------------ | ------------------ | -------------------- | -------------- | ------------------------------------ |\n| τ²-bench           | 客服场景下的人机交互和工具调用    | 人工编写 + 组合生成          | 用户模拟器 + 业务数据库  | 四层检查按 `reward_basis` 聚合为二元           |",
+    "canonicalTerm": "τ²-bench",
+    "aliases": [],
+    "definition": "τ²-bench 的被测能力是客服场景下的人机交互和工具调用，任务来源为人工编写 + 组合生成，环境扮演者为用户模拟器 + 业务数据库，验证器为四层检查按 `reward_basis` 聚合为二元。",
+    "examples": [
+      "τ²-bench 的验证器为四层检查按 `reward_basis` 聚合为二元。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-8-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-8",
+        "title": "验证器",
+        "lineStart": 222,
+        "lineEnd": 231,
+        "contentHash": "sha256:487971ec890330d69556f717d960357aa54963ea25795d771602d42d699cd086"
+      }
+    ],
+    "evidenceQuote": "Agent 很容易写一篇洋洋洒洒的报告，说任务已经全部完成，但事实上根本没有完成。评估框架必须核实机器可独立复核的事实，而非 Agent 的自我陈述。",
+    "statement": "评估框架必须核实机器可独立复核的事实，而非 Agent 的自我陈述。",
+    "rationale": "Agent 很容易写一篇洋洋洒洒的报告，说任务已经全部完成，但事实上根本没有完成。",
+    "appliesWhen": "评估 Agent 任务完成情况时。",
+    "violation": "以 Agent 的自我陈述作为完成依据，而未核实机器可独立复核的事实。",
+    "chapterRef": "chapter7-h3-8"
+  },
+  {
+    "id": "CHAPTER7-H3-8-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-8",
+        "title": "验证器",
+        "lineStart": 222,
+        "lineEnd": 231,
+        "contentHash": "sha256:487971ec890330d69556f717d960357aa54963ea25795d771602d42d699cd086"
+      }
+    ],
+    "evidenceQuote": "**SWE-bench Verified 将 “修复完成” 拆解为两个独立命题。** 一组是 FAIL\\_TO\\_PASS：修复前失败、修复后通过，证明问题确已解决；另一组是 PASS\\_TO\\_PASS：修复前后均通过，证明未引入新的缺陷。只检验前者，Agent 可以通过删改妨碍通过的断言蒙混；只检验后者，则等同于未作检验。两组同时检验，才使 “已修复” 与 “未破坏” 成为两个各自可证的结论。它还额外确认测试自身的稳定性，排除时而通过时而失败的不稳定测试（flaky test）。",
+    "statement": "SWE-bench Verified 将“修复完成”拆解为两个独立命题：FAIL_TO_PASS 证明问题确已解决，PASS_TO_PASS 证明未引入新的缺陷；评估时必须同时检验这两组命题，并额外确认测试稳定性。",
+    "rationale": "只检验前者，Agent 可以通过删改妨碍通过的断言蒙混；只检验后者，则等同于未作检验；不稳定测试必须排除。",
+    "appliesWhen": "使用 SWE-bench Verified 评估“修复完成”时。",
+    "violation": "只检验其中一组命题，或忽略测试稳定性。",
+    "chapterRef": "chapter7-h3-8"
+  },
+  {
+    "id": "CHAPTER7-H3-9-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-9",
+        "title": "任务的难度划分",
+        "lineStart": 232,
+        "lineEnd": 241,
+        "contentHash": "sha256:916d4978209e5329bb570d62a4bf8072d5777aa3707f36bb227dbfa3e27380a6"
+      }
+    ],
+    "evidenceQuote": "评估任务集需要包括不同难度的任务。这样，当模型能力提升时，评估任务集不会快速过时。",
+    "statement": "评估任务集需要包括不同难度的任务。",
+    "rationale": "这样当模型能力提升时，评估任务集不会快速过时。",
+    "appliesWhen": "设计评估任务集时。",
+    "violation": "评估任务集未包含不同难度时，可能随模型能力提升而快速过时。",
+    "chapterRef": "chapter7-h3-9"
+  },
+  {
+    "id": "CHAPTER7-H3-9-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-9",
+        "title": "任务的难度划分",
+        "lineStart": 232,
+        "lineEnd": 241,
+        "contentHash": "sha256:916d4978209e5329bb570d62a4bf8072d5777aa3707f36bb227dbfa3e27380a6"
+      }
+    ],
+    "evidenceQuote": "GAIA 全套 466 题分为三级难度，Level 1 只需一至两个工具（人类 93.9%，GPT-4 30.3%），Level 2 需要多步思考（91.8% 对 9.7%），Level 3 需要复杂组合（87.3% 对 0%）。这一分层不止标注难度，更具备诊断价值：Level 1 失败指向基础工具使用，Level 2 指向多步规划与信息整合，Level 3 指向长序列思考与复杂性管理，三者对应的改进方向各不相同。",
+    "canonicalTerm": "GAIA 三级难度",
+    "aliases": [],
+    "definition": "GAIA 全套 466 题分为三级难度：Level 1 只需一至两个工具，Level 2 需要多步思考，Level 3 需要复杂组合；该分层具有诊断价值，不同级别的失败指向不同的改进方向。",
+    "examples": [
+      "Level 1 失败指向基础工具使用",
+      "Level 2 失败指向多步规划与信息整合",
+      "Level 3 失败指向长序列思考与复杂性管理"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-10-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-10",
+        "title": "数据泄漏防范",
+        "lineStart": 242,
+        "lineEnd": 249,
+        "contentHash": "sha256:4d3803f454be06e57d6195795b890087f19b35c8f7e7d3e59871bf2f2f59636c"
+      }
+    ],
+    "evidenceQuote": "**GAIA 使答案无法从互联网直接检索。** 它的任务概念简单而路径开放，例如从某一特定日期的 NASA 每日天文图片出发，识别图中宇航员，查出其所属的宇航员组，再计算该组中在太空停留时间最短者，并严格按 “姓氏，分号分隔，千位分隔符” 的格式输出。答案高度具体，正确与否通过精确字符串匹配判定。防泄漏依靠两点：其一，问题必须组合多个信息源才能作答，单一网页无法直接给出答案；其二，部分任务配有专门制作的附件（互联网上不存在的 PDF、音频、图片）。",
+    "canonicalTerm": "GAIA",
+    "aliases": [],
+    "definition": "GAIA 使答案无法从互联网直接检索；其任务概念简单而路径开放，答案高度具体，正确与否通过精确字符串匹配判定。其防泄漏依靠问题组合多个信息源才能作答、单一网页无法直接给出答案，以及部分任务配有互联网上不存在的专门附件。",
+    "examples": [
+      "从某一特定日期的 NASA 每日天文图片出发，识别图中宇航员，查出其所属的宇航员组，再计算该组中在太空停留时间最短者，并严格按 “姓氏，分号分隔，千位分隔符” 的格式输出"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-10-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-10",
+        "title": "数据泄漏防范",
+        "lineStart": 242,
+        "lineEnd": 249,
+        "contentHash": "sha256:4d3803f454be06e57d6195795b890087f19b35c8f7e7d3e59871bf2f2f59636c"
+      }
+    ],
+    "evidenceQuote": "**AndroidWorld 以单个模板派生大量实例。** 其任务并非静态文本，而是可动态实例化的模板，例如 “将联系人 `[CONTACT_NAME]` 的电话改为 `[NEW_PHONE]`”，每次评估随机生成参数值。这带来三方面收益：参数每次不同，回放固定操作序列失效；单个模板可生成近乎无限的实例；固定部分参数、只改变其余参数，可精确测量特定因素的影响。",
+    "canonicalTerm": "AndroidWorld",
+    "aliases": [],
+    "definition": "AndroidWorld 以单个模板派生大量实例，其任务为可动态实例化的模板，每次评估随机生成参数值；这带来参数每次不同使回放固定操作序列失效、单个模板可生成近乎无限实例、固定部分参数只改变其余参数可精确测量特定因素影响三方面收益。",
+    "examples": [
+      "将联系人 [CONTACT_NAME] 的电话改为 [NEW_PHONE]"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-11-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-11",
+        "title": "质量控制与长期维护",
+        "lineStart": 250,
+        "lineEnd": 273,
+        "contentHash": "sha256:215e7e98335f00935e793eb0c4022a166c7eb0ffa43d5e78761a8be6ecd79d3f"
+      }
+    ],
+    "evidenceQuote": "其一，**任务指令过于笼统，导致答案可被猜测**。初版的任务指令写得宽泛，模型无需真正澄清需求，凭常识推测一套流程也能通过。τ²-bench 将剧本拆分为 `known_info` 与 `task_instructions` 两栏：前者界定用户知悉的范围，后者规定透露方式。用户不知悉的信息 Agent 无从推测，只能通过查询获得。",
+    "statement": "用户不知悉的信息 Agent 无从推测，只能通过查询获得。",
+    "rationale": "任务指令过于笼统会导致答案可被猜测；初版任务指令写得宽泛，模型凭常识推测流程也能通过。",
+    "appliesWhen": "将任务剧本拆分为 known_info 与 task_instructions，以区分用户知悉范围与透露方式时。",
+    "violation": "任务指令写得宽泛，允许模型凭常识推测流程也能通过。",
+    "chapterRef": "chapter7-h3-11"
+  },
+  {
+    "id": "CHAPTER7-H3-11-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-11",
+        "title": "质量控制与长期维护",
+        "lineStart": 250,
+        "lineEnd": 273,
+        "contentHash": "sha256:215e7e98335f00935e793eb0c4022a166c7eb0ffa43d5e78761a8be6ecd79d3f"
+      }
+    ],
+    "evidenceQuote": "其二，**成功条件不够精确，导致验证误判**。“网络已恢复” 这类条件缺乏可核实的边界。τ²-bench 将其改为 “测速结果为 excellent 才算解决，poor、fair、good 均不接受”。这一改动针对的是**敷衍性修复**，即压制症状而不解决根因。",
+    "statement": "成功条件应精确到可核实边界；例如用“测速结果为 excellent 才算解决”替代“网络已恢复”这类条件。",
+    "rationale": "“网络已恢复”这类条件缺乏可核实的边界，导致验证误判；这一改动针对的是敷衍性修复，即压制症状而不解决根因。",
+    "appliesWhen": "定义评估任务的成功条件或验证标准时。",
+    "violation": "使用“网络已恢复”这类缺乏可核实边界的条件作为成功条件。",
+    "chapterRef": "chapter7-h3-11"
+  },
+  {
+    "id": "CHAPTER7-H3-12-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-12",
+        "title": "评估集的三个来源",
+        "lineStart": 274,
+        "lineEnd": 287,
+        "contentHash": "sha256:0c01233fa2592258dbe0f542cbf84380a4a72c68caa281af61334bb3aa60ee7e"
+      }
+    ],
+    "evidenceQuote": "生产环境中的评估集通常有三个来源。\n\n**公开基准**用于粗筛模型与借鉴设计手法，一般不用于产品决策。它的任务分布与实际业务的任务分布并不一致，在 GAIA 上提升两个百分点，与退款成功率之间不存在必然关系。\n\n**自建业务集**覆盖真实的任务分布，可以作为模型选型、Harness 设计决策的依据。例如，τ²-bench 可以作为需要仿真用户的评估系统骨架，替换领域数据与工具集即可。\n\n**生产轨迹回流**来自线上的真实失败用例：用户明确纠正、用户点踩，以及事后通过状态检查、规则验证器或 LLM 评审发现的问题案例，经失败归因后沉淀为回归用例。具体做法见后文 “失败归因” 与 “端到端回归任务与轨迹前缀回归任务” 两节。这一来源成本最高，准确性也最高，因为它直接来自用户实际遇到的问题。",
+    "canonicalTerm": "评估集的三个来源",
+    "aliases": [],
+    "definition": "生产环境中的评估集通常有三个来源：公开基准用于粗筛模型与借鉴设计手法，一般不用于产品决策；自建业务集覆盖真实的任务分布，可作为模型选型与 Harness 设计决策的依据；生产轨迹回流来自线上真实失败用例（用户明确纠正、用户点踩及事后检查发现的问题案例），经失败归因后沉淀为回归用例，成本最高、准确性最高。",
+    "examples": [
+      "τ²-bench 可以作为需要仿真用户的评估系统骨架，替换领域数据与工具集即可。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H2-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-5",
+        "title": "自动化评估方法",
+        "lineStart": 288,
+        "lineEnd": 303,
+        "contentHash": "sha256:416f0c3a208f3f3ae4a4f5b87354d71db4f273d2df2c94d92ab2a1dc99344598"
+      }
+    ],
+    "evidenceQuote": "前面几节讨论的基准测试有一个共同点：验证器几乎都是确定性的。SWE-bench 运行测试套件，AndroidWorld 断言最终 UI 状态，GAIA 做精确字符串匹配，τ²-bench 的四层检查同样全部由代码执行。这一选择有充分理由：确定性验证不引入额外的模型开销，结果完全可复现，可以像单元测试一样纳入持续集成，也便于在不同模型之间排名。",
+    "canonicalTerm": "确定性验证",
+    "aliases": [],
+    "definition": "由代码执行、结果可复现且不引入额外模型开销的验证方式，可像单元测试一样纳入持续集成，并便于在不同模型之间排名。",
+    "examples": [
+      "SWE-bench 运行测试套件",
+      "AndroidWorld 断言最终 UI 状态",
+      "GAIA 做精确字符串匹配",
+      "τ²-bench 的四层检查"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H2-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-5",
+        "title": "自动化评估方法",
+        "lineStart": 288,
+        "lineEnd": 303,
+        "contentHash": "sha256:416f0c3a208f3f3ae4a4f5b87354d71db4f273d2df2c94d92ab2a1dc99344598"
+      }
+    ],
+    "evidenceQuote": "需要说明的是，向右移动并不意味着放弃左侧。凡是能写成程序化断言的检查都应当继续用断言，LLM 评判只用于确实无法机械判定的维度。确定性检查更便宜、更稳定，也更适合作为回归测试长期运行。",
+    "statement": "凡是能写成程序化断言的检查都应当继续用断言，LLM 评判只用于确实无法机械判定的维度。",
+    "rationale": "确定性检查更便宜、更稳定，也更适合作为回归测试长期运行。",
+    "appliesWhen": "当检查可以写成程序化断言时。",
+    "violation": "对可以写成程序化断言的检查使用 LLM 评判。",
+    "chapterRef": "chapter7-h2-5"
+  },
+  {
+    "id": "CHAPTER7-H3-13-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-13",
+        "title": "LLM-as-a-Judge：自动化评估的核心",
+        "lineStart": 304,
+        "lineEnd": 433,
+        "contentHash": "sha256:bd3e07ff313691c8d8eeca0804f71fdcad1d489122d0124bd1eedfcaf870ac9a"
+      }
+    ],
+    "evidenceQuote": "（4）**评价标准自包含**——每个评价项独立可操作，不依赖评价者的领域知识。要避免“回应展示了深刻理解”这种抽象标准，改为“引用了至少两个权威理论并准确解释如何支持结论”这种可验证的标准。",
+    "statement": "Rubric 的每个评价项都应独立可操作、不依赖评价者领域知识，并用可验证的具体标准取代无法客观判定的抽象描述。",
+    "rationale": "“回应展示了深刻理解”这类抽象标准缺少可验证的判定条件，而“引用了至少两个权威理论并准确解释如何支持结论”提供了可客观判断的具体行为。",
+    "appliesWhen": "设计 Rubric 评价项时。",
+    "violation": "在 Rubric 中使用“回应展示了深刻理解”这类抽象标准，而未给出可验证的具体行为。",
+    "chapterRef": "chapter7-h3-13"
+  },
+  {
+    "id": "CHAPTER7-H3-13-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-13",
+        "title": "LLM-as-a-Judge：自动化评估的核心",
+        "lineStart": 304,
+        "lineEnd": 433,
+        "contentHash": "sha256:bd3e07ff313691c8d8eeca0804f71fdcad1d489122d0124bd1eedfcaf870ac9a"
+      }
+    ],
+    "evidenceQuote": "（3）**按重要性加权**——分为必要项（Essential）、重要项、可选项、陷阱项。支持**一票否决机制（Veto）**：比如在客服场景中，幻觉（编造虚假信息）是典型的否决维度——无论其他维度表现多优秀，只要出现虚假信息就必须否决。这也有助于防范关键词堆砌式的奖励作弊。",
+    "statement": "Rubric 应按重要性加权，并将幻觉（编造虚假信息）等高风险错误设为一票否决项；一旦触发，无论其他维度表现多优秀都必须否决。",
+    "rationale": "防止关键词堆砌式的奖励作弊，并确保高风险错误不会被其他维度的高分掩盖。",
+    "appliesWhen": "设计客服等场景的 Rubric，且存在幻觉（编造虚假信息）等高风险错误时。",
+    "violation": "存在虚假信息时，评分仍可因其他维度高分而通过，未设一票否决项。",
+    "chapterRef": "chapter7-h3-13"
+  },
+  {
+    "id": "CHAPTER7-H3-14-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-14",
+        "title": "失败归因：从整条轨迹定位首个错误",
+        "lineStart": 434,
+        "lineEnd": 463,
+        "contentHash": "sha256:80eb1b35be0c52408b636c9de3eefb11afbe2738254ed9bcc40d49160ff1a1d3"
+      }
+    ],
+    "evidenceQuote": "**归因标注 Agent 可以利用 LLM 规模化完成大量生产轨迹的根因分析**，但不能只输出一句 “失败原因”。**归因记录需要结构化**，可以采用 JSON 或 YAML 文档格式，并引用具体的步骤号、工具名和观察证据；同时还要区分根因与后果、判断是否可恢复并给出置信度。",
+    "statement": "归因记录需要结构化，可以采用 JSON 或 YAML 文档格式，并引用具体的步骤号、工具名和观察证据；同时还要区分根因与后果、判断是否可恢复并给出置信度，不能只输出一句“失败原因”。",
+    "rationale": "归因标注 Agent 可以利用 LLM 规模化完成大量生产轨迹的根因分析，但不能只输出一句“失败原因”。",
+    "appliesWhen": "当归因标注 Agent 对生产轨迹进行根因分析并输出归因记录时。",
+    "violation": "只输出一句“失败原因”，未采用结构化记录，或未引用步骤号、工具名和观察证据，或未区分根因与后果、判断是否可恢复并给出置信度。",
+    "chapterRef": "chapter7-h3-14"
+  },
+  {
+    "id": "CHAPTER7-H3-14-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-14",
+        "title": "失败归因：从整条轨迹定位首个错误",
+        "lineStart": 434,
+        "lineEnd": 463,
+        "contentHash": "sha256:80eb1b35be0c52408b636c9de3eefb11afbe2738254ed9bcc40d49160ff1a1d3"
+      }
+    ],
+    "evidenceQuote": "在保存归因记录时，除了 LLM 输出的记录，还应把任务目标、环境状态、Agent 版本、工具集版本和完整的 Agent 轨迹一起保存，以便进行回归测试。",
+    "statement": "在保存归因记录时，除了 LLM 输出的记录，还应把任务目标、环境状态、Agent 版本、工具集版本和完整的 Agent 轨迹一起保存。",
+    "rationale": "以便进行回归测试。",
+    "appliesWhen": "保存归因记录时。",
+    "violation": "只保存 LLM 输出的归因记录，未保存任务目标、环境状态、Agent 版本、工具集版本和完整的 Agent 轨迹。",
+    "chapterRef": "chapter7-h3-14"
+  },
+  {
+    "id": "CHAPTER7-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h4-1",
+        "title": "“做对了但说错了” 问题",
+        "lineStart": 464,
+        "lineEnd": 483,
+        "contentHash": "sha256:d6e71c33722d180927d156696e2877f942f8d796ea5b7a6fca578f758d679442"
+      }
+    ],
+    "evidenceQuote": "“做对了但说错了” 问题容易被整体成功率掩盖，因为多数评估只检查环境状态。在 τ²-bench 公开的基线结果中，带有信息告知要求的 704 次运行共失败 240 次，其中 162 次的信息告知出错；有 80 次（占全部失败的三分之一）的环境状态正确，但信息告知错误。",
+    "canonicalTerm": "“做对了但说错了” 问题",
+    "aliases": [],
+    "definition": "环境状态正确但信息告知错误，且容易被只检查环境状态的整体成功率掩盖。",
+    "examples": [
+      "τ²-bench 基线中，有 80 次（占全部失败的三分之一）环境状态正确但信息告知错误"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h4-1",
+        "title": "“做对了但说错了” 问题",
+        "lineStart": 464,
+        "lineEnd": 483,
+        "contentHash": "sha256:d6e71c33722d180927d156696e2877f942f8d796ea5b7a6fca578f758d679442"
+      }
+    ],
+    "evidenceQuote": "第二步：定位首个错误。为每条轨迹标出首错步号，并注明它是一次工具调用还是一条 assistant message。静默失败要靠两种办法定位：一是事实锚点比对，把 Agent 的陈述与工具返回值逐步对齐，取首次背离；二是轨迹前缀二分，把轨迹截到第 k 步交给人接手，能救回来说明错误在 k 之后。不能用搜索报错关键字代替。",
+    "statement": "定位静默失败的首个错误时，不能用搜索报错关键字代替，而应使用事实锚点比对或轨迹前缀二分。",
+    "rationale": "静默失败需要靠事实锚点比对或轨迹前缀二分定位，搜索报错关键字不能代替。",
+    "appliesWhen": "定位静默失败的首个错误时。",
+    "violation": "仅用搜索报错关键字定位静默失败的首个错误。",
+    "chapterRef": "chapter7-h4-1"
+  },
+  {
+    "id": "CHAPTER7-H4-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h4-2",
+        "title": "作用域敏感的文档格式错误",
+        "lineStart": 484,
+        "lineEnd": 501,
+        "contentHash": "sha256:3601c3819eb0891c4e23aaf01b1b30aa6b8a89c089d1c0c788e17876bf30170a"
+      }
+    ],
+    "evidenceQuote": "用户说“引号格式不对”时，不能直接把它转成全局字符替换。至少要区分 ASCII 直引号（`\"`、`'`）、中文弯引号（`“”`、`‘’`）和 Markdown 反引号（`` ` ``）。同一字符在中文自然语言、英文原文、行内代码、代码块、代码注释、JSON 和路径中承担的语法角色不同。",
+    "statement": "处理用户报告的引号格式问题时，不能直接做全局字符替换；至少要区分 ASCII 直引号、中文弯引号和 Markdown 反引号，并按作用域处理。",
+    "rationale": "同一字符在中文自然语言、英文原文、行内代码、代码块、代码注释、JSON 和路径中承担的语法角色不同。",
+    "appliesWhen": "用户报告文档中的引号格式不对时。",
+    "violation": "直接对引号格式问题做全局字符替换，不区分引号类型和作用域。",
+    "chapterRef": "chapter7-h4-2"
+  },
+  {
+    "id": "CHAPTER7-H4-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:06:53.047Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:06:53.047Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h4-2",
+        "title": "作用域敏感的文档格式错误",
+        "lineStart": 484,
+        "lineEnd": 501,
+        "contentHash": "sha256:3601c3819eb0891c4e23aaf01b1b30aa6b8a89c089d1c0c788e17876bf30170a"
+      }
+    ],
+    "evidenceQuote": "规则无法确定作用域时，应允许模型保留原文并请求澄清，而不是把猜测性修改算作通过。",
+    "statement": "当规则无法确定作用域时，应允许模型保留原文并请求澄清，而不是把猜测性修改算作通过。",
+    "rationale": "避免把猜测性修改算作通过。",
+    "appliesWhen": "规则无法确定文档格式修改的作用域时。",
+    "violation": "在规则无法确定作用域时，把猜测性修改算作通过，或不允许模型请求澄清。",
+    "chapterRef": "chapter7-h4-2"
+  },
+  {
+    "id": "CHAPTER7-H4-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h4-3",
+        "title": "精确复制错误：从 `old_string` mismatch 到逐层定位",
+        "lineStart": 502,
+        "lineEnd": 512,
+        "contentHash": "sha256:079d1cc26d1b2f57668a2e88d2e35a2dfb092740daf7e248c9ca74de393417ae"
+      }
+    ],
+    "evidenceQuote": "`old_string` 失败也不能只归因于“模型抄错了”。应对同一个字符串保存原始字节哈希、Unicode code point 序列和 tokenizer token ID 序列，沿以下链路寻找首个差异：",
+    "statement": "定位 `old_string` 失败时，应保存原始字节哈希、Unicode code point 序列和 tokenizer token ID 序列，并沿链路寻找首个差异。",
+    "rationale": "不能只把 `old_string` 失败归因于“模型抄错了”。",
+    "appliesWhen": "当 `old_string` 失败时。",
+    "violation": "只把 `old_string` 失败归因于“模型抄错了”，未沿链路定位首个差异。",
+    "chapterRef": "chapter7-h4-3"
+  },
+  {
+    "id": "CHAPTER7-H4-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h4-3",
+        "title": "精确复制错误：从 `old_string` mismatch 到逐层定位",
+        "lineStart": 502,
+        "lineEnd": 512,
+        "contentHash": "sha256:079d1cc26d1b2f57668a2e88d2e35a2dfb092740daf7e248c9ca74de393417ae"
+      }
+    ],
+    "evidenceQuote": "若模型在直接探针测试中输出正确而工具调用失败，应修复 tokenizer、序列化、Harness 或工具协议；只有首个差异出现在模型输出时，才把该案例转成第八章的复制训练数据。",
+    "statement": "若模型在直接探针测试中输出正确而工具调用失败，应修复 tokenizer、序列化、Harness 或工具协议；只有首个差异出现在模型输出时，才把该案例转成第八章的复制训练数据。",
+    "rationale": "直接探针测试输出正确而工具调用失败时，应修复 tokenizer、序列化、Harness 或工具协议。",
+    "appliesWhen": "模型在直接探针测试中输出正确而工具调用失败时。",
+    "violation": "在首个差异未出现在模型输出时，仍把该案例转成第八章的复制训练数据。",
+    "chapterRef": "chapter7-h4-3"
+  },
+  {
+    "id": "CHAPTER7-H3-15-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-15",
+        "title": "端到端回归任务与轨迹前缀回归任务",
+        "lineStart": 513,
+        "lineEnd": 538,
+        "contentHash": "sha256:9b0628e020a5f819154613fe5a8742a7aab26dce1ce47e47ebad914329965940"
+      }
+    ],
+    "evidenceQuote": "**端到端回归任务**从初始状态和用户请求开始，让 Agent 完成整个任务，并检查最终状态、必要输出和安全条件。它最接近生产结果，却难以判断失败究竟发生在哪一步。一般来说，端到端回归任务用于验证 Agent 在各个领域的能力符合预期。本章所述的 OSWorld、AndroidWorld、tau-bench 等标准评测集都是端到端回归任务。",
+    "canonicalTerm": "端到端回归任务",
+    "aliases": [],
+    "definition": "从初始状态和用户请求开始，让 Agent 完成整个任务，并检查最终状态、必要输出和安全条件的回归任务。",
+    "examples": [
+      "OSWorld",
+      "AndroidWorld",
+      "tau-bench"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-15-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-15",
+        "title": "端到端回归任务与轨迹前缀回归任务",
+        "lineStart": 513,
+        "lineEnd": 538,
+        "contentHash": "sha256:9b0628e020a5f819154613fe5a8742a7aab26dce1ce47e47ebad914329965940"
+      }
+    ],
+    "evidenceQuote": "**轨迹前缀回归任务**把已有的上下文、对话、工具返回和环境状态冻结下来，只要求 Agent 思考并执行下一步或下几步可观察动作，成本更低，也能隔离单个策略或工具问题。\n\n轨迹前缀回归任务的答案应定义为**可接受动作集合**，而不是唯一的动作或答案：可以要求 “先读仓库规则” “先询问用户” 或 “拒绝危险操作”，同时列出禁止动作。",
+    "canonicalTerm": "轨迹前缀回归任务",
+    "aliases": [],
+    "definition": "把已有的上下文、对话、工具返回和环境状态冻结下来，只要求 Agent 思考并执行下一步或下几步可观察动作的回归任务，其答案定义为可接受动作集合而非唯一动作或答案。",
+    "examples": [
+      "先读仓库规则",
+      "先询问用户",
+      "拒绝危险操作"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-16-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-16",
+        "title": "配对比较与模型排名",
+        "lineStart": 539,
+        "lineEnd": 557,
+        "contentHash": "sha256:5ece24431cd91312dd0eb9230c61fedc9f7b4bf5207aae51877601cf07e83932"
+      }
+    ],
+    "evidenceQuote": "**Elo 评分**（一种最初用于国际象棋的排名系统）通过大量的两两对决来量化模型的相对能力：分差越大，强者的预期胜率越高。例如，模型 A 得分 1200、模型 B 得分 1000，Elo 系统会预测 A 的胜率约 76%。如果 B 意外获胜，B 加分较多、A 减分较多——爆冷的结果会带来更大的分数调整，这种机制让排名快速收敛到真实水平。其背后的统计基础是 **Bradley-Terry 模型**：将每个模型抽象为一个潜在的“实力分数”，两两对决胜负的概率由两者分数差决定，Elo 则是该模型在线更新形式的一种工程实现。",
+    "canonicalTerm": "Elo 评分",
+    "aliases": [
+      "Elo"
+    ],
+    "definition": "一种通过大量的两两对决来量化模型相对能力的排名系统；分差越大，强者的预期胜率越高，其统计基础为 Bradley-Terry 模型。",
+    "examples": [
+      "模型 A 得分 1200、模型 B 得分 1000 时，Elo 系统会预测 A 的胜率约 76%。",
+      "如果 B 意外获胜，B 加分较多、A 减分较多，爆冷的结果会带来更大的分数调整。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-16-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-16",
+        "title": "配对比较与模型排名",
+        "lineStart": 539,
+        "lineEnd": 557,
+        "contentHash": "sha256:5ece24431cd91312dd0eb9230c61fedc9f7b4bf5207aae51877601cf07e83932"
+      }
+    ],
+    "evidenceQuote": "当配对评判由 LLM 而非人类投票完成时，还要防范**位置偏差（Position Bias）**——评判模型会系统性地偏向出现在某个位置（通常是先出现）的候选，即使两个候选的内容完全对调，判决也可能不变。标准的缓解方法是**交换顺序各评一次**：A 在前评一次、B 在前再评一次，取两次结果的平均；更严格的做法是只有两次判决一致时才计入，不一致则记为平局或送人工复核。",
+    "statement": "当配对评判由 LLM 而非人类投票完成时，标准缓解位置偏差的方法是交换顺序各评一次，取两次结果的平均；更严格的做法是只有两次判决一致时才计入，不一致则记为平局或送人工复核。",
+    "rationale": "LLM 评判存在位置偏差，会系统性地偏向先出现的候选，即使两个候选的内容完全对调，判决也可能不变。",
+    "appliesWhen": "配对评判由 LLM 而非人类投票完成时。",
+    "violation": "未采用交换顺序评估时，可能保留位置偏差，使判决系统性地偏向先出现的候选，即使内容对调也可能不变。",
+    "chapterRef": "chapter7-h3-16"
+  },
+  {
+    "id": "CHAPTER7-H2-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-6",
+        "title": "评估驱动的模型选型",
+        "lineStart": 558,
+        "lineEnd": 561,
+        "contentHash": "sha256:c116580655ed8050e479ecfc1d111c85f50b3a374e6dcf758b66aa7cb8a99d25"
+      }
+    ],
+    "evidenceQuote": "模型选择不是简单地“选最强的模型”，而是要根据应用场景和评估结果在多个维度之间作出权衡。",
+    "statement": "模型选择不是简单地“选最强的模型”，而是要根据应用场景和评估结果在多个维度之间作出权衡。",
+    "rationale": "模型选择需要在应用场景和评估结果等多个维度之间作出权衡，而不是只依据“最强模型”这一单一维度。",
+    "appliesWhen": "进行模型选择时。",
+    "violation": "在模型选择时简单选择最强的模型，而不结合应用场景和评估结果进行多维度权衡。",
+    "chapterRef": "chapter7-h2-6"
+  },
+  {
+    "id": "CHAPTER7-H3-17-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-17",
+        "title": "选型的关键维度",
+        "lineStart": 562,
+        "lineEnd": 582,
+        "contentHash": "sha256:1540584a5c99c4319820ea67844af2f4fe68a2ca912f385ac2a80efb846ba31b"
+      }
+    ],
+    "evidenceQuote": "**吞吐量**与**延迟**是两组容易混淆的指标，理清它们只需知道大模型推理分两个阶段。**Prefill（预填充）** 一次性读入完整上下文，决定用户按下回车到第一个字出现的**首字延迟**（业内用 **TTFT**，Time To First Token 度量）——上下文越长 prefill 越慢、TTFT 越大。**Decode（解码）** 随后逐 token 生成回答，决定后续出字速度（tokens/秒），也直接决定思考时长：一个 50 tokens/s 的模型生成 2000 个思考 token，光思考就要 40 秒。",
+    "canonicalTerm": "Prefill 与 Decode",
+    "aliases": [
+      "预填充",
+      "解码"
+    ],
+    "definition": "大模型推理分两个阶段：Prefill 一次性读入完整上下文，决定首字延迟（TTFT）；Decode 随后逐 token 生成回答，决定后续出字速度并直接决定思考时长。",
+    "examples": [
+      "上下文越长，prefill 越慢、TTFT 越大",
+      "一个 50 tokens/s 的模型生成 2000 个思考 token，光思考就要 40 秒"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-17-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-17",
+        "title": "选型的关键维度",
+        "lineStart": 562,
+        "lineEnd": 582,
+        "contentHash": "sha256:1540584a5c99c4319820ea67844af2f4fe68a2ca912f385ac2a80efb846ba31b"
+      }
+    ],
+    "evidenceQuote": "- **思考延迟**：不同模型生成的思考 token 数差异可达数倍，且思考长度与任务效果不一定正相关。应在自己的工作负载上实测各模型的思考 token 用量和对应收益，而非仅凭公开榜单推断。",
+    "statement": "评估思考延迟时，应在自己的工作负载上实测各模型的思考 token 用量和对应收益，而非仅凭公开榜单推断。",
+    "rationale": "不同模型生成的思考 token 数差异可达数倍，且思考长度与任务效果不一定正相关。",
+    "appliesWhen": "评估模型思考延迟及思考 token 用量与对应收益时",
+    "violation": "仅凭公开榜单推断各模型的思考 token 用量和对应收益",
+    "chapterRef": "chapter7-h3-17"
+  },
+  {
+    "id": "CHAPTER7-H3-18-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-18",
+        "title": "模型的行为策略",
+        "lineStart": 583,
+        "lineEnd": 598,
+        "contentHash": "sha256:097ba2c46f100bf9fed95f4b4c573d974695f0526c5e59349034d85074a0a565"
+      }
+    ],
+    "evidenceQuote": "Coding Agent 中一个很容易观察到的差异是行动阈值：**面对同一个代码任务，有的模型会先广泛探索仓库再修改；有的模型则凭较少的局部证据快速定位，先改再用测试反馈补齐认识**。前者把过早修改的风险估得更高，后者把 “再读一个文件” 的机会成本估得更高。",
+    "canonicalTerm": "行动阈值",
+    "aliases": [],
+    "definition": "Coding Agent 中可观察到的模型差异，表现为面对同一个代码任务时，不同模型在修改前探索程度不同：有的先广泛探索仓库再修改，有的凭较少的局部证据快速定位、先改再用测试反馈补齐认识。",
+    "examples": [
+      "有的模型会先广泛探索仓库再修改",
+      "有的模型则凭较少的局部证据快速定位，先改再用测试反馈补齐认识"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-18-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-18",
+        "title": "模型的行为策略",
+        "lineStart": 583,
+        "lineEnd": 598,
+        "contentHash": "sha256:097ba2c46f100bf9fed95f4b4c573d974695f0526c5e59349034d85074a0a565"
+      }
+    ],
+    "evidenceQuote": "因果判断：中性实验回答 “同一 Harness 下，行为是否随模型变化”。如需测 Harness 的调节作用，再用 `--policy explore-first` 单独跑一组；不要把两种 policy 混在同一模型比较里。若更换模型时行为改变、而同一模型跨 Harness 保持倾向，则证据更支持模型效应；反之则更支持 Harness 效应。",
+    "statement": "如需测 Harness 的调节作用，再用 `--policy explore-first` 单独跑一组；不要把两种 policy 混在同一模型比较里。",
+    "rationale": "若更换模型时行为改变、而同一模型跨 Harness 保持倾向，则证据更支持模型效应；反之则更支持 Harness 效应。",
+    "appliesWhen": "需要测 Harness 的调节作用时",
+    "violation": "把两种 policy 混在同一模型比较里",
+    "chapterRef": "chapter7-h3-18"
+  },
+  {
+    "id": "CHAPTER7-H3-19-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-19",
+        "title": "Agent 系统的成本分析",
+        "lineStart": 599,
+        "lineEnd": 645,
+        "contentHash": "sha256:113f21fc386e5cf3f6f0b5dc20e26daefe5af6237856c65fbd0d34e7c626f516"
+      }
+    ],
+    "evidenceQuote": "一是**上下文累积效应**：Agent 每轮调用 LLM 时，都会把之前所有的对话历史和工具返回结果一起发送（这样模型才能理解上下文）。如果没有利用好 KV Cache（即缓存已处理过的上下文，避免重复计算），成本增长会非常快——第 1 轮发送 1000 token，第 2 轮发送 2000 token，第 3 轮发送 3000 token，总量是 1000+2000+3000=6000 而非 3×1000=3000，轮次越多差距越大。",
+    "canonicalTerm": "上下文累积效应",
+    "aliases": [],
+    "definition": "Agent 每轮调用 LLM 时会把之前所有对话历史和工具返回结果一起发送；若未利用 KV Cache 复用已处理上下文，输入 token 会逐轮累积，成本增长快于按轮次线性计算。",
+    "examples": [
+      "第 1 轮发送 1000 token，第 2 轮发送 2000 token，第 3 轮发送 3000 token，总量是 1000+2000+3000=6000 而非 3×1000=3000。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-19-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-19",
+        "title": "Agent 系统的成本分析",
+        "lineStart": 599,
+        "lineEnd": 645,
+        "contentHash": "sha256:113f21fc386e5cf3f6f0b5dc20e26daefe5af6237856c65fbd0d34e7c626f516"
+      }
+    ],
+    "evidenceQuote": "不过，“仅稳定前缀”已经节省 28.3%，“仅压缩历史”又节省 17.5%，两者一起却只节省 30%，并不是二者相加。原因是压缩历史的同时，也缩短了可以命中缓存的前缀。因此，**几项上下文优化同时使用时，必须在完整任务中一起实测，不能把各自的节省比例直接相加。**",
+    "statement": "几项上下文优化同时使用时，必须在完整任务中一起实测，不能把各自的节省比例直接相加。",
+    "rationale": "压缩历史会同时缩短可命中缓存的前缀，导致各项优化的节省比例相互抵消，因此总体节省不是各单项节省比例之和。",
+    "appliesWhen": "同时使用多项上下文优化（如稳定前缀与压缩历史）并评估总成本节省时。",
+    "violation": "把各项优化单独节省比例直接相加作为合计节省。",
+    "chapterRef": "chapter7-h3-19"
+  },
+  {
+    "id": "CHAPTER7-H3-20-DECISIONMODEL-01",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-20",
+        "title": "评估驱动的持续迭代",
+        "lineStart": 646,
+        "lineEnd": 671,
+        "contentHash": "sha256:301ffaa9dde13f6cd3cd352b54dcab93577d5b75794903f480b52cf1a3660270"
+      }
+    ],
+    "evidenceQuote": "拥有完善评估体系的团队可以在数小时内给出答案：在自己的评估数据集上运行新模型，对比任务成功率、工具调用正确率、延迟和成本。你可能会发现新模型在简单任务上确实更优且更便宜，但在涉及复杂多轮工具编排的核心场景中，成功率反而下降了 5%——在确认这一差异超出噪声带宽之后（见下文 “评估结果的统计显著性”），你的决策就变成了 “简单任务迁移到新模型以降低成本，复杂任务保留原模型以确保质量” 的差异化策略，而非盲目的全量切换。",
+    "inputs": [
+      "任务成功率",
+      "工具调用正确率",
+      "延迟",
+      "成本",
+      "差异是否超出噪声带宽"
+    ],
+    "branches": [
+      {
+        "condition": "新模型在简单任务上确实更优且更便宜",
+        "action": "简单任务迁移到新模型以降低成本"
+      },
+      {
+        "condition": "新模型在涉及复杂多轮工具编排的核心场景中成功率下降超过噪声带宽",
+        "action": "复杂任务保留原模型以确保质量"
+      }
+    ],
+    "outputs": [
+      "简单任务迁移到新模型",
+      "复杂任务保留原模型"
+    ],
+    "unknownPolicy": "不盲目的全量切换，而是根据任务差异采用差异化策略",
+    "stopConditions": [
+      "确认差异超出噪声带宽"
+    ],
+    "reviewState": "candidate"
+  },
+  {
+    "id": "CHAPTER7-H3-20-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-20",
+        "title": "评估驱动的持续迭代",
+        "lineStart": 646,
+        "lineEnd": 671,
+        "contentHash": "sha256:301ffaa9dde13f6cd3cd352b54dcab93577d5b75794903f480b52cf1a3660270"
+      }
+    ],
+    "evidenceQuote": "模型选择不是一次性的决策，而是随着模型演进需要动态调整的持续过程。本章开篇已经提出 “拥有评估体系就能快速跟上模型演进” 这一核心理念，下面用一个具体的模型切换案例，说明这套体系在真实决策中究竟如何运作。",
+    "statement": "模型选择不是一次性的决策，而是随着模型演进需要动态调整的持续过程。",
+    "rationale": "拥有评估体系就能快速跟上模型演进。",
+    "appliesWhen": "当模型演进或需要动态调整模型选择时。",
+    "violation": "将模型选择视为一次性决策，不随模型演进动态调整。",
+    "chapterRef": "chapter7-h3-20"
+  },
+  {
+    "id": "CHAPTER7-H2-7-METRIC-01",
+    "objectType": "Metric",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-7",
+        "title": "评估结果的统计显著性",
+        "lineStart": 672,
+        "lineEnd": 697,
+        "contentHash": "sha256:c3998e2d4ff530b003098a14490b5952616003f6e7efc4e39a5d0f8e15725ff8"
+      }
+    ],
+    "evidenceQuote": "若在 $n$ 个用例上测得成功率 $p$，标准误可粗略估计为：\n\n$$\n\\mathrm{SE}(p)\\approx\\sqrt{\\frac{p(1-p)}{n}}\n$$\n\n例如 100 个用例、成功率 70% 时，95% 置信区间约为 $70\\%\\pm9$ 个百分点",
+    "name": "成功率标准误",
+    "formula": "\\mathrm{SE}(p)\\approx\\sqrt{\\frac{p(1-p)}{n}}",
+    "inputs": [
+      "成功率 p",
+      "用例数 n"
+    ],
+    "unit": "百分点",
+    "window": "评估集上的 n 个用例",
+    "failureModes": []
+  },
+  {
+    "id": "CHAPTER7-H2-7-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-7",
+        "title": "评估结果的统计显著性",
+        "lineStart": 672,
+        "lineEnd": 697,
+        "contentHash": "sha256:c3998e2d4ff530b003098a14490b5952616003f6e7efc4e39a5d0f8e15725ff8"
+      }
+    ],
+    "evidenceQuote": "并行验证多个假设时还要考虑**多重比较**：收紧显著性阈值，或对正向结果做独立复跑。实务上的判断标准很简单：分差要超过噪声、在配对分析中成立，并且能够复现，才值得据此切换模型或发布改动。",
+    "statement": "分差要超过噪声、在配对分析中成立，并且能够复现，才值得据此切换模型或发布改动。",
+    "rationale": "并行验证多个假设时还要考虑多重比较：收紧显著性阈值，或对正向结果做独立复跑。",
+    "appliesWhen": "并行验证多个假设后，需据此决定是否切换模型或发布改动。",
+    "violation": "在分差未超过噪声、未通过配对分析或未能复现时，仍据此切换模型或发布改动。",
+    "chapterRef": "chapter7-h2-7"
+  },
+  {
+    "id": "CHAPTER7-H2-8-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-8",
+        "title": "Agent 的可观测性",
+        "lineStart": 698,
+        "lineEnd": 717,
+        "contentHash": "sha256:1977b9425c64a5f0268ec7bc7a61b0c32259b9040ea8dcf4e946e7b1cc0d4733"
+      }
+    ],
+    "evidenceQuote": "可观测性（Observability）这个概念借自分布式系统领域：你没法直接打开系统内部看它在做什么，只能通过它输出的日志、指标和追踪数据来推断发生了什么，就像医生不能直接看到患者体内的情况，只能通过体温、血压、影像等外部信号来诊断问题。",
+    "canonicalTerm": "可观测性",
+    "aliases": [
+      "Observability"
+    ],
+    "definition": "借自分布式系统领域，无法直接打开系统内部观察，只能通过输出的日志、指标和追踪数据推断发生了什么。",
+    "examples": [
+      "医生无法直接看到患者体内的情况，只能通过体温、血压、影像等外部信号来诊断问题。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H2-8-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-8",
+        "title": "Agent 的可观测性",
+        "lineStart": 698,
+        "lineEnd": 717,
+        "contentHash": "sha256:1977b9425c64a5f0268ec7bc7a61b0c32259b9040ea8dcf4e946e7b1cc0d4733"
+      }
+    ],
+    "evidenceQuote": "Agent 可观测性的数据基础是**追踪（Trace）**，其数据结构直接沿用了分布式系统的 span 树模型：一次任务执行对应一条 trace，其中每个 LLM 调用、每次工具调用、每次检索都是一个 **span**（记录输入输出、起止时间、token 消耗、错误信息的执行单元），span 之间的父子关系构成一棵执行树——比如“Agent 主循环”span 之下挂着若干“LLM 调用”和“工具调用”子 span。",
+    "canonicalTerm": "追踪",
+    "aliases": [
+      "Trace"
+    ],
+    "definition": "一次任务执行对应一条 trace，其中每个 LLM 调用、每次工具调用、每次检索都是一个 span（记录输入输出、起止时间、token 消耗、错误信息的执行单元），span 之间的父子关系构成一棵执行树。",
+    "examples": [
+      "“Agent 主循环”span 之下挂着若干“LLM 调用”和“工具调用”子 span。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H2-9-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-9",
+        "title": "从 Benchmark 报告到系统改进",
+        "lineStart": 718,
+        "lineEnd": 727,
+        "contentHash": "sha256:fad9963cddb5ff6e42d23eeac45d7a17fc3627ca6b45318e7e50f18a0cad96f8"
+      }
+    ],
+    "evidenceQuote": "在开始分析 Benchmark 报告之前，有一条容易被忽视的原则：**看到 Agent 表现下降时，应先检查评测系统本身，再动 Agent**。一个常见误区是看到分数下降就立刻修改 Agent 代码，而忽略了评测系统本身可能先出了问题——基于失真的信号调整方向，修改方向可能从一开始就是错的。评测系统常见的错误来源包括：运行环境的资源不足导致进程被杀（表现为随机失败）、验证器本身有 bug 把正确答案判为失败、测试用例与生产场景之间存在脱节。这些问题在结果数字上都跟模型退化一模一样，只有审查完整的轨迹才能区分。",
+    "statement": "看到 Agent 表现下降时，应先检查评测系统本身，再动 Agent",
+    "rationale": "评测系统本身可能先出了问题；基于失真的信号调整方向，修改方向可能从一开始就是错的",
+    "appliesWhen": "看到 Agent 表现下降时",
+    "violation": "看到分数下降就立刻修改 Agent 代码，而忽略评测系统本身可能先出了问题，导致基于失真的信号调整方向，修改方向可能从一开始就是错的",
+    "chapterRef": "chapter7-h2-9"
+  },
+  {
+    "id": "CHAPTER7-H2-9-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-9",
+        "title": "从 Benchmark 报告到系统改进",
+        "lineStart": 718,
+        "lineEnd": 727,
+        "contentHash": "sha256:fad9963cddb5ff6e42d23eeac45d7a17fc3627ca6b45318e7e50f18a0cad96f8"
+      }
+    ],
+    "evidenceQuote": "在开始分析 Benchmark 报告之前，有一条容易被忽视的原则：**看到 Agent 表现下降时，应先检查评测系统本身，再动 Agent**。一个常见误区是看到分数下降就立刻修改 Agent 代码，而忽略了评测系统本身可能先出了问题——基于失真的信号调整方向，修改方向可能从一开始就是错的。评测系统常见的错误来源包括：运行环境的资源不足导致进程被杀（表现为随机失败）、验证器本身有 bug 把正确答案判为失败、测试用例与生产场景之间存在脱节。这些问题在结果数字上都跟模型退化一模一样，只有审查完整的轨迹才能区分。",
+    "pattern": "看到分数下降就立刻修改 Agent 代码，而忽略评测系统本身可能先出了问题",
+    "harm": "基于失真的信号调整方向，修改方向可能从一开始就是错的",
+    "corrective": "看到 Agent 表现下降时，先检查评测系统本身，再动 Agent；只有审查完整的轨迹才能区分评测系统问题与模型退化",
+    "evidence": [
+      "评测系统常见的错误来源包括：运行环境的资源不足导致进程被杀（表现为随机失败）、验证器本身有 bug 把正确答案判为失败、测试用例与生产场景之间存在脱节；这些问题在结果数字上都跟模型退化一模一样，只有审查完整的轨迹才能区分。"
+    ],
+    "chapterRef": "chapter7-h2-9"
+  },
+  {
+    "id": "CHAPTER7-H3-21-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-21",
+        "title": "读懂 Benchmark 报告：发现问题的艺术",
+        "lineStart": 728,
+        "lineEnd": 733,
+        "contentHash": "sha256:541efd3f89530655ea92ff48660cd7b7ec97d90ddf59390b582dcbb4c5fbc7df"
+      }
+    ],
+    "evidenceQuote": "如果只盯着 88% 这个总分，这个小而集中的失败簇很容易被忽略；如果只是增加最大步数，又可能把“看不见界面”误当成“不够耐心”。所以，读报告时应先找失败集中在哪些任务和能力上，再回放轨迹，分清问题出在看、想、做还是验。",
+    "statement": "阅读 benchmark 报告时，应先找失败集中在哪些任务和能力上，再回放轨迹，分清问题出在看、想、做还是验。",
+    "rationale": "只盯着总体成功率会忽略小而集中的失败簇；只增加最大步数可能把界面信息不完整误判为不够耐心。",
+    "appliesWhen": "阅读 benchmark 报告并需要定位失败原因时",
+    "violation": "只关注总体成功率或直接增加最大步数，未先定位失败集中的任务和能力。",
+    "chapterRef": "chapter7-h3-21"
+  },
+  {
+    "id": "CHAPTER7-H3-21-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-21",
+        "title": "读懂 Benchmark 报告：发现问题的艺术",
+        "lineStart": 728,
+        "lineEnd": 733,
+        "contentHash": "sha256:541efd3f89530655ea92ff48660cd7b7ec97d90ddf59390b582dcbb4c5fbc7df"
+      }
+    ],
+    "evidenceQuote": "最初的报告记录了 116 项任务各跑一次的结果，总成功率约为 88%。但失败并不是零星散落的：四项 `SystemWifiTurn*` 任务里有三项失败，轨迹中还反复出现来回导航、无法确认最终状态等现象。这里至少有两种解释：可能是 Agent 不知道设置入口，也可能是它拿到的界面信息不完整。\n\n如果只盯着 88% 这个总分，这个小而集中的失败簇很容易被忽略；如果只是增加最大步数，又可能把“看不见界面”误当成“不够耐心”。所以，读报告时应先找失败集中在哪些任务和能力上，再回放轨迹，分清问题出在看、想、做还是验。",
+    "pattern": "阅读 benchmark 报告时，只盯着总体成功率，或只通过增加最大步数来分析失败。",
+    "harm": "小而集中的失败簇容易被忽略；界面信息不完整可能被误判为不够耐心。",
+    "corrective": "先找失败集中在哪些任务和能力上，再回放轨迹，分清问题出在看、想、做还是验。",
+    "evidence": [
+      "最初的报告记录了 116 项任务各跑一次的结果，总成功率约为 88%",
+      "四项 SystemWifiTurn* 任务里有三项失败",
+      "轨迹中还反复出现来回导航、无法确认最终状态等现象"
+    ],
+    "chapterRef": "chapter7-h3-21"
+  },
+  {
+    "id": "CHAPTER7-H3-22-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-22",
+        "title": "从数据到假设：构建改进路线图",
+        "lineStart": 734,
+        "lineEnd": 741,
+        "contentHash": "sha256:c72ad59588d35284c3dbae897cd80d767ce5fd67727f8eb94e575b675255a99c"
+      }
+    ],
+    "evidenceQuote": "三轮实验始终使用相同的模型、任务参数、随机种子、步数上限和模拟器，并交替安排两组的运行顺序。这样一轮接一轮地缩小问题范围，比同时堆上许多改动更容易说清因果：上一轮暴露的问题，恰好成为下一轮唯一要验证的改动。",
+    "statement": "多轮对照实验固定相同的模型、任务参数、随机种子、步数上限和模拟器，并交替安排两组的运行顺序，使每轮只验证一个改动。",
+    "rationale": "这样一轮接一轮地缩小问题范围，比同时堆上许多改动更容易说清因果：上一轮暴露的问题，恰好成为下一轮唯一要验证的改动。",
+    "appliesWhen": "当通过多轮实验缩小问题范围、验证单个改动时。",
+    "violation": "同时堆上许多改动，或未固定模型、任务参数、随机种子、步数上限和模拟器，导致因果难以说清。",
+    "chapterRef": "chapter7-h3-22"
+  },
+  {
+    "id": "CHAPTER7-H3-22-CASE-02",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-22",
+        "title": "从数据到假设：构建改进路线图",
+        "lineStart": 734,
+        "lineEnd": 741,
+        "contentHash": "sha256:c72ad59588d35284c3dbae897cd80d767ce5fd67727f8eb94e575b675255a99c"
+      }
+    ],
+    "evidenceQuote": "第一轮先试最便宜的改法。假设 H1 认为 Agent 只是“不知道路”，因此只给实验组补充 Wi-Fi 设置的导航提示和最终状态检查要求。结果成功率没有变化，说明问题不在提示词。\n\n第二轮转而检查 Agent 到底“看见了什么”。假设 H5 把 API 35 上不兼容的 accessibility feed 换成 AndroidWorld 已支持的 UIAutomator 元素树。成功率确实提高了，但完整元素树太长，token 用量大幅上升。于是第三轮 H5C 不再增加新信息，只把元素树中不可见、没有文字、也不能操作的容器节点删掉，看看能否在保留成功率的同时去掉噪声。\n\n三轮实验始终使用相同的模型、任务参数、随机种子、步数上限和模拟器，并交替安排两组的运行顺序。这样一轮接一轮地缩小问题范围，比同时堆上许多改动更容易说清因果：上一轮暴露的问题，恰好成为下一轮唯一要验证的改动。",
+    "title": "AndroidWorld Agent 改进的三轮假设驱动实验",
+    "context": "在 AndroidWorld 任务中改进 Agent，通过三轮对照实验逐步缩小问题范围。",
+    "facts": [
+      "第一轮 H1 仅补充 Wi-Fi 设置的导航提示和最终状态检查要求，成功率没有变化。",
+      "第二轮 H5 将 API 35 上不兼容的 accessibility feed 换成 AndroidWorld 已支持的 UIAutomator 元素树，成功率提高但 token 用量大幅上升。",
+      "第三轮 H5C 不再增加新信息，只删除元素树中不可见、没有文字、也不能操作的容器节点。",
+      "三轮实验始终使用相同的模型、任务参数、随机种子、步数上限和模拟器，并交替安排两组的运行顺序。"
+    ],
+    "decisions": [
+      "第一轮先试最便宜的改法，验证提示词假设 H1。",
+      "第二轮检查 Agent 看见了什么，替换为 AndroidWorld 已支持的 UIAutomator 元素树。",
+      "第三轮不再增加新信息，只删除不可见、无文字、不能操作的容器节点。"
+    ],
+    "outcome": "第一轮成功率无变化，第二轮成功率提高但 token 用量上升；逐轮单变量验证使上一轮暴露的问题成为下一轮唯一要验证的改动。",
+    "limitations": [
+      "实验范围限于 AndroidWorld 环境中的提示词与元素树改动。"
+    ],
+    "dataClass": "对照实验案例",
+    "evidenceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-22",
+        "title": "从数据到假设：构建改进路线图",
+        "lineStart": 734,
+        "lineEnd": 741,
+        "contentHash": "sha256:c72ad59588d35284c3dbae897cd80d767ce5fd67727f8eb94e575b675255a99c"
+      }
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-23-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-23",
+        "title": "从结果到决策：数据驱动的权衡",
+        "lineStart": 742,
+        "lineEnd": 755,
+        "contentHash": "sha256:cc5a3119490bff616644631a3f4e355511755dab58f0cb5d50cbd09c490e6d57"
+      }
+    ],
+    "evidenceQuote": "第一，提示写得更详细，也补不回 Agent 根本没有看到的信息；遇到这类失败，应先检查输入，而不是继续堆提示词。",
+    "statement": "遇到 Agent 根本没有看到信息这类失败时，应先检查输入，而不是继续堆提示词。",
+    "rationale": "提示写得更详细，也补不回 Agent 根本没有看到的信息。",
+    "appliesWhen": "失败原因是 Agent 没有看到信息。",
+    "violation": "遇到此类失败时继续堆提示词，而不先检查输入。",
+    "chapterRef": "chapter7-h3-23"
+  },
+  {
+    "id": "CHAPTER7-H3-23-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-23",
+        "title": "从结果到决策：数据驱动的权衡",
+        "lineStart": 742,
+        "lineEnd": 755,
+        "contentHash": "sha256:cc5a3119490bff616644631a3f4e355511755dab58f0cb5d50cbd09c490e6d57"
+      }
+    ],
+    "evidenceQuote": "第二，输入也不是越多越好。完整元素树解决了“看不见”的问题，却带来大量无用 token；删除无语义节点后，四项任务仍全部成功，token 又减少了约一半。",
+    "statement": "在完整元素树带来大量无用 token 时，删除无语义节点可以在不降低任务成功率的情况下使 token 约减少一半。",
+    "rationale": "完整元素树虽解决了“看不见”的问题，但带来大量无用 token；删除无语义节点后，四项任务仍全部成功，token 又减少了约一半。",
+    "appliesWhen": "使用完整元素树表示界面并产生大量无用 token 时。",
+    "violation": "在完整元素树已带来大量无用 token 时仍保留无语义节点。",
+    "chapterRef": "chapter7-h3-23"
+  },
+  {
+    "id": "CHAPTER7-H3-24-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-24",
+        "title": "持续迭代：从第一次改进到系统演化",
+        "lineStart": 756,
+        "lineEnd": 776,
+        "contentHash": "sha256:a93f5b2f5192dcf852ee567b21a6579958892e14de6101d36f23966152fdedd1"
+      }
+    ],
+    "evidenceQuote": "H5C 通过了这四项任务的检查，只说明它值得进入下一轮，并不等于可以部署。下一步需要补齐第三方应用，在 Pixel 6 / API 33 标准环境中，对 116 项任务各跑 5 个随机种子；除了检查成功率不能下降，还要确认 token 不超过原方案的 75%，延迟不超过 1.5 倍。在这轮完整复测之前，不能把子集上的 4/4 写成系统整体 100%。",
+    "statement": "在这轮完整复测之前，不能把子集上的 4/4 写成系统整体 100%。",
+    "rationale": "H5C 通过了这四项任务的检查，只说明它值得进入下一轮，并不等于可以部署。",
+    "appliesWhen": "在仅通过子集任务检查、尚未完成完整复测时。",
+    "violation": "把子集上的 4/4 写成系统整体 100%。",
+    "chapterRef": "chapter7-h3-24"
+  },
+  {
+    "id": "CHAPTER7-H2-10-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-10",
+        "title": "从外部评估到内部评估：生产级 Agent 的评估基础设施",
+        "lineStart": 777,
+        "lineEnd": 780,
+        "contentHash": "sha256:300c1267ba5e2c4738fcc57121b31c7dd8011ab4710294bec747efba40ca17d3"
+      }
+    ],
+    "evidenceQuote": "但最优秀的 Agent 产品不仅接受外部评估，还**内建了持续自我评估的基础设施**。下面以第五章介绍的开源通用 Agent OpenClaw 为例，并结合头部 Coding Agent 产品的公开技术分析与从业者分享，展示一套值得借鉴的内部评估体系——它将 ML 研究中的实验方法论系统性地嵌入到了产品工程中。",
+    "canonicalTerm": "内部评估基础设施",
+    "aliases": [
+      "持续自我评估的基础设施",
+      "内部评估体系"
+    ],
+    "definition": "Agent 产品内建的持续自我评估基础设施，它将 ML 研究中的实验方法论系统性地嵌入到产品工程中。",
+    "examples": [
+      "开源通用 Agent OpenClaw",
+      "头部 Coding Agent 产品"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-25-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-25",
+        "title": "消融基础设施：理解每个特性的真实贡献",
+        "lineStart": 781,
+        "lineEnd": 786,
+        "contentHash": "sha256:ecd08780af7ef5d05742f32793d0dedfa45b0ed1b587d440ff9c7fff8ba55ab2"
+      }
+    ],
+    "evidenceQuote": "ML 研究者长期使用消融实验（Ablation Study）来理解模型的哪些组件真正重要——所谓消融，就是逐一“摘除”某个组件，看整体性能掉多少。OpenClaw 将这一方法论引入了产品工程：系统内置了一个总开关，可以同时禁用多个主要特性（思考模式、上下文压缩、自动记忆、后台任务等），创造一个“裸模型”基线。",
+    "canonicalTerm": "消融实验",
+    "aliases": [
+      "Ablation Study"
+    ],
+    "definition": "逐一“摘除”某个组件，看整体性能掉多少，以理解模型的哪些组件真正重要。",
+    "examples": [
+      "OpenClaw 系统内置总开关，同时禁用多个主要特性（思考模式、上下文压缩、自动记忆、后台任务等），创造“裸模型”基线。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-25-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-25",
+        "title": "消融基础设施：理解每个特性的真实贡献",
+        "lineStart": 781,
+        "lineEnd": 786,
+        "contentHash": "sha256:ecd08780af7ef5d05742f32793d0dedfa45b0ed1b587d440ff9c7fff8ba55ab2"
+      }
+    ],
+    "evidenceQuote": "定期运行消融实验（如每次大版本发布前）可以发现“特性债务”——那些曾经有效但随着模型进化已不再必要的特性。对于任何构建生产 Agent 的团队，建议的实践是：**每个主要特性都应是可独立关闭的，团队应定期验证每个特性的实际贡献**。",
+    "statement": "对于任何构建生产 Agent 的团队，每个主要特性都应是可独立关闭的，且团队应定期验证每个特性的实际贡献。",
+    "rationale": "定期运行消融实验可以发现“特性债务”——那些曾经有效但随着模型进化已不再必要的特性。",
+    "appliesWhen": "构建生产 Agent 的团队。",
+    "violation": "主要特性没有被设计为可独立关闭，或团队没有定期验证每个特性的实际贡献。",
+    "chapterRef": "chapter7-h3-25"
+  },
+  {
+    "id": "CHAPTER7-H3-26-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-26",
+        "title": "AB 测试方法论：区分机制与目标",
+        "lineStart": 787,
+        "lineEnd": 798,
+        "contentHash": "sha256:4d576aa6201ab851786866c8433a7b9e5da8939bb8d57984e21c111d4217bb02"
+      }
+    ],
+    "evidenceQuote": "区分机制指标和目标指标。这是最容易犯的错误——把你正在改变的东西当作优化目标。例如，如果你在测试“缩短 Agent 的计划文件长度”，计划长度是机制指标（你直接改变的东西），但它不是目标。真正的目标可能是“降低会话级成本”。缩短计划文件可能降低成本，但也可能因为计划不够详细而导致更多的编辑-检查-编辑循环，反而增加了总输出量。始终问自己：**我改变的东西（机制）和我真正关心的东西（目标）是同一个吗？**如果不是，以目标为准。",
+    "statement": "在测试改动时，要把机制指标和目标指标区分开，不要把自己正在改变的东西当作优化目标；两者不一致时以目标为准。",
+    "rationale": "缩短计划文件可能降低成本，但也可能因为计划不够详细而导致更多的编辑-检查-编辑循环，反而增加了总输出量。",
+    "appliesWhen": "当正在测试某个改动并判断它是否有效时。",
+    "violation": "把正在改变的东西当作优化目标。",
+    "chapterRef": "chapter7-h3-26"
+  },
+  {
+    "id": "CHAPTER7-H3-26-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-26",
+        "title": "AB 测试方法论：区分机制与目标",
+        "lineStart": 787,
+        "lineEnd": 798,
+        "contentHash": "sha256:4d576aa6201ab851786866c8433a7b9e5da8939bb8d57984e21c111d4217bb02"
+      }
+    ],
+    "evidenceQuote": "设置护栏指标。即使目标指标改善了，如果用户满意度下降、操作次数增加或错误率上升，实验也应该停止。护栏指标是 “不能变差的底线”。",
+    "statement": "设置护栏指标；即使目标指标改善了，如果用户满意度下降、操作次数增加或错误率上升，实验也应该停止。",
+    "rationale": "护栏指标是“不能变差的底线”。",
+    "appliesWhen": "当目标指标改善时，仍需检查用户满意度、操作次数和错误率。",
+    "violation": "目标指标改善但护栏指标变差却继续实验。",
+    "chapterRef": "chapter7-h3-26"
+  },
+  {
+    "id": "CHAPTER7-H3-27-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-27",
+        "title": "双层特性开关系统",
+        "lineStart": 799,
+        "lineEnd": 808,
+        "contentHash": "sha256:bf32ab89b3f21bc72215cf865988c713d9d81814c39e5e0779551d78f6de1053"
+      }
+    ],
+    "evidenceQuote": "编译时开关在构建阶段就将相关代码从产物中物理移除。内部专用的特性在外部构建中根本不存在——即使逆向工程也无法发现被移除的功能。这也是一种干净的消融机制：关闭某个特性不是在运行时跳过逻辑，而是对应的代码在物理上就不存在。",
+    "statement": "编译时开关在构建阶段将相关代码从产物中物理移除，内部专用的特性在外部构建中不存在。",
+    "rationale": "物理移除后即使逆向工程也无法发现被移除的功能，并且这是一种干净的消融机制：关闭特性不是运行时跳过逻辑，而是对应的代码在物理上就不存在。",
+    "appliesWhen": "需要让内部专用特性在外部构建中不存在或通过物理移除关闭特性时。",
+    "violation": "关闭某个特性只是在运行时跳过逻辑，相关代码仍物理存在。",
+    "chapterRef": "chapter7-h3-27"
+  },
+  {
+    "id": "CHAPTER7-H3-27-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-27",
+        "title": "双层特性开关系统",
+        "lineStart": 799,
+        "lineEnd": 808,
+        "contentHash": "sha256:bf32ab89b3f21bc72215cf865988c713d9d81814c39e5e0779551d78f6de1053"
+      }
+    ],
+    "evidenceQuote": "一个关键的设计细节是：每个特性的曝光事件在每个会话中最多记录一次，避免重复记录污染实验数据。",
+    "statement": "每个特性的曝光事件在每个会话中最多记录一次。",
+    "rationale": "避免重复记录污染实验数据。",
+    "appliesWhen": "记录特性曝光事件用于实验分析时。",
+    "violation": "在同一会话中重复记录同一特性的曝光事件。",
+    "chapterRef": "chapter7-h3-27"
+  },
+  {
+    "id": "CHAPTER7-H3-28-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-28",
+        "title": "提示词敏感性评估",
+        "lineStart": 809,
+        "lineEnd": 814,
+        "contentHash": "sha256:60a465cca0c177bec06c70b762d150e06f7df35e237563929b3f5baeed413725"
+      }
+    ],
+    "evidenceQuote": "系统提示是 Agent 行为的核心“代码”，但它往往缺少与普通代码同等的版本控制和回归测试。OpenClaw 的做法是提供一个专用工具，能在指定的 git 版本上提取完整渲染后的系统提示——包含所有动态条件展开后的最终文本。这使得团队能精确回答：哪次提交改变了提示词？对评估集的影响是什么？\n\n对于任何 Agent 团队，建议的实践是：(1) 系统提示应该能够确定性地渲染（给定相同的配置输入，永远产生相同的输出）；(2) 建立提示词的版本化快照机制；(3) 每次提示词变更都应在评估集上运行回归测试——就像代码变更需要跑 CI 一样。",
+    "statement": "系统提示应该能够确定性地渲染（给定相同的配置输入，永远产生相同的输出）。",
+    "rationale": "系统提示是 Agent 行为的核心“代码”，但它往往缺少与普通代码同等的版本控制和回归测试。",
+    "appliesWhen": "在维护 Agent 团队的系统提示时。",
+    "violation": "若给定相同的配置输入却产生不同输出，则不符合该建议实践。",
+    "chapterRef": "chapter7-h3-28"
+  },
+  {
+    "id": "CHAPTER7-H3-28-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-28",
+        "title": "提示词敏感性评估",
+        "lineStart": 809,
+        "lineEnd": 814,
+        "contentHash": "sha256:60a465cca0c177bec06c70b762d150e06f7df35e237563929b3f5baeed413725"
+      }
+    ],
+    "evidenceQuote": "对于任何 Agent 团队，建议的实践是：(1) 系统提示应该能够确定性地渲染（给定相同的配置输入，永远产生相同的输出）；(2) 建立提示词的版本化快照机制；(3) 每次提示词变更都应在评估集上运行回归测试——就像代码变更需要跑 CI 一样。",
+    "statement": "每次提示词变更都应在评估集上运行回归测试。",
+    "rationale": "就像代码变更需要跑 CI 一样，提示词变更也应在评估集上运行回归测试。",
+    "appliesWhen": "当提示词发生变更时。",
+    "violation": "若提示词变更后未在评估集上运行回归测试，则无法判断对评估集的影响。",
+    "chapterRef": "chapter7-h3-28"
+  },
+  {
+    "id": "CHAPTER7-H3-29-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-29",
+        "title": "以隐私感知分析为评估基础",
+        "lineStart": 815,
+        "lineEnd": 820,
+        "contentHash": "sha256:429d42a6eacd8febe0f1e038cc816c1fabab407d4826656159b37d1dd2f5ce8f"
+      }
+    ],
+    "evidenceQuote": "评估依赖好的数据，但 Agent 产品处理的往往是用户的敏感内容。OpenClaw 通过类型系统来解决这个矛盾：分析接口只接受经过特殊类型包装的值，类型名本身就是审计线索——它明确表明“我已验证这不是代码或文件路径”。这种设计将隐私约束从文档化的规范变成了编译时强制执行的类型检查。",
+    "statement": "分析接口只接受经过特殊类型包装的值，类型名作为审计线索，明确表明该值已验证不是代码或文件路径。",
+    "rationale": "将隐私约束从文档化的规范变成编译时强制执行的类型检查，从而在评估依赖敏感数据时提供审计线索。",
+    "appliesWhen": "Agent 产品处理用户敏感内容，且评估需要分析接口收集数据时。",
+    "violation": "分析接口接受未经特殊类型包装的敏感值，导致无法通过类型名提供审计线索。",
+    "chapterRef": "chapter7-h3-29"
+  },
+  {
+    "id": "CHAPTER7-H3-29-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-29",
+        "title": "以隐私感知分析为评估基础",
+        "lineStart": 815,
+        "lineEnd": 820,
+        "contentHash": "sha256:429d42a6eacd8febe0f1e038cc816c1fabab407d4826656159b37d1dd2f5ce8f"
+      }
+    ],
+    "evidenceQuote": "核心原则是：从一开始就把隐私约束设计进去，而非事后加装。如果你的分析系统无法安全地收集数据，你就无法有效地评估。",
+    "pattern": "事后加装隐私约束",
+    "harm": "分析系统无法安全地收集数据，进而无法有效评估。",
+    "corrective": "从一开始就把隐私约束设计进去。",
+    "evidence": [
+      "核心原则是：从一开始就把隐私约束设计进去，而非事后加装。如果你的分析系统无法安全地收集数据，你就无法有效地评估。"
+    ],
+    "chapterRef": "chapter7-h3-29"
+  },
+  {
+    "id": "CHAPTER7-H3-30-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-30",
+        "title": "从外部到内部：评估思维的转变",
+        "lineStart": 821,
+        "lineEnd": 824,
+        "contentHash": "sha256:f49ed6b56f12c1868e0af2efa01436065f295dbac0a80fabc6d0a00a7290c824"
+      }
+    ],
+    "evidenceQuote": "外部评估告诉你“Agent 有多好”，内部评估基础设施告诉你“哪项改动让它变好了”。消融实验发现哪些特性真正重要，AB 测试量化每项改动的影响，特性开关提供实验和回滚的基础设施，提示词敏感性评估将系统提示纳入 CI 体系，隐私感知分析确保数据收集的合规性。",
+    "canonicalTerm": "内部评估基础设施",
+    "aliases": [],
+    "definition": "内部评估基础设施告诉你“哪项改动让它变好了”，外部评估告诉你“Agent 有多好”。",
+    "examples": [
+      "消融实验发现哪些特性真正重要",
+      "AB 测试量化每项改动的影响",
+      "特性开关提供实验和回滚的基础设施",
+      "提示词敏感性评估将系统提示纳入 CI 体系",
+      "隐私感知分析确保数据收集的合规性"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-30-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-30",
+        "title": "从外部到内部：评估思维的转变",
+        "lineStart": 821,
+        "lineEnd": 824,
+        "contentHash": "sha256:f49ed6b56f12c1868e0af2efa01436065f295dbac0a80fabc6d0a00a7290c824"
+      }
+    ],
+    "evidenceQuote": "这五个组件共同构成了评估驱动的产品工程——不是偶尔做一次评估，而是将评估嵌入到每一次产品决策中。",
+    "statement": "评估驱动的产品工程不是偶尔做一次评估，而是将评估嵌入到每一次产品决策中。",
+    "rationale": "这五个组件共同构成了评估驱动的产品工程。",
+    "appliesWhen": "构建评估驱动的产品工程时。",
+    "violation": "偶尔做一次评估，而不是将评估嵌入到每一次产品决策中。",
+    "chapterRef": "chapter7-h3-30"
+  },
+  {
+    "id": "CHAPTER7-H2-11-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-11",
+        "title": "仿真环境：从评估到后训练的桥梁",
+        "lineStart": 825,
+        "lineEnd": 845,
+        "contentHash": "sha256:515b7d2b12c0274bed6eeb10115971f54c83c79528d8e6cce886e33950777bf6"
+      }
+    ],
+    "evidenceQuote": "评估环境就需要演化为**仿真环境**：一个能让 Agent 反复练习、自动打分的虚拟操场。仿真环境与评估环境的核心区别在于：交互频率高得多（数百万次 vs 数千次）、需要随机化（防止死记硬背特定配置），而且必须提供即时反馈。从应用领域看，仿真环境分为数字环境（信息处理任务）与具身环境（物理世界感知与操作）两大类。",
+    "canonicalTerm": "仿真环境",
+    "aliases": [],
+    "definition": "能让 Agent 反复练习、自动打分的虚拟操场；与评估环境相比，交互频率高得多（数百万次 vs 数千次），需要随机化以防止死记硬背特定配置，并且必须提供即时反馈；按应用领域分为数字环境与具身环境两大类。",
+    "examples": [
+      "数字环境（信息处理任务）",
+      "具身环境（物理世界感知与操作）"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H2-11-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-11",
+        "title": "仿真环境：从评估到后训练的桥梁",
+        "lineStart": 825,
+        "lineEnd": 845,
+        "contentHash": "sha256:515b7d2b12c0274bed6eeb10115971f54c83c79528d8e6cce886e33950777bf6"
+      }
+    ],
+    "evidenceQuote": "其一是**可靠的 reset 语义**：训练要跑数百万个 episode（一个 episode 即一次从初始状态到任务结束的完整交互回合），每个 episode 都必须能把环境重置到一个确定、干净的初始状态，否则梯度信号会被上一轮的残留状态污染。",
+    "statement": "训练环境的每个 episode 都必须能把环境重置到一个确定、干净的初始状态。",
+    "rationale": "训练要跑数百万个 episode，残留状态会污染梯度信号。",
+    "appliesWhen": "训练环境需要运行数百万个 episode（一个 episode 即一次从初始状态到任务结束的完整交互回合）时。",
+    "violation": "未能可靠 reset 时，梯度信号被上一轮残留状态污染。",
+    "chapterRef": "chapter7-h2-11"
+  },
+  {
+    "id": "CHAPTER7-H3-31-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-31",
+        "title": "保真度权衡与领域随机化",
+        "lineStart": 846,
+        "lineEnd": 851,
+        "contentHash": "sha256:13172e2210c0db20dd8e3b1751e412fd51af2bb15d807d9852c46bfecf563e05"
+      }
+    ],
+    "evidenceQuote": "**领域随机化（Domain Randomization）**是缩小仿真与现实差距（sim-to-real gap）的关键技术：在物理参数、视觉外观、传感器噪声等方面引入大范围随机变化——好比在各种光照和角度下都练习过抓取，到了真实环境也不会因为光线变化就失手。在数字环境中，sim-to-real 表现为界面渲染、响应时间等方面的差异，可通过引入延迟和失败的随机化来缓解。",
+    "canonicalTerm": "领域随机化",
+    "aliases": [
+      "Domain Randomization"
+    ],
+    "definition": "缩小仿真与现实差距（sim-to-real gap）的关键技术：在物理参数、视觉外观、传感器噪声等方面引入大范围随机变化。",
+    "examples": [
+      "在各种光照和角度下都练习过抓取，到了真实环境也不会因为光线变化就失手。",
+      "在数字环境中，sim-to-real 表现为界面渲染、响应时间等方面的差异，可通过引入延迟和失败的随机化来缓解。"
+    ]
+  },
+  {
+    "id": "CHAPTER7-H3-31-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h3-31",
+        "title": "保真度权衡与领域随机化",
+        "lineStart": 846,
+        "lineEnd": 851,
+        "contentHash": "sha256:13172e2210c0db20dd8e3b1751e412fd51af2bb15d807d9852c46bfecf563e05"
+      }
+    ],
+    "evidenceQuote": "保真度的另一维度是随机化程度：适度随机化能提升泛化能力，过度随机化则会让任务变得过于困难。",
+    "trigger": "当需要权衡保真度的随机化程度时",
+    "recommendation": "保持适度随机化以提升泛化能力，避免过度随机化导致任务过于困难",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER7-H2-12-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.486Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.486Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter7.md",
+        "anchor": "chapter7#h2-12",
+        "title": "本章小结",
+        "lineStart": 852,
+        "lineEnd": 865,
+        "contentHash": "sha256:b842ed91bf88d25dc95a81a1df4f0ec679f3ab23ab270c9ef3c15e4c8cf45a27"
+      }
+    ],
+    "evidenceQuote": "轨迹前缀边界评估进一步说明，**获得一条信息和正确地将它用于当前决策是两种不同能力**：端到端回归保证基本任务不退化，trajectory prefix 边界集则直接检查作用域判断、当前指令覆盖、澄清和危险动作前确认。用户记忆只是这一通用方法的一个案例。",
+    "canonicalTerm": "轨迹前缀边界评估",
+    "aliases": [
+      "trajectory prefix 边界集"
+    ],
+    "definition": "一种评估方法，通过 trajectory prefix 边界集直接检查作用域判断、当前指令覆盖、澄清和危险动作前确认，区别于端到端回归保证基本任务不退化。",
+    "examples": [
+      "用户记忆只是这一通用方法的一个案例。"
+    ]
+  }
+]

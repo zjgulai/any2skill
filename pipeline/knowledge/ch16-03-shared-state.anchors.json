@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+  "fileKey": "ch16-03-shared-state",
+  "totalLines": 222,
+  "sourceHash": "sha256:8e3cae7ded67ccc3f09f7d43ebb3c0643906296bcfa651a69ec7c53e25056034",
+  "anchorCount": 7,
+  "levelCounts": {
+    "h2": 1,
+    "h3": 3,
+    "h4": 3
+  },
+  "anchors": [
+    {
+      "anchor": "ch16-03-shared-state#h2-1",
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "level": 2,
+      "title": "共享状态并发",
+      "lineStart": 1,
+      "lineEnd": 10,
+      "contentHash": "sha256:8c885e47cb7b28f3ffda45a3255c0632983f6ea0a06d893fc5c84d2bded8deea",
+      "contentBytes": 1153
+    },
+    {
+      "anchor": "ch16-03-shared-state#h3-1",
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "level": 3,
+      "title": "互斥器一次只允许一个线程访问数据",
+      "lineStart": 11,
+      "lineEnd": 23,
+      "contentHash": "sha256:190264f185de7ea955280b4ac115f94089e4b0bc8b39e9b495901f515ddd8fb5",
+      "contentBytes": 1399
+    },
+    {
+      "anchor": "ch16-03-shared-state#h3-2",
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "level": 3,
+      "title": "`Mutex<T>`的 API",
+      "lineStart": 24,
+      "lineEnd": 56,
+      "contentHash": "sha256:4fa7c8c7d8b3dcd48f0c7f1b0b04c6040460caab97fd53a29c3d012673fac18f",
+      "contentBytes": 1903
+    },
+    {
+      "anchor": "ch16-03-shared-state#h4-1",
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "level": 4,
+      "title": "在线程间共享 `Mutex<T>`",
+      "lineStart": 57,
+      "lineEnd": 111,
+      "contentHash": "sha256:01f51c599283832f263b8187ef12c5581f55f7fa8b67c870a35515edb7776d6c",
+      "contentBytes": 2519
+    },
+    {
+      "anchor": "ch16-03-shared-state#h4-2",
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "level": 4,
+      "title": "多线程和多所有权",
+      "lineStart": 112,
+      "lineEnd": 168,
+      "contentHash": "sha256:5c0c01ea1765a865630ed9bbb125033d3cda9d19d90b165615990c09a834b396",
+      "contentBytes": 2803
+    },
+    {
+      "anchor": "ch16-03-shared-state#h4-3",
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "level": 4,
+      "title": "原子引用计数 `Arc<T>`",
+      "lineStart": 169,
+      "lineEnd": 214,
+      "contentHash": "sha256:e522cdec57520d4c34a7cea8f11e36c0ef68d5532b383f1f1c88a76cbea82bed",
+      "contentBytes": 2195
+    },
+    {
+      "anchor": "ch16-03-shared-state#h3-3",
+      "file": "sources/rust-book-cn/book/ch16-03-shared-state.md",
+      "level": 3,
+      "title": "`RefCell<T>`/`Rc<T>` 与 `Mutex<T>`/`Arc<T>` 的相似性",
+      "lineStart": 215,
+      "lineEnd": 222,
+      "contentHash": "sha256:c142252d1fb1f03e333071816cf795c64654556e15a517b9b06edfe84ead9a54",
+      "contentBytes": 1233
+    }
+  ]
+}

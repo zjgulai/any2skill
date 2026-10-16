@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+  "fileKey": "ch15-06-reference-cycles",
+  "totalLines": 339,
+  "sourceHash": "sha256:5047b3eace7050487da636aa4fa7c38973111b47928deba85ed5aa3453c776c2",
+  "anchorCount": 7,
+  "levelCounts": {
+    "h2": 2,
+    "h3": 2,
+    "h4": 3
+  },
+  "anchors": [
+    {
+      "anchor": "ch15-06-reference-cycles#h2-1",
+      "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+      "level": 2,
+      "title": "引用循环与内存泄漏",
+      "lineStart": 1,
+      "lineEnd": 4,
+      "contentHash": "sha256:03da59b63c6f230a68eadb0e89c026a2002602707d19a38773d0c9acafc82f96",
+      "contentBytes": 567
+    },
+    {
+      "anchor": "ch15-06-reference-cycles#h3-1",
+      "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+      "level": 3,
+      "title": "制造引用循环",
+      "lineStart": 5,
+      "lineEnd": 116,
+      "contentHash": "sha256:bc5af082c0bbdad8ed44d88a0d94c5a48321b7225f0f48cf17fcadbc2bd2fa40",
+      "contentBytes": 5978
+    },
+    {
+      "anchor": "ch15-06-reference-cycles#h3-2",
+      "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+      "level": 3,
+      "title": "避免引用循环：将 `Rc<T>` 变为 `Weak<T>`",
+      "lineStart": 117,
+      "lineEnd": 126,
+      "contentHash": "sha256:dd447c71dd594f76254b12dec2e83500408af5fc635d7bda1d723bf0e434a7f2",
+      "contentBytes": 1546
+    },
+    {
+      "anchor": "ch15-06-reference-cycles#h4-1",
+      "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+      "level": 4,
+      "title": "创建树形数据结构：带有子节点的 `Node`",
+      "lineStart": 127,
+      "lineEnd": 176,
+      "contentHash": "sha256:a2bdad01c873e09e8b481512abb8d813c3fba975c511fa9d1213e3f100577be8",
+      "contentBytes": 1930
+    },
+    {
+      "anchor": "ch15-06-reference-cycles#h4-2",
+      "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+      "level": 4,
+      "title": "增加从子到父的引用",
+      "lineStart": 177,
+      "lineEnd": 256,
+      "contentHash": "sha256:b290b27a6810f98f7b6b9c860e65625bfa7410812de8984a1cbf8f01603a7744",
+      "contentBytes": 3708
+    },
+    {
+      "anchor": "ch15-06-reference-cycles#h4-3",
+      "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+      "level": 4,
+      "title": "可视化 `strong_count` 和 `weak_count` 的改变",
+      "lineStart": 257,
+      "lineEnd": 327,
+      "contentHash": "sha256:cf0815b48d11c248b3df83880488db152fa765f1e392712a46671ee3e5e66e46",
+      "contentBytes": 3000
+    },
+    {
+      "anchor": "ch15-06-reference-cycles#h2-2",
+      "file": "sources/rust-book-cn/book/ch15-06-reference-cycles.md",
+      "level": 2,
+      "title": "总结",
+      "lineStart": 328,
+      "lineEnd": 339,
+      "contentHash": "sha256:18a1ce3aeb1a18f149192ae6fd72e01ac31ca9404730f0a9c20697409984200a",
+      "contentBytes": 998
+    }
+  ]
+}

@@ -1,0 +1,2183 @@
+[
+  {
+    "id": "CHAPTER6-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h1-1",
+        "title": "交互：观察与动作空间的扩展",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "contentHash": "sha256:57adbe27154560846caf93848189cbb7da0e361ba4f4c92b64178780b06cb153"
+      }
+    ],
+    "evidenceQuote": "在前五章的内容中，**Agent 与世界的交互是轮流的**。用户说完一句，Agent 想一段、调用几个工具，再回一句；在它思考的这段时间里，世界被默认为静止的。",
+    "canonicalTerm": "轮流交互",
+    "aliases": [],
+    "definition": "在前五章的内容中，Agent 与世界的交互是轮流的：用户说完一句，Agent 想一段、调用几个工具，再回一句；在它思考的这段时间里，世界被默认为静止的。",
+    "examples": [
+      "用户说完一句，Agent 想一段、调用几个工具，再回一句"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H1-1-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h1-1",
+        "title": "交互：观察与动作空间的扩展",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "contentHash": "sha256:57adbe27154560846caf93848189cbb7da0e361ba4f4c92b64178780b06cb153"
+      }
+    ],
+    "evidenceQuote": "第一章提出过一个论断：在底层模型固定时，提升 Agent 任务表现最主要的系统工程手段，往往是重新定义或扩展**观察空间**与**动作空间**。",
+    "trigger": "当底层模型固定且需要提升 Agent 任务表现时",
+    "recommendation": "重新定义或扩展观察空间与动作空间",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER6-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-1",
+        "title": "模态与触发时机的扩展",
+        "lineStart": 5,
+        "lineEnd": 28,
+        "contentHash": "sha256:74fa45e19e2ff3eeeeacc57653499c728e4afb6fb57ad6537c2631e0df6785a4"
+      }
+    ],
+    "evidenceQuote": "**回合制是模型与接口的一种交互约定，不是环境的性质。** 早期工具调用接口通常按同步轮次组织消息：提问后面跟着回答，工具调用之后先补齐结果，再继续推理。",
+    "canonicalTerm": "回合制",
+    "aliases": [],
+    "definition": "模型与接口的一种交互约定，不是环境的性质。",
+    "examples": [
+      "早期工具调用接口通常按同步轮次组织消息：提问后面跟着回答，工具调用之后先补齐结果，再继续推理。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-1",
+        "title": "模态与触发时机的扩展",
+        "lineStart": 5,
+        "lineEnd": 28,
+        "contentHash": "sha256:74fa45e19e2ff3eeeeacc57653499c728e4afb6fb57ad6537c2631e0df6785a4"
+      }
+    ],
+    "evidenceQuote": "| 亚秒 — 秒      | Computer Use | 屏幕在两帧之间持续变化       | 动作后必须重新确认现实是否仍符合计划 |",
+    "statement": "在 Computer Use 场景中，动作后必须重新确认现实是否仍符合计划。",
+    "rationale": "屏幕在两帧之间持续变化。",
+    "appliesWhen": "Computer Use 场景，尺度为亚秒 — 秒。",
+    "violation": "执行动作后未重新确认现实与计划的一致性。",
+    "chapterRef": "chapter6-h2-1"
+  },
+  {
+    "id": "CHAPTER6-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-1",
+        "title": "为什么需要异步",
+        "lineStart": 35,
+        "lineEnd": 48,
+        "contentHash": "sha256:8e5003dbe555fa7855d6cb9c60ed6b9df955c0bba1cb8ee0c750a39e3e9f9097"
+      }
+    ],
+    "evidenceQuote": "同步（Synchronous）意味着“做完一件事才能做下一件”，异步（Asynchronous）意味着“多件事可以同时进行”。传统的同步 Agent 架构就像一个只会排队的柜台，每次只能处理一个顾客，处理完才能叫下一个号；而真正智能的助手更像一个灵活的秘书，桌上摆着多个待处理的事项（邮件、电话、来访者），秘书根据紧急程度决定先处理哪个，处理到一半如果有更紧急的事情也可以暂停切换。",
+    "canonicalTerm": "异步",
+    "aliases": [
+      "Asynchronous"
+    ],
+    "definition": "多件事可以同时进行。",
+    "examples": [
+      "真正智能的助手更像一个灵活的秘书，桌上摆着多个待处理的事项（邮件、电话、来访者），秘书根据紧急程度决定先处理哪个，处理到一半如果有更紧急的事情也可以暂停切换。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-1",
+        "title": "为什么需要异步",
+        "lineStart": 35,
+        "lineEnd": 48,
+        "contentHash": "sha256:8e5003dbe555fa7855d6cb9c60ed6b9df955c0bba1cb8ee0c750a39e3e9f9097"
+      }
+    ],
+    "evidenceQuote": "将异步范式应用于 LLM 时，需要先检查模型和 API 是否支持这种消息时序。有些接口要求先补齐工具结果才能继续；有些已经允许工具挂起、模型继续工作，并在生成过程中接受用户更新。前者需要事件队列、任务句柄和兼容层，后者可以直接使用原生异步协议。两者都仍需要应用管理事件来源、工具生命周期与结果归属，不能仅凭代码用了 `asyncio`，就认定模型也具备原生异步能力。",
+    "statement": "将异步范式应用于 LLM 时，需要先检查模型和 API 是否支持异步消息时序；不能仅凭代码使用了 asyncio 就认定模型具备原生异步能力。",
+    "rationale": "有些接口要求先补齐工具结果才能继续，有些允许工具挂起、模型继续工作并接受用户更新；无论哪种接口，应用都需要管理事件来源、工具生命周期与结果归属。",
+    "appliesWhen": "将异步范式应用于 LLM，判断模型或 API 是否具备原生异步能力时。",
+    "violation": "仅凭代码用了 asyncio 就认定模型也具备原生异步能力，未检查模型和 API 的消息时序支持，也未管理事件来源、工具生命周期与结果归属。",
+    "chapterRef": "chapter6-h3-1"
+  },
+  {
+    "id": "CHAPTER6-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-2",
+        "title": "OpenClaw 的事件驱动机制实现",
+        "lineStart": 49,
+        "lineEnd": 72,
+        "contentHash": "sha256:6946cdf910384bb96bb571a41b0d20fd1a8d318bb6c6217538a52eb4c4dc7562"
+      }
+    ],
+    "evidenceQuote": "PineClaw 的解决方案是引入 **Channel 机制**——在 OpenClaw 的 Gateway 和 Pine API 之间建立实时的事件通道。当电话接通、需要用户输入、通话结束等关键事件发生时，消息被即时推送到 OpenClaw Agent，Agent 立即处理并通知用户。",
+    "canonicalTerm": "Channel 机制",
+    "aliases": [],
+    "definition": "在 OpenClaw 的 Gateway 和 Pine API 之间建立的实时事件通道，用于关键事件发生时将消息即时推送到 OpenClaw Agent",
+    "examples": [
+      "PineClaw 在 Gateway 和 Pine API 之间建立事件通道，电话接通、需要用户输入、通话结束等关键事件消息被即时推送"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-2-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-2",
+        "title": "OpenClaw 的事件驱动机制实现",
+        "lineStart": 49,
+        "lineEnd": 72,
+        "contentHash": "sha256:6946cdf910384bb96bb571a41b0d20fd1a8d318bb6c6217538a52eb4c4dc7562"
+      }
+    ],
+    "evidenceQuote": "这个案例揭示了事件驱动架构对 Agent 框架的核心价值：**真正的 “主动服务” 不仅需要 Agent 能定时检查事件，更需要事件能主动通知 Agent**。将所有输入——用户消息、工具返回、外部回调、定时触发——统一建模为事件流，通过事件循环驱动 Agent 的思考和行动，是实现这一目标的架构基础。",
+    "trigger": "当设计事件驱动架构以支持 Agent 框架的主动服务时",
+    "recommendation": "将所有输入（用户消息、工具返回、外部回调、定时触发）统一建模为事件流，通过事件循环驱动 Agent 的思考和行动，使事件能主动通知 Agent，而不只是定时检查事件",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER6-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-3",
+        "title": "事件触发工具",
+        "lineStart": 73,
+        "lineEnd": 84,
+        "contentHash": "sha256:0f8927ecb4567db98d598e7d989979b2cd76cbe99e77a6ab6bd294c50e73a37e"
+      }
+    ],
+    "evidenceQuote": "**定时器**（set_timer）处理依赖物理时间的事件。例如，发送了一封邮件但对方没有回复，那么过一段时间应该再发一封邮件询问进展；打了一个电话但对方不在工作时间内，那么需要到下一个工作时间再尝试拨打。",
+    "canonicalTerm": "定时器",
+    "aliases": [
+      "set_timer"
+    ],
+    "definition": "处理依赖物理时间的事件",
+    "examples": [
+      "发送了一封邮件但对方没有回复，过一段时间再发一封邮件询问进展",
+      "打了一个电话但对方不在工作时间内，到下一个工作时间再尝试拨打"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-3",
+        "title": "事件触发工具",
+        "lineStart": 73,
+        "lineEnd": 84,
+        "contentHash": "sha256:0f8927ecb4567db98d598e7d989979b2cd76cbe99e77a6ab6bd294c50e73a37e"
+      }
+    ],
+    "evidenceQuote": "在设计层面，事件触发工具应定义清晰的触发条件和过滤规则，避免无关事件唤醒 Agent 浪费算力；事件载荷（payload）应包含足够的上下文信息，减少 Agent 被唤醒后还需要额外查询的次数。",
+    "statement": "事件触发工具应定义清晰的触发条件和过滤规则，避免无关事件唤醒 Agent 浪费算力；事件载荷（payload）应包含足够的上下文信息，减少 Agent 被唤醒后还需要额外查询的次数。",
+    "rationale": "避免无关事件唤醒 Agent 浪费算力；减少 Agent 被唤醒后还需要额外查询的次数",
+    "appliesWhen": "设计事件触发工具时",
+    "violation": "未定义清晰的触发条件和过滤规则，导致无关事件唤醒 Agent 浪费算力；事件载荷上下文不足，导致 Agent 被唤醒后还需额外查询",
+    "chapterRef": "chapter6-h3-3"
+  },
+  {
+    "id": "CHAPTER6-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-4",
+        "title": "用户沟通工具",
+        "lineStart": 85,
+        "lineEnd": 100,
+        "contentHash": "sha256:e86b03b10448ad77da3bfb3c42f84855db8a6818f11ab6a8fca9d666cc91895d"
+      }
+    ],
+    "evidenceQuote": "**Agent 的响应不应局限于单一渠道，通知机制同时也是用户召回机制**。消息发送扩展到即时通讯、短信、邮件、电话、推送等多种渠道。Agent 根据紧急程度、用户状态、内容性质、用户偏好综合决定渠道的选择，既保证不错过重要的消息，又避免重复打扰。",
+    "statement": "Agent 的响应不应局限于单一渠道。",
+    "rationale": "消息发送可以扩展到即时通讯、短信、邮件、电话、推送等多种渠道；根据紧急程度、用户状态、内容性质、用户偏好综合决定渠道选择，既能不错过重要消息又能避免重复打扰。",
+    "appliesWhen": "当消息发送需要扩展至多种渠道，并需要兼顾不错过重要消息与避免重复打扰时。",
+    "violation": "若 Agent 的响应仍局限于单一渠道，便无法按紧急程度、用户状态、内容性质、用户偏好综合选择渠道，可能错过重要消息或造成重复打扰。",
+    "chapterRef": "chapter6-h3-4"
+  },
+  {
+    "id": "CHAPTER6-H3-4-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-4",
+        "title": "用户沟通工具",
+        "lineStart": 85,
+        "lineEnd": 100,
+        "contentHash": "sha256:e86b03b10448ad77da3bfb3c42f84855db8a6818f11ab6a8fca9d666cc91895d"
+      }
+    ],
+    "evidenceQuote": "许多 Agent（如 Claude Code、Manus）采用原生 ReAct 循环，Agent “说” 的所有话（即 assistant 消息）都直接发送给用户，用户必须在应用中打开指定的会话才能与 Agent 对话。用户在会话中往往可以看到 Agent 调用工具的过程。\nOpenClaw 打破了这一人机沟通范式。用户无需感知会话的存在，也无需关心 Agent 调用工具的细节；用户和 Agent 都可以随时给对方发送消息，而不是用户发一条、Agent 回一条。因此，很多人评价 OpenClaw 具备 **“活人感”**，就像一个秘书一样通过文本消息与用户异步沟通。OpenClaw 并不是直接把模型输出的 assistant 消息呈现给用户，而是使用专门的工具发送消息。这些消息还可以附带图片和文件，并可根据紧急程度附加推送提醒。",
+    "pattern": "采用原生 ReAct 循环，把模型输出的所有 assistant 消息直接发送给用户，并要求用户在应用中打开指定会话才能对话，用户还需看到 Agent 调用工具的过程。",
+    "harm": "用户必须感知会话存在并关心工具调用细节，沟通被限制为用户发一条、Agent 回一条的同步模式。",
+    "corrective": "改用专门的用户沟通工具发送消息，让用户无需感知会话和工具调用细节，双方可随时异步互发消息，消息还可附带图片、文件并按紧急程度附加推送提醒。",
+    "evidence": [
+      "许多 Agent（如 Claude Code、Manus）采用原生 ReAct 循环，Agent “说” 的所有话（即 assistant 消息）都直接发送给用户，用户必须在应用中打开指定的会话才能与 Agent 对话。",
+      "OpenClaw 并不是直接把模型输出的 assistant 消息呈现给用户，而是使用专门的工具发送消息。"
+    ],
+    "chapterRef": "chapter6-h3-4"
+  },
+  {
+    "id": "CHAPTER6-H3-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-5",
+        "title": "虚拟身份与隔离执行环境",
+        "lineStart": 101,
+        "lineEnd": 112,
+        "contentHash": "sha256:a4052dcff1e4dc9a096c15381e6eaa601263fd0671e93c276db2b28be47eafbc"
+      }
+    ],
+    "evidenceQuote": "虚拟身份需要部署在隔离的执行环境中。**虚拟电脑**（VM/容器）和**虚拟手机**（Android 模拟器）为 Agent 提供操作系统级的隔离和完整的桌面/移动操作能力。首先，虚拟电脑可以全天候运行，不受用户设备联网状态的影响，也不影响用户正在操作的应用；其次，即使 Agent 执行了错误操作，最多也只会导致虚拟环境崩溃，不会影响用户的真实设备；最后，隔离环境可以防止 Agent 随意访问用户的本地文件，提高了安全性。",
+    "statement": "虚拟身份需要部署在隔离的执行环境中。",
+    "rationale": "虚拟电脑和虚拟手机提供操作系统级隔离；Agent 执行错误操作最多只会导致虚拟环境崩溃，不会影响用户真实设备；隔离环境还能防止 Agent 随意访问用户的本地文件。",
+    "appliesWhen": "为 Agent 配置独立虚拟身份时。",
+    "violation": "将虚拟身份运行在非隔离执行环境中。",
+    "chapterRef": "chapter6-h3-5"
+  },
+  {
+    "id": "CHAPTER6-H3-5-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-5",
+        "title": "虚拟身份与隔离执行环境",
+        "lineStart": 101,
+        "lineEnd": 112,
+        "contentHash": "sha256:a4052dcff1e4dc9a096c15381e6eaa601263fd0671e93c276db2b28be47eafbc"
+      }
+    ],
+    "evidenceQuote": "一是**反机器人机制**：许多网站用 CAPTCHA 和 IP 信誉检测拦截自动化访问，使用数据中心 IP 的虚拟环境很容易被识别，实践中往往需要配置住宅代理网络（使用真实家庭 IP）才能正常访问。",
+    "trigger": "当虚拟身份访问网站并遇到 CAPTCHA 或 IP 信誉检测等反机器人拦截时。",
+    "recommendation": "配置住宅代理网络（使用真实家庭 IP）后再访问。",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER6-H3-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-6",
+        "title": "事件处理机制",
+        "lineStart": 113,
+        "lineEnd": 197,
+        "contentHash": "sha256:3c8e9f23dded548634c8779d143091e6f3b7b59a41f90b3ab37abcf4b67928a7"
+      }
+    ],
+    "evidenceQuote": "取消点必须是工具或推理能够安全收尾的位置；未完成的工具结果用显式占位符表示，不能伪造成功。",
+    "statement": "取消点必须是工具或推理能够安全收尾的位置；未完成的工具结果必须用显式占位符表示，不能伪造成功。",
+    "rationale": "在事件处理中需要中断当前操作或处理未完成的工具结果时，必须保证中断发生在可安全收尾的位置，并且不能用伪造成功来掩盖未完成的结果。",
+    "appliesWhen": "事件处理需要取消当前操作或使用可能尚未完成的工具结果时。",
+    "violation": "在非安全位置强制中断当前操作，或将未完成的工具结果标记为成功。",
+    "chapterRef": "chapter6-h3-6"
+  },
+  {
+    "id": "CHAPTER6-H3-6-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-6",
+        "title": "事件处理机制",
+        "lineStart": 113,
+        "lineEnd": 197,
+        "contentHash": "sha256:3c8e9f23dded548634c8779d143091e6f3b7b59a41f90b3ab37abcf4b67928a7"
+      }
+    ],
+    "evidenceQuote": "**建议使用轻量级的分类 LLM 作为事件路由器**，在事件到达时快速判断应该采用哪种策略。",
+    "trigger": "事件到达且需要判断采用哪种处理策略时。",
+    "recommendation": "使用轻量级的分类 LLM 作为事件路由器，在事件到达时快速判断采用哪种处理策略。",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER6-H3-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-7",
+        "title": "不支持原生异步时的兼容方案",
+        "lineStart": 198,
+        "lineEnd": 274,
+        "contentHash": "sha256:c69434a40b978c668e962d8db6ffcc96ff7893798ac1bafa15928b3432188f63"
+      }
+    ],
+    "evidenceQuote": "规则 3：工具执行中的打断需要占位符。为未完成的工具生成占位符响应（如“工具正在后台执行，请优先处理新事件”），追加打断事件，重新调用 LLM。从 LLM 的视角看，assistant message 仍然有配对的 tool result。",
+    "statement": "工具执行中的打断需要占位符：为未完成的工具生成占位符响应，追加打断事件并重新调用 LLM。",
+    "rationale": "从 LLM 的视角看，assistant message 仍然有配对的 tool result。",
+    "appliesWhen": "工具执行中的打断发生时。",
+    "violation": "未为未完成的工具生成占位符响应就追加打断事件。",
+    "chapterRef": "chapter6-h3-7"
+  },
+  {
+    "id": "CHAPTER6-H3-7-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-7",
+        "title": "不支持原生异步时的兼容方案",
+        "lineStart": 198,
+        "lineEnd": 274,
+        "contentHash": "sha256:c69434a40b978c668e962d8db6ffcc96ff7893798ac1bafa15928b3432188f63"
+      }
+    ],
+    "evidenceQuote": "传统的工具设计隐含了 “调用即完成” 的语义。例如 `phone_call` 这个名字暗示 “调用将拨打电话并等待通话结束，返回通话记录”。在异步范式下应该将 “启动” 和 “完成” 解耦：",
+    "statement": "在异步范式下，工具接口设计应将“启动”和“完成”解耦。",
+    "rationale": "传统的工具设计隐含了“调用即完成”的语义。",
+    "appliesWhen": "在异步范式下设计工具接口时。",
+    "violation": "继续使用类似 phone_call 这样暗示“调用即完成”的工具设计，未将启动与完成解耦。",
+    "chapterRef": "chapter6-h3-7"
+  },
+  {
+    "id": "CHAPTER6-H3-8-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-8",
+        "title": "模型原生异步：GPT-6 Astra",
+        "lineStart": 275,
+        "lineEnd": 288,
+        "contentHash": "sha256:fbe621dccf3cde5faa1fa19cfeecf8bf091d87b6ddf44a20acd671402b5f6c22"
+      }
+    ],
+    "evidenceQuote": "**异步工具调用将“发起行动”和“获得结果”分开。** Agent 发起耗时查询后，可以继续推理、调用其他工具，或处理不依赖查询结果的部分。例如，查询会议场地时，可以先整理议程和准备清单；等场地信息返回，再比较方案。关键是分清工作的依赖关系：能独立推进的工作继续做，必须依据结果的决策留到结果到达之后。",
+    "canonicalTerm": "异步工具调用",
+    "aliases": [],
+    "definition": "将“发起行动”和“获得结果”分开：Agent 发起耗时查询后，可以继续推理、调用其他工具，或处理不依赖查询结果的部分；能独立推进的工作继续做，必须依据结果的决策留到结果到达之后。",
+    "examples": [
+      "查询会议场地时，可以先整理议程和准备清单；等场地信息返回，再比较方案。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-8-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-8",
+        "title": "模型原生异步：GPT-6 Astra",
+        "lineStart": 275,
+        "lineEnd": 288,
+        "contentHash": "sha256:fbe621dccf3cde5faa1fa19cfeecf8bf091d87b6ddf44a20acd671402b5f6c22"
+      }
+    ],
+    "evidenceQuote": "**回合中途引导让用户可以在任务进行中修正方向。** 当 Agent 还在思考或组织回答时，用户就可以追加“预算减少了”“参会人数变了”等要求。系统保留已完成的工作，把新的约束带入后续处理，使 Agent 能够在同一次任务中调整计划。",
+    "canonicalTerm": "回合中途引导",
+    "aliases": [],
+    "definition": "让用户可以在任务进行中修正方向：当 Agent 还在思考或组织回答时，用户可以追加要求；系统保留已完成的工作，把新的约束带入后续处理，使 Agent 能够在同一次任务中调整计划。",
+    "examples": [
+      "用户追加“预算减少了”“参会人数变了”等要求。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-9-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-9",
+        "title": "从“能接收异步消息”到“可靠处理异步任务”",
+        "lineStart": 289,
+        "lineEnd": 306,
+        "contentHash": "sha256:e88e8d6a165cedfa423675d74e9b0b3ea55dbe3a92ef50d7fe9cbcdbfbea9947"
+      }
+    ],
+    "evidenceQuote": "原生异步解决了消息能否在运行中到达的问题，复杂任务中的可靠性还取决于模型如何使用这些消息。至少要检查三件事：\n1. **结果归属与未完成状态**：能否把延迟到达的结果归入正确任务，在结果缺席时避免编造数据？\n2. **任务恢复与动作控制**：能否在处理新要求后继续原任务，并区分修改计划与停止执行？\n3. **多条更新的综合使用**：能否同时遵守预算与人数等约束，而不是只记住最后一条消息？",
+    "statement": "复杂任务中的可靠性至少要求检查结果归属与未完成状态、任务恢复与动作控制、多条更新的综合使用三项。",
+    "rationale": "原生异步解决了消息能否在运行中到达的问题，但复杂任务中的可靠性还取决于模型如何使用这些消息。",
+    "appliesWhen": "当复杂任务中需要检查可靠性时。",
+    "violation": "未检查这三项，就未满足复杂任务中可靠性的最低检查要求。",
+    "chapterRef": "chapter6-h3-9"
+  },
+  {
+    "id": "CHAPTER6-H3-9-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-9",
+        "title": "从“能接收异步消息”到“可靠处理异步任务”",
+        "lineStart": 289,
+        "lineEnd": 306,
+        "contentHash": "sha256:e88e8d6a165cedfa423675d74e9b0b3ea55dbe3a92ef50d7fe9cbcdbfbea9947"
+      }
+    ],
+    "evidenceQuote": "3. **多条更新的综合使用**：能否同时遵守预算与人数等约束，而不是只记住最后一条消息？\n\n针对这些问题，可以通过异步环境中的训练改进模型，也可以通过清晰的任务状态、事件来源和执行反馈改进系统。",
+    "pattern": "在处理多条异步更新时，模型只记住最后一条消息。",
+    "harm": "无法同时遵守预算与人数等约束。",
+    "corrective": "通过异步环境中的训练改进模型，或通过清晰的任务状态、事件来源和执行反馈改进系统。",
+    "evidence": [
+      "3. **多条更新的综合使用**：能否同时遵守预算与人数等约束，而不是只记住最后一条消息？",
+      "针对这些问题，可以通过异步环境中的训练改进模型，也可以通过清晰的任务状态、事件来源和执行反馈改进系统。"
+    ],
+    "chapterRef": "chapter6-h3-9"
+  },
+  {
+    "id": "CHAPTER6-H2-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-3",
+        "title": "语音：最自然的人机接口",
+        "lineStart": 307,
+        "lineEnd": 312,
+        "contentHash": "sha256:7e26e748609ff1fa592d9b4fb524d283f7ad40929ad23694a87060cf31114e8a"
+      }
+    ],
+    "evidenceQuote": "语音输入法把口述转成文字，语音 Agent 则让用户直接与 Agent 协作；两者都可以支持引言中提到的 whisper coding。",
+    "canonicalTerm": "语音 Agent",
+    "aliases": [],
+    "definition": "让用户直接与 Agent 协作的语音交互方式，区别于仅把口述转成文字的语音输入法。",
+    "examples": [
+      "whisper coding"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H2-3-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-3",
+        "title": "语音：最自然的人机接口",
+        "lineStart": 307,
+        "lineEnd": 312,
+        "contentHash": "sha256:7e26e748609ff1fa592d9b4fb524d283f7ad40929ad23694a87060cf31114e8a"
+      }
+    ],
+    "evidenceQuote": "正常说话的速度约为打字的四倍，而且不占用双手与视线，因此它天然适合把 Agent 放进持续工作、随时可能被打断的输入输出回路。",
+    "trigger": "当需要把 Agent 放进持续工作、随时可能被打断的输入输出回路时",
+    "recommendation": "将语音用于该输入输出回路",
+    "confidence": 0.85,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER6-H3-10-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-10",
+        "title": "交互时序：从级联到全双工",
+        "lineStart": 313,
+        "lineEnd": 326,
+        "contentHash": "sha256:8cabe8c36b9925b1316a9df419626d08f61d6041e2562d5d90a5bcb867e595a6"
+      }
+    ],
+    "evidenceQuote": "OpenAI 在 GPT-Live 的介绍中用“级联、轮次式、全双工”概括了语音系统的三种交互范式[^ch6-12]。它们不是简单的新旧替代，而是不同延迟、成本和可观测性约束下的取舍：",
+    "canonicalTerm": "语音系统交互范式",
+    "aliases": [],
+    "definition": "语音系统中的三种交互范式被概括为级联、轮次式、全双工；它们不是简单的新旧替代，而是在延迟、成本和可观测性约束下的不同取舍。",
+    "examples": [
+      "级联",
+      "轮次式",
+      "全双工"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-11-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-11",
+        "title": "范式一 · 级联流水线（Cascading）",
+        "lineStart": 327,
+        "lineEnd": 357,
+        "contentHash": "sha256:3a9fba57ef0b81a129df29fe21d793a8bf76239c57273fc5fc1e0fc5c319b955"
+      }
+    ],
+    "evidenceQuote": "绝大多数商业语音助手都基于串行流水线（图6-6）：VAD 判断用户何时说完，ASR 把音频转成文字，LLM 理解并生成回复，TTS 再把文字念出来。模块化让每个组件可以独立优化，但每一级都可能增加等待时间。",
+    "canonicalTerm": "级联流水线",
+    "aliases": [
+      "Cascading",
+      "串行流水线"
+    ],
+    "definition": "由 VAD、ASR、LLM、TTS 串行组成的语音助手流水线；模块化让各组件可独立优化，但每一级都可能增加等待时间。",
+    "examples": [
+      "基于串行流水线的商业语音助手"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-11-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-11",
+        "title": "范式一 · 级联流水线（Cascading）",
+        "lineStart": 327,
+        "lineEnd": 357,
+        "contentHash": "sha256:3a9fba57ef0b81a129df29fe21d793a8bf76239c57273fc5fc1e0fc5c319b955"
+      }
+    ],
+    "evidenceQuote": "本实验用 WebSocket 串起麦克风、Silero VAD、本地 Whisper、流式 LLM 和 Fish S1 TTS，建立后续方案的级联基线（baseline）。",
+    "canonicalTerm": "级联基线",
+    "aliases": [
+      "baseline"
+    ],
+    "definition": "用 WebSocket 串起麦克风、Silero VAD、本地 Whisper、流式 LLM 和 Fish S1 TTS 构建的语音 Agent，作为后续方案对比的级联基线。",
+    "examples": [
+      "用 WebSocket 串接麦克风、Silero VAD、本地 Whisper、流式 LLM 和 Fish S1 TTS 构建的语音 Agent"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H4-1-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-1",
+        "title": "从串行到流式感知",
+        "lineStart": 358,
+        "lineEnd": 388,
+        "contentHash": "sha256:89d73c9e1458d4de0bbb124a798016343805fab36953075694b22c0ffb4e6b0e"
+      }
+    ],
+    "evidenceQuote": "图6-7描述的是 VAD+ASR+LLM+TTS 的完全串行情形，这种串行感知方案有三个问题：\n\n1. **延迟累积**：必须等待一段静音才能确认说完。\n2. **信息丢失**：有声/无声二值信号无法表达犹豫、情绪、附和和环境声。\n3. **上下文被切断**：邮箱、人名和专有名词可能被分片识别而出错。\n\n为了解决这个问题，在保留模块化分工的前提下，一种优化方案是**流式感知**，让各阶段尽早产出增量结果：",
+    "pattern": "VAD+ASR+LLM+TTS 完全串行感知方案",
+    "harm": "延迟累积：必须等待一段静音才能确认说完；信息丢失：有声/无声二值信号无法表达犹豫、情绪、附和和环境声；上下文被切断：邮箱、人名和专有名词可能被分片识别而出错",
+    "corrective": "在保留模块化分工的前提下改为流式感知，让各阶段尽早产出增量结果",
+    "evidence": [
+      "必须等待一段静音才能确认说完",
+      "有声/无声二值信号无法表达犹豫、情绪、附和和环境声",
+      "邮箱、人名和专有名词可能被分片识别而出错"
+    ],
+    "chapterRef": "chapter6-h4-1"
+  },
+  {
+    "id": "CHAPTER6-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-1",
+        "title": "从串行到流式感知",
+        "lineStart": 358,
+        "lineEnd": 388,
+        "contentHash": "sha256:89d73c9e1458d4de0bbb124a798016343805fab36953075694b22c0ffb4e6b0e"
+      }
+    ],
+    "evidenceQuote": "如果只想解决“用户是否说完”，也可以把轮次判断直接做进流式识别器：模型综合语义和静音判断一句话是否表达完整。端点判断的训练标签必须只使用决策时刻可见的信息，否则会因“上帝视角”产生线上无法复现的判断。",
+    "statement": "端点判断的训练标签必须只使用决策时刻可见的信息",
+    "rationale": "否则会因“上帝视角”产生线上无法复现的判断",
+    "appliesWhen": "把轮次判断直接做进流式识别器，模型综合语义和静音判断一句话是否表达完整时",
+    "violation": "使用决策时刻不可见的信息训练端点判断标签，导致线上无法复现的判断",
+    "chapterRef": "chapter6-h4-1"
+  },
+  {
+    "id": "CHAPTER6-H3-12-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-12",
+        "title": "范式二 · 端到端全模态模型（Omni）",
+        "lineStart": 389,
+        "lineEnd": 403,
+        "contentHash": "sha256:60790ced0289215fbcf6d956eb58ee0926322b9b2024237edf53c7b7290f4832"
+      }
+    ],
+    "evidenceQuote": "级联即使采用流式感知，听、想、说仍通过离散接口交接；情绪、语调和环境声等信息可能在转成纯文本时丢失。Omni 方案用同一个模型直接听音频、生成回复并输出语音，因而有机会保留这些信息，但训练的成本更高（图6-9）。",
+    "pattern": "语音对话采用级联方案时，即使采用流式感知，听、想、说仍通过离散接口交接，情绪、语调和环境声等信息可能在转成纯文本时丢失。",
+    "harm": "情绪、语调和环境声等非文字信息可能在转成纯文本时丢失。",
+    "corrective": "改用 Omni 方案，用同一个模型直接听音频、生成回复并输出语音，以有机会保留这些信息。",
+    "evidence": [
+      "级联即使采用流式感知，听、想、说仍通过离散接口交接；情绪、语调和环境声等信息可能在转成纯文本时丢失。Omni 方案用同一个模型直接听音频、生成回复并输出语音，因而有机会保留这些信息，但训练的成本更高（图6-9）。"
+    ],
+    "chapterRef": "chapter6-h3-12"
+  },
+  {
+    "id": "CHAPTER6-H3-12-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-12",
+        "title": "范式二 · 端到端全模态模型（Omni）",
+        "lineStart": 389,
+        "lineEnd": 403,
+        "contentHash": "sha256:60790ced0289215fbcf6d956eb58ee0926322b9b2024237edf53c7b7290f4832"
+      }
+    ],
+    "evidenceQuote": "Omni 模型仍然假设轮流说话，通常要靠 VAD 划分发言权。因此，用户报数字时的中途停顿仍可能被误判为说完。",
+    "statement": "Omni 模型仍然假设轮流说话，通常要靠 VAD 划分发言权。因此，用户报数字时的中途停顿仍可能被误判为说完。",
+    "rationale": "Omni 模型假设轮流说话，并通常依靠 VAD 划分发言权，因此用户说话中途的停顿可能被误判为说完。",
+    "appliesWhen": "使用 Omni 模型进行轮流语音对话，且用户说话中出现中途停顿（如报数字）时。",
+    "violation": "用户报数字时的中途停顿被误判为说完。",
+    "chapterRef": "chapter6-h3-12"
+  },
+  {
+    "id": "CHAPTER6-H3-13-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-13",
+        "title": "范式三 · 全双工交互模型",
+        "lineStart": 404,
+        "lineEnd": 415,
+        "contentHash": "sha256:60c53b106baba3272b8b9e42bd508dd22c4679bbef26f02a6dd5d9519218ef68"
+      }
+    ],
+    "evidenceQuote": "Omni 仍然把对话分成“用户说”和“模型说”两个时段，但同声传译等任务要求两者重叠进行。全双工模型因此不再预设轮次，而是持续听、持续说，并不断决定继续、停顿、打断或调用工具。\n\n研究上的先声是 Kyutai 的 **Moshi**（2024）。它并行建模用户和模型的音频流，因此重叠说话和打断可以成为模型的自然行为。",
+    "canonicalTerm": "全双工交互模型",
+    "aliases": [
+      "全双工模型"
+    ],
+    "definition": "不再预设轮次，而是持续听、持续说，并不断决定继续、停顿、打断或调用工具。",
+    "examples": [
+      "Moshi（Kyutai，2024）"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-13-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-13",
+        "title": "范式三 · 全双工交互模型",
+        "lineStart": 404,
+        "lineEnd": 415,
+        "contentHash": "sha256:60c53b106baba3272b8b9e42bd508dd22c4679bbef26f02a6dd5d9519218ef68"
+      }
+    ],
+    "evidenceQuote": "Thinking Machines Lab 将这类路线称为**交互模型（Interaction Model）**[^ch6-14]：交互性不再依靠 VAD 等外部 harness 拼装实现，而是内建在模型中。其微轮次机制以短音频块持续推进，让静音、重叠和打断都作为连续上下文保留。交互模型还可以把完整对话委派给后台推理模型，自己继续维持话头；后台结果返回后，前台再在合适时机接入。\n\n[^ch6-14]: Thinking Machines Lab, “Interaction Models: A Scalable Approach to Human-AI Collaboration,” 2026-05. https://thinkingmachines.ai/blog/interaction-models/\n\nOpenAI 的 GPT-Live 则把全双工路线带到生产规模：模型持续处理输入并生成输出，能等待用户、附和、被打断，也能处理实时翻译。它与交互模型一样，把复杂任务委派给后台模型，前台继续维持对话。",
+    "canonicalTerm": "交互模型",
+    "aliases": [
+      "Interaction Model"
+    ],
+    "definition": "交互性不再依靠 VAD 等外部 harness 拼装实现，而是内建在模型中；其微轮次机制以短音频块持续推进，让静音、重叠和打断都作为连续上下文保留；可以把完整对话委派给后台推理模型，自己继续维持话头，后台结果返回后前台再在合适时机接入。",
+    "examples": [
+      "GPT-Live（OpenAI）"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-14-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-14",
+        "title": "认知时序：实时交互与深度思考",
+        "lineStart": 416,
+        "lineEnd": 419,
+        "contentHash": "sha256:454d1063129e7c564a5a263507c3a42ce2a24c968e01b66bedd4596b1b0e824a"
+      }
+    ],
+    "evidenceQuote": "“交互表现”和“智能上限”是两个维度：前台模型要在用户仍然在线时回应，后台模型则可以花更多时间思考。",
+    "canonicalTerm": "交互表现与智能上限",
+    "aliases": [],
+    "definition": "“交互表现”和“智能上限”是两个维度：前台模型要在用户仍然在线时回应，后台模型则可以花更多时间思考。",
+    "examples": [
+      "前台模型要在用户仍然在线时回应",
+      "后台模型则可以花更多时间思考"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-2",
+        "title": "方案一：快思考回应，慢思考回答",
+        "lineStart": 420,
+        "lineEnd": 427,
+        "contentHash": "sha256:115ee1959c1a509130c5ff78c48e7fd246afe81e1f0c298a910abcc47b4e9eb2"
+      }
+    ],
+    "evidenceQuote": "#### 方案一：快思考回应，慢思考回答\n\n快思考可以在几百毫秒内先给出即时回应，慢思考则在后台完成更深的推导。它的问题是简单问题会被重复处理，复杂问题又可能出现前后不一致：快模型先建议购买，慢模型随后发现套餐缺少关键功能，用户在几秒内便听到相互冲突的答案。根本原因是两个实例各自完成了一次独立思考。",
+    "canonicalTerm": "方案一：快思考回应，慢思考回答",
+    "aliases": [],
+    "definition": "一种让快思考在几百毫秒内先给出即时回应、慢思考在后台完成更深的推导的方案；其问题是简单问题会被重复处理，复杂问题可能出现前后不一致，根本原因是两个实例各自完成了一次独立思考。",
+    "examples": [
+      "快模型先建议购买，慢模型随后发现套餐缺少关键功能，用户在几秒内便听到相互冲突的答案。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H4-3-MENTALMODEL-01",
+    "objectType": "MentalModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-3",
+        "title": "方案二：快思考交互，慢思考提醒",
+        "lineStart": 428,
+        "lineEnd": 431,
+        "contentHash": "sha256:1f251427548b8926411b11cdb66cd94ed3150cbe52b29c7a6867e3af9d406a36"
+      }
+    ],
+    "evidenceQuote": "方案二让后台模型通过状态栏或专门接口向前台模型提供建议，前台继续维持话头并决定如何表达。它比方案一稳定，但通信仍然间接：前台可能误解建议，也看不到后台的中间思考；在后台完成前，用户追问时前台仍只能依靠自己的能力应答。它可以自然地“等结果”，但不能真正做到边想边说。",
+    "trigger": "后台模型通过状态栏或专门接口向前台模型提供建议，前台继续维持话头并决定如何表达。",
+    "inputs": [],
+    "reasoning": "它比方案一稳定，但通信仍然间接：前台可能误解建议，也看不到后台的中间思考；在后台完成前，用户追问时前台仍只能依靠自己的能力应答。它可以自然地“等结果”，但不能真正做到边想边说。",
+    "limits": "前台可能误解建议，也看不到后台的中间思考；在后台完成前，用户追问时前台仍只能依靠自己的能力应答。它可以自然地“等结果”，但不能真正做到边想边说。",
+    "counterexample": "在后台完成前，用户追问时前台仍只能依靠自己的能力应答。"
+  },
+  {
+    "id": "CHAPTER6-H4-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-4",
+        "title": "方案三：端到端思考与表达统一",
+        "lineStart": 432,
+        "lineEnd": 437,
+        "contentHash": "sha256:4b27cffe3f8a4b26855a21b2a8fa64890b545ea4fdae0fd5be843ce379ce7e50"
+      }
+    ],
+    "evidenceQuote": "Step-Audio R1 用两个互补机制解决两个问题：**模态锚定思考蒸馏（MGRD）** 让模型基于声学特征思考，**MPS 双脑架构**让构思与表达并行。前者保证“想得对”，后者解决“说得及时”。\n\n理想情况下，模型应该从音高、节奏和语调判断情绪，而不是只看转录文本。MGRD 筛选真正引用声学特征的思考过程，再用这些数据训练模型，并通过强化学习防止模型跳过思考直接猜答案。",
+    "canonicalTerm": "模态锚定思考蒸馏（MGRD）",
+    "aliases": [
+      "MGRD"
+    ],
+    "definition": "模态锚定思考蒸馏让模型基于声学特征思考；筛选真正引用声学特征的思考过程，再用这些数据训练模型，并通过强化学习防止模型跳过思考直接猜答案。",
+    "examples": [
+      "从音高、节奏和语调判断情绪，而不是只看转录文本"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H4-4-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-4",
+        "title": "方案三：端到端思考与表达统一",
+        "lineStart": 432,
+        "lineEnd": 437,
+        "contentHash": "sha256:4b27cffe3f8a4b26855a21b2a8fa64890b545ea4fdae0fd5be843ce379ce7e50"
+      }
+    ],
+    "evidenceQuote": "**MPS 双脑架构**让构思与表达并行。前者保证“想得对”，后者解决“说得及时”。\n\n理想情况下，模型应该从音高、节奏和语调判断情绪，而不是只看转录文本。MGRD 筛选真正引用声学特征的思考过程，再用这些数据训练模型，并通过强化学习防止模型跳过思考直接猜答案。MPS 让构思脑持续产出思考片段，表达脑收到片段后结合已有回复立即生成语音。两者以流水线方式并行，因此不必等完整思考结束才让用户听到第一句话。",
+    "canonicalTerm": "MPS 双脑架构",
+    "aliases": [
+      "MPS"
+    ],
+    "definition": "MPS 双脑架构让构思与表达并行；构思脑持续产出思考片段，表达脑收到片段后结合已有回复立即生成语音，两者以流水线方式并行，因此不必等完整思考结束才让用户听到第一句话。",
+    "examples": [
+      "构思脑持续产出思考片段，表达脑收到片段后结合已有回复立即生成语音"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H4-5-MENTALMODEL-01",
+    "objectType": "MentalModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-5",
+        "title": "快慢思考分离与端到端思考的取舍",
+        "lineStart": 438,
+        "lineEnd": 449,
+        "contentHash": "sha256:34a56c16010bb6b5b2dfd9d7be9a9655dcdfd53b20335482ae05204bf771326c"
+      }
+    ],
+    "evidenceQuote": "这里需要澄清“端到端模型”常被赋予的两个含义。第一是上一节所述的**语音通路的端到端**：模型直接接收音频、生成音频，不再由多个模型通过离散文本串接。Omni 和交互模型都属于这个意义上的端到端模型，但 Omni 模型通常仍按轮次推进，交互模型则可以边听边说，二者在架构上差别很大。第二是本节所述的**认知架构的端到端**：实时交互与深度思考是在同一模型内部共享状态、共同训练，还是拆成前台快模型与后台慢模型。两条轴彼此独立，一个系统完全可以在语音通路上端到端，同时在认知架构上保持快慢分离；Thinking Machines Lab 把复杂任务委派给后台推理模型就是这种组合。",
+    "trigger": "当遇到“端到端模型”这一表述并需要区分其含义时",
+    "inputs": [
+      "上下文中的“端到端模型”表述"
+    ],
+    "reasoning": "端到端模型有两个独立含义：语音通路端到端（模型直接接收音频、生成音频，不再由多个模型通过离散文本串接）与认知架构端到端（实时交互与深度思考在同一模型内部共享状态、共同训练，还是拆成前台快模型与后台慢模型）。两条轴彼此独立，系统可以同时做到语音通路端到端与认知架构快慢分离。",
+    "limits": "Omni 模型与交互模型虽然同属语音通路端到端，但 Omni 通常按轮次推进，交互模型可以边听边说，二者在架构上差别很大。",
+    "counterexample": "Thinking Machines Lab 把复杂任务委派给后台推理模型，就是在语音通路端到端的同时保持认知架构快慢分离的组合。"
+  },
+  {
+    "id": "CHAPTER6-H4-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h4-5",
+        "title": "快慢思考分离与端到端思考的取舍",
+        "lineStart": 438,
+        "lineEnd": 449,
+        "contentHash": "sha256:34a56c16010bb6b5b2dfd9d7be9a9655dcdfd53b20335482ae05204bf771326c"
+      }
+    ],
+    "evidenceQuote": "这种分离也不必然牺牲任务效果。截至 2026 年 8 月，采用快慢思考分离架构的 Pine AI 语音 Agent 在 τ³-Voice Leaderboard 上取得第一名，超过 Grok Voice、GPT-Realtime-2 等实时语音系统。这个结果至少说明，在同时考察深度推理与实时对话的任务上，解耦架构并不天然落后于端到端模型。",
+    "statement": "在同时考察深度推理与实时对话的任务上，快慢思考分离（解耦）架构并不天然落后于端到端模型。",
+    "rationale": "截至 2026 年 8 月，Pine AI 语音 Agent 采用快慢思考分离架构，在 τ³-Voice Leaderboard 上取得第一名，超过 Grok Voice、GPT-Realtime-2 等实时语音系统。",
+    "appliesWhen": "评估同时考察深度推理与实时对话的任务表现时。",
+    "violation": "在同时考察深度推理与实时对话的任务上，默认端到端模型一定优于快慢分离架构。",
+    "chapterRef": "chapter6-h4-5"
+  },
+  {
+    "id": "CHAPTER6-H3-15-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-15",
+        "title": "更像人的语音合成",
+        "lineStart": 450,
+        "lineEnd": 459,
+        "contentHash": "sha256:c0ba851bd6497a8e247d395260b11243d693055a655c30c31729c295d0338b28"
+      }
+    ],
+    "evidenceQuote": "停顿、填充词和偶尔的重复，是人类表达不确定性和思考状态的信号。",
+    "canonicalTerm": "非流畅语音信号",
+    "aliases": [],
+    "definition": "停顿、填充词和偶尔的重复，是人类表达不确定性和思考状态的信号。",
+    "examples": [
+      "停顿",
+      "填充词",
+      "偶尔的重复"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-15-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-15",
+        "title": "更像人的语音合成",
+        "lineStart": 450,
+        "lineEnd": 459,
+        "contentHash": "sha256:c0ba851bd6497a8e247d395260b11243d693055a655c30c31729c295d0338b28"
+      }
+    ],
+    "evidenceQuote": "传统 TTS 过于流畅、零停顿，反而容易暴露机器身份。停顿、填充词和偶尔的重复，是人类表达不确定性和思考状态的信号。\n\n可以让主 LLM 在文本之外输出控制标记，例如 **THINKING**、**EMO:happy** 和 **SPEED:0.8x**，由 TTS 将它们映射为停顿、韵律、语速或笑声、叹气等非语言音频。实现上可以自研支持控制标记的 TTS，也可以用语音克隆准备不同情绪和风格的参考音频。",
+    "pattern": "传统 TTS 过于流畅、零停顿",
+    "harm": "容易暴露机器身份",
+    "corrective": "让主 LLM 在文本之外输出控制标记，由 TTS 映射为停顿、韵律、语速或笑声、叹气等非语言音频",
+    "evidence": [
+      "传统 TTS 过于流畅、零停顿，反而容易暴露机器身份。",
+      "停顿、填充词和偶尔的重复，是人类表达不确定性和思考状态的信号。",
+      "可以让主 LLM 在文本之外输出控制标记，例如 **THINKING**、**EMO:happy** 和 **SPEED:0.8x**，由 TTS 将它们映射为停顿、韵律、语速或笑声、叹气等非语言音频。"
+    ],
+    "chapterRef": "chapter6-h3-15"
+  },
+  {
+    "id": "CHAPTER6-H2-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-4",
+        "title": "Computer Use：GUI 自动化 Agent",
+        "lineStart": 460,
+        "lineEnd": 478,
+        "contentHash": "sha256:228a7161a3f613b416759d75655452281ec75623819805b9ae475ffcc42e2783"
+      }
+    ],
+    "evidenceQuote": "Computer Use（也称 GUI 自动化 Agent）让 AI 像人类一样通过观察屏幕、操作鼠标键盘来使用软件——比如打开浏览器搜索信息、在表格软件中填写数据或在系统设置中调整配置。",
+    "canonicalTerm": "Computer Use",
+    "aliases": [
+      "GUI 自动化 Agent"
+    ],
+    "definition": "让 AI 像人类一样通过观察屏幕、操作鼠标键盘来使用软件。",
+    "examples": [
+      "打开浏览器搜索信息",
+      "在表格软件中填写数据",
+      "在系统设置中调整配置"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H2-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-4",
+        "title": "Computer Use：GUI 自动化 Agent",
+        "lineStart": 460,
+        "lineEnd": 478,
+        "contentHash": "sha256:228a7161a3f613b416759d75655452281ec75623819805b9ae475ffcc42e2783"
+      }
+    ],
+    "evidenceQuote": "这里要区分“看懂界面”和“完成任务”。前者更接近多模态理解能力，可以用一次截图问答来测量；后者则要求模型把理解和生成动作放进闭环，处理页面加载、状态变化、误操作和不可逆后果。Computer Use 的难点因此不只是让模型在截图上答对，而是让它在每一步之后重新确认现实是否仍符合计划。",
+    "statement": "Computer Use 的难点不只是让模型在截图上答对，而是让它在每一步之后重新确认现实是否仍符合计划。",
+    "rationale": "完成任务要求模型把理解和生成动作放进闭环，处理页面加载、状态变化、误操作和不可逆后果。",
+    "appliesWhen": "当区分“看懂界面”和“完成任务”时。",
+    "violation": "把 Computer Use 的难点等同于让模型在截图上答对，忽略每一步之后重新确认现实是否仍符合计划。",
+    "chapterRef": "chapter6-h2-4"
+  },
+  {
+    "id": "CHAPTER6-H3-16-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-16",
+        "title": "动作空间设计",
+        "lineStart": 479,
+        "lineEnd": 497,
+        "contentHash": "sha256:1fa6c480bc7b8379b15607f3d256a883aedabbaa46d7e422bf22dc556f4f29ed"
+      }
+    ],
+    "evidenceQuote": "**GUI 操作工具**（computer tool）：鼠标操作包括移动（mouse_move）、左/右/中键点击、双击/三击、拖拽（left_click_drag），以及更精细的按下/松开（left_mouse_down/up）。滚动（scroll）支持四个方向并可配合修饰键。键盘操作包括逐字输入（type，每个字符间隔 12ms 模拟真实打字）、组合键（key，如 Ctrl+C）、长按（hold_key）。感知动作：截图（screenshot）、获取光标位置（cursor_position）、等待（wait）。",
+    "canonicalTerm": "GUI 操作工具",
+    "aliases": [
+      "computer tool"
+    ],
+    "definition": "Computer Use 动作空间中的一类工具，包含鼠标操作、键盘操作和感知动作三类能力。",
+    "examples": [
+      "鼠标操作包括移动、左/右/中键点击、双击/三击、拖拽和按下/松开",
+      "键盘操作包括逐字输入、组合键、长按",
+      "感知动作包括截图、获取光标位置、等待"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-16-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-16",
+        "title": "动作空间设计",
+        "lineStart": 479,
+        "lineEnd": 497,
+        "contentHash": "sha256:1fa6c480bc7b8379b15607f3d256a883aedabbaa46d7e422bf22dc556f4f29ed"
+      }
+    ],
+    "evidenceQuote": "**命令执行工具**（bash tool）：提供持久的 bash 终端会话，120 秒超时，通过哨兵字符串检测命令是否执行完毕，多次调用之间保持环境状态（比如 cd 到某个目录后下次调用还在那个目录）。",
+    "canonicalTerm": "命令执行工具",
+    "aliases": [
+      "bash tool"
+    ],
+    "definition": "提供持久 bash 终端会话的工具，120 秒超时，通过哨兵字符串检测命令是否执行完毕，多次调用之间保持环境状态。",
+    "examples": [
+      "cd 到某个目录后下次调用还在那个目录"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-17-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-17",
+        "title": "视觉定位（Grounding）",
+        "lineStart": 498,
+        "lineEnd": 547,
+        "contentHash": "sha256:f31ed7f4307c9e4b78ed62d1d3aba4d1c1697959889e3e1e6fd5035a1a5cd952"
+      }
+    ],
+    "evidenceQuote": "在循环的每一轮中，模型需要在截图中准确定位目标元素——“搜索框在哪里？”“提交按钮的坐标是什么？”这就是视觉定位（Grounding）问题。当前主要有两大思路：一是把定位变成选择题——先把界面元素标注好编号，模型只需从中选一个；二是纯坐标预测——让模型像人一样直接“看”着截图报出坐标。其中选择题思路又有两种实现方式：纯视觉标注（原始的 Set-of-Mark，用分割模型在像素上切出候选区域）和结构化元素索引（DOM/Accessibility Tree，直接读取界面自带的结构）。选择题思路的共同优势，是把开放式的“在截图中找到按钮并预测坐标”转化为封闭式的“从已标注好的元素中选一个”。就像考试中选择题比填空题更容易答对一样，模型只需说“点击 [123]”而不是“点击屏幕 (350, 464) 处的按钮”。输出坐标对模型来说挑战尤其大，需要大量训练才能做准确，而且在不同屏幕分辨率下很容易出错。",
+    "canonicalTerm": "视觉定位",
+    "aliases": [
+      "Grounding"
+    ],
+    "definition": "在循环的每一轮中，模型需要在截图中准确定位目标元素（如搜索框、提交按钮的坐标）的问题。",
+    "examples": [
+      "搜索框在哪里？",
+      "提交按钮的坐标是什么？",
+      "模型只需说“点击 [123]”而不是“点击屏幕 (350, 464) 处的按钮”"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-17-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-17",
+        "title": "视觉定位（Grounding）",
+        "lineStart": 498,
+        "lineEnd": 547,
+        "contentHash": "sha256:f31ed7f4307c9e4b78ed62d1d3aba4d1c1697959889e3e1e6fd5035a1a5cd952"
+      }
+    ],
+    "evidenceQuote": "在坐标预测方案中，模型对坐标的理解高度依赖训练时使用的分辨率（图6-14）。Claude 训练使用 XGA（1024x768）、WXGA（1280x800）、FWXGA（1366x768），如果输入的截图分辨率不匹配，模型预测的坐标就会系统性地偏移——就像在小地图上量距离然后直接用到大地图上一样。因此，需要在工具层实现双向坐标缩放机制，而且要按宽高比选目标分辨率，避免非等比拉伸把画面压变形、连带把坐标判断也带偏。例如，真实屏幕分辨率为 2560×1440（16:9），就该在 Claude 支持的三档里挑一个宽高比同样接近 16:9 的目标——FWXGA（1366×768）最匹配。截图时把屏幕等比缩放到 1366×768 送入模型；模型输出点击坐标 (683, 384) 后，反向映射为真实坐标 (683×2560/1366, 384×1440/768) ≈ (1280, 720)。反过来，若硬把 16:9 拉伸进 4:3 的 1024×768，画面会被横向压扁，模型预测的坐标就会系统性偏移。",
+    "statement": "在纯坐标预测方案中，当输入截图分辨率与模型训练时使用的分辨率不匹配时，应在工具层实现双向坐标缩放机制，并按宽高比选择目标分辨率。",
+    "rationale": "输入截图分辨率不匹配会使模型预测的坐标系统性偏移；非等比拉伸会把画面压变形、连带把坐标判断也带偏。",
+    "appliesWhen": "使用纯坐标预测方案，且输入截图分辨率与模型训练时使用的分辨率不匹配。",
+    "violation": "若硬把 16:9 的截图拉伸进 4:3 的目标分辨率（如 1024×768），画面会被横向压扁，模型预测的坐标会系统性偏移。",
+    "chapterRef": "chapter6-h3-17"
+  },
+  {
+    "id": "CHAPTER6-H3-18-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-18",
+        "title": "能看动画、能听声音的 Computer Use Agent",
+        "lineStart": 548,
+        "lineEnd": 555,
+        "contentHash": "sha256:eeb43f3d5313743a5c1a50d45a564bd728622551e49489fd136ef167020d5bf4"
+      }
+    ],
+    "evidenceQuote": "核心思想是构建 Agent–电脑观察接口（AOI），把连续的环境观察转换成模型便于处理的离散事件。其中包括几项关键技术：第一，**屏幕关键帧截图**——用一个小模型判断屏幕是否发生了有意义的变化，只在显著变化时截图，变化频繁时每秒截图 1 次就能有不错的效果；第二，**音量门控的语音转写**，有声音时调用语音识别，把识别出的文字放入上下文，让 Agent 能够听到声音；第三，**用文字描述画面**，让模型把捕获到的屏幕截图描述成一句话，这样即使原图之后被清理出上下文，这句文字仍留在上下文里，实现了多模态交互历史压缩的效果。",
+    "canonicalTerm": "Agent–电脑观察接口（AOI）",
+    "aliases": [
+      "AOI"
+    ],
+    "definition": "把连续的环境观察转换成模型便于处理的离散事件。",
+    "examples": [
+      "屏幕关键帧截图",
+      "音量门控的语音转写",
+      "用文字描述画面"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-18-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:04:53.008Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:04:53.008Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-18",
+        "title": "能看动画、能听声音的 Computer Use Agent",
+        "lineStart": 548,
+        "lineEnd": 555,
+        "contentHash": "sha256:eeb43f3d5313743a5c1a50d45a564bd728622551e49489fd136ef167020d5bf4"
+      }
+    ],
+    "evidenceQuote": "可现实里的屏幕会放视频、会弹出转瞬即逝的通知、会播放会议里的人声。一个每 3–5 秒才睁一次眼、而且完全没有耳朵的 Agent，对这些“两帧之间发生的事”既看不见也听不到。\n\n这里真正该被重新设计的，不是“动作接口”，而是“**观察接口**”[^ch6-9]。",
+    "statement": "对于需要处理视频、转瞬即逝通知或会议人声的 Computer Use Agent，应重新设计观察接口，而不是动作接口。",
+    "rationale": "固定间隔截屏且没有音频输入的 Agent，对两帧之间发生的事既看不见也听不到。",
+    "appliesWhen": "当 Computer Use Agent 需要感知屏幕上的视频、转瞬即逝的通知或会议里的人声时。",
+    "violation": "继续只优化动作接口，而不重新设计观察接口。",
+    "chapterRef": "chapter6-h3-18"
+  },
+  {
+    "id": "CHAPTER6-H3-19-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-19",
+        "title": "Computer Use 的世界模型",
+        "lineStart": 556,
+        "lineEnd": 574,
+        "contentHash": "sha256:d322f4da095b4df6722395e823c207494d0a04b4482408d3e7526efe404184fb"
+      }
+    ],
+    "evidenceQuote": "但观察接口并不会消除规划延迟，Agent 仍然是串行的“截图—思考—点击”循环，每执行一个动作都重新观察、思考下一步。**OSWorld-Human** 的效率研究显示，即使任务最终成功，Agent 的操作步骤仍明显多于人类，等待时间也更长；准确率达到人类水平，并不等于已经足够实用。\n\n人类操作电脑时并不是点击之后才开始想下一步，而是会先对动作后果作出预测：如果实际变化与预期一致，就沿着原定计划继续执行；只有发现页面状态偏离预期，才停下来重新观察和规划。世界模型让 Agent 能够在行动前预测桌面接下来可能变成什么，从而实现这种类似于人类的 “推测执行” 机制，大大提高效率。",
+    "pattern": "串行的“截图—思考—点击”循环，每执行一个动作都重新观察、思考下一步",
+    "harm": "即使任务最终成功，Agent 的操作步骤仍明显多于人类，等待时间也更长；准确率达到人类水平，并不等于已经足够实用。",
+    "corrective": "引入世界模型，让 Agent 在行动前预测桌面接下来可能变成什么，实现类似人类的推测执行机制，提高效率。",
+    "evidence": [
+      "OSWorld-Human 的效率研究显示，即使任务最终成功，Agent 的操作步骤仍明显多于人类，等待时间也更长；准确率达到人类水平，并不等于已经足够实用。"
+    ],
+    "chapterRef": "chapter6-h3-19"
+  },
+  {
+    "id": "CHAPTER6-H3-19-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-19",
+        "title": "Computer Use 的世界模型",
+        "lineStart": 556,
+        "lineEnd": 574,
+        "contentHash": "sha256:d322f4da095b4df6722395e823c207494d0a04b4482408d3e7526efe404184fb"
+      }
+    ],
+    "evidenceQuote": "这样，Agent 就能在真正点击之前比较候选动作的后果，在页面加载期间准备下一步，并在弹窗一闪而过时根据状态差异恢复。例如任务是 “在 VS Code 新建 Python 文件并写入 hello world”，模型可以先预测文件树和编辑器在成功后的关键状态，再选择点击、输入和保存动作；如果任务是删除文件，则可以先在隔离的虚拟桌面中预测是否会出现不可逆确认框，必要时请求用户确认。这里的重点不是让模型生成一张逼真的未来截图，而是预测完成任务所需的、可检查的状态差异。",
+    "canonicalTerm": "Computer Use 的世界模型",
+    "aliases": [
+      "世界模型"
+    ],
+    "definition": "让 Agent 在真正点击之前比较候选动作的后果、在页面加载期间准备下一步，并在弹窗一闪而过时根据状态差异恢复；其重点不是生成逼真的未来截图，而是预测完成任务所需的、可检查的状态差异。",
+    "examples": [
+      "在 VS Code 新建 Python 文件并写入 hello world 时，模型先预测文件树和编辑器在成功后的关键状态，再选择点击、输入和保存动作",
+      "删除文件时，先在隔离的虚拟桌面中预测是否会出现不可逆确认框，必要时请求用户确认"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-20-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-20",
+        "title": "移动端：生态壁垒比技术更难",
+        "lineStart": 575,
+        "lineEnd": 584,
+        "contentHash": "sha256:962fca0c2a9a9d30898726a42b20a9052c35249fece98c746e5b721e3766458b"
+      }
+    ],
+    "evidenceQuote": "移动端与桌面在技术上确有差异：动作空间通常不再是“鼠标坐标 + 键盘”，而是接入系统的无障碍服务 API（如 Android 的 AccessibilityService）来读取界面元素、下发点击与文本输入；交互方式也从鼠标指针变成触摸手势，坐标的语义随之改变——同一个 (x, y) 到底是手指的单击、长按，还是滑动手势的起点，需要额外的手势类型来界定。第七章介绍的 AndroidWorld 等移动端基准，正是在这样的动作空间上评测 Agent 完成真实应用内任务的能力。",
+    "canonicalTerm": "移动端 Computer Use 动作空间",
+    "aliases": [],
+    "definition": "移动端 Computer Use 与桌面在技术上的差异：动作空间通常不再是“鼠标坐标 + 键盘”，而是通过无障碍服务 API 读取界面元素并下发点击与文本输入；交互方式从鼠标指针变为触摸手势，同一坐标需要额外手势类型界定是单击、长按还是滑动起点。",
+    "examples": [
+      "Android 的 AccessibilityService 作为接入系统的无障碍服务 API",
+      "AndroidWorld 等移动端基准在该动作空间上评测 Agent 完成真实应用内任务的能力"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-20-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-20",
+        "title": "移动端：生态壁垒比技术更难",
+        "lineStart": 575,
+        "lineEnd": 584,
+        "contentHash": "sha256:962fca0c2a9a9d30898726a42b20a9052c35249fece98c746e5b721e3766458b"
+      }
+    ],
+    "evidenceQuote": "但真正卡住移动端的，往往不是这些技术差异，而是生态壁垒。曾有手机厂商尝试在消费级手机中集成 AI 助手，让它自动操作微信、淘宝、支付宝等日常应用，但很快遭遇平台限制。\n\n这揭示了 Computer Use 面临的一个独特挑战：**生态壁垒**。封杀背后的根本原因是商业模式冲突。传统互联网应用的核心变现逻辑是**流量与注意力**：用户刷信息流时看到广告，搜索商品时跟随推荐算法的引导，浏览页面时产生冲动消费。而当 Agent 代替用户操作时，这条变现链路被彻底绕过：AI 不会关注广告，也不会冲动消费，直奔目标完成任务就走。对于靠广告和流量变现的平台来说，Agent 的每一次操作都在侵蚀其商业模式的根基。\n\n这意味着 Computer Use 面对的不仅是 CAPTCHA（验证码）等技术层面的对抗，更是一个**结构性的利益冲突**。这一矛盾在短期内难以调和，也让 Computer Use 在消费级场景中的落地面临比纯技术问题更棘手的挑战。",
+    "canonicalTerm": "生态壁垒",
+    "aliases": [],
+    "definition": "Computer Use 在消费级场景中面临的独特挑战：因商业模式冲突，平台封杀 Agent 操作，绕过流量与注意力变现链路；这种对抗不仅是 CAPTCHA 等技术层面，而是结构性的利益冲突，短期内难以调和。",
+    "examples": [
+      "曾有手机厂商尝试在消费级手机中集成 AI 助手，让它自动操作微信、淘宝、支付宝等日常应用，但很快遭遇平台限制。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H2-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-5",
+        "title": "机器人操作：以 XLeRobot 整理桌面为例",
+        "lineStart": 585,
+        "lineEnd": 601,
+        "contentHash": "sha256:7d6055d42675c8392d4b9eba7e0b305252e17f35c6134ff1f12a19d237b86c5d"
+      }
+    ],
+    "evidenceQuote": "机器人操作比“看图回答问题”难得多。模型不但要看懂画面，还要在真实世界里连续做出动作，而且每个动作都会改变下一刻的情况。XLeRobot 把这种区别变得很具体：同一台机械臂既可以由人通过键盘、手柄或 VR 设备遥操作，也可以把摄像头观察和一组受约束的动作工具交给 Agent 自主调用。",
+    "canonicalTerm": "机器人操作",
+    "aliases": [],
+    "definition": "一种需要模型看懂画面，并在真实世界中连续做出动作的任务，且每个动作都会改变下一刻的情况。",
+    "examples": [
+      "XLeRobot 中同一台机械臂既可以由人通过键盘、手柄或 VR 设备遥操作，也可以把摄像头观察和一组受约束的动作工具交给 Agent 自主调用。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H2-5-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-5",
+        "title": "机器人操作：以 XLeRobot 整理桌面为例",
+        "lineStart": 585,
+        "lineEnd": 601,
+        "contentHash": "sha256:7d6055d42675c8392d4b9eba7e0b305252e17f35c6134ff1f12a19d237b86c5d"
+      }
+    ],
+    "evidenceQuote": "这里的瓶颈通常不是再给模型增加一个静态问答基准，而是让它在有限的感知和控制带宽下持续完成闭环。",
+    "trigger": "当评估机器人操作系统的瓶颈、考虑再增加一个静态问答基准时",
+    "recommendation": "应优先让系统在有限的感知和控制带宽下持续完成闭环。",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CHAPTER6-H3-21-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-21",
+        "title": "硬件与算法的分工",
+        "lineStart": 602,
+        "lineEnd": 623,
+        "contentHash": "sha256:33e6a7034faf850a3d2a45bd55b6f40d4d11820f674004225f18489a8a0d31d6"
+      }
+    ],
+    "evidenceQuote": "在二维桌面模拟器中随机摆放红色杯子、黄色废纸及其目标区域，由理想控制器依次接近物体、抓取并移动到正确位置。它不需要识别图像，也不会选错动作，因此代表“感知和决策都正确时，这个任务至少可以做到什么”。",
+    "canonicalTerm": "理想控制器",
+    "aliases": [],
+    "definition": "在二维桌面模拟器中不需要识别图像、也不会选错动作的控制器，代表感知和决策都正确时该任务至少可以做到什么。",
+    "examples": [
+      "依次接近物体、抓取并移动到正确位置"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-21-MENTALMODEL-02",
+    "objectType": "MentalModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-21",
+        "title": "硬件与算法的分工",
+        "lineStart": 602,
+        "lineEnd": 623,
+        "contentHash": "sha256:33e6a7034faf850a3d2a45bd55b6f40d4d11820f674004225f18489a8a0d31d6"
+      }
+    ],
+    "evidenceQuote": "XLeRobot 最适合回答的第一个问题是：自主整理桌面失败时，究竟是机械臂本身做不到，还是算法没有把它用好？这里有一个不容忽视的事实：**像 XLeRobot 这样成本只有几百美元的机械臂，通过遥操作已经能够完成本节这种连续的多步桌面任务**——人看着摄像头画面，抓起红色杯子放进托盘，再把黄色废纸放进垃圾盒，最后重新确认状态。这一结果不只是说明“硬件勉强具备可行性”，更是一个明确的诊断证据：**对于这个任务，硬件本体不是瓶颈，算法才是瓶颈。**\n\n诊断方法很直接：保持摄像头、机械臂、夹爪、桌面布置和成功条件不变，先让人接管闭环。人类会持续修正物体定位、动作选择和时机控制，并处理抓取失败；自主系统与人的差距，正体现在这些闭环能力上。当然，这个判断仅限于本节的桌面任务：它说明硬件已经跨过了完成该任务所需的负载、精度和工作空间门槛，并不意味着几百美元的机械臂能够胜任所有开放环境或更高难度的操作。",
+    "trigger": "自主整理桌面失败时，需要判断是机械臂本身做不到，还是算法没有把它用好。",
+    "inputs": [],
+    "reasoning": "保持摄像头、机械臂、夹爪、桌面布置和成功条件不变，先让人接管闭环；人类持续修正物体定位、动作选择和时机控制并处理抓取失败，自主系统与人的差距体现在这些闭环能力上。",
+    "limits": "该判断仅限于本节桌面任务；它说明硬件已跨过完成该任务所需的负载、精度和工作空间门槛，但不意味着几百美元机械臂能胜任所有开放环境或更高难度操作。",
+    "counterexample": "所有开放环境或更高难度的操作，几百美元的机械臂并不因此能够胜任。"
+  },
+  {
+    "id": "CHAPTER6-H3-22-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-22",
+        "title": "机器人控制的基本结构",
+        "lineStart": 624,
+        "lineEnd": 637,
+        "contentHash": "sha256:8a5dc14a1ad96fbddff7e99e469917ac0aa9f62d023a562500770b4a7ef07901"
+      }
+    ],
+    "evidenceQuote": "机器人系统通常会把不同时间尺度的工作分开：\n\n| 层级 | 核心问题 | 输出 | 典型时间尺度 |\n| --- | --- | --- | --- |\n| 任务目标 | 人想完成什么 | “把杯子和废纸归位” | 分钟级 |\n| 长程规划 | 先做什么、后做什么 | 先处理杯子，再处理废纸，最后检查 | 秒到分钟 |\n| 基本技能 | 当前要完成哪个状态变化 | `pick(red_cup)`、`place(red_cup, tray)` | 约 1—3 秒 |\n| VLA / 技能策略 | 这个技能具体怎么动 | XLeRobot 夹爪的一小段动作或连续轨迹 | 约 1—10 Hz 推理 |\n| 底层控制与安全层 | 如何稳定、及时地执行 | 关节或末端控制量、限速与急停 | 约 50—1000 Hz |",
+    "canonicalTerm": "机器人控制的基本结构",
+    "aliases": [],
+    "definition": "机器人系统通常把不同时间尺度的工作分开，分为任务目标、长程规划、基本技能、VLA / 技能策略和底层控制与安全层。",
+    "examples": [
+      "任务目标层：回答“人想完成什么”，输出“把杯子和废纸归位”，时间尺度为分钟级",
+      "长程规划层：回答“先做什么、后做什么”，输出“先处理杯子，再处理废纸，最后检查”，时间尺度为秒到分钟",
+      "基本技能层：回答“当前要完成哪个状态变化”，输出 `pick(red_cup)`、`place(red_cup, tray)`，时间尺度约 1—3 秒",
+      "VLA / 技能策略层：回答“这个技能具体怎么动”，输出 XLeRobot 夹爪的一小段动作或连续轨迹，时间尺度约 1—10 Hz 推理",
+      "底层控制与安全层：回答“如何稳定、及时地执行”，输出关节或末端控制量、限速与急停，时间尺度约 50—1000 Hz"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-22-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-22",
+        "title": "机器人控制的基本结构",
+        "lineStart": 624,
+        "lineEnd": 637,
+        "contentHash": "sha256:8a5dc14a1ad96fbddff7e99e469917ac0aa9f62d023a562500770b4a7ef07901"
+      }
+    ],
+    "evidenceQuote": "无论采用哪种实现，都应该把“任务顺序”和“眼前动作”分开，否则高层模型的推理延迟会拖慢底层控制，底层的高频控制也会让高层模型处理大量无关细节。",
+    "statement": "无论采用哪种实现，都应该把“任务顺序”和“眼前动作”分开。",
+    "rationale": "否则高层模型的推理延迟会拖慢底层控制，底层的高频控制也会让高层模型处理大量无关细节。",
+    "appliesWhen": "无论采用哪种实现。",
+    "violation": "高层模型的推理延迟会拖慢底层控制，底层的高频控制也会让高层模型处理大量无关细节。",
+    "chapterRef": "chapter6-h3-22"
+  },
+  {
+    "id": "CHAPTER6-H3-23-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-23",
+        "title": "长程规划与任务分解",
+        "lineStart": 638,
+        "lineEnd": 663,
+        "contentHash": "sha256:2b42a2f70d7606cba1188372ae85bdb33eb74d7d8dbfb58c46bde41d24200c49"
+      }
+    ],
+    "evidenceQuote": "给智能体的工具也应该足够简单：一次调用只做一件事，动作范围固定，有超时限制，执行后立即重新观察。",
+    "statement": "给智能体的工具也应该足够简单：一次调用只做一件事，动作范围固定，有超时限制，执行后立即重新观察。",
+    "rationale": "该规则要求工具调用保持简单、动作范围固定、有超时限制，并在执行后立即重新观察。",
+    "appliesWhen": "为智能体设计或开放工具时。",
+    "violation": "一次调用做多件事、动作范围不固定、没有超时限制，或执行后不立即重新观察。",
+    "chapterRef": "chapter6-h3-23"
+  },
+  {
+    "id": "CHAPTER6-H3-23-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-23",
+        "title": "长程规划与任务分解",
+        "lineStart": 638,
+        "lineEnd": 663,
+        "contentHash": "sha256:2b42a2f70d7606cba1188372ae85bdb33eb74d7d8dbfb58c46bde41d24200c49"
+      }
+    ],
+    "evidenceQuote": "如果抓取失败，只重试当前这一步；如果物体被人挪动了，或者用户改变了目标，只需要重新规划受影响的后续步骤，不必把旧计划全部重做。",
+    "statement": "如果抓取失败，只重试当前这一步；如果物体被人挪动了，或者用户改变了目标，只需要重新规划受影响的后续步骤，不必把旧计划全部重做。",
+    "rationale": "失败只重试当前步骤，物体被挪动或用户改变目标时只重新规划受影响的后续步骤，不需要重做旧计划全部。",
+    "appliesWhen": "任务执行中出现抓取失败、物体被挪动或用户改变目标时。",
+    "violation": "因抓取失败或局部变化而把旧计划全部重做，或对未受影响的步骤重新规划。",
+    "chapterRef": "chapter6-h3-23"
+  },
+  {
+    "id": "CHAPTER6-H3-24-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-24",
+        "title": "VLA 控制",
+        "lineStart": 664,
+        "lineEnd": 677,
+        "contentHash": "sha256:26d11994382b8e1497a52736a514e78396dc9898a24578f78e8802c7e93ce727"
+      }
+    ],
+    "evidenceQuote": "VLA 是 Vision-Language-Action 的缩写，中文可以理解为“视觉—语言—动作模型”。它接收当前画面和一条技能指令，然后输出机器人接下来要执行的动作：\n\n```text\n当前观察 + 技能指令 → 动作\n```\n\n在 XLeRobot 的例子里，高层规划器只提交 `pick(red_cup)`，VLA 或技能策略还要根据当前画面决定从哪个方向接近杯子、夹爪何时闭合、手臂以什么轨迹抬起。",
+    "canonicalTerm": "VLA",
+    "aliases": [
+      "Vision-Language-Action",
+      "视觉—语言—动作模型"
+    ],
+    "definition": "一种接收当前画面和一条技能指令，输出机器人接下来要执行的动作的模型。",
+    "examples": [
+      "在 XLeRobot 的例子里，高层规划器只提交 pick(red_cup)，VLA 或技能策略根据当前画面决定从哪个方向接近杯子、夹爪何时闭合、手臂以什么轨迹抬起。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-24-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-24",
+        "title": "VLA 控制",
+        "lineStart": 664,
+        "lineEnd": 677,
+        "contentHash": "sha256:26d11994382b8e1497a52736a514e78396dc9898a24578f78e8802c7e93ce727"
+      }
+    ],
+    "evidenceQuote": "大模型每秒通常只能推理 1—10 次，而传统控制器每秒可能要更新几十到上千次。工程上常用“动作分块”：模型一次生成一小段未来动作，控制线程按较高频率执行这一小段，模型则在后台准备下一段。这样可以把一部分推理等待藏在动作执行时间里。代价是，动作段越长，运动越平滑，模型在这段时间里看到的新画面却越少；如果 XLeRobot 伸手抓杯子时杯子被碰动，它可能仍在执行根据旧画面生成的动作。因此，动作分块是在平滑性和反应速度之间做取舍，而不是没有代价的加速。",
+    "trigger": "当大模型每秒通常只能推理 1—10 次，而传统控制器每秒可能要更新几十到上千次时。",
+    "recommendation": "采用动作分块：模型一次生成一小段未来动作，控制线程按较高频率执行这段动作，模型在后台准备下一段。",
+    "confidence": 0.7,
+    "exceptions": [
+      "动作段越长，运动越平滑，但模型看到的新画面越少；若目标被碰动，可能仍执行根据旧画面生成的动作。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-25-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-25",
+        "title": "VLA 的局限",
+        "lineStart": 678,
+        "lineEnd": 688,
+        "contentHash": "sha256:8668026b1753bd8ad38a197ac31770b722c2c5f2d0921dcb21146fffc620cee3"
+      }
+    ],
+    "evidenceQuote": "只学会模仿，不一定懂后果：行为克隆主要学习“示范者下一步怎么做”，并没有明确要求模型回答“这个动作会造成什么结果”。",
+    "statement": "行为克隆模型只学会模仿，不一定懂后果",
+    "rationale": "行为克隆主要学习“示范者下一步怎么做”，并没有明确要求模型回答“这个动作会造成什么结果”",
+    "appliesWhen": "使用行为克隆训练机器人动作策略时",
+    "violation": "假设行为克隆模型一定懂动作后果",
+    "chapterRef": "chapter6-h3-25"
+  },
+  {
+    "id": "CHAPTER6-H3-25-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-25",
+        "title": "VLA 的局限",
+        "lineStart": 678,
+        "lineEnd": 688,
+        "contentHash": "sha256:8668026b1753bd8ad38a197ac31770b722c2c5f2d0921dcb21146fffc620cee3"
+      }
+    ],
+    "evidenceQuote": "不同机器人有不同的自由度、坐标系、夹爪和执行器延迟，同一个动作不一定能直接搬到另一台机器人上。",
+    "statement": "同一个动作不一定能直接搬到另一台机器人上",
+    "rationale": "不同机器人有不同的自由度、坐标系、夹爪和执行器延迟",
+    "appliesWhen": "将同一个动作从一台机器人搬到另一台机器人时",
+    "violation": "假设同一个动作一定能直接搬到另一台机器人上",
+    "chapterRef": "chapter6-h3-25"
+  },
+  {
+    "id": "CHAPTER6-H3-26-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-26",
+        "title": "世界模型",
+        "lineStart": 689,
+        "lineEnd": 725,
+        "contentHash": "sha256:983d000de578b34a40fa8e1c018956efe217bbe124f6b3ac3cc0f05f57f7ae6f"
+      }
+    ],
+    "evidenceQuote": "回到 XLeRobot 的桌面任务：如果黄色废纸被红色杯子部分遮住，系统可以比较“先抓纸”“先移动杯子”和“换一个抓取方向”几个候选技能。世界模型不需要生成一段逼真的机器人视频，只要能预测哪些候选动作更可能让纸张变得可抓取、哪些动作可能碰倒杯子，就已经能帮助规划器排序。",
+    "canonicalTerm": "世界模型",
+    "aliases": [],
+    "definition": "在机器人任务中，世界模型用于比较候选技能，预测哪些候选动作更可能让纸张变得可抓取、哪些动作可能碰倒杯子，并帮助规划器排序，而不需要生成逼真的机器人视频。",
+    "examples": [
+      "先抓纸",
+      "先移动杯子",
+      "换一个抓取方向"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-26-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-26",
+        "title": "世界模型",
+        "lineStart": 689,
+        "lineEnd": 725,
+        "contentHash": "sha256:983d000de578b34a40fa8e1c018956efe217bbe124f6b3ac3cc0f05f57f7ae6f"
+      }
+    ],
+    "evidenceQuote": "动作执行后，真实摄像头观察仍然是最终事实；预测只能帮助选择，不能代替验收。",
+    "statement": "预测只能帮助选择，不能代替验收。",
+    "rationale": "动作执行后，真实摄像头观察仍然是最终事实。",
+    "appliesWhen": "动作执行后的验收判断。",
+    "violation": "把预测结果当作最终验收依据。",
+    "chapterRef": "chapter6-h3-26"
+  },
+  {
+    "id": "CHAPTER6-H3-27-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-27",
+        "title": "从仿真环境到真实机器人",
+        "lineStart": 726,
+        "lineEnd": 735,
+        "contentHash": "sha256:16891cb5a140a512b2629843ac7c8292f2d6c2ff80bf97e1fc1423b816058fda"
+      }
+    ],
+    "evidenceQuote": "从仿真环境走到真实机器人，并不是再换一种控制器，而是要处理两个环境之间的差异。训练时可以使用遥操作数据、视频数据或仿真交互数据；真正部署时，同一个红色杯子、黄色废纸、托盘和垃圾盒会出现在不同的背景、光照、相机位置和遮挡关系中，机械臂还会遇到不同的摩擦、传感器噪声和执行器延迟。只要这些差异足够大，模拟中学会的动作就可能在现实中失效。",
+    "canonicalTerm": "仿真到真实机器人迁移",
+    "aliases": [],
+    "definition": "从仿真环境走到真实机器人不是更换控制器，而是要处理两个环境之间的差异；这些差异包括背景、光照、相机位置、遮挡、摩擦、传感器噪声和执行器延迟，且差异足够大时模拟中学会的动作可能在现实中失效。",
+    "examples": [
+      "训练时可以使用遥操作数据、视频数据或仿真交互数据；部署时同一组物体会处于不同的背景、光照、相机位置和遮挡关系中。"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H3-27-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h3-27",
+        "title": "从仿真环境到真实机器人",
+        "lineStart": 726,
+        "lineEnd": 735,
+        "contentHash": "sha256:16891cb5a140a512b2629843ac7c8292f2d6c2ff80bf97e1fc1423b816058fda"
+      }
+    ],
+    "evidenceQuote": "即使结果改善，真机部署仍然需要真实相机标定、执行器测试和完整的安全闭环。",
+    "statement": "即使结果改善，真机部署仍然需要进行真实相机标定、执行器测试和完整的安全闭环。",
+    "rationale": "原文规定，结果改善这一条件不能免除真实相机标定、执行器测试和完整的安全闭环。",
+    "appliesWhen": "真机部署时。",
+    "violation": "因结果改善而省略真实相机标定、执行器测试或完整安全闭环。",
+    "chapterRef": "chapter6-h3-27"
+  },
+  {
+    "id": "CHAPTER6-H2-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-6",
+        "title": "本章小结",
+        "lineStart": 736,
+        "lineEnd": 762,
+        "contentHash": "sha256:ae614960044fc65a701e0f3eda2a93cb4902aa5f1318bd0f92ebe5386027f8a0"
+      }
+    ],
+    "evidenceQuote": "语音把尺度压到毫秒，级联、端到端 Omni 与全双工三种范式的演进主线，就是从“轮流说话”逐步走向持续听说，并在前台实时交互与后台深度思考之间做出分工。",
+    "canonicalTerm": "语音三种范式的演进主线",
+    "aliases": [],
+    "definition": "语音把尺度压到毫秒，级联、端到端 Omni 与全双工三种范式的演进主线，就是从“轮流说话”逐步走向持续听说，并在前台实时交互与后台深度思考之间做出分工。",
+    "examples": [
+      "级联",
+      "端到端 Omni",
+      "全双工"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H2-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-6",
+        "title": "本章小结",
+        "lineStart": 736,
+        "lineEnd": 762,
+        "contentHash": "sha256:ae614960044fc65a701e0f3eda2a93cb4902aa5f1318bd0f92ebe5386027f8a0"
+      }
+    ],
+    "evidenceQuote": "机器人则把它推到物理世界，动作分块在平滑性与反应速度之间取舍，而最终是否完成，仍必须由新的观察来判定。",
+    "statement": "机器人在物理世界执行动作后，最终是否完成必须由新的观察来判定。",
+    "rationale": "动作分块在平滑性与反应速度之间取舍，因此完成状态不能仅由动作本身决定，需要新的观察确认。",
+    "appliesWhen": "机器人动作在物理世界中执行后，需要确认任务是否完成时。",
+    "violation": "在机器人物理动作完成后，未通过新的观察就断定任务已完成。",
+    "chapterRef": "chapter6-h2-6"
+  },
+  {
+    "id": "CHAPTER6-H2-7-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-7",
+        "title": "思考题",
+        "lineStart": 763,
+        "lineEnd": 777,
+        "contentHash": "sha256:1a3a6ac8da8603b84ba6cd9818f369c7d2a093958c89750b7cbf714f39ca81d2"
+      }
+    ],
+    "evidenceQuote": "SoM（Set-of-Mark）及其结构化变体（DOM 元素索引）将 Computer Use 的视觉定位从开放坐标预测转为封闭 ID 选择，但都需要先检测和标注界面元素——无论靠分割模型还是靠 DOM。",
+    "canonicalTerm": "Set-of-Mark",
+    "aliases": [
+      "SoM"
+    ],
+    "definition": "将 Computer Use 的视觉定位从开放坐标预测转为封闭 ID 选择，需要先检测和标注界面元素（无论靠分割模型还是靠 DOM）",
+    "examples": [
+      "DOM 元素索引（结构化变体）"
+    ]
+  },
+  {
+    "id": "CHAPTER6-H2-7-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-12T10:29:36.450Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-12T10:29:36.450Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/chapter6.md",
+        "anchor": "chapter6#h2-7",
+        "title": "思考题",
+        "lineStart": 763,
+        "lineEnd": 777,
+        "contentHash": "sha256:1a3a6ac8da8603b84ba6cd9818f369c7d2a093958c89750b7cbf714f39ca81d2"
+      }
+    ],
+    "evidenceQuote": "在队列式事件处理中，模型倾向于只关注最后一个事件，本章通过 Agent 状态栏标记和汇总来缓解。但如果队列中积压了 20 个事件（10 个工具结果 + 5 条用户消息 + 5 个系统提醒），你会如何组织这些事件的呈现顺序和格式，使模型不遗漏关键信息？",
+    "pattern": "在队列式事件处理中，模型倾向于只关注最后一个事件",
+    "harm": "模型可能只关注最后一个事件而忽略队列中的其他事件",
+    "corrective": "通过 Agent 状态栏标记和汇总来缓解",
+    "evidence": [
+      "在队列式事件处理中，模型倾向于只关注最后一个事件，本章通过 Agent 状态栏标记和汇总来缓解。但如果队列中积压了 20 个事件（10 个工具结果 + 5 条用户消息 + 5 个系统提醒），你会如何组织这些事件的呈现顺序和格式，使模型不遗漏关键信息？"
+    ],
+    "chapterRef": "chapter6-h2-7"
+  }
+]

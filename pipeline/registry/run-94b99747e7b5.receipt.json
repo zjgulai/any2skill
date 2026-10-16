@@ -1,0 +1,841 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-94b99747e7b5",
+  "createdAt": "2026-10-13T17:12:26.496Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+    "hash": "sha256:a8bfb6dbfe83a9cc8f992b9b627d969c442b73ac02517f6f8e70fab2c0aa69c6",
+    "totalLines": 590
+  },
+  "layer2": {
+    "kind": "stub",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为确定性替身：本卡不发出任何真实模型调用。",
+    "reusedFrom": null,
+    "promptFingerprint": null,
+    "perAnchor": [],
+    "splits": [],
+    "usage": {
+      "calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "byAnchor": [],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": "本次第 2 层未按锚点发起任何真实调用（替身/夹具路径），因此没有逐锚点用量。此处 calls=0 表示「没有调用」，不表示「统计缺失」。",
+      "reconciliation": {
+        "perAnchorCalls": 0,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 0,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 0,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "stub",
+    "modelId": "stub/deterministic-v1",
+    "calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "tokensDetail": {
+      "reasoning": 0,
+      "cachedInput": 0
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "none（本次未发出任何真实模型调用；零凭据、零网络）",
+    "configSource": null,
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": false,
+    "reason": "第 2 层为确定性替身（零凭据、零网络），判定者无从调用",
+    "note": "本次**未应用判定者判据**：本次的 passed 只代表过了确定性判据，不代表过了第 3 层的全部判据——规格 D6 要求两组判据同权。"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch02-00-guessing-game-tutorial.anchors.json",
+      "sha256": "sha256:bbd3c31caa190706d7a13ede7aa706e37070b34f06574d0c2531df4efeaff25f",
+      "bytes": 7171,
+      "anchorCount": 18
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch02-00-guessing-game-tutorial.objects.json",
+      "sha256": "sha256:4a32144a3933423895bb03a4351a937a1017609e7e70f2b353d2a320dea169df",
+      "bytes": 24714,
+      "objectCount": 18,
+      "archivedPrevious": {
+        "path": "pipeline/knowledge/history/ch02-00-guessing-game-tutorial.ce71c9f0.objects.json",
+        "sha256": "sha256:ce71c9f075711b414a5bb4e2263231f0f2387cb6397f3427531553e5edb93480",
+        "bytes": 43007
+      }
+    },
+    "layer2Raw": null
+  },
+  "counts": {
+    "anchors": 18,
+    "objects": 18,
+    "passed": 18,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 1,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 1,
+      "Heuristic": 4,
+      "Case": 1,
+      "Playbook": 5,
+      "EngineeringRule": 6,
+      "AntiPattern": 0
+    }
+  },
+  "coverage": {
+    "indexAnchors": 18,
+    "processedAnchors": null,
+    "processedKnown": false,
+    "coveredAnchors": 18,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次第 2 层**未按锚点发起调用**（替身/夹具路径），因此无法区分「被处理但产出 0」与「未处理」。withoutObjects 列的是**没有任何对象指向**的锚点，是一个保守的上界。",
+    "perLevel": {
+      "h1": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h2": {
+        "index": 6,
+        "covered": 6,
+        "without": 0
+      },
+      "h3": {
+        "index": 9,
+        "covered": 9,
+        "without": 0
+      },
+      "h4": {
+        "index": 2,
+        "covered": 2,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-deterministic-only（判定者未启用——结论不完整）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H1-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h1-1",
+        "lineStart": 1,
+        "lineEnd": 6
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h1-1",
+          "lineStart": 1,
+          "lineEnd": 6
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H2-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-1",
+        "lineStart": 7,
+        "lineEnd": 43
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h2-1",
+          "lineStart": 7,
+          "lineEnd": 43
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H2-2-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-2",
+        "lineStart": 44,
+        "lineEnd": 81
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h2-2",
+          "lineStart": 44,
+          "lineEnd": 81
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-1-PLAYBOOK-01",
+      "objectType": "Playbook",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-1",
+        "lineStart": 82,
+        "lineEnd": 110
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-1",
+          "lineStart": 82,
+          "lineEnd": 110
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-2-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-2",
+        "lineStart": 111,
+        "lineEnd": 124
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-2",
+          "lineStart": 111,
+          "lineEnd": 124
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-3-PLAYBOOK-01",
+      "objectType": "Playbook",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+        "lineStart": 125,
+        "lineEnd": 158
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+          "lineStart": 125,
+          "lineEnd": 158
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-4-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-4",
+        "lineStart": 159,
+        "lineEnd": 177
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-4",
+          "lineStart": 159,
+          "lineEnd": 177
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-5-PLAYBOOK-01",
+      "objectType": "Playbook",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-5",
+        "lineStart": 178,
+        "lineEnd": 200
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-5",
+          "lineStart": 178,
+          "lineEnd": 200
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H2-3-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-3",
+        "lineStart": 201,
+        "lineEnd": 204
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h2-3",
+          "lineStart": 201,
+          "lineEnd": 204
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-6-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-6",
+        "lineStart": 205,
+        "lineEnd": 277
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-6",
+          "lineStart": 205,
+          "lineEnd": 277
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H4-1-CASE-01",
+      "objectType": "Case",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h4-1",
+        "lineStart": 278,
+        "lineEnd": 283
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h4-1",
+          "lineStart": 278,
+          "lineEnd": 283
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H4-2-DECISIONMODEL-01",
+      "objectType": "DecisionModel",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h4-2",
+        "lineStart": 284,
+        "lineEnd": 310
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h4-2",
+          "lineStart": 284,
+          "lineEnd": 310
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": false,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-7-PLAYBOOK-01",
+      "objectType": "Playbook",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-7",
+        "lineStart": 311,
+        "lineEnd": 363
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-7",
+          "lineStart": 311,
+          "lineEnd": 363
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H2-4-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 13,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-4",
+        "lineStart": 364,
+        "lineEnd": 439
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h2-4",
+          "lineStart": 364,
+          "lineEnd": 439
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H2-5-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 14,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-5",
+        "lineStart": 440,
+        "lineEnd": 489
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h2-5",
+          "lineStart": 440,
+          "lineEnd": 489
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-8-HEURISTIC-01",
+      "objectType": "Heuristic",
+      "ordinal": 15,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-8",
+        "lineStart": 490,
+        "lineEnd": 501
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-8",
+          "lineStart": 490,
+          "lineEnd": 501
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H3-9-PLAYBOOK-01",
+      "objectType": "Playbook",
+      "ordinal": 16,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h3-9",
+        "lineStart": 502,
+        "lineEnd": 563
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h3-9",
+          "lineStart": 502,
+          "lineEnd": 563
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    },
+    {
+      "objectId": "CH02-00-GUESSING-GAME-TUTORIAL-H2-6-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 17,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+        "anchor": "ch02-00-guessing-game-tutorial#h2-6",
+        "lineStart": 564,
+        "lineEnd": 590
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+          "anchor": "ch02-00-guessing-game-tutorial#h2-6",
+          "lineStart": 564,
+          "lineEnd": 590
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "not-called",
+        "note": "本次运行未启用判定者"
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

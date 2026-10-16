@@ -1,0 +1,434 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-5a5ef401e8f1",
+  "createdAt": "2026-10-14T19:24:50.550Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch15-03-drop.md",
+    "hash": "sha256:544f0b679c0544f8d656a80e7d139a348c2fd70d725e40530ba333883ae21540",
+    "totalLines": 122
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch15-03-drop#h2-1",
+        "lineStart": 1,
+        "lineEnd": 46,
+        "objectCount": 2,
+        "objectIds": [
+          "CH15-03-DROP-H2-1-CONCEPT-01",
+          "CH15-03-DROP-H2-1-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2220,
+            "output": 4681
+          }
+        }
+      },
+      {
+        "anchor": "ch15-03-drop#h4-1",
+        "lineStart": 47,
+        "lineEnd": 122,
+        "objectCount": 2,
+        "objectIds": [
+          "CH15-03-DROP-H4-1-ENGINEERINGRULE-01",
+          "CH15-03-DROP-H4-1-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2429,
+            "output": 11515
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 2,
+      "tokens": {
+        "input": 4649,
+        "output": 16196
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch15-03-drop#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2220,
+            "output": 4681
+          }
+        },
+        {
+          "anchor": "ch15-03-drop#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2429,
+            "output": 11515
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 2,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 2,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 2,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 2,
+    "tokens": {
+      "input": 4649,
+      "output": 16196
+    },
+    "tokensDetail": {
+      "reasoning": 15445,
+      "cachedInput": 2816
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 4,
+    "tokens": {
+      "input": 5866,
+      "output": 1395
+    },
+    "tokensDetail": {
+      "reasoning": 1202,
+      "cachedInput": 1536
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 4,
+      "verdicts": {
+        "supported": 4
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 4
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch15-03-drop.anchors.json",
+      "sha256": "sha256:212552b2963d2020dd6f8e7fa392b51c2c8b40392f63d59a8bf58e248f219479",
+      "bytes": 1034,
+      "anchorCount": 2
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch15-03-drop.objects.json",
+      "sha256": "sha256:b356e128eb8d4f7a184113d00326ab3ab535922bae4cdbf0625f42df0be0b098",
+      "bytes": 5858,
+      "objectCount": 4
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-5a5ef401e8f1.layer2-raw.json",
+      "sha256": "sha256:faf3b342f121d2ddbbd85e29c3c6e0f7df4c99b66877d52cce3b1888070ce74b"
+    }
+  },
+  "counts": {
+    "anchors": 2,
+    "objects": 4,
+    "passed": 4,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 2,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 1,
+      "AntiPattern": 1
+    }
+  },
+  "coverage": {
+    "indexAnchors": 2,
+    "processedAnchors": 2,
+    "processedKnown": true,
+    "coveredAnchors": 2,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=2，索引锚点数=2）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h4": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH15-03-DROP-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h2-1",
+        "lineStart": 1,
+        "lineEnd": 46
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+          "anchor": "ch15-03-drop#h2-1",
+          "lineStart": 1,
+          "lineEnd": 46
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文完整承载了主张中的各条断言：允许在值离开作用域时执行代码、可为任何类型实现、常用于释放文件或网络连接等资源、且在智能指针上下文中几乎总是用于实现智能指针。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-03-DROP-H2-1-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h2-1",
+        "lineStart": 1,
+        "lineEnd": 46
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+          "anchor": "ch15-03-drop#h2-1",
+          "lineStart": 1,
+          "lineEnd": 46
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写道在其他语言中每次使用完智能指针实例后须调用清理代码，且忘记会导致系统因负荷过重崩溃，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-03-DROP-H4-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h4-1",
+        "lineStart": 47,
+        "lineEnd": 122
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+          "anchor": "ch15-03-drop#h4-1",
+          "lineStart": 47,
+          "lineEnd": 122
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明不能显式调用 Drop trait 的 drop 方法，且在需要提早强制清理值时应使用 std::mem::drop，充分支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-03-DROP-H4-1-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+        "anchor": "ch15-03-drop#h4-1",
+        "lineStart": 47,
+        "lineEnd": 122
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-03-drop.md",
+          "anchor": "ch15-03-drop#h4-1",
+          "lineStart": 47,
+          "lineEnd": 122
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 std::mem::drop 用于在作用域结束前强制释放值、不同于 Drop trait 的 drop 方法，且位于 prelude。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

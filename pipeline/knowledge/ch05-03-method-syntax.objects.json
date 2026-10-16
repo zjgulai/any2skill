@@ -1,0 +1,232 @@
+[
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h2-1",
+        "title": "方法语法",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "contentHash": "sha256:94454c09ab5d1cd863ddf8469baac2ad093f755819422254fc72c6560cfd6eb9"
+      }
+    ],
+    "evidenceQuote": "不过方法与函数是不同的，因为它们在结构体的上下文中被定义（或者是枚举或 trait 对象的上下文，将分别在第 6 章和第 17 章讲解），并且它们第一个参数总是 `self`，它代表调用该方法的结构体实例。",
+    "statement": "方法第一个参数总是 `self`，它代表调用该方法的结构体实例。",
+    "rationale": "`self` 代表调用该方法的结构体实例。",
+    "appliesWhen": "适用于在结构体上下文中定义的方法，也适用于枚举或 trait 对象的上下文。",
+    "violation": "方法的第一个参数不是 `self`。",
+    "chapterRef": "ch05-03-method-syntax-h2-1"
+  },
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h3-1",
+        "title": "定义方法",
+        "lineStart": 5,
+        "lineEnd": 68,
+        "contentHash": "sha256:bf3bce99a97b18fcb42cdaf0190c2fd179443cc2f6216f1f76bf373bfe163787"
+      }
+    ],
+    "evidenceQuote": "在 `area` 的签名中，使用 `&self` 来替代 `rectangle: &Rectangle`，`&self` 实际上是 `self: &Self` 的缩写。在一个 `impl` 块中，`Self` 类型是 `impl` 块的类型的别名。方法的第一个参数必须有一个名为 `self` 的`Self` 类型的参数，所以 Rust 让你在第一个参数位置上只用 `self` 这个名字来缩写。",
+    "statement": "在 impl 块中定义方法时，方法的第一个参数必须有一个名为 self 的 Self 类型参数。",
+    "rationale": "因为 Self 类型是 impl 块的类型的别名，Rust 允许在第一个参数位置上只用 self 这个名字来缩写。",
+    "appliesWhen": "在 impl 块中定义方法时。",
+    "violation": "如果方法的第一个参数不是名为 self 的 Self 类型参数，则不符合 Rust 的方法定义要求。",
+    "chapterRef": "ch05-03-method-syntax-h3-1"
+  },
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h3-1",
+        "title": "定义方法",
+        "lineStart": 5,
+        "lineEnd": 68,
+        "contentHash": "sha256:bf3bce99a97b18fcb42cdaf0190c2fd179443cc2f6216f1f76bf373bfe163787"
+      }
+    ],
+    "evidenceQuote": "Rust 并没有一个与 `->` 等效的运算符；相反，Rust 有一个叫 **自动引用和解引用**（*automatic referencing and dereferencing*）的功能。方法调用是 Rust 中少数几个拥有这种行为的地方。",
+    "statement": "Rust 没有与 `->` 运算符等效的运算符，而是使用自动引用和解引用功能。",
+    "rationale": "方法调用是 Rust 中少数几个拥有自动引用和解引用行为的地方。",
+    "appliesWhen": "在 Rust 中调用方法时。",
+    "violation": "不能使用 `->` 运算符调用方法，因为 Rust 没有提供与之等效的运算符。",
+    "chapterRef": "ch05-03-method-syntax-h3-1"
+  },
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h3-2",
+        "title": "带有更多参数的方法",
+        "lineStart": 69,
+        "lineEnd": 99,
+        "contentHash": "sha256:f629fccc1e4ec63044f10de770ccb0f94993d675ed4f59c6a853eac4ad40955b"
+      }
+    ],
+    "evidenceQuote": "方法名是 `can_hold`，并且它会获取另一个 `Rectangle` 的不可变借用作为参数。通过观察调用方法的代码可以看出参数是什么类型的：`rect1.can_hold(&rect2)` 传入了 `&rect2`，它是一个 `Rectangle` 的实例 `rect2` 的不可变借用。这是可以理解的，因为我们只需要读取 `rect2`（而不是写入，这意味着我们需要一个不可变借用），而且希望 `main` 保持 `rect2` 的所有权，这样就可以在调用这个方法后继续使用它。`can_hold` 的返回值是一个布尔值，其实现会分别检查 `self` 的宽高是否都大于另一个 `Rectangle`。",
+    "canonicalTerm": "can_hold 方法",
+    "aliases": [],
+    "definition": "`can_hold` 方法获取另一个 `Rectangle` 的不可变借用作为参数，返回布尔值，并分别检查 `self` 的宽高是否都大于另一个 `Rectangle`。",
+    "examples": [
+      "`rect1.can_hold(&rect2)` 传入了 `&rect2` 作为参数"
+    ]
+  },
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H3-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h3-2",
+        "title": "带有更多参数的方法",
+        "lineStart": 69,
+        "lineEnd": 99,
+        "contentHash": "sha256:f629fccc1e4ec63044f10de770ccb0f94993d675ed4f59c6a853eac4ad40955b"
+      }
+    ],
+    "evidenceQuote": "通过观察调用方法的代码可以看出参数是什么类型的：`rect1.can_hold(&rect2)` 传入了 `&rect2`，它是一个 `Rectangle` 的实例 `rect2` 的不可变借用。这是可以理解的，因为我们只需要读取 `rect2`（而不是写入，这意味着我们需要一个不可变借用），而且希望 `main` 保持 `rect2` 的所有权，这样就可以在调用这个方法后继续使用它。",
+    "canonicalTerm": "不可变借用",
+    "aliases": [],
+    "definition": "当方法只需要读取参数而不写入，并希望调用者保持该值的所有权以便在调用后继续使用时，使用不可变借用作为参数。",
+    "examples": [
+      "`rect1.can_hold(&rect2)` 传入了 `&rect2`，它是 `rect2` 的不可变借用"
+    ]
+  },
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h3-3",
+        "title": "关联函数",
+        "lineStart": 100,
+        "lineEnd": 113,
+        "contentHash": "sha256:63200a50e5d90f4f4b772fd241e074da0cb95440b27bf31cd20d698e477f0a31"
+      }
+    ],
+    "evidenceQuote": "所有在 `impl` 块中定义的函数被称为**关联函数**（*associated function*），因为它们与 `impl` 后面命名的类型相关。我们可以定义不以 `self` 为第一参数的关联函数（因此不是方法），因为它们并不作用于一个结构体的实例。我们已经使用了一个这样的函数，`String::from` 函数，它是在 `String` 类型上定义的。",
+    "canonicalTerm": "关联函数",
+    "aliases": [
+      "associated function"
+    ],
+    "definition": "在 impl 块中定义的、与 impl 后命名的类型相关的函数；可以不以 self 为第一参数，因而不作用于结构体实例，不是方法。",
+    "examples": [
+      "String::from 是在 String 类型上定义的关联函数。"
+    ]
+  },
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h3-3",
+        "title": "关联函数",
+        "lineStart": 100,
+        "lineEnd": 113,
+        "contentHash": "sha256:63200a50e5d90f4f4b772fd241e074da0cb95440b27bf31cd20d698e477f0a31"
+      }
+    ],
+    "evidenceQuote": "使用结构体名和 `::` 语法来调用这个关联函数：比如 `let sq = Rectangle::square(3);`。这个方法位于结构体的命名空间中：`::` 语法用于关联函数和模块创建的命名空间。第 7 章会讲到模块。",
+    "statement": "关联函数使用结构体名和 `::` 语法来调用。",
+    "rationale": "关联函数位于结构体的命名空间中，`::` 语法用于关联函数和模块创建的命名空间。",
+    "appliesWhen": "调用结构体上的关联函数时。",
+    "violation": "不使用结构体名和 `::` 语法来调用关联函数。",
+    "chapterRef": "ch05-03-method-syntax-h3-3"
+  },
+  {
+    "id": "CH05-03-METHOD-SYNTAX-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T09:01:47.696Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T09:01:47.696Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-03-method-syntax.md",
+        "anchor": "ch05-03-method-syntax#h3-4",
+        "title": "多个 `impl` 块",
+        "lineStart": 114,
+        "lineEnd": 125,
+        "contentHash": "sha256:c371d01ea00508f6c7872515283c4269d3631c14bd97b4ab2ad277604eb31b6a"
+      }
+    ],
+    "evidenceQuote": "每个结构体都允许拥有多个 `impl` 块。例如，示例 5-16 中的代码等同于示例 5-15，但每个方法有其自己的 `impl` 块。",
+    "canonicalTerm": "多个 impl 块",
+    "aliases": [],
+    "definition": "Rust 中每个结构体都允许拥有多个 impl 块；示例 5-16 中每个方法可以有自己独立的 impl 块。",
+    "examples": [
+      "示例 5-16 使用多个 impl 块重写示例 5-15，每个方法有其自己的 impl 块。"
+    ]
+  }
+]

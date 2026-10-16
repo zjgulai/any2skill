@@ -1,0 +1,151 @@
+[
+  {
+    "id": "AFTERWORD-H1-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:45:37.232Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:45:37.232Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h1-1",
+        "title": "后记：回到 Agent = LLM + 上下文 + 工具",
+        "lineStart": 1,
+        "lineEnd": 12,
+        "contentHash": "sha256:e56c257ac5b9dcd2d4ab99122d4009a8abc6e8e6aa81a17704e658c513069e90"
+      }
+    ],
+    "evidenceQuote": "本书开篇提出了一个公式：**Agent = LLM + 上下文 + 工具**。全书十章，都在这三个词里展开。\n\n**第一章**建立公式的三层理解——实现层、直觉层、学术层，并给出从工作流到自主 Agent 的编排光谱。随后的章节沿“构建—评估与进化—协作”逐步展开。\n\n- **构建 Agent（第二至六章）。** 上下文工程决定 Agent 在一次任务中看到什么，记忆与知识库把信息扩展到多次会话；工具定义它能做什么，代码生成则提供创造新工具与新系统的元能力；交互一章再把观察与动作空间从文本回合制推向语音、GUI 与物理世界。",
+    "canonicalTerm": "Agent = LLM + 上下文 + 工具",
+    "aliases": [],
+    "definition": "本书开篇提出的公式，表示 Agent 由 LLM、上下文和工具三个要素组成，全书十章都在这三个词里展开。",
+    "examples": [
+      "上下文工程决定 Agent 在一次任务中看到什么",
+      "记忆与知识库把信息扩展到多次会话",
+      "工具定义它能做什么"
+    ]
+  },
+  {
+    "id": "AFTERWORD-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-1",
+        "title": "两朵乌云",
+        "lineStart": 13,
+        "lineEnd": 26,
+        "contentHash": "sha256:7b00bfaf6cf7e27cea2a3c69b4dc18bbe933fb1c048631c64de5860a00683300"
+      }
+    ],
+    "evidenceQuote": "一种是 **“小世界假设”** ：一个足够大的模型——比如几万亿参数——本就装得下物理世界里几乎所有重要的通用知识，学一次就够。持这种看法的人（不乏 OpenAI、Anthropic 的研究者）会指出，AI 今天唯独在编程上最强，并不是因为代码对模型有什么特殊，而是因为编程是人类最开放的领域：海量开源代码摆在那里，可供学习；而绝大多数行业压根没有公开的信息与数据。于是前沿实验室真正在做的，是一家家去与各行各业合作，把各自的专业能力“蒸馏”进同一个大模型。按这种观点，瓶颈既不在模型的容量、也不在它学不学得会，而在数据够不够。把数据喂进去、训练一次，问题就解决了。",
+    "canonicalTerm": "小世界假设",
+    "aliases": [],
+    "definition": "一个足够大的模型本就装得下物理世界里几乎所有重要的通用知识，学一次就够。",
+    "examples": [
+      "AI 今天唯独在编程上最强，并不是因为代码对模型有什么特殊，而是因为编程是人类最开放的领域：海量开源代码摆在那里，可供学习；而绝大多数行业压根没有公开的信息与数据。"
+    ]
+  },
+  {
+    "id": "AFTERWORD-H2-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-1",
+        "title": "两朵乌云",
+        "lineStart": 13,
+        "lineEnd": 26,
+        "contentHash": "sha256:7b00bfaf6cf7e27cea2a3c69b4dc18bbe933fb1c048631c64de5860a00683300"
+      }
+    ],
+    "evidenceQuote": "但 **“大世界假设”** 指向了单靠“训练一次”补不上的一层：属于某个具体用户、某家具体公司的知识。特定公司的代码规范、做 PPT 的口味、某个客户特有的脾气不在任何训练语料里，而且时时在变；要贴合这个由无数具体情境拼成的“大世界”，模型只能在上岗之后持续学习，没法指望出厂时一次配齐。这正是第三章的记忆与第九章的持续进化在摸索的方向：把经验写成知识文档、指令或程序，还是经过筛选后用于更新模型参数？更进一步，“RSI”（递归自我进化）和 “AI for Science” 都在推动 Agent 走到没有现成答案的前沿；在那里，它只能从一次次实验的成败中自主学习，而不是事事回头问人。所以，模型最强的能力，终将不是记住，而是学习与适应。",
+    "canonicalTerm": "大世界假设",
+    "aliases": [],
+    "definition": "大世界假设指向单靠“训练一次”补不上的一层：属于某个具体用户、某家具体公司的知识；要贴合这个由无数具体情境拼成的“大世界”，模型只能在上岗之后持续学习，没法指望出厂时一次配齐。",
+    "examples": [
+      "特定公司的代码规范、做 PPT 的口味、某个客户特有的脾气不在任何训练语料里，而且时时在变。"
+    ]
+  },
+  {
+    "id": "AFTERWORD-H2-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-2",
+        "title": "模型与 Agent 的共同演进",
+        "lineStart": 27,
+        "lineEnd": 44,
+        "contentHash": "sha256:b87dc608394a1b15ff56c0cb0100f834a009e239c25143a4c36eeff383b65175"
+      }
+    ],
+    "evidenceQuote": "回头看那些 harness 里层层叠叠的兜底逻辑——多级上下文压缩、失败数千次才熔断的重试、悲观地默认“不安全”的权限判断——每一段看似丑陋的“屎山”，记录的都是模型此刻还做不稳的地方。当下一代模型把这些约束内化，对应的代码就可以删掉；而模型之所以能内化，又正是因为 Agent 早已在真实业务里替它把这些坑趟了一遍，沉淀成了下一轮训练的信号。用户提出真实的难题，应用层用 harness 把模型暂时做不好的事补上，这些补救再反过来变成模型下一次迭代的训练信号。这是一个自我强化的飞轮。",
+    "canonicalTerm": "模型与 Agent 的共同演进飞轮",
+    "aliases": [
+      "自我强化的飞轮"
+    ],
+    "definition": "真实业务中，应用层用 harness 补上模型暂时做不好的事；这些补救沉淀为训练信号，推动模型内化约束并删除对应 harness 代码，形成自我强化的演进飞轮。",
+    "examples": [
+      "多级上下文压缩",
+      "失败数千次才熔断的重试",
+      "悲观地默认不安全的权限判断"
+    ]
+  },
+  {
+    "id": "AFTERWORD-H2-2-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T12:47:49.671Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T12:47:49.671Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/afterword.md",
+        "anchor": "afterword#h2-2",
+        "title": "模型与 Agent 的共同演进",
+        "lineStart": 27,
+        "lineEnd": 44,
+        "contentHash": "sha256:b87dc608394a1b15ff56c0cb0100f834a009e239c25143a4c36eeff383b65175"
+      }
+    ],
+    "evidenceQuote": "如果你在模型之上造应用，harness 是你短期最锋利的技术杠杆，但要清醒：模型每内化一层约束，就会顺手抹平一批只靠 harness 建立的优势。应用层真正长久的护城河，往往在技术之外——独占的数据、稳固的渠道、用户的信任、网络效应，以及必须由人与 Agent 协作的物理世界场景等。把 harness 用来争取时间，把这段时间用来构筑技术之外的壁垒，才是稳妥的打法。",
+    "trigger": "当你在模型之上造应用时",
+    "recommendation": "将 harness 作为短期最锋利的杠杆争取时间，同时构筑技术之外的护城河：独占数据、稳固渠道、用户信任、网络效应、人与 Agent 协作的物理世界场景。",
+    "confidence": 0.8,
+    "exceptions": []
+  }
+]

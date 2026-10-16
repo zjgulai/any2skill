@@ -1,0 +1,587 @@
+[
+  {
+    "id": "CH08-02-STRINGS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h2-1",
+        "title": "使用字符串存储 UTF-8 编码的文本",
+        "lineStart": 1,
+        "lineEnd": 6,
+        "contentHash": "sha256:17d4d456db9a3ccc67b06f8e633f1457ec1e8c1fca8c39179834e7c61e15f8b6"
+      }
+    ],
+    "evidenceQuote": "在集合章节中讨论字符串的原因是，字符串就是作为字节的集合外加一些方法实现的，当这些字节被解释为文本时，这些方法提供了实用的功能。在这一部分，我们会讲到 `String` 中那些任何集合类型都有的操作，比如创建、更新和读取。也会讨论 `String` 与其他集合不一样的地方，由于人和计算机理解 `String` 数据方式的不同，`String` 索引是非常复杂的。",
+    "canonicalTerm": "String 集合操作",
+    "aliases": [],
+    "definition": "String 中任何集合类型都有的操作，如创建、更新和读取。",
+    "examples": [
+      "创建",
+      "更新",
+      "读取"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-1",
+        "title": "什么是字符串？",
+        "lineStart": 7,
+        "lineEnd": 14,
+        "contentHash": "sha256:72f082302dbf88bcc7ed51b3fb0b08465e378a98fc17685c843ce7fbd6a637ec"
+      }
+    ],
+    "evidenceQuote": "Rust 的核心语言中只有一种字符串类型：`str`，字符串 slice，它通常以被借用的形式出现，`&str`。第 4 章讲到了 **字符串 slice**：它们是一些储存在别处的 UTF-8 编码字符串数据的引用。比如字符串字面量被储存在程序的二进制输出中，字符串 slice 也是如此。\n\n称作 `String` 的类型是由标准库提供的，而没有写进核心语言部分，它是可增长的、可变的、有所有权的、UTF-8 编码的字符串类型。当 Rustacean 们谈到 Rust 的 “字符串”时，它们通常指的是 `String` 和字符串 slice `&str` 类型，而不仅仅是其中之一。虽然本部分内容大多是关于 `String` ，不过这两个类型在 Rust 标准库中都被广泛使用，`String` 和字符串 slice 都是 UTF-8 编码。",
+    "canonicalTerm": "Rust 字符串类型",
+    "aliases": [
+      "String",
+      "&str",
+      "str"
+    ],
+    "definition": "Rust 核心语言只有 `str` 字符串 slice，通常以借用形式 `&str` 出现；`String` 由标准库提供，是可增长、可变、有所有权、UTF-8 编码的字符串类型。Rustacean 所说“字符串”通常同时指 `String` 和 `&str`，两者都是 UTF-8 编码。",
+    "examples": [
+      "字符串字面量被储存在程序的二进制输出中，字符串 slice 也是如此"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-1",
+        "title": "什么是字符串？",
+        "lineStart": 7,
+        "lineEnd": 14,
+        "contentHash": "sha256:72f082302dbf88bcc7ed51b3fb0b08465e378a98fc17685c843ce7fbd6a637ec"
+      }
+    ],
+    "evidenceQuote": "Rust 标准库中还包含一系列其他字符串类型，比如 `OsString`、`OsStr`、`CString` 和 `CStr`。相关库 crate 甚至会提供更多储存字符串数据的选择。看到这些由 `String` 或是 `Str` 结尾的名字了吗？这对应着它们提供的所有权和可借用的字符串变体，就像是你之前看到的 `String` 和 `str`。举例而言，这些字符串类型能够以不同的编码，或者内存表现形式上以不同的形式，来存储文本内容。",
+    "canonicalTerm": "String/Str 结尾命名惯例",
+    "aliases": [],
+    "definition": "Rust 标准库中其他字符串类型通过以 `String` 或 `Str` 结尾来对应所有权和可借用的字符串变体；例如 `OsString` 与 `OsStr`、`CString` 与 `CStr`。这些类型能够以不同编码或内存表现形式存储文本。",
+    "examples": [
+      "`OsString` 与 `OsStr` 对应所有权和可借用变体",
+      "`CString` 与 `CStr` 对应所有权和可借用变体"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-2",
+        "title": "新建字符串",
+        "lineStart": 15,
+        "lineEnd": 69,
+        "contentHash": "sha256:f08213914903284f287b25814afc4eeb8ff2b3294fcd67f8a8883edb3aff484f"
+      }
+    ],
+    "evidenceQuote": "为此，可以使用 `to_string` 方法，它能用于任何实现了 `Display` trait 的类型，字符串字面量也实现了它。示例 8-12 展示了两个例子。\n\n```rust\nlet data = \"initial contents\";\n\nlet s = data.to_string();\n\n// 该方法也可直接用于字符串字面量：\nlet s = \"initial contents\".to_string();\n```\n\n<span class=\"caption\">示例 8-12：使用 `to_string` 方法从字符串字面量创建 `String`</span>",
+    "canonicalTerm": "to_string 方法",
+    "aliases": [],
+    "definition": "`to_string` 方法可用于任何实现了 `Display` trait 的类型，字符串字面量也实现了它，因此可以从这些类型创建 `String`。",
+    "examples": [
+      "let data = \"initial contents\";",
+      "let s = \"initial contents\".to_string();"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-2",
+        "title": "新建字符串",
+        "lineStart": 15,
+        "lineEnd": 69,
+        "contentHash": "sha256:f08213914903284f287b25814afc4eeb8ff2b3294fcd67f8a8883edb3aff484f"
+      }
+    ],
+    "evidenceQuote": "也可以使用 `String::from` 函数来从字符串字面量创建 `String`。示例 8-13 中的代码等同于使用 `to_string`。\n\n```rust\nlet s = String::from(\"initial contents\");\n```\n\n<span class=\"caption\">示例 8-13：使用 `String::from` 函数从字符串字面量创建 `String`</span>\n\n因为字符串应用广泛，这里有很多不同的用于字符串的通用 API 可供选择。其中一些可能看起来多余，不过都有其用武之地！在这个例子中，`String::from` 和 `to_string` 最终做到了完全相同的事情，所以如何选择，就是风格问题了。",
+    "canonicalTerm": "String::from 与 to_string 的等价性",
+    "aliases": [],
+    "definition": "使用 `String::from` 函数从字符串字面量创建 `String` 与使用 `to_string` 最终做到完全相同的事情，因此如何选择是风格问题。",
+    "examples": [
+      "let s = String::from(\"initial contents\");"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-3",
+        "title": "更新字符串",
+        "lineStart": 70,
+        "lineEnd": 73,
+        "contentHash": "sha256:28f78950c9e25386afe6e8fec006564b9b916a3b97ac7cf0ff10adaf49b35110"
+      }
+    ],
+    "evidenceQuote": "### 更新字符串\n\n`String` 的大小可以增加，其内容也可以改变，就像可以放入更多数据来改变 `Vec` 的内容一样。另外，可以方便的使用 `+` 运算符或 `format!` 宏来拼接 `String` 值。",
+    "canonicalTerm": "更新字符串",
+    "aliases": [],
+    "definition": "String 的大小可以增加，其内容也可以改变，并且可以使用 `+` 运算符或 `format!` 宏来拼接 String 值。",
+    "examples": [
+      "使用 `+` 运算符拼接 `String` 值",
+      "使用 `format!` 宏拼接 `String` 值"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-1",
+        "title": "使用 `push_str` 和 `push` 附加字符串",
+        "lineStart": 74,
+        "lineEnd": 108,
+        "contentHash": "sha256:af8971abd484449dea6167eab9e69b7cca9d6bdfff1b0ca669d29557e1cfc125"
+      }
+    ],
+    "evidenceQuote": "可以通过 `push_str` 方法来附加字符串 slice，从而使 `String` 变长，如示例 8-15 所示。\n\n```rust\nlet mut s = String::from(\"foo\");\ns.push_str(\"bar\");\n```\n\n<span class=\"caption\">示例 8-15：使用 `push_str` 方法向 `String` 附加字符串 slice</span>\n\n执行这两行代码之后，`s` 将会包含 `foobar`。`push_str` 方法采用字符串 slice，因为我们并不需要获取参数的所有权。",
+    "canonicalTerm": "push_str 方法",
+    "aliases": [
+      "push_str"
+    ],
+    "definition": "Rust 中用于向 `String` 附加字符串 slice 的方法，它使 `String` 变长且不获取参数的所有权。",
+    "examples": [
+      "`let mut s = String::from(\"foo\"); s.push_str(\"bar\");` 执行后 `s` 为 `foobar`。"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-1",
+        "title": "使用 `push_str` 和 `push` 附加字符串",
+        "lineStart": 74,
+        "lineEnd": 108,
+        "contentHash": "sha256:af8971abd484449dea6167eab9e69b7cca9d6bdfff1b0ca669d29557e1cfc125"
+      }
+    ],
+    "evidenceQuote": "`push` 方法被定义为获取一个单独的字符作为参数，并附加到 `String` 中。示例 8-17 展示了使用 `push` 方法将字母 *l* 加入 `String` 的代码。\n\n```rust\nlet mut s = String::from(\"lo\");\ns.push('l');\n```\n\n<span class=\"caption\">示例 8-17：使用 `push` 将一个字符加入 `String` 值中</span>\n\n执行这些代码之后，`s` 将会包含 `lol`。",
+    "canonicalTerm": "push 方法",
+    "aliases": [
+      "push"
+    ],
+    "definition": "Rust 中用于向 `String` 附加单个字符的方法，它接受一个单独的字符作为参数。",
+    "examples": [
+      "`let mut s = String::from(\"lo\"); s.push('l');` 执行后 `s` 为 `lol`。"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-2",
+        "title": "使用 `+` 运算符或 `format!` 宏拼接字符串",
+        "lineStart": 109,
+        "lineEnd": 156,
+        "contentHash": "sha256:63819507c86301731951749bb80eb26a5c57e6c7eea3b4dd0388783d47ce1a18"
+      }
+    ],
+    "evidenceQuote": "首先，`s2` 使用了 `&`，意味着我们使用第二个字符串的 **引用** 与第一个字符串相加。这是因为 `add` 函数的 `s` 参数：只能将 `&str` 和 `String` 相加，不能将两个 `String` 值相加。不过等一下 —— 正如 `add` 的第二个参数所指定的，`&s2` 的类型是 `&String` 而不是 `&str`。那么为什么示例 8-18 还能编译呢？\n\n之所以能够在 `add` 调用中使用 `&s2` 是因为 `&String` 可以被 **强转**（*coerced*）成 `&str`。当 `add` 函数被调用时，Rust 使用了一个被称为 **解引用强制转换**（*deref coercion*）的技术，你可以将其理解为它把 `&s2` 变成了 `&s2[..]`。第 15 章会更深入的讨论解引用强制转换。因为 `add` 没有获取参数的所有权，所以 `s2` 在这个操作后仍然是有效的 `String`。\n\n其次，可以发现签名中 `add` 获取了 `self` 的所有权，因为 `self` **没有** 使用 `&`。这意味着示例 8-18 中的 `s1` 的所有权将被移动到 `add` 调用中，之后就不再有效。虽然 `let s3 = s1 + &s2;` 看起来就像它会复制两个字符串并创建一个新的字符串，而实际上这个语句会获取 `s1` 的所有权，附加上从 `s2` 中拷贝的内容，并返回结果的所有权。换句话说，它看起来好像生成了很多拷贝，不过实际上并没有：这个实现比拷贝要更高效。",
+    "statement": "在 Rust 字符串拼接中，`+` 运算符调用 `add` 函数，`add` 的 `s` 参数为 `&str`，因此只能将 `&str` 和 `String` 相加，不能将两个 `String` 值相加；`&String` 可通过解引用强制转换为 `&str`，所以 `s2` 在操作后仍然有效。`add` 获取 `self` 的所有权（因为 `self` 没有 `&`），导致 `s1` 的所有权被移动到 `add` 调用中，相加后不再有效。",
+    "rationale": "`add` 没有获取 `s2` 的所有权；该语句实际上获取 `s1` 的所有权、附加上从 `s2` 中拷贝的内容并返回结果所有权，这个实现比拷贝更高效。",
+    "appliesWhen": "当使用 `+` 运算符连接 `String` 值，或需要理解第一个字符串为何在相加后失效、第二个字符串为何仍有效时。",
+    "violation": "如果之后继续使用已被移动的 `s1`，或尝试将两个 `String` 值直接相加而不将右操作数转为 `&str`，则不符合该规则。",
+    "chapterRef": "ch08-02-strings-h4-2"
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-2",
+        "title": "使用 `+` 运算符或 `format!` 宏拼接字符串",
+        "lineStart": 109,
+        "lineEnd": 156,
+        "contentHash": "sha256:63819507c86301731951749bb80eb26a5c57e6c7eea3b4dd0388783d47ce1a18"
+      }
+    ],
+    "evidenceQuote": "这时 `s` 的内容会是 `tic-tac-toe`。在有这么多 `+` 和 `\"` 字符的情况下，很难理解具体发生了什么。对于更为复杂的字符串连接，可以使用 `format!` 宏：\n\n```rust\nlet s1 = String::from(\"tic\");\nlet s2 = String::from(\"tac\");\nlet s3 = String::from(\"toe\");\n\nlet s = format!(\"{}-{}-{}\", s1, s2, s3);\n```\n\n这些代码也会将 `s` 设置为 “tic-tac-toe”。`format!` 与 `println!` 的工作原理相同，不过不同于将输出打印到屏幕上，它返回一个带有结果内容的 `String`。这个版本就好理解的多，并且不会获取任何参数的所有权。",
+    "statement": "对于更复杂的字符串连接，可以使用 `format!` 宏；`format!` 与 `println!` 的工作原理相同，但不同于将输出打印到屏幕上，它返回一个带有结果内容的 `String`，并且不会获取任何参数的所有权。",
+    "rationale": "在有多个 `+` 和 `\"` 字符的情况下，很难理解具体发生了什么；`format!` 版本更好理解。",
+    "appliesWhen": "当需要连接多个字符串，且 `+` 运算符组合显得笨重时。",
+    "violation": "如果仍用多个 `+` 和 `\"` 字符进行复杂连接，代码会难以理解具体发生了什么。",
+    "chapterRef": "ch08-02-strings-h4-2"
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-4",
+        "title": "索引字符串",
+        "lineStart": 157,
+        "lineEnd": 181,
+        "contentHash": "sha256:616606028c6826836fd00e26466ce32a52546b896422718addca7da203c79ddd"
+      }
+    ],
+    "evidenceQuote": "然而在 Rust 中，如果你尝试使用索引语法访问 `String` 的一部分，会出现一个错误。考虑一下如示例 8-19 中所示的无效代码。\n\n```rust,ignore,does_not_compile\nlet s1 = String::from(\"hello\");\nlet h = s1[0];\n```\n\n<span class=\"caption\">示例 8-19：尝试对字符串使用索引语法</span>\n\n这段代码会导致如下错误：\n\n```text\nerror[E0277]: the trait bound `std::string::String: std::ops::Index<{integer}>` is not satisfied\n -->\n  |\n3 |     let h = s1[0];\n  |             ^^^^^ the type `std::string::String` cannot be indexed by `{integer}`\n  |\n  = help: the trait `std::ops::Index<{integer}>` is not implemented for `std::string::String`\n```\n\n错误和提示说明了全部问题：Rust 的字符串不支持索引。",
+    "statement": "在 Rust 中，使用索引语法访问 String 的一部分会导致编译错误；Rust 的字符串不支持索引。",
+    "rationale": "String 类型未实现 std::ops::Index<{integer}> trait，因此不能被整数索引。",
+    "appliesWhen": "当尝试对 String 使用索引语法（例如 s1[0]）时。",
+    "violation": "编译失败，错误码 E0277：String 未实现 std::ops::Index<{integer}>，不能按 {integer} 索引。",
+    "chapterRef": "ch08-02-strings-h3-4"
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-3",
+        "title": "内部表现",
+        "lineStart": 182,
+        "lineEnd": 204,
+        "contentHash": "sha256:5bbeb99068ce69da5a425662404c467dfb119b948a30726715ab08e6dcdb257d"
+      }
+    ],
+    "evidenceQuote": "`String` 是一个 `Vec<u8>` 的封装。让我们看看示例 8-14 中一些正确编码的字符串的例子。首先是这一个：\n\n```rust\nlet len = String::from(\"Hola\").len();\n```\n\n在这里，`len` 的值是 4 ，这意味着储存字符串 “Hola” 的 `Vec` 的长度是 4 个字节：这里每一个字母的 UTF-8 编码都占用 1 个字节。那下面这个例子又如何呢？（注意这个字符串中的首字母是西里尔字母的 Ze，而不是阿拉伯数字 3 。）\n\n```rust\nlet len = String::from(\"Здравствуйте\").len();\n```\n\n当问及这个字符是多长的时候有人可能会说是 12。然而，Rust 的回答是 24。这是使用 UTF-8 编码 “Здравствуйте” 所需要的字节数，这是因为每个 Unicode 标量值需要 2 个字节存储。",
+    "canonicalTerm": "String",
+    "aliases": [
+      "字符串"
+    ],
+    "definition": "String 是对 Vec<u8> 的封装；len 返回字符串使用 UTF-8 编码所需的字节数。",
+    "examples": [
+      "String::from(\"Hola\").len() 返回 4，因为每个字母的 UTF-8 编码占用 1 个字节。",
+      "String::from(\"Здравствуйте\").len() 返回 24，因为每个 Unicode 标量值需要 2 个字节存储。"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-3",
+        "title": "内部表现",
+        "lineStart": 182,
+        "lineEnd": 204,
+        "contentHash": "sha256:5bbeb99068ce69da5a425662404c467dfb119b948a30726715ab08e6dcdb257d"
+      }
+    ],
+    "evidenceQuote": "用户通常不会想要一个字节值被返回，即便这个字符串只有拉丁字母： 即便 `&\"hello\"[0]` 是返回字节值的有效代码，它也应当返回 `104` 而不是 `h`。为了避免返回意外的值并造成不能立刻发现的 bug，Rust 根本不会编译这些代码，并在开发过程中及早杜绝了误会的发生。",
+    "statement": "Rust 拒绝编译对字符串进行字节索引的代码（如 `&\"hello\"[0]`）。",
+    "rationale": "按字节索引会返回字节值而非用户期望的字符（如返回 104 而不是 h），为避免这种意外值导致难以立刻发现的 bug，Rust 在开发期直接禁止。",
+    "appliesWhen": "尝试对字符串使用索引访问以取得字符时。",
+    "violation": "编写 `&\"hello\"[0]` 之类的字符串索引取值代码会使编译失败。",
+    "chapterRef": "ch08-02-strings-h4-3"
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-4",
+        "title": "字节、标量值和字形簇！天呐！",
+        "lineStart": 205,
+        "lineEnd": 230,
+        "contentHash": "sha256:bca4739cf38eaa5589b8b52b7e4c23d6f1532a3955e04abd6cfaa323472ca1e5"
+      }
+    ],
+    "evidenceQuote": "最后，如果以字形簇的角度理解，就会得到人们所说的构成这个单词的四个字母：\n\n```text\n[\"न\", \"म\", \"स्\", \"ते\"]\n```",
+    "canonicalTerm": "字形簇",
+    "aliases": [],
+    "definition": "从字形簇的角度理解字符串时，得到的是人们所说的构成单词的字母。",
+    "examples": [
+      "न, म, स्, ते"
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H4-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h4-4",
+        "title": "字节、标量值和字形簇！天呐！",
+        "lineStart": 205,
+        "lineEnd": 230,
+        "contentHash": "sha256:bca4739cf38eaa5589b8b52b7e4c23d6f1532a3955e04abd6cfaa323472ca1e5"
+      }
+    ],
+    "evidenceQuote": "最后一个 Rust 不允许使用索引获取 `String` 字符的原因是，索引操作预期总是需要常数时间 (O(1))。但是对于 `String` 不可能保证这样的性能，因为 Rust 必须从开头到索引位置遍历来确定有多少有效的字符。",
+    "statement": "Rust 不允许使用索引获取 `String` 字符",
+    "rationale": "索引操作预期总是需要常数时间 (O(1))，但 `String` 无法保证这样的性能，因为 Rust 必须从开头到索引位置遍历来确定有多少有效的字符。",
+    "appliesWhen": "当程序想通过索引访问 `String` 中的字符时",
+    "violation": "尝试使用索引获取 `String` 字符",
+    "chapterRef": "ch08-02-strings-h4-4"
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-5",
+        "title": "字符串 slice",
+        "lineStart": 231,
+        "lineEnd": 250,
+        "contentHash": "sha256:6f2945d4ee7fda6e08fdfc276802f642fe297c1cbb4000181a392bced9a52f75"
+      }
+    ],
+    "evidenceQuote": "如果获取 `&hello[0..1]` 会发生什么呢？答案是：Rust 在运行时会 panic，就跟访问 vector 中的无效索引时一样：\n\n```text\nthread 'main' panicked at 'byte index 1 is not a char boundary; it is inside 'З' (bytes 0..2) of `Здравствуйте`', src/libcore/str/mod.rs:2188:4\n```\n\n你应该小心谨慎的使用这个操作，因为这么做可能会使你的程序崩溃。",
+    "statement": "在 Rust 中对字符串使用字节范围索引时，如果索引没有落在 UTF-8 字符边界上，程序会在运行时 panic，可能导致程序崩溃。",
+    "rationale": "Rust 的错误信息为 'byte index 1 is not a char boundary; it is inside 'З' (bytes 0..2)'，表明范围索引落在字符内部时会被拒绝。",
+    "appliesWhen": "当使用 `[]` 和 range 获取字符串 slice，且范围边界可能不在字符边界上时。",
+    "violation": "程序在运行时 panic，并输出类似 'byte index 1 is not a char boundary' 的错误。",
+    "chapterRef": "ch08-02-strings-h3-5"
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-5-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-5",
+        "title": "字符串 slice",
+        "lineStart": 231,
+        "lineEnd": 250,
+        "contentHash": "sha256:6f2945d4ee7fda6e08fdfc276802f642fe297c1cbb4000181a392bced9a52f75"
+      }
+    ],
+    "evidenceQuote": "为了更明确索引并表明你需要一个字符串 slice，相比使用 `[]` 和单个值的索引，可以使用 `[]` 和一个 range 来创建含特定字节的字符串 slice：\n\n```rust\nlet hello = \"Здравствуйте\";\n\nlet s = &hello[0..4];\n```\n\n这里，`s` 会是一个 `&str`，它包含字符串的头 4 个字节。早些时候，我们提到了这些字母都是 2 个字节长的，所以这意味着 `s` 将会是 “Зд”。",
+    "canonicalTerm": "字符串 slice",
+    "aliases": [],
+    "definition": "使用 `[]` 和一个 range 创建的 `&str`，按字节范围切分字符串；例如 `&hello[0..4]` 得到包含头 4 个字节的 `&str`，因示例字符串中的字母每个 2 个字节，前 4 个字节内容为 'Зд'。",
+    "examples": [
+      "let s = &hello[0..4]; 当 hello 为 \"Здравствуйте\" 时，s 是 \"Зд\""
+    ]
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-6-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-6",
+        "title": "遍历字符串的方法",
+        "lineStart": 251,
+        "lineEnd": 295,
+        "contentHash": "sha256:b0e1648e3a3a8352255401915912a5fa957c97d225a9f9571bb5455e0f1eb094"
+      }
+    ],
+    "evidenceQuote": "如果你需要操作单独的 Unicode 标量值，最好的选择是使用 `chars` 方法。",
+    "trigger": "当你需要操作单独的 Unicode 标量值时",
+    "recommendation": "使用 `chars` 方法遍历字符串以访问每个 Unicode 标量值。",
+    "confidence": 0.9,
+    "exceptions": []
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-6-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-6",
+        "title": "遍历字符串的方法",
+        "lineStart": 251,
+        "lineEnd": 295,
+        "contentHash": "sha256:b0e1648e3a3a8352255401915912a5fa957c97d225a9f9571bb5455e0f1eb094"
+      }
+    ],
+    "evidenceQuote": "从字符串中获取字形簇是很复杂的，所以标准库并没有提供这个功能。[crates.io](https://crates.io) 上有些提供这样功能的 crate。",
+    "trigger": "当你需要从字符串中获取字形簇时",
+    "recommendation": "使用 crates.io 上提供字形簇功能的 crate。",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "CH08-02-STRINGS-H3-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T15:09:26.392Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T15:09:26.392Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch08-02-strings.md",
+        "anchor": "ch08-02-strings#h3-7",
+        "title": "字符串并不简单",
+        "lineStart": 296,
+        "lineEnd": 301,
+        "contentHash": "sha256:b4792a028bc49c397f1d4276113b1e2d2049ce7295df81274aa810896ba03d78"
+      }
+    ],
+    "evidenceQuote": "Rust 选择了以准确的方式处理 `String` 数据作为所有 Rust 程序的默认行为，这意味着开发者们必须更多的思考如何预先处理 UTF-8 数据。这种权衡取舍相比其他语言更多的暴露出了字符串的复杂性，不过也使你在开发生命周期后期免于处理涉及非 ASCII 字符的错误。",
+    "statement": "在 Rust 程序中，开发者必须更多思考如何预先处理 UTF-8 数据，因为 Rust 将准确处理 String 数据作为默认行为。",
+    "rationale": "这种权衡相比其他语言更多地暴露了字符串的复杂性，但使开发者在开发生命周期后期免于处理涉及非 ASCII 字符的错误。",
+    "appliesWhen": "处理 Rust 程序中的 String 数据时。",
+    "violation": "开发者没有更多思考如何预先处理 UTF-8 数据。",
+    "chapterRef": "ch08-02-strings-h3-7"
+  }
+]

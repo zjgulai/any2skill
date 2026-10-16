@@ -1,0 +1,596 @@
+[
+  {
+    "id": "REFERENCE-ANSWERS-H1-1-HEURISTIC-01",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h1-1",
+        "title": "思考题参考答案",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "contentHash": "sha256:d0e61d9514d9f83c62cf99cd74798f171a277897682877814143732d4ba2f67b"
+      }
+    ],
+    "evidenceQuote": "思考题多为开放性问题，答案不唯一。参考答案由 AI 生成，经人工略作审校，仅供读者参考。建议读者使用 LLM 结合书稿内容进一步讨论这些问题。",
+    "trigger": "当读者使用本书思考题参考答案时",
+    "recommendation": "将参考答案视为仅供参考，并使用 LLM 结合书稿内容进一步讨论这些问题",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-1",
+        "title": "第一章 AI Agent 入门",
+        "lineStart": 5,
+        "lineEnd": 52,
+        "contentHash": "sha256:f5316b08acff49b3c4d76ab224de716b659448b6197e58e9738cade0a5967fbd"
+      }
+    ],
+    "evidenceQuote": "评级对象从“工具”细化到“工具+参数”：调用时根据可逆性、权限和影响面计算风险。采用基于规则的确定性检查（路径黑白名单、正则），而非模型判断。验证时应只检查结构化数据，防止提示注入操纵判断结果。",
+    "statement": "工具风险评级时，评级对象应从“工具”细化到“工具+参数”，调用时根据可逆性、权限和影响面计算风险；采用基于规则的确定性检查（路径黑白名单、正则），而非模型判断；验证时应只检查结构化数据。",
+    "rationale": "防止提示注入操纵判断结果。",
+    "appliesWhen": "当需要调用工具并根据可逆性、权限和影响面计算风险时。",
+    "violation": "用模型判断风险，而不是采用基于规则的确定性检查；或验证时未只检查结构化数据。",
+    "chapterRef": "reference-answers-h2-1"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-1",
+        "title": "第一章 AI Agent 入门",
+        "lineStart": 5,
+        "lineEnd": 52,
+        "contentHash": "sha256:f5316b08acff49b3c4d76ab224de716b659448b6197e58e9738cade0a5967fbd"
+      }
+    ],
+    "evidenceQuote": "这里二次增长的是累计缓存读取费用，而非轨迹长度或 KV Cache 占用。可在达到 token 阈值时批量压缩早期轨迹，只保留结论与关键状态，并把大块中间结果外置后按需检索，或用子 Agent 隔离。不能每轮压缩，否则既可能损害 Agent 性能，也会引入额外的压缩调用和缓存重建开销。",
+    "statement": "当累计缓存读取费用二次增长时，不能每轮压缩早期轨迹；每轮压缩既可能损害 Agent 性能，也会引入额外的压缩调用和缓存重建开销。",
+    "rationale": "每轮压缩既可能损害 Agent 性能，也会引入额外的压缩调用和缓存重建开销。",
+    "appliesWhen": "累计缓存读取费用二次增长时。",
+    "violation": "每轮压缩早期轨迹。",
+    "chapterRef": "reference-answers-h2-1"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-2",
+        "title": "第二章 上下文工程",
+        "lineStart": 53,
+        "lineEnd": 90,
+        "contentHash": "sha256:59230adf5707c50c17b60ee993d8de939c188c025b1e64a1e12169f01bb36f37"
+      }
+    ],
+    "evidenceQuote": "模型几乎会无条件相信状态栏，其中的错误也会原样传导。缓解措施：①用确定性代码维护，绝不让 LLM 批量统计很长的历史记录（即便使用 LLM，也只让它逐条抽取，再由代码汇总）",
+    "statement": "状态栏应由确定性代码维护，绝不让 LLM 批量统计很长的历史记录；即便使用 LLM，也只让它逐条抽取，再由代码汇总。",
+    "rationale": "模型几乎会无条件相信状态栏，其中的错误也会原样传导。",
+    "appliesWhen": "当维护状态栏并需要防止其中的错误信息传导给模型时。",
+    "violation": "若让 LLM 批量统计很长的历史记录，则违背确定性代码维护要求，状态栏中的错误会原样传导给模型。",
+    "chapterRef": "reference-answers-h2-2"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-2",
+        "title": "第二章 上下文工程",
+        "lineStart": 53,
+        "lineEnd": 90,
+        "contentHash": "sha256:59230adf5707c50c17b60ee993d8de939c188c025b1e64a1e12169f01bb36f37"
+      }
+    ],
+    "evidenceQuote": "有风险，压缩是一种有损投影；如果问题涉及未保留的信息，就无法得到可靠答案。解法是采用“有损压缩＋无损索引”：每条事实都附上来源 URL，以便回溯；原始输出存入磁盘，平时只查看摘要预览；明确保留信息的优先级——架构决策、保证语义完整性所需的信息（时间、公司名）、验证状态以及 UUID/hash 等标识符均原样保留；通过自适应窗口化推迟压缩时机。",
+    "statement": "对上下文做压缩时，应采用“有损压缩＋无损索引”：每条事实附上来源 URL 以便回溯，原始输出存入磁盘、平时只查看摘要预览；明确保留信息的优先级，架构决策、保证语义完整性所需的信息（时间、公司名）、验证状态以及 UUID/hash 等标识符均原样保留；通过自适应窗口化推迟压缩时机。",
+    "rationale": "压缩是一种有损投影；如果问题涉及未保留的信息，就无法得到可靠答案。",
+    "appliesWhen": "当上下文压缩可能造成有损投影并丢失未保留信息时。",
+    "violation": "只做有损压缩而不保留无损索引时，遇到涉及未保留信息的问题无法得到可靠答案。",
+    "chapterRef": "reference-answers-h2-2"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-3",
+        "title": "第三章 用户记忆和知识库",
+        "lineStart": 91,
+        "lineEnd": 130,
+        "contentHash": "sha256:b3c6637bc8122ef3a675ce8162b438b416b3b983491ad243491789291f325407"
+      }
+    ],
+    "evidenceQuote": "RAPTOR：从宏观概念逐步钻取细节的“跨层穿梭”式查询，如先定位“SIMD 指令集”摘要再下钻到 SSE 细节，兼顾总览与细节两种粒度。",
+    "canonicalTerm": "RAPTOR",
+    "aliases": [],
+    "definition": "擅长从宏观概念逐步钻取细节的“跨层穿梭”式查询，兼顾总览与细节两种粒度。",
+    "examples": [
+      "先定位“SIMD 指令集”摘要再下钻到 SSE 细节"
+    ]
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-3",
+        "title": "第三章 用户记忆和知识库",
+        "lineStart": 91,
+        "lineEnd": 130,
+        "contentHash": "sha256:b3c6637bc8122ef3a675ce8162b438b416b3b983491ad243491789291f325407"
+      }
+    ],
+    "evidenceQuote": "GraphRAG：多跳关系推理（“我的医生所在医院的地址”沿关系链遍历）与实体消歧（两个“张医生”是不同节点）等“A 和 B 有什么关系”类查询，社区摘要还提供主题聚类。",
+    "canonicalTerm": "GraphRAG",
+    "aliases": [],
+    "definition": "擅长多跳关系推理与实体消歧等“A 和 B 有什么关系”类查询，并通过社区摘要提供主题聚类。",
+    "examples": [
+      "“我的医生所在医院的地址”沿关系链遍历",
+      "两个“张医生”是不同节点"
+    ]
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-4-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-4",
+        "title": "第四章 工具",
+        "lineStart": 131,
+        "lineEnd": 148,
+        "contentHash": "sha256:2184b6c8aacac728dc08325b58c52e0dbf92b845ebd7b2e6581b7ecde04f22b5"
+      }
+    ],
+    "evidenceQuote": "选择依据：接入前审查描述、锁定版本、配最小权限凭证，警惕同名工具遮蔽（tool shadowing）把敏感调用路由给恶意方；运行时靠层次化分类和动态发现缩小候选。模型是否能感知差异，取决于工具描述的质量。",
+    "pattern": "同名工具遮蔽（tool shadowing）",
+    "harm": "把敏感调用路由给恶意方",
+    "corrective": "接入前审查描述、锁定版本、配最小权限凭证；运行时靠层次化分类和动态发现缩小候选",
+    "evidence": [
+      "同名工具遮蔽（tool shadowing）把敏感调用路由给恶意方"
+    ],
+    "chapterRef": "reference-answers-h2-4"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-4-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-4",
+        "title": "第四章 工具",
+        "lineStart": 131,
+        "lineEnd": 148,
+        "contentHash": "sha256:2184b6c8aacac728dc08325b58c52e0dbf92b845ebd7b2e6581b7ecde04f22b5"
+      }
+    ],
+    "evidenceQuote": "不适用的场景：发邮件、拨电话、对外转账等不可逆或非幂等操作。此类操作要么无从验证，要么验证本身会再次触发真实世界事件；此时应改用事前控制手段，如提议者-审核者的事前审批。",
+    "trigger": "当操作属于发邮件、拨电话、对外转账等不可逆或非幂等操作时",
+    "recommendation": "应改用事前控制手段，如提议者-审核者的事前审批",
+    "confidence": 0.8,
+    "exceptions": []
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-5",
+        "title": "第五章 Coding Agent 与通用 Agent",
+        "lineStart": 149,
+        "lineEnd": 189,
+        "contentHash": "sha256:cb9c1f35713d5eb1ec723ba34f3fc06097f219c2abb3661c9858e5c037afb786"
+      }
+    ],
+    "evidenceQuote": "**3. (★★) 代码生成 Agent 在处理日志解析时，能自动跟随格式演化。但如果格式变化是一个 bug 而非预期改动，Agent 的适应性反而掩盖了问题。Agent 应该如何区分“需要适应的变化”和“需要报告的异常”？**\n\n> 适应前先诊断：对照架构文档与 PRD 判断新格式是否符合预期（实验 5-11 的思路）；核对版本控制记录，确认变化源自合法的代码提交，还是没有明确来源的漂移；类比 τ-bench 的 log_mismatch，即使选择适应，也要记录告警、自动创建 issue，而非静默兼容；不确定时引入人在回路进行确认。原则：适应与报告并行，不能让适应机制吞掉异常信号。",
+    "statement": "在处理日志解析的格式变化时，Agent 的适应机制必须与报告并行，不能让适应机制吞掉异常信号。",
+    "rationale": "格式变化可能是 bug 而非预期改动，适应性会掩盖问题；即使选择适应，也要记录告警、自动创建 issue，而非静默兼容。",
+    "appliesWhen": "当代码生成 Agent 处理日志解析、且格式变化可能需要适应或报告时。",
+    "violation": "对格式变化静默兼容，不记录告警或创建 issue。",
+    "chapterRef": "reference-answers-h2-5"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-5",
+        "title": "第五章 Coding Agent 与通用 Agent",
+        "lineStart": 149,
+        "lineEnd": 189,
+        "contentHash": "sha256:cb9c1f35713d5eb1ec723ba34f3fc06097f219c2abb3661c9858e5c037afb786"
+      }
+    ],
+    "evidenceQuote": "HTML/UI 优先 A2UI 类声明式协议，Agent 只输出界面描述 JSON，由客户端用受信组件目录渲染，不执行任意代码；确需任意 HTML 时应在沙盒环境中展示，防止注入。",
+    "statement": "Agent 生成 HTML/UI 时，优先采用 A2UI 类声明式协议，只输出界面描述 JSON，由客户端用受信组件目录渲染，不执行任意代码；确需任意 HTML 时应在沙盒环境中展示。",
+    "rationale": "防止注入。",
+    "appliesWhen": "Agent 生成 HTML/UI 代码、由客户端渲染的场景。",
+    "violation": "Agent 输出任意 HTML 代码而未在沙盒环境中展示，或未由受信组件目录渲染。",
+    "chapterRef": "reference-answers-h2-5"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-6",
+        "title": "第六章 交互：观察与动作空间的扩展",
+        "lineStart": 190,
+        "lineEnd": 243,
+        "contentHash": "sha256:1fd122df1c696add04498a208bb9d440a90271201c34c1a711fd7490659b31b2"
+      }
+    ],
+    "evidenceQuote": "**11. (★★★) 本章的三个场景（语音、Computer Use、机器人）都面临“感知-思考-行动”循环的延迟问题，都需要在智能上限和交互时效之间做分工。在语音场景中，这表现为“说错了再纠正”；在 Computer Use 场景中，这表现为“先点再看”；在机器人场景中，这表现为“走一步看一步”。如何通过动作分级、可逆操作、状态确认、权限控制和安全停止，保证快速交互不会导致无法挽回的后果？**\n\n> 按可逆性给动作分级：快思考只允许执行可逆动作，不可逆操作则交由慢思考把关；不允许快模型执行会造成不可逆后果的工具调用。",
+    "statement": "按可逆性给动作分级：快思考只允许执行可逆动作，不可逆操作交由慢思考把关，不允许快模型执行会造成不可逆后果的工具调用。",
+    "rationale": "保证快速交互不会导致无法挽回的后果。",
+    "appliesWhen": "快速交互中由快模型执行动作、需要防止不可逆后果时。",
+    "violation": "快模型执行会造成不可逆后果的工具调用。",
+    "chapterRef": "reference-answers-h2-6"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-6-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-6",
+        "title": "第六章 交互：观察与动作空间的扩展",
+        "lineStart": 190,
+        "lineEnd": 243,
+        "contentHash": "sha256:1fd122df1c696add04498a208bb9d440a90271201c34c1a711fd7490659b31b2"
+      }
+    ],
+    "evidenceQuote": "> 在三个候选因素中，**观察的获取成本**其实最不关键——两边都能以较低成本重新观察。真正决定差异的是另外两个因素的组合：**环境变化的速度**决定安全点必须设置得多密集（工具调用之间设置即可，还是每个控制周期都要设置），**动作的可逆性**决定错过安全点的代价（多发一封邮件还可以再补一封道歉，撞倒的杯子却无法复原）。\n>\n> 由此可以提炼出一条设计规则：安全点的密度应与环境变化速度匹配；而在安全点之外还需要多少额外防护（硬件急停、独立安全控制器、二次确认），取决于动作有多不可逆。这也解释了为什么第四章的高风险操作要采用事前审批，而机器人要使用独立于模型的硬件安全层——两者都是在“安全点不够用”的地方补上的第二道防线。",
+    "statement": "安全点的密度应与环境变化速度匹配；安全点之外还需要多少额外防护，取决于动作有多不可逆。",
+    "rationale": "环境变化的速度决定安全点必须设置得多密集，动作的可逆性决定错过安全点的代价；安全点不够用的地方需要补上第二道防线。",
+    "appliesWhen": "需要设置安全点并决定额外防护时。",
+    "violation": "安全点密度与环境变化速度不匹配，或对不可逆动作未在安全点外补足额外防护。",
+    "chapterRef": "reference-answers-h2-6"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-7",
+        "title": "第七章 Agent 的评估",
+        "lineStart": 244,
+        "lineEnd": 283,
+        "contentHash": "sha256:81520ca291e95078d603c89958e2132af8700e608239b74a20a9b7e4071e9a50"
+      }
+    ],
+    "evidenceQuote": "静态题库无终局，只能追赶。根本出路是公开“生成机制”、私有化“具体实例”：像 τ²-bench、AndroidWorld 那样参数化模板每次随机实例化，验证基于最终环境状态而非固定答案序列。",
+    "statement": "静态题库无终局，只能追赶；根本出路是公开“生成机制”、私有化“具体实例”：参数化模板每次随机实例化，验证基于最终环境状态而非固定答案序列。",
+    "rationale": "静态题库无终局，只能追赶。",
+    "appliesWhen": "在设计抗数据泄漏的评估方法时。",
+    "violation": "继续依赖公开且固定的静态题库，或验证固定答案序列。",
+    "chapterRef": "reference-answers-h2-7"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-7-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-7",
+        "title": "第七章 Agent 的评估",
+        "lineStart": 244,
+        "lineEnd": 283,
+        "contentHash": "sha256:81520ca291e95078d603c89958e2132af8700e608239b74a20a9b7e4071e9a50"
+      }
+    ],
+    "evidenceQuote": "先看失败是否可回滚。失败能自动重试、又不产生外部副作用时（检索、草稿生成、代码补全），关心的是“给足机会能不能做成”，应报告 Pass@k，k 取实际允许的重试次数；失败会留下不可逆后果时（付款、退款、对外发信、生产部署），一次错就是真实损失，应报告 Pass^k。单次成功率 0.6 时，Pass@5 ≈ 99.0%、Pass^5 ≈ 7.8%——同一个 Agent 的两个数字相差一个数量级，只报前者会严重高估可靠性。",
+    "statement": "决定报告 Pass@k 还是 Pass^k 时，先看失败是否可回滚：失败能自动重试且不产生外部副作用时报告 Pass@k，k 取实际允许的重试次数；失败会留下不可逆后果时报告 Pass^k。",
+    "rationale": "失败会留下不可逆后果时，一次错就是真实损失；只报 Pass@k 会严重高估可靠性。",
+    "appliesWhen": "在 Agent 评估中需要选择报告能力上限指标还是业务可靠性指标时。",
+    "violation": "在失败会留下不可逆后果时只报告 Pass@k，而不报告 Pass^k。",
+    "chapterRef": "reference-answers-h2-7"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-8-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-8",
+        "title": "第八章 模型后训练",
+        "lineStart": 284,
+        "lineEnd": 337,
+        "contentHash": "sha256:bb00f8148d8ba8785c86a20d5b3baa09201e2d7aecfa2c02d99099c1ed56af3d"
+      }
+    ],
+    "evidenceQuote": "灾难性遗忘——一次针对特定任务的微调破坏了模型原有的通用能力（如通用工具调用）——在 Agent 场景下尤其棘手。",
+    "canonicalTerm": "灾难性遗忘",
+    "aliases": [],
+    "definition": "一次针对特定任务的微调破坏了模型原有的通用能力（如通用工具调用）",
+    "examples": [
+      "通用工具调用"
+    ]
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-8-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-8",
+        "title": "第八章 模型后训练",
+        "lineStart": 284,
+        "lineEnd": 337,
+        "contentHash": "sha256:bb00f8148d8ba8785c86a20d5b3baa09201e2d7aecfa2c02d99099c1ed56af3d"
+      }
+    ],
+    "evidenceQuote": "但如果将评估集用于训练，它就不再是独立的评估集——这是否违反了训练集与测试集必须分离的基本原则？τ²-bench 的动态参数生成和 AndroidWorld 的参数化模板在一定程度上缓解了这个问题，但模板结构本身仍然是固定的。如何在充分利用评估数据的训练价值与维护评估独立性之间找到平衡？复用环境，不复用题目。动态参数只防“背答案”，防不了模板过拟合，因此应留出整批未见模板/域外场景做评估（类比 V-IRL 训练纽约、测试九个陌生城市）。用参数化模板批量生成训练变体支撑课程学习，并以 OOD 成绩作为真正的泛化指标。",
+    "statement": "评估数据被用于训练时，应复用环境而不复用题目，并留出整批未见模板或域外场景做评估。",
+    "rationale": "动态参数只防“背答案”，防不了模板过拟合。",
+    "appliesWhen": "当评估集被用于训练，需要平衡训练价值与评估独立性时。",
+    "violation": "模板过拟合。",
+    "chapterRef": "reference-answers-h2-8"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-9",
+        "title": "第九章 Agent 的持续进化",
+        "lineStart": 338,
+        "lineEnd": 367,
+        "contentHash": "sha256:43921b7163b62b87b49447f916fa6c2fe4b461e84229581d8a2bf76e84edd2ca"
+      }
+    ],
+    "evidenceQuote": "> 把可进化的代码放在低权限的沙盒中，只允许它生成补丁和测试；权限系统、API key、发布控制配置和更新验证器属于安全机制，沙盒内的 Agent 无读写权限。Agent 生成的代码修改必须由安全机制在隔离环境中复现、回归后才能发布。",
+    "statement": "Agent 生成的代码修改必须由安全机制在隔离环境中复现、回归后才能发布。",
+    "rationale": "可进化代码放在低权限沙盒中，只能生成补丁和测试；权限系统、API key、发布控制配置和更新验证器属于安全机制，沙盒内 Agent 无读写权限。",
+    "appliesWhen": "当 Agent 生成代码修改时。",
+    "violation": "Agent 生成的代码修改未经安全机制在隔离环境复现、回归即发布。",
+    "chapterRef": "reference-answers-h2-9"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-9-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-9",
+        "title": "第九章 Agent 的持续进化",
+        "lineStart": 338,
+        "lineEnd": 367,
+        "contentHash": "sha256:43921b7163b62b87b49447f916fa6c2fe4b461e84229581d8a2bf76e84edd2ca"
+      }
+    ],
+    "evidenceQuote": "> 满意度可能奖励违规退款、泄露信息或过度承诺，因此它只能是质量指标，不能覆盖安全底线。护栏至少包括规则违规、隐私泄露、无证据陈述、承诺—行动不一致和越权操作；这些指标应设置不可被平均分抵消的硬阈值，再在合规候选中比较解决率、合规变通、简洁性和满意度。",
+    "statement": "护栏至少包括规则违规、隐私泄露、无证据陈述、承诺—行动不一致和越权操作；这些指标应设置不可被平均分抵消的硬阈值。",
+    "rationale": "满意度可能奖励违规退款、泄露信息或过度承诺，因此它只能是质量指标，不能覆盖安全底线。",
+    "appliesWhen": "当以满意度作为学习信号并需要设置护栏指标时。",
+    "violation": "仅用满意度作为学习信号而不设置这些护栏硬阈值，或让护栏指标被平均分抵消。",
+    "chapterRef": "reference-answers-h2-9"
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-10-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-10",
+        "title": "第十章 多 Agent 协作",
+        "lineStart": 368,
+        "lineEnd": 415,
+        "contentHash": "sha256:4875b7bd7b84e7f5b156a79b08483099ab7ab4683c7b505b2255061dd498050c"
+      }
+    ],
+    "evidenceQuote": "机制：每一步都向提示词注入总预算与剩余预算，按照剩余预算的比例动态调整探索与利用的权重。例如，小预算（30 步）下，跳过规划和审查，直接实现核心功能并进行基本验证；大预算（300 步）下，先规划、再实现、再测试、再审查改进，并按里程碑设置检查点以评估进展，防止浅层饱和。",
+    "canonicalTerm": "预算感知机制",
+    "aliases": [],
+    "definition": "每一步都向提示词注入总预算与剩余预算，按照剩余预算的比例动态调整探索与利用的权重。",
+    "examples": [
+      "小预算（30 步）下，跳过规划和审查，直接实现核心功能并进行基本验证；大预算（300 步）下，先规划、再实现、再测试、再审查改进，并按里程碑设置检查点以评估进展，防止浅层饱和。"
+    ]
+  },
+  {
+    "id": "REFERENCE-ANSWERS-H2-10-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-11T13:37:52.322Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-11T13:37:52.322Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/ai-agent-book-zh/book/reference-answers.md",
+        "anchor": "reference-answers#h2-10",
+        "title": "第十章 多 Agent 协作",
+        "lineStart": 368,
+        "lineEnd": 415,
+        "contentHash": "sha256:4875b7bd7b84e7f5b156a79b08483099ab7ab4683c7b505b2255061dd498050c"
+      }
+    ],
+    "evidenceQuote": "消除：切换阶段时同时更换系统提示词与工具集（移除提问工具、换上 linter/测试工具），强化新身份。在上下文末尾添加系统状态栏，突出当前角色信息。如果实在无法消除角色干扰，应考虑改用不共享上下文的协作方式。",
+    "trigger": "多 Agent 协作中切换阶段，需要消除角色干扰时",
+    "recommendation": "同时更换系统提示词与工具集（移除提问工具、换上 linter/测试工具），并在上下文末尾添加系统状态栏突出当前角色信息。",
+    "confidence": 0.8,
+    "exceptions": [
+      "如果实在无法消除角色干扰，应考虑改用不共享上下文的协作方式。"
+    ]
+  }
+]

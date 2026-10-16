@@ -1,0 +1,399 @@
+[
+  {
+    "id": "CH13-01-CLOSURES-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h2-1",
+        "title": "闭包：可以捕获环境的匿名函数",
+        "lineStart": 1,
+        "lineEnd": 4,
+        "contentHash": "sha256:17bd53085bbcf14be4b33da2b800e8423d22e1be24215f454c52d9cb82f4672d"
+      }
+    ],
+    "evidenceQuote": "Rust 的 **闭包**（*closures*）是可以保存进变量或作为参数传递给其他函数的匿名函数。可以在一个地方创建闭包，然后在不同的上下文中执行闭包运算。不同于函数，闭包允许捕获调用者作用域中的值。",
+    "canonicalTerm": "闭包",
+    "aliases": [
+      "closures"
+    ],
+    "definition": "Rust 中可以保存进变量或作为参数传递给其他函数的匿名函数；闭包可以在一个地方创建，然后在不同的上下文中执行，并且不同于函数，允许捕获调用者作用域中的值。",
+    "examples": [
+      "保存进变量",
+      "作为参数传递给其他函数",
+      "捕获调用者作用域中的值"
+    ]
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-1-DECISIONMODEL-01",
+    "objectType": "DecisionModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-1",
+        "title": "使用闭包创建行为的抽象",
+        "lineStart": 5,
+        "lineEnd": 97,
+        "contentHash": "sha256:7d67a1b961a9ee486cda25c648f7ab7d2d3f41ca2e92b5f6aee24a02f02224f8"
+      }
+    ],
+    "evidenceQuote": "示例 13-3 中的代码有多处调用了慢计算函数 `simulated_expensive_calculation`。第一个 `if` 块调用了 `simulated_expensive_calculation` 两次， `else` 中的 `if` 没有调用它，而第二个 `else` 中的代码调用了它一次。\n\n`generate_workout` 函数的期望行为是首先检查用户需要低强度（由小于 25 的系数表示）锻炼还是高强度（25 或以上）锻炼。\n\n低强度锻炼计划会根据由 `simulated_expensive_calculation` 函数所模拟的复杂算法建议一定数量的俯卧撑和仰卧起坐。\n\n如果用户需要高强度锻炼，这里有一些额外的逻辑：如果 app 生成的随机数刚好是 3，app 相反会建议用户稍做休息并补充水分。如果不是，则用户会从复杂算法中得到数分钟跑步的高强度锻炼计划。",
+    "inputs": [
+      "用户锻炼强度系数",
+      "随机数"
+    ],
+    "branches": [
+      {
+        "condition": "强度系数 < 25",
+        "action": "输出低强度锻炼计划：建议俯卧撑和仰卧起坐，并调用 simulated_expensive_calculation 两次"
+      },
+      {
+        "condition": "强度系数 >= 25 且 随机数 == 3",
+        "action": "输出休息建议：稍做休息并补充水分，不调用 simulated_expensive_calculation"
+      },
+      {
+        "condition": "强度系数 >= 25 且 随机数 != 3",
+        "action": "输出高强度跑步计划：建议跑步数分钟，并调用 simulated_expensive_calculation 一次"
+      }
+    ],
+    "outputs": [
+      "建议的锻炼计划"
+    ],
+    "unknownPolicy": "强度系数小于25与大于等于25两个分支互斥穷尽；高强度分支中随机数等于3与不等于3互斥穷尽。未定义其他输入类型或缺失输入时的行为。",
+    "stopConditions": [
+      "匹配某个分支并输出对应建议后停止判断，不再检查其他分支"
+    ],
+    "reviewState": "candidate"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-1",
+        "title": "使用闭包创建行为的抽象",
+        "lineStart": 5,
+        "lineEnd": 97,
+        "contentHash": "sha256:7d67a1b961a9ee486cda25c648f7ab7d2d3f41ca2e92b5f6aee24a02f02224f8"
+      }
+    ],
+    "evidenceQuote": "为了在要做这些改动的时候简化更新步骤，我们将重构代码来让它只调用 `simulated_expensive_calculation` 一次。同时还希望去掉目前多余的连续两次函数调用，并不希望在计算过程中增加任何其他此函数的调用。也就是说，我们不希望在完全无需其结果的情况调用函数，不过仍然希望只调用函数一次。",
+    "statement": "对于一个计算函数，在同一次流程中应只调用一次，并且仅在需要其结果时才调用。",
+    "rationale": "简化后续更新步骤，并避免多余重复调用。",
+    "appliesWhen": "当代码存在多余的连续多次调用，或可能在完全无需其结果时调用函数时。",
+    "violation": "在同一次流程中多次调用该函数，或在完全无需其结果时仍调用该函数。",
+    "chapterRef": "ch13-01-closures-h3-1"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H4-1-ANTIPATTERN-01",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h4-1",
+        "title": "使用函数重构",
+        "lineStart": 98,
+        "lineEnd": 145,
+        "contentHash": "sha256:d459fe686ea9b267bf147a6c01ad586789e0d9d903f1ba74ee825225f5a96c31"
+      }
+    ],
+    "evidenceQuote": "这个修改统一了 `simulated_expensive_calculation` 调用并解决了第一个 `if` 块中不必要的两次调用函数的问题。不幸的是，现在所有的情况下都需要调用函数并等待结果，包括那个完全不需要这一结果的内部 `if` 块。\n\n我们希望能够在程序的一个位置指定某些代码，并只在程序的某处实际需要结果的时候 **执行** 这些代码。这正是闭包的用武之地！",
+    "pattern": "在存在部分分支不需要结果时，将昂贵计算提前统一执行，而不是按需延迟执行。",
+    "harm": "所有情况都需要调用函数并等待结果，包括完全不需要该结果的分支。",
+    "corrective": "使用闭包将代码在程序的一个位置指定，并只在程序某处真正需要结果时执行。",
+    "evidence": [
+      "现在所有的情况下都需要调用函数并等待结果，包括那个完全不需要这一结果的内部 `if` 块。",
+      "只在程序的某处实际需要结果的时候 **执行** 这些代码。这正是闭包的用武之地！"
+    ],
+    "chapterRef": "ch13-01-closures-h4-1"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H4-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h4-2",
+        "title": "重构使用闭包储存代码",
+        "lineStart": 146,
+        "lineEnd": 214,
+        "contentHash": "sha256:151fc7dbf688f5384f52460131f5c85127802c39bc8d0ba77494bc875fecb38f"
+      }
+    ],
+    "evidenceQuote": "闭包定义是 `expensive_closure` 赋值的 `=` 之后的部分。闭包的定义以一对竖线（`|`）开始，在竖线中指定闭包的参数；之所以选择这个语法是因为它与 Smalltalk 和 Ruby 的闭包定义类似。这个闭包有一个参数 `num`；如果有多于一个参数，可以使用逗号分隔，比如 `|param1, param2|`。",
+    "statement": "闭包定义以一对竖线（|）开始，在竖线中指定闭包的参数；如果有多于一个参数，可以使用逗号分隔。",
+    "rationale": "之所以选择这个语法是因为它与 Smalltalk 和 Ruby 的闭包定义类似。",
+    "appliesWhen": "定义闭包并需要指定参数时。",
+    "violation": "闭包定义未以竖线（|）开始，或未在竖线中指定参数，或多个参数未使用逗号分隔。",
+    "chapterRef": "ch13-01-closures-h4-2"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H4-2-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h4-2",
+        "title": "重构使用闭包储存代码",
+        "lineStart": 146,
+        "lineEnd": 214,
+        "contentHash": "sha256:151fc7dbf688f5384f52460131f5c85127802c39bc8d0ba77494bc875fecb38f"
+      }
+    ],
+    "evidenceQuote": "然而，我们又重新引入了示例 13-3 中的问题：仍然在第一个 `if` 块中调用了闭包两次，这调用了慢计算代码两次而使得用户需要多等待一倍的时间。可以通过在 `if` 块中创建一个本地变量存放闭包调用的结果来解决这个问题，不过闭包可以提供另外一种解决方案。",
+    "pattern": "在 `if` 块中重复调用闭包两次",
+    "harm": "调用慢计算代码两次而使得用户需要多等待一倍的时间",
+    "corrective": "在 `if` 块中创建一个本地变量存放闭包调用的结果来解决这个问题",
+    "evidence": [
+      "仍然在第一个 `if` 块中调用了闭包两次，这调用了慢计算代码两次而使得用户需要多等待一倍的时间。"
+    ],
+    "chapterRef": "ch13-01-closures-h4-2"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-2",
+        "title": "闭包类型推断和标注",
+        "lineStart": 215,
+        "lineEnd": 279,
+        "contentHash": "sha256:609a310a3672f733ae1ce910bc76078370864ad8e7d11ff26718ffdb06510bdd"
+      }
+    ],
+    "evidenceQuote": "第一次使用 `String` 值调用 `example_closure` 时，编译器推断 `x` 和此闭包返回值的类型为 `String`。接着这些类型被锁定进闭包 `example_closure` 中，如果尝试对同一闭包使用不同类型则会得到类型错误。",
+    "statement": "闭包参数和返回值的类型在第一次调用时被推断并锁定；对同一闭包后续使用不同类型会导致类型错误。",
+    "rationale": "编译器在第一次调用时推断 x 和闭包返回值的类型为 String。",
+    "appliesWhen": "当闭包已被第一次调用，其参数和返回值类型被锁定后。",
+    "violation": "尝试对同一闭包使用不同类型，会得到类型错误。",
+    "chapterRef": "ch13-01-closures-h3-2"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-3-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-3",
+        "title": "使用带有泛型和 `Fn` trait 的闭包",
+        "lineStart": 280,
+        "lineEnd": 429,
+        "contentHash": "sha256:7a402f684ec2cb2f453405a0c8d606f65cc0bf389901cfb33c0ece0c1023a379"
+      }
+    ],
+    "evidenceQuote": "为了让结构体存放闭包，我们需要指定闭包的类型，因为结构体定义需要知道其每一个字段的类型。每一个闭包实例有其自己独有的匿名类型：也就是说，即便两个闭包有着相同的签名，他们的类型仍然可以被认为是不同。为了定义使用闭包的结构体、枚举或函数参数，需要像第 10 章讨论的那样使用泛型和 trait bound。",
+    "statement": "定义使用闭包的结构体、枚举或函数参数时，需要指定闭包类型并使用泛型和 trait bound。",
+    "rationale": "每个闭包实例有其自己独有的匿名类型，即使签名相同类型也可能不同，因此必须通过 trait bound 来约束闭包类型。",
+    "appliesWhen": "当结构体、枚举或函数参数需要存放或接收闭包时。",
+    "violation": "如果未指定闭包类型或 trait bound，编译器无法得知字段的具体类型，代码将无法编译。",
+    "chapterRef": "ch13-01-closures-h3-3"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-3",
+        "title": "使用带有泛型和 `Fn` trait 的闭包",
+        "lineStart": 280,
+        "lineEnd": 429,
+        "contentHash": "sha256:7a402f684ec2cb2f453405a0c8d606f65cc0bf389901cfb33c0ece0c1023a379"
+      }
+    ],
+    "evidenceQuote": "`Cacher` 结构体的字段是私有的，因为我们希望 `Cacher` 管理这些值而不是任由调用代码潜在地直接改变他们。",
+    "statement": "管理内部状态的结构体应将其字段设为私有，以防止外部代码直接修改。",
+    "rationale": "确保结构体自身管理其内部值，而不任由调用代码潜在地直接改变它们。",
+    "appliesWhen": "当结构体需要控制其内部状态并维护不变量时。",
+    "violation": "如果字段是公开的，外部代码可能直接修改字段，破坏结构体的内部逻辑。",
+    "chapterRef": "ch13-01-closures-h3-3"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-4",
+        "title": "`Cacher` 实现的限制",
+        "lineStart": 430,
+        "lineEnd": 463,
+        "contentHash": "sha256:670866a9b05b097e0e890b1d6aa0666a3b95f59552dc30972de6c5cdd7989a2c"
+      }
+    ],
+    "evidenceQuote": "尝试修改 `Cacher` 存放一个哈希 map 而不是单独一个值。哈希 map 的 key 将是传递进来的 `arg` 值，而 value 则是对应 key 调用闭包的结果值。相比之前检查 `self.value` 直接是 `Some` 还是 `None` 值，现在 `value` 函数会在哈希 map 中寻找 `arg`，如果找到的话就返回其对应的值。如果不存在，`Cacher` 会调用闭包并将结果值保存在哈希 map 对应 `arg` 值的位置。",
+    "statement": "修改 `Cacher` 的缓存实现时，应使用哈希 map 以输入参数 `arg` 作为 key，并将对应 key 调用闭包的结果值作为 value 保存。",
+    "rationale": "相比之前检查 `self.value` 直接是 `Some` 还是 `None` 值，现在 `value` 函数会在哈希 map 中寻找 `arg`；如果不存在，`Cacher` 会调用闭包并将结果值保存在哈希 map 对应 `arg` 值的位置。",
+    "appliesWhen": "当需要让 `Cacher` 按 `arg` 查找并保存闭包结果，而不是只存单独一个值时。",
+    "violation": "若继续只存单独一个值，则没有按 `arg` 保存对应结果值的哈希 map。",
+    "chapterRef": "ch13-01-closures-h3-4"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-4",
+        "title": "`Cacher` 实现的限制",
+        "lineStart": 430,
+        "lineEnd": 463,
+        "contentHash": "sha256:670866a9b05b097e0e890b1d6aa0666a3b95f59552dc30972de6c5cdd7989a2c"
+      }
+    ],
+    "evidenceQuote": "当前 `Cacher` 实现的第二个问题是它的应用被限制为只接受获取一个 `u32` 值并返回一个 `u32` 值的闭包。比如说，我们可能需要能够缓存一个获取字符串 slice 并返回 `usize` 值的闭包的结果。请尝试引入更多泛型参数来增加 `Cacher` 功能的灵活性。",
+    "statement": "调整 `Cacher` 的泛型设计时，应引入更多泛型参数来增加灵活性，而不是把闭包限制为只接受 `u32` 输入并返回 `u32`。",
+    "rationale": "当前实现被限制为只接受获取一个 `u32` 值并返回一个 `u32` 值的闭包，无法缓存例如获取字符串 slice 并返回 `usize` 值的闭包结果。",
+    "appliesWhen": "当需要让 `Cacher` 能够缓存不同签名的闭包，例如获取字符串 slice 并返回 `usize` 值的闭包时。",
+    "violation": "若继续限制为只接受 `u32` 到 `u32` 的闭包，则无法缓存字符串 slice 到 `usize` 等闭包结果。",
+    "chapterRef": "ch13-01-closures-h3-4"
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-5",
+        "title": "闭包会捕获其环境",
+        "lineStart": 464,
+        "lineEnd": 568,
+        "contentHash": "sha256:4e2341cd5bbd31c35378ddbf768728665debb2931e0df12f519174e25ec7d1e3"
+      }
+    ],
+    "evidenceQuote": "闭包可以通过三种方式捕获其环境，他们直接对应函数的三种获取参数的方式：获取所有权，可变借用和不可变借用。这三种捕获值的方式被编码为如下三个 `Fn` trait：\n\n- `FnOnce` 消费从周围作用域捕获的变量，闭包周围的作用域被称为其 **环境**，*environment*。为了消费捕获到的变量，闭包必须获取其所有权并在定义闭包时将其移动进闭包。其名称的 `Once` 部分代表了闭包不能多次获取相同变量的所有权的事实，所以它只能被调用一次。\n- `FnMut` 获取可变的借用值所以可以改变其环境\n- `Fn` 从其环境获取不可变的借用值",
+    "canonicalTerm": "闭包捕获环境",
+    "aliases": [],
+    "definition": "闭包可以通过三种方式捕获其环境：获取所有权、可变借用和不可变借用，分别对应 FnOnce、FnMut、Fn。FnOnce 获取所有权并消费捕获的变量，FnMut 获取可变借用，Fn 获取不可变借用。",
+    "examples": [
+      "FnOnce 消费从周围作用域捕获的变量，必须获取其所有权，因此只能被调用一次。",
+      "FnMut 获取可变的借用值所以可以改变其环境。",
+      "Fn 从其环境获取不可变的借用值。"
+    ]
+  },
+  {
+    "id": "CH13-01-CLOSURES-H3-5-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:34:11.995Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:34:11.995Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-01-closures.md",
+        "anchor": "ch13-01-closures#h3-5",
+        "title": "闭包会捕获其环境",
+        "lineStart": 464,
+        "lineEnd": 568,
+        "contentHash": "sha256:4e2341cd5bbd31c35378ddbf768728665debb2931e0df12f519174e25ec7d1e3"
+      }
+    ],
+    "evidenceQuote": "大部分需要指定一个 `Fn` 系列 trait bound 的时候，可以从 `Fn` 开始，而编译器会根据闭包体中的情况告诉你是否需要 `FnMut` 或 `FnOnce`。",
+    "trigger": "需要指定一个 Fn 系列 trait bound 的时候",
+    "recommendation": "从 Fn 开始，让编译器根据闭包体中的情况告诉你是否需要 FnMut 或 FnOnce",
+    "confidence": 0.8,
+    "exceptions": []
+  }
+]

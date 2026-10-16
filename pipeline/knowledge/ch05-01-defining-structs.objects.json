@@ -1,0 +1,270 @@
+[
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h2-1",
+        "title": "定义并实例化结构体",
+        "lineStart": 1,
+        "lineEnd": 40,
+        "contentHash": "sha256:96db3e25a33b8b1839403c25f7e62d2156d01239a2d2238580c19372fa71c283"
+      }
+    ],
+    "evidenceQuote": "定义结构体，需要使用 `struct` 关键字并为整个结构体提供一个名字。结构体的名字需要描述它所组合的数据的意义。接着，在大括号中，定义每一部分数据的名字和类型，我们称为 **字段**（*field*）。例如，示例 5-1 展示了一个存储用户账号信息的结构体：",
+    "canonicalTerm": "结构体",
+    "aliases": [
+      "struct"
+    ],
+    "definition": "使用 struct 关键字并为整个结构体提供一个名字，在大括号中定义每一部分数据的名字和类型（称为字段），用于描述所组合数据的意义。",
+    "examples": [
+      "示例 5-1 展示了一个存储用户账号信息的结构体"
+    ]
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H2-1-ANTIPATTERN-02",
+    "objectType": "AntiPattern",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h2-1",
+        "title": "定义并实例化结构体",
+        "lineStart": 1,
+        "lineEnd": 40,
+        "contentHash": "sha256:96db3e25a33b8b1839403c25f7e62d2156d01239a2d2238580c19372fa71c283"
+      }
+    ],
+    "evidenceQuote": "为函数参数起与结构体字段相同的名字是可以理解的，但是不得不重复 `email` 和 `username` 字段名称与变量有些啰嗦。如果结构体有更多字段，重复每个名称就更加烦人了。幸运的是，有一个方便的简写语法！",
+    "pattern": "在函数中为参数起与结构体字段相同的名字，却重复字段名称与变量。",
+    "harm": "重复字段名与变量使代码啰嗦，字段更多时更加烦人。",
+    "corrective": "使用 Rust 提供的字段简写语法来避免重复。",
+    "evidence": [
+      "为函数参数起与结构体字段相同的名字是可以理解的，但是不得不重复 `email` 和 `username` 字段名称与变量有些啰嗦。",
+      "如果结构体有更多字段，重复每个名称就更加烦人了。",
+      "幸运的是，有一个方便的简写语法！"
+    ],
+    "chapterRef": "ch05-01-defining-structs-h2-1"
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-1",
+        "title": "变量与字段同名时的字段初始化简写语法",
+        "lineStart": 41,
+        "lineEnd": 52,
+        "contentHash": "sha256:ad0fa40378e3491c4999058a0562b1d8c89b3f435ff57e3320277d1ebfd1e381"
+      }
+    ],
+    "evidenceQuote": "因为示例 5-4 中的参数名与字段名都完全相同，我们可以使用**字段初始化简写语法**（*field init shorthand*）来重写 `build_user`，这样其行为与之前完全相同，不过无需重复 `email` 和 `username` 了，如示例 5-5 所示。",
+    "canonicalTerm": "字段初始化简写语法",
+    "aliases": [
+      "field init shorthand"
+    ],
+    "definition": "当参数名与字段名完全相同时，可以使用字段初始化简写语法，无需重复字段名（如 email 和 username），行为与之前完全相同。",
+    "examples": [
+      "示例 5-5 中的 build_user 使用了字段初始化简写语法，因此无需重复 email 和 username。"
+    ]
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-2",
+        "title": "使用结构体更新语法从其他实例创建实例",
+        "lineStart": 53,
+        "lineEnd": 76,
+        "contentHash": "sha256:5bda007f0aa1711b5eb35982839e69e7b9c721867e84f0831135b7d5fa0c0d7b"
+      }
+    ],
+    "evidenceQuote": "`..user1` 必须放在最后，以指定其余的字段应从 `user1` 的相应字段中获取其值，但我们可以选择以任何顺序为任意字段指定值，而不用考虑结构体定义中字段的顺序。",
+    "statement": "在 Rust 结构体更新语法中，`..user1` 必须放在最后，以指定其余字段应从 `user1` 的相应字段中获取其值。",
+    "rationale": "`..user1` 用于指定其余字段应从 `user1` 的相应字段中获取其值，因此必须放在最后。",
+    "appliesWhen": "使用结构体更新语法从其他实例创建新实例时。",
+    "violation": "将 `..user1` 放在最后以外的位置。",
+    "chapterRef": "ch05-01-defining-structs-h3-2"
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-2",
+        "title": "使用结构体更新语法从其他实例创建实例",
+        "lineStart": 53,
+        "lineEnd": 76,
+        "contentHash": "sha256:5bda007f0aa1711b5eb35982839e69e7b9c721867e84f0831135b7d5fa0c0d7b"
+      }
+    ],
+    "evidenceQuote": "请注意，结构更新语法就像带有 `=` 的赋值，因为它移动了数据，就像我们在[“变量与数据交互的方式（一）：移动”][move]<!-- ignore -->部分讲到的一样。在这个例子中，我们在创建 `user2` 后不能再使用 `user1`，因为 `user1` 的 `username` 字段中的  `String` 被移到 `user2` 中。如果我们给 `user2` 的 `email` 和 `username` 都赋予新的 `String` 值，从而只使用 `user1` 的 `active` 和 `sign_in_count` 值，那么 `user1` 在创建 `user2` 后仍然有效。`active` 和 `sign_in_count` 的类型是实现 `Copy` trait 的类型，所以我们在[“变量与数据交互的方式（二）：克隆”][copy]<!-- ignore -->部分讨论的行为同样适用。",
+    "statement": "在结构体更新语法中，如果 `user1` 的 `username` 字段中的 `String` 被移到 `user2` 中，创建 `user2` 后不能再使用 `user1`；如果给 `user2` 的 `email` 和 `username` 都赋予新的 `String` 值，从而只使用 `user1` 的 `active` 和 `sign_in_count` 值，那么 `user1` 在创建 `user2` 后仍然有效，因为这些字段是实现 `Copy` trait 的类型。",
+    "rationale": "结构更新语法就像带有 `=` 的赋值，因为它移动了数据；`active` 和 `sign_in_count` 的类型是实现 `Copy` trait 的类型，所以适用克隆语义。",
+    "appliesWhen": "使用结构体更新语法创建新实例并判断源实例是否仍可使用时。",
+    "violation": "在 `user1` 的 `username` 字段被移到 `user2` 后继续使用 `user1`。",
+    "chapterRef": "ch05-01-defining-structs-h3-2"
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-3",
+        "title": "使用没有命名字段的元组结构体来创建不同的类型",
+        "lineStart": 77,
+        "lineEnd": 88,
+        "contentHash": "sha256:2db55065de607d419f0ca069ff890962d9f4256daae225a4aefa4f7c3d5e4c91"
+      }
+    ],
+    "evidenceQuote": "也可以定义与元组（在第 3 章讨论过）类似的结构体，称为**元组结构体**（*tuple struct*）。元组结构体有着结构体名称提供的含义，但没有具体的字段名，只有字段的类型。当你想给整个元组取一个名字，并使元组成为与其他元组不同的类型时，元组结构体是很有用的，这时像常规结构体那样为每个字段命名就显得多余和形式化了。\n\n要定义元组结构体，以 `struct` 关键字和结构体名开头并后跟元组中的类型。例如，下面是两个分别叫做 `Color` 和 `Point` 元组结构体的定义和用法：",
+    "canonicalTerm": "元组结构体",
+    "aliases": [
+      "tuple struct"
+    ],
+    "definition": "元组结构体是与元组类似的结构体，有结构体名称提供的含义，但没有具体字段名，只有字段类型；当想给整个元组取一个名字并使元组成为与其他元组不同的类型时很有用。",
+    "examples": [
+      "两个分别叫做 `Color` 和 `Point` 元组结构体"
+    ]
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-3",
+        "title": "使用没有命名字段的元组结构体来创建不同的类型",
+        "lineStart": 77,
+        "lineEnd": 88,
+        "contentHash": "sha256:2db55065de607d419f0ca069ff890962d9f4256daae225a4aefa4f7c3d5e4c91"
+      }
+    ],
+    "evidenceQuote": "注意 `black` 和 `origin` 值的类型不同，因为它们是不同的元组结构体的实例。你定义的每一个结构体有其自己的类型，即使结构体中的字段有着相同的类型。例如，一个获取 `Color` 类型参数的函数不能接受 `Point` 作为参数，即便这两个类型都由三个 `i32` 值组成。",
+    "statement": "你定义的每一个结构体有其自己的类型，即使结构体中的字段有着相同的类型。",
+    "rationale": "因为它们是不同的元组结构体的实例。",
+    "appliesWhen": "一个获取 `Color` 类型参数的函数不能接受 `Point` 作为参数，即便这两个类型都由三个 `i32` 值组成。",
+    "violation": "试图将一个 `Point` 值作为参数传给一个获取 `Color` 类型参数的函数。",
+    "chapterRef": "ch05-01-defining-structs-h3-3"
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-4",
+        "title": "没有任何字段的类单元结构体",
+        "lineStart": 89,
+        "lineEnd": 175,
+        "contentHash": "sha256:c6f318a5763581bcc99ba1ce2dbb32001df20a88d0794d7a87c8013458bc8a5c"
+      }
+    ],
+    "evidenceQuote": "我们也可以定义一个没有任何字段的结构体！它们被称为**类单元结构体**（*unit-like structs*），因为它们类似于 `()`，即[“元组类型”][tuples]<!-- ignore -->一节中提到的 unit 类型。类单元结构体常常在你想要在某个类型上实现 trait 但不需要在类型中存储数据的时候发挥作用。我们将在第 10 章介绍 trait。下面是一个声明和实例化一个名为 `AlwaysEqual` 的 unit 结构的例子。",
+    "canonicalTerm": "类单元结构体",
+    "aliases": [
+      "unit-like structs"
+    ],
+    "definition": "没有任何字段的结构体，类似于 unit 类型，常用于在某个类型上实现 trait 但不需要在类型中存储数据时。",
+    "examples": [
+      "声明和实例化一个名为 AlwaysEqual 的 unit 结构"
+    ]
+  },
+  {
+    "id": "CH05-01-DEFINING-STRUCTS-H3-4-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T08:42:06.059Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T08:42:06.059Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch05-01-defining-structs.md",
+        "anchor": "ch05-01-defining-structs#h3-4",
+        "title": "没有任何字段的类单元结构体",
+        "lineStart": 89,
+        "lineEnd": 175,
+        "contentHash": "sha256:c6f318a5763581bcc99ba1ce2dbb32001df20a88d0794d7a87c8013458bc8a5c"
+      }
+    ],
+    "evidenceQuote": "可以使结构体存储被其他对象拥有的数据的引用，不过这么做的话需要用上**生命周期**（*lifetime*），这是一个第 10 章会讨论的 Rust 功能。生命周期确保结构体引用的数据有效性跟结构体本身保持一致。如果你尝试在结构体中存储一个引用而不指定生命周期将是无效的，比如这样：",
+    "statement": "在结构体中存储被其他对象拥有的数据的引用时，需要使用生命周期；如果不指定生命周期，这样的存储引用写法无效。",
+    "rationale": "生命周期确保结构体引用的数据有效性跟结构体本身保持一致。",
+    "appliesWhen": "当需要在结构体中存储被其他对象拥有的数据的引用时。",
+    "violation": "尝试在结构体中存储引用而不指定生命周期，该写法无效。",
+    "chapterRef": "ch05-01-defining-structs-h3-4"
+  }
+]

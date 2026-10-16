@@ -1,0 +1,497 @@
+[
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h2-1",
+        "title": "什么是所有权？",
+        "lineStart": 1,
+        "lineEnd": 28,
+        "contentHash": "sha256:cfc3276dc5e712a5326017a63adf03957cca3e1dc4292ad908995c8907afe292"
+      }
+    ],
+    "evidenceQuote": "Rust 的核心功能（之一）是 **所有权**（*ownership*）。虽然该功能很容易解释，但它对语言的其他部分有着深刻的影响。\n\n所有运行的程序都必须管理其使用计算机内存的方式。一些语言中具有垃圾回收机制，在程序运行时不断地寻找不再使用的内存；在另一些语言中，开发者必须亲自分配和释放内存。Rust 则选择了第三种方式：通过所有权系统管理内存，编译器在编译时会根据一系列的规则进行检查。在运行时，所有权系统的任何功能都不会减慢程序。\n\n因为所有权对很多开发者来说都是一个新概念，需要一些时间来适应。好消息是随着你对 Rust 和所有权系统的规则越来越有经验，你就越能自然地编写出安全和高效的代码。持之以恒！\n\n当你理解了所有权，你将有一个坚实的基础来理解那些使 Rust 独特的功能。在本章中，你将通过完成一些示例来学习所有权，这些示例基于一个常用的数据结构：字符串。",
+    "canonicalTerm": "所有权",
+    "aliases": [
+      "ownership"
+    ],
+    "definition": "Rust 通过所有权系统管理内存：编译器在编译时根据一系列规则进行检查；在运行时，所有权系统的任何功能都不会减慢程序。",
+    "examples": [
+      "本章通过基于字符串数据结构的示例来学习所有权。"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H2-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h2-1",
+        "title": "什么是所有权？",
+        "lineStart": 1,
+        "lineEnd": 28,
+        "contentHash": "sha256:cfc3276dc5e712a5326017a63adf03957cca3e1dc4292ad908995c8907afe292"
+      }
+    ],
+    "evidenceQuote": "栈中的所有数据都必须占用已知且固定的大小。在编译时大小未知或大小可能变化的数据，要改为存储在堆上。",
+    "statement": "栈中的所有数据都必须占用已知且固定的大小；在编译时大小未知或大小可能变化的数据，要改为存储在堆上。",
+    "rationale": "栈要求其中的数据都占用已知且固定的大小，所以编译时大小未知或大小可能变化的数据需要存入堆。",
+    "appliesWhen": "当需要决定数据放在栈上还是堆上时，且数据的大小在编译时已知固定或未知/可能变化。",
+    "violation": "将编译时大小未知或大小可能变化的数据放入栈上。",
+    "chapterRef": "ch04-01-what-is-ownership-h2-1"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-1",
+        "title": "所有权规则",
+        "lineStart": 29,
+        "lineEnd": 36,
+        "contentHash": "sha256:245cad05370eb39e6f29feced57dabbd092229bf389e81ca5312d9e6baa890f2"
+      }
+    ],
+    "evidenceQuote": "### 所有权规则\n\n首先，让我们看一下所有权的规则。当我们通过举例说明时，请谨记这些规则：\n\n- Rust 中的每一个值都有一个被称为其 **所有者**（*owner*）的变量。\n- 值在任一时刻有且只有一个所有者。\n- 当所有者（变量）离开作用域，这个值将被丢弃。",
+    "statement": "Rust 中的每一个值都有一个被称为其所有者的变量；值在任一时刻有且只有一个所有者；当所有者（变量）离开作用域，这个值将被丢弃。",
+    "rationale": "这些是 Rust 所有权规则，在举例说明时需要谨记。",
+    "appliesWhen": "在 Rust 中，当变量作为值的所有者时。",
+    "violation": "值在任一时刻有多个所有者，或所有者（变量）离开作用域后值未被丢弃。",
+    "chapterRef": "ch04-01-what-is-ownership-h3-1"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-2",
+        "title": "变量作用域",
+        "lineStart": 37,
+        "lineEnd": 61,
+        "contentHash": "sha256:297ec50a7ddb399c4465342a96e47250cf9868e28a0806931e462e2b4afbe9ad"
+      }
+    ],
+    "evidenceQuote": "作用域是一个项（item）在程序中有效的范围。假设有这样一个变量：\n\n```rust\nlet s = \"hello\";\n```\n\n变量 `s` 绑定到了一个字符串字面量，这个字符串值是硬编码进程序代码中的。该变量从声明的那一刻开始直到当前 **作用域** 结束时都是有效的。",
+    "canonicalTerm": "作用域",
+    "aliases": [],
+    "definition": "作用域是一个项（item）在程序中有效的范围。",
+    "examples": [
+      "变量 `s` 绑定到一个字符串字面量，该变量从声明的那一刻开始直到当前作用域结束时都是有效的。"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-2",
+        "title": "变量作用域",
+        "lineStart": 37,
+        "lineEnd": 61,
+        "contentHash": "sha256:297ec50a7ddb399c4465342a96e47250cf9868e28a0806931e462e2b4afbe9ad"
+      }
+    ],
+    "evidenceQuote": "作用域是一个项（item）在程序中有效的范围。假设有这样一个变量：\n\n```rust\nlet s = \"hello\";\n```\n\n变量 `s` 绑定到了一个字符串字面量，这个字符串值是硬编码进程序代码中的。该变量从声明的那一刻开始直到当前 **作用域** 结束时都是有效的。示例 4-1 的注释标明了变量 `s` 的有效范围。\n\n```rust\n{{#rustdoc_include ../listings/ch04-understanding-ownership/listing-04-01/src/main.rs:here}}\n```\n\n<span class=\"caption\">示例 4-1：一个变量和其有效的作用域</span>\n\n换句话说，这里有两个重要的时间点：\n\n* 当 `s` **进入作用域** 时，它就是有效的。\n* 这一直持续到它 **离开作用域** 为止。",
+    "statement": "当变量 `s` 进入作用域时，它就是有效的；这一直持续到它离开作用域为止。",
+    "rationale": "作用域是一个项（item）在程序中有效的范围。",
+    "appliesWhen": "适用于 `let s = \"hello\";` 这样声明并绑定到字符串字面量的变量 `s`。",
+    "violation": "变量 `s` 的有效性持续到离开作用域为止，离开作用域后不再有效。",
+    "chapterRef": "ch04-01-what-is-ownership-h3-2"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-3",
+        "title": "`String` 类型",
+        "lineStart": 62,
+        "lineEnd": 83,
+        "contentHash": "sha256:f8e588e16d39a8136685249b96648f9d7faaade277e971070b815024b036d2a8"
+      }
+    ],
+    "evidenceQuote": "Rust 有第二个字符串类型，`String`。这个类型管理被分配到堆上的数据，所以能够存储在编译时未知大小的文本。可以使用 `from` 函数基于字符串字面量来创建 `String`，如下：\n\n```rust\nlet s = String::from(\"hello\");\n```",
+    "canonicalTerm": "String 类型",
+    "aliases": [
+      "String"
+    ],
+    "definition": "Rust 提供的第二个字符串类型，管理被分配到堆上的数据，能够存储编译时未知大小的文本，并可使用 `from` 函数基于字符串字面量创建。",
+    "examples": [
+      "let s = String::from(\"hello\");"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-3",
+        "title": "`String` 类型",
+        "lineStart": 62,
+        "lineEnd": 83,
+        "contentHash": "sha256:f8e588e16d39a8136685249b96648f9d7faaade277e971070b815024b036d2a8"
+      }
+    ],
+    "evidenceQuote": "那么这里有什么区别呢？为什么 `String` 可变而字面量却不行呢？区别在于两个类型对内存的处理上。",
+    "statement": "`String` 可变，而字符串字面量不可变。",
+    "rationale": "区别在于两个类型对内存的处理上。",
+    "appliesWhen": "比较 Rust 中 `String` 与字符串字面量的可变性时。",
+    "violation": "误认为字符串字面量可变，或误认为 `String` 不可变。",
+    "chapterRef": "ch04-01-what-is-ownership-h3-3"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-4",
+        "title": "内存与分配",
+        "lineStart": 84,
+        "lineEnd": 108,
+        "contentHash": "sha256:0c6f40c60b4a7be6588a6a9fdcfae6e96f6975b069a6a00d3a40b279b5b67c5a"
+      }
+    ],
+    "evidenceQuote": "从历史的角度上说正确处理内存回收曾经是一个困难的编程问题。如果忘记回收了会浪费内存。如果过早回收了，将会出现无效变量。如果重复回收，这也是个 bug。我们需要精确地为一个 `allocate` 配对一个 `free`。",
+    "canonicalTerm": "内存回收错误",
+    "aliases": [],
+    "definition": "内存回收中的三类失败模式：忘记回收会浪费内存，过早回收会出现无效变量，重复回收也是 bug；因此需要精确地为一个 `allocate` 配对一个 `free`。",
+    "examples": [
+      "忘记回收会浪费内存",
+      "过早回收会产生无效变量",
+      "重复回收也是 bug"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-4-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-4",
+        "title": "内存与分配",
+        "lineStart": 84,
+        "lineEnd": 108,
+        "contentHash": "sha256:0c6f40c60b4a7be6588a6a9fdcfae6e96f6975b069a6a00d3a40b279b5b67c5a"
+      }
+    ],
+    "evidenceQuote": "这是一个将 `String` 需要的内存返回给分配器的很自然的位置：当 `s` 离开作用域的时候。当变量离开作用域，Rust 为我们调用一个特殊的函数。这个函数叫做 [`drop`][drop]<!-- ignore -->，在这里 `String` 的作者可以放置释放内存的代码。Rust 在结尾的 `}` 处自动调用 `drop`。",
+    "canonicalTerm": "drop 函数",
+    "aliases": [],
+    "definition": "Rust 中当变量离开作用域时自动调用的特殊函数，用于放置释放内存的代码；Rust 在结尾的 `}` 处自动调用 `drop`。",
+    "examples": [
+      "当 `s` 离开作用域时，Rust 调用 `drop` 将 `String` 需要的内存返回给分配器"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-1",
+        "title": "变量与数据交互的方式（一）：移动",
+        "lineStart": 109,
+        "lineEnd": 172,
+        "contentHash": "sha256:3ca8b5d495140dbda43570ef3163178f7469726e4b468ce3826f7ba8782f3151"
+      }
+    ],
+    "evidenceQuote": "为了确保内存安全，这种场景下 Rust 的处理有另一个细节值得注意。在 `let s2 = s1` 之后，Rust 认为 `s1` 不再有效，因此 Rust 不需要在 `s1` 离开作用域后清理任何东西。看看在 `s2` 被创建之后尝试使用 `s1` 会发生什么；这段代码不能运行：",
+    "statement": "在 `let s2 = s1` 之后，Rust 认为 `s1` 不再有效，因此 Rust 不需要在 `s1` 离开作用域后清理任何东西。",
+    "rationale": "为了确保内存安全。",
+    "appliesWhen": "当将 `String` 赋值给另一个变量时（如 `let s2 = s1`）。",
+    "violation": "在 `s2` 被创建之后尝试使用 `s1`，这段代码不能运行。",
+    "chapterRef": "ch04-01-what-is-ownership-h4-1"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-1-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-1",
+        "title": "变量与数据交互的方式（一）：移动",
+        "lineStart": 109,
+        "lineEnd": 172,
+        "contentHash": "sha256:3ca8b5d495140dbda43570ef3163178f7469726e4b468ce3826f7ba8782f3151"
+      }
+    ],
+    "evidenceQuote": "另外，这里还隐含了一个设计选择：Rust 永远也不会自动创建数据的 “深拷贝”。因此，任何 **自动** 的复制可以被认为对运行时性能影响较小。",
+    "statement": "Rust 永远也不会自动创建数据的“深拷贝”。",
+    "rationale": "任何自动的复制可以被认为对运行时性能影响较小。",
+    "appliesWhen": "Rust 中任何自动的复制。",
+    "violation": "自动复制将不再被认为对运行时性能影响较小。",
+    "chapterRef": "ch04-01-what-is-ownership-h4-1"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-2",
+        "title": "变量与数据交互的方式（二）：克隆",
+        "lineStart": 173,
+        "lineEnd": 186,
+        "contentHash": "sha256:5516fc09ddaa951b5168d25dd233895a940c2415888903c6db8575191006f9a0"
+      }
+    ],
+    "evidenceQuote": "如果我们 **确实** 需要深度复制 `String` 中堆上的数据，而不仅仅是栈上的数据，可以使用一个叫做 `clone` 的通用函数。第 5 章会讨论方法语法，不过因为方法在很多语言中是一个常见功能，所以之前你可能已经见过了。\n\n这是一个实际使用 `clone` 方法的例子：\n\n```rust\n{{#rustdoc_include ../listings/ch04-understanding-ownership/no-listing-05-clone/src/main.rs:here}}\n```\n\n这段代码能正常运行，并且明确产生图 4-3 中行为，这里堆上的数据 **确实** 被复制了。",
+    "canonicalTerm": "clone",
+    "aliases": [],
+    "definition": "clone 是一种通用函数，用于在确实需要时深度复制 String 堆上的数据，而不仅仅是栈上的数据。",
+    "examples": [
+      "调用 clone 方法的代码能正常运行，并明确产生图 4-3 中行为，堆上的数据确实被复制。"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-3",
+        "title": "只在栈上的数据：拷贝",
+        "lineStart": 187,
+        "lineEnd": 208,
+        "contentHash": "sha256:21422704c60e97cea477e90fe1f58640127034c292a86f458a3018a2abc43923"
+      }
+    ],
+    "evidenceQuote": "Rust 有一个叫做 `Copy` trait 的特殊标注，可以用在类似整型这样的存储在栈上的类型上（第 10 章详细讲解 trait）。如果一个类型实现了 `Copy` trait，那么一个旧的变量在将其赋值给其他变量后仍然可用。",
+    "canonicalTerm": "Copy trait",
+    "aliases": [
+      "Copy"
+    ],
+    "definition": "Rust 中的一个特殊标注，可应用于类似整型这样存储在栈上的类型；类型实现 Copy trait 后，旧变量在将其赋值给其他变量后仍然可用。",
+    "examples": [
+      "整型"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H4-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h4-3",
+        "title": "只在栈上的数据：拷贝",
+        "lineStart": 187,
+        "lineEnd": 208,
+        "contentHash": "sha256:21422704c60e97cea477e90fe1f58640127034c292a86f458a3018a2abc43923"
+      }
+    ],
+    "evidenceQuote": "Rust 不允许自身或其任何部分实现了 `Drop` trait 的类型使用 `Copy` trait。如果我们对其值离开作用域时需要特殊处理的类型使用 `Copy` 标注，将会出现一个编译时错误。",
+    "statement": "Rust 不允许自身或其任何部分实现了 Drop trait 的类型使用 Copy trait。",
+    "rationale": "如果对值离开作用域时需要特殊处理的类型使用 Copy 标注，将会出现编译时错误。",
+    "appliesWhen": "为类型添加 Copy 标注时，需确认该类型及其所有组成部分均未实现 Drop trait。",
+    "violation": "对自身或任何部分实现了 Drop trait 的类型使用 Copy trait，导致编译时错误。",
+    "chapterRef": "ch04-01-what-is-ownership-h4-3"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-5-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-5",
+        "title": "所有权与函数",
+        "lineStart": 209,
+        "lineEnd": 222,
+        "contentHash": "sha256:7cd8f30fac9c9d8466c9b9ac1bbea509e8457f6cc89fc98adda98666dbe46d0d"
+      }
+    ],
+    "evidenceQuote": "将值传递给函数在语义上与给变量赋值相似。向函数传递值可能会移动或者复制，就像赋值语句一样。示例 4-3 使用注释展示变量何时进入和离开作用域：",
+    "canonicalTerm": "所有权与函数",
+    "aliases": [],
+    "definition": "在 Rust 中，将值传递给函数在语义上与给变量赋值相似，向函数传递值可能会移动或者复制，就像赋值语句一样。",
+    "examples": [
+      "示例 4-3 使用注释展示变量何时进入和离开作用域"
+    ]
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-5-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-5",
+        "title": "所有权与函数",
+        "lineStart": 209,
+        "lineEnd": 222,
+        "contentHash": "sha256:7cd8f30fac9c9d8466c9b9ac1bbea509e8457f6cc89fc98adda98666dbe46d0d"
+      }
+    ],
+    "evidenceQuote": "当尝试在调用 `takes_ownership` 后使用 `s` 时，Rust 会抛出一个编译时错误。这些静态检查使我们免于犯错。",
+    "statement": "当尝试在调用 `takes_ownership` 后使用 `s` 时，Rust 会抛出一个编译时错误。",
+    "rationale": "这些静态检查使我们免于犯错。",
+    "appliesWhen": "当调用 `takes_ownership` 之后尝试使用 `s` 时。",
+    "violation": "Rust 抛出编译时错误。",
+    "chapterRef": "ch04-01-what-is-ownership-h3-5"
+  },
+  {
+    "id": "CH04-01-WHAT-IS-OWNERSHIP-H3-6-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-13T16:53:25.176Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-13T16:53:25.176Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch04-01-what-is-ownership.md",
+        "anchor": "ch04-01-what-is-ownership#h3-6",
+        "title": "返回值与作用域",
+        "lineStart": 223,
+        "lineEnd": 257,
+        "contentHash": "sha256:c7e019efd03d03a2db71a9b78e77bf1a638b0f8bb7984bbbc65beb459bc941ad"
+      }
+    ],
+    "evidenceQuote": "变量的所有权总是遵循相同的模式：将值赋给另一个变量时移动它。当持有堆中数据值的变量离开作用域时，其值将通过 `drop` 被清理掉，除非数据被移动为另一个变量所有。",
+    "canonicalTerm": "所有权移动",
+    "aliases": [
+      "移动"
+    ],
+    "definition": "变量的所有权遵循一致模式：将值赋给另一个变量时移动它；持有堆中数据值的变量离开作用域时，其值通过 drop 被清理掉，除非数据被移动为另一个变量所有。",
+    "examples": [
+      "将值赋给另一个变量时移动它"
+    ]
+  }
+]

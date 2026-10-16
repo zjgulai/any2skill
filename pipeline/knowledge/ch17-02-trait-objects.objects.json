@@ -1,0 +1,268 @@
+[
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h2-1",
+        "title": "为使用不同类型的值而设计的 trait 对象",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "contentHash": "sha256:7f518f45b5ea14bb8800858a156affa6114f438ac9736f1792b5e8b4fb136020"
+      }
+    ],
+    "evidenceQuote": "在第 8 章中，我们谈到了 vector 只能存储同种类型元素的局限。示例 8-10 中提供了一个定义 `SpreadsheetCell` 枚举来储存整型，浮点型和文本成员的替代方案。这意味着可以在每个单元中储存不同类型的数据，并仍能拥有一个代表一排单元的 vector。这在当编译代码时就知道希望可以交替使用的类型为固定集合的情况下是完全可行的。",
+    "canonicalTerm": "用枚举使 vector 可存储不同类型元素",
+    "aliases": [],
+    "definition": "在编译代码时已知希望交替使用的类型为固定集合的前提下，通过定义枚举（如 SpreadsheetCell）存储整型、浮点型和文本成员，可以让一个 vector 的每个单元保存不同类型的数据，同时整体仍是一个代表一排单元的 vector。",
+    "examples": [
+      "定义 SpreadsheetCell 枚举来储存整型、浮点型和文本成员，使每个单元可以储存不同类型的数据，并仍能拥有一个代表一排单元的 vector"
+    ]
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H2-1-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h2-1",
+        "title": "为使用不同类型的值而设计的 trait 对象",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "contentHash": "sha256:7f518f45b5ea14bb8800858a156affa6114f438ac9736f1792b5e8b4fb136020"
+      }
+    ],
+    "evidenceQuote": "然而有时我们希望库用户在特定情况下能够扩展有效的类型集合。为了展示如何实现这一点，这里将创建一个图形用户接口（Graphical User Interface， GUI）工具的例子，它通过遍历列表并调用每一个项目的 `draw` 方法来将其绘制到屏幕上 —— 此乃一个 GUI 工具的常见技术。我们将要创建一个叫做 `gui` 的库 crate，它含一个 GUI 库的结构。这个 GUI 库包含一些可供开发者使用的类型，比如 `Button` 或 `TextField`。在此之上，`gui` 的用户希望创建自定义的可以绘制于屏幕上的类型：比如，一个开发者可能会增加 `Image`，另一个可能会增加 `SelectBox`。\n\n这个例子中并不会实现一个功能完善的 GUI 库，不过会展示其中各个部分是如何结合在一起的。编写库的时候，我们不可能知晓并定义所有其他开发者希望创建的类型。我们所知晓的是 `gui` 需要记录一系列不同类型的值，并需要能够对其中每一个值调用 `draw` 方法。这里无需知道调用 `draw` 方法时具体会发生什么，只要该值会有那个方法可供我们调用。",
+    "canonicalTerm": "GUI 库对多类型值调用 draw 方法的需求",
+    "aliases": [],
+    "definition": "当库用户需要扩展有效类型集合，且库作者无法预知并定义所有用户希望创建的自定义类型时，库需要记录一系列不同类型的值，并能对其中的每一个值调用 draw 方法；调用方无需知道调用 draw 方法时具体会发生什么，只要该值拥有 draw 方法即可。",
+    "examples": [
+      "GUI 库包含 Button、TextField 等类型，用户可能增加 Image、SelectBox 等自定义可绘制类型，GUI 通过遍历列表并对每个项目调用 draw 方法进行绘制"
+    ]
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-1",
+        "title": "定义通用行为的 trait",
+        "lineStart": 11,
+        "lineEnd": 97,
+        "contentHash": "sha256:8ba26bdf57f222b9a16a528ed7cc0e71be125b02f857c105e2a063b053a5d493"
+      }
+    ],
+    "evidenceQuote": "trait 对象指向一个实现了我们指定 trait 的类型的实例，以及一个用于在运行时查找该类型的 trait 方法的表。我们通过指定某种指针来创建 trait 对象，例如 `&` 引用或 `Box<T>` 智能指针，还有 `dyn` keyword， 以及指定相关的 trait",
+    "canonicalTerm": "trait 对象",
+    "aliases": [
+      "trait object"
+    ],
+    "definition": "trait 对象指向一个实现了指定 trait 的类型的实例，以及一个用于在运行时查找该类型的 trait 方法的表；通过指定某种指针（如 `&` 引用或 `Box<T>` 智能指针）和 `dyn` keyword 以及指定相关的 trait 来创建。",
+    "examples": [
+      "通过 `&` 引用创建 trait 对象",
+      "通过 `Box<T>` 智能指针创建 trait 对象"
+    ]
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H3-1-HEURISTIC-02",
+    "objectType": "Heuristic",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-1",
+        "title": "定义通用行为的 trait",
+        "lineStart": 11,
+        "lineEnd": 97,
+        "contentHash": "sha256:8ba26bdf57f222b9a16a528ed7cc0e71be125b02f857c105e2a063b053a5d493"
+      }
+    ],
+    "evidenceQuote": "如果只需要同质（相同类型）集合，则倾向于使用泛型和 trait bound，因为其定义会在编译时采用具体类型进行单态化。",
+    "trigger": "当组件集合只需要同质（相同类型）集合时",
+    "recommendation": "使用泛型和 trait bound",
+    "confidence": 0.7,
+    "exceptions": []
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-2",
+        "title": "实现 trait",
+        "lineStart": 98,
+        "lineEnd": 221,
+        "contentHash": "sha256:512fddc265a79cd1b56da3bc0ca0b4197b96e3f37f64e1172b0fd57e6cce78bd"
+      }
+    ],
+    "evidenceQuote": "这个概念 —— 只关心值所反映的信息而不是其具体类型 —— 类似于动态类型语言中称为 **鸭子类型**（*duck typing*）的概念：如果它走起来像一只鸭子，叫起来像一只鸭子，那么它就是一只鸭子！在示例 17-5 中 `Screen` 上的 `run` 实现中，`run` 并不需要知道各个组件的具体类型是什么。它并不检查组件是 `Button` 或者 `SelectBox` 的实例。通过指定 `Box<dyn Draw>` 作为 `components` vector 中值的类型，我们就定义了 `Screen` 为需要可以在其上调用 `draw` 方法的值。",
+    "canonicalTerm": "鸭子类型",
+    "aliases": [
+      "duck typing"
+    ],
+    "definition": "只关心值所反映的信息而不是其具体类型；如果它走起来像一只鸭子，叫起来像一只鸭子，那么它就是一只鸭子。",
+    "examples": [
+      "在 `Screen` 上的 `run` 实现中，`run` 并不需要知道各个组件的具体类型是什么，也不检查组件是 `Button` 或者 `SelectBox` 的实例，而是通过 `Box<dyn Draw>` 定义 `Screen` 为需要可以在其上调用 `draw` 方法的值。"
+    ]
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-2",
+        "title": "实现 trait",
+        "lineStart": 98,
+        "lineEnd": 221,
+        "contentHash": "sha256:512fddc265a79cd1b56da3bc0ca0b4197b96e3f37f64e1172b0fd57e6cce78bd"
+      }
+    ],
+    "evidenceQuote": "使用 trait 对象和 Rust 类型系统来进行类似鸭子类型操作的优势是无需在运行时检查一个值是否实现了特定方法或者担心在调用时因为值没有实现方法而产生错误。如果值没有实现 trait 对象所需的 trait 则 Rust 不会编译这些代码。",
+    "statement": "如果值没有实现 trait 对象所需的 trait，Rust 不会编译这些代码。",
+    "rationale": "使用 trait 对象和 Rust 类型系统来进行类似鸭子类型操作的优势是无需在运行时检查一个值是否实现了特定方法或者担心在调用时因为值没有实现方法而产生错误。",
+    "appliesWhen": "当值没有实现 trait 对象所需的 trait 时。",
+    "violation": "代码不会编译。",
+    "chapterRef": "ch17-02-trait-objects-h3-2"
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-3",
+        "title": "trait 对象执行动态分发",
+        "lineStart": 222,
+        "lineEnd": 227,
+        "contentHash": "sha256:ecb705301c6a4291b68ec3eebfc8213c2d3c477828affb04cc93d2456fbbb61e"
+      }
+    ],
+    "evidenceQuote": "当对泛型使用 trait bound 时编译器所进行单态化处理：编译器为每一个被泛型类型参数代替的具体类型生成了非泛型的函数和方法实现。单态化所产生的代码进行 **静态分发**（*static dispatch*）。静态分发发生于编译器在编译时就知晓调用了什么方法的时候。",
+    "canonicalTerm": "静态分发",
+    "aliases": [
+      "static dispatch"
+    ],
+    "definition": "单态化所产生的代码进行静态分发；静态分发发生于编译器在编译时就知晓调用了什么方法的时候。",
+    "examples": [
+      "对泛型使用 trait bound 时，编译器进行单态化处理，为每一个被泛型类型参数代替的具体类型生成非泛型的函数和方法实现。"
+    ]
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H3-3-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-3",
+        "title": "trait 对象执行动态分发",
+        "lineStart": 222,
+        "lineEnd": 227,
+        "contentHash": "sha256:ecb705301c6a4291b68ec3eebfc8213c2d3c477828affb04cc93d2456fbbb61e"
+      }
+    ],
+    "evidenceQuote": "这与 **动态分发**（*dynamic dispatch*）相对，这时编译器在编译时无法知晓调用了什么方法。在动态分发的情况下，编译器会生成在运行时确定调用了什么方法的代码。\n\n当使用 trait 对象时，Rust 必须使用动态分发。",
+    "canonicalTerm": "动态分发",
+    "aliases": [
+      "dynamic dispatch"
+    ],
+    "definition": "动态分发是编译器在编译时无法知晓调用了什么方法，并生成在运行时确定调用方法代码的分发方式。",
+    "examples": [
+      "当使用 trait 对象时，Rust 必须使用动态分发。"
+    ]
+  },
+  {
+    "id": "CH17-02-TRAIT-OBJECTS-H3-4-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T19:49:53.381Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T19:49:53.381Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch17-02-trait-objects.md",
+        "anchor": "ch17-02-trait-objects#h3-4",
+        "title": "Trait 对象要求对象安全",
+        "lineStart": 228,
+        "lineEnd": 273,
+        "contentHash": "sha256:d337906413e39b1589b01c41d677231315a78ac1ace3a6b1260553c9bf97ee98"
+      }
+    ],
+    "evidenceQuote": "只有 **对象安全**（*object safe*）的 trait 才可以组成 trait 对象。围绕所有使得 trait 对象安全的属性存在一些复杂的规则，不过在实践中，只涉及到两条规则。如果一个 trait 中所有的方法有如下属性时，则该 trait 是对象安全的：\n\n- 返回值类型不为 `Self`\n- 方法没有任何泛型类型参数",
+    "statement": "只有对象安全的 trait 才可以组成 trait 对象；实践中判断对象安全只涉及两条规则：trait 中所有方法返回值类型不为 Self，且方法没有任何泛型类型参数。",
+    "rationale": "对象安全是组成 trait 对象的必要条件；实践规则只涉及返回值类型不为 Self 和没有泛型类型参数。",
+    "appliesWhen": "判断一个 trait 是否能够组成 trait 对象时。",
+    "violation": "如果 trait 中所有方法不满足这两条属性，则该 trait 不是对象安全的，不能组成 trait 对象。",
+    "chapterRef": "ch17-02-trait-objects-h3-4"
+  }
+]

@@ -1,0 +1,401 @@
+[
+  {
+    "id": "CH13-02-ITERATORS-H2-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h2-1",
+        "title": "使用迭代器处理元素序列",
+        "lineStart": 1,
+        "lineEnd": 34,
+        "contentHash": "sha256:3a69a72bb0848cb90cdf82b63c3880f6931969a83ab35eed015cda91100a68bc"
+      }
+    ],
+    "evidenceQuote": "迭代器模式允许你对一个序列的项进行某些处理。**迭代器**（*iterator*）负责遍历序列中的每一项和决定序列何时结束的逻辑。当使用迭代器时，我们无需重新实现这些逻辑。\n\n在 Rust 中，迭代器是 **惰性的**（*lazy*），这意味着在调用方法使用迭代器之前它都不会有效果。例如，示例 13-13 中的代码通过调用定义于 `Vec` 上的 `iter` 方法在一个 vector `v1` 上创建了一个迭代器。这段代码本身没有任何用处：\n\n```rust\nlet v1 = vec![1, 2, 3];\n\nlet v1_iter = v1.iter();\n```",
+    "canonicalTerm": "迭代器",
+    "aliases": [
+      "iterator"
+    ],
+    "definition": "迭代器负责遍历序列中的每一项并决定序列何时结束；在 Rust 中迭代器是惰性的，创建后在调用方法使用它之前不会有效果。",
+    "examples": [
+      "在 Vec 上调用 iter 方法创建 v1_iter，该创建动作本身不产生效果，代码没有任何用处。"
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-1",
+        "title": "`Iterator` trait 和 `next` 方法",
+        "lineStart": 35,
+        "lineEnd": 76,
+        "contentHash": "sha256:a9cc7bdbdbb057fbe19db49064c409580badaef0dfca3e9fd92689708b66c7e8"
+      }
+    ],
+    "evidenceQuote": "`next` 是 `Iterator` 实现者被要求定义的唯一方法。`next` 一次返回迭代器中的一个项，封装在 `Some` 中，当迭代器结束时，它返回 `None`。\n\n可以直接调用迭代器的 `next` 方法；示例 13-15 有一个测试展示了重复调用由 vector 创建的迭代器的 `next` 方法所得到的值：\n\n<span class=\"filename\">文件名: src/lib.rs</span>\n\n```rust\n#[test]\nfn iterator_demonstration() {\n    let v1 = vec![1, 2, 3];\n\n    let mut v1_iter = v1.iter();\n\n    assert_eq!(v1_iter.next(), Some(&1));\n    assert_eq!(v1_iter.next(), Some(&2));\n    assert_eq!(v1_iter.next(), Some(&3));\n    assert_eq!(v1_iter.next(), None);\n}\n```",
+    "canonicalTerm": "next 方法",
+    "aliases": [],
+    "definition": "next 是 Iterator 实现者被要求定义的唯一方法；它一次返回迭代器中的一个项，封装在 Some 中，当迭代器结束时返回 None。",
+    "examples": [
+      "示例 13-15 中 v1_iter.next() 依次返回 Some(&1)、Some(&2)、Some(&3)、None。"
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-1-MENTALMODEL-02",
+    "objectType": "MentalModel",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-1",
+        "title": "`Iterator` trait 和 `next` 方法",
+        "lineStart": 35,
+        "lineEnd": 76,
+        "contentHash": "sha256:a9cc7bdbdbb057fbe19db49064c409580badaef0dfca3e9fd92689708b66c7e8"
+      }
+    ],
+    "evidenceQuote": "注意 `v1_iter` 需要是可变的：在迭代器上调用 `next` 方法改变了迭代器中用来记录序列位置的状态。换句话说，代码 **消费**（consume）了，或使用了迭代器。每一个 `next` 调用都会从迭代器中消费一个项。使用 `for` 循环时无需使 `v1_iter` 可变因为 `for` 循环会获取 `v1_iter` 的所有权并在后台使 `v1_iter` 可变。",
+    "trigger": "在迭代器上调用 next 方法",
+    "inputs": [
+      "迭代器"
+    ],
+    "reasoning": "调用 next 会改变迭代器内部记录序列位置的状态，即消费迭代器；每个 next 调用消费一个项；for 循环在后台获取迭代器所有权并使其可变，因此无需手动可变。",
+    "limits": "该解释限于直接调用 next 的消费场景，以及 for 循环自动处理可变性的情况。",
+    "counterexample": "使用 for 循环时无需使迭代器可变。"
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-2",
+        "title": "消费迭代器的方法",
+        "lineStart": 77,
+        "lineEnd": 101,
+        "contentHash": "sha256:e6a97e7e6823b040c6bcd0acf4e4488b94661089264b66b158592aee5343c6d4"
+      }
+    ],
+    "evidenceQuote": "这些调用 `next` 方法的方法被称为 **消费适配器**（*consuming adaptors*），因为调用他们会消费迭代器。一个消费适配器的例子是 `sum` 方法。",
+    "canonicalTerm": "消费适配器",
+    "aliases": [
+      "consuming adaptors"
+    ],
+    "definition": "调用 `next` 方法的方法，因为调用它们会消费迭代器。",
+    "examples": [
+      "sum 方法"
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-2-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-2",
+        "title": "消费迭代器的方法",
+        "lineStart": 77,
+        "lineEnd": 101,
+        "contentHash": "sha256:e6a97e7e6823b040c6bcd0acf4e4488b94661089264b66b158592aee5343c6d4"
+      }
+    ],
+    "evidenceQuote": "调用 `sum` 之后不再允许使用 `v1_iter` 因为调用 `sum` 时它会获取迭代器的所有权。",
+    "statement": "调用 `sum` 之后不再允许使用 `v1_iter`，因为调用 `sum` 时它会获取迭代器的所有权。",
+    "rationale": "调用 `sum` 时它会获取迭代器的所有权。",
+    "appliesWhen": "调用 `sum` 之后。",
+    "violation": "在调用 `sum` 之后继续使用 `v1_iter`。",
+    "chapterRef": "ch13-02-iterators-h3-2"
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-3-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-3",
+        "title": "产生其他迭代器的方法",
+        "lineStart": 102,
+        "lineEnd": 150,
+        "contentHash": "sha256:7a2c6f5a417d7d1e7da477a48e7e9e73ac784b058d7a9649bfee96e6a7f56312"
+      }
+    ],
+    "evidenceQuote": "`Iterator` trait 中定义了另一类方法，被称为 **迭代器适配器**（*iterator adaptors*），他们允许我们将当前迭代器变为不同类型的迭代器。可以链式调用多个迭代器适配器。不过因为所有的迭代器都是惰性的，必须调用一个消费适配器方法以便获取迭代器适配器调用的结果。\n\n示例 13-17 展示了一个调用迭代器适配器方法 `map` 的例子，该 `map` 方法使用闭包来调用每个元素以生成新的迭代器。",
+    "canonicalTerm": "迭代器适配器",
+    "aliases": [
+      "iterator adaptors"
+    ],
+    "definition": "`Iterator` trait 中定义的另一类方法，允许将当前迭代器变为不同类型的迭代器；可以链式调用多个迭代器适配器；因为所有迭代器都是惰性的，必须调用一个消费适配器方法才能获取迭代器适配器调用的结果。",
+    "examples": [
+      "`map` 方法使用闭包来调用每个元素以生成新的迭代器"
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-3-ENGINEERINGRULE-02",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-3",
+        "title": "产生其他迭代器的方法",
+        "lineStart": 102,
+        "lineEnd": 150,
+        "contentHash": "sha256:7a2c6f5a417d7d1e7da477a48e7e9e73ac784b058d7a9649bfee96e6a7f56312"
+      }
+    ],
+    "evidenceQuote": "不过因为所有的迭代器都是惰性的，必须调用一个消费适配器方法以便获取迭代器适配器调用的结果。",
+    "statement": "使用迭代器适配器后，必须调用一个消费适配器方法才能获取迭代器适配器调用的结果。",
+    "rationale": "所有的迭代器都是惰性的。",
+    "appliesWhen": "调用迭代器适配器方法并需要获取其结果时。",
+    "violation": "不调用消费适配器方法，就无法获取迭代器适配器调用的结果。",
+    "chapterRef": "ch13-02-iterators-h3-3"
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-4-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-4",
+        "title": "使用闭包获取环境",
+        "lineStart": 151,
+        "lineEnd": 201,
+        "contentHash": "sha256:104372e6add1d625b9884ea055543ecf259d1aaa63f5ba8f2d73b7770273a052"
+      }
+    ],
+    "evidenceQuote": "迭代器的 `filter` 方法获取一个使用迭代器的每一个项并返回布尔值的闭包。如果闭包返回 `true`，其值将会包含在 `filter` 提供的新迭代器中。如果闭包返回 `false`，其值不会包含在结果迭代器中。\n\n示例 13-19 展示了使用 `filter` 和一个捕获环境中变量 `shoe_size` 的闭包，这样闭包就可以遍历一个 `Shoe` 结构体集合以便只返回指定大小的鞋子：",
+    "canonicalTerm": "filter 方法",
+    "aliases": [],
+    "definition": "迭代器的 `filter` 方法获取一个闭包，该闭包使用迭代器的每一个项并返回布尔值；如果闭包返回 `true`，对应值会包含在 `filter` 提供的新迭代器中，如果返回 `false`，则不会包含在结果迭代器中。",
+    "examples": [
+      "示例 13-19 中，使用 `filter` 和一个捕获环境中变量 `shoe_size` 的闭包遍历 `Shoe` 结构体集合，只返回指定大小的鞋子。"
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H3-5-ENGINEERINGRULE-01",
+    "objectType": "EngineeringRule",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h3-5",
+        "title": "实现 `Iterator` trait 来创建自定义迭代器",
+        "lineStart": 202,
+        "lineEnd": 257,
+        "contentHash": "sha256:8284953ca7879f17d11d5c3ca25a3ccb1bc7d2d0c5d22fe5623172402e6629af"
+      }
+    ],
+    "evidenceQuote": "正如之前提到的，定义中唯一要求提供的方法就是 `next` 方法。一旦定义了它，就可以使用所有其他由 `Iterator` trait 提供的拥有默认实现的方法来创建自定义迭代器了！",
+    "statement": "实现 `Iterator` trait 创建自定义迭代器时，唯一必须提供的方法是 `next` 方法；一旦提供了 `next`，就可以使用 `Iterator` trait 提供的所有其他默认实现方法。",
+    "rationale": "只需实现 `next` 方法，其余由 `Iterator` trait 提供的默认实现方法即可直接使用。",
+    "appliesWhen": "在 Rust 中为某个类型实现标准库的 `Iterator` trait 时。",
+    "violation": "未提供 `next` 方法就无法满足 `Iterator` trait 的实现要求。",
+    "chapterRef": "ch13-02-iterators-h3-5"
+  },
+  {
+    "id": "CH13-02-ITERATORS-H4-1-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h4-1",
+        "title": "使用 `Counter` 迭代器的 `next` 方法",
+        "lineStart": 258,
+        "lineEnd": 299,
+        "contentHash": "sha256:bcf8e40067366133a06879a24666583cac0ccd712d05b7332538facffdcb5544"
+      }
+    ],
+    "evidenceQuote": "一旦实现了 `Iterator` trait，我们就有了一个迭代器！示例 13-22 展示了一个测试用来演示使用 `Counter` 结构体的迭代器功能，通过直接调用 `next` 方法，正如示例 13-15 中从 vector 创建的迭代器那样：",
+    "canonicalTerm": "Iterator trait",
+    "aliases": [],
+    "definition": "实现 Iterator trait 后，类型便成为一个迭代器，可以通过直接调用 next 方法使用其迭代器功能。",
+    "examples": [
+      "对 Counter 结构体的迭代器功能通过直接调用 next 方法进行测试"
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H4-1-CASE-02",
+    "objectType": "Case",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h4-1",
+        "title": "使用 `Counter` 迭代器的 `next` 方法",
+        "lineStart": 258,
+        "lineEnd": 299,
+        "contentHash": "sha256:bcf8e40067366133a06879a24666583cac0ccd712d05b7332538facffdcb5544"
+      }
+    ],
+    "evidenceQuote": "这个测试在 `counter` 变量中新建了一个 `Counter` 实例并接着反复调用 `next` 方法，来验证我们实现的行为符合这个迭代器返回从 1 到 5 的值的预期。",
+    "title": "Counter 迭代器 next 方法的测试",
+    "context": "测试在 counter 变量中新建了一个 Counter 实例并反复调用 next 方法。",
+    "facts": [
+      "测试在 counter 变量中新建了一个 Counter 实例",
+      "测试反复调用 next 方法"
+    ],
+    "decisions": [
+      "反复调用 next 方法以验证实现的行为"
+    ],
+    "outcome": "验证了迭代器返回从 1 到 5 的值的预期",
+    "limitations": [
+      "仅验证了返回 1 到 5 的值，未覆盖 None 或其他值"
+    ],
+    "dataClass": "单元测试示例",
+    "evidenceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h4-1",
+        "title": "使用 `Counter` 迭代器的 `next` 方法",
+        "lineStart": 258,
+        "lineEnd": 299,
+        "contentHash": "sha256:bcf8e40067366133a06879a24666583cac0ccd712d05b7332538facffdcb5544"
+      }
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H4-2-CONCEPT-01",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h4-2",
+        "title": "使用自定义迭代器中其他 `Iterator` trait 方法",
+        "lineStart": 300,
+        "lineEnd": 352,
+        "contentHash": "sha256:cbe295243aa59932605edbaf681f784c9f1e59c026fe2f6eb5ba261626ae3d3d"
+      }
+    ],
+    "evidenceQuote": "通过定义 `next` 方法实现 `Iterator` trait，我们现在就可以使用任何标准库定义的拥有默认实现的 `Iterator` trait 方法了，因为他们都使用了 `next` 方法的功能。\n\n例如，出于某种原因我们希望获取 `Counter` 实例产生的值，将这些值与另一个 `Counter` 实例在省略了第一个值之后产生的值配对，将每一对值相乘，只保留那些可以被三整除的结果，然后将所有保留的结果相加，这可以如示例 13-23 中的测试这样做：",
+    "canonicalTerm": "自定义迭代器的默认 Iterator 方法可用性",
+    "aliases": [],
+    "definition": "实现 `Iterator` trait 的 `next` 方法后，就可以使用标准库中任何拥有默认实现的 `Iterator` trait 方法，因为这些默认实现都使用 `next` 方法的功能。",
+    "examples": [
+      "在示例 13-23 中，将 `Counter` 实例产生的值与另一个 `Counter` 实例在省略了第一个值之后产生的值配对，将每对值相乘，只保留可被三整除的结果，然后将所有保留结果相加。"
+    ]
+  },
+  {
+    "id": "CH13-02-ITERATORS-H4-2-CONCEPT-02",
+    "objectType": "Concept",
+    "revision": 1,
+    "status": "candidate",
+    "createdAt": "2026-10-14T16:44:13.974Z",
+    "evidenceGrade": "E1-observed",
+    "freshness": {
+      "state": "fresh",
+      "asOf": "2026-10-14T16:44:13.974Z"
+    },
+    "sourceRefs": [
+      {
+        "file": "sources/rust-book-cn/book/ch13-02-iterators.md",
+        "anchor": "ch13-02-iterators#h4-2",
+        "title": "使用自定义迭代器中其他 `Iterator` trait 方法",
+        "lineStart": 300,
+        "lineEnd": 352,
+        "contentHash": "sha256:cbe295243aa59932605edbaf681f784c9f1e59c026fe2f6eb5ba261626ae3d3d"
+      }
+    ],
+    "evidenceQuote": "注意 `zip` 只产生四对值；理论上第五对值 `(5, None)` 从未被产生，因为 `zip` 在任一输入迭代器返回 `None` 时也返回 `None`。",
+    "canonicalTerm": "zip 适配器的终止行为",
+    "aliases": [],
+    "definition": "当任一输入迭代器返回 `None` 时，`zip` 也返回 `None`；因此 `zip` 只产生四对值，不会产生第五对值 `(5, None)`。",
+    "examples": [
+      "`zip` 只产生四对值，而理论上第五对值 `(5, None)` 从未被产生。"
+    ]
+  }
+]

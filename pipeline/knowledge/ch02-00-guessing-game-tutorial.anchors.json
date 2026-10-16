@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "anchor-index/v1",
+  "sourceFile": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+  "fileKey": "ch02-00-guessing-game-tutorial",
+  "totalLines": 590,
+  "sourceHash": "sha256:a8bfb6dbfe83a9cc8f992b9b627d969c442b73ac02517f6f8e70fab2c0aa69c6",
+  "anchorCount": 18,
+  "levelCounts": {
+    "h1": 1,
+    "h2": 6,
+    "h3": 9,
+    "h4": 2
+  },
+  "anchors": [
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h1-1",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 1,
+      "title": "编写猜数字游戏",
+      "lineStart": 1,
+      "lineEnd": 6,
+      "contentHash": "sha256:bf904f6134bf44c6d6919e242844a6261473bffa7229e49446e577c23b12b8fd",
+      "contentBytes": 667
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h2-1",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 2,
+      "title": "创建一个新项目",
+      "lineStart": 7,
+      "lineEnd": 43,
+      "contentHash": "sha256:63b0397e9de98b32367b6df76e83dbea1f6cd7f5e35d915364d9f67cc7d302db",
+      "contentBytes": 1311
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h2-2",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 2,
+      "title": "处理一次猜测",
+      "lineStart": 44,
+      "lineEnd": 81,
+      "contentHash": "sha256:38d6e01e3f8b13ffd62eb389c4be33f51f8cff70df1b6737b586617da7c8fdc7",
+      "contentBytes": 1829
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-1",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "使用变量存储值",
+      "lineStart": 82,
+      "lineEnd": 110,
+      "contentHash": "sha256:fcc6aeae1839ae350979ac066f6893ff7fe32a3637a787469f91b976c30bdddb",
+      "contentBytes": 1957
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-2",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "接收用户输入",
+      "lineStart": 111,
+      "lineEnd": 124,
+      "contentHash": "sha256:047bf7a642c145759d84c16f5ac103bc5cf83a9b4722e082f38dbb54583dfa9e",
+      "contentBytes": 1664
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-3",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "使用 `Result` 类型来处理潜在的错误",
+      "lineStart": 125,
+      "lineEnd": 158,
+      "contentHash": "sha256:a7176b80724f46733a387bc075c08a7626862c2a26eef427b723d2a89f3b9d02",
+      "contentBytes": 2866
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-4",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "使用 `println!` 占位符打印值",
+      "lineStart": 159,
+      "lineEnd": 177,
+      "contentHash": "sha256:6f50ae1bbbcd782f0305d321085b4b6861942dfb99ce05538f01d5b846cdd6dc",
+      "contentBytes": 742
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-5",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "测试第一部分代码",
+      "lineStart": 178,
+      "lineEnd": 200,
+      "contentHash": "sha256:87298e5ac21ecb1ad75a0341c92e5df7d2f779bb034f24e2c123d409c72da66e",
+      "contentBytes": 588
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h2-3",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 2,
+      "title": "生成一个秘密数字",
+      "lineStart": 201,
+      "lineEnd": 204,
+      "contentHash": "sha256:5474e96d51e7b2b3834d25b163655aa83b74cf66e56145ec82c7309fda24dd57",
+      "contentBytes": 365
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-6",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "使用 crate 来增加更多功能",
+      "lineStart": 205,
+      "lineEnd": 277,
+      "contentHash": "sha256:211e98a41070e34394f1275978259322fe2468c33803e4ecbc8df54674407d10",
+      "contentBytes": 4448
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h4-1",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 4,
+      "title": "*Cargo.lock* 文件确保构建是可重现的",
+      "lineStart": 278,
+      "lineEnd": 283,
+      "contentHash": "sha256:e97519189b19efce19129979c1f6f1169e44fee572cd2942944d41535674f902",
+      "contentBytes": 968
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h4-2",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 4,
+      "title": "更新 crate 到一个新版本",
+      "lineStart": 284,
+      "lineEnd": 310,
+      "contentHash": "sha256:a6e1834de79aba5248533d857eaebfcdcaeeb890e3ddfa12bd26888c23b2d80c",
+      "contentBytes": 1582
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-7",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "生成一个随机数",
+      "lineStart": 311,
+      "lineEnd": 363,
+      "contentHash": "sha256:509a18ff36ceb33039d1e478d1ee45751fa66823bf6969f126ace1ba86dee21d",
+      "contentBytes": 2758
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h2-4",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 2,
+      "title": "比较猜测的数字和秘密数字",
+      "lineStart": 364,
+      "lineEnd": 439,
+      "contentHash": "sha256:12d9eef53112362b495b408d72cb5480b6a06b65d6e6186b207562034552d298",
+      "contentBytes": 7382
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h2-5",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 2,
+      "title": "使用循环来允许多次猜测",
+      "lineStart": 440,
+      "lineEnd": 489,
+      "contentHash": "sha256:803eef430787ecf3ed4bb485cf5d58f266b45eab1c7a325ed0ca873b6ba7d04c",
+      "contentBytes": 1963
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-8",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "猜测正确后退出",
+      "lineStart": 490,
+      "lineEnd": 501,
+      "contentHash": "sha256:02486a64927172cabe6192389c777588cab9a603b1ed2c588b57a96c69e6f6bb",
+      "contentBytes": 459
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h3-9",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 3,
+      "title": "处理无效输入",
+      "lineStart": 502,
+      "lineEnd": 563,
+      "contentHash": "sha256:bbdcadf464bcc07c0e21be15814a44a78deb963d8c0696315159c167947b28cb",
+      "contentBytes": 2797
+    },
+    {
+      "anchor": "ch02-00-guessing-game-tutorial#h2-6",
+      "file": "sources/rust-book-cn/book/ch02-00-guessing-game-tutorial.md",
+      "level": 2,
+      "title": "总结",
+      "lineStart": 564,
+      "lineEnd": 590,
+      "contentHash": "sha256:e90b4e7b6b95d00572033ab66cce19db377814c34b1fd7279835133763b0bba9",
+      "contentBytes": 1719
+    }
+  ]
+}

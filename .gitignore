@@ -9,3 +9,12 @@ __pycache__/
 # 半成品（续跑用）。它买到的原始响应在最终产物里已有一份；
 # 不提交的理由是它每次运行都会重写，提交只会制造无意义的 diff。
 *.partial.json
+
+# ── 入库面（卡 30）：本地状态与续跑资产不入库 ──────────────────────────
+# 证据面（回执/契约/冻结/判定表/历史归档/对象与锚点）入库；
+# 只有本地进程状态、控制台转储与按 runId 命名的付费原始响应留在本地。
+.claude/
+pipeline/registry/fs-ledger/
+*.stdout.txt
+*.stderr.txt
+pipeline/registry/*.layer2-raw.json

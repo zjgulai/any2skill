@@ -1,0 +1,823 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-04d9fb85f467",
+  "createdAt": "2026-10-14T19:11:37.400Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch15-01-box.md",
+    "hash": "sha256:b77b682f44471ff1df0be054256af4ba5d229b4b7224b1963397ca2975ba7431",
+    "totalLines": 165
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch15-01-box#h2-1",
+        "lineStart": 1,
+        "lineEnd": 12,
+        "objectCount": 1,
+        "objectIds": [
+          "CH15-01-BOX-H2-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1772,
+            "output": 5157
+          }
+        }
+      },
+      {
+        "anchor": "ch15-01-box#h3-1",
+        "lineStart": 13,
+        "lineEnd": 33,
+        "objectCount": 2,
+        "objectIds": [
+          "CH15-01-BOX-H3-1-CONCEPT-01",
+          "CH15-01-BOX-H3-1-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1796,
+            "output": 11857
+          }
+        }
+      },
+      {
+        "anchor": "ch15-01-box#h3-2",
+        "lineStart": 34,
+        "lineEnd": 39,
+        "objectCount": 1,
+        "objectIds": [
+          "CH15-01-BOX-H3-2-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1631,
+            "output": 4000
+          }
+        }
+      },
+      {
+        "anchor": "ch15-01-box#h4-1",
+        "lineStart": 40,
+        "lineEnd": 99,
+        "objectCount": 2,
+        "objectIds": [
+          "CH15-01-BOX-H4-1-CONCEPT-01",
+          "CH15-01-BOX-H4-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2321,
+            "output": 15927
+          }
+        }
+      },
+      {
+        "anchor": "ch15-01-box#h3-3",
+        "lineStart": 100,
+        "lineEnd": 120,
+        "objectCount": 2,
+        "objectIds": [
+          "CH15-01-BOX-H3-3-ENGINEERINGRULE-01",
+          "CH15-01-BOX-H3-3-CONCEPT-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1822,
+            "output": 4451
+          }
+        }
+      },
+      {
+        "anchor": "ch15-01-box#h3-4",
+        "lineStart": 121,
+        "lineEnd": 165,
+        "objectCount": 2,
+        "objectIds": [
+          "CH15-01-BOX-H3-4-ANTIPATTERN-01",
+          "CH15-01-BOX-H3-4-HEURISTIC-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2195,
+            "output": 7231
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 6,
+      "tokens": {
+        "input": 11537,
+        "output": 48623
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch15-01-box#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1772,
+            "output": 5157
+          }
+        },
+        {
+          "anchor": "ch15-01-box#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1796,
+            "output": 11857
+          }
+        },
+        {
+          "anchor": "ch15-01-box#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 1631,
+            "output": 4000
+          }
+        },
+        {
+          "anchor": "ch15-01-box#h4-1",
+          "calls": 1,
+          "tokens": {
+            "input": 2321,
+            "output": 15927
+          }
+        },
+        {
+          "anchor": "ch15-01-box#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 1822,
+            "output": 4451
+          }
+        },
+        {
+          "anchor": "ch15-01-box#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 2195,
+            "output": 7231
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 6,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 6,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 6,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 6,
+    "tokens": {
+      "input": 11537,
+      "output": 48623
+    },
+    "tokensDetail": {
+      "reasoning": 46283,
+      "cachedInput": 8448
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 10,
+    "tokens": {
+      "input": 11568,
+      "output": 3493
+    },
+    "tokensDetail": {
+      "reasoning": 3034,
+      "cachedInput": 3840
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 10,
+      "verdicts": {
+        "supported": 10
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 10
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch15-01-box.anchors.json",
+      "sha256": "sha256:0e07178e70da7c06cd9f684f555798e818d56e7277985b8dde01ba235f953f5b",
+      "bytes": 2419,
+      "anchorCount": 6
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch15-01-box.objects.json",
+      "sha256": "sha256:3779ff629cb5639ec9cbe9e3d9eb116e5727a08e33f5d753d1f2cbc0e3444163",
+      "bytes": 15951,
+      "objectCount": 10
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-04d9fb85f467.layer2-raw.json",
+      "sha256": "sha256:3733b63d8003ec5e37e89dbc6e8ed1495e217da800899bc0f1d434bc508aee0f"
+    }
+  },
+  "counts": {
+    "anchors": 6,
+    "objects": 10,
+    "passed": 10,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 5,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 2,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 2,
+      "AntiPattern": 1
+    }
+  },
+  "coverage": {
+    "indexAnchors": 6,
+    "processedAnchors": 6,
+    "processedKnown": true,
+    "coveredAnchors": 6,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=6，索引锚点数=6）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 4,
+        "covered": 4,
+        "without": 0
+      },
+      "h4": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH15-01-BOX-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h2-1",
+        "lineStart": 1,
+        "lineEnd": 12
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h2-1",
+          "lineStart": 1,
+          "lineEnd": 12
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确表述了 Box<T> 是最简单直接的智能指针、在堆上存值并在栈上保留指针，且除堆存储外无性能损失但功能不多，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H3-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-1",
+        "lineStart": 13,
+        "lineEnd": 33
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-1",
+          "lineStart": 13,
+          "lineEnd": 33
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明了 Box 通过 Box::new 在堆上储存数据、拥有所有权、可像栈上数据一样访问，并在离开作用域时释放 box 本身和堆上数据。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H3-1-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-1",
+        "lineStart": 13,
+        "lineEnd": 33
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-1",
+          "lineStart": 13,
+          "lineEnd": 33
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出单独使用 Box 存放像 i32 这样的值并不常见，且默认存放在栈上更合适，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-2",
+        "lineStart": 34,
+        "lineEnd": 39
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-2",
+          "lineStart": 34,
+          "lineEnd": 39
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确将递归类型定义为一种无法在编译时知道大小的类型，其值的一部分可以是相同类型的另一个值，与主张完全一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H4-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h4-1",
+        "lineStart": 40,
+        "lineEnd": 99
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h4-1",
+          "lineStart": 40,
+          "lineEnd": 99
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确展示了 `Cons(1, Cons(2, Cons(3, Nil)))` 的递归嵌套构造，并说明最后一个值为 `Nil` 的 `List` 代表列表结尾，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H4-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h4-1",
+        "lineStart": 40,
+        "lineEnd": 99
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h4-1",
+          "lineStart": 40,
+          "lineEnd": 99
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 List 的成员直接存放另一个相同类型值时，类型有无限大小，Rust 无法计算存放所需空间，直接支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H3-3-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-3",
+        "lineStart": 100,
+        "lineEnd": 120
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-3",
+          "lineStart": 100,
+          "lineEnd": 120
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文以非递归的 Message 枚举为例，明确说明 Rust 为其值分配空间时取存储最大成员所需空间，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H3-3-CONCEPT-02",
+      "objectType": "Concept",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-3",
+        "lineStart": 100,
+        "lineEnd": 120
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-3",
+          "lineStart": 100,
+          "lineEnd": 120
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明检查递归类型List时，因Cons成员包含List自身，内存大小计算会无限进行下去，支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H3-4-ANTIPATTERN-01",
+      "objectType": "AntiPattern",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-4",
+        "lineStart": 121,
+        "lineEnd": 165
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-4",
+          "lineStart": 121,
+          "lineEnd": 165
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确指出递归类型直接储存值会导致Rust无法计算所需空间并给出错误，而间接储存指针可解决，支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH15-01-BOX-H3-4-HEURISTIC-02",
+      "objectType": "Heuristic",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch15-01-box.md",
+        "anchor": "ch15-01-box#h3-4",
+        "lineStart": 121,
+        "lineEnd": 165
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch15-01-box.md",
+          "anchor": "ch15-01-box#h3-4",
+          "lineStart": 121,
+          "lineEnd": 165
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 Box 仅提供间接存储和堆分配、没有其他特殊功能及其性能损失，适用于间接存储为唯一所需功能的场景，足以支撑该主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}

@@ -1,0 +1,986 @@
+{
+  "schemaVersion": "receipt/v1",
+  "pipelineVersion": 8,
+  "runId": "run-1519c89cb84a",
+  "createdAt": "2026-10-14T19:56:17.169Z",
+  "source": {
+    "path": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+    "hash": "sha256:bd390be4e661e1f04fd790ef619712de2fc1105b121226c1b789b00ff1ea31b3",
+    "totalLines": 641
+  },
+  "layer2": {
+    "kind": "deepseek",
+    "resumedFrom": null,
+    "reused": false,
+    "note": "第 2 层为真实模型：本次产生了真实调用与 token 消耗。",
+    "reusedFrom": null,
+    "promptFingerprint": "prompt-62889c0b2701",
+    "perAnchor": [
+      {
+        "anchor": "ch11-01-writing-tests#h2-1",
+        "lineStart": 1,
+        "lineEnd": 10,
+        "objectCount": 1,
+        "objectIds": [
+          "CH11-01-WRITING-TESTS-H2-1-CONCEPT-01"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1572,
+            "output": 2408
+          }
+        }
+      },
+      {
+        "anchor": "ch11-01-writing-tests#h3-1",
+        "lineStart": 11,
+        "lineEnd": 154,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-01",
+          "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 3209,
+            "output": 6268
+          }
+        }
+      },
+      {
+        "anchor": "ch11-01-writing-tests#h3-2",
+        "lineStart": 155,
+        "lineEnd": 287,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-01-WRITING-TESTS-H3-2-CONCEPT-01",
+          "CH11-01-WRITING-TESTS-H3-2-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2826,
+            "output": 8143
+          }
+        }
+      },
+      {
+        "anchor": "ch11-01-writing-tests#h3-3",
+        "lineStart": 288,
+        "lineEnd": 362,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-01",
+          "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2599,
+            "output": 7260
+          }
+        }
+      },
+      {
+        "anchor": "ch11-01-writing-tests#h3-4",
+        "lineStart": 363,
+        "lineEnd": 440,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-01-WRITING-TESTS-H3-4-CONCEPT-01",
+          "CH11-01-WRITING-TESTS-H3-4-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2196,
+            "output": 9316
+          }
+        }
+      },
+      {
+        "anchor": "ch11-01-writing-tests#h3-5",
+        "lineStart": 441,
+        "lineEnd": 607,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-01-WRITING-TESTS-H3-5-CONCEPT-01",
+          "CH11-01-WRITING-TESTS-H3-5-ANTIPATTERN-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 2925,
+            "output": 8092
+          }
+        }
+      },
+      {
+        "anchor": "ch11-01-writing-tests#h3-6",
+        "lineStart": 608,
+        "lineEnd": 641,
+        "objectCount": 2,
+        "objectIds": [
+          "CH11-01-WRITING-TESTS-H3-6-CONCEPT-01",
+          "CH11-01-WRITING-TESTS-H3-6-ENGINEERINGRULE-02"
+        ],
+        "sliceCount": 1,
+        "usageTotals": {
+          "calls": 1,
+          "tokens": {
+            "input": 1960,
+            "output": 12116
+          }
+        }
+      }
+    ],
+    "splits": [],
+    "usage": {
+      "calls": 7,
+      "tokens": {
+        "input": 17287,
+        "output": 53603
+      },
+      "byAnchor": [
+        {
+          "anchor": "ch11-01-writing-tests#h2-1",
+          "calls": 1,
+          "tokens": {
+            "input": 1572,
+            "output": 2408
+          }
+        },
+        {
+          "anchor": "ch11-01-writing-tests#h3-1",
+          "calls": 1,
+          "tokens": {
+            "input": 3209,
+            "output": 6268
+          }
+        },
+        {
+          "anchor": "ch11-01-writing-tests#h3-2",
+          "calls": 1,
+          "tokens": {
+            "input": 2826,
+            "output": 8143
+          }
+        },
+        {
+          "anchor": "ch11-01-writing-tests#h3-3",
+          "calls": 1,
+          "tokens": {
+            "input": 2599,
+            "output": 7260
+          }
+        },
+        {
+          "anchor": "ch11-01-writing-tests#h3-4",
+          "calls": 1,
+          "tokens": {
+            "input": 2196,
+            "output": 9316
+          }
+        },
+        {
+          "anchor": "ch11-01-writing-tests#h3-5",
+          "calls": 1,
+          "tokens": {
+            "input": 2925,
+            "output": 8092
+          }
+        },
+        {
+          "anchor": "ch11-01-writing-tests#h3-6",
+          "calls": 1,
+          "tokens": {
+            "input": 1960,
+            "output": 12116
+          }
+        }
+      ],
+      "anchorsWithoutUsage": [],
+      "byAnchorNote": null,
+      "reconciliation": {
+        "perAnchorCalls": 7,
+        "modelCallsAreHttpAttempts": true,
+        "ledgerCalls": 7,
+        "ledgerFailedCalls": 0,
+        "ledgerSuccessfulCalls": 7,
+        "matches": true,
+        "note": "本块的 calls 是**成功响应**计数；`model.calls` 是客户端账本记的 **HTTP 尝试**次数（重试逐次自增）。对账式：本块 calls ?= model.calls − model.failedCalls。"
+      }
+    }
+  },
+  "model": {
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "calls": 7,
+    "tokens": {
+      "input": 17287,
+      "output": 53603
+    },
+    "tokensDetail": {
+      "reasoning": 50394,
+      "cachedInput": 9856
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "billing": "real（真实模型调用，按服务商计费）",
+    "configSource": {
+      "provider": "derived-from-baseUrl:api.deepseek.com",
+      "modelId": "override(modelId)",
+      "baseUrl": "override(baseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "baseUrlHost": "api.deepseek.com",
+      "reasoningEffort": null
+    },
+    "reasoningEffort": null,
+    "fixture": null
+  },
+  "judge": {
+    "implemented": true,
+    "enabled": true,
+    "provider": "api.deepseek.com",
+    "modelId": "deepseek-v4-pro",
+    "baseUrlHost": "api.deepseek.com",
+    "calls": 13,
+    "tokens": {
+      "input": 22305,
+      "output": 3199
+    },
+    "tokensDetail": {
+      "reasoning": 2639,
+      "cachedInput": 4992
+    },
+    "failedCalls": 0,
+    "retries": 0,
+    "usageNote": null,
+    "promptVersion": "judge-prompt/v2",
+    "promptFingerprint": "judge-50ad9d57c1c8",
+    "instanceIdPrefix": "deepseek-v4-pro/judge-50ad9d57c1c8",
+    "sameModelAsProducer": true,
+    "producerModelId": "deepseek-v4-pro",
+    "reasoningEffort": null,
+    "configSource": {
+      "modelId": "override(judgeModelId)",
+      "baseUrl": "override(judgeBaseUrl)",
+      "apiKey": "env:ANY2SKILLS_LLM_API_KEY",
+      "reasoningEffort": null
+    },
+    "scope": "deterministic-survivors-only",
+    "scopeNote": "默认短路（ADR-010 决策 3）：已被确定性判据拒绝的对象未送判定者，其明细标注 not-called。",
+    "summary": {
+      "enabled": true,
+      "all": false,
+      "calls": 13,
+      "verdicts": {
+        "supported": 13
+      },
+      "notCalled": 0
+    },
+    "crossTab": {
+      "deterministic-pass × supported": 13
+    },
+    "billing": "real（判定者调用真实模型；与第 2 层分开记账，两笔都能单独看到）"
+  },
+  "artifacts": {
+    "anchors": {
+      "path": "pipeline/knowledge/ch11-01-writing-tests.anchors.json",
+      "sha256": "sha256:b57a0c9edb97f12045f6ac52a926e50eb92ae2eba5863b96a414bfc32d0cefca",
+      "bytes": 2887,
+      "anchorCount": 7
+    },
+    "objects": {
+      "path": "pipeline/knowledge/ch11-01-writing-tests.objects.json",
+      "sha256": "sha256:25723dddd5405e8ab3e311bff78e93505ee2583fbd1ac6fb3f55dd8f1ad8e98d",
+      "bytes": 21558,
+      "objectCount": 13
+    },
+    "layer2Raw": {
+      "path": "pipeline/registry/run-1519c89cb84a.layer2-raw.json",
+      "sha256": "sha256:8801b539af31d4c28b5dfa123221a3d35393c0657b4d5dadd99a0499aadc7bac"
+    }
+  },
+  "counts": {
+    "anchors": 7,
+    "objects": 13,
+    "passed": 13,
+    "rejected": 0,
+    "objectTypes": {
+      "Concept": 5,
+      "Metric": 0,
+      "MentalModel": 0,
+      "DecisionModel": 0,
+      "Heuristic": 0,
+      "Case": 0,
+      "Playbook": 0,
+      "EngineeringRule": 7,
+      "AntiPattern": 1
+    }
+  },
+  "coverage": {
+    "indexAnchors": 7,
+    "processedAnchors": 7,
+    "processedKnown": true,
+    "coveredAnchors": 7,
+    "withoutObjects": {
+      "count": 0,
+      "anchors": []
+    },
+    "unresolvedReferenceAnchors": [],
+    "reading": "本次按锚点发起过调用。withoutObjects 列的就是**被处理但产出 0 个对象**的锚点（processedAnchors=7，索引锚点数=7）。",
+    "perLevel": {
+      "h2": {
+        "index": 1,
+        "covered": 1,
+        "without": 0
+      },
+      "h3": {
+        "index": 6,
+        "covered": 6,
+        "without": 0
+      }
+    }
+  },
+  "reasonCodes": {
+    "vocabulary": [
+      "REFERENCE_MISSING",
+      "IDENTIFIER_INVALID",
+      "SOURCE_VERSION_DRIFT",
+      "SCHEMA_INVALID",
+      "REFERENCE_UNRESOLVED",
+      "QUOTE_MISSING",
+      "QUOTE_MISMATCH",
+      "JUDGE_NOT_SUPPORTED",
+      "JUDGE_INSUFFICIENT"
+    ],
+    "byCode": {}
+  },
+  "verificationGate": "gate-1-full（确定性判据 + 判定者判据）",
+  "reuseObservation": null,
+  "objectVerdicts": [
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H2-1-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 0,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h2-1",
+        "lineStart": 1,
+        "lineEnd": 10
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h2-1",
+          "lineStart": 1,
+          "lineEnd": 10
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐字包含该定义，完全支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#001",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 1,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-1",
+        "lineStart": 11,
+        "lineEnd": 154
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-1",
+          "lineStart": 11,
+          "lineEnd": 154
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确包含与主张相同的两句断言：需在 fn 前加 #[test]，以及 cargo test 会构建测试执行程序调用 test 属性函数并报告结果。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#002",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-1-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 2,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-1",
+        "lineStart": 11,
+        "lineEnd": 154
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-1",
+          "lineStart": 11,
+          "lineEnd": 154
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确写出当测试函数中出现 panic 时测试失败、每个测试在新线程运行且主线程发现测试线程异常会将其标记为失败，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#003",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-2-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 3,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-2",
+        "lineStart": 155,
+        "lineEnd": 287
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-2",
+          "lineStart": 155,
+          "lineEnd": 287
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文逐项包含主张中关于 assert! 宏来源、布尔参数、true/false 行为及用途的全部断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#004",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-2-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 4,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-2",
+        "lineStart": 155,
+        "lineEnd": 287
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-2",
+          "lineStart": 155,
+          "lineEnd": 287
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 tests 是普通模块遵循可见性规则，内部模块测试外部模块代码时需要引入到内部作用域，并以 use super::* 全局导入，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#005",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-01",
+      "objectType": "EngineeringRule",
+      "ordinal": 5,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-3",
+        "lineStart": 288,
+        "lineEnd": 362
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-3",
+          "lineStart": 288,
+          "lineEnd": 362
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明被比较的值必须实现 PartialEq 和 Debug trait，并覆盖自定义结构体或枚举场景。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#006",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-3-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 6,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-3",
+        "lineStart": 288,
+        "lineEnd": 362
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-3",
+          "lineStart": 288,
+          "lineEnd": 362
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在 Rust 中 assert_eq! 的参数顺序不重要，且失败信息中标记为 left 和 right。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#007",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-4-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 7,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-4",
+        "lineStart": 363,
+        "lineEnd": 440
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-4",
+          "lineStart": 363,
+          "lineEnd": 440
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明可向 assert!、assert_eq! 和 assert_ne! 传递可选失败信息参数，这些参数会传给 format!，可包含 {} 占位符和值，用于打印自定义失败信息，足以支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#008",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-4-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 8,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-4",
+        "lineStart": 363,
+        "lineEnd": 440
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-4",
+          "lineStart": 363,
+          "lineEnd": 440
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在需求未定、输出可能变化时应使用包含断言而非精确相等断言。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#009",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-5-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 9,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-5",
+        "lineStart": 441,
+        "lineEnd": 607
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-5",
+          "lineStart": 441,
+          "lineEnd": 607
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 should_panic 属性在函数中的代码 panic 时通过、没有 panic 时失败，完全支撑主张。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#010",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-5-ANTIPATTERN-02",
+      "objectType": "AntiPattern",
+      "ordinal": 10,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-5",
+        "lineStart": 441,
+        "lineEnd": 607
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-5",
+          "lineStart": 441,
+          "lineEnd": 607
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明 should_panic 只是告诉我们代码产生了 panic，并可能因非预期原因导致的 panic 而通过，与主张一致。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#011",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-6-CONCEPT-01",
+      "objectType": "Concept",
+      "ordinal": 11,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-6",
+        "lineStart": 608,
+        "lineEnd": 641
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-6",
+          "lineStart": 608,
+          "lineEnd": 641
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明可以使用 Result<T, E> 编写测试，通过时返回 Ok(())、失败时返回带 String 的 Err，并可在函数体中使用问号运算符且任何操作返回 Err 都会使测试失败。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#012",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    },
+    {
+      "objectId": "CH11-01-WRITING-TESTS-H3-6-ENGINEERINGRULE-02",
+      "objectType": "EngineeringRule",
+      "ordinal": 12,
+      "status": "pass",
+      "reasonCode": null,
+      "failures": [],
+      "checkedAgainst": {
+        "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+        "anchor": "ch11-01-writing-tests#h3-6",
+        "lineStart": 608,
+        "lineEnd": 641
+      },
+      "judgedAnchors": [
+        {
+          "file": "sources/rust-book-cn/book/ch11-01-writing-tests.md",
+          "anchor": "ch11-01-writing-tests#h3-6",
+          "lineStart": 608,
+          "lineEnd": 641
+        }
+      ],
+      "deterministic": {
+        "ok": true,
+        "reasonCode": null
+      },
+      "quoteComparison": {
+        "strict": true,
+        "normalized": true,
+        "acceptedBy": "strict",
+        "normalization": "markdown-rendering+whitespace",
+        "scope": "anchor-region"
+      },
+      "refQuoteComparisons": [],
+      "judge": {
+        "status": "pass",
+        "verdict": "supported",
+        "reasonCode": null,
+        "reason": "锚点原文明确说明在返回 Result<T,E> 的测试中要断言 Err 值时不要使用问号运算符，而应使用 assert!(value.is_err())。",
+        "instanceId": "deepseek-v4-pro/judge-50ad9d57c1c8#013",
+        "modelId": "deepseek-v4-pro",
+        "inputKeys": [
+          "claim",
+          "quote",
+          "anchors"
+        ]
+      }
+    }
+  ],
+  "contentProblems": 0,
+  "engineeringFailure": null
+}
