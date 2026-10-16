@@ -193,7 +193,7 @@ export async function loadCandidatesForBlindTest(repoRoot, { only = null, source
  * 这里与 `build-task-suite` 共用同一份装载（对象/门禁核验），名称与描述取自同一份
  * 工作流文件。
  */
-export async function loadSuiteCandidatesForBlindTest(repoRoot, { only = null, manifestRel = null } = {}) {
+async function loadSuiteCandidatesForBlindTest(repoRoot, { only = null, manifestRel = null } = {}) {
   const { loadSuiteManifest, loadObjectIndex, loadMemberSources, loadWorkflow } = await import('./tools/task-skill-builder.mjs')
   const suite = manifestRel ? await loadSuiteManifest(repoRoot, manifestRel) : await loadSuiteManifest(repoRoot)
   const objectIndex = await loadObjectIndex(repoRoot)

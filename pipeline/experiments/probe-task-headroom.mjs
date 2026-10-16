@@ -28,7 +28,7 @@ import { generateTasksForSkill, runTaskArm } from '../tools/gate3-utility-ab.mjs
  * 任务必须含**易错细节**，检查单必须锚定**技能建议的具体做法**——
  * 让「按技能做」与「不按技能做」在检查单上产生可判定的差异。
  */
-export function buildTaskGenSystemPromptV2({ k }) {
+function buildTaskGenSystemPromptV2({ k }) {
   return [
     '你是「效用测试任务设计器」。输入是一个 Agent 技能（名称、描述、正文全文）。',
     `你的任务：设计 ${k} 个**自包含、可验证、且能分辨「用了技能与否」**的任务。`,

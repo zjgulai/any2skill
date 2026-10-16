@@ -22,7 +22,7 @@ import path from 'node:path'
 import { createHash } from 'node:crypto'
 import { readFile, readdir } from 'node:fs/promises'
 
-import { DEFAULT_REPO_ROOT, buildAnchorIndex, sourceBookRoot } from './anchor-index.mjs'
+import { DEFAULT_REPO_ROOT, sourceBookRoot } from './anchor-index.mjs'
 import { unwrapObjectsFile } from './skill-builder.mjs'
 import { splitSections, itemCountFor } from './verify-skill.mjs'
 import { findLatestReceipt, findLatestAntipatternVerdicts, passedObjectIds } from '../build-skill.mjs'
@@ -31,7 +31,7 @@ import { findLatestReceipt, findLatestAntipatternVerdicts, passedObjectIds } fro
 export const TASK_SUITE_SCHEMA_VERSION = 'task-skill-suite/v1'
 export const TASK_SKILL_CONTRACT_SCHEMA_VERSION = 'task-skill-contract/v1'
 export const SUITE_MANIFEST_REL_PATH = path.join('pipeline', 'curation', 'task-skill-suite.v1.json')
-export const WORKFLOW_SCHEMA_VERSION = 'task-workflow/v1'
+const WORKFLOW_SCHEMA_VERSION = 'task-workflow/v1'
 
 /**
  * 任务骨架。六段与旧骨架**同名不同序**的部分刻意保留「何时使用」与「依据与边界」，
@@ -137,7 +137,7 @@ async function loadApDocs(repoRoot, sourceKey) {
 }
 
 /** 全部 sourceRefs（主对象 + 跨章反模式），按 file#anchor 去重，保持首见顺序。 */
-export function collectSourceRefs(objects, aps) {
+function collectSourceRefs(objects, aps) {
   const refs = []
   const seen = new Set()
   for (const o of [...objects, ...aps]) {
@@ -164,7 +164,7 @@ const oneLine = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
  * Concept 与 AntiPattern 不走本函数：前者留在契约里做溯源（正文面向执行，术语表会稀释
  * 步骤），后者归「来源陷阱」。**不虚构**：所有文本都是对象字段的原文拼接，只做压缩。
  */
-export function ruleEntriesOf(objects) {
+function ruleEntriesOf(objects) {
   const out = []
   for (const o of objects) {
     let text = ''
@@ -194,7 +194,7 @@ export function ruleEntriesOf(objects) {
 }
 
 /** 陷阱条目 = 章内 AntiPattern 主对象 + 跨章反模式（按 id 去重，章内在先）。 */
-export function pitfallEntriesOf(objects, aps) {
+function pitfallEntriesOf(objects, aps) {
   const all = [...objects.filter((o) => o.objectType === 'AntiPattern'), ...aps]
   const seen = new Set()
   const out = []

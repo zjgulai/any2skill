@@ -73,8 +73,8 @@ export const SYNTH_ID_PREFIX = 'AP-SYNTH'
  * 额度卡在推理上时的表象是「JSON 坏了」，而真实原因是预算不够——
  * 一个成本问题伪装成一个解析问题，是最难归因的一种失败。
  */
-export const DEFAULT_SYNTH_MAX_TOKENS = 32000
-export const DEFAULT_SYNTH_TEMPERATURE = 0
+const DEFAULT_SYNTH_MAX_TOKENS = 32000
+const DEFAULT_SYNTH_TEMPERATURE = 0
 
 /**
  * 每个主题最多产出多少条反模式。
@@ -110,7 +110,7 @@ export const MARK_MEANING = Object.freeze({
 })
 
 /** 系统提示词。跨章综合的全部要求都在这里，且每一条都对应一个会被机器检验的东西。 */
-export function buildSynthSystemPrompt({ maxPatterns = DEFAULT_MAX_PATTERNS_PER_THEME } = {}) {
+function buildSynthSystemPrompt({ maxPatterns = DEFAULT_MAX_PATTERNS_PER_THEME } = {}) {
   return [
     '你是「反模式综合器」。输入是同一**主题**下的多段原文，这些段落来自这本书的**不同章节**，',
     '每段都带自己的出处标识（形如 chapter5#h2-2）。',
@@ -170,7 +170,7 @@ export function synthPromptFingerprint({ maxPatterns = DEFAULT_MAX_PATTERNS_PER_
  *
  * 分段而不是平铺：模型必须能把 `quote` 精确对回某一个锚点，因此每段的边界必须显式。
  */
-export function buildSynthUserPrompt({ theme, sources }) {
+function buildSynthUserPrompt({ theme, sources }) {
   const blocks = sources.map((s) => {
     return [
       `<出处 ${s.anchor}>  ${s.title}（${s.file} 第 ${s.lineStart}–${s.lineEnd} 行）`,
@@ -191,7 +191,7 @@ export function buildSynthUserPrompt({ theme, sources }) {
 }
 
 /** 从响应文本里取出 JSON。解析共用 `model-json.mjs`（不做语义修补，见该模块）。 */
-export function parseSynthPayload(text) {
+function parseSynthPayload(text) {
   const raw = String(text ?? '')
   const result = extractJsonPayload(raw)
   if (result.ok) return result.value
@@ -199,7 +199,7 @@ export function parseSynthPayload(text) {
 }
 
 /** 从解析结果里取对象列表。形状不符即报错，不静默当作空列表。 */
-export function extractSynthObjectList(payload) {
+function extractSynthObjectList(payload) {
   if (payload && typeof payload === 'object' && Array.isArray(payload.objects)) return payload.objects
   throw new SynthesisError(
     `综合响应里没有 objects 数组（顶层键：${
@@ -221,7 +221,7 @@ export function synthesizedIdFor(themeId, seq) {
 }
 
 /** 由 `sources/…/chapter5.md` 取 `chapter5`。 */
-export function chapterKeyOf(file) {
+function chapterKeyOf(file) {
   return String(file ?? '').replace(/^.*\//, '').replace(/\.md$/, '')
 }
 
@@ -447,7 +447,7 @@ export function buildDistribution(marks) {
 }
 
 /** 把一个主题的锚点正文取出来（按主题给出的顺序）。 */
-export function collectThemeSources({ theme, linesByFile }) {
+function collectThemeSources({ theme, linesByFile }) {
   return theme.anchors.map((a) => {
     const lines = linesByFile[a.fileKey]
     if (lines === undefined) {
@@ -558,7 +558,7 @@ export async function synthesizeTheme({
  * 综合 CLI 第一版把写盘放在**全部主题之后**，T12 截断时整轮崩溃，
  * 已付费跑完的 T02 连同它的原始响应一起丢了。**付过钱的东西必须当场落地。**
  */
-export function materializeThemeResult({
+function materializeThemeResult({
   records,
   theme,
   anchorEntries,
@@ -635,7 +635,7 @@ export function replayThemeFromRaw({ rawText, theme, anchorEntries, createdAt, m
  * 它不是可选的清理：知识对象的 schema `additionalProperties: false`，多一个字段会让
  * 整个对象变成 `SCHEMA_INVALID`——一条完整的反模式会因为一个我们自己的调试字段被拒。
  */
-export function stripInternal(obj) {
+function stripInternal(obj) {
   const { __citedAnchors, ...rest } = obj
   return rest
 }

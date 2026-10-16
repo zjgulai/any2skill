@@ -66,10 +66,10 @@ const LEDGER_PRELOAD = path.join(HERE, 'tools', 'fs-ledger.cjs')
  * 旧口径在混合回放时会印出「未启用 + 560 次调用」的自相矛盾读数（见测试钉住）。
  * 逐文件行与其余字段未变；读 v1 回执的旧代码不受影响（`--from` 不校验版本）。
  */
-export const BOOK_RECEIPT_SCHEMA_VERSION = 'book-receipt/v2'
+const BOOK_RECEIPT_SCHEMA_VERSION = 'book-receipt/v2'
 /** 文件级并发的上限：不是性能调优，是**别把自己打成限流**。 */
-export const MAX_CONCURRENCY = 8
-export const LEDGER_DIR = path.join(REGISTRY_DIR, 'fs-ledger')
+const MAX_CONCURRENCY = 8
+const LEDGER_DIR = path.join(REGISTRY_DIR, 'fs-ledger')
 
 /* ──────────────────────────── 确定性枚举 ──────────────────────────── */
 
@@ -80,7 +80,7 @@ export const LEDGER_DIR = path.join(REGISTRY_DIR, 'fs-ledger')
  * 而本命令的产物身份（`bookRunId`）与聚合回执的行序都必须只由内容决定
  * （ticket 09：「同一输入重复运行……不因并发或顺序而变化」）。
  */
-export async function listBookSources(repoRoot, { sourceRoot = DEFAULT_SOURCE_ROOT } = {}) {
+async function listBookSources(repoRoot, { sourceRoot = DEFAULT_SOURCE_ROOT } = {}) {
   const rootAbs = path.join(repoRoot, sourceRoot)
   const entries = await readdir(rootAbs)
   const md = entries.filter((f) => f.endsWith('.md')).sort()
@@ -118,7 +118,7 @@ export function computeBookRunId({ sources, layer2, modelId, judgeApplied, pipel
   return `book-${sha256Hex(fingerprint).slice(0, 12)}`
 }
 
-export function bookReceiptPathFor(bookRunId) {
+function bookReceiptPathFor(bookRunId) {
   return path.join(REGISTRY_DIR, `${bookRunId}.book-receipt.json`)
 }
 
@@ -132,7 +132,7 @@ export function bookReceiptPathFor(bookRunId) {
  * 纯回放运行的残留差异（预测 `full`、实际 0 次调用）由回执 `totals.judge.*` 的**实际值**承担，
  * 不假装身份能覆盖它。
  */
-export function judgeAppliedFor(flags, passthrough) {
+function judgeAppliedFor(flags, passthrough) {
   return flags.layer2 !== 'stub' && !passthrough.includes('--no-judge')
 }
 
@@ -141,7 +141,7 @@ export function judgeAppliedFor(flags, passthrough) {
 /** 跨章综合的落盘文件名（卡 06，按源命名空间见 `crossChapterObjectsFile`）。在 `collectAntipatterns` 里单独成块，不得混进逐章统计。 */
 
 /** `chapter4#h2-2` → `chapter4`；无 `#` 时退回文件基名。 */
-export function chapterOfRef(ref) {
+function chapterOfRef(ref) {
   const s = String(ref ?? '')
   const head = s.includes('#') ? s.slice(0, s.indexOf('#')) : s
   return path.basename(head).replace(/\.md$/, '')
@@ -153,7 +153,7 @@ export function chapterOfRef(ref) {
  * 「跨章」的判据是**引用的章节数 ≥2**，取自每条反模式自己声明的 `sourceRefs`——
  * 不是「引用了多少个锚点」（同一章的两个锚点不是跨章），也不是任何相似度阈值。
  */
-export function antipatternDistribution(objects, { label }) {
+function antipatternDistribution(objects, { label }) {
   const aps = objects.filter((o) => o?.objectType === 'AntiPattern')
   const withChapters = aps.map((o) => {
     const chapters = [...new Set((o.sourceRefs ?? []).map((r) => chapterOfRef(r.anchor ?? r.file)))]
@@ -186,7 +186,7 @@ export function objectsOf(parsed) {
 /* ──────────────────────────── 并发执行 ──────────────────────────── */
 
 /** 有界并发，**结果按输入顺序返回**（并发度不得改变产物的顺序性质）。 */
-export async function mapWithConcurrency(items, limit, fn) {
+async function mapWithConcurrency(items, limit, fn) {
   const results = new Array(items.length)
   let next = 0
   const workers = Array.from({ length: Math.max(1, Math.min(limit, items.length)) }, async () => {
@@ -265,7 +265,7 @@ export function parseBookArgs(argv) {
  * `expectedProcesses` 是「应当有多少份账本」——由调用方按**实际启动了几个进程**给出。
  * 缺一份就判缺：这是本函数与「读一读账本看有没有命中」的全部区别。
  */
-export async function collectIsolation(repoRoot, { ledgerPaths, expectedProcesses, label }) {
+async function collectIsolation(repoRoot, { ledgerPaths, expectedProcesses, label }) {
   const loaded = []
   const missing = []
   for (const abs of ledgerPaths) {
@@ -328,7 +328,7 @@ function runOneFile({ sourceRel, repoRoot, passthrough, ledgerPath, env }) {
 
 /* ──────────────────────────── 主流程 ──────────────────────────── */
 
-export async function runBook(input) {
+async function runBook(input) {
   const repoRoot = resolveRealPath(input.repoRoot ?? DEFAULT_REPO_ROOT)
   const { flags, passthrough } = input
   const startedAt = new Date().toISOString()
@@ -615,7 +615,7 @@ function printFileRow(f, out = process.stdout) {
   )
 }
 
-export async function reportFrom(repoRoot, receiptPath, fileKey) {
+async function reportFrom(repoRoot, receiptPath, fileKey) {
   const receipt = JSON.parse(await readFile(path.resolve(repoRoot, receiptPath), 'utf8'))
   const rows = fileKey ? receipt.files.filter((f) => f.fileKey === fileKey) : receipt.files
   if (fileKey && rows.length === 0) throw new Error(`聚合回执里没有这个文件：${fileKey}（可选：${receipt.files.map((f) => f.fileKey).join(', ')}）`)
@@ -636,7 +636,7 @@ export async function reportFrom(repoRoot, receiptPath, fileKey) {
  * 读的是**跑了之后**的最终账本（含编排进程那份——它比回执晚一步落盘），
  * 因此这条检查与回执里那份汇总不是同一个东西：回执给的是当时的证据，这里给的是最终的结论。
  */
-export async function verifyIsolation(repoRoot, receiptPath) {
+async function verifyIsolation(repoRoot, receiptPath) {
   const receipt = JSON.parse(await readFile(path.resolve(repoRoot, receiptPath), 'utf8'))
   const bookRunId = receipt.bookRunId
   const ledgerPaths = [

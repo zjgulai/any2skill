@@ -30,15 +30,15 @@ import { extractJsonPayload } from './model-json.mjs'
 
 export const GATE2_SCENARIOS_SCHEMA_VERSION = 'gate2-scenarios/v1'
 export const GATE2_REPORT_SCHEMA_VERSION = 'gate2-report/v1'
-export const SCENARIOS_REL_PATH = path.join('pipeline', 'knowledge', 'gate2-scenarios.json')
-export const SCENARIOS_PARTIAL_REL_PATH = path.join('pipeline', 'knowledge', 'gate2-scenarios.partial.json')
-export const ANSWERS_PARTIAL_REL_PATH = path.join('pipeline', 'registry', 'gate2-answers.partial.json')
+const SCENARIOS_REL_PATH = path.join('pipeline', 'knowledge', 'gate2-scenarios.json')
+const SCENARIOS_PARTIAL_REL_PATH = path.join('pipeline', 'knowledge', 'gate2-scenarios.partial.json')
+const ANSWERS_PARTIAL_REL_PATH = path.join('pipeline', 'registry', 'gate2-answers.partial.json')
 export const REPORT_REL_PATH = path.join('pipeline', 'registry', 'gate2-report.json')
 
 export const DEFAULT_HIT_SCENARIOS_PER_CANDIDATE = 3
 export const DEFAULT_UNRELATED_SCENARIOS = 20
 export const DEFAULT_GATE2_MAX_TOKENS = 16000
-export const DEFAULT_GATE2_TEMPERATURE = 0
+const DEFAULT_GATE2_TEMPERATURE = 0
 
 export class Gate2Error extends Error {
   constructor(message, { rawText = null } = {}) {
@@ -50,7 +50,7 @@ export class Gate2Error extends Error {
 
 /* ──────────────────────────── 提示词 · 场景生成 ──────────────────────────── */
 
-export function buildScenarioGenSystemPrompt({ k }) {
+function buildScenarioGenSystemPrompt({ k }) {
   return [
     '你是「触发场景生成器」。输入是一个 Agent 技能的短名、触发说明与它的知识对象要点。',
     `你的任务：写出 ${k} 个**真实用户任务场景**——一个工程师在真实工作里会提出的请求，`,
@@ -66,7 +66,7 @@ export function buildScenarioGenSystemPrompt({ k }) {
   ].join('\n')
 }
 
-export function buildScenarioGenUserPrompt({ candidate, objectRows }) {
+function buildScenarioGenUserPrompt({ candidate, objectRows }) {
   const lines = objectRows.map((r) => `- [${r.objectType}] ${r.summary}`)
   return [
     `技能短名：${candidate.name}`,
@@ -78,7 +78,7 @@ export function buildScenarioGenUserPrompt({ candidate, objectRows }) {
   ].join('\n')
 }
 
-export function buildUnrelatedGenSystemPrompt({ n }) {
+function buildUnrelatedGenSystemPrompt({ n }) {
   return [
     '你是「无关场景生成器」。输入是一批 Agent 技能的短名与描述。',
     `你的任务：写出 ${n} 个**看似合理、但不该触发其中任何一个**的用户任务场景。`,
@@ -93,7 +93,7 @@ export function buildUnrelatedGenSystemPrompt({ n }) {
   ].join('\n')
 }
 
-export function buildUnrelatedGenUserPrompt({ catalog }) {
+function buildUnrelatedGenUserPrompt({ catalog }) {
   return [
     '现有技能清单（短名 —— 描述）：',
     ...catalog.map((c) => `- ${c.name} —— ${c.description}`),

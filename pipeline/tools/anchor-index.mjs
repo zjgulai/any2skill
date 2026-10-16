@@ -247,7 +247,7 @@ export function buildAnchorIndex(filePath, opts = {}) {
 }
 
 /** 锚点索引的落盘路径（pipeline/knowledge/）。 */
-export function anchorIndexPath(filePath, opts = {}) {
+function anchorIndexPath(filePath, opts = {}) {
   const repoRoot = opts.repoRoot ?? DEFAULT_REPO_ROOT
   const fileKey = path.basename(filePath).replace(/\.md$/, '')
   return path.join(repoRoot, 'pipeline', 'knowledge', `${fileKey}.anchors.json`)

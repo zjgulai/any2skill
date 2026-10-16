@@ -57,7 +57,7 @@ import { DEFAULT_REPO_ROOT } from './anchor-index.mjs'
  * **不另设数字阈值**——除原书的人工样本外，没有任何独立证据支持某个具体下限，
  * 硬填一个数字只是为了让它看起来严谨。
  */
-export const SECTION_HARD_LOWER_BOUND = 1
+const SECTION_HARD_LOWER_BOUND = 1
 
 /**
  * 体积阈值（字节）。
@@ -153,7 +153,7 @@ export const SKELETON_SECTIONS = Object.freeze([
  * 这条路由不是新造的：ADR-006 早已写下那个定义，只是从未有人把它接上——
  * 覆盖率不足此前被门禁一硬拒掉了，于是「高风险标记」这一环永远收不到东西。
  */
-export const RISK_FLAGS = Object.freeze({
+const RISK_FLAGS = Object.freeze({
   PITFALL_COVERAGE_LOW: 'PITFALL_COVERAGE_BELOW_ADVISORY',
 })
 
@@ -178,7 +178,7 @@ export const GAP_CODES = Object.freeze({
  * 说明行恰好让段非空且语义如实。措辞里点明「别把它读成『源里有代码但没写』」是刻意的：
  * 这一段最容易的误读就是把「无来源」当成「提取失败」。
  */
-export const CODE_SECTION_ABSENT_NOTE =
+const CODE_SECTION_ABSENT_NOTE =
   '> 本段无来源：信息源未提供目录化的配套代码（`sources/<源键>/code/` 无可消费目录）。' +
   '按**源条件骨架**（ADR-029），本段以来源说明代替空段——请勿读成「源里有代码但没写」。'
 
@@ -265,7 +265,7 @@ export function firstParagraph(markdown) {
  * 那会把「这个 skill 还没法测」（内容缺口）与「这份契约写坏了」（格式缺陷）压成同一个错误。
  * 因此改为在缺口里逐条记录，schema 只查形状。
  */
-export const CONTRACT_FIELDS_WITHOUT_SOURCE = Object.freeze([
+const CONTRACT_FIELDS_WITHOUT_SOURCE = Object.freeze([
   { field: 'inputContract', note: '输入契约。没有任何对象字段描述「这个 skill 要什么输入」。' },
   { field: 'outputContract', note: '输出契约。同上。' },
   { field: 'tools', note: '工具清单。对象模型里没有工具/依赖类字段。' },
@@ -285,7 +285,7 @@ export const CONTRACT_FIELDS_WITHOUT_SOURCE = Object.freeze([
  * 局限：真实的触发条件里也可能出现「必须」（如「当合规要求必须留存日志时」），会被误报。
  * 之所以仍然保留：这类错位靠计数查不出来——它会让「何时使用」段看起来条数达标。
  */
-export const TRIGGER_MODAL_WORDS = Object.freeze(['必须', '不得', '应当', '应该'])
+const TRIGGER_MODAL_WORDS = Object.freeze(['必须', '不得', '应当', '应该'])
 
 export class SkillBuildError extends Error {
   constructor(message, opts = {}) {
@@ -875,7 +875,7 @@ export function buildDescription({ cluster, whenToUse, principles }) {
  * 「`AntiPattern` 覆盖率低」。ADR-006 早就写下了这条定义，但此前覆盖率不足
  * 被门禁一硬拒掉了，于是高风险标记这一环永远收不到东西——两处 ADR 从未接上。
  */
-export function buildRiskFlags(gaps) {
+function buildRiskFlags(gaps) {
   const flags = []
   const lowPitfall = (gaps || []).find((g) => g.section === 'pitfalls' && g.code === GAP_CODES.BELOW_ADVISORY)
   if (lowPitfall) {

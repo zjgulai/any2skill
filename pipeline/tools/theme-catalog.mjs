@@ -35,10 +35,10 @@ import {
   normalizeSourceLines,
 } from './anchor-index.mjs'
 
-export const CATALOG_SCHEMA_VERSION = 'anchor-catalog/v1'
+const CATALOG_SCHEMA_VERSION = 'anchor-catalog/v1'
 
 /** 目录的相对落盘路径。 */
-export const CATALOG_REL_PATH = path.join('pipeline', 'knowledge', 'anchor-catalog.json')
+const CATALOG_REL_PATH = path.join('pipeline', 'knowledge', 'anchor-catalog.json')
 /** 按源命名空间（卡 22）：缺省键逐字节不变；其他源加 `.<key>` 后缀。 */
 export const catalogRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
   sourceKey === DEFAULT_SOURCE_KEY
@@ -52,7 +52,7 @@ export const catalogRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
  * 336 个锚点的目录膨胀到需要分片。这个数字**只影响提案阶段的输入，不影响任何判据**，
  * 因此改它不需要重跑下游——但它进目录哈希，所以改它会让旧的主题清单标记为过期。
  */
-export const EXCERPT_MAX_CHARS = 80
+const EXCERPT_MAX_CHARS = 80
 
 /**
  * 列出内容源目录下的 `.md`，按文件名**确定性排序**。
@@ -61,7 +61,7 @@ export const EXCERPT_MAX_CHARS = 80
  * 而 `readdir` 的顺序由文件系统给出，不保证跨机器一致。少了这一行，
  * 同一份内容在两台机器上会算出不同的目录哈希。
  */
-export async function listSourceFiles(opts = {}) {
+async function listSourceFiles(opts = {}) {
   const repoRoot = opts.repoRoot ?? DEFAULT_REPO_ROOT
   const sourceRoot = path.join(repoRoot, opts.sourceRoot ?? DEFAULT_SOURCE_ROOT)
   const names = await readdir(sourceRoot)
@@ -72,7 +72,7 @@ export async function listSourceFiles(opts = {}) {
 }
 
 /** 去掉行内的 markdown 强调与行内代码标记，供摘录用（只影响可读性，不影响判据）。 */
-export function stripInlineMarkdown(text) {
+function stripInlineMarkdown(text) {
   return String(text ?? '')
     .replace(/`([^`]*)`/g, '$1')
     .replace(/\*\*(.+?)\*\*/g, '$1')
@@ -86,7 +86,7 @@ export function stripInlineMarkdown(text) {
  * 不含标题行本身——标题已经在 `title` 字段里，重复一次只会浪费预算，
  * 并让模型以为「标题 + 摘录」是一个整体。
  */
-export function anchorExcerpt(lines, lineStart, lineEnd, maxChars = EXCERPT_MAX_CHARS) {
+function anchorExcerpt(lines, lineStart, lineEnd, maxChars = EXCERPT_MAX_CHARS) {
   for (let i = lineStart; i < lineEnd; i += 1) {
     const raw = lines[i]
     if (raw === undefined) break

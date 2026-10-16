@@ -34,7 +34,7 @@ const SCHEMA_DIR = path.resolve(HERE, '..', 'schemas')
 export { OBJECT_TYPES }
 
 /** 对象 id 的既有正则（约束来源：规格 D5）。 */
-export const IDENTIFIER_PATTERN = /^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/
+const IDENTIFIER_PATTERN = /^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/
 
 /**
  * 拒绝理由码（**封闭集合**）。
@@ -123,7 +123,7 @@ export const REASON_OWNER = Object.freeze({
 const schemaCache = new Map()
 
 /** 载入某类型的组装产物 schema（自包含，可直接交给校验器）。 */
-export async function loadObjectSchema(objectType, opts = {}) {
+async function loadObjectSchema(objectType, opts = {}) {
   const dir = opts.schemaDir ?? SCHEMA_DIR
   if (!OBJECT_TYPES.includes(objectType)) {
     throw new Error(`未知对象类型：${objectType}（集合封闭，见 OBJECT_TYPES）`)
@@ -139,7 +139,7 @@ export async function loadObjectSchema(objectType, opts = {}) {
 }
 
 /** 归一化文本：统一 LF 并去行尾空白。与第 1 层的哈希口径一致。 */
-export function normalizeText(text) {
+function normalizeText(text) {
   return text
     .split(/\r\n|\n|\r/)
     .map((l) => l.replace(/[ \t]+$/, ''))
@@ -209,7 +209,7 @@ export function quoteHitsRegion(normalizedRegion, normalizedQuote) {
 }
 
 /** 源文件路径 → 正文行数组（供逐字比对；第 3 层只读源正文，不读第 2 层的任何中间状态）。 */
-export async function loadSourceLines(fileAbsPath) {
+async function loadSourceLines(fileAbsPath) {
   const raw = await readFile(fileAbsPath, 'utf8')
   return normalizeText(raw).split('\n')
 }

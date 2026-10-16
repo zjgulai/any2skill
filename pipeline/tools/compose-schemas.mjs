@@ -86,7 +86,7 @@ function collectExternalRefs(node, found = []) {
   return found
 }
 
-export async function composeSchemas({ write = true } = {}) {
+async function composeSchemas({ write = true } = {}) {
   const common = await readJson(COMMON)
   const objectTypes = await readJson(KNOWLEDGE_OBJECT)
 

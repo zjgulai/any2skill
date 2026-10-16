@@ -35,9 +35,9 @@ import { extractJsonPayload } from './model-json.mjs'
 
 export const CLUSTERS_SCHEMA_VERSION = 'clusters/v1'
 export const SKILL_CANDIDATES_SCHEMA_VERSION = 'skill-candidates/v1'
-export const CLUSTERS_REL_PATH = path.join('pipeline', 'knowledge', 'clusters.json')
+const CLUSTERS_REL_PATH = path.join('pipeline', 'knowledge', 'clusters.json')
 export const CLUSTERS_PARTIAL_REL_PATH = path.join('pipeline', 'knowledge', 'clusters.partial.json')
-export const CANDIDATES_REL_PATH = path.join('pipeline', 'registry', 'skill-candidates.json')
+const CANDIDATES_REL_PATH = path.join('pipeline', 'registry', 'skill-candidates.json')
 
 /**
  * 环 3 产物的**按源命名空间**（ticket 19）：缺省键与既有文件名逐字节相同
@@ -78,11 +78,11 @@ export const isCrossChapterObjectsFile = (name) =>
  * 上限卡在推理上时的失败形态与第 2 层相同（响应无可解析 JSON），
  * 综合模块的实测已证明要先看 `finishReason` 再谈归因。上限本身记进每章产物。
  */
-export const DEFAULT_CLUSTER_MAX_TOKENS = 24000
-export const DEFAULT_CLUSTER_TEMPERATURE = 0
+const DEFAULT_CLUSTER_MAX_TOKENS = 24000
+const DEFAULT_CLUSTER_TEMPERATURE = 0
 
 /** 摘要截断长度（字符）。它是**输入压缩**，不影响任何判据——原文始终在对象文件里。 */
-export const SUMMARY_MAX_CHARS = 140
+const SUMMARY_MAX_CHARS = 140
 
 export class ClusterProposalError extends Error {
   constructor(message, { rawText = null } = {}) {

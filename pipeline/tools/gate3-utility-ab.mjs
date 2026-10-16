@@ -33,9 +33,9 @@ import { extractJsonPayload } from './model-json.mjs'
 
 export const GATE3_TASKS_SCHEMA_VERSION = 'gate3-tasks/v1'
 export const GATE3_REPORT_SCHEMA_VERSION = 'gate3-report/v1'
-export const TASKS_REL_PATH = path.join('pipeline', 'knowledge', 'gate3-tasks.json')
-export const TASKS_PARTIAL_REL_PATH = path.join('pipeline', 'knowledge', 'gate3-tasks.partial.json')
-export const RUNS_PARTIAL_REL_PATH = path.join('pipeline', 'registry', 'gate3-runs.partial.json')
+const TASKS_REL_PATH = path.join('pipeline', 'knowledge', 'gate3-tasks.json')
+const TASKS_PARTIAL_REL_PATH = path.join('pipeline', 'knowledge', 'gate3-tasks.partial.json')
+const RUNS_PARTIAL_REL_PATH = path.join('pipeline', 'registry', 'gate3-runs.partial.json')
 export const REPORT_REL_PATH = path.join('pipeline', 'registry', 'gate3-report.json')
 
 // 按源命名空间（卡 20）：缺省键逐字节不变；其他源加 `.<key>` 后缀。partial 必须仍以
@@ -64,9 +64,9 @@ export const DEFAULT_TASKS_PER_SKILL = 6
  * 但为它付一次整轮中断的代价不值。上限本身逐任务可被 --max-tokens 覆盖。
  */
 export const DEFAULT_GATE3_MAX_TOKENS = 32000
-export const DEFAULT_GATE3_TEMPERATURE = 0
+const DEFAULT_GATE3_TEMPERATURE = 0
 
-export const CHECK_TYPES = Object.freeze(['file_exists', 'contains', 'not_contains', 'regex', 'json_field'])
+const CHECK_TYPES = Object.freeze(['file_exists', 'contains', 'not_contains', 'regex', 'json_field'])
 
 export class Gate3Error extends Error {
   constructor(message, { rawText = null } = {}) {
@@ -78,7 +78,7 @@ export class Gate3Error extends Error {
 
 /* ──────────────────────────── 提示词 ──────────────────────────── */
 
-export function buildTaskGenSystemPrompt({ k }) {
+function buildTaskGenSystemPrompt({ k }) {
   return [
     '你是「效用测试任务设计器」。输入是一个 Agent 技能（名称、描述、正文全文）。',
     `你的任务：设计 ${k} 个**自包含、可验证**的任务——每个任务是一个用户在真实工作里会提出的请求，`,
@@ -103,7 +103,7 @@ export function buildTaskGenSystemPrompt({ k }) {
   ].join('\n')
 }
 
-export function buildTaskGenUserPrompt({ skillName, skillDescription, skillMarkdown }) {
+function buildTaskGenUserPrompt({ skillName, skillDescription, skillMarkdown }) {
   return [
     `技能短名：${skillName}`,
     `技能描述：${skillDescription}`,
@@ -139,7 +139,7 @@ export function buildExecutionSystemPrompt({ arm, skillMarkdown = null }) {
   return base.join('\n')
 }
 
-export function buildExecutionUserPrompt({ task }) {
+function buildExecutionUserPrompt({ task }) {
   const fixtureLines = Object.entries(task.fixtures ?? {}).map(
     ([p, content]) => `--- ${p}\n${String(content)}`,
   )

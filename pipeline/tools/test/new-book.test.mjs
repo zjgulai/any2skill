@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 import { onboard, scaffold, runPipelineStage, LITERAL_FIDELITY_STEP } from '../../run-new-book.mjs'
 import { loadWorkflow } from '../../tools/task-skill-builder.mjs'
 import { buildMember } from '../../build-task-suite.mjs'
-import { loadObjectIndex, loadSuiteManifest } from '../../tools/task-skill-builder.mjs'
+import { loadObjectIndex } from '../../tools/task-skill-builder.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const REPO = path.resolve(HERE, '..', '..', '..')

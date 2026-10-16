@@ -41,8 +41,8 @@ import { buildMember } from './build-task-suite.mjs'
 import { loadObjectIndex, loadSuiteManifest } from './tools/task-skill-builder.mjs'
 
 const ARCHIVE_REL = path.join('pipeline', 'registry', 'legacy-published', 'chapter-suite-v1', 'skills')
-export const LINEAGE_REL = path.join('pipeline', 'registry', 'task-suite-lineage.v1.json')
-export const STATUS_REL = path.join('pipeline', 'registry', 'task-suite-status.v1.json')
+const LINEAGE_REL = path.join('pipeline', 'registry', 'task-suite-lineage.v1.json')
+const STATUS_REL = path.join('pipeline', 'registry', 'task-suite-status.v1.json')
 
 const sha256 = (buf) => `sha256:${createHash('sha256').update(buf).digest('hex')}`
 
@@ -235,7 +235,7 @@ async function main(argv) {
   }
 }
 
-export { main, hashDir, listFilesRec }
+export { main }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   process.exitCode = await main(process.argv)

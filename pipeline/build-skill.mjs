@@ -310,7 +310,7 @@ export async function loadAssemblyInputs(repoRoot, { chapterKey, sourceRel, sour
 }
 
 /** 跨章判定表与对象不同源时的告警文本（没有问题时返回 null）。两种入口共用同一句。 */
-export function antipatternIdentityWarning(apVerdicts, antipatternsRunId) {
+function antipatternIdentityWarning(apVerdicts, antipatternsRunId) {
   if (apVerdicts === null || apVerdicts.identityMatch === true) return null
   return (
     `⚠ 跨章判定表与反模式对象**不是同一次运行的产物**：` +

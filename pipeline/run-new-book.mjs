@@ -198,7 +198,7 @@ export async function runPipelineStage(repoRoot, flags) {
 }
 
 /** 门禁一筛查：对全体候选逐份 dry-run 装配；零调用、纯读盘+渲染。 */
-export async function screenCandidates(repoRoot, key) {
+async function screenCandidates(repoRoot, key) {
   const candRaw = JSON.parse(await readFile(path.join(repoRoot, candidatesRelPath(key)), 'utf8'))
   const rows = []
   for (const c of candRaw.candidates ?? []) {
@@ -245,8 +245,8 @@ export async function screenCandidates(repoRoot, key) {
 /** 字面保真条款（卡 28 实证有效的修订件；草案默认内置，编辑保留即可）。 */
 export const LITERAL_FIDELITY_STEP =
   '开工前抄录任务的字面要求清单（文件名、命名、签名、输出格式与指定片段），实现与说明以该清单为准；技能用于判断与结构，不用于改写任务指定的表面形式。'
-export const LITERAL_FIDELITY_CHECK = '任务给定的命名与输出格式逐字保留（与字面要求清单逐项核对）。'
-export const LITERAL_FIDELITY_BOUNDARY = '技能术语与任务字面冲突时，以任务字面为准。'
+const LITERAL_FIDELITY_CHECK = '任务给定的命名与输出格式逐字保留（与字面要求清单逐项核对）。'
+const LITERAL_FIDELITY_BOUNDARY = '技能术语与任务字面冲突时，以任务字面为准。'
 
 const oneLine = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
 

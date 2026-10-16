@@ -21,7 +21,7 @@
 
 import { readFile } from 'node:fs/promises'
 
-import { DEFAULT_REPO_ROOT, sha256Hex } from './anchor-index.mjs'
+import { sha256Hex } from './anchor-index.mjs'
 import { objectIdFor, parseAnchorToken } from './object-contract.mjs'
 
 // 标识生成与锚点解析的真源在 object-contract.mjs；此处转出，保持本模块原有的公开面。

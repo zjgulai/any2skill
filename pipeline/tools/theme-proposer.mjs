@@ -34,11 +34,11 @@ import path from 'node:path'
 import { createHash } from 'node:crypto'
 
 import { DEFAULT_REPO_ROOT, DEFAULT_SOURCE_KEY } from './anchor-index.mjs'
-import { chatCompletion, createUsageLedger } from './llm-client.mjs'
+import { chatCompletion } from './llm-client.mjs'
 import { extractJsonPayload } from './model-json.mjs'
 
-export const THEME_MANIFEST_SCHEMA_VERSION = 'themes/v1'
-export const THEMES_REL_PATH = path.join('pipeline', 'knowledge', 'themes.json')
+const THEME_MANIFEST_SCHEMA_VERSION = 'themes/v1'
+const THEMES_REL_PATH = path.join('pipeline', 'knowledge', 'themes.json')
 /** 按源命名空间（卡 22）：缺省键逐字节不变；其他源加 `.<key>` 后缀。 */
 export const themesRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
   sourceKey === DEFAULT_SOURCE_KEY
@@ -46,7 +46,7 @@ export const themesRelPath = (sourceKey = DEFAULT_SOURCE_KEY) =>
     : path.join('pipeline', 'knowledge', `themes.${sourceKey}.json`)
 
 /** 主题标识：`T` + 两位以上数字。对象标识会由它派生，故必须是纯 ASCII 片段。 */
-export const THEME_ID_PATTERN = /^T\d{2,}$/
+const THEME_ID_PATTERN = /^T\d{2,}$/
 
 export class ThemeProposalError extends Error {
   constructor(message, { rawText = null } = {}) {
@@ -64,8 +64,8 @@ export class ThemeProposalError extends Error {
  * 已经证明单次思考可以吃掉 8,000 token 且正文一个字没出。上限卡在推理上时，
  * 失败形态是「响应里没有可解析的 JSON」，看起来像解析器的错，实际是预算不够。
  */
-export const DEFAULT_PROPOSAL_MAX_TOKENS = 32000
-export const DEFAULT_PROPOSAL_TEMPERATURE = 0
+const DEFAULT_PROPOSAL_MAX_TOKENS = 32000
+const DEFAULT_PROPOSAL_TEMPERATURE = 0
 
 /**
  * 系统提示词。
@@ -139,7 +139,7 @@ export function buildProposalUserPrompt({ catalog }) {
 }
 
 /** 提示词指纹。与第 2 层同构：提示词是本步实现的一部分，必须与 modelId 同级进回执。 */
-export function proposalPromptFingerprint() {
+function proposalPromptFingerprint() {
   const fingerprintOf = (system, user) =>
     createHash('sha256').update(`${system}\n\u0000\n${user}`).update('\n').digest('hex').slice(0, 12)
   return `prompt-${fingerprintOf(
@@ -151,7 +151,7 @@ export function proposalPromptFingerprint() {
 }
 
 /** 从响应文本里取出 JSON 对象。解析共用 `model-json.mjs`（不做语义修补，见该模块）。 */
-export function parseThemeProposal(text) {
+function parseThemeProposal(text) {
   const raw = String(text ?? '')
   const result = extractJsonPayload(raw)
   if (result.ok) return result.value
@@ -169,7 +169,7 @@ export function parseThemeProposal(text) {
  *
  * @returns {{themes:object[], unresolvedAnchors:object[], emptyThemes:string[], duplicateThemes:string[]}}
  */
-export function validateThemeProposal(proposal, catalog) {
+function validateThemeProposal(proposal, catalog) {
   const list = Array.isArray(proposal?.themes) ? proposal.themes : null
   if (list === null) {
     throw new ThemeProposalError(

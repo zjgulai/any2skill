@@ -142,7 +142,7 @@ function countBy(xs) {
   return out
 }
 
-export function formatReport(report, out = process.stdout) {
+function formatReport(report, out = process.stdout) {
   const t = report.totals
   out.write(
     `判定表 ${report.verdictsPath ?? '(未指定)'}：对象 ${t.objects}，通过 ${t.passed}，拒绝 ${t.rejected}` +

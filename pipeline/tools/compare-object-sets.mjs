@@ -124,7 +124,7 @@ export function profile(objs, verdicts, label) {
  * ⚠️ 输出的 `id` **不是跨运行稳定的键**（见文件头）。这张表用来找「谁的主张最长」这类分布问题，
  * 不能用来断言「同一条变了」。
  */
-export function orderedRows(a, b, top) {
+function orderedRows(a, b, top) {
   return [
     ...a.rows.map((r) => ({ ...r, side: '旧' })),
     ...b.rows.map((r) => ({ ...r, side: '新' })),

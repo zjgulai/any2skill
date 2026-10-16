@@ -19,8 +19,6 @@
  * 共用的是**约定**：理由码全大写下划线、回执逐条记录、不通过即拒绝、无豁免。
  */
 
-import { readFile } from 'node:fs/promises'
-import path from 'node:path'
 
 import { sha256Hex } from './anchor-index.mjs'
 import { SKELETON_SECTIONS, SIZE_LIMIT_BYTES } from './skill-builder.mjs'
@@ -30,8 +28,8 @@ export { SIZE_LIMIT_BYTES }
 /** frontmatter 硬限，取自 Claude 官方规范（ADR-004 已核实）。 */
 export const NAME_MAX_LENGTH = 64
 export const DESCRIPTION_MAX_LENGTH = 1024
-export const NAME_PATTERN = /^[a-z0-9-]+$/
-export const NAME_FORBIDDEN_SUBSTRINGS = Object.freeze(['anthropic', 'claude'])
+const NAME_PATTERN = /^[a-z0-9-]+$/
+const NAME_FORBIDDEN_SUBSTRINGS = Object.freeze(['anthropic', 'claude'])
 
 export const SKILL_REASON_CODES = Object.freeze([
   'FRONTMATTER_MISSING',
@@ -283,13 +281,4 @@ export async function verifySkill(input) {
   }
 }
 
-/** 从盘上读一份 SKILL.md 直接验（CLI 与测试共用的入口）。 */
-export async function verifySkillFile(fileAbsPath, opts = {}) {
-  const markdown = await readFile(fileAbsPath, 'utf8')
-  return verifySkill({ markdown, anchorIndexes: opts.anchorIndexes, contract: opts.contract, repoRoot: opts.repoRoot })
-}
 
-export function resolveSkillPath(p, opts = {}) {
-  const repoRoot = opts.repoRoot || process.cwd()
-  return path.isAbsolute(p) ? p : path.join(repoRoot, p)
-}

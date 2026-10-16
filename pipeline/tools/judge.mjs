@@ -81,10 +81,10 @@ export class JudgeError extends Error {
  * 故留 8,000（约为第 2 层 16,000 的一半）。触发截断时会抛出带 `truncated` 的明确错误，
  * 而不是静默当成「判定者说没问题」。
  */
-export const DEFAULT_JUDGE_MAX_TOKENS = 8000
+const DEFAULT_JUDGE_MAX_TOKENS = 8000
 
 /** 判定者的温度。思考模式下 `temperature` 不生效（ADR-010 附带发现），此处保留是为思考模式关闭时仍有值。 */
-export const DEFAULT_JUDGE_TEMPERATURE = 0
+const DEFAULT_JUDGE_TEMPERATURE = 0
 
 /**
  * 取对象的**主张**：只按 `CLAIM_FIELDS` 取字段，其余一律不进。

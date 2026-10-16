@@ -41,7 +41,7 @@ export class LlmCallError extends Error {
 }
 
 /** 环境变量名。集中在此处，使「配置从哪来」只有一个可检索的答案。 */
-export const LLM_ENV = Object.freeze({
+const LLM_ENV = Object.freeze({
   apiKey: 'ANY2SKILLS_LLM_API_KEY',
   modelId: 'ANY2SKILLS_LLM_MODEL',
   baseUrl: 'ANY2SKILLS_LLM_BASE_URL',
@@ -75,7 +75,7 @@ export function normalizeReasoningEffort(value, what = 'reasoningEffort') {
 }
 
 /** DSH 凭据存储里对应的 ref 名（该文件由 DSH 自己维护，本项目只读）。 */
-export const DSH_CREDENTIAL_REF = 'DEEPSEEK_API_KEY'
+const DSH_CREDENTIAL_REF = 'DEEPSEEK_API_KEY'
 
 /**
  * 判定者（第 3 层）专属的环境变量名（ADR-010 决策 1）。
@@ -85,7 +85,7 @@ export const DSH_CREDENTIAL_REF = 'DEEPSEEK_API_KEY'
  * 不是一次重写**。若判定者硬编码复用 LLM_ENV，那么「将来用不同家族模型互审」这个留口
  * 就退化成了改代码。此处的每个变量都缺省继承生产者路由（见 resolveJudgeLlmConfig）。
  */
-export const JUDGE_LLM_ENV = Object.freeze({
+const JUDGE_LLM_ENV = Object.freeze({
   apiKey: 'ANY2SKILLS_JUDGE_API_KEY',
   modelId: 'ANY2SKILLS_JUDGE_MODEL',
   baseUrl: 'ANY2SKILLS_JUDGE_BASE_URL',

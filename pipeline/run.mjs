@@ -36,7 +36,6 @@ import {
   DEFAULT_BENCHMARK_DIR,
   DEFAULT_REPO_ROOT,
   DEFAULT_SOURCE_KEY,
-  DEFAULT_SOURCE_ROOT,
   SourcePathError,
   assertAllowedSource,
   sourceBookRoot,
@@ -115,7 +114,7 @@ export const PIPELINE_VERSION = 8
  * 质量门禁的完成度。**必须进回执**：判定者未启用时，`passed` 只代表「过了确定性判据」，
  * 不代表「过了第 3 层的全部判据」。把这个区别塞进注释等于没有——审计者读的是回执。
  */
-export const VERIFICATION_GATE = Object.freeze({
+const VERIFICATION_GATE = Object.freeze({
   FULL: 'gate-1-full（确定性判据 + 判定者判据）',
   DETERMINISTIC_ONLY: 'gate-1-deterministic-only（判定者未启用——结论不完整）',
 })
@@ -123,7 +122,7 @@ export const VERIFICATION_GATE = Object.freeze({
 /** 回执 schema 标识。 */
 export const RECEIPT_SCHEMA_VERSION = 'receipt/v1'
 
-export const OBJECTS_DIR = path.join('pipeline', 'knowledge')
+const OBJECTS_DIR = path.join('pipeline', 'knowledge')
 export const REGISTRY_DIR = path.join('pipeline', 'registry')
 /** 被替换过的旧对象归档处（「不静默覆盖」的落点）。 */
 export const HISTORY_DIR = path.join('pipeline', 'knowledge', 'history')
@@ -154,17 +153,17 @@ export function computeRunId({ sourceHash, modelId, objects, judgeApplied }) {
 }
 
 /** 对象文件路径：`<源文件基名>.objects.json`。 */
-export function objectsPathFor(index) {
+function objectsPathFor(index) {
   return path.join(OBJECTS_DIR, `${index.fileKey}.objects.json`)
 }
 
 /** 回执文件路径：`<runId>.receipt.json`。 */
-export function receiptPathFor(runId) {
+function receiptPathFor(runId) {
   return path.join(REGISTRY_DIR, `${runId}.receipt.json`)
 }
 
 /** 第 2 层原始响应的落盘路径：`<runId>.layer2-raw.json`（审计平面，非回执本身）。 */
-export function layer2RawPathFor(runId) {
+function layer2RawPathFor(runId) {
   return path.join(REGISTRY_DIR, `${runId}.layer2-raw.json`)
 }
 
@@ -174,24 +173,24 @@ export function layer2RawPathFor(runId) {
  * 名字里带 `.partial` 是刻意的：它是**半成品**，谁都不该把它当成冻结产物。
  * 复用判定只认最终文件名，因此中途失败的残留不会被误当成可用产出。
  */
-export const PARTIAL_OBJECTS_SUFFIX = '.objects.partial.json'
-export const PARTIAL_RAW_SUFFIX = '.layer2-raw.partial.json'
+const PARTIAL_OBJECTS_SUFFIX = '.objects.partial.json'
+const PARTIAL_RAW_SUFFIX = '.layer2-raw.partial.json'
 
-export function partialObjectsPathFor(index) {
+function partialObjectsPathFor(index) {
   return path.join(OBJECTS_DIR, `${index.fileKey}${PARTIAL_OBJECTS_SUFFIX}`)
 }
 
 /** 判定者响应解析失败时的原文本落盘路径。与第 2 层同构，理由也同构。 */
-export function judgeRawPathFor(runId) {
+function judgeRawPathFor(runId) {
   return path.join(REGISTRY_DIR, `${runId}.judge-raw.json`)
 }
 
-export function partialRawPathFor(index) {
+function partialRawPathFor(index) {
   return path.join(REGISTRY_DIR, `${index.fileKey}${PARTIAL_RAW_SUFFIX}`)
 }
 
 /** 旧对象归档路径：`history/<fileKey>.<sha8>.objects.json`。 */
-export function historyPathFor(fileKey, sha256) {
+function historyPathFor(fileKey, sha256) {
   return path.join(HISTORY_DIR, `${fileKey}.${String(sha256).replace(/^sha256:/, '').slice(0, 8)}.objects.json`)
 }
 
@@ -325,7 +324,7 @@ export function checkPartialUsable(partial, objects, index, opts = {}) {
  * runId 复算——猜一个会让回执不再可复核。因此：在审计平面里按「对象文件哈希 + 源文件哈希」
  * 反查原回执；查不到就报错，绝不猜。
  */
-export async function findFrozenProducer({ repoRoot, objectsSha256, sourceHash }) {
+async function findFrozenProducer({ repoRoot, objectsSha256, sourceHash }) {
   let files
   try {
     files = await readdir(path.join(repoRoot, REGISTRY_DIR))
@@ -360,7 +359,7 @@ export async function findFrozenProducer({ repoRoot, objectsSha256, sourceHash }
  * 判据用对象自带的 `sourceRefs[].contentHash` 与新索引逐条比对，而不是另存一个指纹文件：
  * 这些哈希本来就在对象里，再存一份就多了一个会各自漂移的真源。
  */
-export function checkFrozenFreshness(objects, index) {
+function checkFrozenFreshness(objects, index) {
   const lookup = new Map(index.anchors.map((a) => [a.anchor, a]))
   const problems = []
   for (const o of objects) {
@@ -403,7 +402,7 @@ export function checkFrozenFreshness(objects, index) {
  *   withoutObjects:{count:number, anchors:string[]}, unresolvedReferenceAnchors:string[],
  *   reading:string, perLevel:object}}
  */
-export function computeAnchorCoverage(objects, index, { processedAnchors = null } = {}) {
+function computeAnchorCoverage(objects, index, { processedAnchors = null } = {}) {
   const indexAnchors = index.anchors.map((a) => a.anchor)
   const known = new Set(indexAnchors)
   const covered = new Set()
@@ -463,7 +462,7 @@ export function computeAnchorCoverage(objects, index, { processedAnchors = null 
  * 「这一版回执还没统计 Playbook」。缺失的键与值为 0 的键是两条不同的信息，
  * 而前者的代价是让人对着一个空位猜。
  */
-export function computeTypeDistribution(objects) {
+function computeTypeDistribution(objects) {
   const dist = {}
   for (const t of OBJECT_TYPES) dist[t] = 0
   for (const o of Array.isArray(objects) ? objects : []) {
@@ -489,7 +488,7 @@ export function computeTypeDistribution(objects) {
  * 对不上就是缺陷信号，`matches` 会如实为 false 而不是被解释掉。
  * 取不到用量（服务端没回 usage）时 `matches` 是 **null**，不是 true——「不知道」不是「对得上」。
  */
-export function summarizeLayer2Usage(perAnchor, { ledgerCalls = 0, ledgerFailedCalls = 0 } = {}) {
+function summarizeLayer2Usage(perAnchor, { ledgerCalls = 0, ledgerFailedCalls = 0 } = {}) {
   const byAnchor = []
   const anchorsWithoutUsage = []
   let calls = 0
@@ -1522,19 +1521,6 @@ function classifyFailure(err, { fixturePath }) {
   if (err?.code === 'ENOENT') return 'source-missing'
   return 'internal'
 }
-
-export const FAILURE_KINDS = Object.freeze([
-  'path-guard',
-  'layer2-model-stub',
-  'llm-config',
-  'layer2-truncated',
-  'layer2-llm-call',
-  'layer2-response',
-  'judge-response',
-  'objects-fixture-missing',
-  'source-missing',
-  'internal',
-])
 
 async function main(argv) {
   let parsed

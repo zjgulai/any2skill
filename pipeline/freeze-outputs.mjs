@@ -19,7 +19,7 @@
  */
 
 import path from 'node:path'
-import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises'
+import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { readdirSync, statSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
@@ -34,7 +34,7 @@ export const EXIT = Object.freeze({ PASS: 0, DRIFT: 3, RUN_FAILED: 4 })
  * 以 `/**` 结尾的条目是**目录展开**（递归该目录下全部文件）——发布区在长大
  * （2 → 7），逐文件列举会漏；目录展开让「冻结 = 发布区全集」是结构事实而非纪律。
  */
-export const FROZEN_PATHS = Object.freeze([
+const FROZEN_PATHS = Object.freeze([
   // 已发布物（比对的主角：「产出 vs 原书 22 个」）。目录展开：新增/下架都会进/出冻结面。
   'skills/**',
   // 冻结态各自的构建契约（风险标记、provenance——比对时解释差异要用）

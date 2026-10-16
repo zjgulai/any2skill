@@ -10,14 +10,13 @@
  */
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtemp, readFile, rm } from 'node:fs/promises'
+import { mkdtemp, rm } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 
 import {
   Gate3Error,
   buildExecutionSystemPrompt,
-  buildExecutionUserPrompt,
   evaluateChecker,
   isSafeRelPath,
   runTaskArm,

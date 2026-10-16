@@ -60,9 +60,9 @@ import {
 // 复制一份就等于有第二个真源，迟早会与 run.mjs 那份漂开。
 import { PIPELINE_VERSION } from './run.mjs'
 
-export const SYNTH_RECEIPT_SCHEMA_VERSION = 'antipattern-receipt/v1'
+const SYNTH_RECEIPT_SCHEMA_VERSION = 'antipattern-receipt/v1'
 /** 半成品格式。v2 把**用量**与原始正文一起存——用量是跨进程的，不能只活在本次进程的账本里。 */
-export const PARTIAL_RAW_SCHEMA_VERSION = 'antipattern-partial-raw/v2'
+const PARTIAL_RAW_SCHEMA_VERSION = 'antipattern-partial-raw/v2'
 
 const readJson = async (abs) => JSON.parse(await readFile(abs, 'utf8'))
 

@@ -102,7 +102,7 @@ const KNOWLEDGE_REL = path.join('pipeline', 'knowledge')
 const REGISTRY_REL = path.join('pipeline', 'registry')
 
 /** 枚举知识平面里的聚类输入文件（排除跨章综合产物）。 */
-export async function enumerateClusterInputs(repoRoot) {
+async function enumerateClusterInputs(repoRoot) {
   let names = []
   try {
     names = await readdir(path.join(repoRoot, KNOWLEDGE_REL))

@@ -11,7 +11,7 @@
 
 const SOURCE_FILE = 'sources/ai-agent-book-zh/book/chapter4.md'
 
-export const sourceRefPrimary = {
+const sourceRefPrimary = {
   file: SOURCE_FILE,
   anchor: 'chapter4#h3-1',
   title: '能力的表达形式：专用工具、通用执行器与 Skill',
@@ -20,7 +20,7 @@ export const sourceRefPrimary = {
   contentHash: 'sha256:' + 'a'.repeat(64),
 }
 
-export const sourceRefCrossChapter = {
+const sourceRefCrossChapter = {
   file: 'sources/ai-agent-book-zh/book/chapter5.md',
   anchor: 'chapter5#h2-2',
   lineStart: 40,

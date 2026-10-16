@@ -25,7 +25,6 @@ import {
   OBJECT_TYPES,
   PIPELINE_REQUIRED_FIELDS,
   TYPE_BOUNDARY_CRITERIA,
-  TYPE_REQUIRED_FIELDS,
   describeFieldShapes,
   objectIdFor,
 } from './object-contract.mjs'
@@ -86,9 +85,9 @@ export const DERIVED_FIELDS = Object.freeze([
  * 2.7 万字（8000 token）且仍无正文，因此默认值必须显著高于「正文所需」。
  * 调这个值是卡 04 的成本旋钮（见 ticket 04 的构建记录）。
  */
-export const DEFAULT_MAX_TOKENS = 16000
-export const DEFAULT_TEMPERATURE = 0
-export const DEFAULT_MAX_OBJECTS_PER_ANCHOR = 2
+const DEFAULT_MAX_TOKENS = 16000
+const DEFAULT_TEMPERATURE = 0
+const DEFAULT_MAX_OBJECTS_PER_ANCHOR = 2
 
 // ---------------------------------------------------------------------------
 // 切分：超出单次输入预算的锚点按结构边界切开（ticket 07）
@@ -280,7 +279,7 @@ export function buildSystemPrompt({ maxObjectsPerAnchor = DEFAULT_MAX_OBJECTS_PE
  * 注意锚点行里的行号是**锚点**的区间，不是切片的区间——切片自己的区间单列一行。
  * 这样模型既知道自己在整节里的位置，也不会把片子当成整节。
  */
-export function buildUserPrompt({ anchor, title, lineStart, lineEnd, anchorText, sourceFile, slice = null }) {
+function buildUserPrompt({ anchor, title, lineStart, lineEnd, anchorText, sourceFile, slice = null }) {
   const s = slice ?? { index: 0, sliceCount: 1, lineStart, lineEnd }
   const sliceLine =
     s.sliceCount === 1
