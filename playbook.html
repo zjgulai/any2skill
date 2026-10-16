@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>any2skills · 项目 Playbook</title>
+<style>
+:root{
+  --bg:#f7f7f5; --panel:#ffffff; --ink:#1c1c1e; --ink-2:#4a4a4f; --ink-3:#7a7a80;
+  --line:#e4e4e0; --accent:#1f6feb; --accent-soft:#eaf1fd;
+  --ok:#1a7f37; --ok-soft:#e6f4ea; --warn:#9a6700; --warn-soft:#fdf3d7; --bad:#b3261e; --bad-soft:#fbe9e7;
+  --code-bg:#f2f2ee; --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  --radius:10px; --sidebar-w:248px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* 布局 */
+.wrap{display:flex;min-height:100vh}
+aside{width:var(--sidebar-w);flex:0 0 var(--sidebar-w);position:sticky;top:0;height:100vh;overflow-y:auto;
+  border-right:1px solid var(--line);background:var(--panel);padding:22px 14px 40px}
+aside .brand{font-weight:700;font-size:16px;letter-spacing:.2px;padding:0 10px 4px}
+aside .brand small{display:block;font-weight:400;color:var(--ink-3);font-size:12px;margin-top:2px}
+aside nav{margin-top:14px}
+aside nav a{display:block;padding:5px 10px;border-radius:7px;color:var(--ink-2);font-size:13.5px;line-height:1.5}
+aside nav a:hover{background:var(--accent-soft);text-decoration:none}
+aside nav a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+aside nav .grp{margin:12px 10px 4px;font-size:11px;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase}
+main{flex:1;min-width:0;padding:38px 46px 90px;max-width:1060px}
+
+/* 头部 */
+header.hero{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:34px}
+header.hero h1{font-size:30px;margin:0 0 6px}
+header.hero .sub{color:var(--ink-2);font-size:15px;max-width:760px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 13px;font-size:12.5px;color:var(--ink-2)}
+.chip b{color:var(--ink)}
+.chip.ok{background:var(--ok-soft);border-color:#bfe3c8;color:var(--ok)}
+.chip.warn{background:var(--warn-soft);border-color:#ecd9a0;color:var(--warn)}
+
+/* 章节 */
+section{margin:0 0 54px}
+h2{font-size:22px;margin:0 0 6px;padding-top:14px;border-top:2px solid var(--ink);display:inline-block;padding-right:26px}
+h2 .n{color:var(--ink-3);font-weight:400;margin-right:8px}
+h3{font-size:16.5px;margin:30px 0 10px;color:var(--ink)}
+h4{font-size:14.5px;margin:20px 0 8px;color:var(--ink-2)}
+p{margin:8px 0;color:var(--ink-2)}
+p strong,li strong{color:var(--ink)}
+ul,ol{margin:8px 0;padding-left:24px;color:var(--ink-2)}
+li{margin:4px 0}
+.lead{font-size:15.5px;color:var(--ink-2);max-width:820px}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+th{background:#efefe9;text-align:left;padding:9px 12px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fafaf7}
+
+/* 代码 */
+code{font-family:var(--mono);font-size:12.5px;background:var(--code-bg);padding:1.5px 6px;border-radius:5px;color:#333}
+pre{background:#23262b;color:#e8e8e4;border-radius:var(--radius);padding:14px 16px;overflow-x:auto;font-size:12.8px;line-height:1.65;margin:10px 0}
+pre code{background:none;color:inherit;padding:0;font-size:inherit}
+pre .c{color:#8b949e}
+pre .k{color:#79c0ff}
+
+/* 徽章 */
+.badge{display:inline-block;border-radius:6px;padding:1px 8px;font-size:11.5px;font-weight:600;vertical-align:1px}
+.badge.passed{background:var(--ok-soft);color:var(--ok)}
+.badge.low{background:var(--warn-soft);color:var(--warn)}
+.badge.rej{background:var(--bad-soft);color:var(--bad)}
+.badge.src{background:var(--accent-soft);color:var(--accent)}
+.badge.n{background:#efefe9;color:var(--ink-2)}
+.badge.agent{background:#eef7ee;color:#2c6e3a}
+.badge.rust{background:#f6efe8;color:#8a4b1f}
+
+/* 卡片 */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.card h4{margin:0 0 6px}
+.card .tag{font-size:11.5px;color:var(--ink-3);font-family:var(--mono)}
+.note{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#3b3b40}
+.note.warn{border-color:#d4a72c;background:var(--warn-soft)}
+.note.bad{border-color:var(--bad);background:var(--bad-soft)}
+
+/* 流程图（纯 CSS） */
+.flow{display:flex;flex-direction:column;gap:0;margin:18px 0}
+.fnode{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;position:relative}
+.fnode .t{font-weight:600;color:var(--ink);font-size:14px}
+.fnode .d{font-size:12.8px;color:var(--ink-2);margin-top:2px}
+.fnode .out{font-family:var(--mono);font-size:11.8px;color:var(--accent);margin-top:4px;word-break:break-all}
+.farrow{align-self:center;color:var(--ink-3);font-size:15px;padding:3px 0}
+.fnode.gate{border-left:4px solid var(--bad)}
+.fnode.det{border-left:4px solid var(--ok)}
+.fnode.llm{border-left:4px solid var(--warn)}
+
+/* details 卡片 */
+details{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);margin:8px 0;overflow:hidden}
+details summary{padding:11px 16px;cursor:pointer;font-size:14px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:10px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary .slug{font-family:var(--mono);font-weight:500;font-size:12.5px;color:var(--ink-2)}
+details[open] summary{border-bottom:1px solid var(--line);background:#fafaf7}
+details .body{padding:12px 18px 16px;font-size:13.5px;color:var(--ink-2)}
+details .body dl{margin:0}
+details .body dt{font-weight:600;color:var(--ink);margin-top:10px;font-size:12.5px}
+details .body dd{margin:2px 0 0 0}
+
+kbd{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 6px;background:#fff}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:18px;color:var(--ink-3);font-size:12.5px}
+@media (max-width:900px){aside{display:none}main{padding:24px 20px 70px}}
+@media print{aside{display:none}main{max-width:none;padding:0}pre{background:#f2f2ee;color:#111}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<aside>
+  <div class="brand">any2skills · Playbook<small>md 书 → 可执行 Agent Skills</small></div>
+  <nav id="toc">
+    <a href="#overview">0 · 项目总览</a>
+    <div class="grp">自动化工作流</div>
+    <a href="#workflow">1 · 八阶段主流程</a>
+    <a href="#stage-detail">2 · 各阶段操作与陷阱</a>
+    <a href="#fastpath">3 · 三条快路径</a>
+    <a href="#discipline">4 · 运行纪律</a>
+    <div class="grp">能力图谱</div>
+    <a href="#architecture">5 · 三段式链路</a>
+    <a href="#rings">6 · 环 1–5 与三道门禁</a>
+    <a href="#modules">7 · 命令与模块地图</a>
+    <a href="#artifacts">8 · 产物与证据面</a>
+    <div class="grp">技能资产</div>
+    <a href="#assets">9 · 17 个已发布技能</a>
+    <a href="#asset-layer">10 · 资产沉淀层</a>
+    <a href="#consume">11 · 领取与修改入口</a>
+    <div class="grp">参考</div>
+    <a href="#quickref">12 · 速查与陷阱总表</a>
+  </nav>
+</aside>
+
+<main>
+
+<header class="hero">
+  <h1>any2skills · 项目 Playbook</h1>
+  <div class="sub">把一本 md 书推进为<strong>可执行、可评测、可追溯</strong>的 Agent Skills。
+  本页是唯一入口文档：自动化工作流、能力图谱、已有技能资产与使用场景。</div>
+  <div class="chips">
+    <span class="chip ok">npm test <b>577 / 0</b></span>
+    <span class="chip">已发布 <b>17</b> 个技能</span>
+    <span class="chip ok">passed <b>7</b></span>
+    <span class="chip warn">low-utility <b>10</b></span>
+    <span class="chip">rejected <b>0</b>（曾拒 2 例，修订后返区）</span>
+    <span class="chip">信息源 <b>2</b> 本</span>
+    <span class="chip">ADR <b>32</b> · 卡 <b>31</b></span>
+  </div>
+</header>
+
+<!-- ══════════════════ 0 总览 ══════════════════ -->
+<section id="overview">
+  <h2><span class="n">0</span>项目总览</h2>
+  <p class="lead"><strong>any2skills</strong> 是一条「内容 → 技能」流水线。它与「让大模型直接读文档写 skill」
+  的分界只有一条：<strong>中间存在一个机器可判定的 IR</strong>——锚点索引、类型化知识对象、
+  逐字引文、回执，每一步都落盘、可复算、可冻结。</p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>它解决什么</h4>
+      <p>把技术书里的知识，变成带<strong>任务骨架、显式边界、来源回链、评测档位</strong>的
+      Agent Skills；并且<strong>能证明</strong>每个技能为什么可以发布（或为什么是低效用）。</p>
+    </div>
+    <div class="card">
+      <h4>已跑通的两本书</h4>
+      <p><span class="badge src">ai-agent-book-zh</span> 13 章正文 + chapter4 配套代码镜像（851 文件逐哈希校验）→
+      6 个 Agent 工程技能。<br>
+      <span class="badge src">rust-book-cn</span>《Rust 程序设计语言》中文 105 个 .md（节级粒度）→
+      11 个 Rust 实现技能。<strong>「any」已用第二源实证</strong>：环 1–4 零隐藏假设、发布门径全通。</p>
+    </div>
+    <div class="card">
+      <h4>三条硬纪律</h4>
+      <p>① <strong>证据面</strong>：任何数字要有盘上出处（回执/账本/冻结/lineage）。<br>
+      ② <strong>诚实披露</strong>：passed / low-utility / rejected 三态如实标注，未测的轴不许写得像测过。<br>
+      ③ <strong>安全默认</strong>：<code>--layer2</code> 缺省 <code>stub</code>；非 <code>--dry-run</code> 的 build 即发布。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 1 八阶段 ══════════════════ -->
+<section id="workflow">
+  <h2><span class="n">1</span>自动化工作流 · 八阶段主流程</h2>
+  <p class="lead">给到一个 md 书目录，按八个阶段推进到发布、评测与披露。每阶段的验收就是它自己的产物。
+  编排入口：<code>run-new-book.mjs</code>（也可逐条手工执行）。</p>
+
+  <table>
+    <thead><tr><th>#</th><th>阶段</th><th>主命令</th><th>关键产物</th><th>模型调用</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>前置</td><td>—</td><td>环境与凭据就绪</td><td>0</td></tr>
+      <tr><td>1</td><td>入场</td><td><code>run-new-book onboard</code></td><td><code>sources/&lt;key&gt;/book/</code> + SOURCE-MANIFEST</td><td>0</td></tr>
+      <tr><td>2</td><td>环 1/2</td><td><code>run-book --source-key</code></td><td>锚点、对象、回执、逐文件账本</td><td>≈2 次/锚点</td></tr>
+      <tr><td>3</td><td>环 3</td><td><code>propose-clusters --source-key</code></td><td>clusters / candidates</td><td>≈1 次/章</td></tr>
+      <tr><td>4</td><td>跨章合成</td><td><code>propose-themes</code> + <code>synthesize-antipatterns</code></td><td>主题清单 + 跨章反模式池</td><td>≈1–2 次/主题</td></tr>
+      <tr><td>5</td><td>门禁一筛查</td><td><code>run-new-book pipeline</code>（内置）</td><td><code>screening.&lt;key&gt;.json</code></td><td><strong>0</strong></td></tr>
+      <tr><td>6</td><td>策展</td><td><code>run-new-book scaffold</code> → 编辑 → <code>build-task-suite --dry-run</code></td><td>清单 + 工作流 + 核对单 → 全过门禁一</td><td>0</td></tr>
+      <tr><td>7</td><td>发布与评估</td><td><code>build-task-suite --publish</code> → <code>run-gate2 --suite</code> → <code>run-gate3</code></td><td>发布物 + 门禁二三报告与判定</td><td>≈15/skill + ≈13/skill</td></tr>
+      <tr><td>8</td><td>收束</td><td><code>freeze-outputs</code> + 记录</td><td>评测记录、披露、冻结</td><td>0</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">「高质量」的操作性定义：① 结构合规（门禁一）② 任务化可用（策展层）③ 字面保真（条款默认内置）
+  ④ 效用实测（门禁二三，复跑制）⑤ 全程可复算（回执+账本+冻结+lineage）⑥ 诚实披露（三态如实标注）。</div>
+</section>
+
+<!-- ══════════════════ 2 阶段细节 ══════════════════ -->
+<section id="stage-detail">
+  <h2><span class="n">2</span>各阶段操作与陷阱</h2>
+
+  <h3>阶段 1 · 入场</h3>
+  <pre><code>node pipeline/run-new-book.mjs onboard --dir /path/to/book-dir --key &lt;key&gt;</code></pre>
+  <ul>
+    <li>产物：<code>sources/&lt;key&gt;/book/**.md</code>（保留子目录）+ <code>SOURCE-MANIFEST.md</code>（逐文件 sha256）。</li>
+    <li>约定：每本书一个 sourceKey（小写连字符，如 <code>rust-book-cn</code>）；一切产物按源命名空间。</li>
+    <li>陷阱：目标已存在时命令拒绝覆盖——换 key 或先人工处置。</li>
+  </ul>
+
+  <h3>阶段 2 · 环 1/2（锚点 + 对象 + 独立判定）</h3>
+  <pre><code>node pipeline/run-new-book.mjs pipeline --key &lt;key&gt; --model &lt;id&gt; --base-url &lt;url&gt;
+<span class="c"># 或手工：</span>
+node pipeline/run-book.mjs --source-key &lt;key&gt; --layer2 deepseek --llm-model &lt;id&gt; --llm-base-url &lt;url&gt;</code></pre>
+  <ul>
+    <li>验收：每文件回执在盘、失败文件为 0。成本：≈2 次调用/锚点；105 文件 / 500 锚点 ≈ 千次级调用、数小时。</li>
+    <li>节奏：<strong>按波推进（每波 8–10 文件）</strong>，每波跑完立即可做下游。</li>
+    <li>陷阱：中途瞬断直接重跑（partial 复用、重复付费为 0）；每文件独立账本路径（共用会互相覆写，
+      <strong>0 条记录 = 方法错误，不是证据</strong>）；别把 <code>--layer2 stub</code> 用进真实产物。</li>
+  </ul>
+
+  <h3>阶段 3 · 环 3（聚类 + 候选）</h3>
+  <pre><code>node pipeline/propose-clusters.mjs --source-key &lt;key&gt; --model &lt;id&gt; --base-url &lt;url&gt;</code></pre>
+  <ul>
+    <li>验收：覆盖检查全过（未归类 0 / 未解析 id 0 / 重复归属 0 / 无候选单元 0）。</li>
+    <li>输入身份一致会 0 调用复用；目录哈希变化会使门禁二全量重答（见阶段 7）。</li>
+  </ul>
+
+  <h3>阶段 4 · 跨章合成（可关，强烈建议）</h3>
+  <pre><code>node pipeline/propose-themes.mjs --source-key &lt;key&gt; --model &lt;id&gt; --base-url &lt;url&gt;
+node pipeline/synthesize-antipatterns.mjs --source-key &lt;key&gt; --model &lt;id&gt; --base-url &lt;url&gt;</code></pre>
+  <ul>
+    <li>为什么：教科书章节<strong>不在章内供给反面教材</strong>——跨章反模式池是「陷阱段」的正解；
+      实测把门禁一通过率从 5/11 拉到 18/22。</li>
+    <li>验收：判定表 总/过/拒 三数可查；被拒对象也在文件里（判定表决定谁可用）。</li>
+  </ul>
+
+  <h3>阶段 5 · 门禁一筛查（零成本）</h3>
+  <ul>
+    <li>逐候选 <code>build-skill --dry-run</code> 汇总 <code>screening.&lt;key&gt;.json</code>（passed / failed / failAt）。</li>
+    <li>拒因两类：<strong>可修</strong>（章内真缺内容——补抽/合成补）与 <strong>内容缺口</strong>（源里就没有）。
+      <code>## 常见陷阱</code> 空 → 找反模式章；<code>## 核心原则</code> 空 → 该簇无规则对象。</li>
+    <li>陷阱：<code>--dry-run</code> 的 exit 3 是「门禁一拒」的正常信号，别当崩溃。</li>
+  </ul>
+
+  <h3>阶段 6 · 策展（人工面唯一的重头，核对单驱动）</h3>
+  <pre><code>node pipeline/run-new-book.mjs scaffold --key &lt;key&gt;
+<span class="c"># → pipeline/curation/&lt;key&gt;/：task-skill-suite.v1.json（草稿）
+#                          drafts/&lt;slug&gt;.json（工作流草案，字面保真条款默认内置）
+#                          EDITORIAL-CHECKLIST.md（逐项收敛清单）</span>
+node pipeline/build-task-suite.mjs --manifest pipeline/curation/&lt;key&gt;/task-skill-suite.v1.json --dry-run</code></pre>
+  <ul>
+    <li>收敛动作：任务式命名 → 步骤改写为可操作动作 → 补全输入/交付物/检查/边界 → 去掉 <code>draft</code> 标记并把工作流移入 <code>workflows/</code>。</li>
+    <li>硬边界：<code>draft:true</code> 的工作流<strong>一律构建失败</strong>——草稿与可发布物之间没有静默通道。</li>
+    <li>合并/拆分随策展进行；每次合并都要重新过「对象并集 = 来源并集、主对象不相交」的断言。</li>
+  </ul>
+
+  <h3>阶段 7 · 发布与评估</h3>
+  <pre><code>node pipeline/build-task-suite.mjs --manifest pipeline/curation/&lt;key&gt;/task-skill-suite.v1.json --publish
+node pipeline/run-gate2.mjs --suite --suite-key &lt;key&gt; --suite-manifest pipeline/curation/&lt;key&gt;/task-skill-suite.v1.json --model &lt;id&gt; --base-url &lt;url&gt;
+node pipeline/run-gate2.mjs --suite --suite-key &lt;key&gt; --suite-manifest … --blind-mode strict --model …
+node pipeline/run-gate2.mjs --suite --suite-key &lt;key&gt; --compare
+node pipeline/run-gate3.mjs --source-key &lt;key&gt; --model &lt;id&gt; --base-url &lt;url&gt;</code></pre>
+  <ul>
+    <li><strong>门禁二（触发盲测）</strong>：两读数 + 对照。先看 0 误触发 / 0 零命中；再看稳定对——
+      strict ≥2 且两读数都存的稳定边按「不相交最强配对」出合并建议。合并后集合<strong>重跑两读数</strong>（如实计成本）。</li>
+    <li><strong>门禁三（效用 A/B）</strong>：K=6、复跑制。三态判定：passed（≥1 改进且无确认退化）/
+      low-utility（无改进无退化）/ <strong>rejected（退化复跑复现——硬拒，移入 <code>registry/rejected/&lt;slug&gt;/</code> 并写 REJECTION.md 全证据）</strong>。</li>
+    <li><strong>字面保真条款</strong>：技法类技能默认保留——「技能词汇改写任务字面」是实测的失效族死因（修订后复评 3/3 去害）。</li>
+    <li>陷阱：非 <code>--dry-run</code> 的 build 就是发布（先干跑）；<code>--require ./pipeline/tools/fs-ledger.cjs</code> 的
+      <code>./</code> 前缀必须有；别用 shell heredoc 往既有文件追加中文（编码事故——用编辑器）。</li>
+  </ul>
+
+  <h3>阶段 8 · 收束</h3>
+  <ul>
+    <li>评测记录：逐成员判定 + 两批次引用写进 <code>task-suite-assessment.v1.json</code>（或按书命名空间）；status / README / 导航同步。</li>
+    <li>冻结：新书的 curation/清单、lineage、评测记录纳入冻结面，<code>freeze-outputs --verify</code> 逐一致；<strong>旧冻结不动</strong>（历史语义）。</li>
+    <li>提交：产物、报告、记录、文档一次提交；提交信息带测试计数。</li>
+  </ul>
+</section>
+
+<!-- ══════════════════ 3 快路径 ══════════════════ -->
+<section id="fastpath">
+  <h2><span class="n">3</span>三条快路径</h2>
+  <div class="grid">
+    <div class="card">
+      <h4>① 一键编排（新书默认）</h4>
+      <pre style="margin:8px 0"><code>node pipeline/run-new-book.mjs all \
+  --dir &lt;书目录&gt; --key &lt;key&gt; \
+  --model &lt;id&gt; --base-url &lt;url&gt;</code></pre>
+      <p>onboard → pipeline → scaffold 串行；策展草稿（含字面保真条款）自动生成，
+      编辑按核对单收敛后进入阶段 7。</p>
+    </div>
+    <div class="card">
+      <h4>② 替身路径（零凭据 / 零网络）</h4>
+      <pre style="margin:8px 0"><code>node pipeline/run.mjs sources/…/chapter4.md
+node pipeline/run-book.mjs --layer2 stub</code></pre>
+      <p>确定性替身产出，判定者不启用（回执写明门禁只完成一半）。<strong>只用于烟测与开发，绝不用于真实产物。</strong></p>
+    </div>
+    <div class="card">
+      <h4>③ 单章 / 单技能微循环</h4>
+      <pre style="margin:8px 0"><code>node pipeline/build-skill.mjs --cluster &lt;簇id&gt; --dry-run
+node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 \
+  --slug &lt;slug&gt; --title "&lt;中文标题&gt;" --dry-run</code></pre>
+      <p>改动一个技能时最短闭环：改 curation → 干跑门禁一 → 重建 →（如需）重测。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 4 纪律 ══════════════════ -->
+<section id="discipline">
+  <h2><span class="n">4</span>运行纪律（血泪条款）</h2>
+  <div class="grid">
+    <div class="card">
+      <h4>凭据与路由</h4>
+      <p>生产者 <code>ANY2SKILLS_LLM_API_KEY</code>；判定者 <code>ANY2SKILLS_JUDGE_*</code>（缺省继承生产者）。
+      <strong>值不写进任何文件、不进日志</strong>；shell 里用环境变量内联传入。</p>
+    </div>
+    <div class="card">
+      <h4>账本与续跑</h4>
+      <p>每进程独立 <code>DSH_FS_LEDGER</code>；<code>node --require <strong>./</strong>pipeline/tools/fs-ledger.cjs</code>。
+      partial 复用使中断重跑<strong>零重复付费</strong>；0 条账本记录 = 方法错误。</p>
+    </div>
+    <div class="card">
+      <h4>安全默认（会咬人）</h4>
+      <p><code>--layer2</code> 缺省 <code>stub</code>：漏写 <code>deepseek</code> 会用替身对象<strong>静默覆盖</strong>真实产物（可从 history 复原，但先拿到假产出）。
+      非 dry-run 的 build 即发布。</p>
+    </div>
+    <div class="card">
+      <h4>状态同步</h4>
+      <p>改调度/计数/清单后回头改文档与 status；「文档-实物漂移不崩不空不告警」——靠巡检与冻结校验兜底。</p>
+    </div>
+  </div>
+  <div class="note warn">反事实纪律：任何「A 比 B 差 N 条」的结论，先跑同条件重复对照给出噪声带——判定者同档两臂实测 13.5% 判决翻转。</div>
+</section>
+
+<!-- ══════════════════ 5 三段式链路 ══════════════════ -->
+<section id="architecture">
+  <h2><span class="n">5</span>能力图谱 · 三段式链路</h2>
+  <p class="lead">全链只有一个非确定性环节（第 2 层），且它的输出被第 3 层两组同权判据夹住。</p>
+
+  <div class="flow">
+    <div class="fnode det">
+      <div class="t">第 1 层 · 确定性结构层（无 LLM）</div>
+      <div class="d">锚点索引：行号区间 + 内容哈希 + 层级/标题。逐字节可复现。</div>
+      <div class="out">→ pipeline/knowledge/&lt;file&gt;.anchors.json</div>
+    </div>
+    <div class="farrow">▼</div>
+    <div class="fnode llm">
+      <div class="t">第 2 层 · LLM 综合层（全链路唯一非确定性环节）</div>
+      <div class="d">类型化知识对象，强制带 sourceRefs + 逐字 evidenceQuote（引文双用途：防编造 + 语义证据）。</div>
+      <div class="out">→ pipeline/knowledge/&lt;file&gt;.objects.json</div>
+    </div>
+    <div class="farrow">▼</div>
+    <div class="fnode gate">
+      <div class="t">第 3 层 · 机器验证层 = 门禁一（两组判据，同权）</div>
+      <div class="d">① 确定性判据（无 LLM，逐字节可复现）；② 判定者判据（LLM，独立实例、独立上下文、输入白名单三键）。</div>
+      <div class="out">→ pipeline/registry/run-&lt;id&gt;.receipt.json ｜ 退出码 0 / 3（有对象被拒）/ 4（运行失败）</div>
+    </div>
+  </div>
+
+  <h3>判定者（第 3 层的第二组判据）三条要点</h3>
+  <ul>
+    <li><strong>同模型、独立实例，路由独立可配</strong>；回执记录 <code>sameModelAsProducer</code>——「同模型自审」在审计时可见。</li>
+    <li><strong>只有「支撑」算通过</strong>；不充分与不支撑都拒绝，分两条理由码（两者修法不同）。</li>
+    <li><strong>输入是构造的，不是删的</strong>：只有 claim / quote / anchorText 三键，白名单守卫（多一键即报错）。</li>
+  </ul>
+
+  <h3>理由码（封闭词表，真源在 verifier.mjs）</h3>
+  <table>
+    <thead><tr><th>码</th><th>含义</th><th>修复方</th></tr></thead>
+    <tbody>
+      <tr><td><code>REFERENCE_MISSING</code></td><td>无 sourceRefs，无豁免</td><td>第 2 层输出契约</td></tr>
+      <tr><td><code>REFERENCE_UNRESOLVED</code></td><td>出处解析不到锚点</td><td>第 1 层锚点索引</td></tr>
+      <tr><td><code>SOURCE_VERSION_DRIFT</code></td><td>依赖的锚点内容哈希已变</td><td>重跑第 1 或第 2 层</td></tr>
+      <tr><td><code>QUOTE_MISSING</code></td><td>对象根本没带引文</td><td>改输出契约</td></tr>
+      <tr><td><code>QUOTE_MISMATCH</code></td><td>引文对不上原文</td><td>改归纳方式（别改写原文）</td></tr>
+      <tr><td><code>JUDGE_NOT_SUPPORTED</code></td><td>判定者判为不支撑</td><td>第 2 层引文选错了</td></tr>
+      <tr><td><code>JUDGE_INSUFFICIENT</code></td><td>判定者判为不充分</td><td>锚点切分 或 主张写得比证据宽</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════ 6 环与门禁 ══════════════════ -->
+<section id="rings">
+  <h2><span class="n">6</span>环 1–5 与三道门禁</h2>
+  <div class="flow">
+    <div class="fnode det"><div class="t">环 1 · 锚点索引</div><div class="d">确定性切分，是所有下游引用的坐标系。</div></div>
+    <div class="farrow">▼</div>
+    <div class="fnode llm"><div class="t">环 2 · 对象提取 + 独立判定</div><div class="d">逐锚点提取类型化对象（概念/工程规则/启发式/反模式…），判定者同批核验。</div></div>
+    <div class="farrow">▼</div>
+    <div class="fnode llm"><div class="t">环 3 · 语义聚类</div><div class="d">章内聚类 → 内容单元 → 技能候选。覆盖检查：未归类 0 / 重复归属 0。</div></div>
+    <div class="farrow">▼</div>
+    <div class="fnode"><div class="t">环 4 · 确定性装配</div><div class="d">按簇或手工子树装配 SKILL.md + skill-contract.json，装配即跑门禁一（零模型调用）。</div></div>
+    <div class="farrow">▼</div>
+    <div class="fnode gate"><div class="t">环 5 · 三道门禁（发布授权）</div><div class="d">门禁一：结构合规（确定性）。门禁二：触发盲测（防误触发/零命中，出合并建议）。
+      门禁三：效用 A/B（K=6 复跑制，唯一能检出「技能有害」的装置）。</div></div>
+  </div>
+
+  <h3>三道门禁一句话对照</h3>
+  <table>
+    <thead><tr><th></th><th>门禁一 · 结构</th><th>门禁二 · 触发</th><th>门禁三 · 效用</th></tr></thead>
+    <tbody>
+      <tr><td>问什么</td><td>合不合规？</td><td>该触发的触发了吗？不该触发的误触发吗？</td><td>用了有没有变好？会不会变坏？</td></tr>
+      <tr><td>怎么测</td><td>确定性检查（无 LLM）</td><td>场景生成 + 盲测两段分离（题面只含 name+description）</td><td>A/B 对照 + 复跑复现（K=6）</td></tr>
+      <tr><td>产出</td><td>gate-receipt / 拒因清单</td><td>两读数 + 稳定对 + 合并建议</td><td>passed / low-utility / rejected</td></tr>
+      <tr><td>成本</td><td>0</td><td>≈15 次调用/skill</td><td>≈13 次调用/skill</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note bad"><strong>negative transfer 是真实存在的。</strong>本仓实测检出并拒绝过 2 例
+  （「技能词汇覆盖任务字面」失效族）——补写字面保真条款后复评全部解除并返区（两例转 low-utility、
+  同族一例转 passed）。<strong>rejected 的内容不随重组复活。</strong></div>
+</section>
+
+<!-- ══════════════════ 7 命令与模块 ══════════════════ -->
+<section id="modules">
+  <h2><span class="n">7</span>命令与模块地图</h2>
+
+  <h3>顶层 CLI（pipeline/*.mjs）</h3>
+  <table>
+    <thead><tr><th>命令</th><th>职责</th><th>输入 → 输出</th></tr></thead>
+    <tbody>
+      <tr><td><code>run.mjs</code></td><td>单文件三段链路（环 1+2+3 层），开发与单章用</td><td>源 .md → anchors / objects / 回执</td></tr>
+      <tr><td><code>run-book.mjs</code></td><td>全书批处理：并发、聚合回执（book-receipt/v2）、账本自举、隔离验证</td><td>源目录 → 逐文件回执 + 聚合回执</td></tr>
+      <tr><td><code>propose-clusters.mjs</code></td><td>环 3 聚类 + 候选（逐章一次调用）</td><td>objects 全量 → clusters / candidates</td></tr>
+      <tr><td><code>propose-themes.mjs</code></td><td>主题提案（目录级一次调用，只给标题+摘录）</td><td>锚点目录 → themes.json</td></tr>
+      <tr><td><code>synthesize-antipatterns.mjs</code></td><td>跨章反模式综合（一个主题一次调用；同 runId 免费重放）</td><td>themes + 各锚点正文 → antipatterns.objects.json + 判定表</td></tr>
+      <tr><td><code>build-skill.mjs</code></td><td>环 4 单技能装配 + 门禁一（<code>--cluster</code> / <code>--root-anchor</code>）</td><td>簇/子树 + 回执 → build/&lt;slug&gt;/</td></tr>
+      <tr><td><code>build-task-suite.mjs</code></td><td>任务套件构建（<code>--dry-run</code>）/ 发布（<code>--publish</code>）</td><td>curation 清单 + workflows → skills/&lt;slug&gt;/</td></tr>
+      <tr><td><code>run-gate2.mjs</code></td><td>门禁二：触发盲测（<code>--suite</code> / <code>--compare</code> / <code>--blind-mode strict</code>）</td><td>候选集 → 场景 + 盲测报告 + 稳定对</td></tr>
+      <tr><td><code>run-gate3.mjs</code></td><td>门禁三：效用 A/B（K=6、复跑制、按源枚举）</td><td>发布物 → 任务 + 运行 + 判定报告</td></tr>
+      <tr><td><code>apply-resplit.mjs</code></td><td>按门禁二反馈重切环 3 划分（幂等重放）</td><td>合并映射 → clusters/candidates 修订</td></tr>
+      <tr><td><code>freeze-outputs.mjs</code></td><td>产物冻结 + <code>--verify</code> 漂移校验</td><td>文件集 → freeze-&lt;ts&gt;.json</td></tr>
+      <tr><td><code>publish-task-suite.mjs</code></td><td><strong>仅本仓历史迁移用</strong>（30→19），新书不用</td><td>旧章节目录 → 归档 + lineage</td></tr>
+      <tr><td><code>run-new-book.mjs</code></td><td>编排器：onboard / pipeline / scaffold / all；生成策展草稿与核对单</td><td>书目录 → 全链产物 + 草稿</td></tr>
+    </tbody>
+  </table>
+
+  <h3>内部模块（pipeline/tools/*.mjs，按职责）</h3>
+  <div class="grid">
+    <div class="card"><h4>环 1 · 结构</h4>
+      <p><code>anchor-index.mjs</code> 锚点索引（确定性切分 + 内容哈希）</p></div>
+    <div class="card"><h4>环 2 · 提取与判定</h4>
+      <p><code>layer2-extractor.mjs</code> 对象提取 · <code>judge.mjs</code> 独立判定 ·
+      <code>object-contract.mjs</code> 类型契约 · <code>verifier.mjs</code> 确定性判据 ·
+      <code>llm-client.mjs</code> 路由与凭据 · <code>model-json.mjs</code> 响应解析唯一实现 ·
+      <code>model-stub.mjs</code> 替身</p></div>
+    <div class="card"><h4>环 3 · 聚类与合成</h4>
+      <p><code>cluster-proposer.mjs</code> 聚类/候选 · <code>theme-catalog.mjs</code> 锚点目录 ·
+      <code>theme-proposer.mjs</code> 主题提案 · <code>antipattern-synthesis.mjs</code> 跨章综合 ·
+      <code>antipattern-verdict-report.mjs</code> 判定表</p></div>
+    <div class="card"><h4>环 4 · 装配</h4>
+      <p><code>skill-builder.mjs</code> 六段骨架装配 · <code>verify-skill.mjs</code> 门禁一 skill 侧 ·
+      <code>task-skill-builder.mjs</code> 任务套件渲染 · <code>compose-schemas.mjs</code> schema 组装</p></div>
+    <div class="card"><h4>环 5 · 门禁</h4>
+      <p><code>gate2-blind-test.mjs</code> 盲测引擎 · <code>gate3-utility-ab.mjs</code> 效用 A/B 引擎 ·
+      <code>tier-probe.mjs</code> 推理档位对照探针</p></div>
+    <div class="card"><h4>审计与基础设施</h4>
+      <p><code>fs-ledger.cjs/.mjs</code> 文件访问账本 · <code>json-schema-subset.mjs</code> schema 校验 ·
+      <code>compare-object-sets.mjs</code> 对象集对照 · <code>test/*.test.mjs</code> 577 项零网络测试</p></div>
+  </div>
+</section>
+
+<!-- ══════════════════ 8 产物面 ══════════════════ -->
+<section id="artifacts">
+  <h2><span class="n">8</span>产物与证据面</h2>
+  <table>
+    <thead><tr><th>落点</th><th>内容</th><th>角色</th></tr></thead>
+    <tbody>
+      <tr><td><code>sources/&lt;key&gt;/book/</code></td><td>入场源 + SOURCE-MANIFEST（逐文件 sha256）</td><td>输入面（冻结）</td></tr>
+      <tr><td><code>pipeline/knowledge/</code></td><td>anchors / objects / 主题 / 反模式池 / 锚点目录</td><td>中间 IR</td></tr>
+      <tr><td><code>pipeline/registry/</code></td><td>回执（run-* / book-receipt）、账本、筛选、门禁报告、冻结、lineage / status / assessment</td><td><strong>证据面/承重面</strong></td></tr>
+      <tr><td><code>pipeline/registry/history/</code></td><td>旧版本产物与旧门禁报告（按 sha 归档）</td><td>历史证据（不删）</td></tr>
+      <tr><td><code>pipeline/registry/legacy-published/</code></td><td>旧 30 章节发布物（逐字节）+ 旧契约/报告</td><td>归档（零内容丢失的证明）</td></tr>
+      <tr><td><code>pipeline/registry/rejected/</code></td><td>门禁三拒绝例（REJECTION.md 全证据 + 复评记录）</td><td>隔离区（不复活）</td></tr>
+      <tr><td><code>pipeline/curation/</code></td><td>套件清单（对象所有权）+ 17 份编辑层工作流 + 导航与核对单</td><td>策展定义面</td></tr>
+      <tr><td><code>skills/</code></td><td>17 个发布物（SKILL.md + skill-contract.json + gate-receipt.json）</td><td><strong>发布面</strong></td></tr>
+    </tbody>
+  </table>
+  <h3>命名空间规则（多源参数化）</h3>
+  <ul>
+    <li>缺省源（<code>ai-agent-book-zh</code>）的文件名逐字节不变；其他源加 <code>.&lt;key&gt;</code> 后缀
+      （如 <code>cluster-input.rust-book-cn.json</code>、<code>antipatterns.rust-book-cn.objects.json</code>）。</li>
+    <li>partial/续跑文件一律 <code>*.partial.json</code>（gitignored）；固定路径是第二源的头号杀手——
+      新产物面先问「按源命名了吗」（五处漏网史，卡 19–22）。</li>
+  </ul>
+</section>
+
+<!-- ══════════════════ 9 技能资产 ══════════════════ -->
+<section id="assets">
+  <h2><span class="n">9</span>已有 Skill 资产 · 17 个已发布技能</h2>
+  <p class="lead">每个技能是任务型工作流：<strong>六段任务骨架</strong>
+  （何时使用 / 输入与前置条件 / 执行步骤 / 交付物 / 检查、停止与回滚 / 依据与边界）。
+  档位来自门禁三 + 复评：<span class="badge passed">passed</span> 实测有改进；
+  <span class="badge low">low-utility</span> = 在本测量设计下<strong>未测出效用增量</strong>（不是「无用」）；
+  <span class="badge rej">rejected</span> 现行 0 例。</p>
+
+  <h3>Agent 工程工作流（6，源：ai-agent-book-zh）</h3>
+  <table>
+    <thead><tr><th>技能</th><th>用在哪（触发场景）</th><th>档位</th></tr></thead>
+    <tbody>
+      <tr><td><code>define-agent-boundaries-and-safeguards</code></td>
+        <td>设计/评审 Agent 架构与安全边界；判断能力放模型提示还是上下文/工具层；上线前安全评审</td>
+        <td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>manage-agent-context</code></td>
+        <td>长会话出现「找不到关键信息」「提前收尾」「缓存频繁失效」；为框架设计压缩管线</td>
+        <td><span class="badge passed">passed</span> +4</td></tr>
+      <tr><td><code>design-agent-tools</code></td>
+        <td>新增工具；诊断「Agent 频繁选错工具」；评审第三方能力引入（MCP / 技能包）</td>
+        <td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>validate-generated-artifacts</code></td>
+        <td>生成的 HTML/SQL/表单需要被真实执行或渲染；生成产物进入交付流程</td>
+        <td><span class="badge passed">passed</span> +1</td></tr>
+      <tr><td><code>coordinate-agent-work-and-verification</code></td>
+        <td>设计多 Agent 流水线；排查协作故障（级联/趋同/循环失控）；完成声明不可信需独立验证</td>
+        <td><span class="badge passed">passed</span> +1</td></tr>
+      <tr><td><code>update-agent-instructions</code></td>
+        <td>Agent 行为纠偏；给提示词/技能文档做增量修订；决定经验写文档、写程序还是进参数</td>
+        <td><span class="badge passed">passed</span> +3</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Rust 实现工作流（11，源：rust-book-cn）</h3>
+  <table>
+    <thead><tr><th>技能</th><th>用在哪（触发场景）</th><th>档位</th></tr></thead>
+    <tbody>
+      <tr><td><code>diagnose-rust-borrows</code></td><td>编译器拒绝编译（借用/生命周期报错）；判断改结构还是补标注</td><td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>model-rust-domain-types</code></td><td>设计配置/实体/状态类型；组织 impl；散落函数收拢为方法</td><td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>match-rust-variants</code></td><td>命令解析、状态分发、单变体解构；模式位置类编译错误</td><td><span class="badge low">low-utility</span>（曾拒，修订返区）</td></tr>
+      <tr><td><code>process-rust-text-and-hashmaps</code></td><td>日志与文本处理；缓存/计数/注册表；字符串索引 panic 排查</td><td><span class="badge passed">passed</span> +1</td></tr>
+      <tr><td><code>design-rust-abstractions</code></td><td>消除重复逻辑；插件/驱动接口；编译期约束 vs 运行期分发选型</td><td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>compose-rust-closures</code></td><td>惰性初始化、回调存储、记忆化缓存</td><td><span class="badge passed">passed</span> +2（复评）</td></tr>
+      <tr><td><code>manage-rust-memory-and-mutability</code></td><td>E0072 递归类型；RAII 资源；&amp;self 方法需改字段时</td><td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>coordinate-rust-threads</code></td><td>任务并行化；通道 vs 共享状态选型；Rc 跨线程报错</td><td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>structure-rust-cli</code></td><td>CLI 增长到难以测试；把逻辑交给测试覆盖</td><td><span class="badge low">low-utility</span></td></tr>
+      <tr><td><code>run-rust-tests</code></td><td>调试失败用例；共享资源测试稳定化；输出被吞的可见性排查</td><td><span class="badge passed">passed</span> +4</td></tr>
+      <tr><td><code>implement-rust-state-pattern</code></td><td>发布流程/订单流/协议状态机按状态封装；权衡新增状态成本</td><td><span class="badge low">low-utility</span>（曾拒，修订返区）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">覆盖缺口（诚实声明）：本套件<strong>不包含</strong>前端组件库、Python/TS 脚手架、RAG、模型网关、云部署与可观测性——
+  源素材无对应内容，未虚标；Rust 技能显式限定为 Rust。</div>
+</section>
+
+<!-- ══════════════════ 10 资产沉淀层 ══════════════════ -->
+<section id="asset-layer">
+  <h2><span class="n">10</span>资产沉淀层（为什么每个技能都可追溯）</h2>
+  <table>
+    <thead><tr><th>层</th><th>文件</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>所有权清单</td><td><code>pipeline/curation/task-skill-suite.v1.json</code></td>
+        <td>17 成员的精确对象/反模式所有权；纯机械校验：主对象两两不相交、并集 = 来源并集</td></tr>
+      <tr><td>编辑层</td><td><code>pipeline/curation/workflows/&lt;slug&gt;.json</code></td>
+        <td>17 份撰写的工作流（输入/步骤/交付物/检查/回滚），显式声明为作者补充、不冒充来源引文</td></tr>
+      <tr><td>血缘</td><td><code>pipeline/registry/task-suite-lineage.v1.json</code></td>
+        <td>30 旧 slug → 新 bundle 的完整映射 + 逐文件哈希（含两个 ch4 身份例外）</td></tr>
+      <tr><td>状态</td><td><code>task-suite-status.v1.json</code></td>
+        <td>structuralGate / triggerAssessment / utilityAssessment（零继承：unassessed-after-recomposition）</td></tr>
+      <tr><td>评测</td><td><code>task-suite-assessment.v1.json</code></td>
+        <td>门禁二两轮 + 门禁三全量 + 拒绝两例 + 复评批次（含修订前后对照）</td></tr>
+      <tr><td>归档</td><td><code>registry/legacy-published/chapter-suite-v1/skills/</code></td>
+        <td>旧 30 章节发布物逐字节保留（32 文件哈希复验 0 不一致）</td></tr>
+      <tr><td>隔离</td><td><code>registry/rejected/&lt;slug&gt;/REJECTION.md</code></td>
+        <td>被拒全证据 + 复评记录（两例；内容不随重组复活）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════ 11 领取与修改 ══════════════════ -->
+<section id="consume">
+  <h2><span class="n">11</span>领取与修改入口</h2>
+  <div class="grid">
+    <div class="card">
+      <h4>① 领取使用</h4>
+      <p>发布面就是 <code>skills/&lt;slug&gt;/SKILL.md</code>（本仓无 <code>.skills</code> 发现层）。
+      按工作阶段导航见 <code>docs/guides/agent-full-stack-skill-suite.md</code>；
+      每个技能的触发条件写在 frontmatter 的 <code>description</code> 里。</p>
+    </div>
+    <div class="card">
+      <h4>② 改边界（对象所有权）</h4>
+      <p>改 <code>pipeline/curation/task-skill-suite.v1.json</code>；测试会验「并集相等 + 主对象不相交」。</p>
+    </div>
+    <div class="card">
+      <h4>③ 改步骤/输入/交付物</h4>
+      <p>改 <code>pipeline/curation/workflows/&lt;slug&gt;.json</code>（编辑层），保留字面保真条款。</p>
+    </div>
+    <div class="card">
+      <h4>④ 重建与发布</h4>
+      <p><code>node pipeline/build-task-suite.mjs</code>（staging）→ <code>npm test</code> 过 →
+      <code>--publish</code>；正文变更需按 ADR-030 重测协议（有因重测、报告全部批次）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 12 速查 ══════════════════ -->
+<section id="quickref">
+  <h2><span class="n">12</span>速查与陷阱总表</h2>
+  <h3>命令速查</h3>
+  <table>
+    <thead><tr><th>命令</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td><code>run-new-book.mjs onboard/pipeline/scaffold/all</code></td><td>八阶段编排入口</td></tr>
+      <tr><td><code>run-book.mjs --source-key</code></td><td>环 1/2 全书批处理</td></tr>
+      <tr><td><code>propose-clusters.mjs --source-key</code></td><td>环 3</td></tr>
+      <tr><td><code>propose-themes.mjs</code> / <code>synthesize-antipatterns.mjs</code></td><td>跨章合成</td></tr>
+      <tr><td><code>build-skill.mjs --cluster --dry-run</code></td><td>单候选门禁一</td></tr>
+      <tr><td><code>build-task-suite.mjs --manifest [--publish] [--bundle]</code></td><td>任务套件构建/发布</td></tr>
+      <tr><td><code>run-gate2.mjs --suite --suite-key --suite-manifest</code></td><td>门禁二（两读数 + --compare）</td></tr>
+      <tr><td><code>run-gate3.mjs --source-key [--skill]</code></td><td>门禁三</td></tr>
+      <tr><td><code>freeze-outputs.mjs [--verify]</code></td><td>冻结与漂移校验</td></tr>
+      <tr><td><code>npm test</code></td><td>577 项，零网络零凭据</td></tr>
+    </tbody>
+  </table>
+
+  <h3>环境变量</h3>
+  <table>
+    <thead><tr><th>名字</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td><code>ANY2SKILLS_LLM_API_KEY</code> / <code>_MODEL</code> / <code>_BASE_URL</code> / <code>_PROVIDER</code> / <code>_REASONING_EFFORT</code></td><td>生产者路由（缺失则拒绝调用）</td></tr>
+      <tr><td><code>ANY2SKILLS_JUDGE_MODEL</code> / <code>_BASE_URL</code> / <code>_PROVIDER</code></td><td>判定者路由（缺省继承生产者）</td></tr>
+      <tr><td><code>DSH_FS_LEDGER</code></td><td>账本路径（未设 = 零开销不装钩子）</td></tr>
+      <tr><td><code>DSH_HOME</code> / <code>DSH_BOOK_DEBUG</code></td><td>凭据文件定位 / 调试缝</td></tr>
+    </tbody>
+  </table>
+
+  <h3>陷阱总表（跨阶段）</h3>
+  <table>
+    <thead><tr><th>陷阱</th><th>一句话</th></tr></thead>
+    <tbody>
+      <tr><td>固定路径是第二源的头号杀手</td><td>新产物面先问「按源命名了吗」（五处漏网史）</td></tr>
+      <tr><td>「跑通」≠「落盘齐」</td><td>声称「全量 N」就清点 N（环 1 只落盘 16/105 的教训）</td></tr>
+      <tr><td>共用账本</td><td>每进程独立 <code>DSH_FS_LEDGER</code>；0 条 = 方法错误</td></tr>
+      <tr><td><code>--layer2</code> 漏写</td><td>缺省 stub 会静默覆盖真实产物（可从 history 复原）</td></tr>
+      <tr><td>非 dry-run 的 build</td><td>即发布——先干跑（误发布案）</td></tr>
+      <tr><td>目录哈希进盲测输入</td><td>候选集一变（合并/下架）→ 全部场景重答，成本如实计</td></tr>
+      <tr><td>管道读退出码</td><td><code>cmd | tee log</code> 会把崩溃报成 exit 0（用 pipefail）</td></tr>
+      <tr><td>中文追加</td><td>既有文件用编辑器追加，不用 shell heredoc（编码事故实测）</td></tr>
+      <tr><td>解释器漂移（macOS）</td><td>裸 <code>python3</code> 可能缺依赖假报；本仓脚本统一 <code>/usr/bin/python3</code>；<code>timeout</code> 命令在 macOS 不存在（用 <code>gtimeout</code>）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>关键决策索引（ADR 精选）</h3>
+  <p>
+    <span class="badge n">ADR-004</span> 骨架 ·
+    <span class="badge n">ADR-016</span> 跨章合成 ·
+    <span class="badge n">ADR-026/027</span> 门禁二三 ·
+    <span class="badge n">ADR-028</span> 体积阈值 ·
+    <span class="badge n">ADR-029</span> 源条件骨架 ·
+    <span class="badge n">ADR-030</span> 低效用治理 ·
+    <span class="badge n">ADR-031</span> 套件重组 ·
+    <span class="badge n">ADR-032</span> 套件评测
+  </p>
+</section>
+
+<footer>
+  any2skills · Playbook · 生成于 2026-10-16 · 状态快照：npm test 577/0、17 技能（7 passed / 10 low-utility / 0 rejected）。
+  证据面：<code>pipeline/registry/</code>（回执 / 冻结 / lineage / assessment）；主流程全文：
+  <code>docs/guides/book-to-skills-runbook.md</code>；本页与仓库状态不一致时，以盘上产物与 ADR 为准。
+</footer>
+
+</main>
+</div>
+
+<script>
+// 侧栏 TOC 滚动高亮
+(function(){
+  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  var map={};
+  links.forEach(function(a){var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)map[id]=a;});
+  function onScroll(){
+    var cur=null;
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id);
+      if(el && el.getBoundingClientRect().top<140) cur=id;
+    });
+    links.forEach(function(a){a.classList.remove('active')});
+    if(cur&&map[cur])map[cur].classList.add('active');
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

@@ -8,6 +8,11 @@ Any content → executable Agent Skills. MVP pipeline.
 > 编排入口 `node pipeline/run-new-book.mjs all --dir <书目录> --key <sourceKey> --model <id> --base-url <url>`；
 > 策展草稿（含字面保真条款）自动生成，编辑按核对单收敛即可。
 
+> **要一页看全项目（工作流 / 能力图谱 / 技能资产）？** 见
+> [`playbook.html`](playbook.html)——单文件 HTML 全景导航：八阶段主流程与陷阱、三段式链路与
+> 环 1–5 / 三道门禁、17 个技能的使用场景与档位、产物证据面与命令速查。
+> 本 README 与 `docs/` 各页仍是规格与口径的真源，playbook 是视图。
+
 **当前状态**：环 1–2 已跑通（源文件 → 锚点索引 → 知识对象 → 机器验证，含独立判定者）。
 **环 3 已跑通**（章内语义聚类 + 技能候选：13 章 / 115 单元 / 40 候选，593 个对象全归类；
 见 [`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。

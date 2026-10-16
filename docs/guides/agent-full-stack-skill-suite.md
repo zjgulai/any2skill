@@ -1,7 +1,11 @@
 # Agent 全栈工程师 · 技能套件导航（17 个任务技能）
 
 本页按工作阶段组织 `skills/` 下的 17 个技能，供按任务查找。**本页不是技能**
-（无 frontmatter、不参与触发）；边界与证据状态以
+（无 frontmatter、不参与触发）。
+
+> 要连自动化工作流与能力图谱一起一页纵览？见 [`playbook.html`](../../playbook.html)（HTML 全景版）。
+
+边界与证据状态以
 [ADR-031](../adr/ADR-031-task-skill-suite-reorganization.md) 与
 [`task-suite-assessment.v1.json`](../../pipeline/registry/task-suite-assessment.v1.json)
 为准。
