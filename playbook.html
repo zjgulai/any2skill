@@ -657,6 +657,13 @@ node pipeline/build-skill.mjs --root-anchor chapter4#h2-2 \
     </tbody>
   </table>
 
+  <h3>提示词资产（prompts/）</h3>
+  <p><code>prompts/agent-dev/</code>：<strong>Agent 开发全程会话提示词包</strong>（10 模块：定义边界 →
+  上下文 → 记忆 → 工具 → 交付 → 交互 → 评估 → 进化 → 协作 → 后训练），每模块一段可直接粘贴的
+  提示词，条目附来源对象 id；不进门禁的轻产物（诚实声明、覆盖表 <code>COVERAGE.md</code>、
+  未入选清单 <code>NOT-SELECTED.md</code> 随包）。入口：<code>prompts/agent-dev/00-使用说明.md</code>。
+  与技能的关系：技能=模型侧自动触发，提示词包=人侧主动粘贴（会话编排层）。</p>
+
   <h3>关键决策索引（ADR 精选）</h3>
   <p>
     <span class="badge n">ADR-004</span> 骨架 ·

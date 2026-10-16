@@ -13,6 +13,11 @@ Any content → executable Agent Skills. MVP pipeline.
 > 环 1–5 / 三道门禁、17 个技能的使用场景与档位、产物证据面与命令速查。
 > 本 README 与 `docs/` 各页仍是规格与口径的真源，playbook 是视图。
 
+> **要把这套书当「Agent 开发手册」用？** 见 [`prompts/agent-dev/`](prompts/agent-dev/00-使用说明.md)——
+> 从 618 个知识对象萃取的 **10 模块会话提示词包**（定义边界 → 上下文 → 记忆 → 工具 → 交付 →
+> 交互 → 评估 → 进化 → 协作 → 后训练），每模块一段可直接粘贴的提示词，条目附来源对象 id；
+> 轻产物（不进门禁，诚实声明与覆盖表在包内）。
+
 **当前状态**：环 1–2 已跑通（源文件 → 锚点索引 → 知识对象 → 机器验证，含独立判定者）。
 **环 3 已跑通**（章内语义聚类 + 技能候选：13 章 / 115 单元 / 40 候选，593 个对象全归类；
 见 [`docs/tickets/11-ring3-semantic-clustering.md`](docs/tickets/11-ring3-semantic-clustering.md)）。
