@@ -13,6 +13,7 @@
 - 模块 01–10：`agent-dev/01-*.md` … `agent-dev/10-*.md`（07 带溢出附件 `07-evaluation.deep.md`）
 - 覆盖表：`agent-dev/COVERAGE.md` ｜ 未入选清单：`agent-dev/NOT-SELECTED.md`
 - 素材：`pipeline/knowledge/*.objects.json`（《AI Agent 书》618 个对象，含逐字引文）
+- 真实试用：`docs/audits/agent-dev-prompt-trial-2026-10-22.md`（模块 01→02 交互链、同会话最小 diff 续跑、独立复核与 v1.2 修订）
 
 **生成方式**：会话内撰写、零外部模型调用；数据取自盘上真源（对象库存、主题、候选池）。
 **诚实声明**：不进门禁/不做盲测（用户定位「不用那么严格」），不等同已发布技能的评测质量。
