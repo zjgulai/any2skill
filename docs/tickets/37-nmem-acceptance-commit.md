@@ -36,12 +36,15 @@
 
 ## 验收
 
-- [ ] 八项映射表逐项 PASS/FAIL 落档，FAIL 项有处置记录
-- [ ] acceptance JSON + md 已归档 `docs/audits/`
-- [ ] commit hash 记录于本卡构建记录
-- [ ] `git status` 无本次改动残留（未跟踪文件要么入库要么被忽略）
-- [ ] `npm test` 0 失败、零网络、零凭据
+- [x] 八项映射表逐项核验：7 PASS + 1 MANUAL（桌面 ⌘5 截图需人工查看，CLI 证据齐全）
+- [x] acceptance JSON + md 已归档 docs/audits/
+- [x] commit hash：b9a5941
+- [x] git status 无本次改动残留（reports/ 已入库；tmp/ 已忽略）
+- [x] npm test 584/584、零网络、零凭据；NMEM_E2E=1 真实 E2E 11/11
 
 ## 构建记录
 
-（执行时回填）
+2026-10-31 执行完成：commit b9a5941（feat(memory): add any2skills Nowledge Mem space, 4-layer memories, ontology and graph links）。
+八项验收证据：docs/audits/any2skills-nmem-acceptance-20261031.json / .md。
+真实 E2E：NMEM_E2E=1 下 11/11 全绿（3 条真实检索 Top1≥0.70 + 真实超时降级）。
+reports/ 一并入库，Library 源获得 Git provenance（specs/04 §7 Q3 拍板：入库）。

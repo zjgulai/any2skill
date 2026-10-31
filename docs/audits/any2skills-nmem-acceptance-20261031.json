@@ -3,13 +3,53 @@
   "space": "any2skills",
   "nmem_version": "0.10.111",
   "sop_checklist": [
-    {"item": 1, "name": "spaces_list_strict", "pass": true, "detail": "defaultRetrievalMode=strict; usage: memories=16, sources=5, hasWorkingMemory=true"},
-    {"item": 2, "name": "agent_default_space", "pass": true, "detail": "any2skills-steward defaultSpaceId=any2skills"},
-    {"item": 3, "name": "context_bundle", "pass": true, "detail": "active_space=any2skills(strict); rule_stack.space=2 rules (priority 100/90); working_memory has Focus Areas + Briefing"},
-    {"item": 4, "name": "library_indexed", "pass": true, "detail": "5 sources, lifecycle_state=indexed x5, mime text/markdown x5, errors=0"},
-    {"item": 5, "name": "graph_visual_cmd5", "pass": null, "detail": "manual: desktop cmd+5; >=16 memory nodes + >=11 explicit links; graph expand any2skills-l2-01 --depth 2 = 5 neighbors (CLI-verified)"},
-    {"item": 6, "name": "search_top1_score", "pass": true, "detail": "3 full-Chinese queries top1=0.99/0.99/0.99 (>= 0.70)"},
-    {"item": 7, "name": "recall_tests_green", "pass": true, "detail": "fake 7/7 green; NMEM_E2E=1 real-search suite included; npm test 584/584 zero-network zero-credential"},
-    {"item": 8, "name": "git_commit", "pass": null, "detail": "pending: commit at end of ticket 37"}
+    {
+      "item": 1,
+      "name": "spaces_list_strict",
+      "pass": true,
+      "detail": "defaultRetrievalMode=strict; usage: memories=16, sources=5, hasWorkingMemory=true"
+    },
+    {
+      "item": 2,
+      "name": "agent_default_space",
+      "pass": true,
+      "detail": "any2skills-steward defaultSpaceId=any2skills"
+    },
+    {
+      "item": 3,
+      "name": "context_bundle",
+      "pass": true,
+      "detail": "active_space=any2skills(strict); rule_stack.space=2 rules (priority 100/90); working_memory has Focus Areas + Briefing"
+    },
+    {
+      "item": 4,
+      "name": "library_indexed",
+      "pass": true,
+      "detail": "5 sources, lifecycle_state=indexed x5, mime text/markdown x5, errors=0"
+    },
+    {
+      "item": 5,
+      "name": "graph_visual_cmd5",
+      "pass": null,
+      "detail": "manual: desktop cmd+5; >=16 memory nodes + >=11 explicit links; graph expand any2skills-l2-01 --depth 2 = 5 neighbors (CLI-verified)"
+    },
+    {
+      "item": 6,
+      "name": "search_top1_score",
+      "pass": true,
+      "detail": "3 full-Chinese queries top1=0.99/0.99/0.99 (>= 0.70)"
+    },
+    {
+      "item": 7,
+      "name": "recall_tests_green",
+      "pass": true,
+      "detail": "fake 7/7 green; NMEM_E2E=1 real-search suite included; npm test 584/584 zero-network zero-credential"
+    },
+    {
+      "item": 8,
+      "name": "git_commit",
+      "pass": true,
+      "detail": "commit b9a5941"
+    }
   ]
 }
