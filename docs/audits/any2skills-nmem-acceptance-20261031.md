@@ -4,16 +4,16 @@
 
 | # | 验收项 | 结果 | 证据 |
 |---|---|---|---|
-| 1 | Space 显式列出且 strict | **PASS** | `spaces list`：any2skills，defaultRetrievalMode=strict，memories=16，sources=5 |
+| 1 | Space 显式列出且 strict | **PASS** | `spaces list`：any2skills，defaultRetrievalMode=strict，策展记忆 22（+34 Library 切片），sources=5 |
 | 2 | Agent 存在且默认 Space 正确 | **PASS** | `agents list`：any2skills-steward，defaultSpaceId=any2skills |
 | 3 | Context Bundle 完整 | **PASS** | `context`：active_space=any2skills(strict)，rule_stack.space 两条（100/90），WM 含 Focus Areas + Briefing |
 | 4 | Library 全 indexed、错误 0 | **PASS** | `library list`：5 源，lifecycle_state=indexed×5，text/markdown×5，errors=0 |
-| 5 | 桌面 ⌘5 图谱 | **MANUAL** | CLI 侧已证：16 记忆节点 + 11 显式边，`graph expand l2-01 --depth 2` 达 5 邻居；桌面截图待人工查看 |
+| 5 | 桌面 ⌘5 图谱 | **PASS** | 用户桌面确认（⌘5，any2skills 空间）：22 节点 + 15 边；`graph expand` 多跳另经 CLI 验证 |
 | 6 | 语义检索 Top1 ≥ 0.70 | **PASS** | 三条完整中文 query Top1 均 0.99 |
 | 7 | recall 测试全绿（真实+降级） | **PASS** | fake 7/7；`NMEM_E2E=1` 真实检索 3/3 + 真实超时降级 1/1；`npm test` 584/584 |
 | 8 | 规范化 git commit | **PASS** | 本次 commit（见卡 37 构建记录 hash） |
 
-结果：**7 PASS + 1 MANUAL（桌面截图需人工打开 App 确认，CLI 侧证据齐全）**。
+结果：**8/8 PASS**（2026-10-31 用户桌面确认图谱后闭环）。
 
 ## 执行过程中的新增避坑（已回写卡 33/35/36 与协议文档）
 
