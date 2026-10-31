@@ -9,6 +9,9 @@
   },
   "scripts": {
     "test": "node --test \"pipeline/tools/test/*.test.mjs\"",
-    "anchors": "node pipeline/tools/anchor-index.mjs"
+    "anchors": "node pipeline/tools/anchor-index.mjs",
+    "mem:recall": "node pipeline/tools/nmem-recall.mjs",
+    "mem:distill:dry": "node tools/dev/distill-memories-to-nmem.mjs",
+    "mem:verify": "nmem --json context --space any2skills --agent-id any2skills-steward && nmem --json memories list --space any2skills -n 50 && nmem --json library list --space any2skills -n 50 && nmem --json ontology show --space-id any2skills"
   }
 }

@@ -1,0 +1,850 @@
+{
+  "store": {
+    "contractVersion": 1,
+    "revision": 16,
+    "global": {
+      "objectTypes": [
+        {
+          "key": "BRAND",
+          "displayName": "品牌",
+          "description": "母婴及消费品品牌核心实体",
+          "status": "active"
+        },
+        {
+          "key": "COMPETITOR",
+          "displayName": "竞品",
+          "description": "出海及母婴直接竞争品牌",
+          "status": "active"
+        },
+        {
+          "key": "PRODUCTLINE",
+          "displayName": "产品线/品类",
+          "description": "品牌旗下重点产品线及主推品类（如穿戴式吸乳器、温奶器等）",
+          "status": "active"
+        },
+        {
+          "key": "SOCIALPLATFORM",
+          "displayName": "社交媒体平台",
+          "description": "社媒传播及运营渠道（如 TikTok、Instagram、Facebook、YouTube、Reddit 等）",
+          "status": "active"
+        },
+        {
+          "key": "KEYPERSON",
+          "displayName": "核心成员/联系人",
+          "description": "团队核心接口人、业务负责人或合作达人",
+          "status": "active"
+        },
+        {
+          "key": "CONTENTHOOK",
+          "displayName": "内容钩子/选题机制",
+          "description": "爆款内容机制、前3秒吸睛切入点及选题叙事框架",
+          "status": "active"
+        },
+        {
+          "key": "AUDIENCEPERSONA",
+          "displayName": "客群画像/受众群体",
+          "description": "核心消费人群画像（如职场背奶妈妈、新手哺乳妈妈等）",
+          "status": "active"
+        },
+        {
+          "key": "MESSAGEPILLAR",
+          "displayName": "信息屋价值支柱",
+          "description": "品牌核心信息屋支柱（如科技穿戴、舒适静音、无感伴随）",
+          "status": "active"
+        },
+        {
+          "key": "PRODUCTMODEL",
+          "displayName": "产品型号/SKU",
+          "description": "具体单品型号（如 Momcozy M5, S12 Pro, Elvie Stride, Willow 360 等）",
+          "status": "active"
+        },
+        {
+          "key": "USERPAINPOINT",
+          "displayName": "用户痛点/未满足需求",
+          "description": "真实用户声音中高频吐槽的痛点与恐惧（如漏奶下坠、清洁复杂、职场尴尬）",
+          "status": "active"
+        },
+        {
+          "key": "OPERATINGPROCEDURE",
+          "displayName": "标准作业规程/SOP",
+          "description": "社媒运营、巡检、早报、需求响应等关键业务 SOP",
+          "status": "active"
+        },
+        {
+          "key": "KOL",
+          "displayName": "达人/创作者",
+          "description": "社媒平台头部达人、内容创作者与母婴博主人脉",
+          "status": "active"
+        },
+        {
+          "key": "GOVERNANCEPOLICY",
+          "displayName": "架构决议/治理制度",
+          "description": "重大架构决议 ADR、发布门禁与行为红线制度",
+          "status": "active"
+        }
+      ],
+      "linkTypes": [
+        {
+          "key": "COMPETES_WITH",
+          "displayName": "竞争",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "BELONGS_TO",
+          "displayName": "归属",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "OPERATES_ON",
+          "displayName": "运营渠道",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "MONITORS",
+          "displayName": "监控",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "REPORTS_TO",
+          "displayName": "代表/分身/汇报",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "APPLIES_HOOK",
+          "displayName": "采用机制",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "TARGETS_AUDIENCE",
+          "displayName": "瞄准受众",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "SUPPORTS_PILLAR",
+          "displayName": "支撑价值支柱",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "SOLVES_PAIN",
+          "displayName": "解决痛点",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "HAS_MODEL",
+          "displayName": "拥有型号",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "GOVERNED_BY",
+          "displayName": "遵循规程",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "CREATES_ON",
+          "displayName": "创作平台",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "RESONATES_WITH",
+          "displayName": "受众共鸣",
+          "directional": true,
+          "status": "active"
+        },
+        {
+          "key": "RELATES_TO",
+          "displayName": "relates to",
+          "directional": true,
+          "status": "active"
+        }
+      ],
+      "openWorld": true
+    },
+    "spaces": {
+      "kb-consultant-agent": {
+        "objectTypes": [
+          {
+            "key": "SOURCE",
+            "displayName": "来源资料",
+            "description": "已登记的外部知识来源（consult 文档、FlowUs 页面、ERP/WMS 字段字典等）；承载 source_id、source_type、source_uri、evidence_grade、license_status、workspace、allowed_agents、blocked_actions、source_owner。",
+            "status": "active"
+          },
+          {
+            "key": "CLAIMCARD",
+            "displayName": "知识卡片",
+            "description": "从来源蒸馏出的知识卡片（claim-card-candidate / Deep Extraction v2 card）；承载 claim、card_type、locator、content_hash、evidence_grade、license_status、promotion_status 或 review_state。",
+            "status": "active"
+          },
+          {
+            "key": "INDEXVERSION",
+            "displayName": "检索索引版本",
+            "description": "可检索的向量索引版本（index_id、model_id、embedding_dimension、records、checksums、workspace、status、READY/receipt）；例如 deep-extraction-v2-bge-small-zh-v1-5-20260621 及其 metadata-v2 版本。",
+            "status": "active"
+          },
+          {
+            "key": "EVALLABEL",
+            "displayName": "评测标签",
+            "description": "评测标签或评测种子（question、expected_behavior、metric_target、locator、synthetic_or_derived、review_status、human_decision）；覆盖 human-gold locator label、Deep v2 accepted-remap seed 与 eval-seed-candidate。",
+            "status": "active"
+          },
+          {
+            "key": "DECISION",
+            "displayName": "决策记录",
+            "description": "人工决策与授权记录（product-owner Q1-Q7、legal/source-owner、security/staging-control、5-of-5 reviewer、business acceptance）；承载 decision_id、decision_role、decision_scope、answer/decision_value、effective_policy、decision_effect、reviewer、reviewed_at。",
+            "status": "active"
+          },
+          {
+            "key": "GATE",
+            "displayName": "门禁/预检",
+            "description": "治理门禁与预检（promotion preflight、apply gate、shared staging readiness、release binding、runtime-switch preflight）；承载 gate_type、status、blocker_count、check_count/pass_count、exit_code、evidence_uri。",
+            "status": "active"
+          },
+          {
+            "key": "RELEASE",
+            "displayName": "发布版本",
+            "description": "发布或运行时版本（release 路径、container image、index_id、label_seed、expected record count、environment、status、rollback_ref、deployed_at）。",
+            "status": "active"
+          },
+          {
+            "key": "AGENTROLE",
+            "displayName": "智能体/角色",
+            "description": "项目智能体或角色（consultant-agent、ontology-sampling-reviewer 等）；承载 agent_id、role、default_space、allowed_agents、blocked_actions、read_only/write policy。",
+            "status": "active"
+          },
+          {
+            "key": "BOUNDARY",
+            "displayName": "治理边界/红线",
+            "description": "治理边界与红线标记（production unchanged、no KB provider call、no live KB ingestion、read-only、draft/local、manual review、no human-gold claim、no raw source redistribution）。",
+            "status": "active"
+          },
+          {
+            "key": "KNOWLEDGEDOMAIN",
+            "displayName": "知识域",
+            "description": "知识域（consulting-kb、marketing-kb、product-kb、supply-chain-kb、operations-kb、channel-kb、customer-service-kb、finance-kb、strategy-kb），对应 PRD domains/*-kb 与 workspace 路由。",
+            "status": "active"
+          },
+          {
+            "key": "BUSINESSENTITY",
+            "displayName": "业务实体",
+            "description": "业务实体口径（SKU、SPU、ASIN、MSKU、仓库、渠道、供应商等），承载 canonical_name、aliases、entity_type、definition、workspace、evidence_grade。对应 shared/entity-dictionary/（PRD 15.4 P1 最小集）。",
+            "status": "active"
+          },
+          {
+            "key": "METRIC",
+            "displayName": "指标口径",
+            "description": "指标口径（可用库存、在途库存、预占库存、ACOS、毛利等），承载 metric_name、definition、formula、grain、time_window、owner、source_id。对应 shared/metric-dictionary/（PRD 15.4 P1 最小集）。",
+            "status": "active"
+          },
+          {
+            "key": "SYSTEMFIELD",
+            "displayName": "系统字段/映射",
+            "description": "系统字段与跨系统映射（ERP/WMS/OMS/PIM/平台字段 → 业务术语或指标），承载 system、field_name、maps_to、transformation、confidence、status。对应 PRD 15.4 system-crosswalk（R9 漂移源）。",
+            "status": "active"
+          }
+        ],
+        "linkTypes": [
+          {
+            "key": "DERIVED_FROM",
+            "displayName": "派生自",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "INDEXED_IN",
+            "displayName": "收录于",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "EVALUATES",
+            "displayName": "评测",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "APPROVES",
+            "displayName": "批准/授权",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "REQUIRES",
+            "displayName": "依赖/前置",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "BINDS",
+            "displayName": "绑定",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "MEASURES",
+            "displayName": "度量",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "MAPS_TO",
+            "displayName": "映射到",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "GOVERNED_BY",
+            "displayName": "受治理于",
+            "directional": true,
+            "status": "active"
+          },
+          {
+            "key": "BELONGS_TO",
+            "displayName": "属于",
+            "directional": true,
+            "status": "active"
+          }
+        ]
+      },
+      "tmp-smoke": {
+        "objectTypes": [
+          {
+            "key": "SMOKE_THING",
+            "displayName": "冒烟对象",
+            "labels": {
+              "zh": "冒烟标签"
+            },
+            "description": "冒烟描述",
+            "status": "active"
+          }
+        ]
+      }
+    },
+    "extractionEnabled": true,
+    "updatedAt": "2026-10-31T13:20:34.033645Z"
+  },
+  "effective": {
+    "contractVersion": 1,
+    "revision": 16,
+    "configured": true,
+    "extractionEnabled": true,
+    "objectTypes": [
+      {
+        "key": "BRAND",
+        "displayName": "品牌",
+        "description": "母婴及消费品品牌核心实体",
+        "status": "active"
+      },
+      {
+        "key": "COMPETITOR",
+        "displayName": "竞品",
+        "description": "出海及母婴直接竞争品牌",
+        "status": "active"
+      },
+      {
+        "key": "PRODUCTLINE",
+        "displayName": "产品线/品类",
+        "description": "品牌旗下重点产品线及主推品类（如穿戴式吸乳器、温奶器等）",
+        "status": "active"
+      },
+      {
+        "key": "SOCIALPLATFORM",
+        "displayName": "社交媒体平台",
+        "description": "社媒传播及运营渠道（如 TikTok、Instagram、Facebook、YouTube、Reddit 等）",
+        "status": "active"
+      },
+      {
+        "key": "KEYPERSON",
+        "displayName": "核心成员/联系人",
+        "description": "团队核心接口人、业务负责人或合作达人",
+        "status": "active"
+      },
+      {
+        "key": "CONTENTHOOK",
+        "displayName": "内容钩子/选题机制",
+        "description": "爆款内容机制、前3秒吸睛切入点及选题叙事框架",
+        "status": "active"
+      },
+      {
+        "key": "AUDIENCEPERSONA",
+        "displayName": "客群画像/受众群体",
+        "description": "核心消费人群画像（如职场背奶妈妈、新手哺乳妈妈等）",
+        "status": "active"
+      },
+      {
+        "key": "MESSAGEPILLAR",
+        "displayName": "信息屋价值支柱",
+        "description": "品牌核心信息屋支柱（如科技穿戴、舒适静音、无感伴随）",
+        "status": "active"
+      },
+      {
+        "key": "PRODUCTMODEL",
+        "displayName": "产品型号/SKU",
+        "description": "具体单品型号（如 Momcozy M5, S12 Pro, Elvie Stride, Willow 360 等）",
+        "status": "active"
+      },
+      {
+        "key": "USERPAINPOINT",
+        "displayName": "用户痛点/未满足需求",
+        "description": "真实用户声音中高频吐槽的痛点与恐惧（如漏奶下坠、清洁复杂、职场尴尬）",
+        "status": "active"
+      },
+      {
+        "key": "OPERATINGPROCEDURE",
+        "displayName": "标准作业规程/SOP",
+        "description": "社媒运营、巡检、早报、需求响应等关键业务 SOP",
+        "status": "active"
+      },
+      {
+        "key": "KOL",
+        "displayName": "达人/创作者",
+        "description": "社媒平台头部达人、内容创作者与母婴博主人脉",
+        "status": "active"
+      },
+      {
+        "key": "GOVERNANCEPOLICY",
+        "displayName": "架构决议/治理制度",
+        "description": "重大架构决议 ADR、发布门禁与行为红线制度",
+        "status": "active"
+      }
+    ],
+    "linkTypes": [
+      {
+        "key": "COMPETES_WITH",
+        "displayName": "竞争",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "BELONGS_TO",
+        "displayName": "归属",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "OPERATES_ON",
+        "displayName": "运营渠道",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "MONITORS",
+        "displayName": "监控",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "REPORTS_TO",
+        "displayName": "代表/分身/汇报",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "APPLIES_HOOK",
+        "displayName": "采用机制",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "TARGETS_AUDIENCE",
+        "displayName": "瞄准受众",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "SUPPORTS_PILLAR",
+        "displayName": "支撑价值支柱",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "SOLVES_PAIN",
+        "displayName": "解决痛点",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "HAS_MODEL",
+        "displayName": "拥有型号",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "GOVERNED_BY",
+        "displayName": "遵循规程",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "CREATES_ON",
+        "displayName": "创作平台",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "RESONATES_WITH",
+        "displayName": "受众共鸣",
+        "directional": true,
+        "status": "active"
+      },
+      {
+        "key": "RELATES_TO",
+        "displayName": "relates to",
+        "directional": true,
+        "status": "active"
+      }
+    ],
+    "openWorld": true,
+    "policy": "observe",
+    "seedFromDefaults": true,
+    "appliedScopes": [
+      "defaults",
+      "global"
+    ]
+  },
+  "spaceId": "default",
+  "canEdit": true,
+  "stats": {
+    "typeCounts": {
+      "CONCEPT": 87,
+      "TOOL": 35,
+      "PRODUCT": 30,
+      "METHOD": 27,
+      "Competitor": 25,
+      "SYSTEM": 21,
+      "DOCUMENT": 21,
+      "ProductModel": 18,
+      "TERM": 18,
+      "PROCESS": 16,
+      "ACTIVITY": 16,
+      "ORGANIZATION": 11,
+      "PLATFORM": 10,
+      "PROJECT": 6,
+      "SocialPlatform": 5,
+      "KOL": 5,
+      "TECHNIQUE": 5,
+      "ProductLine": 4,
+      "OperatingProcedure": 4,
+      "STANDARD": 4,
+      "PUBLICATION": 4,
+      "UserPainPoint": 4,
+      "DATASET": 4,
+      "ContentHook": 3,
+      "AudiencePersona": 3,
+      "MEDIA": 3,
+      "MessagePillar": 3,
+      "PERSON": 3,
+      "SERVICE": 2,
+      "EVENT": 2,
+      "RESOURCE": 2,
+      "KeyPerson": 2,
+      "COMMUNITY": 1,
+      "PRINCIPLE": 1,
+      "THEORY": 1,
+      "Brand": 1
+    },
+    "matchedCounts": {
+      "COMPETITOR": 25,
+      "PRODUCTMODEL": 18,
+      "SOCIALPLATFORM": 5,
+      "KOL": 5,
+      "PRODUCTLINE": 4,
+      "OPERATINGPROCEDURE": 4,
+      "USERPAINPOINT": 4,
+      "CONTENTHOOK": 3,
+      "AUDIENCEPERSONA": 3,
+      "MESSAGEPILLAR": 3,
+      "KEYPERSON": 2,
+      "BRAND": 1
+    },
+    "aliasCoverage": [
+      {
+        "storedType": "Competitor",
+        "declaredType": "COMPETITOR",
+        "count": 25
+      },
+      {
+        "storedType": "ProductModel",
+        "declaredType": "PRODUCTMODEL",
+        "count": 18
+      },
+      {
+        "storedType": "SocialPlatform",
+        "declaredType": "SOCIALPLATFORM",
+        "count": 5
+      },
+      {
+        "storedType": "ProductLine",
+        "declaredType": "PRODUCTLINE",
+        "count": 4
+      },
+      {
+        "storedType": "OperatingProcedure",
+        "declaredType": "OPERATINGPROCEDURE",
+        "count": 4
+      },
+      {
+        "storedType": "UserPainPoint",
+        "declaredType": "USERPAINPOINT",
+        "count": 4
+      },
+      {
+        "storedType": "ContentHook",
+        "declaredType": "CONTENTHOOK",
+        "count": 3
+      },
+      {
+        "storedType": "AudiencePersona",
+        "declaredType": "AUDIENCEPERSONA",
+        "count": 3
+      },
+      {
+        "storedType": "MessagePillar",
+        "declaredType": "MESSAGEPILLAR",
+        "count": 3
+      },
+      {
+        "storedType": "KeyPerson",
+        "declaredType": "KEYPERSON",
+        "count": 2
+      },
+      {
+        "storedType": "Brand",
+        "declaredType": "BRAND",
+        "count": 1
+      }
+    ],
+    "offOntology": [
+      {
+        "type": "CONCEPT",
+        "count": 87
+      },
+      {
+        "type": "TOOL",
+        "count": 35
+      },
+      {
+        "type": "PRODUCT",
+        "count": 30
+      },
+      {
+        "type": "METHOD",
+        "count": 27
+      },
+      {
+        "type": "SYSTEM",
+        "count": 21
+      },
+      {
+        "type": "DOCUMENT",
+        "count": 21
+      },
+      {
+        "type": "TERM",
+        "count": 18
+      },
+      {
+        "type": "PROCESS",
+        "count": 16
+      },
+      {
+        "type": "ACTIVITY",
+        "count": 16
+      },
+      {
+        "type": "ORGANIZATION",
+        "count": 11
+      },
+      {
+        "type": "PLATFORM",
+        "count": 10
+      },
+      {
+        "type": "PROJECT",
+        "count": 6
+      },
+      {
+        "type": "TECHNIQUE",
+        "count": 5
+      },
+      {
+        "type": "STANDARD",
+        "count": 4
+      },
+      {
+        "type": "PUBLICATION",
+        "count": 4
+      },
+      {
+        "type": "DATASET",
+        "count": 4
+      },
+      {
+        "type": "MEDIA",
+        "count": 3
+      },
+      {
+        "type": "PERSON",
+        "count": 3
+      },
+      {
+        "type": "SERVICE",
+        "count": 2
+      },
+      {
+        "type": "EVENT",
+        "count": 2
+      },
+      {
+        "type": "RESOURCE",
+        "count": 2
+      },
+      {
+        "type": "COMMUNITY",
+        "count": 1
+      },
+      {
+        "type": "PRINCIPLE",
+        "count": 1
+      },
+      {
+        "type": "THEORY",
+        "count": 1
+      }
+    ],
+    "totalEntities": 407,
+    "relationCounts": {
+      "RELATES_TO": 78,
+      "RELATED_TO": 39,
+      "CONTAINS": 34,
+      "SUPPORTS": 30,
+      "PART_OF": 21,
+      "CONSISTS_OF": 20,
+      "DEPENDS_ON": 18,
+      "AFFECTS": 17,
+      "DESCRIBES": 14,
+      "USES": 14,
+      "REQUIRES": 13,
+      "PRODUCES": 11,
+      "ENABLES": 11,
+      "ASSOCIATED_WITH": 9,
+      "ALTERNATIVE_TO": 8,
+      "IMPLEMENTS": 7,
+      "CONNECTED_TO": 6,
+      "REPLACES": 5,
+      "BELONGS_TO": 5,
+      "DIFFERENT_FROM": 4,
+      "MODIFIES": 4,
+      "WORKS_WITH": 3,
+      "CREATES": 3
+    },
+    "matchedRelationCounts": {
+      "RELATES_TO": 78,
+      "BELONGS_TO": 5
+    },
+    "aliasCoverageRelations": [],
+    "offOntologyRelations": [
+      {
+        "type": "RELATED_TO",
+        "count": 39
+      },
+      {
+        "type": "CONTAINS",
+        "count": 34
+      },
+      {
+        "type": "SUPPORTS",
+        "count": 30
+      },
+      {
+        "type": "PART_OF",
+        "count": 21
+      },
+      {
+        "type": "CONSISTS_OF",
+        "count": 20
+      },
+      {
+        "type": "DEPENDS_ON",
+        "count": 18
+      },
+      {
+        "type": "AFFECTS",
+        "count": 17
+      },
+      {
+        "type": "DESCRIBES",
+        "count": 14
+      },
+      {
+        "type": "USES",
+        "count": 14
+      },
+      {
+        "type": "REQUIRES",
+        "count": 13
+      },
+      {
+        "type": "PRODUCES",
+        "count": 11
+      },
+      {
+        "type": "ENABLES",
+        "count": 11
+      },
+      {
+        "type": "ASSOCIATED_WITH",
+        "count": 9
+      },
+      {
+        "type": "ALTERNATIVE_TO",
+        "count": 8
+      },
+      {
+        "type": "IMPLEMENTS",
+        "count": 7
+      },
+      {
+        "type": "CONNECTED_TO",
+        "count": 6
+      },
+      {
+        "type": "REPLACES",
+        "count": 5
+      },
+      {
+        "type": "DIFFERENT_FROM",
+        "count": 4
+      },
+      {
+        "type": "MODIFIES",
+        "count": 4
+      },
+      {
+        "type": "WORKS_WITH",
+        "count": 3
+      },
+      {
+        "type": "CREATES",
+        "count": 3
+      }
+    ],
+    "totalRelations": 374
+  },
+  "extraction": {
+    "enabled": true,
+    "gate": "fallback_one_shot_model_not_tool_capable",
+    "active": false,
+    "adjudicatesTypes": false
+  }
+}

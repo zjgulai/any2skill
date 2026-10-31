@@ -1,0 +1,96 @@
+{
+  "objectTypes": [
+    {
+      "key": "SKILL",
+      "displayName": "任务型技能",
+      "description": "发布区的任务型技能（skills/<slug>/SKILL.md），统一六段任务骨架（何时使用/输入与前置条件/执行步骤/交付物/检查停止与回滚/依据与边界），带 passed/low-utility/rejected 档位与逐条出处回链；典型实例 manage-agent-context、diagnose-rust-borrows、run-rust-tests。关系链：Skill DERIVES_FROM KnowledgeObject，Skill PASSES_GATE QualityGate。"
+    },
+    {
+      "key": "SOURCE",
+      "displayName": "内容源",
+      "description": "只读内容源及其镜像（sources/<sourceKey>/book 与 code、benchmark/upstream-skills）；按 sourceKey 命名空间隔离，生成链路不得读取 benchmark。典型：ai-agent-book-zh（13 md/336 锚点/604 对象）、rust-book-cn（105 md/513 锚点）、benchmark/upstream-skills（22 个原书 skill，pin dbc046e）。关系链：KnowledgeObject DERIVES_FROM Source，Artifact NAMESPACED_UNDER Source。"
+    },
+    {
+      "key": "KNOWLEDGEOBJECT",
+      "displayName": "知识对象",
+      "description": "九类类型化 IR 对象（Concept/Metric/MentalModel/DecisionModel/Heuristic/Case/Playbook/EngineeringRule/AntiPattern），强制 sourceRefs + 逐字 evidenceQuote；id 由锚点+类型+锚点内序号确定性生成，重跑不产生新 id。全库 1089 条（1075 唯一 id）。关系链：KnowledgeObject DERIVES_FROM Source，KnowledgeObject PASSES_GATE 门禁一。"
+    },
+    {
+      "key": "QUALITYGATE",
+      "displayName": "质量门禁",
+      "description": "三道质量门禁：门禁一契约与证据（确定性、全量必过）、门禁二触发盲测（只看 name+description）、门禁三效用 A/B（K=6 复跑制）。构建者不得自评，每次运行留回执与判定表。关系链：Skill PASSES_GATE QualityGate，QualityGate GOVERNED_BY Decision（ADR-006/027/030）。"
+    },
+    {
+      "key": "PIPELINESTAGE",
+      "displayName": "流水线阶段",
+      "description": "八阶段/环 1–5 的流水线阶段与 CLI 接缝：anchor-index、layer2-extractor、verifier、propose-clusters、synthesize-antipatterns、build-skill、run-gate2、run-gate3。关系链：PipelineStage PRODUCES Artifact，Ticket IMPLEMENTS PipelineStage。"
+    },
+    {
+      "key": "ARTIFACT",
+      "displayName": "可复算产物",
+      "description": "可复算产物：run-<id>.receipt.json、book-receipt/v2、freeze-<stamp>.json、fs-ledger、task-suite-lineage.v1.json、task-suite-assessment.v1.json、gate2/gate3 报告与场景。关系链：PipelineStage PRODUCES Artifact，Artifact NAMESPACED_UNDER Source。"
+    },
+    {
+      "key": "DECISION",
+      "displayName": "决策记录",
+      "description": "ADR 决策记录（docs/adr/ADR-NNN-kebab.md），含状态/日期/决策者/背景/决策/被否决方案/后果/核实方式。典型：ADR-002 双平面、ADR-006 三门禁、ADR-028 体积阈值、ADR-030 低效用治理、ADR-031 任务套件重组。关系链：Decision SUPERSEDES Decision，Skill/Artifact GOVERNED_BY Decision。"
+    },
+    {
+      "key": "TICKET",
+      "displayName": "执行卡",
+      "description": "执行卡（docs/tickets/NN-kebab.md），两位序号+中文标题+验收复选框+构建记录；当前 01–32 连续，下一张从 33 续号。关系链：Ticket IMPLEMENTS Decision/PipelineStage，Ticket PRODUCES Artifact。"
+    },
+    {
+      "key": "BENCHMARK",
+      "displayName": "只读基准",
+      "description": "只读基准镜像 benchmark/upstream-skills：22 个原书 skill、pin dbc046e、248,436 B、逐文件 sha256；只在产出冻结后由独立 agent 比对，生成链路不得读取。关系链：Benchmark BENCHMARKS Skill，Benchmark GOVERNED_BY ADR-001。"
+    },
+    {
+      "key": "PROMPTMODULE",
+      "displayName": "提示词模块",
+      "description": "提示词包模块 prompts/agent-dev/01–10，人侧主动粘贴的会话编排层，与 skills/ 并列；不进门禁、不做盲测，引用 175 个可回查对象。关系链：PromptModule DERIVES_FROM KnowledgeObject，PromptModule GOVERNED_BY Decision（若立版）。"
+    }
+  ],
+  "linkTypes": [
+    {
+      "key": "DERIVES_FROM",
+      "displayName": "派生自",
+      "directional": true
+    },
+    {
+      "key": "PASSES_GATE",
+      "displayName": "通过门禁",
+      "directional": true
+    },
+    {
+      "key": "GOVERNED_BY",
+      "displayName": "受治理于",
+      "directional": true
+    },
+    {
+      "key": "PRODUCES",
+      "displayName": "产出",
+      "directional": true
+    },
+    {
+      "key": "NAMESPACED_UNDER",
+      "displayName": "按源命名",
+      "directional": true
+    },
+    {
+      "key": "SUPERSEDES",
+      "displayName": "取代",
+      "directional": true
+    },
+    {
+      "key": "IMPLEMENTS",
+      "displayName": "落实",
+      "directional": true
+    },
+    {
+      "key": "BENCHMARKS",
+      "displayName": "基准对照",
+      "directional": true
+    }
+  ]
+}

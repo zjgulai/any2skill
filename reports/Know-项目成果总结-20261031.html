@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know 项目成果总结（仓库目录 any2skills） · 2026-10-31</title>
+<style>
+  :root {
+    --ink: #1a1f2e;
+    --ink-2: #4a5164;
+    --ink-3: #8a90a3;
+    --paper: #ffffff;
+    --bg: #f6f7fa;
+    --line: #e3e6ee;
+    --accent: #2f5fe0;
+    --accent-soft: #eaefff;
+    --green: #1a7f4e;
+    --green-soft: #e6f5ee;
+    --amber: #9a6b00;
+    --amber-soft: #fdf3dd;
+    --red: #b3372f;
+    --red-soft: #fbe9e7;
+    --code-bg: #f0f2f7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, sans-serif;
+    color: var(--ink); background: var(--bg);
+    line-height: 1.75; font-size: 15.5px;
+  }
+  /* ── 顶部导航 ─────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 4px;
+    padding: 0 24px; height: 52px; overflow-x: auto; white-space: nowrap;
+  }
+  nav .brand { font-weight: 700; color: var(--accent); margin-right: 16px; flex-shrink: 0; }
+  nav a { color: var(--ink-2); text-decoration: none; font-size: 13.5px; padding: 6px 10px; border-radius: 6px; flex-shrink: 0; }
+  nav a:hover { background: var(--accent-soft); color: var(--accent); }
+  /* ── 版心 ─────────────────────────────── */
+  main { max-width: 960px; margin: 0 auto; padding: 76px 24px 80px; }
+  section { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 32px 36px; margin-bottom: 24px; }
+  h1 { font-size: 26px; line-height: 1.35; margin-bottom: 8px; }
+  h2 { font-size: 20px; margin: 0 0 18px; padding-left: 12px; border-left: 4px solid var(--accent); line-height: 1.4; }
+  h3 { font-size: 16.5px; margin: 26px 0 10px; color: var(--ink); }
+  p { margin-bottom: 12px; color: var(--ink-2); }
+  p strong, li strong, td strong { color: var(--ink); }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; color: var(--ink-2); }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; background: var(--code-bg);
+    padding: 1.5px 6px; border-radius: 4px; color: #3d4a6b;
+  }
+  pre {
+    background: var(--code-bg); border: 1px solid var(--line);
+    border-radius: 8px; padding: 14px 18px; overflow-x: auto;
+    margin: 12px 0 16px; line-height: 1.6;
+  }
+  pre code { background: none; padding: 0; font-size: 12.5px; }
+  /* ── 头部 meta ────────────────────────── */
+  .meta { color: var(--ink-3); font-size: 13px; margin-bottom: 4px; }
+  /* ── hero 总结 ────────────────────────── */
+  .hero { background: linear-gradient(135deg, #f4f7ff 0%, #ffffff 60%); }
+  .hero .statement { font-size: 17px; line-height: 1.9; color: var(--ink); margin-bottom: 14px; }
+  .hero .statement b { color: var(--accent); }
+  .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    display: inline-flex; align-items: baseline; gap: 6px;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 999px; padding: 5px 14px; font-size: 13px; color: var(--ink-2);
+  }
+  .chip b { color: var(--accent); font-size: 15px; }
+  /* ── 速览卡片 ─────────────────────────── */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: #fbfcfe; }
+  .card .k { font-size: 12.5px; color: var(--ink-3); margin-bottom: 4px; letter-spacing: .02em; }
+  .card .v { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .card .d { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
+  /* ── 表格 ─────────────────────────────── */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 13.5px; }
+  th { background: var(--accent-soft); color: var(--ink); font-weight: 600; text-align: left; }
+  th, td { padding: 9px 12px; border: 1px solid var(--line); vertical-align: top; }
+  td { color: var(--ink-2); }
+  tr:nth-child(even) td { background: #fafbfe; }
+  /* ── 状态徽章 ─────────────────────────── */
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+  .tag-pass { background: var(--green-soft); color: var(--green); }
+  .tag-low  { background: var(--amber-soft); color: var(--amber); }
+  .tag-rej  { background: var(--red-soft); color: var(--red); }
+  /* ── 流程图 ──────────────────────────── */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 0 18px; }
+  .flow .node {
+    background: var(--paper); border: 1.5px solid var(--accent);
+    color: var(--accent); border-radius: 8px; padding: 7px 14px;
+    font-size: 13px; font-weight: 600;
+  }
+  .flow .node.dim { border-color: var(--line); color: var(--ink-2); }
+  .flow .arr { color: var(--ink-3); font-size: 14px; }
+  /* ── 时间线 ──────────────────────────── */
+  .timeline { border-left: 2px solid var(--line); margin-left: 8px; padding-left: 22px; }
+  .tl-item { position: relative; margin-bottom: 18px; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -28.5px; top: 7px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1.5px var(--accent);
+  }
+  .tl-item .t { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 2px; }
+  .tl-item .c { font-size: 13.5px; color: var(--ink-2); }
+  /* ── 提示块 ──────────────────────────── */
+  .note {
+    background: var(--accent-soft); border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 14px 0;
+    font-size: 13.5px; color: var(--ink-2);
+  }
+  .warn {
+    background: var(--amber-soft); border-left: 3px solid var(--amber);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 14px 0;
+    font-size: 13.5px; color: var(--ink-2);
+  }
+  ol.risk li { margin-bottom: 10px; }
+  @media print {
+    nav { display: none; }
+    body { background: #fff; }
+    section { border: none; padding: 12px 0; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">Know</span>
+  <a href="#s1">一句话</a>
+  <a href="#s2">成果速览</a>
+  <a href="#s3">项目定位</a>
+  <a href="#s4">主线成果</a>
+  <a href="#s5">时间线</a>
+  <a href="#s6">诚实边界</a>
+  <a href="#s7">可迁移规律</a>
+  <a href="#s8">ste-zh 安装</a>
+  <a href="#s9">证据入口</a>
+</nav>
+
+<main>
+
+<section class="hero" id="s1">
+  <p class="meta">Know 项目成果总结（仓库目录 any2skills） ｜ 报告日期 2026-10-31 ｜ 数据截至 commit <code>ff77cba</code>（2026-10-22）｜ 所有数字均给出盘上出处，可复算</p>
+  <h1>Know 项目成果总结（仓库目录 any2skills）</h1>
+  <p class="statement">Know（仓库目录 any2skills）把中文技术书变成<b>可执行、可溯源、经三道质量门禁验证的 Agent Skills</b>，并用第二本书证明了「any（任何书）」成立。项目 2026-10-09 开工、2026-10-22 完成主线，与「直接让大模型写 skill」的分界是：每个断言都能反查到书的具体位置，每次发布或降级都有独立门禁留痕。</p>
+  <div class="hero-facts">
+    <span class="chip"><b>17</b> 在售技能（7 passed / 10 low-utility / 0 rejected）</span>
+    <span class="chip"><b>3</b> 道门禁全部建成并实测</span>
+    <span class="chip"><b>2</b> 本书全链路验证</span>
+    <span class="chip"><b>32</b> ADR ｜ <b>32</b> 执行卡 ｜ <b>90</b> 次提交</span>
+    <span class="chip"><b>577</b> 测试通过 / 0 失败</span>
+  </div>
+</section>
+
+<section id="s2">
+  <h2>一、核心成果速览</h2>
+  <div class="grid">
+    <div class="card"><div class="k">生产管线</div><div class="v">三段式链路 + 环 1–5</div><div class="d">13 个 pipeline 脚本、7064 行；一条命令推到底的新书编排器</div></div>
+    <div class="card"><div class="k">质量门禁</div><div class="v">三道门禁全部实测</div><div class="d">门禁三两次检出真实有害 skill 并下架留档</div></div>
+    <div class="card"><div class="k">「any」验证</div><div class="v">两本书全链路</div><div class="d">13 章（章级）+ 105 节（节级），判据零改动</div></div>
+    <div class="card"><div class="k">技能资产</div><div class="v">17 个任务型技能</div><div class="d">273 条出处引用，覆盖 39 个唯一源文件</div></div>
+    <div class="card"><div class="k">知识对象</div><div class="v">1089 条 IR 对象</div><div class="d">9 种类型、1075 个唯一 id，每条带逐字引文</div></div>
+    <div class="card"><div class="k">MVP 验收</div><div class="v">五条全部达成</div><div class="d">对标 22 个原书 skill 正向覆盖 22/22</div></div>
+    <div class="card"><div class="k">提示词资产</div><div class="v">10 模块提示词包</div><div class="d">引用 175 个对象，全部可解析回查</div></div>
+    <div class="card"><div class="k">工程底盘</div><div class="v">577 测试 / 0 失败</div><div class="d">12 份冻结清单逐文件哈希复验；partial 复用零重复付费</div></div>
+  </div>
+</section>
+
+<section id="s3">
+  <h2>二、项目定位：解决什么问题</h2>
+  <p>技术书里的工程知识（怎么做、怎么避坑）很难直接变成 Agent 可用的技能：让大模型直接读书写 skill，产出的规则无法证明「真的来自书里」，也无法证明「装上比不装好」。</p>
+  <p>any2skills 的解法是在人和模型之间放一层<strong>机器可判定的中间表示（IR）</strong>：</p>
+  <ul>
+    <li>每条知识是一个<strong>类型化知识对象</strong>，强制携带来源锚点（文件 + 行号区间）与逐字引文；</li>
+    <li>每个技能可发布或降级，都必须通过<strong>独立于构建者的门禁</strong>，判定留痕、可复算；</li>
+    <li>总体架构是双平面（ADR-002）：外层 <code>skills/</code> 遵守 Claude 技能发布规范，内层 <code>pipeline/</code> 承载 IR、回执、账本与门禁。</li>
+  </ul>
+</section>
+
+<section id="s4">
+  <h2>三、主线成果</h2>
+
+  <h3>3.1 一条可复算的生产管线</h3>
+  <div class="flow">
+    <span class="node">第 1 层 · 锚点索引</span><span class="arr">→</span>
+    <span class="node">第 2 层 · LLM 综合</span><span class="arr">→</span>
+    <span class="node">第 3 层 · 机器验证（门禁一）</span>
+  </div>
+  <table>
+    <tr><th style="width:14%">层</th><th style="width:36%">职责</th><th>特点</th></tr>
+    <tr><td>第 1 层</td><td>确定性锚点索引</td><td>零模型调用，同一输入逐字节可复现</td></tr>
+    <tr><td>第 2 层</td><td>LLM 综合层</td><td>全链唯一非确定性环节；产出强制带 <code>sourceRefs</code> + 逐字引文</td></tr>
+    <tr><td>第 3 层</td><td>机器验证（门禁一）</td><td>确定性判据与独立判定者判据同权，全量必过</td></tr>
+  </table>
+  <p>外层工作流五环串联：</p>
+  <div class="flow">
+    <span class="node dim">环 1/2 提取验证</span><span class="arr">→</span>
+    <span class="node dim">环 3 语义聚类</span><span class="arr">→</span>
+    <span class="node dim">环 4 确定性装配</span><span class="arr">→</span>
+    <span class="node dim">环 5 门禁二三</span>
+  </div>
+  <p>环 3 实测：13 章 → 115 内容单元 → 40 技能候选，593 个对象全归类。新书入场一条命令推到底：<code>node pipeline/run-new-book.mjs all --dir &lt;书目录&gt; --key &lt;sourceKey&gt; …</code>，策展草稿自动生成且带 <code>draft:true</code> 硬边界（构建器拒绝直接构建草稿）。</p>
+
+  <h3>3.2 三道质量门禁：全部建成，全部实测</h3>
+  <table>
+    <tr><th style="width:22%">门禁</th><th style="width:28%">回答的问题</th><th>实测结果</th></tr>
+    <tr>
+      <td><strong>门禁一</strong> · 契约与证据</td>
+      <td>每条规则真的来自书吗</td>
+      <td>全量必过；理由码封闭词表；逐字引文比对忽略排版差异（实测拒绝率 3.8%，零模型调用）</td>
+    </tr>
+    <tr>
+      <td><strong>门禁二</strong> · 触发盲测</td>
+      <td>该触发时会触发吗</td>
+      <td>40 候选 × 120 场景、280 次盲测；87 对稳定共认领 → 11 对合并（候选 40→29），第三读数共认领 78→46，证明合并边际收益到顶</td>
+    </tr>
+    <tr>
+      <td><strong>门禁三</strong> · 效用 A/B</td>
+      <td>装上比不装好吗</td>
+      <td>K=6 配对任务、复跑制；<strong>两次检出确认负迁移</strong>（chapter3-s1、ch13-02-iterators-s1），均走完「退化 → 复跑复现 → 下架 → REJECTION.md 留档」全流程</td>
+    </tr>
+  </table>
+  <div class="note">门禁三的两次下架是项目最硬的声明兑现：「唯一能检出 skill 有害」的机制真的抓到了真实危害——这在评测工具链类项目里最容易落空。</div>
+
+  <h3>3.3 「any」验证：第二本书证伪了所有单源假设</h3>
+  <p>MVP 达成后，项目用《Rust 程序设计语言》中文版（105 个 md、节级粒度，与第一源「一个文件=一章」的形态完全不同）做第二源验证：</p>
+  <ul>
+    <li><strong>判据一条没改</strong>：门禁口径、对象模型、技能骨架全部原样；</li>
+    <li><strong>改动全部落在机制面</strong>：产物按源命名空间（修复 5 处固定路径漏网）、配套代码段源条件化（ADR-029）等；</li>
+    <li>发布区经四波从 7 扩到峰值 30（第一源 7 + Rust 23）；Rust 侧门禁三终态 8 passed / 15 low-utility / 0 确认退化。</li>
+  </ul>
+  <p>结论：「任何书 → skills」从口号变成了<strong>验证过的机制</strong>——第二源还贡献了第二个确认负迁移案例，证明门禁三不是只对第一源有效。</p>
+
+  <h3>3.4 技能资产：17 个在售任务技能</h3>
+  <table>
+    <tr><th style="width:55%">评测口径演进</th><th>状态</th></tr>
+    <tr><td>章节套件峰值（第一源 7 + Rust 23）</td><td>30（2026-10-15 峰值，已归档）</td></tr>
+    <tr><td>套件重组（ADR-031，逐字节归档旧套件 + 零继承迁移）</td><td>30 → 19</td></tr>
+    <tr><td>门禁二两轮评测（两对合并 + 争抢 14→10、0 误触）</td><td>19 → 17 → 15（2 例确认负迁移下架）</td></tr>
+    <tr><td>字面保真条款修订 + 复评（两被拒例返区，一件转 passed）</td><td><strong>17 在售</strong></td></tr>
+    <tr><td><strong>现行口径</strong>（task-suite-assessment.v1.json）</td>
+        <td><span class="tag tag-pass">7 passed</span> <span class="tag tag-low">10 low-utility</span> <span class="tag tag-rej">0 rejected</span></td></tr>
+  </table>
+  <ul>
+    <li><strong>构成</strong>：6 个 Agent 工程技能 + 11 个 Rust 实现技能；统一六段任务骨架（何时使用 / 输入与前置 / 执行步骤 / 交付物 / 检查·停止·回滚 / 依据与边界）；</li>
+    <li><strong>治理规则</strong>：low-utility 不下架但如实披露（ADR-030「降级 = 披露 + 重测须有因」）；复评转向：<code>implement-rust-state-pattern</code> 与 <code>match-rust-variants</code> 由 rejected 转 low-utility，<code>compose-rust-closures</code> 由 low-utility 转 passed；</li>
+    <li><strong>红线</strong>：两个确认负迁移案例隔离在 <code>pipeline/registry/rejected/</code>，内容不随重组复活。</li>
+  </ul>
+
+  <h3>3.5 提示词资产：Agent 开发 10 模块提示词包</h3>
+  <p><code>prompts/agent-dev/</code>——从《深入理解 AI Agent》618 个知识对象（604 章节对象 + 14 跨章反模式）萃取的人侧会话提示词，与 skills/（模型侧自动触发）并列：</p>
+  <ul>
+    <li>10 个模块覆盖 Agent 开发全程：边界骨架 → 上下文 → 记忆 → 工具 → 交付 → 交互 → 评估 → 进化 → 多 Agent 协作 → 模型层；</li>
+    <li>每条规则附来源对象 id，<strong>175 个引用对象全部可解析回查</strong>；覆盖表实测 109 条规则 + 8 条启发 + 43 条禁忌，13 个主题全覆盖；</li>
+    <li>迭代到 v1.2：模块 01→02 经真实交互链验证（试用报告见 <code>docs/audits/agent-dev-prompt-trial-2026-10-22.md</code>）；诚实声明：03–10 模块尚未真实试用。</li>
+  </ul>
+
+  <h3>3.6 方法论沉淀</h3>
+  <table>
+    <tr><th style="width:26%">资产</th><th style="width:38%">位置</th><th>价值</th></tr>
+    <tr><td>八阶段 runbook</td><td><code>docs/guides/book-to-skills-runbook.md</code></td><td>拿一本新 md 书照跑的完整工作流，含成本估算与陷阱</td></tr>
+    <tr><td>HTML 全景 playbook</td><td><code>playbook.html</code></td><td>单文件导航：八阶段、环 1–5、三道门禁、17 技能档位表、命令速查</td></tr>
+    <tr><td>32 篇 ADR</td><td><code>docs/adr/</code></td><td>判据改动留痕（追加不重写）；主题：范围 2 / 架构 8 / 门禁 13 / 流程 5 / 治理 4</td></tr>
+    <tr><td>32 张执行卡</td><td><code>docs/tickets/</code></td><td>从锚点索引到 GitHub 发布的完整执行链，含验收与事故记录</td></tr>
+    <tr><td>全项目复盘</td><td><code>docs/retrospective-2026-10-15.md</code></td><td>联想四步法；MVP 五条验收逐条对账 + 差距量化</td></tr>
+    <tr><td>上游剖析</td><td><code>analysis/05-source-analysis.md</code></td><td>五个上游仓库的实测能力对照、冲突与关键发现（143.5K）</td></tr>
+  </table>
+
+  <h3>3.7 工程底盘：让「可信」可以复算</h3>
+  <ul>
+    <li><strong>测试</strong>：<code>npm test</code> 577 通过 / 131 套件 / 0 失败（零网络、零凭据）；31 个测试文件 + 失败样本夹具把已知失败模式钉成回归；</li>
+    <li><strong>可复算三件套</strong>：回执（runId = 提示词指纹 + 门禁完成度）+ 账本（每进程独立）+ 冻结清单（12 份，逐文件哈希复验）；</li>
+    <li><strong>省钱机制</strong>：partial 复用让中断重跑零重复付费（首跑 90.4 分钟 → 修复后重跑 37.6 分钟）；</li>
+    <li><strong>入库面</strong>：仓库已推 GitHub（<code>zjgulai/any2skill</code>），clone 后 <code>npm test</code> 即绿；无用代码清理后终扫 0 残留。</li>
+  </ul>
+</section>
+
+<section id="s5">
+  <h2>四、成果时间线（2026-10-09 → 10-22）</h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="t">10-09 · 开工</div><div class="c">环 1–2 全链路 + 批次一复位（首提交）</div></div>
+    <div class="tl-item"><div class="t">10-11 → 10-12 · 提取建成（卡 01–09）</div><div class="c">锚点索引、九类对象、判定者隔离、全书 13/13 运行 + 污染隔离证明（基准目录外访问 0）</div></div>
+    <div class="tl-item"><div class="t">10-13 → 10-14 · 门禁与 MVP（卡 10–17）</div><div class="c">环 3 聚类、环 4 装配、门禁二三实测、基准比对 22/22、MVP 五条验收达成</div></div>
+    <div class="tl-item"><div class="t">10-14 → 10-15 · 第二源验证（卡 18–24）</div><div class="c">Rust 书四波抽取，发布区 7→30，第二次负迁移检出</div></div>
+    <div class="tl-item"><div class="t">10-15 → 10-16 · 治理与重组（卡 25–31）</div><div class="c">低效用治理（ADR-030）、套件重组 30→19→17、复评去害、runbook、推 GitHub、死代码清理</div></div>
+    <div class="tl-item"><div class="t">10-16 → 10-22 · 提示词资产（卡 32）</div><div class="c">10 模块提示词包 v1.0 → v1.1 → v1.2（真实交互链验证）</div></div>
+  </div>
+  <p>提交分布：90 次线性提交、无 merge；10-13（25 条）与 10-14（23 条）为两个高峰。</p>
+</section>
+
+<section id="s6">
+  <h2>五、诚实边界：尚未完成与技术债</h2>
+  <p>一份成果总结必须同时给出边界，否则会把 MVP 说成完成品：</p>
+  <ol class="risk">
+    <li><strong>效用增量稀缺</strong>：17 个在售技能中 10 个 low-utility——门禁口径下测不出价值增量；探针实验（17 个任务对 0 改进）把成因指向「源内容在强模型训练分布内」（H1 偏支持）。这是结果本身，不是失败；</li>
+    <li><strong>卡 08 未完成</strong>：回执理由码卡状态 ready-for-agent，10 个验收框全空；另有 40 个复选框未勾（多数属文档记账滞后）；</li>
+    <li><strong>提示词包 03–10 未真实试用</strong>，v1.2 新条款未做交互回归；</li>
+    <li><strong>7 个契约字段无来源</strong>（<code>inputContract</code>/<code>tools</code>/<code>steps</code> 等，当前对象模型下无出处）；</li>
+    <li><strong>4 个 Rust 候选未发布</strong>（四类缺口各有名字），处置待决策；</li>
+    <li><strong>在售物合并边无撤回语义</strong>（ch04-03↔ch08-02 一条 strict≥2 边，合并规则只覆盖发布前候选）；</li>
+    <li><strong>分发成熟度有限</strong>：无 LICENSE、无 CI、<code>package.json</code> 为 private——「可克隆运行」已达成，「可安装即插即用」（ADR-002 的 <code>.claude-plugin/</code>）尚未落地。</li>
+  </ol>
+</section>
+
+<section id="s7">
+  <h2>六、可迁移的关键规律（项目自己总结的）</h2>
+  <ol>
+    <li><strong>准入 ≠ 效用</strong>：门禁一过 = 装得出来，门禁三才回答有没有用。把「发布数」当 KPI 的管线会在这一步静默失真；</li>
+    <li><strong>陷阱门槛 = 源的性质</strong>：教科书式小节不供给反面教材，跨章综合是设计内正解（实测门禁一通过率 5/11 → 18/22）；</li>
+    <li><strong>测量仪器也是被测对象</strong>：任务生成器决定「什么叫测得出的效用」，仪器要立版、要探针、转正要走 ADR；</li>
+    <li><strong>降级 = 如实披露，重测须有因</strong>：不静默近似、判据改动留痕、付过的钱不重复付——这套「诚实机器」反复抓到真缺陷，是在赚钱而不是耗钱。</li>
+  </ol>
+</section>
+
+<section id="s8">
+  <h2>七、附：ste-zh 核心能力 skill 安装记录</h2>
+  <p>本次会话按要求核验了 <a href="https://github.com/dualface/ste-zh">dualface/ste-zh</a>（Agent 按 ASD-STE100 原则用中文汇报）的安装状态：</p>
+  <ul>
+    <li><strong>安装位置</strong>：<code>~/.claude/skills/ste/</code>，已在技能列表注册，可用 <code>/ste</code> 或「用 STE 规范输出」触发；</li>
+    <li><strong>核验方式</strong>：克隆仓库 main（HEAD <code>27d57e4</code>，2026-10-11）与本地安装逐文件 diff——<strong>完全一致，无需重装</strong>；</li>
+    <li><strong>内容</strong>：SKILL.md（R1–R25 规则）+ 术语表 + 2 个正式示例；生效后按 ASD-STE100 原则输出（关键信息先行、一词一义、一句一事、固定状态词、诚实核验状态），说「停止 ste」退出。</li>
+  </ul>
+</section>
+
+<section id="s9">
+  <h2>八、证据与复算入口</h2>
+<pre><code>cd /Users/lute/Project/any2skills
+
+find ./skills -name SKILL.md | wc -l          # 17 个在售技能
+ls docs/adr | wc -l                            # 32 篇 ADR
+ls docs/tickets | wc -l                        # 32 张卡
+git log --oneline | wc -l                      # 90 次提交
+npm test                                       # 577 通过 / 0 失败
+node pipeline/freeze-outputs.mjs --verify pipeline/registry/freeze-*.json   # 冻结复验</code></pre>
+  <p>关键报告原文：<code>docs/specs/02-benchmark-report.md</code>（MVP 对标）· <code>docs/specs/03-second-source-report.md</code>（第二源）· <code>docs/retrospective-2026-10-15.md</code>（复盘）· <code>pipeline/registry/task-suite-assessment.v1.json</code>（评测登记表）。</p>
+  <div class="warn"><strong>口径说明</strong>：本报告区分时点值与当前值——「发布区 30」是重组前峰值（2026-10-15），当前在售为 17；「618 对象」= 第一源 604 章节对象 + 14 跨章反模式，全库含第二源共 1089 条；复盘中的 25 卡 / 30 ADR / 564 测试为 10-15 历史快照。</div>
+</section>
+
+</main>
+</body>
+</html>
