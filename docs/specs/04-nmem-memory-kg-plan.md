@@ -101,7 +101,7 @@
 
 ## 7. 开放问题（待用户拍板，不阻塞卡 33/34）
 
-- **Q1 default 空间旧记忆处理**：`d3a1a91a`（指向已改名的旧报告路径）与 `a646a825`（「尚无专属 Space」）在卡 35 后即陈旧。建议新记忆落成后 `memories deprecate <id> --replacement <新ID>`（无替代则 archive），不删除。是否执行、何时执行，待拍板。
+- **Q1 default 空间旧记忆处理**：**已拍板并执行（2026-10-31）**。`d3a1a91a`（指向已改名的旧报告路径）与 `a646a825`（「尚无专属 Space」）均已 `memories deprecate`（不删除，原因中注明承接记忆 any2skills-l2-01 / any2skills-event-01）。注意：`--replacement` 的 EVOLVES 边不允许跨 Space（default → any2skills 返回 500），跨 Space 承接只能写进 reason。
 - **Q2 根 AGENTS.md / CLAUDE.md 是否新增记忆协议指针**：不新增则 read-side 协议只靠人工执行，不宣称自动生效。
 - **Q3 reports/ 入库**：Library 要归档的成果总结目前未入库（`?? reports/`）。建议卡 36 之前先 commit `reports/Know-项目成果总结-20261031.md`，保证 Library 源有 Git provenance；不 commit 则在 manifest 标注「源未入库」并记 sha256。
 - **Q4 记忆条数扩展**：16 条为首批；「同档噪声带」「prompt 包 03–10 未试用」「flag audit 48 旗标」等可选立条，按检索命中情况二批补充。

@@ -58,6 +58,8 @@ Agent 身份 `any2skills-steward`。方案：`docs/specs/04-nmem-memory-kg-plan.
   它会产生 revision 并使后续 `memories link add` 稳定 422；要改就
   `memories delete --force` + 同 ID 重建。
 - `memories link list` 必须逐条传 MEMORY_ID，没有空间级 list。
+- `memories deprecate --replacement` 不允许跨 Space（EVOLVES 边端点必须同 Space，否则 500）；
+  跨 Space 承接把承接记忆 ID 写进 `--reason`。
 - `library add` 无幂等键，重复运行会重复入库；先 `library list` 查重。
 - Library 归档一律复制为 `.markdown` 后缀（规避 MIME 解析陷阱）。
 - `memories list/show` 不返回 `when` 字段；时效合规以源 JSONL 为准。
