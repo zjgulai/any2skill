@@ -7,7 +7,7 @@
 
 ## 1. 目标与非目标
 
-**目标**：为 any2skills 建立专属 Nowledge Mem 记忆底座——专属 Space、Agent 身份、两条常驻守门规则、四层 16 条蒸馏记忆、5 份 Library 真源、空间本体（10 对象类型 + 8 关系类型）、11 条显式图谱关系，以及读侧 recall / 写侧蒸馏两向集成，满足 SOP 八条验收基线。
+**目标**：为 any2skills 建立专属 Nowledge Mem 记忆底座——专属 Space、Agent 身份、两条常驻守门规则、四层 22 条蒸馏记忆（首批 16 + 二批 6，Q4 拍板 2026-10-31）、5 份 Library 真源、空间本体（10 对象类型 + 8 关系类型）、11 条显式图谱关系，以及读侧 recall / 写侧蒸馏两向集成，满足 SOP 八条验收基线。
 
 **非目标**：
 
@@ -23,7 +23,7 @@
 | Space | `any2skills` /「Any2Skills 技能生产线（Know）」，strict | 用户拍板（2026-10-31）；与 default/pr-agent/si-agent/kb-consultant-agent 互相隔离 |
 | Agent | `any2skills-steward` /「Any2Skills 生产线守门人」/ role `skill-pipeline-steward` | 「守门人」贴合三道门禁与证据链守门职责 |
 | Rules | 2 条：`any2skills_core_persona`（priority 100）+ `any2skills_repo_boundary`（priority 90），scope=space | SOP 第 2 步 |
-| Memories | 16 条四层：L1 4 / L2 4 / L3 6 / L4 2 | SOP 认知金字塔；聚合蒸馏，不逐条灌 1089 对象 |
+| Memories | 22 条四层：L1 5 / L2 6 / L3 7 / L4 4 | SOP 认知金字塔；聚合蒸馏，不逐条灌 1089 对象 |
 | Library | 5 份真源，统一 `.markdown` 后缀归档 | SOP 第 3 步；规避 MIME 陷阱 |
 | Ontology | 10 objectTypes + 8 linkTypes，`--scope space` 应用 | SOP 第 5 步；kb 先例实测 space scope 为整体替换 |
 | 图谱 | 16 记忆节点 + 11 条显式 `memories link` 边 | 0.10.111 无实体自动生成；`graph expand` 可多跳 |
@@ -52,8 +52,13 @@
 | any2skills-l3-06 | L3 | shell 的 stat 可能多报 4096 字节，别把内容未损坏误判成 binary | learning | README:480-485 |
 | any2skills-l4-01 | L4 | 项目时间线与规模画像（快照，含日期与 commit 限定） | context | 成果总结 |
 | any2skills-l4-02 | L4 | 双平面结构、运行入口与分发成熟度 | context | ADR-002 + 成果总结 |
+| any2skills-l1-05 | L1 | 同档噪声带先于归因（13.5% 翻转率下限） | decision | ADR-015 |
+| any2skills-l2-05 | L2 | 开关面审计口径：48 旗标 + 11 env + 行为门控 | fact | audits/flag-config-audit |
+| any2skills-l2-06 | L2 | 提示词包试用状态：仅 01→02 真实验证 | fact | 成果总结 |
+| any2skills-l3-07 | L3 | 历史拒绝 4 例处置口径（永久隔离/字面保真返区） | learning | registry/rejected + playbook |
+| any2skills-l4-03 | L4 | 工程收口清单快照（截至 2026-10-31） | context | 成果总结 |
 
-记忆正文全文（含逐条 content）维护在 `tools/dev/distill-memories-to-nmem.mjs` 的 `MEMORIES` 数组中，为单一真源；本表只做索引。字数口径：content ≤300 字按去空白字符计；「句」以句号/问号/感叹号计。
+二批新增 4 条关系边（L3-07→L1-03、L4-03→L2-01、L2-06→L2-01、L1-05→L1-03），维护于 tools/dev/link-memories-to-nmem.mjs。记忆正文全文（含逐条 content）维护在 `tools/dev/distill-memories-to-nmem.mjs` 的 `MEMORIES` 数组中，为单一真源；本表只做索引。字数口径：content ≤300 字按去空白字符计；「句」以句号/问号/感叹号计。
 
 ## 4. 空间本体（10 objectTypes + 8 linkTypes）
 

@@ -25,6 +25,11 @@ const EDGES = [
   ['any2skills-l3-04', 'DERIVES_FROM', 'any2skills-l1-01'],
   ['any2skills-l4-01', 'DERIVES_FROM', 'any2skills-l2-01'],
   ['any2skills-l4-02', 'DERIVES_FROM', 'any2skills-l2-01'],
+  // 第二批（2026-10-31 Q4）
+  ['any2skills-l3-07', 'GOVERNED_BY', 'any2skills-l1-03'],
+  ['any2skills-l4-03', 'DERIVES_FROM', 'any2skills-l2-01'],
+  ['any2skills-l2-06', 'DERIVES_FROM', 'any2skills-l2-01'],
+  ['any2skills-l1-05', 'DERIVES_FROM', 'any2skills-l1-03'],
 ]
 
 const REASONS = {
