@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know 项目成果总结 · 2026-11-02</title>
+<style>
+  :root {
+    --ink: #1a2332; --sub: #5a6478; --line: #dde3ec; --bg: #f7f8fa; --card: #ffffff;
+    --accent: #2563eb; --accent-soft: #eff6ff; --ok: #15803d; --ok-soft: #f0fdf4;
+    --warn: #b45309; --warn-soft: #fffbeb; --mut: #64748b; --mut-soft: #f1f5f9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; gap: 4px; height: 52px; overflow-x: auto; }
+  nav .brand { font-weight: 700; color: var(--accent); margin-right: 12px; white-space: nowrap; }
+  nav a { color: var(--sub); text-decoration: none; font-size: 14px; padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
+  nav a:hover { background: var(--accent-soft); color: var(--accent); }
+  header.pagehead { background: linear-gradient(135deg, #eff6ff 0%, #f7f8fa 60%); border-bottom: 1px solid var(--line); padding: 40px 0 32px; }
+  h1 { font-size: 30px; line-height: 1.3; margin-bottom: 12px; }
+  .meta { color: var(--sub); font-size: 14px; }
+  .meta a { color: var(--accent); }
+  .badge { display: inline-block; background: var(--ok-soft); color: var(--ok); font-size: 13px; font-weight: 600; padding: 3px 12px; border-radius: 999px; margin-top: 14px; }
+  main { padding: 36px 0 72px; }
+  section { margin-bottom: 44px; }
+  h2 { font-size: 22px; margin-bottom: 18px; padding-left: 12px; border-left: 4px solid var(--accent); }
+  h3 { font-size: 17px; margin: 22px 0 10px; }
+  p { margin-bottom: 12px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; font-size: 14px; margin: 12px 0 18px; }
+  th { background: var(--mut-soft); text-align: left; padding: 10px 14px; font-weight: 600; }
+  td { padding: 9px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #fbfcfe; }
+  code { background: var(--mut-soft); padding: 1px 6px; border-radius: 4px; font-size: 13px; font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: #0f172a; color: #e2e8f0; padding: 18px 20px; border-radius: 10px; overflow-x: auto; font-size: 13px; line-height: 1.7; font-family: "SF Mono", Menlo, Consolas, monospace; margin: 12px 0 18px; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 16px 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .card .k { font-size: 13px; color: var(--mut); font-weight: 600; }
+  .card .v { font-size: 26px; font-weight: 700; }
+  .card .d { font-size: 13px; color: var(--sub); }
+  .card.hl { border-color: var(--accent); background: var(--accent-soft); }
+  .card.hl .v { color: var(--accent); }
+  .tl { border-left: 2px solid var(--line); margin: 16px 0; padding-left: 24px; }
+  .tl-item { position: relative; margin-bottom: 18px; }
+  .tl-item::before { content: ""; position: absolute; left: -31px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--accent-soft); }
+  .tl-item .tl-date { font-size: 13px; color: var(--accent); font-weight: 600; }
+  .tl-item .tl-title { font-weight: 700; margin: 2px 0 4px; }
+  .tl-item .tl-body { font-size: 14px; color: var(--sub); }
+  .tl-item.new .tl-date, .tl-item.new .tl-title { color: var(--ok); }
+  .tl-item.new::before { background: var(--ok); box-shadow: 0 0 0 2px var(--ok-soft); }
+  .callout { border: 1px solid var(--warn); background: var(--warn-soft); border-radius: 10px; padding: 16px 20px; margin: 12px 0 18px; font-size: 14px; }
+  .callout strong { color: var(--warn); }
+  .note { border: 1px solid var(--line); background: var(--card); border-radius: 10px; padding: 16px 20px; margin: 12px 0 18px; font-size: 14px; color: var(--sub); }
+  footer { border-top: 1px solid var(--line); color: var(--mut); font-size: 13px; padding: 24px 0 40px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Know · 成果总结</span>
+    <a href="#s1">总结</a>
+    <a href="#s2">速览</a>
+    <a href="#s3">定位</a>
+    <a href="#s4">主线成果</a>
+    <a href="#s5">时间线</a>
+    <a href="#s6">诚实边界</a>
+    <a href="#s7">规律</a>
+    <a href="#s8">证据与口径</a>
+  </div>
+</nav>
+
+<header class="pagehead">
+  <div class="wrap">
+    <h1>Know 项目成果总结（仓库目录 any2skills）</h1>
+    <p class="meta">报告日期：2026-11-02 ｜ 数据截至：commit <code>32dfd96</code>（2026-10-31）｜ 所有数字给出盘上出处，可复算</p>
+    <p class="meta">上周版见 <a href="Know-项目成果总结-20261031.html">Know-项目成果总结-20261031.html</a>（2026-10-31 15:25 定稿，数据截至 10-22；本报告覆盖 10-31 晚间新增的 7 条提交及其产物；上周报告保留不删除）</p>
+    <span class="badge">本周主线：nmem 记忆底座落地 · 项目进入维护态</span>
+  </div>
+</header>
+
+<div class="wrap">
+<main>
+
+<section id="s1">
+  <h2>一、一句话总结</h2>
+  <p><strong>Know（仓库目录 any2skills）把中文技术书变成可执行、可溯源、经三道质量门禁验证的 Agent Skills；本周项目知识底座补上最后一块——Nowledge Mem 专属记忆空间落地，SOP 八条验收 8/8 PASS，项目从主线完成转入「收口 + 维护态」。</strong></p>
+  <p>项目于 2026-10-09 开工，累计 97 次线性提交（其中 10-31 晚 21:36–22:20 新增 7 条，全部属于 nmem 记忆战役收口）。本周新增 ADR-033 与执行卡 33–37；在售技能、档位、提示词包均无变化。</p>
+</section>
+
+<section id="s2">
+  <h2>二、核心成果速览</h2>
+
+  <div class="cards">
+    <div class="card"><span class="k">累计提交</span><span class="v">97</span><span class="d">+7（10-31 晚，全部 nmem 收口）</span></div>
+    <div class="card"><span class="k">在售任务技能</span><span class="v">17</span><span class="d">6 Agent 工程 + 11 Rust（自 10-16 未变）</span></div>
+    <div class="card"><span class="k">技能档位</span><span class="v">7 / 10 / 0</span><span class="d">passed / low-utility / rejected（不变）</span></div>
+    <div class="card"><span class="k">决策记录 ADR</span><span class="v">33</span><span class="d">+1（ADR-033 nmem 记忆空间）</span></div>
+    <div class="card"><span class="k">执行卡</span><span class="v">37</span><span class="d">+5（卡 33–37）</span></div>
+    <div class="card"><span class="k">测试</span><span class="v">584 / 0</span><span class="d">通过 / 失败（133 套件，+7 用例）</span></div>
+    <div class="card hl"><span class="k">nmem 策展记忆</span><span class="v">22 + 15</span><span class="d">22 条记忆 + 15 条显式边（本周新增）</span></div>
+    <div class="card"><span class="k">知识对象全库</span><span class="v">1089</span><span class="d">1075 唯一 id，9 类（复算一致）</span></div>
+    <div class="card hl"><span class="k">SOP 验收</span><span class="v">8/8</span><span class="d">PASS（用户桌面确认图谱后闭环）</span></div>
+  </div>
+
+  <h3>对照上周报告</h3>
+  <table>
+    <tr><th>维度</th><th>上周值（10-31 报告，数据截至 10-22）</th><th>本周值（数据截至 10-31）</th><th>变化</th></tr>
+    <tr><td>主线状态</td><td>主线完成（两源全链 + 提示词包 v1.2）</td><td><strong>收口完成，进入维护态</strong></td><td>记忆底座落地</td></tr>
+    <tr><td>在售技能</td><td>17 个任务型技能</td><td>17 个（skills/ 最后变更 2026-10-16）</td><td>不变</td></tr>
+    <tr><td>技能档位</td><td>7 passed / 10 low-utility / 0 rejected</td><td>7 / 10 / 0（<code>task-suite-assessment.v1.json</code>）</td><td>不变</td></tr>
+    <tr><td>ADR</td><td>32 篇</td><td><strong>33 篇</strong></td><td>+1（ADR-033）</td></tr>
+    <tr><td>执行卡</td><td>32 张</td><td><strong>37 张</strong></td><td>+5（卡 33–37）</td></tr>
+    <tr><td>测试</td><td>577 通过 / 131 套件 / 0 失败</td><td><strong>584 通过 / 133 套件 / 0 失败</strong>（2026-11-02 实测）</td><td>+7 用例（nmem recall 读侧）</td></tr>
+    <tr><td>提交总数</td><td>90（截至 <code>ff77cba</code>）</td><td><strong>97</strong></td><td>+7（10-31 晚）</td></tr>
+    <tr><td>记忆底座</td><td>项目口径只存在于盘上文档</td><td><strong>Space <code>any2skills</code>(strict) + 22 条策展记忆 + 15 条显式边 + 本体 revision 17</strong></td><td><strong>本周主要新增</strong></td></tr>
+    <tr><td>Library</td><td>无</td><td>5 份真源 .markdown 入库（sha256 manifest）</td><td>新增</td></tr>
+    <tr><td>仓库公约</td><td>无根级 Agent 入口约定</td><td><strong>根级 <code>AGENTS.md</code> 入库</strong>（specs/04 Q2 关闭）</td><td>新增</td></tr>
+    <tr><td>分发面</td><td>可克隆运行；无 LICENSE / 无 CI</td><td>同左（AGENTS.md 与 reports/ 入库不改变此状态）</td><td>基本不变</td></tr>
+  </table>
+</section>
+
+<section id="s3">
+  <h2>三、项目定位（引 README）</h2>
+  <p>技术书里的工程知识（怎么做、怎么避坑）很难直接变成 Agent 可用的技能：让大模型直接读书写 skill，产出的规则无法证明「真的来自书里」，也无法证明「装上比不装好」。</p>
+  <p>any2skills 的解法是在人和模型之间放一层<strong>机器可判定的中间表示（IR）</strong>：每条知识是类型化知识对象，强制携带来源锚点（文件 + 行号区间）与逐字引文；每个技能可发布或降级，都必须通过<strong>独立于构建者的门禁</strong>，判定留痕、可复算。与「直接让模型写 skill」的分界线就在这里——<strong>每个断言都能反查到书的具体位置</strong>。</p>
+  <p>总体架构是双平面（ADR-002）：外层 <code>skills/</code> 遵守 Claude 技能发布规范，保证即插即用；内层 <code>pipeline/</code> 承载 IR、回执、账本与门禁，保证可审计。本周落地的 nmem 记忆空间是这条「可审计」原则在<strong>项目知识自身</strong>上的延伸：项目口径（门禁、档位、避坑）现在也能跨会话可回查。</p>
+</section>
+
+<section id="s4">
+  <h2>四、主线成果</h2>
+
+  <h3>4.1 本周唯一主线：Nowledge Mem 记忆空间落地（卡 33–37 + ADR-033）</h3>
+  <p>上周报告时项目口径只存在盘上文档，跨会话漂移已现（default 空间两条旧记忆指向已改名路径）。本周按 <code>docs/specs/04-nmem-memory-kg-plan.md</code> 完成整场战役，7 条提交全部围绕这一件事：</p>
+  <table>
+    <tr><th>交付物</th><th>内容</th><th>证据</th></tr>
+    <tr><td>Space + Agent</td><td><code>any2skills</code>（strict 模式，显示名「Any2Skills 技能生产线（Know）」）+ <code>any2skills-steward</code> 守门人身份</td><td><code>nmem --json spaces list</code>；ADR-033</td></tr>
+    <tr><td>四层记忆</td><td>首批 16 条（L1 准则 4 / L2 口径 4 / L3 避坑 6 / L4 纪要 2）+ batch-2 追加 6 条 = <strong>22 条策展记忆</strong></td><td><code>docs/audits/any2skills-nmem-memories-20261031.json</code></td></tr>
+    <tr><td>记忆图谱</td><td><strong>15 条显式关系边</strong>；用户桌面 ⌘5 确认 22 节点 + 15 边，<code>graph expand</code> 多跳可用</td><td>commit <code>32dfd96</code>（8/8 PASS 收口）</td></tr>
+    <tr><td>空间本体</td><td>revision 17：10 objectTypes + 8 linkTypes（词汇层；实例化另立票）</td><td><code>artifacts/any2skills_ontology_patch.json</code></td></tr>
+    <tr><td>Library</td><td>5 份真源 .markdown 归档，manifest 含 sha256；lifecycle_state 全 indexed、errors 0</td><td><code>docs/audits/any2skills-library-manifest-20261031.json</code></td></tr>
+    <tr><td>读侧生命线</td><td><code>pipeline/tools/nmem-recall.mjs</code>：3 秒超时、异常降级空串、min_score 0.70，只被会话调用，<strong>生成链路与门禁不 import nmem</strong></td><td><code>npm test</code> 584 全绿保持零网络</td></tr>
+    <tr><td>写侧工具</td><td><code>tools/dev/distill-memories-to-nmem.mjs</code>：默认 dry-run，显式 <code>--apply</code> 才写；16 条记忆的单一真源</td><td>ADR-033 §决策 4</td></tr>
+    <tr><td>验收</td><td>SOP 八条：7 PASS + 1 MANUAL（桌面截图）→ 用户确认图谱后 <strong>8/8 PASS</strong>；<code>NMEM_E2E=1</code> 真实 E2E 11/11</td><td><code>docs/audits/any2skills-nmem-acceptance-20261031.md</code></td></tr>
+  </table>
+
+  <p><strong>三条关键设计决策</strong>（ADR-033，均写明被否决方案）：</p>
+  <ol>
+    <li><strong>聚合蒸馏，不全量灌入</strong>：1089 条知识对象不逐条进记忆，首批聚合为 16 条（后至 22）——碎片会稀释检索相关度（SOP 复盘经验）；</li>
+    <li><strong>图谱走「记忆节点 + 显式 link」</strong>：不做实体抽取——实测 nmem 0.10.111 <code>entities</code> 无 create，<code>ontology apply</code> 只声明词汇；本体实例化因有全局迁移风险另立票；</li>
+    <li><strong>写入必须过批准门</strong>：draft 落盘 → G1 四域批准（A space/agent/rules/WM、B 记忆、C Library、D 本体）→ write → verify；四域批准单已归档（<code>docs/audits/any2skills-approval-g1{a,b,c,d}-20261031.md</code>）。这是卡 32「先落盘 + 待定」惯例在记忆域的移植。</li>
+  </ol>
+
+  <h3>4.2 收尾杂项（同属 10-31 晚提交）</h3>
+  <ul>
+    <li>根级 <code>AGENTS.md</code> 入库：nmem 协议指针 + 仓库工作约定（specs/04 Q2 关闭）；</li>
+    <li>2 条 default 空间过时记忆废弃（Q1 关闭）；<code>reports/</code> 成果总结入库，Library 源获得 Git provenance（Q3 拍板入库）；</li>
+    <li>卡 37 验收回填（commit hash + 检查单闭环）、WM 措辞改为「维护态」、SOP 核对单 8/8 收口。</li>
+  </ul>
+
+  <h3>4.3 存量资产快照（本周无变化，数字实测）</h3>
+  <ul>
+    <li><strong>在售 17 个任务技能</strong>（6 Agent 工程 + 11 Rust），档位 7 passed / 10 low-utility / 0 rejected；溯源密度 273 条出处引用、39 个唯一源文件（上周报告实测值，skills/ 自 10-16 未变更）；</li>
+    <li><strong>知识对象全库 1089 条</strong>（1075 唯一 id，9 类）——本次按「排除 <code>history/</code> 与 <code>*.partial</code>」口径重新复算，与登记口径完全一致；</li>
+    <li><strong>管线</strong>：13 个 pipeline 脚本 7064 行；冻结清单 12 份；门禁三报告两份（第一源 + Rust 源）；</li>
+    <li><strong>提示词包 v1.2</strong>：10 模块，175 个引用对象可回查；03–10 模块仍未真实试用（见诚实边界第 3 条）。</li>
+  </ul>
+</section>
+
+<section id="s5">
+  <h2>五、成果时间线</h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-date">10-09</div>
+      <div class="tl-title">开工</div>
+      <div class="tl-body">环 1–2 全链路 + 批次一复位（首提交）</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">10-11 → 10-12</div>
+      <div class="tl-title">提取建成</div>
+      <div class="tl-body">卡 01–09：锚点索引、九类对象、判定者隔离、全书 13/13 运行 + 污染隔离证明</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">10-13 → 10-14</div>
+      <div class="tl-title">门禁与 MVP</div>
+      <div class="tl-body">环 3 聚类、环 4 装配、门禁二三实测、基准比对 22/22、MVP 五条验收达成</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">10-14 → 10-15</div>
+      <div class="tl-title">第二源验证</div>
+      <div class="tl-body">卡 18–24：Rust 书四波抽取，发布区 7→30，第二次负迁移检出</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">10-15 → 10-16</div>
+      <div class="tl-title">治理与重组</div>
+      <div class="tl-body">卡 25–31：低效用治理（ADR-030）、套件重组 30→19→17、复评去害、runbook、推 GitHub、死代码清理</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">10-16 → 10-22</div>
+      <div class="tl-title">提示词资产</div>
+      <div class="tl-body">卡 32：10 模块提示词包 v1.0 → v1.1 → v1.2（真实交互链验证）</div>
+    </div>
+    <div class="tl-item new">
+      <div class="tl-date">10-31 晚（本周）</div>
+      <div class="tl-title">记忆底座</div>
+      <div class="tl-body">卡 33–37 + ADR-033：Space <code>any2skills</code> 落地、22 条记忆 + 15 边、本体 rev 17、Library 5 源、读写闭环脚本、SOP 8/8 PASS（用户桌面确认图谱）；根级 AGENTS.md；7 条提交 21:36–22:20</div>
+    </div>
+  </div>
+  <p>提交分布：97 次线性提交，无 merge；历史高峰 10-13（25 条）与 10-14（23 条）；10-23 → 10-31 为收口期（7 条，全部 10-31 晚）。</p>
+</section>
+
+<section id="s6">
+  <h2>六、诚实边界：尚未完成与技术债</h2>
+  <p>一份成果总结必须同时给出边界，否则会把 MVP 说成完成品。以下前 7 条沿承上周报告并逐条复核时效，第 8 条为本周新增：</p>
+  <ol>
+    <li><strong>效用增量稀缺（未变）</strong>：17 个在售技能中 10 个 low-utility——门禁口径下测不出价值增量；探针实验（17 个任务对 0 改进）把成因指向「源内容在强模型训练分布内」（H1 偏支持）。这是结果本身，不是失败；</li>
+    <li><strong>卡 08 未完成（未变）</strong>：回执理由码卡状态仍为 <code>ready-for-agent</code>，10 个验收框全空（本次实测复核）；</li>
+    <li><strong>提示词包 03–10 未真实试用（未变）</strong>，v1.2 新条款未做交互回归；</li>
+    <li><strong>7 个契约字段无来源（未变）</strong>：<code>inputContract</code>/<code>tools</code>/<code>steps</code> 等，当前对象模型下无出处；</li>
+    <li><strong>4 个 Rust 候选未发布（未变）</strong>：四类缺口各有名字，处置待决策；</li>
+    <li><strong>在售物合并边无撤回语义（未变）</strong>：<code>ch04-03↔ch08-02</code> 一条 strict≥2 边，规则只覆盖发布前候选；</li>
+    <li><strong>分发成熟度有限（基本未变）</strong>：仍无 LICENSE、无 CI、<code>package.json</code> 为 private；本周 AGENTS.md 与 reports/ 入库改善了「可协作性」，但「可安装即插即用」（ADR-002 的 <code>.claude-plugin/</code>）尚未落地；</li>
+    <li><strong>（新增）卡 34 复选框记账滞后</strong>：G1 批准卡 3 个验收框全未勾，但四域批准审计文件已在盘上（<code>docs/audits/any2skills-approval-g1{a,b,c,d}-20261031.md</code>）——属文档记账滞后而非批准缺失；与第 2 条同属「文档记账落后于实际执行」的既有模式。</li>
+  </ol>
+  <div class="note">另须说明：nmem 22 条记忆是<strong>策展聚合</strong>，不是 1089 对象的全量映射（设计如此，ADR-033 决策 2）；本体只有词汇层，实例化路径未定（待另立票）。</div>
+</section>
+
+<section id="s7">
+  <h2>七、可迁移的关键规律</h2>
+  <p>前 4 条沿承（项目自己总结的，本周无翻案）：</p>
+  <ol>
+    <li><strong>准入 ≠ 效用</strong>：门禁一过 = 装得出来，门禁三才回答有没有用。把「发布数」当 KPI 的管线会在这一步静默失真；</li>
+    <li><strong>陷阱门槛 = 源的性质</strong>：教科书式小节不供给反面教材，跨章综合是设计内正解（实测门禁一通过率 5/11 → 18/22）；</li>
+    <li><strong>测量仪器也是被测对象</strong>：任务生成器决定「什么叫测得出的效用」，仪器要立版、要探针、转正要走 ADR；</li>
+    <li><strong>降级 = 如实披露，重测须有因</strong>：不静默近似、判据改动留痕、付过的钱不重复付——这套「诚实机器」反复抓到真缺陷，是在赚钱而不是耗钱。</li>
+  </ol>
+  <p>本周新增（来自 nmem 战役）：</p>
+  <ol start="5">
+    <li><strong>记忆治理同理「聚合优先」</strong>：1089 条对象聚合为 22 条策展记忆再入库——记忆的价值在检索相关度，不在覆盖完整度；全量灌入反而稀释信噪比。这与「IR 面向机器、技能面向模型、记忆面向会话」的分层是同一个规律：<strong>每层只保留该层消费者需要的东西</strong>；</li>
+    <li><strong>治理纪律可以跨域移植</strong>：卡 32 的「先落盘 + 待定」协议移植到记忆域变成「draft → G1 批准 → write → verify」，在 nmem 这种外部系统写入上同样抓住了「构建者不自评」的风险；</li>
+    <li><strong>只作用于单一生命周期阶段的规则会静默失效</strong>：合并/撤回规则只覆盖「发布前候选」，产物一旦发布就越出了规则射程——设计判据时必须问「这条规则在产物发布后还有效吗」（源自诚实边界第 6 条的教训，本周随记忆入库正式沉淀）。</li>
+  </ol>
+</section>
+
+<section id="s8">
+  <h2>八、证据与复算入口 + 口径说明</h2>
+  <pre><code>cd /Users/lute/Project/any2skills
+
+git log --oneline | wc -l                     # 97（2026-11-02 实测）
+git log --oneline ff77cba..HEAD               # 7 条（本周新增，全在 10-31 晚）
+ls docs/adr | wc -l                           # 33
+ls docs/tickets | wc -l                       # 37
+find ./skills -name SKILL.md | wc -l          # 17
+npm test                                      # 584 通过 / 0 失败 / 133 套件（2026-11-02 实测）
+
+# 知识对象复算（排除 history/ 与 *.partial 后应得 1089 / 1075 唯一 / 9 类）：
+# 遍历 pipeline/knowledge/**/*objects*.json，跳过路径含 history/ 与 .partial 的文件，计数含 id 字段的对象
+node pipeline/freeze-outputs.mjs --verify pipeline/registry/freeze-*.json   # 冻结复验
+nmem --json spaces list                       # 含 Any2Skills 技能生产线（Know）</code></pre>
+
+  <p>关键登记表与报告：<code>pipeline/registry/task-suite-assessment.v1.json</code>（技能评测三态与 finalPublished=17）· <code>pipeline/registry/gate3-report*.json</code>（门禁三两源）· <code>docs/audits/any2skills-nmem-acceptance-20261031.md</code>（SOP 八条验收）· <code>docs/specs/04-nmem-memory-kg-plan.md</code>（nmem 方案）· <code>docs/specs/02-benchmark-report.md</code> / <code>03-second-source-report.md</code>（MVP 与第二源）。</p>
+
+  <h3>口径说明（时点值 vs 当前值，逐条）</h3>
+  <table>
+    <tr><th>口径</th><th>值</th><th>时点 / 性质</th></tr>
+    <tr><td>发布区 30</td><td>30</td><td>2026-10-15 重组前峰值，<strong>非当前值</strong>；当前在售 17 以 <code>finalPublished</code> 为准</td></tr>
+    <tr><td>「618 对象」</td><td>604 + 14</td><td>第一源 604 章节对象 + 14 跨章反模式；全库含第二源共 1089 条</td></tr>
+    <tr><td>25 卡 / 30 ADR / 564 测试</td><td>历史快照</td><td><code>docs/retrospective-2026-10-15.md</code> 的 10-15 时点值，不得当当前值引用</td></tr>
+    <tr><td>提交 90 → 97</td><td>97</td><td>90 为上周报告值（截至 10-22 <code>ff77cba</code>）；97 为 2026-11-02 实测（含 10-31 晚 7 条）</td></tr>
+    <tr><td>测试 577 → 584</td><td>584 / 0 / 133</td><td>577 为上周报告值；584 为 2026-11-02 本机实测，+7 来自 nmem recall 读侧用例</td></tr>
+    <tr><td>ADR 32 → 33、卡 32 → 37</td><td>33 / 37</td><td>2026-11-02 实测；增量全部来自 10-31 晚 nmem 战役</td></tr>
+    <tr><td>1089 对象复算</td><td>1089 / 1075 / 9</td><td>本报告按「排除 history/ 与 .partial」口径复算，与登记口径一致；不做过滤会混入历史版本得 1583</td></tr>
+    <tr><td>nmem 22 记忆 / 15 边</td><td>22 / 15</td><td>2026-10-31 收口值（16+6 两批）；用户桌面 ⌘5 确认</td></tr>
+    <tr><td>卡 34 验收框 0/3</td><td>记账滞后</td><td>批准审计文件已在盘上，非批准缺失（见诚实边界第 8 条）</td></tr>
+  </table>
+
+  <div class="callout"><strong>与上周报告无冲突数字：</strong>所有差异（提交数、测试数、ADR/卡数）均为「上周数据截止 10-22」与「本周实测 11-02」的时点差，口径未变。</div>
+</section>
+
+</main>
+<footer>
+  Know 项目成果总结 · 2026-11-02 · 数据截至 commit <code>32dfd96</code> · 上周版：<a href="Know-项目成果总结-20261031.html" style="color:inherit">Know-项目成果总结-20261031.html</a>
+</footer>
+</div>
+
+</body>
+</html>
